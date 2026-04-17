@@ -1,23 +1,11 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro";
-const projects = await Astro.glob("../content/projects.md");
+const projectFiles = import.meta.glob("../content/projects.md", { eager: true });
+const projects = Object.values(projectFiles) as any[];
 ---
-<section
-  class="grid grid-rows-[auto_1fr] w-full
-         gap-4 "
->
-  <!-- CONTENT -->
-  <div class="flex items-end justify-center">
-    <div
-      class="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-2 laptop:grid-cols-3
-             gap-4 mobile:gap-6 tablet:gap-8 laptop:gap-10
-             w-full max-w-6xl text-gray-700"
-    >
-      {
-        projects[0].frontmatter.projects.map((project: any) => (
-          <ProjectCard {...project} />
-        ))
-      }
-    </div>
-  </div>
-</section>
+
+<div class="grid grid-cols-1 mobile:grid-cols-2 laptop:grid-cols-3 gap-4 mobile:gap-5 laptop:gap-6 w-full">
+  {projects[0].frontmatter.projects.map((project: any) => (
+    <ProjectCard {...project} />
+  ))}
+</div>

@@ -43,6 +43,28 @@
   --hover-text: #085454;
 }
 
+/* Variante 4 — Paper: box blanco frío */
+:root.variant-4 {
+  --component-background: #e8e8e2;
+  --page-background: #f5f5f2;
+  --total-background: #dcdcd6;
+  --letter-color: #1a1a18;
+  --border-color: #8a8a82;
+  --hover-bg: #1a1a18;
+  --hover-text: #f5f5f2;
+}
+
+/* Variante 5 — Ivory: box crema cálida */
+:root.variant-5 {
+  --component-background: #e8ddd0;
+  --page-background: #faf6ee;
+  --total-background: #d9cfc2;
+  --letter-color: #26190a;
+  --border-color: #8a6e48;
+  --hover-bg: #3d2c12;
+  --hover-text: #faf6ee;
+}
+
 /* Estilos globales */
 * {
   font-family: "Poiret One", cursive;

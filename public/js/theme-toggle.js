@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const root = document.documentElement;
   const themeButton = document.getElementById("theme-toggle");
 
-  const themes = ["variant-1", "variant-2", "variant-3"];
+  const themes = ["variant-1", "variant-2", "variant-3", "variant-4", "variant-5"];
   let currentThemeIndex = 0;
 
   // Check if the theme is saved in localStorage

@@ -3,7 +3,7 @@ version: '3.8'
 services:
   astro:
     build:
-      context: ./astro
+      context: .
       dockerfile: Dockerfile
     container_name: astro
     restart: unless-stopped
@@ -16,7 +16,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./astro/dist:/usr/share/nginx/html
+      - ./dist:/usr/share/nginx/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - astro

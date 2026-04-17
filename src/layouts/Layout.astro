@@ -7,45 +7,53 @@ import Navigation from "../components/Navigation.astro";
 import SocialMedia from "../components/SocialMedia.astro";
 import DualMain from "./DualMain.astro";
 
-const { title, dual = false } = Astro.props;
+const { title, dual = false, pageLabel = "", description = "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Available for freelance projects.", ogImage = "/img/gopnik.png" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" />
-
-    <script>
+    <!-- Anti-flash: ejecutar ANTES de cualquier CSS -->
+    <script is:inline>
       (function () {
         try {
-          const themes = ["variant-1", "variant-2", "variant-3"];
-          const savedTheme = localStorage.getItem("theme");
-          document.documentElement.classList.add(
-            savedTheme && themes.includes(savedTheme) ? savedTheme : "variant-1"
-          );
-        } catch (e) {}
+          var themes = ["variant-1","variant-2","variant-3","variant-4","variant-5"];
+          var saved = localStorage.getItem("theme");
+          document.documentElement.className = (saved && themes.indexOf(saved) !== -1) ? saved : "variant-1";
+        } catch (e) {
+          document.documentElement.className = "variant-1";
+        }
       })();
     </script>
-    <script src="/js/theme-init.js" is:inline></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} — Timur Bogach</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Timur Bogach" />
+
+    <meta property="og:title" content={`${title} — Timur Bogach`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`https://nastymur.com${ogImage}`} />
+    <meta property="og:url" content="https://nastymur.com" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} — Timur Bogach`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`https://nastymur.com${ogImage}`} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" />
     <script src="/js/theme-toggle.js" defer></script>
   </head>
 
   <body class="min-h-screen min-w-screen bg-[var(--total-background)] text-[var(--letter-color)] overflow-hidden">
-    
-    <!-- MOBILE HEADER & FOOTER -->
+
     <header class="block laptop:hidden absolute top-0 left-0 w-full z-30 pointer-events-auto">
       <Header />
     </header>
@@ -53,7 +61,6 @@ const { title, dual = false } = Astro.props;
       <Footer />
     </footer>
 
-    <!-- DESKTOP FIXED ELEMENTS -->
     <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
       <Name />
     </div>
@@ -64,19 +71,18 @@ const { title, dual = false } = Astro.props;
       <SocialMedia />
     </div>
 
-    <!-- MAIN CONTAINER -->
     <main class="absolute inset-x-0 top-[6rem] bottom-[2rem] laptop:inset-0 flex items-center justify-center w-full h-auto z-20 laptop:p-[6rem]">
-      <div
-        class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-color)] shadow
-               flex items-center justify-center overflow-auto p-[1rem] laptop:px-0 laptop:pt-0 laptop:pb-0"
-      >
+      <div class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-color)] shadow
+                  flex items-center justify-center overflow-auto p-[1rem] laptop:px-0 laptop:pt-0 laptop:pb-0">
         {
           dual ? (
-            <DualMain>
+            <DualMain pageLabel={pageLabel}>
               <slot />
             </DualMain>
           ) : (
-            <slot />
+            <div class="w-full h-full laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem] flex flex-col">
+              <slot />
+            </div>
           )
         }
       </div>

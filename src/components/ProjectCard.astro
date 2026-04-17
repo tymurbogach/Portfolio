@@ -1,17 +1,35 @@
 ---
-const { title, description, image, link } = Astro.props;
+const { title, description, link } = Astro.props;
 ---
 
 <a
   href={link}
-  class="bg-[var(--total-background)] rounded-lg shadow-md p-3 mobile:p-4 tablet:p-5 laptop:p-6 fhd:p-7 qhd:p-8 uhd:p-10 flex flex-col items-center transition-all duration-200 hover:scale-[1.03]"
+  class="group flex flex-col overflow-hidden border border-[var(--border-color)] transition-all duration-300 hover:-translate-y-[3px] hover:shadow-xl"
 >
-  <div class="w-full h-32 mobile:h-36 tablet:h-40 laptop:h-44 fhd:h-48 qhd:h-52 uhd:h-56 flex items-center justify-center overflow-hidden">
-    <img src={image} alt={title} class="max-w-full max-h-full object-contain" />
+  <!-- Header: diseño con colores del tema, sin imagen -->
+  <div class="relative bg-[var(--page-background)] flex items-center justify-center px-6 py-10 laptop:py-12 overflow-hidden">
+    <!-- Esquinas decorativas -->
+    <span class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-[var(--border-color)] opacity-60"></span>
+    <span class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-[var(--border-color)] opacity-60"></span>
+    <span class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-[var(--border-color)] opacity-60 transition-all duration-300 group-hover:w-full group-hover:opacity-30"></span>
+    <span class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[var(--border-color)] opacity-60"></span>
+    <!-- Título grande como elemento visual -->
+    <h3 class="text-base mobile:text-lg laptop:text-xl fhd:text-2xl font-bold tracking-[0.2em] uppercase text-center leading-tight relative z-10">
+      {title}
+    </h3>
   </div>
 
-  <div class="w-full h-20 mobile:h-24 tablet:h-28 laptop:h-32 fhd:h-36 qhd:h-40 uhd:h-44 text-center mt-2 mobile:mt-3 tablet:mt-4 flex flex-col justify-center">
-    <h3 class="text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl font-semibold mb-1">{title}</h3>
-    <p class="overflow-hidden text-ellipsis text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl">{description}</p>
+  <!-- Descripción -->
+  <div class="flex flex-col gap-3 p-4 laptop:p-5 fhd:p-6 bg-[var(--total-background)]">
+    <p class="text-xs mobile:text-sm laptop:text-base fhd:text-lg opacity-65 leading-relaxed line-clamp-2">
+      {description}
+    </p>
+    <div class="flex items-center gap-2 text-xs tracking-[0.2em] uppercase opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+      <span>View project</span>
+      <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+    </div>
   </div>
+
+  <!-- Línea inferior animada -->
+  <div class="h-[2px] w-0 bg-[var(--letter-color)] transition-all duration-500 group-hover:w-full"></div>
 </a>

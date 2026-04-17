@@ -1,21 +1,36 @@
 ---
 import IndexContent from "../components/IndexContent.astro";
+const { pageLabel = "" } = Astro.props;
 ---
 
 <div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
-  <!-- Lado izquierdo fijo -->
-  <div
-    class="hidden laptop:flex laptop:w-1/2 items-center justify-center
-      laptop:p-[5rem]"
-  >
+
+  <!-- Izquierda fija -->
+  <div class="hidden laptop:flex laptop:w-1/2 items-center justify-center laptop:p-[5rem]">
     <IndexContent />
   </div>
 
-  <!-- Lado derecho con scroll -->
-  <div
-    class="w-full laptop:w-1/2 flex flex-col h-full overflow-y-auto
-      laptop:p-[4rem] mobile:pb-[1.5rem] tablet:pb-[2rem] laptop:pb-[2.5rem] fhd:pb-[3rem] qhd:pb-[4rem] uhd:pb-[5rem]"
-  >
-    <slot />
+  <!-- Derecha: título fijo + contenido scrollable -->
+  <div class="w-full laptop:w-1/2 flex flex-col h-full">
+
+    <!-- Título FIJO — no hace scroll -->
+    <div class="shrink-0
+      px-[1rem] mobile:px-[1.5rem] tablet:px-[2rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+      pt-[1rem] mobile:pt-[1.5rem] tablet:pt-[2rem] laptop:pt-[4.5rem] fhd:pt-[5.5rem] qhd:pt-[6.5rem]
+      pb-5 laptop:pb-7">
+      <p class="text-[0.7rem] laptop:text-xs tracking-[0.5em] uppercase opacity-50 font-semibold">{pageLabel}</p>
+      <div class="h-px bg-[var(--border-color)] opacity-25 mt-3"></div>
+    </div>
+
+    <!-- Contenido scrollable con fade inferior -->
+    <div
+      class="flex-1 overflow-y-auto
+        px-[1rem] mobile:px-[1.5rem] tablet:px-[2rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+        pb-[5rem] laptop:pb-[7rem] fhd:pb-[9rem]"
+      style="mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);"
+    >
+      <slot />
+    </div>
+
   </div>
 </div>

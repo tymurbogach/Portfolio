@@ -1,42 +1,95 @@
-<section class="grid grid-rows-[auto_1fr_auto] w-full gap-4 mobile:gap-6 tablet:gap-8 laptop:gap-10 fhd:gap-12 qhd:gap-16 uhd:gap-20">
-  <!-- CONTENT -->
-  <div class="flex items-end justify-center">
-    <div class="w-full max-w-4xl">
-      <div class="grid grid-cols-1 laptop:grid-cols-2 gap-4 mobile:gap-6 tablet:gap-8 laptop:gap-10 w-full">
-        <div class="flex flex-col items-start justify-start">
-          <p class="mb-2 mobile:mb-3 tablet:mb-4 text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"><strong>Birthdate:</strong> October 31 - 1990</p>
-          <p class="mb-2 mobile:mb-3 tablet:mb-4 text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"><strong>Location:</strong> Spain</p>
-          <p class="mb-2 mobile:mb-3 tablet:mb-4 text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"><strong>Address:</strong> Orihuela - Alicante</p>
-        </div>
-        <div class="flex flex-col items-start justify-start">
-          <p class="mb-2 mobile:mb-3 tablet:mb-4 text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"><strong>Email:</strong> Timurnator_@outlook.com</p>
-          <p class="mb-2 mobile:mb-3 tablet:mb-4 text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"><strong>Phone:</strong> +34 658 440 125</p>
-          <p class="mb-2 mobile:mb-3 tablet:mb-4 text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"><strong>Freelancer:</strong> Available</p>
-        </div>
-      </div>
+<section class="flex flex-col w-full gap-8 laptop:gap-10">
+
+  <div class="flex flex-wrap gap-x-10 gap-y-4">
+    <div class="flex flex-col gap-1">
+      <p class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Email</p>
+      <p class="text-sm mobile:text-base laptop:text-lg fhd:text-xl">Timurnator_@outlook.com</p>
+    </div>
+    <div class="flex flex-col gap-1">
+      <p class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Location</p>
+      <p class="text-sm mobile:text-base laptop:text-lg fhd:text-xl">Orihuela, Alicante</p>
+    </div>
+    <div class="flex flex-col gap-1">
+      <p class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Status</p>
+      <p class="text-sm mobile:text-base laptop:text-lg fhd:text-xl">Available for freelance</p>
     </div>
   </div>
-  <!-- SUBCONTENT -->
-  <div class="flex items-center justify-center">
-    <form class="w-full max-w-2xl mx-auto">
-      <div class="mb-4 mobile:mb-5 tablet:mb-6">
-        <input type="text" id="name" name="name" placeholder="Name..." class="shadow appearance-none border rounded w-full py-2 mobile:py-3 tablet:py-4 px-3 mobile:px-4 tablet:px-5 text-[var(--letter-color)] leading-tight focus:outline-none focus:shadow-outline text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl" />
+
+  <form id="contact-form" class="w-full flex flex-col gap-5">
+    <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
+    <input type="hidden" name="subject" value="New message from nastymur.com" />
+
+    <div id="form-status" class="hidden p-3 rounded text-center text-sm font-semibold"></div>
+
+    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-5">
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Name *</label>
+        <input type="text" name="name" required placeholder="Your name"
+          class="border-b border-[var(--border-color)] bg-transparent py-2 text-sm mobile:text-base laptop:text-lg fhd:text-xl text-[var(--letter-color)] focus:outline-none transition-all placeholder:opacity-30" />
       </div>
-      <div class="mb-4 mobile:mb-5 tablet:mb-6">
-        <input type="email" id="email" name="email" placeholder="Email..." class="shadow appearance-none border rounded w-full py-2 mobile:py-3 tablet:py-4 px-3 mobile:px-4 tablet:px-5 text-[var(--letter-color)] leading-tight focus:outline-none focus:shadow-outline text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl" />
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Email *</label>
+        <input type="email" name="email" required placeholder="your@email.com"
+          class="border-b border-[var(--border-color)] bg-transparent py-2 text-sm mobile:text-base laptop:text-lg fhd:text-xl text-[var(--letter-color)] focus:outline-none transition-all placeholder:opacity-30" />
       </div>
-      <div class="mb-4 mobile:mb-5 tablet:mb-6">
-        <input type="text" id="project" name="project" placeholder="The project is about..." class="shadow appearance-none border rounded w-full py-2 mobile:py-3 tablet:py-4 px-3 mobile:px-4 tablet:px-5 text-[var(--letter-color)] leading-tight focus:outline-none focus:shadow-outline text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl" />
+    </div>
+
+    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-5">
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Project</label>
+        <input type="text" name="project" placeholder="What's it about?"
+          class="border-b border-[var(--border-color)] bg-transparent py-2 text-sm mobile:text-base laptop:text-lg fhd:text-xl text-[var(--letter-color)] focus:outline-none transition-all placeholder:opacity-30" />
       </div>
-      <div class="mb-4 mobile:mb-5 tablet:mb-6">
-        <input type="text" id="budget" name="budget" placeholder="Budget..." class="shadow appearance-none border rounded w-full py-2 mobile:py-3 tablet:py-4 px-3 mobile:px-4 tablet:px-5 text-[var(--letter-color)] leading-tight focus:outline-none focus:shadow-outline text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl" />
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Budget</label>
+        <input type="text" name="budget" placeholder="Approx. budget"
+          class="border-b border-[var(--border-color)] bg-transparent py-2 text-sm mobile:text-base laptop:text-lg fhd:text-xl text-[var(--letter-color)] focus:outline-none transition-all placeholder:opacity-30" />
       </div>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label class="text-[0.6rem] tracking-[0.3em] uppercase opacity-40">Message *</label>
       <div class="relative">
-        <textarea id="message" name="message" rows="4" placeholder="Message..." class="shadow appearance-none border rounded w-full py-2 mobile:py-3 tablet:py-4 px-3 mobile:px-4 tablet:px-5 text-[var(--letter-color)] leading-tight focus:outline-none focus:shadow-outline text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl"></textarea>
-        <button type="submit" class="absolute bottom-2 mobile:bottom-3 tablet:bottom-4 right-2 mobile:right-3 tablet:right-4 hover:bg-[var(--total-background)] text-white font-bold py-1 mobile:py-2 tablet:py-3 px-2 mobile:px-3 tablet:px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
-          <img src="/img/send-mail.png" alt="Enviar correo" class="w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8 fhd:w-10 fhd:h-10 qhd:w-12 qhd:h-12 uhd:w-14 uhd:h-14" />
+        <textarea name="message" rows="4" required placeholder="Tell me more..."
+          class="border border-[var(--border-color)] bg-transparent rounded w-full py-3 px-4 text-sm mobile:text-base laptop:text-lg fhd:text-xl text-[var(--letter-color)] focus:outline-none transition-all resize-none placeholder:opacity-30"></textarea>
+        <button id="submit-btn" type="submit" aria-label="Send"
+          class="absolute bottom-3 right-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+          <img src="/img/send-mail.png" alt="Send" class="w-5 h-5 laptop:w-6 laptop:h-6 fhd:w-8 fhd:h-8" />
         </button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const statusEl = document.getElementById("form-status") as HTMLElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.3";
+    statusEl.classList.remove("hidden");
+    statusEl.textContent = "Sending...";
+    try {
+      const data = new FormData(form);
+      const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
+      const result = await response.json();
+      if (result.success) {
+        statusEl.style.color = "green";
+        statusEl.textContent = "Message sent! I'll get back to you soon.";
+        form.reset();
+      } else {
+        throw new Error(result.message || "Error");
+      }
+    } catch {
+      statusEl.style.color = "red";
+      statusEl.textContent = "Something went wrong. Email me directly.";
+    } finally {
+      submitBtn.disabled = false;
+      statusEl.style.opacity = "1";
+    }
+  });
+</script>
