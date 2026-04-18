@@ -5,40 +5,157 @@ const { pageLabel = "" } = Astro.props;
 
 <div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
 
-  <!-- Izquierda — panel home, más estrecho (38%) -->
+  <!-- Izquierda — panel home (38%) -->
   <div class="hidden laptop:flex laptop:w-[38%] shrink-0 min-h-0 items-center justify-center
               laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]
               border-r border-[var(--border-subtle)]">
     <IndexContent />
   </div>
 
-  <!-- Derecha — panel contenido, más ancho (62%) -->
-  <div class="w-full laptop:w-[62%] flex flex-col h-full min-h-0">
+  <!-- Derecha — panel contenido (62%) -->
+  <div class="w-full laptop:w-[62%] flex flex-col h-full min-h-0 relative">
 
-    <!-- Título FIJO — no hace scroll -->
+    <!-- Título FIJO -->
     <div class="shrink-0
       px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
       pt-[1.25rem] mobile:pt-[1.75rem] tablet:pt-[2.5rem] laptop:pt-[4.5rem] fhd:pt-[5.5rem] qhd:pt-[6.5rem]
       pb-5 laptop:pb-7">
       <div class="max-w-[72ch] laptop:mx-auto">
-        <!-- Encabezado de página: prominente, distinguible del contenido -->
-        <p class="text-sm laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold text-[var(--letter-color)]">{pageLabel}</p>
-        <div class="h-px bg-[var(--border-subtle)] mt-4"></div>
+        <p class="text-sm laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold
+                  text-[var(--letter-color)]">{pageLabel}</p>
+        <div class="h-px mt-4" style="background: var(--accent-color); opacity: 0.25;"></div>
       </div>
     </div>
 
-    <!-- Contenido scrollable con fade inferior -->
+    <!-- Contenido scrollable -->
     <div
+      id="content-scroll"
       class="flex-1 overflow-y-auto min-h-0
         px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-        pb-[5rem] laptop:pb-[7rem] fhd:pb-[9rem]"
-      style="mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);"
+        pb-[4rem] laptop:pb-[5rem] fhd:pb-[7rem]"
+      style="mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+             -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);"
     >
-      <!-- Centrado con max-width: evita que el texto se extienda en FHD/QHD -->
       <div class="max-w-[72ch] laptop:mx-auto">
         <slot />
       </div>
     </div>
 
+    <!-- Hint de siguiente página -->
+    <div id="next-hint"
+         class="absolute bottom-0 inset-x-0 z-30
+                flex items-center justify-between
+                px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
+                py-3 laptop:py-4
+                pointer-events-none select-none">
+      <!-- Barra de progreso (solo móvil) -->
+      <div id="next-progress"
+           class="absolute bottom-0 left-0 h-[1.5px]"
+           style="width:0%; background: var(--accent-color); transition: none;">
+      </div>
+
+      <!-- Spacer izq -->
+      <div class="flex-1"></div>
+
+      <!-- Label clicable -->
+      <button id="next-btn"
+              class="flex items-center gap-2 py-1 px-3
+                     text-[0.58rem] tracking-[0.45em] uppercase font-bold
+                     border border-[var(--border-color)]
+                     bg-[var(--page-background)]
+                     cursor-pointer
+                     transition-all duration-300
+                     pointer-events-auto"
+              style="opacity:0; transition: opacity 0.4s ease, border-color 0.3s ease;">
+        <span id="next-label">about</span>
+        <span style="color: var(--accent-color)">→</span>
+      </button>
+    </div>
+
   </div>
 </div>
+
+<style>
+  #next-btn:hover {
+    border-color: var(--accent-color) !important;
+    color: var(--accent-color);
+  }
+</style>
+
+<script>
+  import { navigate } from 'astro:transitions/client';
+
+  const PAGES = [
+    { path: '/',         label: 'about'    },
+    { path: '/about',    label: 'resume'   },
+    { path: '/resume',   label: 'projects' },
+    { path: '/projects', label: 'contact'  },
+    { path: '/contact',  label: 'home'     },
+  ];
+
+  function isMobile() {
+    return window.innerWidth < 1280;
+  }
+
+  function init() {
+    const scrollEl = document.getElementById('content-scroll');
+    const btn      = document.getElementById('next-btn') as HTMLElement | null;
+    const label    = document.getElementById('next-label') as HTMLElement | null;
+    const bar      = document.getElementById('next-progress') as HTMLElement | null;
+
+    if (!scrollEl || !btn || !label || !bar) return;
+
+    const raw  = window.location.pathname.replace(/\/$/, '') || '/';
+    const idx  = PAGES.findIndex(p => p.path === raw);
+    const cur  = idx >= 0 ? idx : 0;
+    const next = PAGES[(cur + 1) % PAGES.length];
+
+    label.textContent = next.label;
+
+    let autoTimer: ReturnType<typeof setTimeout> | null = null;
+    let visible = false;
+
+    function show() {
+      if (visible) return;
+      visible = true;
+      btn.style.opacity = '0.7';
+
+      if (isMobile()) {
+        // Mobile: auto-navega tras 2s
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        bar.offsetWidth;
+        bar.style.transition = 'width 2s linear';
+        bar.style.width = '100%';
+        autoTimer = setTimeout(() => navigate(next.path), 2000);
+      }
+    }
+
+    function hide() {
+      if (!visible) return;
+      visible = false;
+      btn.style.opacity = '0';
+      if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+      bar.style.transition = 'width 0.3s ease';
+      bar.style.width = '0%';
+    }
+
+    function check() {
+      const rem = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight;
+      rem < 8 ? show() : hide();
+    }
+
+    scrollEl.addEventListener('scroll', check, { passive: true });
+    btn.addEventListener('click', () => navigate(next.path));
+
+    // Sin scroll posible: mostrar hint tras delay
+    setTimeout(() => {
+      if (scrollEl.scrollHeight <= scrollEl.clientHeight + 12) show();
+    }, 2000);
+
+    check();
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

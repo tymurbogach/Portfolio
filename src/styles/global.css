@@ -1,81 +1,123 @@
 @import "tailwindcss";
 
 @theme {
-  --breakpoint-mobile: 30rem;       /* 480px */
-  --breakpoint-tablet: 48rem;       /* 768px */
-  --breakpoint-laptop: 80rem;       /* 1280px */
-  --breakpoint-desktop: 100rem;     /* 1600px */
-  --breakpoint-fhd: 120rem;         /* 1920px */
-  --breakpoint-qhd: 160rem;         /* 2560px */
-  --breakpoint-uhd: 240rem;         /* 3840px */
+  --breakpoint-mobile: 30rem;
+  --breakpoint-tablet: 48rem;
+  --breakpoint-laptop: 80rem;
+  --breakpoint-desktop: 100rem;
+  --breakpoint-fhd: 120rem;
+  --breakpoint-qhd: 160rem;
+  --breakpoint-uhd: 240rem;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   TEMAS — todos muy claros, fondos casi blancos,
-   texto casi negro para máxima nitidez (WCAG AAA ≥7:1)
-   ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   TEMAS
+   ═══════════════════════════════════════════════════════ */
 
-/* ─── Variant 1 — Blanc (puro / neutro) ─────────────────── */
+/* ─── Variant 1 — Blanc ───────────────────────────────── */
 :root {
-  --component-background: #f4f4f4;
+  --component-background: #f2f2f2;
   --page-background:       #ffffff;
-  --total-background:      #e6e6e6;
-  --letter-color:          #111111;
-  --border-color:          #cccccc;
-  --hover-bg:              #111111;
+  --total-background:      #e8e8e8;
+  --letter-color:          #0f0f0f;
+  --border-color:          #c8c8c8;
+  --hover-bg:              #0f0f0f;
   --hover-text:            #ffffff;
+  --accent-color:          #2952cc;
+  --accent-subtle:         rgba(41, 82, 204, 0.07);
+  --surface-raised:        #f8f8f8;
 }
 
-/* ─── Variant 2 — Paper (crema / cálido) ────────────────── */
+/* ─── Variant 2 — Paper ───────────────────────────────── */
 :root.variant-2 {
-  --component-background: #eee8de;
-  --page-background:       #faf5ee;
-  --total-background:      #e3dbd0;
-  --letter-color:          #1a1108;
-  --border-color:          #c2b4a0;
-  --hover-bg:              #1a1108;
-  --hover-text:            #faf5ee;
+  --component-background: #ebe4d8;
+  --page-background:       #faf4ea;
+  --total-background:      #dfd6c8;
+  --letter-color:          #1c1208;
+  --border-color:          #bea88a;
+  --hover-bg:              #1c1208;
+  --hover-text:            #faf4ea;
+  --accent-color:          #945500;
+  --accent-subtle:         rgba(148, 85, 0, 0.07);
+  --surface-raised:        #fdf8f0;
 }
 
-/* ─── Variant 3 — Frost (azul hielo / frío) ─────────────── */
+/* ─── Variant 3 — Frost ───────────────────────────────── */
 :root.variant-3 {
-  --component-background: #ecf2f8;
-  --page-background:       #f8fbff;
-  --total-background:      #dce8f2;
-  --letter-color:          #0b1622;
-  --border-color:          #b8cad8;
-  --hover-bg:              #0b1622;
-  --hover-text:            #f8fbff;
+  --component-background: #e8f1f9;
+  --page-background:       #f6faff;
+  --total-background:      #d8e8f5;
+  --letter-color:          #081420;
+  --border-color:          #a8c4da;
+  --hover-bg:              #081420;
+  --hover-text:            #f6faff;
+  --accent-color:          #006ea0;
+  --accent-subtle:         rgba(0, 110, 160, 0.07);
+  --surface-raised:        #f0f7ff;
 }
 
-/* ─── Variant 4 — Sage (verde salvia / suave) ───────────── */
+/* ─── Variant 4 — Sage ────────────────────────────────── */
 :root.variant-4 {
-  --component-background: #e7f0e9;
-  --page-background:       #f5faf6;
-  --total-background:      #d8e8dc;
-  --letter-color:          #0b1c0f;
-  --border-color:          #aec8b6;
-  --hover-bg:              #0b1c0f;
-  --hover-text:            #f5faf6;
+  --component-background: #e2ede6;
+  --page-background:       #f2f9f4;
+  --total-background:      #d0e4d8;
+  --letter-color:          #081408;
+  --border-color:          #9ec4aa;
+  --hover-bg:              #081408;
+  --hover-text:            #f2f9f4;
+  --accent-color:          #1a6635;
+  --accent-subtle:         rgba(26, 102, 53, 0.07);
+  --surface-raised:        #edf7f0;
 }
 
-/* ─── Variant 5 — Blush (rosa polvo / suave) ────────────── */
+/* ─── Variant 5 — Blush ───────────────────────────────── */
 :root.variant-5 {
-  --component-background: #f0e8e4;
-  --page-background:       #fdf7f4;
-  --total-background:      #e6d8d2;
-  --letter-color:          #1a0d08;
-  --border-color:          #ccb0a6;
-  --hover-bg:              #1a0d08;
-  --hover-text:            #fdf7f4;
+  --component-background: #eee4e0;
+  --page-background:       #fdf6f2;
+  --total-background:      #e2d4ce;
+  --letter-color:          #180c08;
+  --border-color:          #c8a099;
+  --hover-bg:              #180c08;
+  --hover-text:            #fdf6f2;
+  --accent-color:          #8c1f4a;
+  --accent-subtle:         rgba(140, 31, 74, 0.07);
+  --surface-raised:        #fdf0ea;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   BASE GLOBAL
-   ═══════════════════════════════════════════════════════════ */
+/* ─── Variant 6 — Void (dark / warm) ─────────────────── */
+:root.variant-6 {
+  --component-background: #1e1e1e;
+  --page-background:       #161616;
+  --total-background:      #0e0e0e;
+  --letter-color:          #e6dfd4;
+  --border-color:          #2e2e2e;
+  --hover-bg:              #e6dfd4;
+  --hover-text:            #161616;
+  --accent-color:          #d4a853;
+  --accent-subtle:         rgba(212, 168, 83, 0.12);
+  --surface-raised:        #222222;
+  --border-subtle:         rgba(50, 50, 50, 0.9);
+}
 
-/* Línea sutil: versión atenuada de --border-color.
-   Se adapta automáticamente a cualquier tema activo. */
+/* ─── Variant 7 — Carbon (dark / cool) ───────────────── */
+:root.variant-7 {
+  --component-background: #131c27;
+  --page-background:       #0c1219;
+  --total-background:      #070b10;
+  --letter-color:          #c8d8e8;
+  --border-color:          #1e2e40;
+  --hover-bg:              #c8d8e8;
+  --hover-text:            #0c1219;
+  --accent-color:          #3fa3c9;
+  --accent-subtle:         rgba(63, 163, 201, 0.12);
+  --surface-raised:        #141e2c;
+  --border-subtle:         rgba(30, 46, 64, 0.95);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE GLOBAL
+   ═══════════════════════════════════════════════════════ */
+
 :root {
   --border-subtle: color-mix(in srgb, var(--border-color) 35%, transparent);
 }
@@ -96,3 +138,35 @@ html, body {
 ::-webkit-scrollbar        { width: 4px; }
 ::-webkit-scrollbar-track  { background: transparent; }
 ::-webkit-scrollbar-thumb  { background: var(--border-subtle); border-radius: 2px; }
+
+/* ═══════════════════════════════════════════════════════
+   VIEW TRANSITIONS — crossfade suave, sin parpadeo
+   ═══════════════════════════════════════════════════════ */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.28s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation-name: vt-fade-out;
+}
+::view-transition-new(root) {
+  animation-name: vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Elementos persistentes — no re-animan */
+::view-transition-old(persist-ui),
+::view-transition-new(persist-ui) {
+  animation: none;
+}

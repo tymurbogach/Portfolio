@@ -2,16 +2,36 @@
 import ProjectCard from "../components/ProjectCard.astro";
 const projectFiles = import.meta.glob("../content/projects.md", { eager: true });
 const projects = Object.values(projectFiles) as any[];
+
+const tagMap: Record<string, string[]> = {
+  "Valorant":                       ["JavaScript", "API"],
+  "CluckinBell":                    ["Angular", "Laravel"],
+  "Guitar Store":                   ["HTML", "CSS"],
+  "Proyecto Angular Marvel":        ["Angular", "API"],
+  "Tienda online con Vue.js":       ["Vue.js"],
+  "Aplicacion de tareas con React": ["React"],
+  "Web con Laravel y Vue.js":       ["Laravel", "Vue.js"],
+  "Web personal con Angular":       ["Angular"],
+  "Pagina de productos con React":  ["React"],
+  "Piedra, papel o tijera":         ["JavaScript"],
+  "InventarioPlantas":              ["JavaScript"],
+};
 ---
 
 <div class="grid grid-cols-1 mobile:grid-cols-2 laptop:grid-cols-3 gap-4 mobile:gap-5 laptop:gap-6
             w-full items-stretch auto-rows-fr">
-  {projects[0].frontmatter.projects.map((project: any) => (
-    <ProjectCard
-      title={project.title}
-      description={project.description}
-      link={project.link}
-      image={project.image}
-    />
-  ))}
+  {projects[0].frontmatter.projects.map((project: any) => {
+    const isDemo = project.link?.includes('github.io') || project.link?.includes('netlify') || project.link?.includes('vercel');
+    const tags = tagMap[project.title] || [];
+    return (
+      <ProjectCard
+        title={project.title}
+        description={project.description}
+        link={project.link}
+        image={project.image}
+        type={isDemo ? 'demo' : 'source'}
+        tags={tags}
+      />
+    );
+  })}
 </div>

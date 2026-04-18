@@ -1,30 +1,122 @@
-<section class="flex flex-col gap-8 laptop:gap-12 w-full">
+<section class="flex flex-col gap-10 laptop:gap-14 w-full">
 
-  <p class="leading-[1.9] text-justify
-     text-sm mobile:text-base tablet:text-lg laptop:text-xl fhd:text-2xl">
-    I'm a web programming student with a passion for music and computers. I have a professional background in the automotive industry as a painter and bodybuilder specialist — 10+ years developing precision, patience, and attention to detail. Known for my humor and energetic personality.
-  </p>
+  <!-- Bio -->
+  <div class="flex flex-col gap-4">
+    <p class="leading-[1.95] text-sm mobile:text-base laptop:text-lg fhd:text-xl text-justify">
+      Web developer in progress. 10+ years as an automotive specialist — painter, bodybuilder, precision obsessive.
+      Now applying that same eye for detail to code, interfaces, and self-hosted infrastructure.
+    </p>
+    <p class="leading-[1.9] text-sm mobile:text-base laptop:text-lg fhd:text-xl text-justify opacity-70">
+      I build things from scratch, break them on purpose, and put them back together better. Fluent in four languages,
+      comfortable with uncertainty, and very at home in a terminal at 2am.
+    </p>
+  </div>
 
-  <div class="grid grid-cols-1 mobile:grid-cols-3 gap-5 laptop:gap-7">
-    <div class="flex flex-col gap-2 border-l-2 border-[var(--border-subtle)] pl-4 opacity-85">
-      <p class="text-[0.65rem] laptop:text-xs fhd:text-sm tracking-[0.35em] uppercase opacity-65 font-semibold">Currently</p>
-      <p class="text-sm mobile:text-base laptop:text-lg fhd:text-xl leading-snug">Studying web development & building homelab infrastructure</p>
-    </div>
-    <div class="flex flex-col gap-2 border-l-2 border-[var(--border-subtle)] pl-4 opacity-85">
-      <p class="text-[0.65rem] laptop:text-xs fhd:text-sm tracking-[0.35em] uppercase opacity-65 font-semibold">Passions</p>
-      <p class="text-sm mobile:text-base laptop:text-lg fhd:text-xl leading-snug">Music, self-hosting, cars, coding at odd hours</p>
-    </div>
-    <div class="flex flex-col gap-2 border-l-2 border-[var(--border-subtle)] pl-4 opacity-85">
-      <p class="text-[0.65rem] laptop:text-xs fhd:text-sm tracking-[0.35em] uppercase opacity-65 font-semibold">Based in</p>
-      <p class="text-sm mobile:text-base laptop:text-lg fhd:text-xl leading-snug">Orihuela, Alicante — Spain 🇪🇸</p>
+  <!-- Stats -->
+  <div class="grid grid-cols-2 mobile:grid-cols-4 gap-3 laptop:gap-4">
+    {[
+      { n: "10+", sub: "years of precision" },
+      { n: "4",   sub: "languages spoken"   },
+      { n: "11",  sub: "projects shipped"   },
+      { n: "∞",   sub: "cups of coffee"     },
+    ].map(({ n, sub }) => (
+      <div class="flex flex-col gap-1 p-4 laptop:p-5 border border-[var(--border-color)]
+                  bg-[var(--surface-raised)]">
+        <span class="text-2xl mobile:text-3xl laptop:text-4xl fhd:text-5xl font-bold leading-none"
+              style="color: var(--accent-color)">{n}</span>
+        <span class="text-[0.55rem] laptop:text-[0.6rem] tracking-[0.3em] uppercase opacity-45 mt-1 leading-snug">{sub}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Journey -->
+  <div class="flex flex-col gap-5">
+    <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Journey</h3>
+    <div class="flex flex-col">
+      {[
+        {
+          year:   "2010 — 22",
+          event:  "Automotive specialist",
+          detail: "Painter & bodybuilder for 10+ years. Built precision and an obsession with the right finish.",
+          active: false,
+        },
+        {
+          year:   "2022",
+          event:  "Switched to code",
+          detail: "Started web development from zero. HTML first, then deeper.",
+          active: false,
+        },
+        {
+          year:   "2023",
+          event:  "Homelab phase begins",
+          detail: "Self-hosted everything: Docker, Nginx, Raspberry Pi, TrueNAS, Tailscale tunnels.",
+          active: false,
+        },
+        {
+          year:   "Now",
+          event:  "Full stack developer",
+          detail: "Building, learning, shipping. Looking for the right team.",
+          active: true,
+        },
+      ].map(({ year, event, detail, active }, i, arr) => (
+        <div class="flex gap-4 laptop:gap-6">
+          <!-- Vertical line + dot -->
+          <div class="flex flex-col items-center shrink-0 pt-[3px]">
+            <div class="w-[7px] h-[7px] rounded-full border-2 shrink-0 z-10"
+                 style={active
+                   ? "border-color: var(--accent-color); background: var(--accent-color);"
+                   : "border-color: var(--border-color); background: var(--page-background);"}>
+            </div>
+            {i < arr.length - 1 && (
+              <div class="w-px flex-1 my-1" style="background: var(--border-subtle);"></div>
+            )}
+          </div>
+          <!-- Content -->
+          <div class={`pb-6 ${i === arr.length - 1 ? 'pb-0' : ''}`}>
+            <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
+              <span class="text-[0.55rem] tracking-[0.2em] uppercase opacity-35 font-bold whitespace-nowrap">{year}</span>
+              <span class={`text-sm laptop:text-base font-bold ${active ? '' : ''}`}
+                    style={active ? 'color: var(--accent-color)' : ''}>{event}</span>
+            </div>
+            <p class="text-xs laptop:text-sm opacity-55 leading-relaxed">{detail}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
-  <blockquote class="border-l-[3px] border-[var(--border-subtle)] pl-5 laptop:pl-7 opacity-70">
-    <p class="italic leading-relaxed text-base mobile:text-lg tablet:text-xl laptop:text-xl fhd:text-2xl">
+  <!-- Intereses -->
+  <div class="flex flex-col gap-4">
+    <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
+    <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
+      {[
+        { icon: "🎵", label: "Music" },
+        { icon: "🖥",  label: "Self-hosting" },
+        { icon: "🚗", label: "Cars" },
+        { icon: "🌙", label: "Late nights" },
+      ].map(({ icon, label }) => (
+        <div class="flex items-center gap-3 px-4 py-3 border border-[var(--border-subtle)]
+                    text-sm laptop:text-base opacity-65 bg-[var(--surface-raised)]">
+          <span class="text-base">{icon}</span>
+          <span class="tracking-[0.1em]">{label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Ubicación -->
+  <div class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase">
+    <span>📍</span>
+    <span>Orihuela, Alicante — Spain</span>
+  </div>
+
+  <!-- Quote -->
+  <blockquote class="border-l-2 pl-5 laptop:pl-7"
+              style="border-color: var(--accent-color)">
+    <p class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75">
       "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie."
     </p>
-    <p class="mt-3 text-xs laptop:text-sm fhd:text-base not-italic opacity-70 tracking-widest">— Hope you get the reference.</p>
+    <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">— Hope you get the reference.</p>
   </blockquote>
 
 </section>
