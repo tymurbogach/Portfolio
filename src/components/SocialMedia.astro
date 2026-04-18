@@ -6,56 +6,43 @@
   qhd:w-[35rem] qhd:h-[6rem]
   uhd:w-[40rem] uhd:h-[6.5rem]"
 >
-  <div
-    class="flex flex-row items-center justify-center text-center w-full h-full
-           bg-[var(--component-background)] border border-[var(--border-color)]
-           shadow-none rounded-none my-0 mx-0
-           mobile:shadow-md tablet:shadow-lg
-           transition-all duration-300 ease-in-out"
-  >
-    <a href="https://www.facebook.com/Timurnator/"
-       class="flex flex-col items-center justify-center text-center h-full flex-1 text-[var(--letter-color)] gap-[0.5rem] p-[0.75rem]
-              transition-all duration-300 ease-in-out hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]">
-      <img src="/img/facebook.png" alt="Facebook Icon"
-           class="w-[1.2rem] h-[1.2rem] mobile:w-[1.4rem] mobile:h-[1.4rem] tablet:w-[1.6rem] tablet:h-[1.6rem]
-                  laptop:w-[1.8rem] laptop:h-[1.8rem] fhd:w-[2rem] fhd:h-[2rem] qhd:w-[2.4rem] qhd:h-[2.4rem]
-                  uhd:w-[2.8rem] uhd:h-[2.8rem]" />
-    </a>
+  <div class="flex flex-row items-center justify-center text-center w-full h-full
+              bg-[var(--component-background)] border border-[var(--border-color)]
+              shadow-none rounded-none my-0 mx-0
+              mobile:shadow-md tablet:shadow-lg
+              transition-all duration-300 ease-in-out">
 
-    <a href="https://www.instagram.com/timurnator_/"
-       class="flex flex-col items-center justify-center text-center h-full flex-1 text-[var(--letter-color)] gap-[0.5rem] p-[0.75rem]
-              transition-all duration-300 ease-in-out hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]">
-      <img src="/img/instagram.png" alt="Instagram Icon"
-           class="w-[1.2rem] h-[1.2rem] mobile:w-[1.4rem] mobile:h-[1.4rem] tablet:w-[1.6rem] tablet:h-[1.6rem]
-                  laptop:w-[1.8rem] laptop:h-[1.8rem] fhd:w-[2rem] fhd:h-[2rem] qhd:w-[2.4rem] qhd:h-[2.4rem]
-                  uhd:w-[2.8rem] uhd:h-[2.8rem]" />
-    </a>
-
-    <a href="https://github.com/TimurTwerKing"
-       class="flex flex-col items-center justify-center text-center h-full flex-1 text-[var(--letter-color)] gap-[0.5rem] p-[0.75rem]
-              transition-all duration-300 ease-in-out hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]">
-      <img src="/img/github.png" alt="GitHub Icon"
-           class="w-[1.2rem] h-[1.2rem] mobile:w-[1.4rem] mobile:h-[1.4rem] tablet:w-[1.6rem] tablet:h-[1.6rem]
-                  laptop:w-[1.8rem] laptop:h-[1.8rem] fhd:w-[2rem] fhd:h-[2rem] qhd:w-[2.4rem] qhd:h-[2.4rem]
-                  uhd:w-[2.8rem] uhd:h-[2.8rem]" />
-    </a>
-
-    <a href="https://www.linkedin.com/in/timur-bogach-51939324a/"
-       class="flex flex-col items-center justify-center text-center h-full flex-1 text-[var(--letter-color)] gap-[0.5rem] p-[0.75rem]
-              transition-all duration-300 ease-in-out hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]">
-      <img src="/img/linkedin.png" alt="LinkedIn Icon"
-           class="w-[1.2rem] h-[1.2rem] mobile:w-[1.4rem] mobile:h-[1.4rem] tablet:w-[1.6rem] tablet:h-[1.6rem]
-                  laptop:w-[1.8rem] laptop:h-[1.8rem] fhd:w-[2rem] fhd:h-[2rem] qhd:w-[2.4rem] qhd:h-[2.4rem]
-                  uhd:w-[2.8rem] uhd:h-[2.8rem]" />
-    </a>
-
-    <a href="https://x.com/BogachTimur"
-       class="flex flex-col items-center justify-center text-center h-full flex-1 text-[var(--letter-color)] gap-[0.5rem] p-[0.75rem]
-              transition-all duration-300 ease-in-out hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]">
-      <img src="/img/twitter.png" alt="Twitter Icon"
-           class="w-[1.2rem] h-[1.2rem] mobile:w-[1.4rem] mobile:h-[1.4rem] tablet:w-[1.6rem] tablet:h-[1.6rem]
-                  laptop:w-[1.8rem] laptop:h-[1.8rem] fhd:w-[2rem] fhd:h-[2rem] qhd:w-[2.4rem] qhd:h-[2.4rem]
-                  uhd:w-[2.8rem] uhd:h-[2.8rem]" />
-    </a>
+    {[
+      { href: "https://www.facebook.com/Timurnator/",             src: "/img/facebook.png",  alt: "Facebook"  },
+      { href: "https://www.instagram.com/timurnator_/",           src: "/img/instagram.png", alt: "Instagram" },
+      { href: "https://github.com/TimurTwerKing",                 src: "/img/github.png",    alt: "GitHub"    },
+      { href: "https://www.linkedin.com/in/timur-bogach-51939324a/", src: "/img/linkedin.png", alt: "LinkedIn" },
+      { href: "https://x.com/BogachTimur",                        src: "/img/twitter.png",   alt: "X / Twitter"},
+    ].map(({ href, src, alt }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={alt}
+        class="group flex flex-col items-center justify-center h-full flex-1
+               text-[var(--letter-color)] p-[0.75rem]
+               transition-all duration-250 ease-in-out
+               hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
+      >
+        <img
+          src={src}
+          alt={`${alt} Icon`}
+          class="w-[1.2rem] h-[1.2rem]
+                 mobile:w-[1.4rem] mobile:h-[1.4rem]
+                 tablet:w-[1.6rem] tablet:h-[1.6rem]
+                 laptop:w-[1.8rem] laptop:h-[1.8rem]
+                 fhd:w-[2rem]     fhd:h-[2rem]
+                 qhd:w-[2.4rem]   qhd:h-[2.4rem]
+                 uhd:w-[2.8rem]   uhd:h-[2.8rem]
+                 opacity-70 transition-all duration-200
+                 group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm"
+        />
+      </a>
+    ))}
   </div>
 </div>

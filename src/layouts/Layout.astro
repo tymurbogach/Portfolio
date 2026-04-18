@@ -54,13 +54,16 @@ const { title, dual = false, pageLabel = "", description = "Timur Bogach — Ful
 
   <body class="min-h-screen min-w-screen bg-[var(--total-background)] text-[var(--letter-color)] overflow-hidden">
 
+    <!-- Mobile: header fijo arriba -->
     <header class="block laptop:hidden absolute top-0 left-0 w-full z-30 pointer-events-auto">
       <Header />
     </header>
+    <!-- Mobile: footer fijo abajo — SocialMedia mide 2.5rem -->
     <footer class="block laptop:hidden absolute bottom-0 left-0 w-full z-30 pointer-events-auto">
       <Footer />
     </footer>
 
+    <!-- Desktop: esquinas fijas -->
     <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
       <Name />
     </div>
@@ -71,16 +74,21 @@ const { title, dual = false, pageLabel = "", description = "Timur Bogach — Ful
       <SocialMedia />
     </div>
 
-    <main class="absolute inset-x-0 top-[6rem] bottom-[2rem] laptop:inset-0 flex items-center justify-center w-full h-auto z-20 laptop:p-[6rem]">
-      <div class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-color)] shadow
-                  flex items-center justify-center overflow-auto p-[1rem] laptop:px-0 laptop:pt-0 laptop:pb-0">
+    <!--
+      Mobile:  top-[6rem] = Name(3rem) + Nav(3rem)
+               bottom-[2.5rem] = SocialMedia height
+      Laptop+: inset-0 con padding de 6rem en cada lado
+    -->
+    <main class="absolute inset-x-0 top-[6rem] bottom-[2.5rem] laptop:inset-0 flex items-center justify-center w-full z-20 laptop:p-[6rem]">
+      <div class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-subtle)]
+                  flex items-center justify-center overflow-hidden p-0">
         {
           dual ? (
             <DualMain pageLabel={pageLabel}>
               <slot />
             </DualMain>
           ) : (
-            <div class="w-full h-full laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem] flex flex-col">
+            <div class="w-full h-full p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem] laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem] flex flex-col overflow-y-auto">
               <slot />
             </div>
           )

@@ -5,31 +5,39 @@ const { pageLabel = "" } = Astro.props;
 
 <div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
 
-  <!-- Izquierda fija -->
-  <div class="hidden laptop:flex laptop:w-1/2 items-center justify-center laptop:p-[5rem]">
+  <!-- Izquierda — panel home, más estrecho (38%) -->
+  <div class="hidden laptop:flex laptop:w-[38%] shrink-0 min-h-0 items-center justify-center
+              laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]
+              border-r border-[var(--border-subtle)]">
     <IndexContent />
   </div>
 
-  <!-- Derecha: título fijo + contenido scrollable -->
-  <div class="w-full laptop:w-1/2 flex flex-col h-full">
+  <!-- Derecha — panel contenido, más ancho (62%) -->
+  <div class="w-full laptop:w-[62%] flex flex-col h-full min-h-0">
 
     <!-- Título FIJO — no hace scroll -->
     <div class="shrink-0
-      px-[1rem] mobile:px-[1.5rem] tablet:px-[2rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-      pt-[1rem] mobile:pt-[1.5rem] tablet:pt-[2rem] laptop:pt-[4.5rem] fhd:pt-[5.5rem] qhd:pt-[6.5rem]
+      px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+      pt-[1.25rem] mobile:pt-[1.75rem] tablet:pt-[2.5rem] laptop:pt-[4.5rem] fhd:pt-[5.5rem] qhd:pt-[6.5rem]
       pb-5 laptop:pb-7">
-      <p class="text-[0.7rem] laptop:text-xs tracking-[0.5em] uppercase opacity-50 font-semibold">{pageLabel}</p>
-      <div class="h-px bg-[var(--border-color)] opacity-25 mt-3"></div>
+      <div class="max-w-[72ch] laptop:mx-auto">
+        <!-- Encabezado de página: prominente, distinguible del contenido -->
+        <p class="text-sm laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold text-[var(--letter-color)]">{pageLabel}</p>
+        <div class="h-px bg-[var(--border-subtle)] mt-4"></div>
+      </div>
     </div>
 
     <!-- Contenido scrollable con fade inferior -->
     <div
-      class="flex-1 overflow-y-auto
-        px-[1rem] mobile:px-[1.5rem] tablet:px-[2rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+      class="flex-1 overflow-y-auto min-h-0
+        px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
         pb-[5rem] laptop:pb-[7rem] fhd:pb-[9rem]"
       style="mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);"
     >
-      <slot />
+      <!-- Centrado con max-width: evita que el texto se extienda en FHD/QHD -->
+      <div class="max-w-[72ch] laptop:mx-auto">
+        <slot />
+      </div>
     </div>
 
   </div>

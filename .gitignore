@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Carpetas creadas por asistentes AI (Claude Code, etc.)
+.claude/
+.gemini/
+*.local.json

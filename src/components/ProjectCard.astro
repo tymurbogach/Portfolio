@@ -1,35 +1,62 @@
 ---
-const { title, description, link } = Astro.props;
+const { title, description, link, image } = Astro.props;
 ---
 
 <a
   href={link}
-  class="group flex flex-col overflow-hidden border border-[var(--border-color)] transition-all duration-300 hover:-translate-y-[3px] hover:shadow-xl"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex flex-col h-full overflow-hidden border border-[var(--border-color)]
+         transition-all duration-300 hover:-translate-y-[3px] hover:shadow-xl"
 >
-  <!-- Header: diseño con colores del tema, sin imagen -->
-  <div class="relative bg-[var(--page-background)] flex items-center justify-center px-6 py-10 laptop:py-12 overflow-hidden">
+  <!-- Imagen / cabecera visual — aspect ratio fijo para uniformidad -->
+  <div class="relative bg-[var(--page-background)] overflow-hidden"
+       style="aspect-ratio: 16 / 9;">
+
     <!-- Esquinas decorativas -->
-    <span class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-[var(--border-color)] opacity-60"></span>
-    <span class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-[var(--border-color)] opacity-60"></span>
-    <span class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-[var(--border-color)] opacity-60 transition-all duration-300 group-hover:w-full group-hover:opacity-30"></span>
-    <span class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[var(--border-color)] opacity-60"></span>
-    <!-- Título grande como elemento visual -->
-    <h3 class="text-base mobile:text-lg laptop:text-xl fhd:text-2xl font-bold tracking-[0.2em] uppercase text-center leading-tight relative z-10">
-      {title}
-    </h3>
+    <span class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-[var(--border-color)] opacity-50 z-10 pointer-events-none"></span>
+    <span class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-[var(--border-color)] opacity-50 z-10 pointer-events-none"></span>
+    <span class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-[var(--border-color)] opacity-50
+                 transition-all duration-300 group-hover:w-full group-hover:opacity-20 z-10 pointer-events-none"></span>
+    <span class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[var(--border-color)] opacity-50 z-10 pointer-events-none"></span>
+
+    {image ? (
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105
+               transition-all duration-500"
+      />
+    ) : (
+      <div class="flex items-center justify-center w-full h-full px-6">
+        <h3 class="text-base mobile:text-lg laptop:text-xl fhd:text-2xl font-bold
+                   tracking-[0.2em] uppercase text-center leading-tight z-10">
+          {title}
+        </h3>
+      </div>
+    )}
   </div>
 
-  <!-- Descripción -->
-  <div class="flex flex-col gap-3 p-4 laptop:p-5 fhd:p-6 bg-[var(--total-background)]">
-    <p class="text-xs mobile:text-sm laptop:text-base fhd:text-lg opacity-65 leading-relaxed line-clamp-2">
+  <!-- Contenido — flex-1 garantiza altura uniforme en la grilla -->
+  <div class="flex flex-col flex-1 gap-2 p-4 laptop:p-5 bg-[var(--total-background)]">
+
+    <h3 class="text-xs mobile:text-sm laptop:text-base font-bold tracking-[0.15em] uppercase
+               text-[var(--letter-color)] leading-snug">
+      {title}
+    </h3>
+
+    <p class="text-xs mobile:text-sm opacity-70 leading-relaxed flex-1 line-clamp-3">
       {description}
     </p>
-    <div class="flex items-center gap-2 text-xs tracking-[0.2em] uppercase opacity-40 group-hover:opacity-80 transition-opacity duration-300">
-      <span>View project</span>
+
+    <div class="flex items-center gap-2 text-[0.65rem] tracking-[0.2em] uppercase
+                opacity-40 group-hover:opacity-90 transition-opacity duration-300 mt-auto pt-1">
+      <span>Ver proyecto</span>
       <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
     </div>
   </div>
 
   <!-- Línea inferior animada -->
-  <div class="h-[2px] w-0 bg-[var(--letter-color)] transition-all duration-500 group-hover:w-full"></div>
+  <div class="h-[2px] w-0 bg-[var(--letter-color)] transition-all duration-500 group-hover:w-full shrink-0"></div>
 </a>

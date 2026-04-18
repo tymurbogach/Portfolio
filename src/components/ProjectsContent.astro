@@ -4,8 +4,14 @@ const projectFiles = import.meta.glob("../content/projects.md", { eager: true })
 const projects = Object.values(projectFiles) as any[];
 ---
 
-<div class="grid grid-cols-1 mobile:grid-cols-2 laptop:grid-cols-3 gap-4 mobile:gap-5 laptop:gap-6 w-full">
+<div class="grid grid-cols-1 mobile:grid-cols-2 laptop:grid-cols-3 gap-4 mobile:gap-5 laptop:gap-6
+            w-full items-stretch auto-rows-fr">
   {projects[0].frontmatter.projects.map((project: any) => (
-    <ProjectCard {...project} />
+    <ProjectCard
+      title={project.title}
+      description={project.description}
+      link={project.link}
+      image={project.image}
+    />
   ))}
 </div>

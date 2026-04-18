@@ -1,33 +1,36 @@
-<section class="flex flex-col justify-between w-full h-full min-h-0">
+<section class="flex flex-col justify-between w-full h-full min-h-0 gap-2">
 
-  <header class="flex items-center justify-center">
+  <header class="flex items-center justify-center shrink-0 overflow-hidden min-w-0">
     <h1
-      class="text-center font-bold whitespace-nowrap
-      text-2xl laptop:text-5xl fhd:text-6xl qhd:text-7xl uhd:text-8xl
-      tracking-[0.25em] laptop:tracking-[0.2em] "
+      class="text-center font-bold uppercase whitespace-nowrap
+      text-[clamp(0.6rem,3vw,0.9rem)]
+      laptop:text-2xl fhd:text-3xl qhd:text-4xl uhd:text-5xl
+      tracking-[0.15em] laptop:tracking-[0.2em]"
     >
       <strong>SOFTWARE SOLUTIONS</strong>
     </h1>
   </header>
 
-  <main class="flex flex-col items-center justify-center min-h-0 grow">
+  <main class="flex flex-col items-center justify-center min-h-0 grow overflow-hidden">
     <img
       id="theme-toggle"
       src="/img/gopnik.png"
-      alt="Hero Image - Software Solutions"
+      alt="Hero Image — click para cambiar tema"
       class="w-full h-auto object-contain pointer-events-auto
-       max-w-xs mobile:max-w-sm tablet:max-w-md laptop:max-w-lg fhd:max-w-xl qhd:max-w-2xl uhd:max-w-3xl"
+       max-w-[9rem] mobile:max-w-[12rem] tablet:max-w-[15rem]
+       laptop:max-w-[15rem] fhd:max-w-[19rem] qhd:max-w-[24rem] uhd:max-w-[28rem]"
     />
   </main>
 
-  <footer class="flex items-start justify-start">
+  <footer class="flex items-end justify-start shrink-0 overflow-hidden min-w-0">
     <h2
-      class="text-left font-semibold
-      text-1xl mobile:text-lg tablet:text-xl laptop:text-2xl fhd:text-3xl qhd:text-4xl uhd:text-5xl
-      tracking-[0.5em] laptop:tracking-widest fhd:tracking-[0.2em] qhd:tracking-[0.3em] uhd:tracking-[0.4em] 
-      whitespace-nowrap"
+      class="font-semibold break-words hyphens-auto min-w-0
+      text-sm mobile:text-base tablet:text-lg
+      laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
+      tracking-[0.25em] mobile:tracking-[0.3em] laptop:tracking-[0.35em]"
     >
       tasteless...
     </h2>
   </footer>
+
 </section>

@@ -1,10 +1,11 @@
-<section class="flex flex-col w-full gap-8 laptop:gap-10">
+<section class="flex flex-col w-full gap-10 laptop:gap-12">
 
   <div class="grid grid-cols-1 mobile:grid-cols-2 laptop:grid-cols-3 gap-8 laptop:gap-10 w-full">
 
     <div class="flex flex-col gap-4">
-      <h2 class="text-sm laptop:text-base fhd:text-xl font-semibold tracking-widest uppercase border-b border-[var(--border-color)] pb-2 opacity-80">Programming</h2>
-      <ul class="flex flex-col gap-[0.6rem]">
+      <h2 class="text-xs mobile:text-sm laptop:text-base fhd:text-lg font-semibold tracking-widest uppercase
+                 border-b border-[var(--border-subtle)] pb-2 opacity-85">Programming</h2>
+      <ul class="flex flex-col gap-[0.75rem]">
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl"><i class="fab fa-html5 text-orange-500 w-4 shrink-0 text-center"></i>HTML</li>
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl"><i class="fab fa-css3-alt text-blue-500 w-4 shrink-0 text-center"></i>CSS</li>
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl"><i class="fab fa-sass text-pink-500 w-4 shrink-0 text-center"></i>SCSS</li>
@@ -17,8 +18,9 @@
     </div>
 
     <div class="flex flex-col gap-4">
-      <h2 class="text-sm laptop:text-base fhd:text-xl font-semibold tracking-widest uppercase border-b border-[var(--border-color)] pb-2 opacity-80">Frameworks</h2>
-      <ul class="flex flex-col gap-[0.6rem]">
+      <h2 class="text-xs mobile:text-sm laptop:text-base fhd:text-lg font-semibold tracking-widest uppercase
+                 border-b border-[var(--border-subtle)] pb-2 opacity-85">Frameworks</h2>
+      <ul class="flex flex-col gap-[0.75rem]">
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl"><i class="fas fa-code-branch text-green-500 w-4 shrink-0 text-center"></i>Git</li>
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl"><i class="fab fa-laravel text-red-600 w-4 shrink-0 text-center"></i>Laravel</li>
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl"><i class="fab fa-angular text-red-700 w-4 shrink-0 text-center"></i>Angular</li>
@@ -31,8 +33,9 @@
     </div>
 
     <div class="flex flex-col gap-4">
-      <h2 class="text-sm laptop:text-base fhd:text-xl font-semibold tracking-widest uppercase border-b border-[var(--border-color)] pb-2 opacity-80">Languages</h2>
-      <ul class="flex flex-col gap-[0.6rem]">
+      <h2 class="text-xs mobile:text-sm laptop:text-base fhd:text-lg font-semibold tracking-widest uppercase
+                 border-b border-[var(--border-subtle)] pb-2 opacity-85">Languages</h2>
+      <ul class="flex flex-col gap-[0.75rem]">
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl">🇷🇺 Russian</li>
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl">🇺🇦 Ukrainian</li>
         <li class="flex items-center gap-3 text-sm mobile:text-base laptop:text-lg fhd:text-xl">🇪🇸 Spanish</li>
@@ -42,8 +45,9 @@
 
   </div>
 
-  <div class="flex flex-col gap-4">
-    <h2 class="text-sm laptop:text-base fhd:text-xl font-semibold tracking-widest uppercase border-b border-[var(--border-color)] pb-2 opacity-80">Homelab & DevOps</h2>
+  <div class="flex flex-col gap-5">
+    <h2 class="text-xs mobile:text-sm laptop:text-base fhd:text-lg font-semibold tracking-widest uppercase
+               border-b border-[var(--border-subtle)] pb-2 opacity-85">Homelab & DevOps</h2>
     <div class="flex flex-wrap gap-2 mobile:gap-3">
       {[
         { icon: "fab fa-docker text-blue-500", label: "Docker" },
@@ -61,7 +65,8 @@
         { icon: "fas fa-heartbeat text-red-400", label: "Uptime Kuma" },
         { icon: "fas fa-terminal text-gray-600", label: "SSH" },
       ].map(({ icon, label }) => (
-        <span class="flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-color)] text-xs mobile:text-sm laptop:text-base fhd:text-lg opacity-75 whitespace-nowrap">
+        <span class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-color)]
+                     text-xs mobile:text-sm laptop:text-base fhd:text-lg opacity-80 whitespace-nowrap">
           <i class={`${icon} text-sm`}></i>{label}
         </span>
       ))}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --breakpoint-mobile: 30rem;       /* 480px: */
+  --breakpoint-mobile: 30rem;       /* 480px */
   --breakpoint-tablet: 48rem;       /* 768px */
   --breakpoint-laptop: 80rem;       /* 1280px */
   --breakpoint-desktop: 100rem;     /* 1600px */
@@ -10,63 +10,89 @@
   --breakpoint-uhd: 240rem;         /* 3840px */
 }
 
-/* Variante 1 */
+/* ═══════════════════════════════════════════════════════════
+   TEMAS — todos muy claros, fondos casi blancos,
+   texto casi negro para máxima nitidez (WCAG AAA ≥7:1)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Variant 1 — Blanc (puro / neutro) ─────────────────── */
 :root {
-  --component-background: #dafdba;
-  --page-background: #45c4b0;
-  --total-background: #e6f7d1;
-  --letter-color: #015249;
-  --border-color: #014f43;
-  --hover-bg: #1d7061;
-  --hover-text: #dafdba;
+  --component-background: #f4f4f4;
+  --page-background:       #ffffff;
+  --total-background:      #e6e6e6;
+  --letter-color:          #111111;
+  --border-color:          #cccccc;
+  --hover-bg:              #111111;
+  --hover-text:            #ffffff;
 }
 
-/* Variante 2 */
+/* ─── Variant 2 — Paper (crema / cálido) ────────────────── */
 :root.variant-2 {
-  --component-background: #fab4bf;
-  --page-background: #f8ffb5;
-  --total-background: #ffe4e6;
-  --letter-color: #5b2c26;
-  --border-color: #704a3c;
-  --hover-bg: #dd7586;
-  --hover-text: #fab4bf;
+  --component-background: #eee8de;
+  --page-background:       #faf5ee;
+  --total-background:      #e3dbd0;
+  --letter-color:          #1a1108;
+  --border-color:          #c2b4a0;
+  --hover-bg:              #1a1108;
+  --hover-text:            #faf5ee;
 }
 
-/* Variante 3 */
+/* ─── Variant 3 — Frost (azul hielo / frío) ─────────────── */
 :root.variant-3 {
-  --component-background: #ffb30d;
-  --page-background: #085454;
-  --total-background: #ffe8bb;
-  --letter-color: #fbfafa;
-  --border-color: #1b9aaa;
-  --hover-bg: #1b9aaa;
-  --hover-text: #085454;
+  --component-background: #ecf2f8;
+  --page-background:       #f8fbff;
+  --total-background:      #dce8f2;
+  --letter-color:          #0b1622;
+  --border-color:          #b8cad8;
+  --hover-bg:              #0b1622;
+  --hover-text:            #f8fbff;
 }
 
-/* Variante 4 — Paper: box blanco frío */
+/* ─── Variant 4 — Sage (verde salvia / suave) ───────────── */
 :root.variant-4 {
-  --component-background: #e8e8e2;
-  --page-background: #f5f5f2;
-  --total-background: #dcdcd6;
-  --letter-color: #1a1a18;
-  --border-color: #8a8a82;
-  --hover-bg: #1a1a18;
-  --hover-text: #f5f5f2;
+  --component-background: #e7f0e9;
+  --page-background:       #f5faf6;
+  --total-background:      #d8e8dc;
+  --letter-color:          #0b1c0f;
+  --border-color:          #aec8b6;
+  --hover-bg:              #0b1c0f;
+  --hover-text:            #f5faf6;
 }
 
-/* Variante 5 — Ivory: box crema cálida */
+/* ─── Variant 5 — Blush (rosa polvo / suave) ────────────── */
 :root.variant-5 {
-  --component-background: #e8ddd0;
-  --page-background: #faf6ee;
-  --total-background: #d9cfc2;
-  --letter-color: #26190a;
-  --border-color: #8a6e48;
-  --hover-bg: #3d2c12;
-  --hover-text: #faf6ee;
+  --component-background: #f0e8e4;
+  --page-background:       #fdf7f4;
+  --total-background:      #e6d8d2;
+  --letter-color:          #1a0d08;
+  --border-color:          #ccb0a6;
+  --hover-bg:              #1a0d08;
+  --hover-text:            #fdf7f4;
 }
 
-/* Estilos globales */
-* {
-  font-family: "Poiret One", cursive;
-  box-sizing: border-box;
+/* ═══════════════════════════════════════════════════════════
+   BASE GLOBAL
+   ═══════════════════════════════════════════════════════════ */
+
+/* Línea sutil: versión atenuada de --border-color.
+   Se adapta automáticamente a cualquier tema activo. */
+:root {
+  --border-subtle: color-mix(in srgb, var(--border-color) 35%, transparent);
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Poiret One", cursive;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border-subtle); border-radius: 2px; }

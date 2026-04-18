@@ -1,57 +1,11 @@
 services:
-  astro:
+  portfolio:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: astro
-    restart: unless-stopped
-    networks:
-      - webnet
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx-proxy
+    container_name: portfolio-web
     ports:
       - "80:80"
-    volumes:
-      - ./dist:/usr/share/nginx/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - astro
-    restart: unless-stopped
-    networks:
-      - webnet
-
-  pihole:
-    image: pihole/pihole:latest
-    container_name: pihole
-    hostname: pihole
-    domainname: lan
-    environment:
-      - TZ=Europe/Madrid
-      - WEBPASSWORD=admin
-      - DNSMASQ_USER=root
-      - PIHOLE_DNS_=1.1.1.1;8.8.8.8
-      - WEB_PORT=8053
-    ports:
-      - "8053:8053/tcp"
-      - "53:53/tcp"
-      - "53:53/udp"
-    volumes:
-      - ./pihole/etc-pihole:/etc/pihole
-      - ./pihole/etc-dnsmasq.d:/etc/dnsmasq.d
-    restart: unless-stopped
-    networks:
-      - webnet
-
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    ports:
-      - "8000:8000"
-      - "9443:9443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     networks:
       - webnet
