@@ -1,33 +1,4 @@
-<section class="flex flex-col gap-10 laptop:gap-14 w-full">
-
-  <!-- Bio -->
-  <div class="flex flex-col gap-4">
-    <p class="leading-[1.95] text-sm mobile:text-base laptop:text-lg fhd:text-xl text-justify">
-      Web developer in progress. 10+ years as an automotive specialist — painter, bodybuilder, precision obsessive.
-      Now applying that same eye for detail to code, interfaces, and self-hosted infrastructure.
-    </p>
-    <p class="leading-[1.9] text-sm mobile:text-base laptop:text-lg fhd:text-xl text-justify opacity-70">
-      I build things from scratch, break them on purpose, and put them back together better. Fluent in four languages,
-      comfortable with uncertainty, and very at home in a terminal at 2am.
-    </p>
-  </div>
-
-  <!-- Stats -->
-  <div class="grid grid-cols-2 mobile:grid-cols-4 gap-3 laptop:gap-4">
-    {[
-      { n: "10+", sub: "years of precision" },
-      { n: "4",   sub: "languages spoken"   },
-      { n: "11",  sub: "projects shipped"   },
-      { n: "∞",   sub: "cups of coffee"     },
-    ].map(({ n, sub }) => (
-      <div class="flex flex-col gap-1 p-4 laptop:p-5 border border-[var(--border-color)]
-                  bg-[var(--surface-raised)]">
-        <span class="text-2xl mobile:text-3xl laptop:text-4xl fhd:text-5xl font-bold leading-none"
-              style="color: var(--accent-color)">{n}</span>
-        <span class="text-[0.55rem] laptop:text-[0.6rem] tracking-[0.3em] uppercase opacity-45 mt-1 leading-snug">{sub}</span>
-      </div>
-    ))}
-  </div>
+<section class="flex flex-col gap-10 laptop:gap-12 w-full">
 
   <!-- Journey -->
   <div class="flex flex-col gap-5">
@@ -35,32 +6,43 @@
     <div class="flex flex-col">
       {[
         {
-          year:   "2010 — 22",
-          event:  "Automotive specialist",
-          detail: "Painter & bodybuilder for 10+ years. Built precision and an obsession with the right finish.",
+          year: "2012 — 17",
+          event: "Mechanic & Paint Tech",
+          detail: "Renault Trucks and others. Multi-brand repair, painting and diagnostics across commercial vehicles.",
           active: false,
         },
         {
-          year:   "2022",
-          event:  "Switched to code",
-          detail: "Started web development from zero. HTML first, then deeper.",
+          year: "2017 — 24",
+          event: "Body & Paint — Grupo Marcos",
+          detail: "High-precision automotive body repair and refinishing. Built precision and team coordination over 7 years.",
           active: false,
         },
         {
-          year:   "2023",
-          event:  "Homelab phase begins",
-          detail: "Self-hosted everything: Docker, Nginx, Raspberry Pi, TrueNAS, Tailscale tunnels.",
+          year: "2022",
+          event: "Switched to code",
+          detail: "Started web development from zero. HTML first, then deeper into JS, TypeScript, and frameworks.",
           active: false,
         },
         {
-          year:   "Now",
-          event:  "Full stack developer",
+          year: "2023",
+          event: "Homelab phase begins",
+          detail: "Self-hosted everything: Docker stacks, TrueNAS, Nginx, Raspberry Pi, Tailscale VPN mesh.",
+          active: false,
+        },
+        {
+          year: "2025",
+          event: "GesinFlot — Dev Team",
+          detail: "Mobile app development with Android Studio, UI/UX design, API integration and APK deployment.",
+          active: false,
+        },
+        {
+          year: "Now",
+          event: "Full Stack Developer",
           detail: "Building, learning, shipping. Looking for the right team.",
           active: true,
         },
       ].map(({ year, event, detail, active }, i, arr) => (
         <div class="flex gap-4 laptop:gap-6">
-          <!-- Vertical line + dot -->
           <div class="flex flex-col items-center shrink-0 pt-[3px]">
             <div class="w-[7px] h-[7px] rounded-full border-2 shrink-0 z-10"
                  style={active
@@ -71,11 +53,10 @@
               <div class="w-px flex-1 my-1" style="background: var(--border-subtle);"></div>
             )}
           </div>
-          <!-- Content -->
-          <div class={`pb-6 ${i === arr.length - 1 ? 'pb-0' : ''}`}>
+          <div class={`pb-5 ${i === arr.length - 1 ? 'pb-0' : ''}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
               <span class="text-[0.55rem] tracking-[0.2em] uppercase opacity-35 font-bold whitespace-nowrap">{year}</span>
-              <span class={`text-sm laptop:text-base font-bold ${active ? '' : ''}`}
+              <span class="text-sm laptop:text-base font-bold"
                     style={active ? 'color: var(--accent-color)' : ''}>{event}</span>
             </div>
             <p class="text-xs laptop:text-sm opacity-55 leading-relaxed">{detail}</p>
@@ -85,14 +66,42 @@
     </div>
   </div>
 
-  <!-- Intereses -->
+  <!-- Education -->
+  <div class="flex flex-col gap-4">
+    <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Education</h3>
+    <div class="flex flex-col gap-2">
+      {[
+        {
+          years: "2023 — 2025",
+          title: "Advanced Technical Certificate",
+          sub: "Web Application Development · EFA El Campico",
+        },
+        {
+          years: "2008 — 2011",
+          title: "Technical Qualification",
+          sub: "Automotive Bodywork & Refinishing · IES El Palmeral",
+        },
+      ].map(({ years, title, sub }) => (
+        <div class="flex gap-4 items-start px-4 py-3
+                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+          <span class="text-[0.5rem] tracking-[0.15em] uppercase opacity-35 font-bold whitespace-nowrap mt-0.5 shrink-0">{years}</span>
+          <div>
+            <p class="text-sm font-bold leading-snug">{title}</p>
+            <p class="text-[0.58rem] tracking-[0.1em] uppercase opacity-45 mt-0.5">{sub}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- When not coding -->
   <div class="flex flex-col gap-4">
     <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
     <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
       {[
         { icon: "🎵", label: "Music" },
         { icon: "🖥",  label: "Self-hosting" },
-        { icon: "🚗", label: "Cars" },
+        { icon: "🎸", label: "Guitar" },
         { icon: "🌙", label: "Late nights" },
       ].map(({ icon, label }) => (
         <div class="flex items-center gap-3 px-4 py-3 border border-[var(--border-subtle)]
@@ -104,19 +113,20 @@
     </div>
   </div>
 
-  <!-- Ubicación -->
-  <div class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase">
-    <span>📍</span>
-    <span>Orihuela, Alicante — Spain</span>
-  </div>
+  <!-- Location + Quote -->
+  <div class="flex flex-col gap-6">
+    <div class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase">
+      <span>📍</span>
+      <span>Orihuela, Alicante — Spain</span>
+    </div>
 
-  <!-- Quote -->
-  <blockquote class="border-l-2 pl-5 laptop:pl-7"
-              style="border-color: var(--accent-color)">
-    <p class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75">
-      "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie."
-    </p>
-    <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">— Hope you get the reference.</p>
-  </blockquote>
+    <blockquote class="border-l-2 pl-5 laptop:pl-7"
+                style="border-color: var(--accent-color)">
+      <p class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75">
+        "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie."
+      </p>
+      <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">— Hope you get the reference.</p>
+    </blockquote>
+  </div>
 
 </section>

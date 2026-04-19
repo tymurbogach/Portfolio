@@ -14,104 +14,104 @@
    TEMAS
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Variant 1 — Blanc ───────────────────────────────── */
+/* ─── Variant 1 — Chalk (default) ────────────────────── */
 :root {
-  --component-background: #f2f2f2;
-  --page-background:       #ffffff;
-  --total-background:      #e8e8e8;
-  --letter-color:          #0f0f0f;
-  --border-color:          #c8c8c8;
-  --hover-bg:              #0f0f0f;
-  --hover-text:            #ffffff;
-  --accent-color:          #2952cc;
-  --accent-subtle:         rgba(41, 82, 204, 0.07);
-  --surface-raised:        #f8f8f8;
+  --component-background: #f5f5f5;
+  --page-background:       #fafafa;
+  --total-background:      #f0f0f0;
+  --letter-color:          #111111;
+  --border-color:          #d0d0d0;
+  --hover-bg:              #111111;
+  --hover-text:            #fafafa;
+  --accent-color:          #1a3a5c;
+  --accent-subtle:         rgba(26, 58, 92, 0.07);
+  --surface-raised:        #f7f7f7;
 }
 
-/* ─── Variant 2 — Paper ───────────────────────────────── */
+/* ─── Variant 2 — Stone (warm neutral) ───────────────── */
 :root.variant-2 {
-  --component-background: #ebe4d8;
-  --page-background:       #faf4ea;
-  --total-background:      #dfd6c8;
-  --letter-color:          #1c1208;
-  --border-color:          #bea88a;
-  --hover-bg:              #1c1208;
-  --hover-text:            #faf4ea;
-  --accent-color:          #945500;
-  --accent-subtle:         rgba(148, 85, 0, 0.07);
-  --surface-raised:        #fdf8f0;
+  --component-background: #f0ebe3;
+  --page-background:       #f7f3ec;
+  --total-background:      #e8e1d8;
+  --letter-color:          #1a160e;
+  --border-color:          #c8bfb0;
+  --hover-bg:              #1a160e;
+  --hover-text:            #f7f3ec;
+  --accent-color:          #b05b2a;
+  --accent-subtle:         rgba(176, 91, 42, 0.07);
+  --surface-raised:        #faf6f0;
 }
 
-/* ─── Variant 3 — Frost ───────────────────────────────── */
+/* ─── Variant 3 — Slate (ocean blue) ─────────────────── */
 :root.variant-3 {
-  --component-background: #e8f1f9;
-  --page-background:       #f6faff;
-  --total-background:      #d8e8f5;
-  --letter-color:          #081420;
-  --border-color:          #a8c4da;
-  --hover-bg:              #081420;
-  --hover-text:            #f6faff;
-  --accent-color:          #006ea0;
-  --accent-subtle:         rgba(0, 110, 160, 0.07);
-  --surface-raised:        #f0f7ff;
+  --component-background: #eaf0f7;
+  --page-background:       #f4f8fc;
+  --total-background:      #dce8f2;
+  --letter-color:          #0d1a28;
+  --border-color:          #aac0d8;
+  --hover-bg:              #0d1a28;
+  --hover-text:            #f4f8fc;
+  --accent-color:          #1a6091;
+  --accent-subtle:         rgba(26, 96, 145, 0.07);
+  --surface-raised:        #f5f9fd;
 }
 
-/* ─── Variant 4 — Sage ────────────────────────────────── */
+/* ─── Variant 4 — Moss (forest green) ────────────────── */
 :root.variant-4 {
-  --component-background: #e2ede6;
-  --page-background:       #f2f9f4;
-  --total-background:      #d0e4d8;
-  --letter-color:          #081408;
-  --border-color:          #9ec4aa;
-  --hover-bg:              #081408;
-  --hover-text:            #f2f9f4;
-  --accent-color:          #1a6635;
-  --accent-subtle:         rgba(26, 102, 53, 0.07);
-  --surface-raised:        #edf7f0;
+  --component-background: #eaf1e8;
+  --page-background:       #f3f8f1;
+  --total-background:      #dce9d9;
+  --letter-color:          #0f1a0e;
+  --border-color:          #a6bfa0;
+  --hover-bg:              #0f1a0e;
+  --hover-text:            #f3f8f1;
+  --accent-color:          #2d6b2a;
+  --accent-subtle:         rgba(45, 107, 42, 0.07);
+  --surface-raised:        #f6faf5;
 }
 
-/* ─── Variant 5 — Blush ───────────────────────────────── */
+/* ─── Variant 5 — Sand (warm amber) ──────────────────── */
 :root.variant-5 {
-  --component-background: #eee4e0;
-  --page-background:       #fdf6f2;
-  --total-background:      #e2d4ce;
-  --letter-color:          #180c08;
-  --border-color:          #c8a099;
-  --hover-bg:              #180c08;
-  --hover-text:            #fdf6f2;
-  --accent-color:          #8c1f4a;
-  --accent-subtle:         rgba(140, 31, 74, 0.07);
-  --surface-raised:        #fdf0ea;
+  --component-background: #f2ede3;
+  --page-background:       #faf7f0;
+  --total-background:      #ebe4d7;
+  --letter-color:          #1c1912;
+  --border-color:          #d0c8b5;
+  --hover-bg:              #1c1912;
+  --hover-text:            #faf7f0;
+  --accent-color:          #b36b00;
+  --accent-subtle:         rgba(179, 107, 0, 0.07);
+  --surface-raised:        #fdfaf4;
 }
 
-/* ─── Variant 6 — Void (dark / warm) ─────────────────── */
+/* ─── Variant 6 — Void (dark / warm gold) ────────────── */
 :root.variant-6 {
-  --component-background: #1e1e1e;
-  --page-background:       #161616;
-  --total-background:      #0e0e0e;
-  --letter-color:          #e6dfd4;
-  --border-color:          #2e2e2e;
-  --hover-bg:              #e6dfd4;
-  --hover-text:            #161616;
-  --accent-color:          #d4a853;
-  --accent-subtle:         rgba(212, 168, 83, 0.12);
-  --surface-raised:        #222222;
-  --border-subtle:         rgba(50, 50, 50, 0.9);
+  --component-background: #1c1c1c;
+  --page-background:       #141414;
+  --total-background:      #0c0c0c;
+  --letter-color:          #e8e0d4;
+  --border-color:          #282828;
+  --hover-bg:              #e8e0d4;
+  --hover-text:            #141414;
+  --accent-color:          #c8952a;
+  --accent-subtle:         rgba(200, 149, 42, 0.12);
+  --surface-raised:        #1a1a1a;
+  --border-subtle:         rgba(40, 40, 40, 0.9);
 }
 
-/* ─── Variant 7 — Carbon (dark / cool) ───────────────── */
+/* ─── Variant 7 — Abyss (dark / deep blue) ───────────── */
 :root.variant-7 {
-  --component-background: #131c27;
-  --page-background:       #0c1219;
-  --total-background:      #070b10;
-  --letter-color:          #c8d8e8;
-  --border-color:          #1e2e40;
-  --hover-bg:              #c8d8e8;
-  --hover-text:            #0c1219;
-  --accent-color:          #3fa3c9;
-  --accent-subtle:         rgba(63, 163, 201, 0.12);
-  --surface-raised:        #141e2c;
-  --border-subtle:         rgba(30, 46, 64, 0.95);
+  --component-background: #101828;
+  --page-background:       #0a1220;
+  --total-background:      #060c16;
+  --letter-color:          #c0d4e8;
+  --border-color:          #1a2c48;
+  --hover-bg:              #c0d4e8;
+  --hover-text:            #0a1220;
+  --accent-color:          #2eb8e8;
+  --accent-subtle:         rgba(46, 184, 232, 0.12);
+  --surface-raised:        #0f1a2e;
+  --border-subtle:         rgba(26, 44, 72, 0.95);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -134,6 +134,28 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+/* Scale base font at large resolutions so rem-based sizes grow naturally */
+@media (min-width: 120rem) {
+  html { font-size: 17px; }
+}
+@media (min-width: 160rem) {
+  html { font-size: 19px; }
+}
+@media (min-width: 240rem) {
+  html { font-size: 22px; }
+}
+
+/* ── Nav/Social PNG icon hover contrast fix ──────────── */
+.nav-icon { transition: filter 0.2s, transform 0.2s, opacity 0.2s; }
+/* Light themes: hover bg is dark → invert icons to white */
+a:hover .nav-icon,
+button:hover .nav-icon { filter: brightness(0) invert(1); }
+/* Dark themes (6,7): hover bg is light → keep icons dark */
+:root.variant-6 a:hover .nav-icon,
+:root.variant-6 button:hover .nav-icon,
+:root.variant-7 a:hover .nav-icon,
+:root.variant-7 button:hover .nav-icon { filter: brightness(0); }
 
 ::-webkit-scrollbar        { width: 4px; }
 ::-webkit-scrollbar-track  { background: transparent; }

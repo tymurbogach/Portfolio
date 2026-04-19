@@ -1,118 +1,114 @@
-<section class="flex flex-col w-full gap-10 laptop:gap-14">
+<section class="flex flex-col w-full gap-9 laptop:gap-12">
 
-  <!-- Frontend -->
-  <div class="flex flex-col gap-5">
-    <div class="flex items-center gap-3">
-      <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Frontend</h2>
-      <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
-    </div>
-    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-3">
-      {[
-        { icon: "fab fa-html5",     color: "#e34f26", label: "HTML5",      note: "structure & semantics" },
-        { icon: "fab fa-css3-alt",  color: "#1572b6", label: "CSS3 / SCSS", note: "layout, animation, SCSS" },
-        { icon: "fab fa-js",        color: "#f7df1e", label: "JavaScript",  note: "ES6+, async, DOM" },
-        { icon: "fab fa-js-square", color: "#3178c6", label: "TypeScript",  note: "typed JS, interfaces" },
-        { icon: "fas fa-pencil-ruler", color: "#38bdf8", label: "Tailwind CSS", note: "utility-first" },
-        { icon: "fab fa-angular",   color: "#dd0031", label: "Angular",     note: "SPA, RxJS, services" },
-        { icon: "fab fa-vuejs",     color: "#41b883", label: "Vue.js",      note: "composition API" },
-        { icon: "fab fa-react",     color: "#61dafb", label: "React",       note: "hooks, state, context" },
-        { icon: "fab fa-galactic-republic", color: "#ff5d01", label: "Astro", note: "static, islands" },
-      ].map(({ icon, color, label, note }) => (
-        <div class="flex items-center gap-4 px-4 py-3
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]
-                    group hover:border-[var(--border-color)] transition-colors duration-200">
-          <i class={`${icon} text-base w-4 shrink-0 text-center`} style={`color: ${color}`}></i>
-          <div class="flex flex-col gap-0 min-w-0">
-            <span class="text-sm laptop:text-base font-bold leading-snug">{label}</span>
-            <span class="text-[0.55rem] tracking-[0.2em] uppercase opacity-40">{note}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
+  <!-- Frontend + Backend side by side or stacked -->
+  <div class="grid grid-cols-1 mobile:grid-cols-2 gap-8 laptop:gap-10">
 
-  <!-- Backend -->
-  <div class="flex flex-col gap-5">
-    <div class="flex items-center gap-3">
-      <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Backend</h2>
-      <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
-    </div>
-    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-3">
-      {[
-        { icon: "fab fa-php",      color: "#777bb3", label: "PHP",     note: "backend scripting" },
-        { icon: "fab fa-laravel",  color: "#ff2d20", label: "Laravel", note: "MVC, Eloquent, API" },
-        { icon: "fab fa-java",     color: "#ed8b00", label: "Java",    note: "OOP, basic patterns" },
-        { icon: "fas fa-database", color: "#00758f", label: "MySQL",   note: "queries, relations" },
-        { icon: "fas fa-code-branch", color: "#f05032", label: "Git",  note: "version control, GH Actions" },
-      ].map(({ icon, color, label, note }) => (
-        <div class="flex items-center gap-4 px-4 py-3
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]
-                    hover:border-[var(--border-color)] transition-colors duration-200">
-          <i class={`${icon} text-base w-4 shrink-0 text-center`} style={`color: ${color}`}></i>
-          <div class="flex flex-col gap-0 min-w-0">
-            <span class="text-sm laptop:text-base font-bold leading-snug">{label}</span>
-            <span class="text-[0.55rem] tracking-[0.2em] uppercase opacity-40">{note}</span>
+    <!-- Frontend -->
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Frontend</h2>
+        <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-1.5">
+        {[
+          { icon: "fab fa-html5",        color: "#e34f26", label: "HTML5"       },
+          { icon: "fab fa-css3-alt",     color: "#1572b6", label: "CSS / SCSS"  },
+          { icon: "fab fa-js",           color: "#f7df1e", label: "JavaScript"  },
+          { icon: "fab fa-js-square",    color: "#3178c6", label: "TypeScript"  },
+          { icon: "fas fa-pencil-ruler", color: "#38bdf8", label: "Tailwind"    },
+          { icon: "fab fa-angular",      color: "#dd0031", label: "Angular"     },
+          { icon: "fab fa-vuejs",        color: "#41b883", label: "Vue.js"      },
+          { icon: "fab fa-react",        color: "#61dafb", label: "React"       },
+          { icon: "fab fa-galactic-republic", color: "#ff5d01", label: "Astro" },
+        ].map(({ icon, color, label }) => (
+          <div class="flex items-center gap-2 px-3 py-2
+                      border border-[var(--border-subtle)] bg-[var(--surface-raised)]
+                      hover:border-[var(--accent-color)] transition-colors duration-200">
+            <i class={`${icon} text-sm w-4 shrink-0 text-center`} style={`color: ${color}`}></i>
+            <span class="text-xs font-bold tracking-[0.05em] leading-none">{label}</span>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
+
+    <!-- Backend -->
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Backend</h2>
+        <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-1.5">
+        {[
+          { icon: "fab fa-php",         color: "#777bb3", label: "PHP"        },
+          { icon: "fab fa-laravel",     color: "#ff2d20", label: "Laravel"    },
+          { icon: "fab fa-java",        color: "#ed8b00", label: "Java"       },
+          { icon: "fas fa-database",    color: "#00758f", label: "MySQL"      },
+          { icon: "fas fa-code-branch", color: "#f05032", label: "Git"        },
+          { icon: "fab fa-android",     color: "#3ddc84", label: "Android"    },
+        ].map(({ icon, color, label }) => (
+          <div class="flex items-center gap-2 px-3 py-2
+                      border border-[var(--border-subtle)] bg-[var(--surface-raised)]
+                      hover:border-[var(--accent-color)] transition-colors duration-200">
+            <i class={`${icon} text-sm w-4 shrink-0 text-center`} style={`color: ${color}`}></i>
+            <span class="text-xs font-bold tracking-[0.05em] leading-none">{label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 
   <!-- Homelab & DevOps -->
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-4">
     <div class="flex items-center gap-3">
       <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Homelab & DevOps</h2>
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
-    <div class="flex flex-wrap gap-2">
+    <div class="grid grid-cols-3 mobile:grid-cols-4 laptop:grid-cols-5 gap-2">
       {[
-        { icon: "fab fa-docker",        color: "#2496ed", label: "Docker" },
-        { icon: "fas fa-network-wired", color: "#009900", label: "Nginx" },
-        { icon: "fab fa-linux",         color: "#fcc624", label: "Linux" },
-        { icon: "fab fa-windows",       color: "#0078d4", label: "Windows" },
-        { icon: "fab fa-raspberry-pi",  color: "#c51a4a", label: "Raspberry Pi" },
-        { icon: "fas fa-hdd",           color: "#6b7280", label: "TrueNAS" },
-        { icon: "fas fa-shield-alt",    color: "#3b82f6", label: "Tailscale" },
-        { icon: "fas fa-cloud",         color: "#f6821f", label: "Cloudflare" },
-        { icon: "fas fa-tachometer-alt",color: "#20c997", label: "Portainer" },
-        { icon: "fas fa-filter",        color: "#ef4444", label: "Pi-hole" },
-        { icon: "fas fa-film",          color: "#a855f7", label: "Jellyfin" },
-        { icon: "fas fa-images",        color: "#eab308", label: "Immich" },
-        { icon: "fas fa-music",         color: "#ec4899", label: "Navidrome" },
-        { icon: "fas fa-brain",         color: "#8b5cf6", label: "Ollama" },
-        { icon: "fas fa-heartbeat",     color: "#f87171", label: "Uptime Kuma" },
-        { icon: "fas fa-server",        color: "#6b7280", label: "VMs" },
-        { icon: "fas fa-terminal",      color: "#374151", label: "SSH" },
+        { icon: "fab fa-docker",         color: "#2496ed", label: "Docker"      },
+        { icon: "fas fa-network-wired",  color: "#009900", label: "Nginx"       },
+        { icon: "fab fa-linux",          color: "#fcc624", label: "Linux"       },
+        { icon: "fab fa-windows",        color: "#0078d4", label: "Windows"     },
+        { icon: "fab fa-raspberry-pi",   color: "#c51a4a", label: "Raspberry Pi"},
+        { icon: "fas fa-hdd",            color: "#6b7280", label: "TrueNAS"     },
+        { icon: "fas fa-shield-alt",     color: "#3b82f6", label: "Tailscale"   },
+        { icon: "fas fa-cloud",          color: "#f6821f", label: "Cloudflare"  },
+        { icon: "fas fa-tachometer-alt", color: "#20c997", label: "Portainer"   },
+        { icon: "fas fa-filter",         color: "#ef4444", label: "Pi-hole"     },
+        { icon: "fas fa-film",           color: "#a855f7", label: "Jellyfin"    },
+        { icon: "fas fa-images",         color: "#eab308", label: "Immich"      },
+        { icon: "fas fa-music",          color: "#ec4899", label: "Navidrome"   },
+        { icon: "fas fa-brain",          color: "#8b5cf6", label: "Ollama"      },
+        { icon: "fas fa-heartbeat",      color: "#f87171", label: "Uptime Kuma" },
       ].map(({ icon, color, label }) => (
-        <span class="flex items-center gap-2 px-3 py-2
-                     border border-[var(--border-subtle)] bg-[var(--surface-raised)]
-                     text-xs laptop:text-sm whitespace-nowrap
-                     hover:border-[var(--border-color)] transition-colors duration-200">
-          <i class={`${icon} text-xs`} style={`color: ${color}`}></i>
-          <span class="tracking-[0.05em]">{label}</span>
-        </span>
+        <div class="flex flex-col items-center gap-2 px-2 py-3
+                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]
+                    hover:border-[var(--accent-color)] transition-colors duration-200 text-center">
+          <i class={`${icon} text-lg`} style={`color: ${color}`}></i>
+          <span class="text-[0.48rem] tracking-[0.12em] uppercase font-bold opacity-55 leading-none whitespace-nowrap">{label}</span>
+        </div>
       ))}
     </div>
   </div>
 
-  <!-- Idiomas -->
-  <div class="flex flex-col gap-5">
+  <!-- Languages -->
+  <div class="flex flex-col gap-4">
     <div class="flex items-center gap-3">
       <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Languages</h2>
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
-    <div class="grid grid-cols-2 mobile:grid-cols-4 gap-3">
+    <div class="grid grid-cols-4 gap-2">
       {[
-        { flag: "🇷🇺", lang: "Russian",   level: "native"  },
-        { flag: "🇺🇦", lang: "Ukrainian", level: "native"  },
-        { flag: "🇪🇸", lang: "Spanish",   level: "fluent"  },
-        { flag: "🇬🇧", lang: "English",   level: "fluent"  },
+        { flag: "🇷🇺", lang: "Russian",   level: "native" },
+        { flag: "🇺🇦", lang: "Ukrainian", level: "native" },
+        { flag: "🇪🇸", lang: "Spanish",   level: "fluent" },
+        { flag: "🇬🇧", lang: "English",   level: "fluent" },
       ].map(({ flag, lang, level }) => (
-        <div class="flex flex-col gap-1 px-4 py-3
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+        <div class="flex flex-col items-center gap-1 px-2 py-3
+                    border border-[var(--border-subtle)] bg-[var(--surface-raised)] text-center">
           <span class="text-xl">{flag}</span>
-          <span class="text-sm laptop:text-base font-bold">{lang}</span>
-          <span class="text-[0.5rem] tracking-[0.3em] uppercase opacity-35">{level}</span>
+          <span class="text-xs font-bold leading-snug">{lang}</span>
+          <span class="text-[0.45rem] tracking-[0.3em] uppercase opacity-35">{level}</span>
         </div>
       ))}
     </div>

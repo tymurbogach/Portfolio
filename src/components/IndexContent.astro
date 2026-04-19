@@ -1,6 +1,7 @@
-<section class="flex flex-col justify-between w-full h-full min-h-0 gap-2">
+<section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
 
-  <header class="flex items-center justify-center shrink-0 overflow-hidden min-w-0">
+  <!-- Header -->
+  <header class="flex items-center justify-center shrink-0">
     <h1
       class="text-center font-bold uppercase whitespace-nowrap
       text-[clamp(0.6rem,3vw,0.9rem)]
@@ -11,18 +12,105 @@
     </h1>
   </header>
 
-  <main class="flex flex-col items-center justify-center min-h-0 grow overflow-hidden">
-    <img
-      id="theme-toggle"
-      src="/img/gopnik.png"
-      alt="Hero Image — click para cambiar tema"
-      class="w-full h-auto object-contain pointer-events-auto
-       max-w-[9rem] mobile:max-w-[12rem] tablet:max-w-[15rem]
-       laptop:max-w-[15rem] fhd:max-w-[19rem] qhd:max-w-[24rem] uhd:max-w-[28rem]"
-    />
+  <!-- Main content — stacks vertically on laptop sidebar, 2-col on fhd+ (index page) -->
+  <main class="flex-1 min-h-0 flex flex-col fhd:flex-row items-center fhd:items-start
+               gap-6 fhd:gap-10 justify-center fhd:justify-center fhd:py-4">
+
+    <!-- Column 1: photo + identity -->
+    <div class="flex flex-col items-center gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
+      <img
+        id="theme-toggle"
+        src="/img/gopnik.png"
+        alt="Hero Image — click para cambiar tema"
+        class="w-full h-auto object-contain pointer-events-auto
+         max-w-[7rem] mobile:max-w-[9rem]
+         laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
+      />
+
+      <div class="flex flex-col items-center gap-1.5 text-center">
+        <span class="text-sm mobile:text-base laptop:text-base fhd:text-2xl qhd:text-3xl uhd:text-4xl
+                     font-bold tracking-[0.15em] uppercase">
+          Tymur Bogach
+        </span>
+        <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-xs qhd:text-sm
+                     tracking-[0.4em] uppercase opacity-50">
+          Full Stack Developer
+        </span>
+      </div>
+
+      <div class="w-full max-w-[14rem] fhd:max-w-[22rem] h-px"
+           style="background: var(--accent-color); opacity: 0.25;"></div>
+
+      <p class="text-[0.65rem] mobile:text-xs laptop:text-[0.65rem] fhd:text-sm qhd:text-base
+                text-center opacity-60 leading-relaxed max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]">
+        10+ years building things with my hands.<br />
+        Now building them in code. Precision obsessive,<br class="hidden fhd:block" />
+        self-hoster, fluent in 4 languages.
+      </p>
+    </div>
+
+    <!-- Column 2: homelab + CV + stats -->
+    <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
+
+      <!-- Homelab -->
+      <div class="flex flex-col items-center fhd:items-start gap-2 w-full">
+        <p class="text-[0.45rem] fhd:text-[0.5rem] tracking-[0.45em] uppercase font-bold opacity-35">homelab</p>
+        <div class="flex flex-wrap justify-center fhd:justify-start gap-1.5">
+          {[
+            { label: "Docker",    color: "#2496ed" },
+            { label: "TrueNAS",   color: "#6b7280" },
+            { label: "Tailscale", color: "#3b82f6" },
+            { label: "Nginx",     color: "#009900" },
+            { label: "Pi-hole",   color: "#ef4444" },
+            { label: "Jellyfin",  color: "#a855f7" },
+            { label: "Immich",    color: "#eab308" },
+            { label: "Ollama",    color: "#8b5cf6" },
+          ].map(({ label, color }) => (
+            <span class="flex items-center gap-1 text-[0.42rem] laptop:text-[0.45rem] fhd:text-[0.55rem]
+                         tracking-[0.1em] uppercase px-1.5 py-0.5
+                         border border-[var(--border-subtle)] opacity-60">
+              <span style={`width:5px;height:5px;border-radius:50%;background:${color};flex-shrink:0`}></span>
+              {label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
+        {[
+          { n: "10+", label: "years precision" },
+          { n: "4",   label: "languages" },
+          { n: "∞",   label: "cups coffee" },
+          { n: "24/7", label: "self-hosted" },
+        ].map(({ n, label }) => (
+          <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+            <span class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
+                  style="color: var(--accent-color)">{n}</span>
+            <span class="text-[0.42rem] fhd:text-[0.5rem] tracking-[0.2em] uppercase opacity-40 mt-0.5">{label}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- CV button -->
+      <a
+        href="https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 px-4 py-2
+               text-[0.52rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
+               border border-[var(--border-color)]
+               hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-bg)]
+               transition-all duration-200"
+      >
+        <i class="fas fa-download text-[0.6rem]" style="color: var(--accent-color)"></i>
+        <span>Download CV</span>
+      </a>
+    </div>
   </main>
 
-  <footer class="flex items-end justify-start shrink-0 overflow-hidden min-w-0">
+  <!-- Footer -->
+  <footer class="flex items-end justify-start shrink-0">
     <h2
       class="font-semibold break-words hyphens-auto min-w-0
       text-sm mobile:text-base tablet:text-lg

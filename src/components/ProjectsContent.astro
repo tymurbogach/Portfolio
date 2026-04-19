@@ -3,24 +3,22 @@ import ProjectCard from "../components/ProjectCard.astro";
 const projectFiles = import.meta.glob("../content/projects.md", { eager: true });
 const projects = Object.values(projectFiles) as any[];
 
+const KEEP = ["Valorant", "CluckinBell", "Guitar Store", "Proyecto Angular Marvel"];
+
 const tagMap: Record<string, string[]> = {
-  "Valorant":                       ["JavaScript", "API"],
-  "CluckinBell":                    ["Angular", "Laravel"],
-  "Guitar Store":                   ["HTML", "CSS"],
-  "Proyecto Angular Marvel":        ["Angular", "API"],
-  "Tienda online con Vue.js":       ["Vue.js"],
-  "Aplicacion de tareas con React": ["React"],
-  "Web con Laravel y Vue.js":       ["Laravel", "Vue.js"],
-  "Web personal con Angular":       ["Angular"],
-  "Pagina de productos con React":  ["React"],
-  "Piedra, papel o tijera":         ["JavaScript"],
-  "InventarioPlantas":              ["JavaScript"],
+  "Valorant":               ["JavaScript", "API"],
+  "CluckinBell":            ["Angular", "Laravel"],
+  "Guitar Store":           ["HTML", "CSS"],
+  "Proyecto Angular Marvel":["Angular", "API"],
 };
+
+const filtered = projects[0].frontmatter.projects.filter((p: any) =>
+  KEEP.includes(p.title)
+);
 ---
 
-<div class="grid grid-cols-1 mobile:grid-cols-2 laptop:grid-cols-3 gap-4 mobile:gap-5 laptop:gap-6
-            w-full items-stretch auto-rows-fr">
-  {projects[0].frontmatter.projects.map((project: any) => {
+<div class="flex flex-col gap-3 w-full">
+  {filtered.map((project: any) => {
     const isDemo = project.link?.includes('github.io') || project.link?.includes('netlify') || project.link?.includes('vercel');
     const tags = tagMap[project.title] || [];
     return (
