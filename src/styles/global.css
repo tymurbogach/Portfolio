@@ -119,7 +119,7 @@
    ═══════════════════════════════════════════════════════ */
 
 :root {
-  --border-subtle: color-mix(in srgb, var(--border-color) 35%, transparent);
+  --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
 }
 
 *,
@@ -148,10 +148,14 @@ html, body {
 
 /* ── Nav/Social PNG icon hover contrast fix ──────────── */
 .nav-icon { transition: filter 0.2s, transform 0.2s, opacity 0.2s; }
-/* Light themes: hover bg is dark → invert icons to white */
+/* Light themes: icons are naturally dark (visible on light bg) */
+/* Light themes hover: bg goes dark → invert icons to white */
 a:hover .nav-icon,
 button:hover .nav-icon { filter: brightness(0) invert(1); }
-/* Dark themes (6,7): hover bg is light → keep icons dark */
+/* Dark themes (6,7): default bg is dark → invert icons to white so they're visible */
+:root.variant-6 .nav-icon,
+:root.variant-7 .nav-icon { filter: brightness(0) invert(1); }
+/* Dark themes hover: bg goes light → keep icons dark */
 :root.variant-6 a:hover .nav-icon,
 :root.variant-6 button:hover .nav-icon,
 :root.variant-7 a:hover .nav-icon,
@@ -165,23 +169,18 @@ button:hover .nav-icon { filter: brightness(0) invert(1); }
    VIEW TRANSITIONS — crossfade suave, sin parpadeo
    ═══════════════════════════════════════════════════════ */
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.28s;
-  animation-timing-function: ease;
-}
-
+/* Old page: instant disappear, no overlap with new page */
 ::view-transition-old(root) {
-  animation-name: vt-fade-out;
+  animation: none;
+  display: none;
 }
+/* New page: smooth fade-in only */
 ::view-transition-new(root) {
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
   animation-name: vt-fade-in;
 }
 
-@keyframes vt-fade-out {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
 @keyframes vt-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }

@@ -59,7 +59,7 @@
               <span class="text-sm laptop:text-base font-bold"
                     style={active ? 'color: var(--accent-color)' : ''}>{event}</span>
             </div>
-            <p class="text-xs laptop:text-sm opacity-55 leading-relaxed">{detail}</p>
+            <p class="text-xs laptop:text-sm opacity-65 leading-relaxed">{detail}</p>
           </div>
         </div>
       ))}
@@ -84,7 +84,7 @@
       ].map(({ years, title, sub }) => (
         <div class="flex gap-4 items-start px-4 py-3
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-          <span class="text-[0.5rem] tracking-[0.15em] uppercase opacity-35 font-bold whitespace-nowrap mt-0.5 shrink-0">{years}</span>
+          <span class="text-[0.55rem] tracking-[0.15em] uppercase opacity-35 font-bold whitespace-nowrap mt-0.5 shrink-0">{years}</span>
           <div>
             <p class="text-sm font-bold leading-snug">{title}</p>
             <p class="text-[0.58rem] tracking-[0.1em] uppercase opacity-45 mt-0.5">{sub}</p>

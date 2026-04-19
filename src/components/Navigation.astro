@@ -14,95 +14,96 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
     class="flex flex-row items-center justify-center text-center w-full h-[3.5rem] laptop:h-full
            bg-[var(--component-background)] border border-[var(--border-color)]
            shadow-none rounded-none my-0 mx-0
-           mobile:shadow-md tablet:shadow-lg
-           transition-all duration-300 ease-in-out"
+           mobile:shadow-md tablet:shadow-lg"
   >
     <a
       href="/about"
-      aria-current={currentPath === "/about" ? "page" : undefined}
-      class={[
-        "group flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden text-[var(--letter-color)] border-r border-[var(--border-color)]",
-        "font-light tracking-wide laptop:tracking-widest",
-        "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-        "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-all duration-300 ease-in-out",
-        "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-text)]",
-        currentPath === "/about"
-          ? "border-b-2 border-[var(--hover-bg)] font-semibold"
-          : "",
-      ].join(" ")}
+      data-active={currentPath === "/about" ? "true" : "false"}
+      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
+             text-[var(--letter-color)] border-r border-[var(--border-color)]
+             font-light tracking-wide laptop:tracking-widest
+             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
+             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
+             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img
-        src="/img/about.png"
-        alt="About Icon"
-        class={["nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8 opacity-70 transition-all duration-200 group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm", currentPath === "/about" ? "opacity-100 saturate-150" : ""].join(" ")}
-      />
+      <img src="/img/about.png" alt="About Icon"
+           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                  opacity-70 transition-all duration-200
+                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
       <span>About</span>
     </a>
 
     <a
       href="/resume"
-      aria-current={currentPath === "/resume" ? "page" : undefined}
-      class={[
-        "group flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden text-[var(--letter-color)] border-r border-[var(--border-color)]",
-        "font-light tracking-wide laptop:tracking-widest",
-        "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-        "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-all duration-300 ease-in-out",
-        "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-text)]",
-        currentPath === "/resume"
-          ? "border-b-2 border-[var(--hover-bg)] font-semibold"
-          : "",
-      ].join(" ")}
+      data-active={currentPath === "/resume" ? "true" : "false"}
+      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
+             text-[var(--letter-color)] border-r border-[var(--border-color)]
+             font-light tracking-wide laptop:tracking-widest
+             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
+             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
+             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img
-        src="/img/resume.png"
-        alt="Resume Icon"
-        class={["nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8 opacity-70 transition-all duration-200 group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm", currentPath === "/resume" ? "opacity-100 saturate-150" : ""].join(" ")}
-      />
+      <img src="/img/resume.png" alt="Resume Icon"
+           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                  opacity-70 transition-all duration-200
+                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
       <span>Resume</span>
     </a>
 
     <a
       href="/projects"
-      aria-current={currentPath === "/projects" ? "page" : undefined}
-      class={[
-        "group flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden text-[var(--letter-color)] border-r border-[var(--border-color)]",
-        "font-light tracking-wide laptop:tracking-widest",
-        "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-        "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-all duration-300 ease-in-out",
-        "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-text)]",
-        currentPath === "/projects"
-          ? "border-b-2 border-[var(--hover-bg)] font-semibold"
-          : "",
-      ].join(" ")}
+      data-active={currentPath === "/projects" ? "true" : "false"}
+      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
+             text-[var(--letter-color)] border-r border-[var(--border-color)]
+             font-light tracking-wide laptop:tracking-widest
+             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
+             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
+             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img
-        src="/img/projects.png"
-        alt="Projects Icon"
-        class={["nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8 opacity-70 transition-all duration-200 group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm", currentPath === "/projects" ? "opacity-100 saturate-150" : ""].join(" ")}
-      />
+      <img src="/img/projects.png" alt="Projects Icon"
+           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                  opacity-70 transition-all duration-200
+                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
       <span>Projects</span>
     </a>
 
     <a
       href="/contact"
-      aria-current={currentPath === "/contact" ? "page" : undefined}
-      class={[
-        "group flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden text-[var(--letter-color)]",
-        "font-light tracking-wide laptop:tracking-widest",
-        "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-        "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-all duration-300 ease-in-out",
-        "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-text)]",
-        currentPath === "/contact"
-          ? "border-b-2 border-[var(--hover-bg)] font-semibold"
-          : "",
-      ].join(" ")}
+      data-active={currentPath === "/contact" ? "true" : "false"}
+      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
+             text-[var(--letter-color)]
+             font-light tracking-wide laptop:tracking-widest
+             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
+             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
+             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img
-        src="/img/contact.png"
-        alt="Contact Icon"
-        class={["nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8 opacity-70 transition-all duration-200 group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm", currentPath === "/contact" ? "opacity-100 saturate-150" : ""].join(" ")}
-      />
+      <img src="/img/contact.png" alt="Contact Icon"
+           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                  opacity-70 transition-all duration-200
+                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
       <span>Contact</span>
     </a>
   </nav>
 </div>
+
+<style>
+  .nav-link[data-active="true"] {
+    border-bottom: 2px solid var(--accent-color);
+    background: var(--accent-subtle);
+  }
+  .nav-link[data-active="true"] .nav-icon {
+    opacity: 1;
+    filter: saturate(1.5);
+  }
+</style>
+
+<script>
+  function syncNavActive() {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll<HTMLElement>('.nav-link[data-active]').forEach(link => {
+      const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+      link.dataset.active = (href === path).toString();
+    });
+  }
+  document.addEventListener('astro:page-load', syncNavActive);
+</script>

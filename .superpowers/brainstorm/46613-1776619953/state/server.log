@@ -1,0 +1,17 @@
+{"type":"server-started","port":56564,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:56564","screen_dir":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/content","state_dir":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/state"}
+{"type":"screen-added","file":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/content/goal-focus.html"}
+{"type":"screen-added","file":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/content/weak-areas.html"}
+{"source":"user-event","type":"click","text":"6\n    \n      Visual general — polish y detalles\n      Diseño funciona pero falta refinamiento: tipografía, espaciado, microinteracciones.","choice":"visual","id":null,"timestamp":1776620105994}
+{"source":"user-event","type":"click","text":"5\n    \n      About — historia personal\n      Timeline existe pero no conecta emocionalmente ni justifica el perfil profesional.","choice":"about","id":null,"timestamp":1776620112422}
+{"source":"user-event","type":"click","text":"5\n    \n      About — historia personal\n      Timeline existe pero no conecta emocionalmente ni justifica el perfil profesional.","choice":"about","id":null,"timestamp":1776620114161}
+{"source":"user-event","type":"click","text":"5\n    \n      About — historia personal\n      Timeline existe pero no conecta emocionalmente ni justifica el perfil profesional.","choice":"about","id":null,"timestamp":1776620120209}
+{"source":"user-event","type":"click","text":"5\n    \n      About — historia personal\n      Timeline existe pero no conecta emocionalmente ni justifica el perfil profesional.","choice":"about","id":null,"timestamp":1776620120935}
+{"source":"user-event","type":"click","text":"4\n    \n      Contact — conversión\n      Formulario genérico, sin propuesta de valor. No hay razón de peso para escribir.","choice":"contact","id":null,"timestamp":1776620124694}
+{"source":"user-event","type":"click","text":"3\n    \n      Resume — presentación de skills\n      Lista de tecnologías sin contexto de nivel ni logros. No diferencia de otros devs.","choice":"resume","id":null,"timestamp":1776620128123}
+{"source":"user-event","type":"click","text":"2\n    \n      Projects — showcasing trabajo\n      Cards pequeñas, poca info, 4 proyectos parecen pocos. No convencen de capacidad real.","choice":"projects","id":null,"timestamp":1776620131926}
+{"source":"user-event","type":"click","text":"1\n    \n      Home — primer impacto\n      El hero no comunica valor rápido. No queda claro en 5s qué hago o por qué contratarme.","choice":"home","id":null,"timestamp":1776620133953}
+{"source":"user-event","type":"click","text":"5\n    \n      About — historia personal\n      Timeline existe pero no conecta emocionalmente ni justifica el perfil profesional.","choice":"about","id":null,"timestamp":1776620137833}
+{"type":"screen-added","file":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/content/design-direction.html"}
+{"type":"screen-added","file":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/content/approaches.html"}
+{"type":"screen-added","file":"/home/cyberdyne/dev/portfolio/.superpowers/brainstorm/46613-1776619953/content/design-home.html"}
+{"type":"server-stopped","reason":"idle timeout"}

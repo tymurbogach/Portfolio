@@ -1,0 +1,146 @@
+<style>
+  .terminal-mockup {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .terminal-bar {
+    background: #161b22;
+    padding: 8px 14px;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #8b949e;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot-r { background: #ff5f56; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #27c93f; }
+  .terminal-body { padding: 18px 20px; line-height: 1.7; }
+  .c-green { color: #3fb950; }
+  .c-blue { color: #79c0ff; }
+  .c-yellow { color: #e3b341; }
+  .c-gray { color: #8b949e; }
+  .c-white { color: #f0f6fc; }
+  .c-cyan { color: #56d364; }
+  .cursor { display: inline-block; width: 8px; height: 14px; background: #3fb950; animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 2px; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .light-mockup {
+    background: #f5f5f5;
+    color: #111;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .light-body { padding: 18px 20px; line-height: 1.7; }
+  .lc-green { color: #1a3a5c; }
+  .lc-gray { color: #666; }
+  .lc-accent { color: #1a3a5c; font-weight: bold; }
+  .lc-cursor { display: inline-block; width: 8px; height: 14px; background: #1a3a5c; vertical-align: middle; }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #8b8b8b;
+    margin-bottom: 8px;
+    font-family: monospace;
+  }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .split { grid-template-columns: 1fr; } }
+</style>
+
+<h2>Diseño — Home Page</h2>
+<p class="subtitle">Comparativa Dark Terminal vs Light Terminal. Elige cuál va mejor como default.</p>
+
+<div class="section">
+  <div class="section-label">Estructura nueva del Home</div>
+  <ul style="font-size:13px; line-height:2; margin-left:1rem; opacity:0.85">
+    <li>Reemplazar hero actual → <strong>boot sequence animada</strong> (texto que aparece línea a línea)</li>
+    <li>Stats grid → <strong>system readout</strong> en mono (progress bars ASCII)</li>
+    <li>Homelab tags → <strong>uptime/status live-style</strong> indicators</li>
+    <li>CV button → <strong>comando descargable</strong> <code style="background:#222;padding:2px 6px;border-radius:3px;color:#3fb950">$ get resume.pdf</code></li>
+    <li>Foto → mantener, pero framed en <strong>terminal window</strong></li>
+  </ul>
+</div>
+
+<div class="split">
+  <div>
+    <div class="section-label">Dark Terminal (Void/Abyss)</div>
+    <div class="terminal-mockup">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span style="margin-left:8px">tymur@portfolio ~ </span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="c-green">$</span> <span class="c-white">whoami</span></div>
+        <div style="margin-top:6px">
+          <span class="c-blue">name</span><span class="c-gray"> .............. </span><span class="c-white">Tymur Bogach</span><br>
+          <span class="c-blue">role</span><span class="c-gray"> .............. </span><span class="c-white">Fullstack Developer</span><br>
+          <span class="c-blue">location</span><span class="c-gray"> .......... </span><span class="c-white">Spain</span><br>
+          <span class="c-blue">status</span><span class="c-gray"> ............ </span><span class="c-green">● available</span>
+        </div>
+        <div style="margin-top:12px"><span class="c-green">$</span> <span class="c-white">cat skills.manifest</span></div>
+        <div style="margin-top:4px">
+          <span class="c-yellow">[frontend]</span><span class="c-gray">  React · Angular · Astro · Tailwind</span><br>
+          <span class="c-yellow">[backend]</span><span class="c-gray">   Laravel · PHP · MySQL · Java</span><br>
+          <span class="c-yellow">[infra]</span><span class="c-gray">     Docker · nginx · Tailscale · Pi</span>
+        </div>
+        <div style="margin-top:12px"><span class="c-green">$</span> <span class="c-white">./get-resume.sh</span></div>
+        <div><span class="c-gray">Downloading resume.pdf</span> <span class="c-green">[████████] 100%</span></div>
+        <div style="margin-top:6px"><span class="c-green">$</span> <span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Light Terminal (Chalk/Slate)</div>
+    <div class="light-mockup">
+      <div style="background:#e8e8e8;padding:8px 14px;border-bottom:1px solid #ddd;font-size:11px;color:#666;font-family:monospace;display:flex;gap:6px;align-items:center">
+        <span class="dot" style="background:#ff5f56"></span>
+        <span class="dot" style="background:#ffbd2e"></span>
+        <span class="dot" style="background:#27c93f"></span>
+        <span style="margin-left:8px">tymur@portfolio ~ </span>
+      </div>
+      <div class="light-body">
+        <div><span class="lc-accent">$</span> <span>whoami</span></div>
+        <div style="margin-top:6px">
+          <span class="lc-accent">name</span><span class="lc-gray"> .............. </span><span>Tymur Bogach</span><br>
+          <span class="lc-accent">role</span><span class="lc-gray"> .............. </span><span>Fullstack Developer</span><br>
+          <span class="lc-accent">location</span><span class="lc-gray"> .......... </span><span>Spain</span><br>
+          <span class="lc-accent">status</span><span class="lc-gray"> ............ </span><span style="color:#2d6b2a">● available</span>
+        </div>
+        <div style="margin-top:12px"><span class="lc-accent">$</span> <span>cat skills.manifest</span></div>
+        <div style="margin-top:4px">
+          <span class="lc-accent">[frontend]</span><span class="lc-gray">  React · Angular · Astro · Tailwind</span><br>
+          <span class="lc-accent">[backend]</span><span class="lc-gray">   Laravel · PHP · MySQL · Java</span><br>
+          <span class="lc-accent">[infra]</span><span class="lc-gray">     Docker · nginx · Tailscale · Pi</span>
+        </div>
+        <div style="margin-top:12px"><span class="lc-accent">$</span> <span>./get-resume.sh</span></div>
+        <div><span class="lc-gray">Downloading resume.pdf</span> <span class="lc-accent">[████████] 100%</span></div>
+        <div style="margin-top:6px"><span class="lc-accent">$</span> <span class="lc-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:12px">
+  <div class="section-label">Sobre los 7 temas actuales</div>
+  <div style="font-size:13px; opacity:0.85; line-height:1.8">
+    Con Full Terminal OS, los 7 temas siguen teniendo sentido pero se reorganizan como <strong>terminales de distintos SO</strong>:
+    Void/Abyss → dark terminals · Chalk/Stone/Slate/Moss/Sand → light terminals.<br>
+    Opción: reducir a 4 temas (2 dark + 2 light) para simplificar.
+  </div>
+</div>

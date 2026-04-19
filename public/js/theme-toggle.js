@@ -28,3 +28,11 @@ function initThemeToggle() {
 }
 
 document.addEventListener("astro:page-load", initThemeToggle);
+
+// Apply theme to incoming document before ViewTransitions swap to prevent flash
+document.addEventListener('astro:before-swap', (e) => {
+  const saved = localStorage.getItem('theme');
+  const valid = THEMES.includes(saved) ? saved : 'variant-1';
+  THEMES.forEach(t => e.newDocument.documentElement.classList.remove(t));
+  e.newDocument.documentElement.classList.add(valid);
+});
