@@ -1,0 +1,21 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "astro:content": [
+        ".astro/types.d.ts"
+      ]
+    }
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ]
+}

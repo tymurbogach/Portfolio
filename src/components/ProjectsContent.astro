@@ -1,35 +1,55 @@
 ---
+import { getEntry } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
-const projectFiles = import.meta.glob("../content/projects.md", { eager: true });
-const projects = Object.values(projectFiles) as any[];
 
-const KEEP = ["Valorant", "CluckinBell", "Guitar Store", "Proyecto Angular Marvel"];
+// Obtenemos el archivo index.md de la carpeta projects
+const projectsEntry = await getEntry("projects", "index");
+
+// Si no existe, evitamos el error de "undefined"
+if (!projectsEntry) {
+  throw new Error("No se encontró src/content/projects/index.md");
+}
+
+const KEEP = [
+  "Valorant",
+  "CluckinBell",
+  "Guitar Store",
+  "Proyecto Angular Marvel",
+];
 
 const tagMap: Record<string, string[]> = {
-  "Valorant":               ["JavaScript", "API"],
-  "CluckinBell":            ["Angular", "Laravel"],
-  "Guitar Store":           ["HTML", "CSS"],
-  "Proyecto Angular Marvel":["Angular", "API"],
+  Valorant: ["JavaScript", "API"],
+  CluckinBell: ["Angular", "Laravel"],
+  "Guitar Store": ["HTML", "CSS"],
+  "Proyecto Angular Marvel": ["Angular", "API"],
 };
 
-const filtered = projects[0].frontmatter.projects.filter((p: any) =>
-  KEEP.includes(p.title)
+// Filtramos usando la data tipada de Astro
+const filtered = projectsEntry.data.projects.filter((p) =>
+  KEEP.includes(p.title),
 );
 ---
 
 <div class="flex flex-col gap-3 w-full">
-  {filtered.map((project: any) => {
-    const isDemo = project.link?.includes('github.io') || project.link?.includes('netlify') || project.link?.includes('vercel');
-    const tags = tagMap[project.title] || [];
-    return (
-      <ProjectCard
-        title={project.title}
-        description={project.description}
-        link={project.link}
-        image={project.image}
-        type={isDemo ? 'demo' : 'source'}
-        tags={tags}
-      />
-    );
-  })}
+  {
+    filtered.map((project) => {
+      const isDemo =
+        project.link?.includes("github.io") ||
+        project.link?.includes("netlify") ||
+        project.link?.includes("vercel");
+
+      const tags = tagMap[project.title] || [];
+
+      return (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          link={project.link}
+          image={project.image}
+          type={isDemo ? "demo" : "source"}
+          tags={tags}
+        />
+      );
+    })
+  }
 </div>

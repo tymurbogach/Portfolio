@@ -1,302 +1,246 @@
 <div class="w-full flex flex-col gap-8 fhd:gap-10">
-
-  <!-- ── Info strip ──────────────────────────────────────── -->
   <div class="grid grid-cols-1 mobile:grid-cols-3 gap-2">
-    <div class="info-block">
-      <span class="info-key">Email</span>
-      <a href="mailto:Timurnator@gmail.com" class="info-val hover:opacity-70 transition-opacity"
-         style="color: var(--accent-color)">Timurnator@gmail.com</a>
+    <div
+      class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]"
+    >
+      <span
+        class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40"
+        >Email</span
+      >
+      <a
+        href="mailto:Timurnator@gmail.com"
+        class="text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--accent-color)] hover:opacity-70 transition-opacity"
+      >
+        Timurnator@gmail.com
+      </a>
     </div>
-    <div class="info-block">
-      <span class="info-key">Location</span>
-      <span class="info-val">Orihuela, Alicante</span>
+    <div
+      class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]"
+    >
+      <span
+        class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40"
+        >Location</span
+      >
+      <span
+        class="text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--letter-color)]"
+        >Orihuela, Alicante</span
+      >
     </div>
-    <div class="info-block">
-      <span class="info-key">Status</span>
-      <span class="info-val" style="display:flex; align-items:center; gap:0.4rem;">
-        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent-color);flex-shrink:0;"></span>
+    <div
+      class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]"
+    >
+      <span
+        class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40"
+        >Status</span
+      >
+      <span
+        class="flex items-center gap-[0.4rem] text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--letter-color)]"
+      >
+        <span
+          class="w-[6px] h-[6px] rounded-full bg-[var(--accent-color)] shrink-0"
+        ></span>
         Available
       </span>
     </div>
   </div>
 
-  <!-- ── Form ────────────────────────────────────────────── -->
   <form id="contact-form" autocomplete="off">
-    <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
+    <input
+      type="hidden"
+      name="access_key"
+      value="6f16785c-509f-43aa-bd91-8c38b7d49f94"
+    />
     <input type="hidden" name="subject" value="New message from nastymur.com" />
 
-    <div id="form-status" class="hidden"></div>
+    <div
+      id="form-status"
+      class="hidden py-3 px-4 mb-4 border border-[var(--border-subtle)] text-xs tracking-[0.15em] text-center text-[var(--letter-color)]"
+    >
+    </div>
 
-    <div class="form-grid">
-      <div class="field">
-        <input id="f-name" type="text" name="name" required autocomplete="off"
-               placeholder="Name *" class="field-input" />
-        <label for="f-name" class="field-label">Name *</label>
-        <div class="field-line"></div>
+    <div
+      class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-y-0 min-[30rem]:gap-x-8"
+    >
+      <div class="relative pt-[1.4rem] pb-[0.2rem] mb-[1.4rem] group">
+        <input
+          id="f-name"
+          type="text"
+          name="name"
+          required
+          autocomplete="off"
+          placeholder="Name *"
+          class="bg-transparent border-none border-b border-[var(--border-subtle)] py-[0.4rem] px-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] w-full outline-none transition-colors duration-[250ms] placeholder-transparent focus:border-[var(--letter-color)] peer"
+        />
+        <label
+          for="f-name"
+          class="absolute top-[1.4rem] left-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] opacity-40 translate-y-[0.35rem] transition-all duration-200 pointer-events-none uppercase tracking-[0.15em] peer-focus:translate-y-0 peer-focus:text-[0.5rem] peer-focus:tracking-[0.35em] peer-focus:opacity-45 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[0.5rem] peer-[:not(:placeholder-shown)]:tracking-[0.35em] peer-[:not(:placeholder-shown)]:opacity-45"
+          >Name *</label
+        >
+        <div
+          class="absolute bottom-[0.2rem] left-0 h-[1px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-focus-within:w-full"
+        >
+        </div>
       </div>
 
-      <div class="field">
-        <input id="f-email" type="email" name="email" required autocomplete="off"
-               placeholder="Email *" class="field-input" />
-        <label for="f-email" class="field-label">Email *</label>
-        <div class="field-line"></div>
+      <div class="relative pt-[1.4rem] pb-[0.2rem] mb-[1.4rem] group">
+        <input
+          id="f-email"
+          type="email"
+          name="email"
+          required
+          autocomplete="off"
+          placeholder="Email *"
+          class="bg-transparent border-none border-b border-[var(--border-subtle)] py-[0.4rem] px-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] w-full outline-none transition-colors duration-[250ms] placeholder-transparent focus:border-[var(--letter-color)] peer"
+        />
+        <label
+          for="f-email"
+          class="absolute top-[1.4rem] left-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] opacity-40 translate-y-[0.35rem] transition-all duration-200 pointer-events-none uppercase tracking-[0.15em] peer-focus:translate-y-0 peer-focus:text-[0.5rem] peer-focus:tracking-[0.35em] peer-focus:opacity-45 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[0.5rem] peer-[:not(:placeholder-shown)]:tracking-[0.35em] peer-[:not(:placeholder-shown)]:opacity-45"
+          >Email *</label
+        >
+        <div
+          class="absolute bottom-[0.2rem] left-0 h-[1px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-focus-within:w-full"
+        >
+        </div>
       </div>
 
-      <div class="field">
-        <input id="f-project" type="text" name="project" autocomplete="off"
-               placeholder="Project" class="field-input" />
-        <label for="f-project" class="field-label">Project</label>
-        <div class="field-line"></div>
+      <div class="relative pt-[1.4rem] pb-[0.2rem] mb-[1.4rem] group">
+        <input
+          id="f-project"
+          type="text"
+          name="project"
+          autocomplete="off"
+          placeholder="Project"
+          class="bg-transparent border-none border-b border-[var(--border-subtle)] py-[0.4rem] px-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] w-full outline-none transition-colors duration-[250ms] placeholder-transparent focus:border-[var(--letter-color)] peer"
+        />
+        <label
+          for="f-project"
+          class="absolute top-[1.4rem] left-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] opacity-40 translate-y-[0.35rem] transition-all duration-200 pointer-events-none uppercase tracking-[0.15em] peer-focus:translate-y-0 peer-focus:text-[0.5rem] peer-focus:tracking-[0.35em] peer-focus:opacity-45 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[0.5rem] peer-[:not(:placeholder-shown)]:tracking-[0.35em] peer-[:not(:placeholder-shown)]:opacity-45"
+          >Project</label
+        >
+        <div
+          class="absolute bottom-[0.2rem] left-0 h-[1px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-focus-within:w-full"
+        >
+        </div>
       </div>
 
-      <div class="field">
-        <input id="f-budget" type="text" name="budget" autocomplete="off"
-               placeholder="Budget" class="field-input" />
-        <label for="f-budget" class="field-label">Budget</label>
-        <div class="field-line"></div>
+      <div class="relative pt-[1.4rem] pb-[0.2rem] mb-[1.4rem] group">
+        <input
+          id="f-budget"
+          type="text"
+          name="budget"
+          autocomplete="off"
+          placeholder="Budget"
+          class="bg-transparent border-none border-b border-[var(--border-subtle)] py-[0.4rem] px-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] w-full outline-none transition-colors duration-[250ms] placeholder-transparent focus:border-[var(--letter-color)] peer"
+        />
+        <label
+          for="f-budget"
+          class="absolute top-[1.4rem] left-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] opacity-40 translate-y-[0.35rem] transition-all duration-200 pointer-events-none uppercase tracking-[0.15em] peer-focus:translate-y-0 peer-focus:text-[0.5rem] peer-focus:tracking-[0.35em] peer-focus:opacity-45 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[0.5rem] peer-[:not(:placeholder-shown)]:tracking-[0.35em] peer-[:not(:placeholder-shown)]:opacity-45"
+          >Budget</label
+        >
+        <div
+          class="absolute bottom-[0.2rem] left-0 h-[1px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-focus-within:w-full"
+        >
+        </div>
       </div>
     </div>
 
-    <!-- Message + send -->
-    <div class="msg-wrap">
-      <textarea id="f-message" name="message" rows="5" required
-                placeholder="Your message *" class="msg-input"></textarea>
-      <button id="submit-btn" type="submit" class="send-btn">
-        <span class="send-label">Send</span>
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-             stroke-linecap="round" stroke-linejoin="round" class="send-arrow">
-          <path d="M4 10h12M12 5l5 5-5 5"/>
+    <div class="relative mb-2">
+      <textarea
+        id="f-message"
+        name="message"
+        rows="5"
+        required
+        placeholder="Your message *"
+        class="bg-transparent border border-[var(--border-subtle)] p-4 pb-12 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)] w-full resize-none outline-none transition-colors duration-[250ms] focus:border-[var(--accent-color)] placeholder:text-[0.7rem] placeholder:tracking-[0.2em] placeholder:uppercase placeholder:opacity-35 placeholder:font-['Poiret_One',cursive]"
+      ></textarea>
+
+      <button
+        id="submit-btn"
+        type="submit"
+        class="absolute bottom-[0.8rem] right-[0.8rem] flex items-center gap-2 py-[0.4rem] px-4 bg-[var(--letter-color)] text-[var(--page-background)] border-none cursor-pointer transition-all duration-200 hover:opacity-85 hover:translate-x-[2px] disabled:opacity-30 disabled:cursor-default disabled:transform-none"
+      >
+        <span
+          class="font-['Poiret_One',cursive] text-[0.6rem] tracking-[0.35em] uppercase font-bold"
+          >Send</span
+        >
+        <svg
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-4 h-4"
+        >
+          <path d="M4 10h12M12 5l5 5-5 5"></path>
         </svg>
       </button>
     </div>
   </form>
-
-  <!-- ── Quick links ─────────────────────────────────────── -->
-  <div class="flex flex-wrap gap-2">
-
-    <a href="https://www.linkedin.com/in/tymur-bogach-51939324a/" target="_blank" rel="noopener noreferrer"
-       class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold
-              border border-[var(--border-color)]
-              hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]
-              transition-all duration-200">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="color:var(--accent-color);flex-shrink:0">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-      LinkedIn
-    </a>
-
-    <a href="https://github.com/TimurTwerKing" target="_blank" rel="noopener noreferrer"
-       class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold
-              border border-[var(--border-color)]
-              hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]
-              transition-all duration-200">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="color:var(--accent-color);flex-shrink:0">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-      </svg>
-      GitHub
-    </a>
-
-    <a href="https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe" target="_blank" rel="noopener noreferrer"
-       class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold
-              border border-[var(--border-color)]
-              hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]
-              transition-all duration-200">
-      <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" style="color:var(--accent-color);flex-shrink:0">
-        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-      </svg>
-      CV
-    </a>
-
-  </div>
-
+  <div class="flex flex-wrap gap-2"></div>
 </div>
 
-<style>
-  /* Info strip */
-  .info-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
-  }
-  .info-key {
-    font-size: 0.55rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    font-weight: 700;
-    opacity: 0.4;
-  }
-  .info-val {
-    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-    font-weight: 700;
-    color: var(--letter-color);
-  }
+<script src="../scripts/contactForm.ts"></script>
 
-  /* Form grid: 2 cols on mobile+, 1 col on tiny */
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  @media (min-width: 30rem) {
-    .form-grid {
-      grid-template-columns: 1fr 1fr;
-      column-gap: 2rem;
-    }
-  }
+<div class="flex flex-wrap gap-2">
+  <a
+    href="https://www.linkedin.com/in/tymur-bogach-51939324a/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold border border-[var(--border-color)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="12"
+      height="12"
+      fill="currentColor"
+      class="text-[var(--accent-color)] shrink-0"
+    >
+      <path
+        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+      ></path>
+    </svg>
+    LinkedIn
+  </a>
 
-  /* Floating-label field */
-  .field {
-    position: relative;
-    padding-top: 1.4rem;
-    padding-bottom: 0.2rem;
-    margin-bottom: 1.4rem;
-  }
-  .field-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 0.4rem 0 0.4rem;
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
-    font-family: "Poiret One", cursive;
-    color: var(--letter-color);
-    width: 100%;
-    outline: none;
-    transition: border-color 0.25s;
-  }
-  .field-input::placeholder { opacity: 0; }
-  .field-input:focus { border-color: var(--letter-color); }
-  .field-input:focus + .field-label,
-  .field-input:not(:placeholder-shown) + .field-label {
-    transform: translateY(0);
-    font-size: 0.5rem;
-    letter-spacing: 0.35em;
-    opacity: 0.45;
-  }
-  .field-label {
-    position: absolute;
-    top: 1.4rem;
-    left: 0;
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
-    font-family: "Poiret One", cursive;
-    color: var(--letter-color);
-    opacity: 0.4;
-    transform: translateY(0.35rem);
-    transition: all 0.2s ease;
-    pointer-events: none;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-  }
-  .field-line {
-    position: absolute;
-    bottom: 0.2rem;
-    left: 0;
-    height: 1px;
-    width: 0;
-    background: var(--accent-color);
-    transition: width 0.3s ease;
-  }
-  .field:focus-within .field-line { width: 100%; }
+  <a
+    href="https://github.com/TimurTwerKing"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold border border-[var(--border-color)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="12"
+      height="12"
+      fill="currentColor"
+      class="text-[var(--accent-color)] shrink-0"
+    >
+      <path
+        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+      ></path>
+    </svg>
+    GitHub
+  </a>
 
-  /* Message */
-  .msg-wrap {
-    position: relative;
-    margin-bottom: 0.5rem;
-  }
-  .msg-input {
-    background: transparent;
-    border: 1px solid var(--border-subtle);
-    padding: 1rem;
-    padding-bottom: 3rem;
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
-    font-family: "Poiret One", cursive;
-    color: var(--letter-color);
-    width: 100%;
-    resize: none;
-    outline: none;
-    transition: border-color 0.25s;
-  }
-  .msg-input::placeholder {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.35;
-    font-family: "Poiret One", cursive;
-  }
-  .msg-input:focus { border-color: var(--accent-color); }
-
-  /* Send button */
-  .send-btn {
-    position: absolute;
-    bottom: 0.8rem;
-    right: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1rem;
-    background: var(--letter-color);
-    color: var(--page-background);
-    border: none;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .send-btn:hover { opacity: 0.85; transform: translateX(2px); }
-  .send-btn:disabled { opacity: 0.3; cursor: default; transform: none; }
-  .send-label {
-    font-family: "Poiret One", cursive;
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  .send-arrow { width: 1rem; height: 1rem; }
-
-  /* Status */
-  #form-status {
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-subtle);
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-align: center;
-    color: var(--letter-color);
-  }
-  #form-status.hidden { display: none; }
-</style>
-
-<script>
-  function initContactForm() {
-    const form = document.getElementById("contact-form") as HTMLFormElement | null;
-    const statusEl = document.getElementById("form-status") as HTMLElement | null;
-    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
-    if (!form || !statusEl || !submitBtn) return;
-
-    const ac = new AbortController();
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      statusEl.classList.remove("hidden");
-      statusEl.textContent = "Sending...";
-      try {
-        const data = new FormData(form);
-        const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
-        const result = await res.json();
-        if (result.success) {
-          statusEl.textContent = "Message sent! I'll get back to you soon.";
-          form.reset();
-        } else throw new Error(result.message || "Error");
-      } catch {
-        statusEl.textContent = "Something went wrong. Email me at Timurnator@gmail.com";
-      } finally {
-        submitBtn.disabled = false;
-      }
-    }, { signal: ac.signal });
-
-    document.addEventListener('astro:before-preparation', () => ac.abort(), { once: true });
-  }
-
-  document.addEventListener('astro:page-load', initContactForm);
-</script>
+  <a
+    href="https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold border border-[var(--border-color)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
+  >
+    <svg
+      viewBox="0 0 16 16"
+      width="12"
+      height="12"
+      fill="currentColor"
+      class="text-[var(--accent-color)] shrink-0"
+    >
+      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+      <path
+        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+      ></path>
+    </svg>
+    CV
+  </a>
+</div>

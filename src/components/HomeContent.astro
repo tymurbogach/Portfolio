@@ -1,5 +1,4 @@
 <div class="home-hero">
-
   <!-- Background dot grid -->
   <div class="home-grid-bg" aria-hidden="true"></div>
 
@@ -18,16 +17,18 @@
   <!-- CTAs -->
   <div class="cta-row">
     <a href="/projects" class="cta-primary">View work →</a>
-    <a href="/contact"  class="cta-ghost">Let's talk</a>
+    <a href="/contact" class="cta-ghost">Let's talk</a>
   </div>
 
   <!-- Tech strip -->
   <div class="tech-strip">
     <div class="tech-line"></div>
-    <p class="tech-text">TypeScript &nbsp;·&nbsp; Laravel &nbsp;·&nbsp; Angular &nbsp;·&nbsp; Astro &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Linux</p>
+    <p class="tech-text">
+      TypeScript &nbsp;·&nbsp; Laravel &nbsp;·&nbsp; Angular &nbsp;·&nbsp; Astro
+      &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Linux
+    </p>
     <div class="tech-line"></div>
   </div>
-
 </div>
 
 <style>
@@ -45,7 +46,11 @@
     position: absolute;
     inset: -4rem;
     z-index: -1;
-    background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      var(--border-color) 1px,
+      transparent 1px
+    );
     background-size: 28px 28px;
     opacity: 0.06;
     pointer-events: none;
@@ -98,7 +103,9 @@
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
   .cta-primary:hover {
     background: var(--accent-color);
@@ -117,7 +124,9 @@
     color: var(--letter-color);
     opacity: 0.65;
     text-decoration: none;
-    transition: opacity 0.2s, border-color 0.2s;
+    transition:
+      opacity 0.2s,
+      border-color 0.2s;
   }
   .cta-ghost:hover {
     opacity: 1;
