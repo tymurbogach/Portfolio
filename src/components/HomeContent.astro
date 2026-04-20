@@ -1,3 +1,9 @@
+---
+import { getEntry } from 'astro:content';
+
+const homeData = await getEntry('site', 'home');
+const { hero, techStrip } = homeData.data;
+---
 <div class="home-hero">
   <!-- Background dot grid -->
   <div class="home-grid-bg" aria-hidden="true"></div>
@@ -5,12 +11,12 @@
   <!-- Hero text -->
   <div class="hero-block">
     <h1 class="home-h1">
-      Full-stack developer.<br />
-      <span class="home-h1-dim">Precision obsessive.</span>
+      {hero.title1}<br />
+      <span class="home-h1-dim">{hero.title2}</span>
     </h1>
     <p class="home-sub">
-      10+ years building things with my hands.<br />
-      Now building them in code.
+      {hero.subtitle1}<br />
+      {hero.subtitle2}
     </p>
   </div>
 
@@ -23,10 +29,7 @@
   <!-- Tech strip -->
   <div class="tech-strip">
     <div class="tech-line"></div>
-    <p class="tech-text">
-      TypeScript &nbsp;·&nbsp; Laravel &nbsp;·&nbsp; Angular &nbsp;·&nbsp; Astro
-      &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Linux
-    </p>
+    <p class="tech-text">{techStrip}</p>
     <div class="tech-line"></div>
   </div>
 </div>

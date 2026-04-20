@@ -1,3 +1,9 @@
+---
+import { getEntry } from 'astro:content';
+
+const socialData = await getEntry('site', 'social');
+const socialLinks = socialData.data;
+---
 <div class="w-full h-[2.5rem]
   mobile:w-[20rem] mobile:h-[4.5rem]
   tablet:w-[20rem] tablet:h-[4.5rem]
@@ -11,26 +17,20 @@
               shadow-none rounded-none my-0 mx-0
               mobile:shadow-md tablet:shadow-lg">
 
-    {[
-      { href: "https://www.facebook.com/Timurnator/",             src: "/img/facebook.png",  alt: "Facebook"  },
-      { href: "https://www.instagram.com/timurnator_/",           src: "/img/instagram.png", alt: "Instagram" },
-      { href: "https://github.com/TimurTwerKing",                 src: "/img/github.png",    alt: "GitHub"    },
-      { href: "https://www.linkedin.com/in/tymur-bogach-51939324a/", src: "/img/linkedin.png", alt: "LinkedIn" },
-      { href: "https://x.com/BogachTimur",                        src: "/img/twitter.png",   alt: "X / Twitter"},
-    ].map(({ href, src, alt }) => (
+    {socialLinks.map(({ url, icon, name }: any) => (
       <a
-        href={href}
+        href={url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={alt}
+        aria-label={name}
         class="group flex flex-col items-center justify-center h-full flex-1
                text-[var(--letter-color)] p-[0.75rem]
                transition-all duration-250 ease-in-out
                hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
       >
         <img
-          src={src}
-          alt={`${alt} Icon`}
+          src={icon}
+          alt={`${name} Icon`}
           class="nav-icon w-[1.2rem] h-[1.2rem]
                  mobile:w-[1.4rem] mobile:h-[1.4rem]
                  tablet:w-[1.6rem] tablet:h-[1.6rem]

@@ -3,7 +3,7 @@ import { getEntry } from "astro:content";
 
 // Obtenemos los datos directamente del .md
 const aboutFile = await getEntry("about", "index");
-const { journey, education, hobbies } = aboutFile.data;
+const { journey, education, hobbies, location, quote } = aboutFile.data;
 ---
 
 <section class="flex flex-col gap-10 laptop:gap-12 w-full">
@@ -90,25 +90,28 @@ const { journey, education, hobbies } = aboutFile.data;
   </div>
 
   <div class="flex flex-col gap-6">
-    <div
-      class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase"
-    >
-      <span>📍</span>
-      <span>Orihuela, Alicante — Spain</span>
-    </div>
-
-    <blockquote
-      class="border-l-2 border-[var(--accent-color)] pl-5 laptop:pl-7"
-    >
-      <p
-        class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75"
+    {location && (
+      <div
+        class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase"
       >
-        "Following the white rabbit, choosing the right Morpheus pill, and
-        eating the Oracle cookie."
-      </p>
-      <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">
-        — Hope you get the reference.
-      </p>
-    </blockquote>
+        <span>📍</span>
+        <span>{location.label}</span>
+      </div>
+    )}
+
+    {quote && (
+      <blockquote
+        class="border-l-2 border-[var(--accent-color)] pl-5 laptop:pl-7"
+      >
+        <p
+          class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75"
+        >
+          "{quote.text}"
+        </p>
+        <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">
+          — {quote.author}
+        </p>
+      </blockquote>
+    )}
   </div>
 </section>

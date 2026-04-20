@@ -1,5 +1,9 @@
 ---
+import { getEntry } from 'astro:content';
 import TechIcon from './TechIcon.astro';
+
+const resumeData = await getEntry('site', 'resume');
+const { frontend, backend, homelab, languages } = resumeData.data;
 ---
 
 <section class="flex flex-col w-full gap-9 laptop:gap-12">
@@ -14,17 +18,7 @@ import TechIcon from './TechIcon.astro';
         <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
       </div>
       <div class="chip-grid">
-        {[
-          { slug: "html5",       color: "#e34f26", label: "HTML5"      },
-          { slug: "css",         color: "#1572b6", label: "CSS / SCSS" },
-          { slug: "javascript",  color: "#f7df1e", label: "JavaScript" },
-          { slug: "typescript",  color: "#3178c6", label: "TypeScript" },
-          { slug: "tailwindcss", color: "#06b6d4", label: "Tailwind"   },
-          { slug: "angular",     color: "#dd0031", label: "Angular"    },
-          { slug: "vuedotjs",    color: "#41b883", label: "Vue.js"     },
-          { slug: "react",       color: "#61dafb", label: "React"      },
-          { slug: "astro",       color: "#ff5d01", label: "Astro"      },
-        ].map(({ slug, color, label }) => (
+        {frontend.map(({ slug, color, label }: any) => (
           <div class="chip">
             <TechIcon slug={slug} color={color} label={label} size={18} />
             <span>{label}</span>
@@ -40,14 +34,7 @@ import TechIcon from './TechIcon.astro';
         <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
       </div>
       <div class="chip-grid">
-        {[
-          { slug: "php",     color: "#777bb3", label: "PHP"     },
-          { slug: "laravel", color: "#ff2d20", label: "Laravel" },
-          { slug: "openjdk", color: "#ed8b00", label: "Java"    },
-          { slug: "mysql",   color: "#00758f", label: "MySQL"   },
-          { slug: "git",     color: "#f05032", label: "Git"     },
-          { slug: "android", color: "#3ddc84", label: "Android" },
-        ].map(({ slug, color, label }) => (
+        {backend.map(({ slug, color, label }: any) => (
           <div class="chip">
             <TechIcon slug={slug} color={color} label={label} size={18} />
             <span>{label}</span>
@@ -64,22 +51,7 @@ import TechIcon from './TechIcon.astro';
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
     <div class="chip-grid">
-      {[
-        { slug: "docker",       color: "#2496ed", label: "Docker"       },
-        { slug: "nginx",        color: "#009900", label: "Nginx"        },
-        { slug: "linux",        color: "#fcc624", label: "Linux"        },
-        { slug: "windows",      color: "#0078d4", label: "Windows"      },
-        { slug: "raspberrypi",  color: "#c51a4a", label: "Raspberry Pi" },
-        { slug: "truenas",      color: "#0095d5", label: "TrueNAS"      },
-        { slug: "tailscale",    color: "#3b82f6", label: "Tailscale"    },
-        { slug: "cloudflare",   color: "#f6821f", label: "Cloudflare"   },
-        { slug: "portainer",    color: "#20c997", label: "Portainer"    },
-        { slug: "pihole",       color: "#ef4444", label: "Pi-hole"      },
-        { slug: "jellyfin",     color: "#a855f7", label: "Jellyfin"     },
-        { slug: "immich",       color: "#4250af", label: "Immich"       },
-        { slug: "ollama",       color: "#8b5cf6", label: "Ollama"       },
-        { slug: "uptimekuma",   color: "#5cdd8b", label: "Uptime Kuma"  },
-      ].map(({ slug, color, label }) => (
+      {homelab.map(({ slug, color, label }: any) => (
         <div class="chip">
           <TechIcon slug={slug} color={color} label={label} size={18} />
           <span>{label}</span>
@@ -95,12 +67,7 @@ import TechIcon from './TechIcon.astro';
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
     <div class="grid grid-cols-4 gap-2">
-      {[
-        { flag: "🇷🇺", lang: "Russian",   level: "native" },
-        { flag: "🇺🇦", lang: "Ukrainian", level: "native" },
-        { flag: "🇪🇸", lang: "Spanish",   level: "fluent" },
-        { flag: "🇬🇧", lang: "English",   level: "fluent" },
-      ].map(({ flag, lang, level }) => (
+      {languages.map(({ flag, lang, level }: any) => (
         <div class="flex flex-col items-center gap-1 px-2 py-3
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)] text-center">
           <span class="text-xl">{flag}</span>

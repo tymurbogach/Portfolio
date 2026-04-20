@@ -3,6 +3,13 @@ import { defineCollection, z } from 'astro:content';
 const about = defineCollection({
     type: 'content',
     schema: z.object({
+        location: z.object({
+            label: z.string()
+        }).optional(),
+        quote: z.object({
+            text: z.string(),
+            author: z.string()
+        }).optional(),
         journey: z.array(z.object({
             year: z.string(),
             event: z.string(),
@@ -28,9 +35,15 @@ const projects = defineCollection({
             title: z.string(),
             description: z.string(),
             link: z.string().optional(),
-            image: z.string()
+            image: z.string(),
+            tags: z.array(z.string()).optional()
         }))
     })
 });
 
-export const collections = { about, projects };
+const site = defineCollection({
+    type: 'data',
+    schema: z.any() // We will let the schema be loose or define specific shapes via z.any() for simplicity, or we can use z.union of different schemas. Using z.any() to hold the generic site configs.
+});
+
+export const collections = { about, projects, site };

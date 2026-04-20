@@ -1,3 +1,12 @@
+---
+import { getEntry } from 'astro:content';
+
+const homeData = await getEntry('site', 'home');
+const contactData = await getEntry('site', 'contact');
+
+const { hero, stats } = homeData.data;
+const { cv_link } = contactData.data;
+---
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
 
   <!-- Main content — stacks vertically on laptop sidebar, 2-col on fhd+ (index page) -->
@@ -17,9 +26,8 @@
 
       <p class="text-[0.65rem] mobile:text-xs laptop:text-[0.65rem] fhd:text-sm qhd:text-base
                 text-center opacity-70 leading-relaxed max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]">
-        10+ years building things with my hands.<br />
-        Now building them in code. Precision obsessive,<br class="hidden fhd:block" />
-        self-hoster, fluent in 4 languages.
+        {hero.subtitle1}<br />
+        {hero.subtitle2}
       </p>
     </div>
 
@@ -28,12 +36,7 @@
 
       <!-- Stats row -->
       <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
-        {[
-          { n: "10+", label: "years precision" },
-          { n: "4",   label: "languages" },
-          { n: "15+", label: "projects shipped" },
-          { n: "24/7", label: "self-hosted" },
-        ].map(({ n, label }) => (
+        {stats.map(({ n, label }: any) => (
           <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
             <span class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
                   style="color: var(--accent-color)">{n}</span>
@@ -69,7 +72,7 @@
   <div style="position:absolute; inset:0; display:flex; flex-direction:column;">
     <div style="display:flex; justify-content:flex-end; align-items:center; gap:12px; padding:16px 24px; flex-shrink:0;">
       <a id="cv-download-btn"
-         href="https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe"
+         href={cv_link}
          target="_blank"
          rel="noopener noreferrer"
          class="cv-modal-action cv-modal-accent">

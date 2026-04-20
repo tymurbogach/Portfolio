@@ -1,4 +1,10 @@
 ---
+location:
+  label: "Orihuela, Alicante — Spain"
+quote:
+  text: "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie."
+  author: "Hope you get the reference."
+
 journey:
   - year: "2012 — 17"
     event: "Mechanic & Paint Tech"
