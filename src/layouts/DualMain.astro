@@ -4,26 +4,42 @@ const { pageLabel = "" } = Astro.props;
 ---
 
 <div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
-
-  <!-- Izquierda — panel home (38% → 30% en fhd+) -->
-  <div class="hidden laptop:flex laptop:w-[38%] fhd:w-[32%] qhd:w-[28%] shrink-0 min-h-0 items-center justify-center
+  <!-- Izquierda — panel home (ancho fijo = --sidebar-width) -->
+  <div
+    class="hidden laptop:flex shrink-0 min-h-0 items-center justify-center
               laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]
-              border-r border-[var(--border-subtle)]">
+              border-r border-[var(--border-subtle)]"
+    style="width: var(--sidebar-width);"
+  >
     <IndexContent />
   </div>
 
-  <!-- Derecha — panel contenido (62% → 68% en fhd+) -->
-  <div class="w-full laptop:w-[62%] fhd:w-[68%] qhd:w-[72%] flex flex-col h-full min-h-0 relative">
-
+  <!-- Derecha — panel contenido (flex:1 absorbe el espacio restante) -->
+  <div
+    transition:name="content-panel"
+    class="flex-1 min-w-0 flex flex-col h-full min-h-0 relative"
+  >
     <!-- Título FIJO -->
-    <div class="shrink-0
-      px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+    <div
+      class="shrink-0
+      px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[52.5rem] qhd:px-[6.5rem]
       pt-[1.25rem] mobile:pt-[1.75rem] tablet:pt-[2.5rem] laptop:pt-[4.5rem] fhd:pt-[5.5rem] qhd:pt-[6.5rem]
-      pb-5 laptop:pb-7">
-      <div class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch] laptop:mx-auto">
-        <p class="text-sm laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold
-                  text-[var(--letter-color)]">{pageLabel}</p>
-        <div class="h-px mt-4" style="background: var(--accent-color); opacity: 0.25;"></div>
+      pb-5 laptop:pb-7"
+    >
+      <div
+        class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch] laptop:mx-auto"
+      >
+        <p
+          class="text-sm laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold
+                  text-[var(--letter-color)]"
+        >
+          {pageLabel}
+        </p>
+        <div
+          class="h-px mt-4"
+          style="background: var(--accent-color); opacity: 0.25;"
+        >
+        </div>
       </div>
     </div>
 
@@ -36,136 +52,37 @@ const { pageLabel = "" } = Astro.props;
       style="mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
              -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);"
     >
-      <div class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch] laptop:mx-auto">
+      <div
+        class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch] laptop:mx-auto"
+      >
         <slot />
       </div>
     </div>
 
     <!-- Hint de siguiente página -->
-    <div id="next-hint"
-         class="absolute bottom-0 inset-x-0 z-30
-                flex items-center justify-between
+    <div
+      id="next-hint"
+      class="absolute bottom-0 inset-x-0 z-30
+                flex items-center justify-end
                 px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
                 py-3 laptop:py-4
-                pointer-events-none select-none">
-      <!-- Barra de progreso (solo móvil) -->
-      <div id="next-progress"
-           class="absolute bottom-0 left-0 h-[1.5px]"
-           style="width:0%; background: var(--accent-color); transition: none;">
-      </div>
-
-      <!-- Spacer izq -->
-      <div class="flex-1"></div>
-
+                pointer-events-none select-none"
+    >
       <!-- Label clicable -->
-      <button id="next-btn"
-              class="flex items-center gap-2 py-1 px-3
+      <button
+        id="next-btn"
+        class="flex items-center gap-2 py-1 px-3
                      text-[0.58rem] tracking-[0.45em] uppercase font-bold
                      border border-[var(--border-color)]
                      bg-[var(--page-background)]
                      cursor-pointer
                      transition-all duration-300
                      pointer-events-auto"
-              style="opacity:0; transition: opacity 0.4s ease, border-color 0.3s ease;">
+        style="opacity:0; transition: opacity 0.4s ease, border-color 0.3s ease;"
+      >
         <span id="next-label">about</span>
         <span style="color: var(--accent-color)">→</span>
       </button>
     </div>
-
   </div>
 </div>
-
-<style>
-  #next-btn:hover {
-    border-color: var(--accent-color) !important;
-    color: var(--accent-color);
-  }
-</style>
-
-<script>
-  import { navigate } from 'astro:transitions/client';
-
-  const PAGES = [
-    { path: '/',         label: 'about'    },
-    { path: '/about',    label: 'resume'   },
-    { path: '/resume',   label: 'projects' },
-    { path: '/projects', label: 'contact'  },
-    { path: '/contact',  label: 'home'     },
-  ];
-
-  function isMobile() {
-    return window.innerWidth < 1280;
-  }
-
-  function init() {
-    const scrollEl = document.getElementById('content-scroll');
-    const btn      = document.getElementById('next-btn') as HTMLElement | null;
-    const label    = document.getElementById('next-label') as HTMLElement | null;
-    const bar      = document.getElementById('next-progress') as HTMLElement | null;
-
-    if (!scrollEl || !btn || !label || !bar) return;
-
-    // Reset state on every page load
-    bar.style.transition = 'none';
-    bar.style.width = '0%';
-    btn.style.opacity = '0';
-    btn.style.borderColor = '';
-
-    const raw  = window.location.pathname.replace(/\/$/, '') || '/';
-    const idx  = PAGES.findIndex(p => p.path === raw);
-    const cur  = idx >= 0 ? idx : 0;
-    const next = PAGES[(cur + 1) % PAGES.length];
-
-    label.textContent = next.label;
-
-    let autoTimer: ReturnType<typeof setTimeout> | null = null;
-    let visible = false;
-
-    function show() {
-      if (visible) return;
-      visible = true;
-      btn.style.opacity = '0.7';
-
-      if (isMobile()) {
-        bar.style.transition = 'none';
-        bar.style.width = '0%';
-        bar.offsetWidth; // force reflow
-        bar.style.transition = 'width 2s linear';
-        bar.style.width = '100%';
-        autoTimer = setTimeout(() => navigate(next.path), 2000);
-      }
-    }
-
-    function hide() {
-      if (!visible) return;
-      visible = false;
-      btn.style.opacity = '0';
-      if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
-      bar.style.transition = 'width 0.3s ease';
-      bar.style.width = '0%';
-    }
-
-    function check() {
-      const rem = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight;
-      rem < 8 ? show() : hide();
-    }
-
-    // Clean up old listeners by replacing the element clone trick is overkill;
-    // instead track with AbortController
-    const ac = new AbortController();
-    scrollEl.addEventListener('scroll', check, { passive: true, signal: ac.signal });
-    btn.addEventListener('click', () => navigate(next.path), { signal: ac.signal });
-
-    // Cleanup when next navigation starts
-    document.addEventListener('astro:before-preparation', () => ac.abort(), { once: true });
-
-    // No scroll possible: show hint after delay
-    setTimeout(() => {
-      if (scrollEl.scrollHeight <= scrollEl.clientHeight + 12) show();
-    }, 1800);
-
-    check();
-  }
-
-  document.addEventListener('astro:page-load', init);
-</script>

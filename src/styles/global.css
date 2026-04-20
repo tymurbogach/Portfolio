@@ -17,101 +17,101 @@
 /* ─── Variant 1 — Chalk (default) ────────────────────── */
 :root {
   --component-background: #f5f5f5;
-  --page-background:       #fafafa;
-  --total-background:      #f0f0f0;
-  --letter-color:          #111111;
-  --border-color:          #d0d0d0;
-  --hover-bg:              #111111;
-  --hover-text:            #fafafa;
-  --accent-color:          #1a3a5c;
-  --accent-subtle:         rgba(26, 58, 92, 0.07);
-  --surface-raised:        #f7f7f7;
+  --page-background: #fafafa;
+  --total-background: #f0f0f0;
+  --letter-color: #111111;
+  --border-color: #d0d0d0;
+  --hover-bg: #111111;
+  --hover-text: #fafafa;
+  --accent-color: #1a3a5c;
+  --accent-subtle: rgba(26, 58, 92, 0.07);
+  --surface-raised: #f7f7f7;
 }
 
 /* ─── Variant 2 — Stone (warm neutral) ───────────────── */
 :root.variant-2 {
   --component-background: #f0ebe3;
-  --page-background:       #f7f3ec;
-  --total-background:      #e8e1d8;
-  --letter-color:          #1a160e;
-  --border-color:          #c8bfb0;
-  --hover-bg:              #1a160e;
-  --hover-text:            #f7f3ec;
-  --accent-color:          #b05b2a;
-  --accent-subtle:         rgba(176, 91, 42, 0.07);
-  --surface-raised:        #faf6f0;
+  --page-background: #f7f3ec;
+  --total-background: #e8e1d8;
+  --letter-color: #1a160e;
+  --border-color: #c8bfb0;
+  --hover-bg: #1a160e;
+  --hover-text: #f7f3ec;
+  --accent-color: #b05b2a;
+  --accent-subtle: rgba(176, 91, 42, 0.07);
+  --surface-raised: #faf6f0;
 }
 
 /* ─── Variant 3 — Slate (ocean blue) ─────────────────── */
 :root.variant-3 {
   --component-background: #eaf0f7;
-  --page-background:       #f4f8fc;
-  --total-background:      #dce8f2;
-  --letter-color:          #0d1a28;
-  --border-color:          #aac0d8;
-  --hover-bg:              #0d1a28;
-  --hover-text:            #f4f8fc;
-  --accent-color:          #1a6091;
-  --accent-subtle:         rgba(26, 96, 145, 0.07);
-  --surface-raised:        #f5f9fd;
+  --page-background: #f4f8fc;
+  --total-background: #dce8f2;
+  --letter-color: #0d1a28;
+  --border-color: #aac0d8;
+  --hover-bg: #0d1a28;
+  --hover-text: #f4f8fc;
+  --accent-color: #1a6091;
+  --accent-subtle: rgba(26, 96, 145, 0.07);
+  --surface-raised: #f5f9fd;
 }
 
 /* ─── Variant 4 — Moss (forest green) ────────────────── */
 :root.variant-4 {
   --component-background: #eaf1e8;
-  --page-background:       #f3f8f1;
-  --total-background:      #dce9d9;
-  --letter-color:          #0f1a0e;
-  --border-color:          #a6bfa0;
-  --hover-bg:              #0f1a0e;
-  --hover-text:            #f3f8f1;
-  --accent-color:          #2d6b2a;
-  --accent-subtle:         rgba(45, 107, 42, 0.07);
-  --surface-raised:        #f6faf5;
+  --page-background: #f3f8f1;
+  --total-background: #dce9d9;
+  --letter-color: #0f1a0e;
+  --border-color: #a6bfa0;
+  --hover-bg: #0f1a0e;
+  --hover-text: #f3f8f1;
+  --accent-color: #2d6b2a;
+  --accent-subtle: rgba(45, 107, 42, 0.07);
+  --surface-raised: #f6faf5;
 }
 
 /* ─── Variant 5 — Sand (warm amber) ──────────────────── */
 :root.variant-5 {
   --component-background: #f2ede3;
-  --page-background:       #faf7f0;
-  --total-background:      #ebe4d7;
-  --letter-color:          #1c1912;
-  --border-color:          #d0c8b5;
-  --hover-bg:              #1c1912;
-  --hover-text:            #faf7f0;
-  --accent-color:          #b36b00;
-  --accent-subtle:         rgba(179, 107, 0, 0.07);
-  --surface-raised:        #fdfaf4;
+  --page-background: #faf7f0;
+  --total-background: #ebe4d7;
+  --letter-color: #1c1912;
+  --border-color: #d0c8b5;
+  --hover-bg: #1c1912;
+  --hover-text: #faf7f0;
+  --accent-color: #b36b00;
+  --accent-subtle: rgba(179, 107, 0, 0.07);
+  --surface-raised: #fdfaf4;
 }
 
 /* ─── Variant 6 — Void (dark / warm gold) ────────────── */
 :root.variant-6 {
   --component-background: #1c1c1c;
-  --page-background:       #141414;
-  --total-background:      #0c0c0c;
-  --letter-color:          #e8e0d4;
-  --border-color:          #282828;
-  --hover-bg:              #e8e0d4;
-  --hover-text:            #141414;
-  --accent-color:          #c8952a;
-  --accent-subtle:         rgba(200, 149, 42, 0.12);
-  --surface-raised:        #1a1a1a;
-  --border-subtle:         rgba(40, 40, 40, 0.9);
+  --page-background: #141414;
+  --total-background: #0c0c0c;
+  --letter-color: #e8e0d4;
+  --border-color: #282828;
+  --hover-bg: #e8e0d4;
+  --hover-text: #141414;
+  --accent-color: #c8952a;
+  --accent-subtle: rgba(200, 149, 42, 0.12);
+  --surface-raised: #1a1a1a;
+  --border-subtle: rgba(40, 40, 40, 0.9);
 }
 
 /* ─── Variant 7 — Abyss (dark / deep blue) ───────────── */
 :root.variant-7 {
   --component-background: #101828;
-  --page-background:       #0a1220;
-  --total-background:      #060c16;
-  --letter-color:          #c0d4e8;
-  --border-color:          #1a2c48;
-  --hover-bg:              #c0d4e8;
-  --hover-text:            #0a1220;
-  --accent-color:          #2eb8e8;
-  --accent-subtle:         rgba(46, 184, 232, 0.12);
-  --surface-raised:        #0f1a2e;
-  --border-subtle:         rgba(26, 44, 72, 0.95);
+  --page-background: #0a1220;
+  --total-background: #060c16;
+  --letter-color: #c0d4e8;
+  --border-color: #1a2c48;
+  --hover-bg: #c0d4e8;
+  --hover-text: #0a1220;
+  --accent-color: #2eb8e8;
+  --accent-subtle: rgba(46, 184, 232, 0.12);
+  --surface-raised: #0f1a2e;
+  --border-subtle: rgba(26, 44, 72, 0.95);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -120,6 +120,24 @@
 
 :root {
   --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
+
+  /* Design tokens */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+  --space-10: 64px;
+  --space-12: 96px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  /* name-box left-[3rem] + width - main-padding[6rem] = divider position */
+  --sidebar-width: 22rem;
+  /* laptop: 3+25-6=22rem — divider aligns with Name box right edge */
+  --header-height: 88px;
 }
 
 *,
@@ -129,65 +147,93 @@
   font-family: "Poiret One", cursive;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
+/* Sidebar width overrides — keeps divider aligned with Name box right edge at each breakpoint */
+/* formula: Name.left(3rem) + Name.width - main.padding(6rem) */
+@media (min-width: 120rem) {
+
+  /* fhd: Name=30rem → 3+30-6=27rem */
+  :root {
+    --sidebar-width: 27rem;
+  }
+}
+
+@media (min-width: 160rem) {
+
+  /* qhd: Name=35rem → 3+35-6=32rem */
+  :root {
+    --sidebar-width: 32rem;
+  }
+}
+
+@media (min-width: 240rem) {
+
+  /* uhd: Name=40rem → 3+40-6=37rem */
+  :root {
+    --sidebar-width: 37rem;
+  }
+}
+
 /* Scale base font at large resolutions so rem-based sizes grow naturally */
 @media (min-width: 120rem) {
-  html { font-size: 17px; }
+  html {
+    font-size: 17px;
+  }
 }
+
 @media (min-width: 160rem) {
-  html { font-size: 19px; }
+  html {
+    font-size: 19px;
+  }
 }
+
 @media (min-width: 240rem) {
-  html { font-size: 22px; }
+  html {
+    font-size: 22px;
+  }
 }
 
 /* ── Nav/Social PNG icon hover contrast fix ──────────── */
-.nav-icon { transition: filter 0.2s, transform 0.2s, opacity 0.2s; }
+.nav-icon {
+  transition: filter 0.2s, transform 0.2s, opacity 0.2s;
+}
+
 /* Light themes: icons are naturally dark (visible on light bg) */
 /* Light themes hover: bg goes dark → invert icons to white */
 a:hover .nav-icon,
-button:hover .nav-icon { filter: brightness(0) invert(1); }
+button:hover .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
 /* Dark themes (6,7): default bg is dark → invert icons to white so they're visible */
 :root.variant-6 .nav-icon,
-:root.variant-7 .nav-icon { filter: brightness(0) invert(1); }
+:root.variant-7 .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
 /* Dark themes hover: bg goes light → keep icons dark */
 :root.variant-6 a:hover .nav-icon,
 :root.variant-6 button:hover .nav-icon,
 :root.variant-7 a:hover .nav-icon,
-:root.variant-7 button:hover .nav-icon { filter: brightness(0); }
-
-::-webkit-scrollbar        { width: 4px; }
-::-webkit-scrollbar-track  { background: transparent; }
-::-webkit-scrollbar-thumb  { background: var(--border-subtle); border-radius: 2px; }
-
-/* ═══════════════════════════════════════════════════════
-   VIEW TRANSITIONS — crossfade suave, sin parpadeo
-   ═══════════════════════════════════════════════════════ */
-
-/* Old page: instant disappear, no overlap with new page */
-::view-transition-old(root) {
-  animation: none;
-  display: none;
-}
-/* New page: smooth fade-in only */
-::view-transition-new(root) {
-  animation-duration: 0.2s;
-  animation-timing-function: ease-out;
-  animation-name: vt-fade-in;
+:root.variant-7 button:hover .nav-icon {
+  filter: brightness(0);
 }
 
-@keyframes vt-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+::-webkit-scrollbar {
+  width: 4px;
 }
 
-/* Elementos persistentes — no re-animan */
-::view-transition-old(persist-ui),
-::view-transition-new(persist-ui) {
-  animation: none;
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 2px;
 }

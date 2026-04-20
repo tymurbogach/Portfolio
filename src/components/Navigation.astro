@@ -11,7 +11,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
   uhd:w-[40rem] uhd:h-[6.5rem]"
 >
   <nav
-    class="flex flex-row items-center justify-center text-center w-full h-[3.5rem] laptop:h-full
+    class="relative flex flex-row items-center justify-center text-center w-full h-[3.5rem] laptop:h-full
            bg-[var(--component-background)] border border-[var(--border-color)]
            shadow-none rounded-none my-0 mx-0
            mobile:shadow-md tablet:shadow-lg"
@@ -26,10 +26,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
              gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
              hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img src="/img/about.png" alt="About Icon"
-           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                  opacity-70 transition-all duration-200
-                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
+      <span class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                   transition-all duration-200 group-hover:scale-125"
+            style="-webkit-mask-image:url('/img/about.png');mask-image:url('/img/about.png');"
+            aria-hidden="true"></span>
       <span>About</span>
     </a>
 
@@ -43,10 +43,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
              gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
              hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img src="/img/resume.png" alt="Resume Icon"
-           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                  opacity-70 transition-all duration-200
-                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
+      <span class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                   transition-all duration-200 group-hover:scale-125"
+            style="-webkit-mask-image:url('/img/resume.png');mask-image:url('/img/resume.png');"
+            aria-hidden="true"></span>
       <span>Resume</span>
     </a>
 
@@ -60,10 +60,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
              gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
              hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img src="/img/projects.png" alt="Projects Icon"
-           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                  opacity-70 transition-all duration-200
-                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
+      <span class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                   transition-all duration-200 group-hover:scale-125"
+            style="-webkit-mask-image:url('/img/projects.png');mask-image:url('/img/projects.png');"
+            aria-hidden="true"></span>
       <span>Projects</span>
     </a>
 
@@ -77,33 +77,69 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
              gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
              hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
     >
-      <img src="/img/contact.png" alt="Contact Icon"
-           class="nav-icon w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                  opacity-70 transition-all duration-200
-                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm" />
+      <span class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                   transition-all duration-200 group-hover:scale-125"
+            style="-webkit-mask-image:url('/img/contact.png');mask-image:url('/img/contact.png');"
+            aria-hidden="true"></span>
       <span>Contact</span>
     </a>
+
+    <!-- Sliding active indicator -->
+    <div id="nav-indicator"
+         style="position:absolute; bottom:0; height:2px; background:var(--accent-color);
+                transition: left 0.25s ease, width 0.25s ease;
+                pointer-events:none; left:0; width:0;">
+    </div>
   </nav>
 </div>
 
 <style>
+  .nav-mask {
+    display: inline-block;
+    background-color: var(--letter-color);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    opacity: 0.65;
+  }
+  .nav-link:hover .nav-mask {
+    background-color: var(--hover-text);
+    opacity: 1;
+  }
   .nav-link[data-active="true"] {
-    border-bottom: 2px solid var(--accent-color);
     background: var(--accent-subtle);
   }
-  .nav-link[data-active="true"] .nav-icon {
+  .nav-link[data-active="true"] .nav-mask {
+    background-color: var(--accent-color);
     opacity: 1;
-    filter: saturate(1.5);
   }
 </style>
 
 <script>
+  function updateIndicator(instant = false) {
+    const nav = document.querySelector('nav') as HTMLElement | null;
+    const indicator = document.getElementById('nav-indicator') as HTMLElement | null;
+    const active = document.querySelector('.nav-link[data-active="true"]') as HTMLElement | null;
+    if (!nav || !indicator || !active) return;
+    if (instant) indicator.style.transition = 'none';
+    const navRect = nav.getBoundingClientRect();
+    const activeRect = active.getBoundingClientRect();
+    indicator.style.left = (activeRect.left - navRect.left) + 'px';
+    indicator.style.width = activeRect.width + 'px';
+    if (instant) requestAnimationFrame(() => { indicator.style.transition = ''; });
+  }
+
   function syncNavActive() {
     const path = window.location.pathname.replace(/\/$/, '') || '/';
     document.querySelectorAll<HTMLElement>('.nav-link[data-active]').forEach(link => {
       const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
       link.dataset.active = (href === path).toString();
     });
+    updateIndicator(true); // snap on page load, no slide
   }
+
   document.addEventListener('astro:page-load', syncNavActive);
 </script>

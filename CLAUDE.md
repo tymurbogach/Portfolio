@@ -10,7 +10,7 @@
 - caveman
 
 ## Referencia de diseño
-- La página actual es la fuente de verdad — úsala como base sólida
-- Mejorar distribución de contenido, jerarquía visual y detalles de diseño
-- Mantener identidad visual (paleta, tipografía base, tono general)
-- Todo lo demás está abierto a mejora si hay razón de peso
+- Página actual = fuente verdad. Usar como base
+- Mejorar distribución contenido, jerarquía visual, detalles diseño
+- Mantener identidad visual (paleta, tipografía, tono)
+- Todo demás abierto a mejora si razón de peso

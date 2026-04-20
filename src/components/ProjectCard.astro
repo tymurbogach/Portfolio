@@ -18,10 +18,8 @@ const isDemo = type === 'demo';
        style="width: 10rem; min-width: 10rem;">
 
     <!-- Badge -->
-    <span class={`absolute top-2 left-2 z-20 text-[0.45rem] tracking-[0.2em] px-1.5 py-0.5 font-bold uppercase
-                  ${isDemo
-                    ? 'bg-[var(--letter-color)] text-[var(--page-background)]'
-                    : 'bg-[var(--total-background)] text-[var(--letter-color)] opacity-70'}`}>
+    <span class="absolute top-3 left-3 z-20 text-[0.45rem] tracking-[0.2em] px-2 py-1 font-bold uppercase
+                 border border-[var(--border-subtle)] bg-[var(--page-background)] text-[var(--letter-color)] opacity-80">
       {isDemo ? '● live' : '⌥ src'}
     </span>
 

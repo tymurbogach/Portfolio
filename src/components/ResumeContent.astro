@@ -1,3 +1,7 @@
+---
+import TechIcon from './TechIcon.astro';
+---
+
 <section class="flex flex-col w-full gap-9 laptop:gap-12">
 
   <!-- Frontend + Backend side by side or stacked -->
@@ -9,23 +13,21 @@
         <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Frontend</h2>
         <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
       </div>
-      <div class="grid grid-cols-2 gap-1.5">
+      <div class="chip-grid">
         {[
-          { icon: "fab fa-html5",        color: "#e34f26", label: "HTML5"       },
-          { icon: "fab fa-css3-alt",     color: "#1572b6", label: "CSS / SCSS"  },
-          { icon: "fab fa-js",           color: "#f7df1e", label: "JavaScript"  },
-          { icon: "fab fa-js-square",    color: "#3178c6", label: "TypeScript"  },
-          { icon: "fas fa-pencil-ruler", color: "#38bdf8", label: "Tailwind"    },
-          { icon: "fab fa-angular",      color: "#dd0031", label: "Angular"     },
-          { icon: "fab fa-vuejs",        color: "#41b883", label: "Vue.js"      },
-          { icon: "fab fa-react",        color: "#61dafb", label: "React"       },
-          { icon: "fab fa-galactic-republic", color: "#ff5d01", label: "Astro" },
-        ].map(({ icon, color, label }) => (
-          <div class="flex items-center gap-2 px-3 py-2
-                      border border-[var(--border-subtle)] bg-[var(--surface-raised)]
-                      hover:border-[var(--accent-color)] transition-colors duration-200">
-            <i class={`${icon} text-sm w-4 shrink-0 text-center`} style={`color: ${color}`}></i>
-            <span class="text-xs font-bold tracking-[0.05em] leading-none">{label}</span>
+          { slug: "html5",       color: "#e34f26", label: "HTML5"      },
+          { slug: "css",         color: "#1572b6", label: "CSS / SCSS" },
+          { slug: "javascript",  color: "#f7df1e", label: "JavaScript" },
+          { slug: "typescript",  color: "#3178c6", label: "TypeScript" },
+          { slug: "tailwindcss", color: "#06b6d4", label: "Tailwind"   },
+          { slug: "angular",     color: "#dd0031", label: "Angular"    },
+          { slug: "vuedotjs",    color: "#41b883", label: "Vue.js"     },
+          { slug: "react",       color: "#61dafb", label: "React"      },
+          { slug: "astro",       color: "#ff5d01", label: "Astro"      },
+        ].map(({ slug, color, label }) => (
+          <div class="chip">
+            <TechIcon slug={slug} color={color} label={label} size={18} />
+            <span>{label}</span>
           </div>
         ))}
       </div>
@@ -37,20 +39,18 @@
         <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Backend</h2>
         <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
       </div>
-      <div class="grid grid-cols-2 gap-1.5">
+      <div class="chip-grid">
         {[
-          { icon: "fab fa-php",         color: "#777bb3", label: "PHP"        },
-          { icon: "fab fa-laravel",     color: "#ff2d20", label: "Laravel"    },
-          { icon: "fab fa-java",        color: "#ed8b00", label: "Java"       },
-          { icon: "fas fa-database",    color: "#00758f", label: "MySQL"      },
-          { icon: "fas fa-code-branch", color: "#f05032", label: "Git"        },
-          { icon: "fab fa-android",     color: "#3ddc84", label: "Android"    },
-        ].map(({ icon, color, label }) => (
-          <div class="flex items-center gap-2 px-3 py-2
-                      border border-[var(--border-subtle)] bg-[var(--surface-raised)]
-                      hover:border-[var(--accent-color)] transition-colors duration-200">
-            <i class={`${icon} text-sm w-4 shrink-0 text-center`} style={`color: ${color}`}></i>
-            <span class="text-xs font-bold tracking-[0.05em] leading-none">{label}</span>
+          { slug: "php",     color: "#777bb3", label: "PHP"     },
+          { slug: "laravel", color: "#ff2d20", label: "Laravel" },
+          { slug: "openjdk", color: "#ed8b00", label: "Java"    },
+          { slug: "mysql",   color: "#00758f", label: "MySQL"   },
+          { slug: "git",     color: "#f05032", label: "Git"     },
+          { slug: "android", color: "#3ddc84", label: "Android" },
+        ].map(({ slug, color, label }) => (
+          <div class="chip">
+            <TechIcon slug={slug} color={color} label={label} size={18} />
+            <span>{label}</span>
           </div>
         ))}
       </div>
@@ -63,29 +63,26 @@
       <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Homelab & DevOps</h2>
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
-    <div class="grid grid-cols-3 mobile:grid-cols-4 laptop:grid-cols-5 gap-2">
+    <div class="chip-grid">
       {[
-        { icon: "fab fa-docker",         color: "#2496ed", label: "Docker"      },
-        { icon: "fas fa-network-wired",  color: "#009900", label: "Nginx"       },
-        { icon: "fab fa-linux",          color: "#fcc624", label: "Linux"       },
-        { icon: "fab fa-windows",        color: "#0078d4", label: "Windows"     },
-        { icon: "fab fa-raspberry-pi",   color: "#c51a4a", label: "Raspberry Pi"},
-        { icon: "fas fa-hdd",            color: "#6b7280", label: "TrueNAS"     },
-        { icon: "fas fa-shield-alt",     color: "#3b82f6", label: "Tailscale"   },
-        { icon: "fas fa-cloud",          color: "#f6821f", label: "Cloudflare"  },
-        { icon: "fas fa-tachometer-alt", color: "#20c997", label: "Portainer"   },
-        { icon: "fas fa-filter",         color: "#ef4444", label: "Pi-hole"     },
-        { icon: "fas fa-film",           color: "#a855f7", label: "Jellyfin"    },
-        { icon: "fas fa-images",         color: "#eab308", label: "Immich"      },
-        { icon: "fas fa-music",          color: "#ec4899", label: "Navidrome"   },
-        { icon: "fas fa-brain",          color: "#8b5cf6", label: "Ollama"      },
-        { icon: "fas fa-heartbeat",      color: "#f87171", label: "Uptime Kuma" },
-      ].map(({ icon, color, label }) => (
-        <div class="flex flex-col items-center gap-2 px-2 py-3
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]
-                    hover:border-[var(--accent-color)] transition-colors duration-200 text-center">
-          <i class={`${icon} text-lg`} style={`color: ${color}`}></i>
-          <span class="text-[0.55rem] tracking-[0.12em] uppercase font-bold opacity-60 leading-none whitespace-nowrap">{label}</span>
+        { slug: "docker",       color: "#2496ed", label: "Docker"       },
+        { slug: "nginx",        color: "#009900", label: "Nginx"        },
+        { slug: "linux",        color: "#fcc624", label: "Linux"        },
+        { slug: "windows",      color: "#0078d4", label: "Windows"      },
+        { slug: "raspberrypi",  color: "#c51a4a", label: "Raspberry Pi" },
+        { slug: "truenas",      color: "#0095d5", label: "TrueNAS"      },
+        { slug: "tailscale",    color: "#3b82f6", label: "Tailscale"    },
+        { slug: "cloudflare",   color: "#f6821f", label: "Cloudflare"   },
+        { slug: "portainer",    color: "#20c997", label: "Portainer"    },
+        { slug: "pihole",       color: "#ef4444", label: "Pi-hole"      },
+        { slug: "jellyfin",     color: "#a855f7", label: "Jellyfin"     },
+        { slug: "immich",       color: "#4250af", label: "Immich"       },
+        { slug: "ollama",       color: "#8b5cf6", label: "Ollama"       },
+        { slug: "uptimekuma",   color: "#5cdd8b", label: "Uptime Kuma"  },
+      ].map(({ slug, color, label }) => (
+        <div class="chip">
+          <TechIcon slug={slug} color={color} label={label} size={18} />
+          <span>{label}</span>
         </div>
       ))}
     </div>
@@ -115,3 +112,40 @@
   </div>
 
 </section>
+
+<style>
+  .chip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 10px;
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-raised);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .chip:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+
+  .chip span {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

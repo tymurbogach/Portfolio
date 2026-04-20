@@ -1,0 +1,149 @@
+<div class="home-hero">
+
+  <!-- Background dot grid -->
+  <div class="home-grid-bg" aria-hidden="true"></div>
+
+  <!-- Hero text -->
+  <div class="hero-block">
+    <h1 class="home-h1">
+      Full-stack developer.<br />
+      <span class="home-h1-dim">Precision obsessive.</span>
+    </h1>
+    <p class="home-sub">
+      10+ years building things with my hands.<br />
+      Now building them in code.
+    </p>
+  </div>
+
+  <!-- CTAs -->
+  <div class="cta-row">
+    <a href="/projects" class="cta-primary">View work →</a>
+    <a href="/contact"  class="cta-ghost">Let's talk</a>
+  </div>
+
+  <!-- Tech strip -->
+  <div class="tech-strip">
+    <div class="tech-line"></div>
+    <p class="tech-text">TypeScript &nbsp;·&nbsp; Laravel &nbsp;·&nbsp; Angular &nbsp;·&nbsp; Astro &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Linux</p>
+    <div class="tech-line"></div>
+  </div>
+
+</div>
+
+<style>
+  .home-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    padding: clamp(2rem, 4vw, 4rem) 0;
+  }
+
+  .home-grid-bg {
+    position: absolute;
+    inset: -4rem;
+    z-index: -1;
+    background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .hero-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 52ch;
+  }
+
+  .home-h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--letter-color);
+    margin: 0;
+  }
+
+  .home-h1-dim {
+    opacity: 0.45;
+  }
+
+  .home-sub {
+    font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+    color: var(--letter-color);
+    opacity: 0.55;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cta-primary:hover {
+    background: var(--accent-color);
+    color: var(--page-background);
+  }
+
+  .cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1px solid var(--border-color);
+    color: var(--letter-color);
+    opacity: 0.65;
+    text-decoration: none;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+  .cta-ghost:hover {
+    opacity: 1;
+    border-color: var(--letter-color);
+  }
+
+  .tech-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 52ch;
+  }
+
+  .tech-line {
+    height: 1px;
+    background: var(--border-subtle);
+  }
+
+  .tech-text {
+    font-size: 0.52rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.38;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

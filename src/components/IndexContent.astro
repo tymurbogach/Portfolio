@@ -23,39 +23,15 @@
       </p>
     </div>
 
-    <!-- Column 2: homelab + CV + stats -->
+    <!-- Column 2: CV + stats -->
     <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
-
-      <!-- Homelab -->
-      <div class="flex flex-col items-center fhd:items-start gap-2 w-full">
-        <p class="text-[0.55rem] fhd:text-[0.6rem] tracking-[0.45em] uppercase font-bold opacity-35">homelab</p>
-        <div class="flex flex-wrap justify-center fhd:justify-start gap-1.5">
-          {[
-            { label: "Docker",    color: "#2496ed" },
-            { label: "TrueNAS",   color: "#6b7280" },
-            { label: "Tailscale", color: "#3b82f6" },
-            { label: "Nginx",     color: "#009900" },
-            { label: "Pi-hole",   color: "#ef4444" },
-            { label: "Jellyfin",  color: "#a855f7" },
-            { label: "Immich",    color: "#eab308" },
-            { label: "Ollama",    color: "#8b5cf6" },
-          ].map(({ label, color }) => (
-            <span class="flex items-center gap-1 text-[0.52rem] laptop:text-[0.55rem] fhd:text-[0.6rem]
-                         tracking-[0.1em] uppercase px-1.5 py-0.5
-                         border border-[var(--border-subtle)] opacity-65">
-              <span style={`width:5px;height:5px;border-radius:50%;background:${color};flex-shrink:0`}></span>
-              {label}
-            </span>
-          ))}
-        </div>
-      </div>
 
       <!-- Stats row -->
       <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
         {[
           { n: "10+", label: "years precision" },
           { n: "4",   label: "languages" },
-          { n: "∞",   label: "cups coffee" },
+          { n: "15+", label: "projects shipped" },
           { n: "24/7", label: "self-hosted" },
         ].map(({ n, label }) => (
           <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
@@ -67,21 +43,125 @@
       </div>
 
       <!-- CV button -->
-      <a
-        href="https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        id="cv-view-btn"
         class="flex items-center gap-2 px-4 py-2
                text-[0.52rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
                border border-[var(--border-color)]
                hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-bg)]
-               transition-all duration-200"
+               transition-all duration-200 cursor-pointer"
       >
-        <i class="fas fa-download text-[0.6rem]" style="color: var(--accent-color)"></i>
-        <span>Download CV</span>
-      </a>
+        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="color: var(--accent-color); flex-shrink:0">
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        </svg>
+        <span>View CV</span>
+      </button>
     </div>
   </main>
 
-
 </section>
+
+<!-- CV Preview Modal -->
+<div id="cv-modal"
+     style="display:none; position:fixed; inset:0; z-index:200;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(6px);">
+  <div style="position:absolute; inset:0; display:flex; flex-direction:column;">
+    <div style="display:flex; justify-content:flex-end; align-items:center; gap:12px; padding:16px 24px; flex-shrink:0;">
+      <a id="cv-download-btn"
+         href="https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="cv-modal-action cv-modal-accent">
+        Download PDF
+      </a>
+      <button id="cv-close-btn" class="cv-modal-action">
+        ✕ Close
+      </button>
+    </div>
+    <iframe
+      id="cv-iframe"
+      src=""
+      data-src="https://drive.google.com/file/d/1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe/preview"
+      style="flex:1; border:none; width:100%;"
+      allow="autoplay">
+    </iframe>
+  </div>
+</div>
+
+<style>
+  .cv-modal-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: "Poiret One", cursive;
+  }
+  .cv-modal-action:hover { border-color: white; color: white; }
+  .cv-modal-accent { border-color: var(--accent-color) !important; color: var(--accent-color) !important; }
+  .cv-modal-accent:hover { background: var(--accent-color) !important; color: #000 !important; }
+
+  @keyframes cv-modal-in {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  #cv-modal[data-open="true"] {
+    animation: cv-modal-in 180ms ease-out both;
+  }
+</style>
+
+<script>
+  function initCvModal() {
+    const btn      = document.getElementById('cv-view-btn');
+    const modal    = document.getElementById('cv-modal') as HTMLElement | null;
+    const closeBtn = document.getElementById('cv-close-btn');
+    const dlBtn    = document.getElementById('cv-download-btn');
+    const iframe   = document.getElementById('cv-iframe') as HTMLIFrameElement | null;
+
+    if (!btn || !modal || !closeBtn || !iframe) return;
+
+    function openModal() {
+      if (!iframe.src || iframe.src === window.location.href) {
+        iframe.src = iframe.dataset.src ?? '';
+      }
+      modal.style.display = 'block';
+      modal.dataset.open = 'true';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      delete modal.dataset.open;
+      document.body.style.overflow = '';
+    }
+
+    const ac = new AbortController();
+    btn.addEventListener('click', openModal, { signal: ac.signal });
+    closeBtn.addEventListener('click', closeModal, { signal: ac.signal });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    }, { signal: ac.signal });
+
+    document.addEventListener('keydown', (e) => {
+      if (modal.style.display === 'none') return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'd' || e.key === 'D') dlBtn?.click();
+    }, { signal: ac.signal });
+
+    document.addEventListener('astro:before-preparation', () => {
+      closeModal();
+      ac.abort();
+    }, { once: true });
+  }
+
+  document.addEventListener('astro:page-load', initCvModal);
+</script>

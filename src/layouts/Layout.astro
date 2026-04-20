@@ -6,28 +6,20 @@ import Name from "../components/Name.astro";
 import Navigation from "../components/Navigation.astro";
 import SocialMedia from "../components/SocialMedia.astro";
 import DualMain from "./DualMain.astro";
-import { ViewTransitions } from 'astro:transitions';
-
-const { title, dual = false, pageLabel = "", description = "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Available for freelance projects.", ogImage = "/img/gopnik.png" } = Astro.props;
+import { ClientRouter } from "astro:transitions";
+const {
+  title,
+  dual = false,
+  pageLabel = "",
+  description = "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Available for freelance projects.",
+  ogImage = "/img/gopnik.png",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-
-    <!-- Anti-flash: antes de cualquier CSS -->
-    <script is:inline>
-      (function () {
-        try {
-          var themes = ["variant-1","variant-2","variant-3","variant-4","variant-5","variant-6","variant-7"];
-          var saved = localStorage.getItem("theme");
-          document.documentElement.className = (saved && themes.indexOf(saved) !== -1) ? saved : "variant-1";
-        } catch (e) {
-          document.documentElement.className = "variant-1";
-        }
-      })();
-    </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
@@ -45,58 +37,80 @@ const { title, dual = false, pageLabel = "", description = "Timur Bogach — Ful
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`https://nastymur.com${ogImage}`} />
 
-    <ViewTransitions />
+    <ClientRouter />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poiret+One"
+      rel="stylesheet"
+    />
     <script src="/js/theme-toggle.js" defer></script>
   </head>
 
-  <body class="min-h-screen min-w-screen bg-[var(--total-background)] text-[var(--letter-color)] overflow-hidden">
-
+  <body
+    class="min-h-screen min-w-screen bg-[var(--total-background)] text-[var(--letter-color)] overflow-hidden"
+  >
     <!-- Mobile: header fijo arriba -->
-    <header transition:persist="mobile-header"
-            class="block laptop:hidden absolute top-0 left-0 w-full z-30 pointer-events-auto">
+    <header
+      transition:persist="mobile-header"
+      transition:name="shell-mobile-hdr"
+      class="block laptop:hidden absolute top-0 left-0 w-full z-30 pointer-events-auto"
+    >
       <Header />
     </header>
     <!-- Mobile: footer fijo abajo -->
-    <footer transition:persist="mobile-footer"
-            class="block laptop:hidden absolute bottom-0 left-0 w-full z-30 pointer-events-auto">
+    <footer
+      transition:persist="mobile-footer"
+      transition:name="shell-mobile-ftr"
+      class="block laptop:hidden absolute bottom-0 left-0 w-full z-30 pointer-events-auto"
+    >
       <Footer />
     </footer>
 
     <!-- Desktop: esquinas fijas -->
-    <div transition:persist="name-logo"
-         class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
+    <div
+      transition:persist="name-logo"
+      transition:name="shell-name"
+      class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40"
+    >
       <Name />
     </div>
-    <div transition:persist="nav-desktop"
-         class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40">
+    <div
+      transition:persist="nav-desktop"
+      transition:name="shell-nav"
+      class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40"
+    >
       <Navigation />
     </div>
-    <div transition:persist="social-desktop"
-         class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40">
+    <div
+      transition:persist="social-desktop"
+      transition:name="shell-social"
+      class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40"
+    >
       <SocialMedia />
     </div>
 
-    <main class="absolute inset-x-0 top-[6rem] bottom-[2.5rem] laptop:inset-0 flex items-center justify-center w-full z-20 laptop:p-[6rem]">
-      <div class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-subtle)]
-                  flex items-center justify-center overflow-hidden p-0">
+    <main
+      class="absolute inset-x-0 top-[6rem] bottom-[2.5rem] laptop:inset-0 flex items-center justify-center w-full z-20 laptop:p-[6rem]"
+    >
+      <div
+        class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-subtle)]
+                  flex items-center justify-center overflow-hidden p-0"
+      >
         {
           dual ? (
             <DualMain pageLabel={pageLabel}>
               <slot />
             </DualMain>
           ) : (
-            <div class="w-full h-full p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem] laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem] flex flex-col overflow-y-auto">
+            <div
+              transition:name="content-panel"
+              class="w-full h-full p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem] laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem] flex flex-col overflow-y-auto"
+            >
               <slot />
             </div>
           )
         }
       </div>
     </main>
-
   </body>
 </html>
