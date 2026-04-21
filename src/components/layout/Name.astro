@@ -3,8 +3,9 @@ interface Props {
   nameDisplay: string;
   role: string;
 }
-const { nameDisplay, role } = Astro.props;
+const { nameDisplay, role } = Astro.props as Props;
 ---
+
 <div
   class="w-full h-[3rem]
   mobile:w-[20rem] mobile:h-[4.5rem]

@@ -1,9 +1,12 @@
 ---
-import { getSocialLinks } from '../../lib/content';
+import { getSocialLinks } from "../../lib/content";
+import type { SocialLink } from "../../lib/content";
 
-const socialLinks = await getSocialLinks();
+const socialLinks = (await getSocialLinks()) as SocialLink[];
 ---
-<div class="w-full h-[2.5rem]
+
+<div
+  class="w-full h-[2.5rem]
   mobile:w-[20rem] mobile:h-[4.5rem]
   tablet:w-[20rem] tablet:h-[4.5rem]
   laptop:w-[25rem] laptop:h-[5rem]
@@ -11,26 +14,28 @@ const socialLinks = await getSocialLinks();
   qhd:w-[35rem] qhd:h-[6rem]
   uhd:w-[40rem] uhd:h-[6.5rem]"
 >
-  <div class="flex flex-row items-center justify-center text-center w-full h-full
+  <div
+    class="flex flex-row items-center justify-center text-center w-full h-full
               bg-[var(--component-background)] border border-[var(--border-color)]
               shadow-none rounded-none my-0 mx-0
-              mobile:shadow-md tablet:shadow-lg">
-
-    {socialLinks.map(({ url, icon, name }) => (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={name}
-        class="group flex flex-col items-center justify-center h-full flex-1
+              mobile:shadow-md tablet:shadow-lg"
+  >
+    {
+      socialLinks.map(({ url, icon, name }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={name}
+          class="group flex flex-col items-center justify-center h-full flex-1
                text-[var(--letter-color)] p-[0.75rem]
                transition-all duration-250 ease-in-out
                hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-      >
-        <img
-          src={icon}
-          alt={`${name} Icon`}
-          class="nav-icon w-[1.2rem] h-[1.2rem]
+        >
+          <img
+            src={icon}
+            alt={`${name} Icon`}
+            class="nav-icon w-[1.2rem] h-[1.2rem]
                  mobile:w-[1.4rem] mobile:h-[1.4rem]
                  tablet:w-[1.6rem] tablet:h-[1.6rem]
                  laptop:w-[1.8rem] laptop:h-[1.8rem]
@@ -39,8 +44,9 @@ const socialLinks = await getSocialLinks();
                  uhd:w-[2.8rem]   uhd:h-[2.8rem]
                  opacity-70 transition-all duration-200
                  group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm"
-        />
-      </a>
-    ))}
+          />
+        </a>
+      ))
+    }
   </div>
 </div>

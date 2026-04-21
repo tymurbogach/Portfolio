@@ -1,20 +1,24 @@
 ---
-import { getHomeData, getContactData } from '../../lib/content';
+import { getHomeData, getContactData } from "../../lib/content";
+import type { HomeData, ContactData } from "../../lib/content";
 
-const home    = await getHomeData();
-const contact = await getContactData();
+const home = (await getHomeData()) as HomeData;
+const contact = (await getContactData()) as ContactData;
 
 const { hero, stats } = home;
 const { cv_link, cv_preview } = contact;
 ---
+
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
-
   <!-- Main content — stacks vertically on laptop sidebar, 2-col on fhd+ (index page) -->
-  <main class="flex-1 min-h-0 flex flex-col fhd:flex-row items-center fhd:items-start
-               gap-6 fhd:gap-10 justify-center fhd:justify-center fhd:py-4">
-
+  <main
+    class="flex-1 min-h-0 flex flex-col fhd:flex-row items-center fhd:items-start
+               gap-6 fhd:gap-10 justify-center fhd:justify-center fhd:py-4"
+  >
     <!-- Column 1: photo + identity -->
-    <div class="flex flex-col items-center gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
+    <div
+      class="flex flex-col items-center gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center"
+    >
       <img
         id="theme-toggle"
         src="/img/gopnik.png"
@@ -24,25 +28,38 @@ const { cv_link, cv_preview } = contact;
          laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
       />
 
-      <p class="text-[0.65rem] mobile:text-xs laptop:text-[0.65rem] fhd:text-sm qhd:text-base
-                text-center opacity-70 leading-relaxed max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]">
+      <p
+        class="text-[0.65rem] mobile:text-xs laptop:text-[0.65rem] fhd:text-sm qhd:text-base
+                text-center opacity-70 leading-relaxed max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]"
+      >
         {hero.subtitle1}<br />
         {hero.subtitle2}
       </p>
     </div>
 
     <!-- Column 2: CV + stats -->
-    <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
-
+    <div
+      class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center"
+    >
       <!-- Stats row -->
-      <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
-        {stats.map(({ n, label }) => (
-          <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-            <span class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
-                  style="color: var(--accent-color)">{n}</span>
-            <span class="text-[0.52rem] fhd:text-[0.55rem] tracking-[0.2em] uppercase opacity-45 mt-0.5">{label}</span>
-          </div>
-        ))}
+      <div
+        class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]"
+      >
+        {
+          stats.map(({ n, label }) => (
+            <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+              <span
+                class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
+                style="color: var(--accent-color)"
+              >
+                {n}
+              </span>
+              <span class="text-[0.52rem] fhd:text-[0.55rem] tracking-[0.2em] uppercase opacity-45 mt-0.5">
+                {label}
+              </span>
+            </div>
+          ))
+        }
       </div>
 
       <!-- CV button -->
@@ -54,41 +71,52 @@ const { cv_link, cv_preview } = contact;
                hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-bg)]
                transition-all duration-200 cursor-pointer"
       >
-        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="color: var(--accent-color); flex-shrink:0">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        <svg
+          viewBox="0 0 16 16"
+          width="10"
+          height="10"
+          fill="currentColor"
+          style="color: var(--accent-color); flex-shrink:0"
+        >
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+          <path
+            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+          ></path>
         </svg>
         <span>View CV</span>
       </button>
     </div>
   </main>
-
 </section>
 
 <!-- CV Preview Modal -->
-<div id="cv-modal"
-     style="display:none; position:fixed; inset:0; z-index:200;
-            background: rgba(0,0,0,0.95); backdrop-filter: blur(6px);">
+<div
+  id="cv-modal"
+  style="display:none; position:fixed; inset:0; z-index:200;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(6px);"
+>
   <div style="position:absolute; inset:0; display:flex; flex-direction:column;">
-    <div style="display:flex; justify-content:flex-end; align-items:center; gap:12px; padding:16px 24px; flex-shrink:0;">
-      <a id="cv-download-btn"
-         href={cv_link}
-         target="_blank"
-         rel="noopener noreferrer"
-         class="cv-modal-action cv-modal-accent">
+    <div
+      style="display:flex; justify-content:flex-end; align-items:center; gap:12px; padding:16px 24px; flex-shrink:0;"
+    >
+      <a
+        id="cv-download-btn"
+        href={cv_link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cv-modal-action cv-modal-accent"
+      >
         Download PDF
       </a>
-      <button id="cv-close-btn" class="cv-modal-action">
-        ✕ Close
-      </button>
+      <button id="cv-close-btn" class="cv-modal-action"> ✕ Close </button>
     </div>
     <iframe
       id="cv-iframe"
       src=""
       data-src={cv_preview}
       style="flex:1; border:none; width:100%;"
-      allow="autoplay">
+      allow="autoplay"
+    >
     </iframe>
   </div>
 </div>
-

@@ -8,11 +8,14 @@ import SocialMedia from "../components/layout/SocialMedia.astro";
 import DualMain from "./DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile } from "../lib/content";
+import type { SiteData, ProfileData } from "../lib/content";
 
-const site    = await getSite();
-const profile = await getProfile();
+// Ahora TypeScript sabe perfectamente qué son gracias a los cambios en content.ts
+const site = (await getSite()) as SiteData;
+const profile = (await getProfile()) as ProfileData;
 
-const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, '') || 'home') as keyof typeof site.pageDescriptions;
+const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
+  "home") as keyof typeof site.pageDescriptions;
 const defaultDescription = site.pageDescriptions[pathKey] ?? site.description;
 
 const {
@@ -63,7 +66,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
   <body
     class="min-h-screen min-w-screen bg-[var(--total-background)] text-[var(--letter-color)] overflow-hidden"
   >
-    <!-- Mobile: header fijo arriba -->
     <header
       transition:persist="mobile-header"
       transition:name="shell-mobile-hdr"
@@ -71,7 +73,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
     >
       <Header />
     </header>
-    <!-- Mobile: footer fijo abajo -->
     <footer
       transition:persist="mobile-footer"
       transition:name="shell-mobile-ftr"
@@ -80,7 +81,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
       <Footer />
     </footer>
 
-    <!-- Desktop: esquinas fijas -->
     <div
       transition:persist="name-logo"
       transition:name="shell-name"
@@ -108,7 +108,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
     >
       <div
         class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-subtle)]
-                  flex items-center justify-center overflow-hidden p-0"
+                 flex items-center justify-center overflow-hidden p-0"
       >
         {
           dual ? (
