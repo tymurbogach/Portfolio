@@ -1,8 +1,11 @@
 ---
-import ProjectsContent from "../components/ProjectsContent.astro";
+import ProjectsContent from "../components/sections/ProjectsContent.astro";
 import Layout from "../layouts/Layout.astro";
+import { getProjects } from "../lib/content";
+
+const projects = await getProjects();
 ---
 
 <Layout dual={true} title="Projects" pageLabel="— my work">
-  <ProjectsContent />
+  <ProjectsContent projects={projects} />
 </Layout>

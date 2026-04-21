@@ -1,9 +1,9 @@
 ---
-import { getEntry } from "astro:content";
+import type { AboutData } from '../../lib/content';
 
-// Obtenemos los datos directamente del .json
-const aboutFile = await getEntry("about", "data");
-const { journey, education, hobbies, location, quote } = aboutFile.data;
+interface Props { about: AboutData; }
+const { about } = Astro.props;
+const { journey, education, hobbies, location, quote } = about;
 ---
 
 <section class="flex flex-col gap-10 laptop:gap-12 w-full">

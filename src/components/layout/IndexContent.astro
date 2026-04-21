@@ -1,11 +1,11 @@
 ---
-import { getEntry } from 'astro:content';
+import { getHomeData, getContactData } from '../../lib/content';
 
-const homeData = await getEntry('home', 'data');
-const contactData = await getEntry('contact', 'data');
+const home    = await getHomeData();
+const contact = await getContactData();
 
-const { hero, stats } = homeData.data;
-const { cv_link } = contactData.data;
+const { hero, stats } = home;
+const { cv_link, cv_preview } = contact;
 ---
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
 
@@ -85,7 +85,7 @@ const { cv_link } = contactData.data;
     <iframe
       id="cv-iframe"
       src=""
-      data-src="https://drive.google.com/file/d/1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe/preview"
+      data-src={cv_preview}
       style="flex:1; border:none; width:100%;"
       allow="autoplay">
     </iframe>

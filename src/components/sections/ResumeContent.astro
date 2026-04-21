@@ -1,9 +1,10 @@
 ---
-import { getEntry } from 'astro:content';
-import TechIcon from './TechIcon.astro';
+import Icon from '../ui/Icon.astro';
+import type { ResumeData } from '../../lib/content';
 
-const resumeData = await getEntry('resume', 'data');
-const { frontend, backend, homelab, languages } = resumeData.data;
+interface Props { resume: ResumeData; }
+const { resume } = Astro.props;
+const { frontend, backend, homelab, languages } = resume;
 ---
 
 <section class="flex flex-col w-full gap-9 laptop:gap-12">
@@ -20,7 +21,7 @@ const { frontend, backend, homelab, languages } = resumeData.data;
       <div class="chip-grid">
         {frontend.map(({ slug, color, label }: any) => (
           <div class="chip">
-            <TechIcon slug={slug} color={color} label={label} size={18} />
+            <Icon slug={slug} color={color} label={label} size={18} />
             <span>{label}</span>
           </div>
         ))}
@@ -36,7 +37,7 @@ const { frontend, backend, homelab, languages } = resumeData.data;
       <div class="chip-grid">
         {backend.map(({ slug, color, label }: any) => (
           <div class="chip">
-            <TechIcon slug={slug} color={color} label={label} size={18} />
+            <Icon slug={slug} color={color} label={label} size={18} />
             <span>{label}</span>
           </div>
         ))}
@@ -53,7 +54,7 @@ const { frontend, backend, homelab, languages } = resumeData.data;
     <div class="chip-grid">
       {homelab.map(({ slug, color, label }: any) => (
         <div class="chip">
-          <TechIcon slug={slug} color={color} label={label} size={18} />
+          <Icon slug={slug} color={color} label={label} size={18} />
           <span>{label}</span>
         </div>
       ))}

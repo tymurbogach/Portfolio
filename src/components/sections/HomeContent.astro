@@ -1,8 +1,9 @@
 ---
-import { getEntry } from 'astro:content';
+import type { HomeData } from '../../lib/content';
 
-const homeData = await getEntry('home', 'data');
-const { hero, techStrip } = homeData.data;
+interface Props { home: HomeData; }
+const { home } = Astro.props;
+const { hero, techStrip } = home;
 ---
 <div class="home-hero">
   <!-- Background dot grid -->

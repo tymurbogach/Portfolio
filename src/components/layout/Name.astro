@@ -1,3 +1,10 @@
+---
+interface Props {
+  nameDisplay: string;
+  role: string;
+}
+const { nameDisplay, role } = Astro.props;
+---
 <div
   class="w-full h-[3rem]
   mobile:w-[20rem] mobile:h-[4.5rem]
@@ -22,7 +29,7 @@
                fhd:text-4xl qhd:text-5xl uhd:text-6xl
                mt-[0.4rem]"
       >
-        TIMUR BOGACH
+        {nameDisplay}
       </h1>
       <p
         class="text-[var(--letter-color)]
@@ -30,7 +37,7 @@
                fhd:text-2xl qhd:text-3xl uhd:text-4xl
                mt-[-0.4rem] mb-[0.4rem]"
       >
-        full stack developer
+        {role}
       </p>
     </div>
   </a>

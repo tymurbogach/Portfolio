@@ -1,0 +1,14 @@
+{
+  "name": "Timur Bogach",
+  "title": "Timur Bogach",
+  "url": "https://nastymur.com",
+  "lang": "es",
+  "description": "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Available for freelance projects.",
+  "ogImage": "/img/gopnik.png",
+  "pageDescriptions": {
+    "home": "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Software solutions, web development, and freelance projects.",
+    "about": "About Timur Bogach — Full Stack Developer with a background in music and the automotive industry, now building web applications.",
+    "resume": "Timur Bogach's skills and tech stack — HTML, CSS, JavaScript, TypeScript, Laravel, Angular, Astro, Tailwind and more.",
+    "contact": "Get in touch with Timur Bogach — available for freelance web development projects from Orihuela, Alicante, Spain."
+  }
+}

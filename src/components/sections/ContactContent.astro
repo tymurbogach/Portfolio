@@ -1,11 +1,12 @@
 ---
-import { getEntry } from 'astro:content';
+import type { ContactData, SocialLink } from '../../lib/content';
 
-const contactData = await getEntry('contact', 'data');
-const socialData = await getEntry('social', 'data');
-
-const { email, location, statusStr, statusActive, cv_link } = contactData.data;
-const socialLinks = socialData.data;
+interface Props {
+  contact: ContactData;
+  socialLinks: SocialLink[];
+}
+const { contact, socialLinks } = Astro.props;
+const { email, location, statusStr, statusActive, cv_link, formSubject } = contact;
 ---
 
 <div class="w-full flex flex-col gap-8 fhd:gap-10">
@@ -60,7 +61,7 @@ const socialLinks = socialData.data;
       name="access_key"
       value="6f16785c-509f-43aa-bd91-8c38b7d49f94"
     />
-    <input type="hidden" name="subject" value="New message from nastymur.com" />
+    <input type="hidden" name="subject" value={formSubject} />
 
     <div
       id="form-status"
@@ -190,7 +191,7 @@ const socialLinks = socialData.data;
   <div class="flex flex-wrap gap-2"></div>
 </div>
 
-<script src="../scripts/contactForm.ts"></script>
+<script src="../../scripts/contactForm.ts"></script>
 
 <div class="flex flex-wrap gap-2">
   {socialLinks.filter((s:any) => s.name === 'LinkedIn' || s.name === 'GitHub').map((link:any) => (

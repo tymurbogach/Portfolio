@@ -1,25 +1,18 @@
 ---
-import { getEntry } from "astro:content";
-import ProjectCard from "../components/ProjectCard.astro";
+import ProjectCard from "../ui/ProjectCard.astro";
+import type { Project } from '../../lib/content';
 
-const projectsEntry = await getEntry("projects", "data");
-
-if (!projectsEntry) {
-  throw new Error("No se encontró src/content/projects/data.json");
-}
-
-const projects = projectsEntry.data.projects;
+interface Props { projects: Project[]; }
+const { projects } = Astro.props;
 ---
 
 <div class="flex flex-col gap-3 w-full">
   {
-    projects.map((project) => {
+    projects.map(({ data: project }) => {
       const isDemo =
         project.link?.includes("github.io") ||
         project.link?.includes("netlify") ||
         project.link?.includes("vercel");
-
-      const tags = project.tags || [];
 
       return (
         <ProjectCard
@@ -28,7 +21,7 @@ const projects = projectsEntry.data.projects;
           link={project.link}
           image={project.image}
           type={isDemo ? "demo" : "source"}
-          tags={tags}
+          tags={project.tags ?? []}
         />
       );
     })

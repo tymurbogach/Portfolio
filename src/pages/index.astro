@@ -1,11 +1,11 @@
 ---
-import HomeContent from "../components/HomeContent.astro";
+import HomeContent from "../components/sections/HomeContent.astro";
 import Layout from "../layouts/Layout.astro";
-const title = "Home";
-const description =
-  "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Software solutions, web development, and freelance projects.";
+import { getHomeData } from "../lib/content";
+
+const home = await getHomeData();
 ---
 
-<Layout dual={true} title={title} description={description} pageLabel="">
-  <HomeContent />
+<Layout dual={true} title="Home" pageLabel="">
+  <HomeContent home={home} />
 </Layout>

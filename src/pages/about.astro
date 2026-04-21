@@ -1,13 +1,11 @@
 ---
-import AboutContent from "../components/AboutContent.astro";
+import AboutContent from "../components/sections/AboutContent.astro";
 import Layout from "../layouts/Layout.astro";
+import { getAboutData } from "../lib/content";
+
+const about = await getAboutData();
 ---
 
-<Layout
-  dual={true}
-  title="About"
-  pageLabel="— who i am"
-  description="About Timur Bogach — Full Stack Developer with a background in music and the automotive industry, now building web applications."
->
-  <AboutContent />
+<Layout dual={true} title="About" pageLabel="— who i am">
+  <AboutContent about={about} />
 </Layout>
