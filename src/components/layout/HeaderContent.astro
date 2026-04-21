@@ -1,11 +1,13 @@
 ---
 import Name from "./Name.astro";
 import Navigation from "./Navigation.astro";
+import { getProfile } from "../../lib/content";
+const profile = await getProfile();
 ---
 
 <header
   class="w-full h-auto flex flex-col items-center justify-center mobile:flex-row mobile:justify-between gap-0 m-0"
 >
-  <Name class="w-full h-auto" />
+  <Name nameDisplay={profile.nameDisplay} role={profile.role} />
   <Navigation class="w-full h-auto" />
 </header>
