@@ -1,8 +1,8 @@
 ---
 import { getEntry } from "astro:content";
 
-// Obtenemos los datos directamente del .md
-const aboutFile = await getEntry("about", "index");
+// Obtenemos los datos directamente del .json
+const aboutFile = await getEntry("about", "data");
 const { journey, education, hobbies, location, quote } = aboutFile.data;
 ---
 

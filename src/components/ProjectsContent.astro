@@ -2,10 +2,10 @@
 import { getEntry } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 
-const projectsEntry = await getEntry("projects", "index");
+const projectsEntry = await getEntry("projects", "data");
 
 if (!projectsEntry) {
-  throw new Error("No se encontró src/content/projects/index.md");
+  throw new Error("No se encontró src/content/projects/data.json");
 }
 
 const projects = projectsEntry.data.projects;

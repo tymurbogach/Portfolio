@@ -1,8 +1,8 @@
 ---
 import { getEntry } from 'astro:content';
 
-const contactData = await getEntry('site', 'contact');
-const socialData = await getEntry('site', 'social');
+const contactData = await getEntry('contact', 'data');
+const socialData = await getEntry('social', 'data');
 
 const { email, location, statusStr, statusActive, cv_link } = contactData.data;
 const socialLinks = socialData.data;

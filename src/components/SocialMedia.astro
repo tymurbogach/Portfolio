@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 
-const socialData = await getEntry('site', 'social');
+const socialData = await getEntry('social', 'data');
 const socialLinks = socialData.data;
 ---
 <div class="w-full h-[2.5rem]

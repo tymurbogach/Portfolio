@@ -1,8 +1,8 @@
 ---
 import { getEntry } from 'astro:content';
 
-const homeData = await getEntry('site', 'home');
-const contactData = await getEntry('site', 'contact');
+const homeData = await getEntry('home', 'data');
+const contactData = await getEntry('contact', 'data');
 
 const { hero, stats } = homeData.data;
 const { cv_link } = contactData.data;

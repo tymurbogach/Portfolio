@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
 const about = defineCollection({
-    type: 'content',
+    type: 'data',
     schema: z.object({
         location: z.object({
             label: z.string()
@@ -29,7 +29,7 @@ const about = defineCollection({
 });
 
 const projects = defineCollection({
-    type: 'content',
+    type: 'data',
     schema: z.object({
         projects: z.array(z.object({
             title: z.string(),
@@ -41,9 +41,9 @@ const projects = defineCollection({
     })
 });
 
-const site = defineCollection({
-    type: 'data',
-    schema: z.any() // We will let the schema be loose or define specific shapes via z.any() for simplicity, or we can use z.union of different schemas. Using z.any() to hold the generic site configs.
-});
+const resume = defineCollection({ type: 'data', schema: z.any() });
+const contact = defineCollection({ type: 'data', schema: z.any() });
+const social = defineCollection({ type: 'data', schema: z.any() });
+const home = defineCollection({ type: 'data', schema: z.any() });
 
-export const collections = { about, projects, site };
+export const collections = { about, projects, resume, contact, social, home };

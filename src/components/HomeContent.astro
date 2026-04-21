@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 
-const homeData = await getEntry('site', 'home');
+const homeData = await getEntry('home', 'data');
 const { hero, techStrip } = homeData.data;
 ---
 <div class="home-hero">

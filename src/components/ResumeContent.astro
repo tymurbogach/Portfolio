@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content';
 import TechIcon from './TechIcon.astro';
 
-const resumeData = await getEntry('site', 'resume');
+const resumeData = await getEntry('resume', 'data');
 const { frontend, backend, homelab, languages } = resumeData.data;
 ---
 
