@@ -191,10 +191,8 @@ const { email, location, statusStr, statusActive, cv_link, formSubject } = conta
   <div class="flex flex-wrap gap-2"></div>
 </div>
 
-<script src="../../scripts/contactForm.ts"></script>
-
 <div class="flex flex-wrap gap-2">
-  {socialLinks.filter((s:any) => s.name === 'LinkedIn' || s.name === 'GitHub').map((link:any) => (
+  {socialLinks.filter((s) => s.name === 'LinkedIn' || s.name === 'GitHub').map((link) => (
     <a
       href={link.url}
       target="_blank"

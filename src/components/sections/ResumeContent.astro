@@ -19,7 +19,7 @@ const { frontend, backend, homelab, languages } = resume;
         <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
       </div>
       <div class="chip-grid">
-        {frontend.map(({ slug, color, label }: any) => (
+        {frontend.map(({ slug, color, label }) => (
           <div class="chip">
             <Icon slug={slug} color={color} label={label} size={18} />
             <span>{label}</span>
@@ -35,7 +35,7 @@ const { frontend, backend, homelab, languages } = resume;
         <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
       </div>
       <div class="chip-grid">
-        {backend.map(({ slug, color, label }: any) => (
+        {backend.map(({ slug, color, label }) => (
           <div class="chip">
             <Icon slug={slug} color={color} label={label} size={18} />
             <span>{label}</span>
@@ -52,7 +52,7 @@ const { frontend, backend, homelab, languages } = resume;
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
     <div class="chip-grid">
-      {homelab.map(({ slug, color, label }: any) => (
+      {homelab.map(({ slug, color, label }) => (
         <div class="chip">
           <Icon slug={slug} color={color} label={label} size={18} />
           <span>{label}</span>
@@ -68,7 +68,7 @@ const { frontend, backend, homelab, languages } = resume;
       <div class="flex-1 h-px" style="background: var(--accent-color); opacity: 0.2;"></div>
     </div>
     <div class="grid grid-cols-4 gap-2">
-      {languages.map(({ flag, lang, level }: any) => (
+      {languages.map(({ flag, lang, level }) => (
         <div class="flex flex-col items-center gap-1 px-2 py-3
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)] text-center">
           <span class="text-xl">{flag}</span>
@@ -80,40 +80,3 @@ const { frontend, backend, homelab, languages } = resume;
   </div>
 
 </section>
-
-<style>
-  .chip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-    gap: 10px;
-  }
-
-  .chip {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 44px;
-    padding: 0 14px;
-    border: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
-    transition: border-color 0.2s ease, transform 0.2s ease;
-    cursor: default;
-    overflow: hidden;
-  }
-
-  .chip:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
-  }
-
-  .chip span {
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 700;
-    opacity: 0.8;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-</style>

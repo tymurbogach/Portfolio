@@ -36,7 +36,7 @@ const { cv_link, cv_preview } = contact;
 
       <!-- Stats row -->
       <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
-        {stats.map(({ n, label }: any) => (
+        {stats.map(({ n, label }) => (
           <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
             <span class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
                   style="color: var(--accent-color)">{n}</span>
@@ -92,79 +92,3 @@ const { cv_link, cv_preview } = contact;
   </div>
 </div>
 
-<style>
-  .cv-modal-action {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1.2rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    font-weight: 700;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    background: transparent;
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-    font-family: "Poiret One", cursive;
-  }
-  .cv-modal-action:hover { border-color: white; color: white; }
-  .cv-modal-accent { border-color: var(--accent-color) !important; color: var(--accent-color) !important; }
-  .cv-modal-accent:hover { background: var(--accent-color) !important; color: #000 !important; }
-
-  @keyframes cv-modal-in {
-    from { opacity: 0; transform: scale(0.97); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-  #cv-modal[data-open="true"] {
-    animation: cv-modal-in 180ms ease-out both;
-  }
-</style>
-
-<script>
-  function initCvModal() {
-    const btn      = document.getElementById('cv-view-btn');
-    const modal    = document.getElementById('cv-modal') as HTMLElement | null;
-    const closeBtn = document.getElementById('cv-close-btn');
-    const dlBtn    = document.getElementById('cv-download-btn');
-    const iframe   = document.getElementById('cv-iframe') as HTMLIFrameElement | null;
-
-    if (!btn || !modal || !closeBtn || !iframe) return;
-
-    function openModal() {
-      if (!iframe.src || iframe.src === window.location.href) {
-        iframe.src = iframe.dataset.src ?? '';
-      }
-      modal.style.display = 'block';
-      modal.dataset.open = 'true';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-      delete modal.dataset.open;
-      document.body.style.overflow = '';
-    }
-
-    const ac = new AbortController();
-    btn.addEventListener('click', openModal, { signal: ac.signal });
-    closeBtn.addEventListener('click', closeModal, { signal: ac.signal });
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    }, { signal: ac.signal });
-
-    document.addEventListener('keydown', (e) => {
-      if (modal.style.display === 'none') return;
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'd' || e.key === 'D') dlBtn?.click();
-    }, { signal: ac.signal });
-
-    document.addEventListener('astro:before-preparation', () => {
-      closeModal();
-      ac.abort();
-    }, { once: true });
-  }
-
-  document.addEventListener('astro:page-load', initCvModal);
-</script>
