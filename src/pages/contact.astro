@@ -1,12 +1,8 @@
 ---
-import ContactContent from "../components/sections/ContactContent.astro";
 import Layout from "../layouts/Layout.astro";
-import { getContactData, getSocialLinks } from "../lib/content";
-
-const contact     = await getContactData();
-const socialLinks = await getSocialLinks();
+import SinglePage from "../components/sections/SinglePage.astro";
 ---
 
-<Layout dual={true} title="Contact" pageLabel="— let's talk">
-  <ContactContent contact={contact} socialLinks={socialLinks} />
+<Layout dual={true} title="Contact">
+  <SinglePage />
 </Layout>

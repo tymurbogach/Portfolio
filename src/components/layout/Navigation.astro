@@ -1,4 +1,11 @@
 ---
+import type { NavPage } from "../../lib/content";
+
+interface Props {
+  pages: NavPage[];
+}
+
+const { pages } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
@@ -17,77 +24,31 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
            shadow-none rounded-none my-0 mx-0
            mobile:shadow-md tablet:shadow-lg"
   >
-    <a
-      href="/about"
-      data-active={currentPath === "/about" ? "true" : "false"}
-      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
-             text-[var(--letter-color)] border-r border-[var(--border-color)]
-             font-light tracking-wide laptop:tracking-widest
-             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
-             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
-             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-    >
-      <span
-        class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-               transition-all duration-200 group-hover:scale-125"
-        style="-webkit-mask-image:url('/img/about.png');mask-image:url('/img/about.png');"
-        aria-hidden="true"></span>
-      <span>About</span>
-    </a>
-
-    <a
-      href="/resume"
-      data-active={currentPath === "/resume" ? "true" : "false"}
-      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
-             text-[var(--letter-color)] border-r border-[var(--border-color)]
-             font-light tracking-wide laptop:tracking-widest
-             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
-             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
-             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-    >
-      <span
-        class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-               transition-all duration-200 group-hover:scale-125"
-        style="-webkit-mask-image:url('/img/resume.png');mask-image:url('/img/resume.png');"
-        aria-hidden="true"></span>
-      <span>Resume</span>
-    </a>
-
-    <a
-      href="/projects"
-      data-active={currentPath === "/projects" ? "true" : "false"}
-      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
-             text-[var(--letter-color)] border-r border-[var(--border-color)]
-             font-light tracking-wide laptop:tracking-widest
-             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
-             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
-             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-    >
-      <span
-        class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-               transition-all duration-200 group-hover:scale-125"
-        style="-webkit-mask-image:url('/img/projects.png');mask-image:url('/img/projects.png');"
-        aria-hidden="true"></span>
-      <span>Projects</span>
-    </a>
-
-    <a
-      href="/contact"
-      data-active={currentPath === "/contact" ? "true" : "false"}
-      class="group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden
-             text-[var(--letter-color)]
-             font-light tracking-wide laptop:tracking-widest
-             text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl
-             gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200
-             hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-    >
-      <span
-        class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-               transition-all duration-200 group-hover:scale-125"
-        style="-webkit-mask-image:url('/img/contact.png');mask-image:url('/img/contact.png');"
-        aria-hidden="true"></span>
-      <span>Contact</span>
-    </a>
+    {
+      pages.map((page, i) => (
+        <a
+          href={page.path}
+          data-active={currentPath === page.path ? "true" : "false"}
+          class={[
+            "group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden",
+            "text-[var(--letter-color)]",
+            i < pages.length - 1 ? "border-r border-[var(--border-color)]" : "",
+            "font-light tracking-wide laptop:tracking-widest",
+            "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
+            "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200",
+            "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
+          ].join(" ")}
+        >
+          <span
+            class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                   transition-all duration-200 group-hover:scale-125"
+            style={`-webkit-mask-image:url('${page.icon}');mask-image:url('${page.icon}');`}
+            aria-hidden="true"
+          />
+          <span>{page.label}</span>
+        </a>
+      ))
+    }
   </nav>
 
   <!-- Indicator fuera del nav para que overflow-hidden no lo corte -->

@@ -1,73 +1,51 @@
-// ═══════════════════════════════════════════════════════
-// SISTEMA DE TEMAS DINÁMICO (SIMPLIFICADO)
-// Detecta automáticamente clases theme-*
-// ═══════════════════════════════════════════════════════
+// Temas disponibles en orden de ciclo. Para añadir uno:
+// 1. Añadir bloque CSS :root.theme-* en global.css con todas las variables obligatorias
+// 2. Añadir el string al array THEMES
 
-// Obtiene todos los themes desde el CSS aplicado al <html>
-function getThemes(): string[] {
-  return Array.from(document.styleSheets)
-    .flatMap(sheet => {
-      try {
-        return Array.from(sheet.cssRules);
-      } catch {
-        return [];
-      }
-    })
-    .flatMap(rule => {
-      if (rule instanceof CSSStyleRule) {
-        const match = rule.selectorText?.match(/:root\.(theme-[\w-]+)/);
-        return match ? [match[1]] : [];
-      }
-      return [];
-    })
-    // elimina duplicados
-    .filter((v, i, arr) => arr.indexOf(v) === i);
-}
+import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
 
-// Aplica tema
-function applyTheme(theme: string) {
+// 3. Añadir al array valid[] en el script is:inline de Layout.astro (anti-flash)
+const THEMES = ["theme-void", "theme-abyss", "theme-chalk", "theme-stone"] as const;
+
+function applyTheme(theme: string): void {
   const root = document.documentElement;
-
-  root.classList.forEach(cls => {
+  root.classList.forEach((cls) => {
     if (cls.startsWith("theme-")) root.classList.remove(cls);
   });
-
   root.classList.add(theme);
 }
 
-// Init
-function initThemeToggle() {
+function initThemeToggle(): void {
   const btn = document.getElementById("theme-toggle");
   if (!btn) return;
 
-  const THEMES = getThemes();
-
-  let idx = THEMES.indexOf(localStorage.getItem("theme") || "");
+  let idx = THEMES.indexOf(localStorage.getItem("theme") as typeof THEMES[number]);
   if (idx < 0) idx = 0;
 
   applyTheme(THEMES[idx]);
 
-  const newBtn = btn.cloneNode(true);
+  // Clonar para limpiar listeners anteriores (necesario en SPA con astro:page-load)
+  const newBtn = btn.cloneNode(true) as HTMLElement;
   btn.parentNode?.replaceChild(newBtn, btn);
 
-  newBtn.addEventListener("dblclick", (e) => {
+  // Triple-clic nativo (e.detail === 3) para cambiar tema
+  newBtn.addEventListener("click", (e) => {
+    if (e.detail < 3) return;
     e.preventDefault();
     e.stopPropagation();
 
     idx = (idx + 1) % THEMES.length;
-    const theme = THEMES[idx];
-
-    applyTheme(theme);
-    localStorage.setItem("theme", theme);
+    applyTheme(THEMES[idx]);
+    localStorage.setItem("theme", THEMES[idx]);
   });
 }
 
-// Eventos Astro
 document.addEventListener("astro:page-load", initThemeToggle);
 
+// Preserva el tema al navegar SPA sin flash
 document.addEventListener("astro:before-swap", (e) => {
-  const event = e as any;
-  const saved = localStorage.getItem("theme") || "theme-void";
+  const event = e as TransitionBeforeSwapEvent;
+  const saved = localStorage.getItem("theme") || THEMES[0];
 
   event.newDocument.documentElement.classList.forEach((cls: string) => {
     if (cls.startsWith("theme-")) {

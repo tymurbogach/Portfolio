@@ -11,5 +11,11 @@
     { "n": "15+", "label": "projects shipped" },
     { "n": "24/7", "label": "self-hosted" }
   ],
-  "techStrip": "TypeScript  ·  Laravel  ·  Angular  ·  Astro  ·  Docker  ·  Linux"
+  "techStrip": "TypeScript  ·  Laravel  ·  Angular  ·  Astro  ·  Docker  ·  Linux",
+  "cta": {
+    "primary": "View work →",
+    "primaryHref": "/projects",
+    "secondary": "Let's talk",
+    "secondaryHref": "/contact"
+  }
 }

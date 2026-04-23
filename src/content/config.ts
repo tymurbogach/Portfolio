@@ -96,7 +96,13 @@ const home = defineCollection({
             n: z.string(),
             label: z.string()
         })),
-        techStrip: z.string()
+        techStrip: z.string(),
+        cta: z.object({
+            primary: z.string(),
+            primaryHref: z.string(),
+            secondary: z.string(),
+            secondaryHref: z.string()
+        })
     })
 });
 
@@ -107,6 +113,13 @@ const profile = defineCollection({
         nameDisplay: z.string(),
         role: z.string()
     })
+});
+
+const navPage = z.object({
+    path: z.string(),
+    label: z.string(),
+    icon: z.string(),
+    sectionLabel: z.string()
 });
 
 const site = defineCollection({
@@ -122,8 +135,10 @@ const site = defineCollection({
             home: z.string(),
             about: z.string(),
             resume: z.string(),
+            projects: z.string(),
             contact: z.string()
-        })
+        }),
+        pages: z.array(navPage)
     })
 });
 

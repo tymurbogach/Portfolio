@@ -29,8 +29,8 @@ export function initContactForm() {
                 throw new Error(result.message || "Error");
             }
         } catch {
-            // Fallback con email directo por si falla la API
-            statusEl.textContent = "Something went wrong. Email me at Timurnator@gmail.com";
+            const fallbackEmail = form.dataset.email ?? "contact@nastymur.com";
+            statusEl.textContent = `Something went wrong. Email me at ${fallbackEmail}`;
         } finally {
             submitBtn.disabled = false;
         }

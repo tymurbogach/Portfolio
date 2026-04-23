@@ -1,11 +1,8 @@
 ---
-import AboutContent from "../components/sections/AboutContent.astro";
 import Layout from "../layouts/Layout.astro";
-import { getAboutData } from "../lib/content";
-
-const about = await getAboutData();
+import SinglePage from "../components/sections/SinglePage.astro";
 ---
 
-<Layout dual={true} title="About" pageLabel="— who i am">
-  <AboutContent about={about} />
+<Layout dual={true} title="About">
+  <SinglePage />
 </Layout>

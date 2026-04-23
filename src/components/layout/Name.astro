@@ -1,9 +1,15 @@
 ---
+interface Props {
+  nameDisplay: string;
+  role: string;
+}
+
 const { nameDisplay, role } = Astro.props;
 ---
 
 <div
-  class="w-full h-[3rem]
+  id="theme-toggle"
+  class="w-full h-[3rem] cursor-pointer
   mobile:w-[20rem] mobile:h-[4.5rem]
   tablet:w-[20rem] tablet:h-[4.5rem]
   laptop:w-[25rem] laptop:h-[5rem]

@@ -14,160 +14,135 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   TEMAS (adaptados a theme-*)
-   Se aplican con <html class="theme-...">
+   TEMAS
+   Se aplican con <html class="theme-*">
+
+   Variables obligatorias que todo tema debe definir:
+     --component-background  fondo de bloques UI (nav, cards)
+     --page-background       fondo del panel de contenido
+     --total-background      fondo del body exterior
+     --letter-color          color de texto principal
+     --border-color          borde estándar
+     --hover-bg              fondo en hover de elementos interactivos
+     --hover-text            texto en hover de elementos interactivos
+     --accent-color          color de acento principal
+     --accent-text           texto sobre fondo de acento
+     --accent-subtle         acento con transparencia (backgrounds sutiles)
+     --surface-raised        superficie elevada (chips, cards internas)
+     --border-subtle         se calcula desde --border-color en :root (no redefinir salvo excepción)
+     --accent-secondary      acento secundario (gradientes, tags)
+     --accent-tertiary       acento terciario (gradientes profundos)
+     --glow-primary          glow principal para efectos neón
+     --glow-secondary        glow secundario
+     --gradient-hero         gradiente de fondo del hero
+     --gradient-border       gradiente para líneas decorativas y texto
+     --surface-glow          fondo sutil con color de acento
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Chalk — "Clean Minimal / Apple Light" ─── */
-:root.theme-chalk {
-  --component-background: #f5f5f5;
-  --page-background: #fafafa;
-  --total-background: #f0f0f0;
-  --letter-color: #111111;
-  --border-color: #d0d0d0;
-  --hover-bg: #111111;
-  --hover-text: #fafafa;
-  --accent-color: #1a3a5c;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(26, 58, 92, 0.07);
-  --surface-raised: #f7f7f7;
-
-  --accent-secondary: #0066cc;
-  --accent-tertiary: #004499;
-  --glow-primary: rgba(26, 58, 92, 0.15);
-  --glow-secondary: rgba(0, 102, 204, 0.10);
-  --gradient-hero: linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(26, 58, 92, 0.03);
-}
-
-/* ─── Stone — "Desert Vintage / Dune Warm" ─── */
-:root.theme-stone {
-  --component-background: #f0ebe3;
-  --page-background: #f7f3ec;
-  --total-background: #e8e1d8;
-  --letter-color: #1a160e;
-  --border-color: #c8bfb0;
-  --hover-bg: #1a160e;
-  --hover-text: #f7f3ec;
-  --accent-color: #b05b2a;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(176, 91, 42, 0.07);
-  --surface-raised: #faf6f0;
-
-  --accent-secondary: #e05c00;
-  --accent-tertiary: #8b1a00;
-  --glow-primary: rgba(176, 91, 42, 0.15);
-  --glow-secondary: rgba(224, 92, 0, 0.10);
-  --gradient-hero: linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(176, 91, 42, 0.03);
-}
-
-/* ─── Slate — "Nordic Blue / Scandinavian UI" ─── */
-:root.theme-slate {
-  --component-background: #eaf0f7;
-  --page-background: #f4f8fc;
-  --total-background: #dce8f2;
-  --letter-color: #0d1a28;
-  --border-color: #aac0d8;
-  --hover-bg: #0d1a28;
-  --hover-text: #f4f8fc;
-  --accent-color: #1a6091;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(26, 96, 145, 0.07);
-  --surface-raised: #f5f9fd;
-}
-
-/* ─── Moss — "Natural Green / A24 Pastoral" ─── */
-:root.theme-moss {
-  --component-background: #eaf1e8;
-  --page-background: #f3f8f1;
-  --total-background: #dce9d9;
-  --letter-color: #0f1a0e;
-  --border-color: #a6bfa0;
-  --hover-bg: #0f1a0e;
-  --hover-text: #f3f8f1;
-  --accent-color: #2d6b2a;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(45, 107, 42, 0.07);
-  --surface-raised: #f6faf5;
-}
-
-/* ─── Sand — "Warm Beige / Hollywood Skin‑Tone Safe" ─── */
-:root.theme-sand {
-  --component-background: #f2ede3;
-  --page-background: #faf7f0;
-  --total-background: #ebe4d7;
-  --letter-color: #1c1912;
-  --border-color: #d0c8b5;
-  --hover-bg: #1c1912;
-  --hover-text: #faf7f0;
-  --accent-color: #b36b00;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(179, 107, 0, 0.07);
-  --surface-raised: #fdfaf4;
-}
-
-/* ─── Void-Hollywood (default) ─── */
+/* ─── Void (default) — oscuro, dorado cálido ─── */
 :root.theme-void {
   --component-background: #0f1113;
-  --page-background: #0a0b0c;
-  --total-background: #050506;
-  --letter-color: #e6f1f5;
-  --border-color: #1c2a30;
-  --hover-bg: #ffb36a;
-  --hover-text: #0a0b0c;
-  --accent-color: #4db7b3;
-  --accent-text: #050506;
-  --accent-subtle: rgba(77, 183, 179, 0.12);
-  --surface-raised: #101416;
-  --border-subtle: rgba(28, 42, 48, 0.8);
-  --accent-secondary: #ff8a3d;
-  --accent-tertiary: #ff5c2e;
-  --glow-primary: rgba(77, 183, 179, 0.35);
-  --glow-secondary: rgba(255, 138, 61, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(77, 183, 179, 0.05);
+  --page-background:      #0a0b0c;
+  --total-background:     #050506;
+  --letter-color:         #e6f1f5;
+  --border-color:         #1c2a30;
+  --hover-bg:             #ffb36a;
+  --hover-text:           #0a0b0c;
+  --accent-color:         #4db7b3;
+  --accent-text:          #050506;
+  --accent-subtle:        rgba(77, 183, 179, 0.12);
+  --surface-raised:       #101416;
+  --border-subtle:        rgba(28, 42, 48, 0.8);
+  --accent-secondary:     #ff8a3d;
+  --accent-tertiary:      #ff5c2e;
+  --glow-primary:         rgba(77, 183, 179, 0.35);
+  --glow-secondary:       rgba(255, 138, 61, 0.25);
+  --gradient-hero:        linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
+  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:         rgba(77, 183, 179, 0.05);
 }
 
-/* ─── Abyss Neo‑Noir Neon─── */
+/* ─── Abyss — oscuro, azul profundo, cyan eléctrico ─── */
 :root.theme-abyss {
   --component-background: #0b0b12;
-  --page-background: #07070d;
-  --total-background: #030308;
-  --letter-color: #e4e0f5;
-  --border-color: #1a1a2a;
-  --hover-bg: #ff4fd8;
-  --hover-text: #07070d;
-  --accent-color: #00e5ff;
-  --accent-text: #030308;
-  --accent-subtle: rgba(0, 229, 255, 0.12);
-  --surface-raised: #0d0d16;
-  --border-subtle: rgba(26, 26, 42, 0.9);
-  --accent-secondary: #ff4fd8;
-  --accent-tertiary: #ff006e;
-  --glow-primary: rgba(0, 229, 255, 0.35);
-  --glow-secondary: rgba(255, 79, 216, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(0, 229, 255, 0.10) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(0, 229, 255, 0.05);
+  --page-background:      #07070d;
+  --total-background:     #030308;
+  --letter-color:         #e4e0f5;
+  --border-color:         #1a1a2a;
+  --hover-bg:             #ff4fd8;
+  --hover-text:           #07070d;
+  --accent-color:         #00e5ff;
+  --accent-text:          #030308;
+  --accent-subtle:        rgba(0, 229, 255, 0.12);
+  --surface-raised:       #0d0d16;
+  --border-subtle:        rgba(26, 26, 42, 0.9);
+  --accent-secondary:     #ff4fd8;
+  --accent-tertiary:      #ff006e;
+  --glow-primary:         rgba(0, 229, 255, 0.35);
+  --glow-secondary:       rgba(255, 79, 216, 0.25);
+  --gradient-hero:        linear-gradient(135deg, rgba(0, 229, 255, 0.10) 0%, transparent 60%);
+  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:         rgba(0, 229, 255, 0.05);
+}
+
+/* ─── Chalk — claro, neutro frío, azul marino ─── */
+:root.theme-chalk {
+  --component-background: #f5f5f5;
+  --page-background:      #fafafa;
+  --total-background:     #f0f0f0;
+  --letter-color:         #111111;
+  --border-color:         #d0d0d0;
+  --hover-bg:             #111111;
+  --hover-text:           #fafafa;
+  --accent-color:         #1a3a5c;
+  --accent-text:          #ffffff;
+  --accent-subtle:        rgba(26, 58, 92, 0.07);
+  --surface-raised:       #f7f7f7;
+  --accent-secondary:     #0066cc;
+  --accent-tertiary:      #004499;
+  --glow-primary:         rgba(26, 58, 92, 0.15);
+  --glow-secondary:       rgba(0, 102, 204, 0.10);
+  --gradient-hero:        linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
+  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:         rgba(26, 58, 92, 0.03);
+}
+
+/* ─── Stone — claro, terracota cálida, ámbar ─── */
+:root.theme-stone {
+  --component-background: #f0ebe3;
+  --page-background:      #f7f3ec;
+  --total-background:     #e8e1d8;
+  --letter-color:         #1a160e;
+  --border-color:         #c8bfb0;
+  --hover-bg:             #1a160e;
+  --hover-text:           #f7f3ec;
+  --accent-color:         #b05b2a;
+  --accent-text:          #ffffff;
+  --accent-subtle:        rgba(176, 91, 42, 0.07);
+  --surface-raised:       #faf6f0;
+  --accent-secondary:     #e05c00;
+  --accent-tertiary:      #8b1a00;
+  --glow-primary:         rgba(176, 91, 42, 0.15);
+  --glow-secondary:       rgba(224, 92, 0, 0.10);
+  --gradient-hero:        linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
+  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:         rgba(176, 91, 42, 0.03);
 }
 
 /* ═══════════════════════════════════════════════════════
    TOKENS GLOBALES
    ═══════════════════════════════════════════════════════ */
 :root {
+  /* Calculado desde --border-color del tema activo */
   --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-8: 48px;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-8:  48px;
   --space-10: 64px;
   --space-12: 96px;
 
@@ -175,46 +150,15 @@
 }
 
 /* Sidebar responsive */
-@media (min-width: 120rem) {
-  :root {
-    --sidebar-width: 27rem;
-  }
-}
-
-@media (min-width: 160rem) {
-  :root {
-    --sidebar-width: 32rem;
-  }
-}
-
-@media (min-width: 240rem) {
-  :root {
-    --sidebar-width: 37rem;
-  }
-}
+@media (min-width: 120rem) { :root { --sidebar-width: 27rem; } }
+@media (min-width: 160rem) { :root { --sidebar-width: 32rem; } }
+@media (min-width: 240rem) { :root { --sidebar-width: 37rem; } }
 
 /* Tipografía */
-html {
-  font-size: 16px;
-}
-
-@media (min-width: 120rem) {
-  html {
-    font-size: 17px;
-  }
-}
-
-@media (min-width: 160rem) {
-  html {
-    font-size: 19px;
-  }
-}
-
-@media (min-width: 240rem) {
-  html {
-    font-size: 22px;
-  }
-}
+html { font-size: 16px; }
+@media (min-width: 120rem) { html { font-size: 17px; } }
+@media (min-width: 160rem) { html { font-size: 19px; } }
+@media (min-width: 240rem) { html { font-size: 22px; } }
 
 /* Reset */
 *,
@@ -231,17 +175,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Scroll */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
-}
+/* Scrollbar oculta en todos los navegadores */
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { display: none; }
 
 /* ═══════════════════════════════════════════════════════
-   ICONOS (PARA theme-*)
+   ICONOS DE NAVEGACIÓN (PNG con filtro CSS)
    ═══════════════════════════════════════════════════════ */
 
 .nav-icon {
@@ -253,7 +192,7 @@ button:hover .nav-icon {
   filter: brightness(0) invert(1);
 }
 
-/* Temas oscuros */
+/* Temas oscuros — iconos ya invertidos por defecto */
 :root.theme-void .nav-icon,
 :root.theme-abyss .nav-icon {
   filter: brightness(0) invert(1);
@@ -287,13 +226,10 @@ button:hover .nav-icon {
   opacity: 1;
 }
 
-/* Enlace activo — resaltado con acento */
 .nav-link[data-active="true"] {
   background: var(--accent-subtle);
   color: var(--accent-color);
 }
-
-
 
 .nav-link[data-active="true"] .nav-mask {
   background-color: var(--accent-color);
@@ -302,7 +238,6 @@ button:hover .nav-icon {
 
 /* ═══════════════════════════════════════════════════════
    HOME — HERO SECTION
-   Layout de la página principal (panel derecho en dual)
    ═══════════════════════════════════════════════════════ */
 .home-hero {
   position: relative;
@@ -317,7 +252,6 @@ button:hover .nav-icon {
   gap: clamp(1rem, 2.5vw, 2rem);
 }
 
-/* Fondo de puntos decorativos — muy sutil */
 .home-grid-bg {
   position: absolute;
   inset: -4rem;
@@ -335,7 +269,6 @@ button:hover .nav-icon {
   max-width: 52ch;
 }
 
-/* H1 principal — escala fluida entre móvil y escritorio */
 .home-h1 {
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 700;
@@ -345,12 +278,10 @@ button:hover .nav-icon {
   margin: 0;
 }
 
-/* Segunda línea del H1, más apagada */
 .home-h1-dim {
   opacity: 0.45;
 }
 
-/* Subtítulo descriptivo */
 .home-sub {
   font-size: clamp(0.85rem, 1.4vw, 1.05rem);
   color: var(--letter-color);
@@ -359,7 +290,6 @@ button:hover .nav-icon {
   margin: 0;
 }
 
-/* Fila de botones CTA */
 .cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -367,10 +297,6 @@ button:hover .nav-icon {
   align-items: center;
 }
 
-/* ─── CTA Principal (borde de acento) ────────────────── */
-/* CORRECCIÓN: en hover usa --accent-text en vez de     */
-/* --page-background, así el texto siempre contrasta    */
-/* con el fondo de acento (ej: dorado → texto oscuro)   */
 .cta-primary {
   display: inline-flex;
   align-items: center;
@@ -391,7 +317,6 @@ button:hover .nav-icon {
   color: var(--accent-text);
 }
 
-/* ─── CTA Secundario (ghost, neutro) ─────────────────── */
 .cta-ghost {
   display: inline-flex;
   align-items: center;
@@ -414,7 +339,6 @@ button:hover .nav-icon {
   border-color: var(--hover-bg);
 }
 
-/* Franja de tecnologías debajo de los CTA */
 .tech-strip {
   display: flex;
   flex-direction: column;
@@ -440,7 +364,6 @@ button:hover .nav-icon {
 
 /* ═══════════════════════════════════════════════════════
    RESUME — CHIPS DE HABILIDADES
-   Grid de etiquetas de tecnologías / skills
    ═══════════════════════════════════════════════════════ */
 .chip-grid {
   display: grid;
@@ -479,10 +402,7 @@ button:hover .nav-icon {
 
 /* ═══════════════════════════════════════════════════════
    MODAL DEL CV
-   Overlay a pantalla completa con iframe del PDF
    ═══════════════════════════════════════════════════════ */
-
-/* Botones de acción dentro del modal (siempre sobre fondo oscuro) */
 .cv-modal-action {
   display: inline-flex;
   align-items: center;
@@ -505,7 +425,6 @@ button:hover .nav-icon {
   color: #ffffff;
 }
 
-/* Botón de descarga — resaltado con acento, texto siempre oscuro en hover */
 .cv-modal-accent {
   border-color: var(--accent-color) !important;
   color: var(--accent-color) !important;
@@ -513,22 +432,12 @@ button:hover .nav-icon {
 
 .cv-modal-accent:hover {
   background: var(--accent-color) !important;
-  /* Texto oscuro — el acento (dorado, cyan, etc.) es siempre claro,
-     así que negro garantiza contraste en cualquier tema */
   color: #0a0a0a !important;
 }
 
-/* Animación de entrada del modal */
 @keyframes cv-modal-in {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 #cv-modal[data-open="true"] {
@@ -537,10 +446,8 @@ button:hover .nav-icon {
 
 /* ═══════════════════════════════════════════════════════
    EFECTOS CYBERPUNK — utilidades reutilizables
-   (usan tokens del tema activo automáticamente)
    ═══════════════════════════════════════════════════════ */
 
-/* Texto con gradiente */
 .text-gradient {
   background: var(--gradient-border);
   -webkit-background-clip: text;
@@ -548,7 +455,6 @@ button:hover .nav-icon {
   background-clip: text;
 }
 
-/* Borde neón */
 .neon-border {
   border: 1px solid var(--accent-color);
   box-shadow:
@@ -557,52 +463,44 @@ button:hover .nav-icon {
     inset 0 0 6px var(--glow-primary);
 }
 
-/* Glow exterior */
 .neon-glow {
   box-shadow:
     0 0 10px var(--glow-primary),
     0 0 30px var(--glow-secondary);
 }
 
-/* Glow texto */
 .text-glow {
   text-shadow:
     0 0 8px var(--glow-primary),
     0 0 20px var(--glow-primary);
 }
 
-/* Línea gradiente */
 .gradient-line {
   height: 1px;
   background: var(--gradient-border);
   opacity: 0.6;
 }
 
-/* Fondo acento sutil */
 .surface-accent {
   background: var(--surface-glow);
 }
 
-/* Hero gradient */
 .hero-gradient {
   background: var(--gradient-hero);
 }
 
-/* Borde lateral neón */
 .neon-left-border {
   border-left: 2px solid var(--accent-color);
   box-shadow: -3px 0 12px var(--glow-primary);
   padding-left: 1rem;
 }
 
-/* Chip secundario — CORREGIDO */
 .tag-secondary {
   background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
   border: 1px solid var(--accent-secondary);
   color: var(--accent-secondary);
 }
 
-/* Hover glow */
 .hover-glow {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
@@ -612,7 +510,6 @@ button:hover .nav-icon {
   border-color: var(--accent-color);
 }
 
-/* Scanlines */
 .scanlines {
   position: relative;
 }
@@ -621,10 +518,12 @@ button:hover .nav-icon {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.03) 2px,
-      rgba(0, 0, 0, 0.03) 4px);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
   pointer-events: none;
 }

@@ -55,7 +55,7 @@ const { email, location, statusStr, statusActive, cv_link, formSubject } = conta
     </div>
   </div>
 
-  <form id="contact-form" autocomplete="off">
+  <form id="contact-form" autocomplete="off" data-email={email}>
     <input
       type="hidden"
       name="access_key"
@@ -188,7 +188,6 @@ const { email, location, statusStr, statusActive, cv_link, formSubject } = conta
       </button>
     </div>
   </form>
-  <div class="flex flex-wrap gap-2"></div>
 </div>
 
 <div class="flex flex-wrap gap-2">

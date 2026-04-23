@@ -1,0 +1,86 @@
+---
+import HomeContent    from "./HomeContent.astro";
+import AboutContent   from "./AboutContent.astro";
+import ResumeContent  from "./ResumeContent.astro";
+import ProjectsContent from "./ProjectsContent.astro";
+import ContactContent from "./ContactContent.astro";
+import {
+  getSite,
+  getHomeData,
+  getAboutData,
+  getResumeData,
+  getProjects,
+  getContactData,
+  getSocialLinks,
+} from "../../lib/content";
+
+const site        = await getSite();
+const homeData    = await getHomeData();
+const aboutData   = await getAboutData();
+const resumeData  = await getResumeData();
+const projects    = await getProjects();
+const contactData = await getContactData();
+const socialLinks = await getSocialLinks();
+
+// sections derived from site.json — adding home as the implicit first
+const labeledSections = site.pages; // [{path, label, icon, sectionLabel}, ...]
+---
+
+<!--
+  Contenedor de sección única. Va dentro del #content-scroll de DualMain.
+  Las 5 secciones se apilan verticalmente; sectionNav.ts gestiona el scroll.
+-->
+<div class="flex flex-col w-full">
+
+  <!-- ══════════════════════════════════════════════
+       HOME — sin encabezado, altura mínima = panel
+       ══════════════════════════════════════════════ -->
+  <section
+    id="home"
+    class="flex items-center justify-center"
+    aria-label="Home"
+  >
+    <div class="w-full">
+      <HomeContent home={homeData} />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECCIONES RESTANTES — orden de site.pages
+       ══════════════════════════════════════════════ -->
+  {
+    labeledSections.map((page) => {
+      const sectionId = page.path.replace(/^\//, "");
+
+      return (
+        <section
+          id={sectionId}
+          class="pt-[3rem] laptop:pt-[5rem] border-t border-[var(--border-subtle)]"
+          aria-labelledby={`heading-${sectionId}`}
+        >
+          {/* Encabezado de sección — misma estética que DualMain pageLabel */}
+          <div class="mb-4 laptop:mb-7">
+            <p
+              id={`heading-${sectionId}`}
+              class="text-xs laptop:text-base fhd:text-lg
+                     tracking-[0.45em] uppercase font-bold
+                     text-[var(--letter-color)] text-glow"
+            >
+              {page.sectionLabel}
+            </p>
+            <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
+          </div>
+
+          {/* Contenido de la sección */}
+          <div class="pb-[3rem] laptop:pb-[4rem]">
+            {sectionId === "about"    && <AboutContent    about={aboutData} />}
+            {sectionId === "resume"   && <ResumeContent   resume={resumeData} />}
+            {sectionId === "projects" && <ProjectsContent projects={projects} />}
+            {sectionId === "contact"  && <ContactContent  contact={contactData} socialLinks={socialLinks} />}
+          </div>
+        </section>
+      );
+    })
+  }
+
+</div>

@@ -4,8 +4,9 @@ import type { HomeData } from "../../lib/content";
 interface Props {
   home: HomeData;
 }
+
 const { home } = Astro.props;
-const { hero, techStrip } = home;
+const { hero, techStrip, cta } = home;
 ---
 
 <div class="home-hero">
@@ -26,8 +27,8 @@ const { hero, techStrip } = home;
 
   <!-- CTAs -->
   <div class="cta-row">
-    <a href="/projects" class="cta-primary">View work →</a>
-    <a href="/contact" class="cta-ghost">Let's talk</a>
+    <a href={cta.primaryHref} class="cta-primary">{cta.primary}</a>
+    <a href={cta.secondaryHref} class="cta-ghost">{cta.secondary}</a>
   </div>
 
   <!-- Tech strip -->

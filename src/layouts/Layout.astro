@@ -10,31 +10,42 @@ import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile } from "../lib/content";
 import type { SiteData, ProfileData } from "../lib/content";
 
-const site = (await getSite()) as SiteData;
+const site    = (await getSite())    as SiteData;
 const profile = (await getProfile()) as ProfileData;
 
-const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
-  "home") as keyof typeof site.pageDescriptions;
+const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") || "home") as keyof typeof site.pageDescriptions;
 const defaultDescription = site.pageDescriptions[pathKey] ?? site.description;
 
 const {
   title,
-  dual = false,
-  scrollable = true,
-  pageLabel = "",
+  dual        = false,
+  scrollable  = true,
+  pageLabel   = "",
   description = defaultDescription,
-  ogImage = site.ogImage,
+  ogImage     = site.ogImage,
 } = Astro.props;
 
-const pageTitle = `${title} — ${site.name}`;
+const pageTitle  = `${title} — ${site.name}`;
 const ogImageUrl = `${site.url}${ogImage}`;
 ---
 
 <!doctype html>
-<!-- ✅ IMPORTANTE: tema oscuro por defecto -->
 <html lang={site.lang} class="theme-void">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- ⚡ Anti-flash: aplica el tema guardado ANTES del primer paint -->
+    <script is:inline>
+      (function () {
+        var t = localStorage.getItem("theme");
+        var valid = ["theme-void", "theme-abyss", "theme-chalk", "theme-stone"];
+        if (t && valid.indexOf(t) !== -1) {
+          document.documentElement.classList.remove("theme-void");
+          document.documentElement.classList.add(t);
+        }
+      })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
@@ -61,16 +72,14 @@ const ogImageUrl = `${site.url}${ogImage}`;
 
     <!-- Assets -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poiret+One"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" />
 
     <!-- Scripts -->
     <script src="../scripts/themeToggle.ts"></script>
     <script src="../scripts/navIndicator.ts"></script>
     <script src="../scripts/cvModal.ts"></script>
     <script src="../scripts/contactForm.ts"></script>
+    <script src="../scripts/sectionNav.ts"></script>
   </head>
 
   <body
@@ -96,7 +105,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
     </div>
 
     <div class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40">
-      <Navigation />
+      <Navigation pages={site.pages} />
     </div>
 
     <div class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40">

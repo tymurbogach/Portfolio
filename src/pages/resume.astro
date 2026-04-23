@@ -1,11 +1,8 @@
 ---
-import ResumeContent from "../components/sections/ResumeContent.astro";
 import Layout from "../layouts/Layout.astro";
-import { getResumeData } from "../lib/content";
-
-const resume = await getResumeData();
+import SinglePage from "../components/sections/SinglePage.astro";
 ---
 
-<Layout dual={true} title="Resume" pageLabel="— skills & stack">
-  <ResumeContent resume={resume} />
+<Layout dual={true} title="Resume">
+  <SinglePage />
 </Layout>
