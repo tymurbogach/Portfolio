@@ -50,7 +50,10 @@ function initThemeToggle() {
   const newBtn = btn.cloneNode(true);
   btn.parentNode?.replaceChild(newBtn, btn);
 
-  newBtn.addEventListener("click", () => {
+  newBtn.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     idx = (idx + 1) % THEMES.length;
     const theme = THEMES[idx];
 

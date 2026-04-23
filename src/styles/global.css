@@ -18,7 +18,7 @@
    Se aplican con <html class="theme-...">
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Chalk ─── */
+/* ─── Chalk — "Clean Minimal / Apple Light" ─── */
 :root.theme-chalk {
   --component-background: #f5f5f5;
   --page-background: #fafafa;
@@ -41,7 +41,7 @@
   --surface-glow: rgba(26, 58, 92, 0.03);
 }
 
-/* ─── Stone ─── */
+/* ─── Stone — "Desert Vintage / Dune Warm" ─── */
 :root.theme-stone {
   --component-background: #f0ebe3;
   --page-background: #f7f3ec;
@@ -64,7 +64,7 @@
   --surface-glow: rgba(176, 91, 42, 0.03);
 }
 
-/* ─── Slate ─── */
+/* ─── Slate — "Nordic Blue / Scandinavian UI" ─── */
 :root.theme-slate {
   --component-background: #eaf0f7;
   --page-background: #f4f8fc;
@@ -79,7 +79,7 @@
   --surface-raised: #f5f9fd;
 }
 
-/* ─── Moss ─── */
+/* ─── Moss — "Natural Green / A24 Pastoral" ─── */
 :root.theme-moss {
   --component-background: #eaf1e8;
   --page-background: #f3f8f1;
@@ -94,7 +94,7 @@
   --surface-raised: #f6faf5;
 }
 
-/* ─── Sand ─── */
+/* ─── Sand — "Warm Beige / Hollywood Skin‑Tone Safe" ─── */
 :root.theme-sand {
   --component-background: #f2ede3;
   --page-background: #faf7f0;
@@ -109,51 +109,50 @@
   --surface-raised: #fdfaf4;
 }
 
-/* ─── Void (default) ─── */
+/* ─── Void-Hollywood (default) ─── */
 :root.theme-void {
-  --component-background: #1c1c1c;
-  --page-background: #141414;
-  --total-background: #0c0c0c;
-  --letter-color: #e8e0d4;
-  --border-color: #2e2e2e;
-  --hover-bg: #e8e0d4;
-  --hover-text: #141414;
-  --accent-color: #c8952a;
-  --accent-text: #0c0c0c;
-  --accent-subtle: rgba(200, 149, 42, 0.12);
-  --surface-raised: #1a1a1a;
-  --border-subtle: rgba(46, 46, 46, 0.9);
-
-  --accent-secondary: #ff6b35;
-  --accent-tertiary: #e8003d;
-  --glow-primary: rgba(200, 149, 42, 0.35);
-  --glow-secondary: rgba(255, 107, 53, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(200, 149, 42, 0.08) 0%, transparent 60%);
+  --component-background: #0f1113;
+  --page-background: #0a0b0c;
+  --total-background: #050506;
+  --letter-color: #e6f1f5;
+  --border-color: #1c2a30;
+  --hover-bg: #ffb36a;
+  --hover-text: #0a0b0c;
+  --accent-color: #4db7b3;
+  --accent-text: #050506;
+  --accent-subtle: rgba(77, 183, 179, 0.12);
+  --surface-raised: #101416;
+  --border-subtle: rgba(28, 42, 48, 0.8);
+  --accent-secondary: #ff8a3d;
+  --accent-tertiary: #ff5c2e;
+  --glow-primary: rgba(77, 183, 179, 0.35);
+  --glow-secondary: rgba(255, 138, 61, 0.25);
+  --gradient-hero: linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(200, 149, 42, 0.04);
+  --surface-glow: rgba(77, 183, 179, 0.05);
 }
 
-/* ─── Abyss ─── */
+/* ─── Abyss Neo‑Noir Neon─── */
 :root.theme-abyss {
-  --component-background: #0d1520;
-  --page-background: #080e18;
-  --total-background: #040a12;
-  --letter-color: #b8cfe8;
-  --border-color: #162235;
-  --hover-bg: #b8cfe8;
-  --hover-text: #080e18;
-  --accent-color: #00c8ff;
-  --accent-text: #040a12;
-  --accent-subtle: rgba(0, 200, 255, 0.10);
-  --surface-raised: #0c1422;
-  --border-subtle: rgba(22, 34, 53, 0.95);
-  --accent-secondary: #bf00ff;
-  --accent-tertiary: #ff0080;
-  --glow-primary: rgba(0, 200, 255, 0.35);
-  --glow-secondary: rgba(191, 0, 255, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(0, 200, 255, 0.08) 0%, transparent 60%);
+  --component-background: #0b0b12;
+  --page-background: #07070d;
+  --total-background: #030308;
+  --letter-color: #e4e0f5;
+  --border-color: #1a1a2a;
+  --hover-bg: #ff4fd8;
+  --hover-text: #07070d;
+  --accent-color: #00e5ff;
+  --accent-text: #030308;
+  --accent-subtle: rgba(0, 229, 255, 0.12);
+  --surface-raised: #0d0d16;
+  --border-subtle: rgba(26, 26, 42, 0.9);
+  --accent-secondary: #ff4fd8;
+  --accent-tertiary: #ff006e;
+  --glow-primary: rgba(0, 229, 255, 0.35);
+  --glow-secondary: rgba(255, 79, 216, 0.25);
+  --gradient-hero: linear-gradient(135deg, rgba(0, 229, 255, 0.10) 0%, transparent 60%);
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(0, 200, 255, 0.04);
+  --surface-glow: rgba(0, 229, 255, 0.05);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -242,7 +241,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════
-   ICONOS (CORREGIDO PARA theme-*)
+   ICONOS (PARA theme-*)
    ═══════════════════════════════════════════════════════ */
 
 .nav-icon {
