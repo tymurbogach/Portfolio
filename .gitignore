@@ -23,7 +23,16 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Carpetas creadas por asistentes AI (Claude Code, etc.)
+# Carpetas creadas por asistentes AI
 .claude/
 .gemini/
 *.local.json
+
+# Carpeta de brainstorm/superpowers de Claude (trabajo temporal, no es código)
+.superpowers/
+
+# Carpeta de skills de agentes AI (se regenera, no es tuya)
+.agents/
+
+# Carpeta de trabajo temporal
+scratch/
