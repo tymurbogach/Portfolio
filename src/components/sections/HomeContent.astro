@@ -1,17 +1,12 @@
 ---
-import type { HomeData } from '../../lib/content';
+import type { HomeData } from "../../lib/content";
 
-interface Props { home: HomeData; }
+interface Props {
+  home: HomeData;
+}
 const { home } = Astro.props;
 const { hero, techStrip } = home;
 ---
-<div class="flex justify-center pt-2 pb-1 laptop:hidden">
-  <img
-    src="/img/gopnik.png"
-    alt="Hero Image"
-    class="w-[6rem] mobile:w-[8rem] h-auto object-contain"
-  />
-</div>
 
 <div class="home-hero">
   <!-- Background dot grid -->

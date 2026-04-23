@@ -1,26 +1,37 @@
+// Lista ordenada de temas disponibles.
+// El primero de la lista es el tema por defecto (variant-6 = Void, oscuro dorado).
 const THEMES = [
-  "variant-1", "variant-2", "variant-3",
-  "variant-4", "variant-5", "variant-6", "variant-7",
+  "variant-6", // Void  — oscuro, acento dorado    (DEFAULT)
+  "variant-7", // Abyss — oscuro, acento cyan
+  "variant-1", // Chalk — claro, neutro frío
+  "variant-2", // Stone — claro, terracota cálido
+  "variant-3", // Slate — claro, azul océano
+  "variant-4", // Moss  — claro, verde bosque
+  "variant-5", // Sand  — claro, ámbar cálido
 ] as const;
 
 type Theme = (typeof THEMES)[number];
 
+// Elimina todas las clases de tema del <html> y aplica la indicada
 function applyTheme(theme: Theme): void {
   const root = document.documentElement;
   (THEMES as readonly string[]).forEach(t => root.classList.remove(t));
   root.classList.add(theme);
 }
 
+// Inicializa el botón de cambio de tema (la foto de perfil)
 function initThemeToggle(): void {
   const btn = document.getElementById("theme-toggle");
   if (!btn) return;
 
+  // Recupera el tema guardado; si no hay ninguno, arranca en el primero (Void)
   const saved = localStorage.getItem("theme");
   let idx = THEMES.indexOf(saved as Theme);
   if (idx < 0) idx = 0;
 
   applyTheme(THEMES[idx]);
 
+  // Cada clic avanza al siguiente tema de forma cíclica
   btn.addEventListener("click", () => {
     idx = (idx + 1) % THEMES.length;
     applyTheme(THEMES[idx]);
@@ -28,12 +39,18 @@ function initThemeToggle(): void {
   });
 }
 
+// Se ejecuta en cada carga de página (incluidas navegaciones SPA)
 document.addEventListener("astro:page-load", initThemeToggle);
 
+// Antes de que Astro intercambie el DOM en una navegación,
+// aplica el tema guardado al nuevo documento para evitar el flash blanco
 document.addEventListener("astro:before-swap", (e) => {
   const event = e as Event & { newDocument: Document };
   const saved = localStorage.getItem("theme");
-  const valid: Theme = THEMES.includes(saved as Theme) ? (saved as Theme) : "variant-1";
+  // Si el tema guardado no es válido, usa el por defecto (primer elemento)
+  const valid: Theme = THEMES.includes(saved as Theme) ? (saved as Theme) : THEMES[0];
   (THEMES as readonly string[]).forEach(t => event.newDocument.documentElement.classList.remove(t));
   event.newDocument.documentElement.classList.add(valid);
 });
+
+

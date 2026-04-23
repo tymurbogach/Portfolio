@@ -10,7 +10,6 @@ import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile } from "../lib/content";
 import type { SiteData, ProfileData } from "../lib/content";
 
-// Ahora TypeScript sabe perfectamente qué son gracias a los cambios en content.ts
 const site = (await getSite()) as SiteData;
 const profile = (await getProfile()) as ProfileData;
 
@@ -21,6 +20,7 @@ const defaultDescription = site.pageDescriptions[pathKey] ?? site.description;
 const {
   title,
   dual = false,
+  scrollable = true,
   pageLabel = "",
   description = defaultDescription,
   ogImage = site.ogImage,
@@ -34,13 +34,11 @@ const ogImageUrl = `${site.url}${ogImage}`;
 <html lang={site.lang}>
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.name} />
-
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
@@ -50,7 +48,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
-
     <ClientRouter />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
@@ -64,23 +61,28 @@ const ogImageUrl = `${site.url}${ogImage}`;
   </head>
 
   <body
-    class="min-h-screen min-w-screen bg-[var(--total-background)] text-[var(--letter-color)] overflow-hidden"
+    class="bg-[var(--total-background)] text-[var(--letter-color)]"
+    style="position:fixed; inset:0; overflow:hidden;"
   >
+    <!-- MÓVIL: Header fijo arriba -->
     <header
       transition:persist="mobile-header"
       transition:name="shell-mobile-hdr"
-      class="block laptop:hidden absolute top-0 left-0 w-full z-30 pointer-events-auto"
+      class="block laptop:hidden fixed top-0 left-0 w-full z-30 pointer-events-auto"
     >
       <Header />
     </header>
+
+    <!-- MÓVIL: Footer fijo abajo -->
     <footer
       transition:persist="mobile-footer"
       transition:name="shell-mobile-ftr"
-      class="block laptop:hidden absolute bottom-0 left-0 w-full z-30 pointer-events-auto"
+      class="block laptop:hidden fixed bottom-0 left-0 w-full z-30 pointer-events-auto"
     >
       <Footer />
     </footer>
 
+    <!-- DESKTOP: Name (esquina sup izq) -->
     <div
       transition:persist="name-logo"
       transition:name="shell-name"
@@ -88,6 +90,8 @@ const ogImageUrl = `${site.url}${ogImage}`;
     >
       <Name nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
+
+    <!-- DESKTOP: Navigation (esquina sup der) -->
     <div
       transition:persist="nav-desktop"
       transition:name="shell-nav"
@@ -95,6 +99,8 @@ const ogImageUrl = `${site.url}${ogImage}`;
     >
       <Navigation />
     </div>
+
+    <!-- DESKTOP: Social (esquina inf izq) -->
     <div
       transition:persist="social-desktop"
       transition:name="shell-social"
@@ -103,22 +109,29 @@ const ogImageUrl = `${site.url}${ogImage}`;
       <SocialMedia />
     </div>
 
+    <!-- MAIN: área de contenido entre header y footer -->
     <main
-      class="absolute inset-x-0 top-[6rem] bottom-[2.5rem] laptop:inset-0 flex items-center justify-center w-full z-20 laptop:p-[6rem]"
+      class="fixed inset-x-0 z-20
+             top-[3rem] bottom-[2.5rem]
+             laptop:inset-0 laptop:p-[6rem]
+             flex items-center justify-center"
     >
       <div
-        class="w-full h-full box-border bg-[var(--page-background)] border border-[var(--border-subtle)]
-                 flex items-center justify-center overflow-hidden p-0"
+        class="w-full h-full box-border
+               bg-[var(--page-background)] border border-[var(--border-subtle)]
+               flex items-center justify-center overflow-hidden p-0"
       >
         {
           dual ? (
-            <DualMain pageLabel={pageLabel}>
+            <DualMain pageLabel={pageLabel} scrollable={scrollable}>
               <slot />
             </DualMain>
           ) : (
             <div
               transition:name="content-panel"
-              class="w-full h-full p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem] laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem] flex flex-col overflow-y-auto"
+              class="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden
+                     p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem]
+                     laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem]"
             >
               <slot />
             </div>

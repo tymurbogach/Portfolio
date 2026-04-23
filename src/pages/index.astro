@@ -2,10 +2,9 @@
 import HomeContent from "../components/sections/HomeContent.astro";
 import Layout from "../layouts/Layout.astro";
 import { getHomeData } from "../lib/content";
-
 const home = await getHomeData();
 ---
 
-<Layout dual={true} title="Home" pageLabel="">
+<Layout dual={true} scrollable={false} title="Home" pageLabel="">
   <HomeContent home={home} />
 </Layout>

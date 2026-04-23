@@ -3,7 +3,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <div
-  class="w-full h-[3rem]
+  class="relative w-full h-[3rem]
   mobile:w-[20rem] mobile:h-[4.5rem]
   tablet:w-[20rem] tablet:h-[4.5rem]
   laptop:w-[25rem] laptop:h-[5rem]
@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
     >
       <span
         class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                   transition-all duration-200 group-hover:scale-125"
+               transition-all duration-200 group-hover:scale-125"
         style="-webkit-mask-image:url('/img/about.png');mask-image:url('/img/about.png');"
         aria-hidden="true"></span>
       <span>About</span>
@@ -47,7 +47,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
     >
       <span
         class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                   transition-all duration-200 group-hover:scale-125"
+               transition-all duration-200 group-hover:scale-125"
         style="-webkit-mask-image:url('/img/resume.png');mask-image:url('/img/resume.png');"
         aria-hidden="true"></span>
       <span>Resume</span>
@@ -65,7 +65,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
     >
       <span
         class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                   transition-all duration-200 group-hover:scale-125"
+               transition-all duration-200 group-hover:scale-125"
         style="-webkit-mask-image:url('/img/projects.png');mask-image:url('/img/projects.png');"
         aria-hidden="true"></span>
       <span>Projects</span>
@@ -83,19 +83,19 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
     >
       <span
         class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                   transition-all duration-200 group-hover:scale-125"
+               transition-all duration-200 group-hover:scale-125"
         style="-webkit-mask-image:url('/img/contact.png');mask-image:url('/img/contact.png');"
         aria-hidden="true"></span>
       <span>Contact</span>
     </a>
-
-    <!-- Sliding active indicator -->
-    <div
-      id="nav-indicator"
-      style="position:absolute; bottom:0; height:2px; background:var(--accent-color);
-                transition: left 0.25s ease, width 0.25s ease;
-                pointer-events:none; left:0; width:0;"
-    >
-    </div>
   </nav>
+
+  <!-- Indicator fuera del nav para que overflow-hidden no lo corte -->
+  <div
+    id="nav-indicator"
+    style="position:absolute; bottom:0; height:2px; background:var(--accent-color);
+           transition: left 0.25s ease, width 0.25s ease;
+           pointer-events:none; left:0; width:0;"
+  >
+  </div>
 </div>
