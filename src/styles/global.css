@@ -2,33 +2,24 @@
 
 /* ═══════════════════════════════════════════════════════
    BREAKPOINTS PERSONALIZADOS
-   Adaptados al diseño del portfolio — no uses los de Tailwind por defecto
    ═══════════════════════════════════════════════════════ */
 @theme {
   --breakpoint-mobile: 30rem;
-  /* ~480px — móviles grandes */
   --breakpoint-tablet: 48rem;
-  /* ~768px — tablets */
   --breakpoint-laptop: 80rem;
-  /* ~1280px — portátiles */
   --breakpoint-desktop: 100rem;
-  /* ~1600px — monitores estándar */
   --breakpoint-fhd: 120rem;
-  /* ~1920px — Full HD */
   --breakpoint-qhd: 160rem;
-  /* ~2560px — 2K/QHD */
   --breakpoint-uhd: 240rem;
-  /* ~3840px — 4K/UHD */
 }
 
 /* ═══════════════════════════════════════════════════════
-   TEMAS DE COLOR
-   Cada variante define el juego completo de tokens.
-   El tema activo se aplica añadiendo la clase al <html>.
+   TEMAS (adaptados a theme-*)
+   Se aplican con <html class="theme-...">
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Variante 1 — Chalk (claro, neutro frío) ────────── */
-:root {
+/* ─── Chalk ─── */
+:root.theme-chalk {
   --component-background: #f5f5f5;
   --page-background: #fafafa;
   --total-background: #f0f0f0;
@@ -38,13 +29,20 @@
   --hover-text: #fafafa;
   --accent-color: #1a3a5c;
   --accent-text: #ffffff;
-  /* texto sobre fondo de acento */
   --accent-subtle: rgba(26, 58, 92, 0.07);
   --surface-raised: #f7f7f7;
+
+  --accent-secondary: #0066cc;
+  --accent-tertiary: #004499;
+  --glow-primary: rgba(26, 58, 92, 0.15);
+  --glow-secondary: rgba(0, 102, 204, 0.10);
+  --gradient-hero: linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(26, 58, 92, 0.03);
 }
 
-/* ─── Variante 2 — Stone (cálido, terracota) ─────────── */
-:root.variant-2 {
+/* ─── Stone ─── */
+:root.theme-stone {
   --component-background: #f0ebe3;
   --page-background: #f7f3ec;
   --total-background: #e8e1d8;
@@ -56,10 +54,18 @@
   --accent-text: #ffffff;
   --accent-subtle: rgba(176, 91, 42, 0.07);
   --surface-raised: #faf6f0;
+
+  --accent-secondary: #e05c00;
+  --accent-tertiary: #8b1a00;
+  --glow-primary: rgba(176, 91, 42, 0.15);
+  --glow-secondary: rgba(224, 92, 0, 0.10);
+  --gradient-hero: linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(176, 91, 42, 0.03);
 }
 
-/* ─── Variante 3 — Slate (azul océano, frío) ─────────── */
-:root.variant-3 {
+/* ─── Slate ─── */
+:root.theme-slate {
   --component-background: #eaf0f7;
   --page-background: #f4f8fc;
   --total-background: #dce8f2;
@@ -73,8 +79,8 @@
   --surface-raised: #f5f9fd;
 }
 
-/* ─── Variante 4 — Moss (verde bosque) ───────────────── */
-:root.variant-4 {
+/* ─── Moss ─── */
+:root.theme-moss {
   --component-background: #eaf1e8;
   --page-background: #f3f8f1;
   --total-background: #dce9d9;
@@ -88,8 +94,8 @@
   --surface-raised: #f6faf5;
 }
 
-/* ─── Variante 5 — Sand (ámbar cálido) ───────────────── */
-:root.variant-5 {
+/* ─── Sand ─── */
+:root.theme-sand {
   --component-background: #f2ede3;
   --page-background: #faf7f0;
   --total-background: #ebe4d7;
@@ -103,56 +109,60 @@
   --surface-raised: #fdfaf4;
 }
 
-/* ─── Variante 6 — Void (oscuro, oro cálido) — DARK ──── */
-/*     El que se ve en la screenshot. Fondo casi negro,   */
-/*     tipografía crema, acento dorado.                   */
-:root.variant-6 {
+/* ─── Void (default) ─── */
+:root.theme-void {
   --component-background: #1c1c1c;
   --page-background: #141414;
   --total-background: #0c0c0c;
   --letter-color: #e8e0d4;
   --border-color: #2e2e2e;
   --hover-bg: #e8e0d4;
-  /* hover claro sobre fondo oscuro */
   --hover-text: #141414;
-  /* texto oscuro sobre hover claro */
   --accent-color: #c8952a;
   --accent-text: #0c0c0c;
-  /* texto oscuro sobre acento dorado */
   --accent-subtle: rgba(200, 149, 42, 0.12);
   --surface-raised: #1a1a1a;
   --border-subtle: rgba(46, 46, 46, 0.9);
+
+  --accent-secondary: #ff6b35;
+  --accent-tertiary: #e8003d;
+  --glow-primary: rgba(200, 149, 42, 0.35);
+  --glow-secondary: rgba(255, 107, 53, 0.25);
+  --gradient-hero: linear-gradient(135deg, rgba(200, 149, 42, 0.08) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(200, 149, 42, 0.04);
 }
 
-/* ─── Variante 7 — Abyss (oscuro, azul eléctrico) DARK ─ */
-/*     Fondo azul-negro profundo, acento cyan vibrante.   */
-:root.variant-7 {
+/* ─── Abyss ─── */
+:root.theme-abyss {
   --component-background: #0d1520;
   --page-background: #080e18;
   --total-background: #040a12;
   --letter-color: #b8cfe8;
   --border-color: #162235;
   --hover-bg: #b8cfe8;
-  /* hover claro sobre fondo oscuro */
   --hover-text: #080e18;
-  /* texto oscuro sobre hover claro */
   --accent-color: #00c8ff;
   --accent-text: #040a12;
-  /* texto oscuro sobre acento cyan */
   --accent-subtle: rgba(0, 200, 255, 0.10);
   --surface-raised: #0c1422;
   --border-subtle: rgba(22, 34, 53, 0.95);
+
+  --accent-secondary: #bf00ff;
+  --accent-tertiary: #ff0080;
+  --glow-primary: rgba(0, 200, 255, 0.35);
+  --glow-secondary: rgba(191, 0, 255, 0.25);
+  --gradient-hero: linear-gradient(135deg, rgba(0, 200, 255, 0.08) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(0, 200, 255, 0.04);
 }
 
 /* ═══════════════════════════════════════════════════════
    TOKENS GLOBALES
-   Variables derivadas y de diseño que no cambian por tema
    ═══════════════════════════════════════════════════════ */
 :root {
-  /* Border con transparencia calculada del color de borde del tema */
   --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
 
-  /* Espaciado base del sistema de diseño */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -163,52 +173,32 @@
   --space-10: 64px;
   --space-12: 96px;
 
-  /* Radios (actualmente no se usan, pero están disponibles) */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-
-  /* Ancho del sidebar izquierdo en modo dual (laptop)
-     Fórmula: Name.left(3rem) + Name.width - main.padding(6rem)
-     El borde del sidebar alinea con el borde derecho del bloque Name */
   --sidebar-width: 22rem;
 }
 
-/* ─── Sidebar width según resolución ─────────────────── */
+/* Sidebar responsive */
 @media (min-width: 120rem) {
-
-  /* fhd: Name=30rem → 3+30-6=27rem */
   :root {
     --sidebar-width: 27rem;
   }
 }
 
 @media (min-width: 160rem) {
-
-  /* qhd: Name=35rem → 3+35-6=32rem */
   :root {
     --sidebar-width: 32rem;
   }
 }
 
 @media (min-width: 240rem) {
-
-  /* uhd: Name=40rem → 3+40-6=37rem */
   :root {
     --sidebar-width: 37rem;
   }
 }
 
-/* ═══════════════════════════════════════════════════════
-   ESCALA TIPOGRÁFICA BASE
-   Crece el font-size raíz en pantallas grandes para que
-   todas las medidas en rem escalen proporcionalmente
-   ═══════════════════════════════════════════════════════ */
+/* Tipografía */
 html {
   font-size: 16px;
 }
-
-/* base — móvil y laptop */
 
 @media (min-width: 120rem) {
   html {
@@ -216,25 +206,19 @@ html {
   }
 }
 
-/* FHD  */
 @media (min-width: 160rem) {
   html {
     font-size: 19px;
   }
 }
 
-/* QHD  */
 @media (min-width: 240rem) {
   html {
     font-size: 22px;
   }
 }
 
-/* UHD  */
-
-/* ═══════════════════════════════════════════════════════
-   RESET BASE
-   ═══════════════════════════════════════════════════════ */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -246,58 +230,42 @@ html,
 body {
   height: 100%;
   margin: 0;
-  padding: 0;
-  /* Evita scroll horizontal en móvil — crítico para el layout dual */
   overflow-x: hidden;
 }
 
-/* ═══════════════════════════════════════════════════════
-   SCROLLBAR PERSONALIZADA
-   Fina y discreta, respeta el tema
-   ═══════════════════════════════════════════════════════ */
+/* Scroll */
 ::-webkit-scrollbar {
   width: 4px;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 ::-webkit-scrollbar-thumb {
   background: var(--border-subtle);
-  border-radius: 2px;
 }
 
 /* ═══════════════════════════════════════════════════════
-   ICONOS PNG DE NAVEGACIÓN Y REDES SOCIALES
-   Sistema de inversión para visibilidad en todos los temas
+   ICONOS (CORREGIDO PARA theme-*)
    ═══════════════════════════════════════════════════════ */
 
-/* Transición suave para todos los iconos */
 .nav-icon {
-  transition: filter 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  transition: filter 0.2s ease;
 }
 
-/* Temas claros (1-5): iconos oscuros por defecto, se invierten a blanco en hover
-   porque el hover-bg es oscuro (#111 aprox.) */
 a:hover .nav-icon,
 button:hover .nav-icon {
   filter: brightness(0) invert(1);
 }
 
-/* Temas oscuros (6,7): el fondo es oscuro, los iconos deben verse en blanco por defecto */
-:root.variant-6 .nav-icon,
-:root.variant-7 .nav-icon {
+/* Temas oscuros */
+:root.theme-void .nav-icon,
+:root.theme-abyss .nav-icon {
   filter: brightness(0) invert(1);
 }
 
-/* Temas oscuros en hover: el hover-bg se vuelve claro → iconos oscuros para contrastar */
-:root.variant-6 a:hover .nav-icon,
-:root.variant-6 button:hover .nav-icon,
-:root.variant-7 a:hover .nav-icon,
-:root.variant-7 button:hover .nav-icon {
+:root.theme-void a:hover .nav-icon,
+:root.theme-void button:hover .nav-icon,
+:root.theme-abyss a:hover .nav-icon,
+:root.theme-abyss button:hover .nav-icon {
   filter: brightness(0);
-  /* icon negro sobre hover claro */
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -402,9 +370,9 @@ button:hover .nav-icon {
 }
 
 /* ─── CTA Principal (borde de acento) ────────────────── */
-/*   CORRECCIÓN: en hover usa --accent-text en vez de     */
-/*   --page-background, así el texto siempre contrasta    */
-/*   con el fondo de acento (ej: dorado → texto oscuro)   */
+/* CORRECCIÓN: en hover usa --accent-text en vez de     */
+/* --page-background, así el texto siempre contrasta    */
+/* con el fondo de acento (ej: dorado → texto oscuro)   */
 .cta-primary {
   display: inline-flex;
   align-items: center;
@@ -427,8 +395,8 @@ button:hover .nav-icon {
 }
 
 /* ─── CTA Secundario (ghost, neutro) ─────────────────── */
-/*   CORRECCIÓN: en hover usa --hover-bg/--hover-text     */
-/*   que están definidos por tema y siempre contrastan    */
+/* CORRECCIÓN: en hover usa --hover-bg/--hover-text     */
+/* que están definidos por tema y siempre contrastan    */
 .cta-ghost {
   display: inline-flex;
   align-items: center;

@@ -1,13 +1,13 @@
 // Lista ordenada de temas disponibles.
-// El primero de la lista es el tema por defecto (variant-6 = Void, oscuro dorado).
+// Actualizado con las nuevas clases semánticas ('theme-*')
 const THEMES = [
-  "variant-6", // Void  — oscuro, acento dorado    (DEFAULT)
-  "variant-7", // Abyss — oscuro, acento cyan
-  "variant-1", // Chalk — claro, neutro frío
-  "variant-2", // Stone — claro, terracota cálido
-  "variant-3", // Slate — claro, azul océano
-  "variant-4", // Moss  — claro, verde bosque
-  "variant-5", // Sand  — claro, ámbar cálido
+  "theme-void",  // Void  — oscuro, acento dorado    (DEFAULT)
+  "theme-abyss", // Abyss — oscuro, acento cyan
+  "theme-chalk", // Chalk — claro, neutro frío
+  "theme-stone", // Stone — claro, terracota cálido
+  "theme-slate", // Slate — claro, azul océano
+  "theme-moss",  // Moss  — claro, verde bosque
+  "theme-sand",  // Sand  — claro, ámbar cálido
 ] as const;
 
 type Theme = (typeof THEMES)[number];
@@ -24,15 +24,20 @@ function initThemeToggle(): void {
   const btn = document.getElementById("theme-toggle");
   if (!btn) return;
 
-  // Recupera el tema guardado; si no hay ninguno, arranca en el primero (Void)
+  // Recupera el tema guardado; si no hay ninguno, arranca en el primero (theme-void)
   const saved = localStorage.getItem("theme");
   let idx = THEMES.indexOf(saved as Theme);
   if (idx < 0) idx = 0;
 
   applyTheme(THEMES[idx]);
 
+  // Se asegura de no duplicar event listeners en componentes persistentes de Astro
+  // clonando el botón (limpia listeners antiguos) y reemplazándolo
+  const newBtn = btn.cloneNode(true);
+  btn.parentNode?.replaceChild(newBtn, btn);
+
   // Cada clic avanza al siguiente tema de forma cíclica
-  btn.addEventListener("click", () => {
+  newBtn.addEventListener("click", () => {
     idx = (idx + 1) % THEMES.length;
     applyTheme(THEMES[idx]);
     localStorage.setItem("theme", THEMES[idx]);
@@ -49,8 +54,7 @@ document.addEventListener("astro:before-swap", (e) => {
   const saved = localStorage.getItem("theme");
   // Si el tema guardado no es válido, usa el por defecto (primer elemento)
   const valid: Theme = THEMES.includes(saved as Theme) ? (saved as Theme) : THEMES[0];
+
   (THEMES as readonly string[]).forEach(t => event.newDocument.documentElement.classList.remove(t));
   event.newDocument.documentElement.classList.add(valid);
 });
-
-
