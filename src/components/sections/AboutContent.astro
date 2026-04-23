@@ -1,7 +1,9 @@
 ---
-import type { AboutData } from '../../lib/content';
+import type { AboutData } from "../../lib/content";
 
-interface Props { about: AboutData; }
+interface Props {
+  about: AboutData;
+}
 const { about } = Astro.props;
 const { journey, education, hobbies, location, quote } = about;
 ---
@@ -90,28 +92,26 @@ const { journey, education, hobbies, location, quote } = about;
   </div>
 
   <div class="flex flex-col gap-6">
-    {location && (
-      <div
-        class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase"
-      >
-        <span>📍</span>
-        <span>{location.label}</span>
-      </div>
-    )}
+    {
+      location && (
+        <div class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase">
+          <span>📍</span>
+          <span>{location.label}</span>
+        </div>
+      )
+    }
 
-    {quote && (
-      <blockquote
-        class="border-l-2 border-[var(--accent-color)] pl-5 laptop:pl-7"
-      >
-        <p
-          class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75"
-        >
-          "{quote.text}"
-        </p>
-        <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">
-          — {quote.author}
-        </p>
-      </blockquote>
-    )}
+    {
+      quote && (
+        <blockquote class="border-l-2 border-[var(--accent-color)] pl-5 laptop:pl-7">
+          <p class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75">
+            "{quote.text}"
+          </p>
+          <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">
+            — {quote.author}
+          </p>
+        </blockquote>
+      )
+    }
   </div>
 </section>

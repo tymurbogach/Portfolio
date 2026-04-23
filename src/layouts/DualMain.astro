@@ -9,7 +9,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
        SIDEBAR (izquierda)
        ═══════════════════════════════════════════════════ -->
   <div
-    class="hidden laptop:flex shrink-0 min-h-0 items-center justify-center
+    class="hidden laptop:flex shrink-0 items-center justify-center
            laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]
            border-r border-[var(--border-subtle)]"
     style="width: var(--sidebar-width);"
@@ -19,36 +19,33 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 
   <!-- ═══════════════════════════════════════════════════
        PANEL DERECHO
+       ⚠️ IMPORTANTE: sin scanlines (causaba el bug)
        ═══════════════════════════════════════════════════ -->
   <div
-    transition:name="content-panel"
-    class="flex-1 min-w-0 flex flex-col h-full min-h-0 relative overflow-hidden scanlines"
+    class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden"
   >
 
     <!-- ═══════════════════════════════════════════════════
-         TÍTULO DE SECCIÓN (pageLabel)
+         TÍTULO DE SECCIÓN
          ═══════════════════════════════════════════════════ -->
     {
       pageLabel && (
-        <div
-          class="shrink-0
+        <div class="shrink-0
           px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-          pt-[1rem] mobile:pt-[1.25rem] tablet:pt-[1.25rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
+          pt-[1rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
           pb-4 laptop:pb-7"
         >
           <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
 
             <!-- Título -->
-            <p
-              class="text-xs mobile:text-sm laptop:text-base fhd:text-lg
-                     tracking-[0.45em] uppercase font-bold
-                     text-[var(--letter-color)]
-                     text-glow"
-            >
+            <p class="text-xs laptop:text-base fhd:text-lg
+                      tracking-[0.45em] uppercase font-bold
+                      text-[var(--letter-color)]
+                      text-glow">
               {pageLabel}
             </p>
 
-            <!-- Línea (ANTES inline → ahora sistema) -->
+            <!-- Línea decorativa -->
             <div class="gradient-line mt-3 laptop:mt-4"></div>
 
           </div>
@@ -63,22 +60,17 @@ const { pageLabel = "", scrollable = true } = Astro.props;
       scrollable ? (
         <div
           id="content-scroll"
-          class="flex-1 overflow-y-auto overflow-x-hidden min-h-0
-          px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-          pb-[4rem] laptop:pb-[5rem] fhd:pb-[7rem]"
-          style="mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);
-                 -webkit-mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);"
+          class="flex-1 overflow-y-auto overflow-x-hidden
+                 px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
+                 pb-[4rem] laptop:pb-[5rem]"
         >
-          <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
+          <div class="w-full laptop:max-w-[72ch] laptop:mx-auto">
             <slot />
           </div>
         </div>
       ) : (
-        <div
-          class="flex-1 overflow-hidden min-h-0 flex items-center justify-center
-          px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]"
-        >
-          <div class="w-full laptop:max-w-[72ch] fhd:max-w-[90ch] qhd:max-w-[100ch]">
+        <div class="flex-1 flex items-center justify-center px-[1.25rem] laptop:px-[4.5rem]">
+          <div class="w-full laptop:max-w-[72ch]">
             <slot />
           </div>
         </div>

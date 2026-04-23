@@ -31,29 +31,42 @@ const ogImageUrl = `${site.url}${ogImage}`;
 ---
 
 <!doctype html>
-<html lang={site.lang}>
+<!-- ✅ IMPORTANTE: tema oscuro por defecto -->
+<html lang={site.lang} class="theme-void">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{pageTitle}</title>
+
+    <!-- SEO -->
     <meta name="description" content={description} />
     <meta name="author" content={site.name} />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:url" content={site.url} />
     <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+
     <ClientRouter />
+
+    <!-- Assets -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       href="https://fonts.googleapis.com/css?family=Poiret+One"
       rel="stylesheet"
     />
+
+    <!-- Scripts -->
     <script src="../scripts/themeToggle.ts"></script>
     <script src="../scripts/navIndicator.ts"></script>
     <script src="../scripts/cvModal.ts"></script>
@@ -64,62 +77,47 @@ const ogImageUrl = `${site.url}${ogImage}`;
     class="bg-[var(--total-background)] text-[var(--letter-color)]"
     style="position:fixed; inset:0;"
   >
-    <!-- MÓVIL: Header fijo arriba -->
-    <header
-      transition:persist="mobile-header"
-      transition:name="shell-mobile-hdr"
-      class="block laptop:hidden fixed top-0 left-0 w-full z-30 pointer-events-auto"
-    >
+    <!-- ═══════════════════════════════════════════════
+         MÓVIL — HEADER / FOOTER FIJOS
+         ═══════════════════════════════════════════════ -->
+    <header class="block laptop:hidden fixed top-0 left-0 w-full z-30">
       <Header />
     </header>
 
-    <!-- MÓVIL: Footer fijo abajo -->
-    <footer
-      transition:persist="mobile-footer"
-      transition:name="shell-mobile-ftr"
-      class="block laptop:hidden fixed bottom-0 left-0 w-full z-30 pointer-events-auto"
-    >
+    <footer class="block laptop:hidden fixed bottom-0 left-0 w-full z-30">
       <Footer />
     </footer>
 
-    <!-- DESKTOP: Name (esquina sup izq) -->
-    <div
-      transition:persist="name-logo"
-      transition:name="shell-name"
-      class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40"
-    >
+    <!-- ═══════════════════════════════════════════════
+         DESKTOP — ELEMENTOS FIJOS
+         ═══════════════════════════════════════════════ -->
+    <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
       <Name nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
 
-    <!-- DESKTOP: Navigation (esquina sup der) -->
-    <div
-      transition:persist="nav-desktop"
-      transition:name="shell-nav"
-      class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40"
-    >
+    <div class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40">
       <Navigation />
     </div>
 
-    <!-- DESKTOP: Social (esquina inf izq) -->
-    <div
-      transition:persist="social-desktop"
-      transition:name="shell-social"
-      class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40"
-    >
+    <div class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40">
       <SocialMedia />
     </div>
 
-    <!-- MAIN: área de contenido entre header y footer -->
+    <!-- ═══════════════════════════════════════════════
+         MAIN LAYOUT
+         ═══════════════════════════════════════════════ -->
     <main
       class="fixed inset-x-0 z-20
-             top-[3rem] mobile:top-[4.5rem] tablet:top-[4.5rem] bottom-[2.5rem] mobile:bottom-[4.5rem] tablet:bottom-[4.5rem]
+             top-[3rem] mobile:top-[4.5rem] tablet:top-[4.5rem]
+             bottom-[2.5rem] mobile:bottom-[4.5rem] tablet:bottom-[4.5rem]
              laptop:inset-0 laptop:p-[6rem]
              flex items-center justify-center"
     >
       <div
-        class="w-full h-full box-border
-               bg-[var(--page-background)] border border-[var(--border-subtle)]
-               flex items-center justify-center overflow-hidden p-0"
+        class="w-full h-full
+               bg-[var(--page-background)]
+               border border-[var(--border-subtle)]
+               flex items-center justify-center overflow-hidden"
       >
         {
           dual ? (
@@ -128,7 +126,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
             </DualMain>
           ) : (
             <div
-              transition:name="content-panel"
               class="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden
                      p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem]
                      laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem]"
