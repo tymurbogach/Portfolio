@@ -2,8 +2,8 @@
 import IndexContent from "../components/layout/IndexContent.astro";
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
-<div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
 
+<div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
   <!-- Izquierda — sidebar (solo desktop) -->
   <div
     class="hidden laptop:flex shrink-0 min-h-0 items-center justify-center
@@ -19,74 +19,57 @@ const { pageLabel = "", scrollable = true } = Astro.props;
     transition:name="content-panel"
     class="flex-1 min-w-0 flex flex-col h-full min-h-0 relative overflow-hidden"
   >
-    <!-- Título fijo (solo si hay pageLabel) -->
-    {pageLabel && (
-      <div
-        class="shrink-0
+    <!-- Título fijo — visible en móvil y desktop si hay pageLabel -->
+    {
+      pageLabel && (
+        <div
+          class="shrink-0
           px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-          pt-[1.25rem] mobile:pt-[1.75rem] tablet:pt-[1.5rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
-          pb-5 laptop:pb-7"
-      >
-        <div class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch] laptop:mx-auto">
-          <p class="text-sm laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold
-                    text-[var(--letter-color)]">
-            {pageLabel}
-          </p>
-          <div class="h-px mt-4" style="background: var(--accent-color); opacity: 0.25;"></div>
+          pt-[1rem] mobile:pt-[1.25rem] tablet:pt-[1.25rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
+          pb-4 laptop:pb-7"
+        >
+          <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
+            <p
+              class="text-xs mobile:text-sm laptop:text-base fhd:text-lg
+                    tracking-[0.45em] uppercase font-bold
+                    text-[var(--letter-color)]"
+            >
+              {pageLabel}
+            </p>
+            <div
+              class="h-px mt-3 laptop:mt-4"
+              style="background: var(--accent-color); opacity: 0.25;"
+            />
+          </div>
         </div>
-      </div>
-    )}
+      )
+    }
 
     <!-- Contenido scrollable -->
-    {scrollable ? (
-      <div
-        id="content-scroll"
-        class="flex-1 overflow-y-auto overflow-x-hidden min-h-0
+    {
+      scrollable ? (
+        <div
+          id="content-scroll"
+          class="flex-1 overflow-y-auto overflow-x-hidden min-h-0
           px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
           pb-[4rem] laptop:pb-[5rem] fhd:pb-[7rem]"
-        style="mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);
+          style="mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);
                -webkit-mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);"
-      >
-        <div class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch] laptop:mx-auto">
-          <slot />
-        </div>
-      </div>
-    ) : (
-      <!-- Sin scroll: contenido centrado -->
-      <div
-        class="flex-1 overflow-hidden min-h-0 flex items-center justify-center
-          px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]"
-      >
-        <div class="w-full fhd:max-w-[90ch] qhd:max-w-[100ch] laptop:max-w-[72ch]">
-          <slot />
-        </div>
-      </div>
-    )}
-
-    <!-- Botón next (solo en modo scrollable) -->
-    {scrollable && (
-      <div
-        id="next-hint"
-        class="absolute bottom-0 inset-x-0 z-30
-               flex items-center justify-end
-               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
-               py-3 laptop:py-4
-               pointer-events-none select-none"
-      >
-        <button
-          id="next-btn"
-          class="flex items-center gap-2 py-1 px-3
-                 text-[0.58rem] tracking-[0.45em] uppercase font-bold
-                 border border-[var(--border-color)]
-                 bg-[var(--page-background)]
-                 cursor-pointer transition-all duration-300
-                 pointer-events-auto"
-          style="opacity:0; transition: opacity 0.4s ease, border-color 0.3s ease;"
         >
-          <span id="next-label">about</span>
-          <span style="color: var(--accent-color)">→</span>
-        </button>
-      </div>
-    )}
+          <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
+            <slot />
+          </div>
+        </div>
+      ) : (
+        <div
+          class="flex-1 overflow-hidden min-h-0 flex items-center justify-center
+          px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]"
+        >
+          <div class="w-full laptop:max-w-[72ch] fhd:max-w-[90ch] qhd:max-w-[100ch]">
+            <slot />
+          </div>
+        </div>
+      )
+    }
   </div>
 </div>
