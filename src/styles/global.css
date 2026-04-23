@@ -147,7 +147,6 @@
   --accent-subtle: rgba(0, 200, 255, 0.10);
   --surface-raised: #0c1422;
   --border-subtle: rgba(22, 34, 53, 0.95);
-
   --accent-secondary: #bf00ff;
   --accent-tertiary: #ff0080;
   --glow-primary: rgba(0, 200, 255, 0.35);
@@ -391,12 +390,9 @@ button:hover .nav-icon {
 .cta-primary:hover {
   background: var(--accent-color);
   color: var(--accent-text);
-  /* ← CORREGIDO: contrasta siempre con el acento */
 }
 
 /* ─── CTA Secundario (ghost, neutro) ─────────────────── */
-/* CORRECCIÓN: en hover usa --hover-bg/--hover-text     */
-/* que están definidos por tema y siempre contrastan    */
 .cta-ghost {
   display: inline-flex;
   align-items: center;
@@ -416,7 +412,6 @@ button:hover .nav-icon {
   opacity: 1;
   background: var(--hover-bg);
   color: var(--hover-text);
-  /* ← CORREGIDO: usa el token del tema */
   border-color: var(--hover-bg);
 }
 
@@ -539,4 +534,98 @@ button:hover .nav-icon {
 
 #cv-modal[data-open="true"] {
   animation: cv-modal-in 180ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════════════════
+   EFECTOS CYBERPUNK — utilidades reutilizables
+   (usan tokens del tema activo automáticamente)
+   ═══════════════════════════════════════════════════════ */
+
+/* Texto con gradiente */
+.text-gradient {
+  background: var(--gradient-border);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Borde neón */
+.neon-border {
+  border: 1px solid var(--accent-color);
+  box-shadow:
+    0 0 6px var(--glow-primary),
+    0 0 20px var(--glow-primary),
+    inset 0 0 6px var(--glow-primary);
+}
+
+/* Glow exterior */
+.neon-glow {
+  box-shadow:
+    0 0 10px var(--glow-primary),
+    0 0 30px var(--glow-secondary);
+}
+
+/* Glow texto */
+.text-glow {
+  text-shadow:
+    0 0 8px var(--glow-primary),
+    0 0 20px var(--glow-primary);
+}
+
+/* Línea gradiente */
+.gradient-line {
+  height: 1px;
+  background: var(--gradient-border);
+  opacity: 0.6;
+}
+
+/* Fondo acento sutil */
+.surface-accent {
+  background: var(--surface-glow);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: var(--gradient-hero);
+}
+
+/* Borde lateral neón */
+.neon-left-border {
+  border-left: 2px solid var(--accent-color);
+  box-shadow: -3px 0 12px var(--glow-primary);
+  padding-left: 1rem;
+}
+
+/* Chip secundario — CORREGIDO */
+.tag-secondary {
+  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
+  border: 1px solid var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+/* Hover glow */
+.hover-glow {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px var(--glow-primary);
+  border-color: var(--accent-color);
+}
+
+/* Scanlines */
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
+  pointer-events: none;
 }

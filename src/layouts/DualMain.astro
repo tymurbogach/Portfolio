@@ -4,22 +4,30 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
 <div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
-  <!-- Izquierda — sidebar (solo desktop) -->
+
+  <!-- ═══════════════════════════════════════════════════
+       SIDEBAR (izquierda)
+       ═══════════════════════════════════════════════════ -->
   <div
     class="hidden laptop:flex shrink-0 min-h-0 items-center justify-center
-              laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]
-              border-r border-[var(--border-subtle)]"
+           laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]
+           border-r border-[var(--border-subtle)]"
     style="width: var(--sidebar-width);"
   >
     <IndexContent />
   </div>
 
-  <!-- Derecha — panel de contenido -->
+  <!-- ═══════════════════════════════════════════════════
+       PANEL DERECHO
+       ═══════════════════════════════════════════════════ -->
   <div
     transition:name="content-panel"
-    class="flex-1 min-w-0 flex flex-col h-full min-h-0 relative overflow-hidden"
+    class="flex-1 min-w-0 flex flex-col h-full min-h-0 relative overflow-hidden scanlines"
   >
-    <!-- Título fijo — visible en móvil y desktop si hay pageLabel -->
+
+    <!-- ═══════════════════════════════════════════════════
+         TÍTULO DE SECCIÓN (pageLabel)
+         ═══════════════════════════════════════════════════ -->
     {
       pageLabel && (
         <div
@@ -29,23 +37,28 @@ const { pageLabel = "", scrollable = true } = Astro.props;
           pb-4 laptop:pb-7"
         >
           <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
+
+            <!-- Título -->
             <p
               class="text-xs mobile:text-sm laptop:text-base fhd:text-lg
-                    tracking-[0.45em] uppercase font-bold
-                    text-[var(--letter-color)]"
+                     tracking-[0.45em] uppercase font-bold
+                     text-[var(--letter-color)]
+                     text-glow"
             >
               {pageLabel}
             </p>
-            <div
-              class="h-px mt-3 laptop:mt-4"
-              style="background: var(--accent-color); opacity: 0.25;"
-            />
+
+            <!-- Línea (ANTES inline → ahora sistema) -->
+            <div class="gradient-line mt-3 laptop:mt-4"></div>
+
           </div>
         </div>
       )
     }
 
-    <!-- Contenido scrollable -->
+    <!-- ═══════════════════════════════════════════════════
+         CONTENIDO
+         ═══════════════════════════════════════════════════ -->
     {
       scrollable ? (
         <div
@@ -54,7 +67,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
           px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
           pb-[4rem] laptop:pb-[5rem] fhd:pb-[7rem]"
           style="mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);
-               -webkit-mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);"
+                 -webkit-mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);"
         >
           <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
             <slot />
@@ -71,5 +84,6 @@ const { pageLabel = "", scrollable = true } = Astro.props;
         </div>
       )
     }
+
   </div>
 </div>
