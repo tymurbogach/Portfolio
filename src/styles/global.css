@@ -39,94 +39,94 @@
      --surface-glow          fondo sutil con color de acento
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Void (default) — oscuro, dorado cálido ─── */
+/* ─── Void (default) — Premium Dark Gold ─── */
 :root.theme-void {
-  --component-background: #0f1113;
-  --page-background: #0a0b0c;
-  --total-background: #050506;
-  --letter-color: #e6f1f5;
-  --border-color: #1c2a30;
-  --hover-bg: #ffb36a;
-  --hover-text: #0a0b0c;
-  --accent-color: #4db7b3;
-  --accent-text: #050506;
-  --accent-subtle: rgba(77, 183, 179, 0.12);
-  --surface-raised: #101416;
-  --border-subtle: rgba(28, 42, 48, 0.8);
-  --accent-secondary: #ff8a3d;
-  --accent-tertiary: #ff5c2e;
-  --glow-primary: rgba(77, 183, 179, 0.35);
-  --glow-secondary: rgba(255, 138, 61, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
+  --component-background: #111111;
+  --page-background: #0a0a0a;
+  --total-background: #000000;
+  --letter-color: #f5f5f5;
+  --border-color: #333333;
+  --hover-bg: #ffae42;
+  --hover-text: #000000;
+  --accent-color: #ffae42;
+  --accent-text: #000000;
+  --accent-subtle: rgba(255, 174, 66, 0.1);
+  --surface-raised: #1a1a1a;
+  --border-subtle: rgba(51, 51, 51, 0.8);
+  --accent-secondary: #e65c00;
+  --accent-tertiary: #ff2a00;
+  --glow-primary: rgba(255, 174, 66, 0.4);
+  --glow-secondary: rgba(230, 92, 0, 0.3);
+  --gradient-hero: linear-gradient(135deg, rgba(255, 174, 66, 0.12) 0%, transparent 60%);
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(77, 183, 179, 0.05);
+  --surface-glow: rgba(255, 174, 66, 0.05);
 }
 
-/* ─── Abyss — oscuro, azul profundo, cyan eléctrico ─── */
+/* ─── Abyss — Cyberpunk Deep Sea ─── */
 :root.theme-abyss {
-  --component-background: #0b0b12;
-  --page-background: #07070d;
-  --total-background: #030308;
-  --letter-color: #e4e0f5;
-  --border-color: #1a1a2a;
-  --hover-bg: #ff4fd8;
-  --hover-text: #07070d;
-  --accent-color: #00e5ff;
-  --accent-text: #030308;
-  --accent-subtle: rgba(0, 229, 255, 0.12);
-  --surface-raised: #0d0d16;
-  --border-subtle: rgba(26, 26, 42, 0.9);
-  --accent-secondary: #ff4fd8;
-  --accent-tertiary: #ff006e;
-  --glow-primary: rgba(0, 229, 255, 0.35);
-  --glow-secondary: rgba(255, 79, 216, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(0, 229, 255, 0.10) 0%, transparent 60%);
+  --component-background: #0b0d17;
+  --page-background: #05060a;
+  --total-background: #020204;
+  --letter-color: #e2e8f0;
+  --border-color: #1e2235;
+  --hover-bg: #00f0ff;
+  --hover-text: #05060a;
+  --accent-color: #00f0ff;
+  --accent-text: #000000;
+  --accent-subtle: rgba(0, 240, 255, 0.15);
+  --surface-raised: #121524;
+  --border-subtle: rgba(30, 34, 53, 0.9);
+  --accent-secondary: #ff003c;
+  --accent-tertiary: #bd00ff;
+  --glow-primary: rgba(0, 240, 255, 0.4);
+  --glow-secondary: rgba(255, 0, 60, 0.3);
+  --gradient-hero: linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(255, 0, 60, 0.05) 60%, transparent 100%);
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(0, 229, 255, 0.05);
+  --surface-glow: rgba(0, 240, 255, 0.05);
 }
 
-/* ─── Chalk — claro, neutro frío, azul marino ─── */
+/* ─── Chalk — Clean Modern Glass ─── */
 :root.theme-chalk {
-  --component-background: #f5f5f5;
-  --page-background: #fafafa;
-  --total-background: #f0f0f0;
-  --letter-color: #111111;
-  --border-color: #d0d0d0;
-  --hover-bg: #111111;
-  --hover-text: #fafafa;
-  --accent-color: #1a3a5c;
+  --component-background: #ffffff;
+  --page-background: #f8fafc;
+  --total-background: #f1f5f9;
+  --letter-color: #0f172a;
+  --border-color: #cbd5e1;
+  --hover-bg: #2563eb;
+  --hover-text: #ffffff;
+  --accent-color: #2563eb;
   --accent-text: #ffffff;
-  --accent-subtle: rgba(26, 58, 92, 0.07);
-  --surface-raised: #f7f7f7;
-  --accent-secondary: #0066cc;
-  --accent-tertiary: #004499;
-  --glow-primary: rgba(26, 58, 92, 0.15);
-  --glow-secondary: rgba(0, 102, 204, 0.10);
-  --gradient-hero: linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
+  --accent-subtle: rgba(37, 99, 235, 0.08);
+  --surface-raised: #ffffff;
+  --accent-secondary: #8b5cf6;
+  --accent-tertiary: #ec4899;
+  --glow-primary: rgba(37, 99, 235, 0.15);
+  --glow-secondary: rgba(139, 92, 246, 0.1);
+  --gradient-hero: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, transparent 60%);
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(26, 58, 92, 0.03);
+  --surface-glow: rgba(37, 99, 235, 0.03);
 }
 
-/* ─── Stone — claro, terracota cálida, ámbar ─── */
+/* ─── Stone — Warm Elegant Terracotta ─── */
 :root.theme-stone {
-  --component-background: #f0ebe3;
-  --page-background: #f7f3ec;
-  --total-background: #e8e1d8;
-  --letter-color: #1a160e;
-  --border-color: #c8bfb0;
-  --hover-bg: #1a160e;
-  --hover-text: #f7f3ec;
-  --accent-color: #b05b2a;
+  --component-background: #fdfbf7;
+  --page-background: #f4f0e6;
+  --total-background: #ebe5d9;
+  --letter-color: #2c241b;
+  --border-color: #bdae9c;
+  --hover-bg: #d95c14;
+  --hover-text: #ffffff;
+  --accent-color: #d95c14;
   --accent-text: #ffffff;
-  --accent-subtle: rgba(176, 91, 42, 0.07);
-  --surface-raised: #faf6f0;
-  --accent-secondary: #e05c00;
-  --accent-tertiary: #8b1a00;
-  --glow-primary: rgba(176, 91, 42, 0.15);
-  --glow-secondary: rgba(224, 92, 0, 0.10);
-  --gradient-hero: linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
+  --accent-subtle: rgba(217, 92, 20, 0.08);
+  --surface-raised: #ffffff;
+  --accent-secondary: #b0460b;
+  --accent-tertiary: #7b2d15;
+  --glow-primary: rgba(217, 92, 20, 0.15);
+  --glow-secondary: rgba(176, 70, 11, 0.1);
+  --gradient-hero: linear-gradient(135deg, rgba(217, 92, 20, 0.06) 0%, transparent 60%);
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(176, 91, 42, 0.03);
+  --surface-glow: rgba(217, 92, 20, 0.03);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -134,7 +134,7 @@
    ═══════════════════════════════════════════════════════ */
 :root {
   /* Calculado desde --border-color del tema activo */
-  --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
+  --border-subtle: color-mix(in srgb, var(--border-color) 65%, transparent);
 
   --space-1: 4px;
   --space-2: 8px;
