@@ -2,7 +2,12 @@ import { getEntry, getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 export type SiteData    = CollectionEntry<'site'>['data'];
-export type NavPage     = SiteData['pages'][number];
+export type NavPage = {
+  path: string;
+  label: string;
+  icon: string;
+  sectionLabel: string;
+};
 export type ProfileData = CollectionEntry<'profile'>['data'];
 export type HomeData    = CollectionEntry<'home'>['data'];
 export type AboutData   = CollectionEntry<'about'>['data'];
