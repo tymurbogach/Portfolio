@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
         <a
           href={page.path}
           data-active={currentPath === page.path ? "true" : "false"}
-          class={[
+          class:list={[
             "group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden",
             "text-[var(--letter-color)]",
             i < pages.length - 1 ? "border-r border-[var(--border-color)]" : "",
@@ -37,7 +37,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
             "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
             "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200",
             "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
-          ].join(" ")}
+          ]}
         >
           <span
             class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8

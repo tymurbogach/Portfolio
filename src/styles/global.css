@@ -42,91 +42,91 @@
 /* ─── Void (default) — oscuro, dorado cálido ─── */
 :root.theme-void {
   --component-background: #0f1113;
-  --page-background:      #0a0b0c;
-  --total-background:     #050506;
-  --letter-color:         #e6f1f5;
-  --border-color:         #1c2a30;
-  --hover-bg:             #ffb36a;
-  --hover-text:           #0a0b0c;
-  --accent-color:         #4db7b3;
-  --accent-text:          #050506;
-  --accent-subtle:        rgba(77, 183, 179, 0.12);
-  --surface-raised:       #101416;
-  --border-subtle:        rgba(28, 42, 48, 0.8);
-  --accent-secondary:     #ff8a3d;
-  --accent-tertiary:      #ff5c2e;
-  --glow-primary:         rgba(77, 183, 179, 0.35);
-  --glow-secondary:       rgba(255, 138, 61, 0.25);
-  --gradient-hero:        linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
-  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:         rgba(77, 183, 179, 0.05);
+  --page-background: #0a0b0c;
+  --total-background: #050506;
+  --letter-color: #e6f1f5;
+  --border-color: #1c2a30;
+  --hover-bg: #ffb36a;
+  --hover-text: #0a0b0c;
+  --accent-color: #4db7b3;
+  --accent-text: #050506;
+  --accent-subtle: rgba(77, 183, 179, 0.12);
+  --surface-raised: #101416;
+  --border-subtle: rgba(28, 42, 48, 0.8);
+  --accent-secondary: #ff8a3d;
+  --accent-tertiary: #ff5c2e;
+  --glow-primary: rgba(77, 183, 179, 0.35);
+  --glow-secondary: rgba(255, 138, 61, 0.25);
+  --gradient-hero: linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(77, 183, 179, 0.05);
 }
 
 /* ─── Abyss — oscuro, azul profundo, cyan eléctrico ─── */
 :root.theme-abyss {
   --component-background: #0b0b12;
-  --page-background:      #07070d;
-  --total-background:     #030308;
-  --letter-color:         #e4e0f5;
-  --border-color:         #1a1a2a;
-  --hover-bg:             #ff4fd8;
-  --hover-text:           #07070d;
-  --accent-color:         #00e5ff;
-  --accent-text:          #030308;
-  --accent-subtle:        rgba(0, 229, 255, 0.12);
-  --surface-raised:       #0d0d16;
-  --border-subtle:        rgba(26, 26, 42, 0.9);
-  --accent-secondary:     #ff4fd8;
-  --accent-tertiary:      #ff006e;
-  --glow-primary:         rgba(0, 229, 255, 0.35);
-  --glow-secondary:       rgba(255, 79, 216, 0.25);
-  --gradient-hero:        linear-gradient(135deg, rgba(0, 229, 255, 0.10) 0%, transparent 60%);
-  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:         rgba(0, 229, 255, 0.05);
+  --page-background: #07070d;
+  --total-background: #030308;
+  --letter-color: #e4e0f5;
+  --border-color: #1a1a2a;
+  --hover-bg: #ff4fd8;
+  --hover-text: #07070d;
+  --accent-color: #00e5ff;
+  --accent-text: #030308;
+  --accent-subtle: rgba(0, 229, 255, 0.12);
+  --surface-raised: #0d0d16;
+  --border-subtle: rgba(26, 26, 42, 0.9);
+  --accent-secondary: #ff4fd8;
+  --accent-tertiary: #ff006e;
+  --glow-primary: rgba(0, 229, 255, 0.35);
+  --glow-secondary: rgba(255, 79, 216, 0.25);
+  --gradient-hero: linear-gradient(135deg, rgba(0, 229, 255, 0.10) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(0, 229, 255, 0.05);
 }
 
 /* ─── Chalk — claro, neutro frío, azul marino ─── */
 :root.theme-chalk {
   --component-background: #f5f5f5;
-  --page-background:      #fafafa;
-  --total-background:     #f0f0f0;
-  --letter-color:         #111111;
-  --border-color:         #d0d0d0;
-  --hover-bg:             #111111;
-  --hover-text:           #fafafa;
-  --accent-color:         #1a3a5c;
-  --accent-text:          #ffffff;
-  --accent-subtle:        rgba(26, 58, 92, 0.07);
-  --surface-raised:       #f7f7f7;
-  --accent-secondary:     #0066cc;
-  --accent-tertiary:      #004499;
-  --glow-primary:         rgba(26, 58, 92, 0.15);
-  --glow-secondary:       rgba(0, 102, 204, 0.10);
-  --gradient-hero:        linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
-  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:         rgba(26, 58, 92, 0.03);
+  --page-background: #fafafa;
+  --total-background: #f0f0f0;
+  --letter-color: #111111;
+  --border-color: #d0d0d0;
+  --hover-bg: #111111;
+  --hover-text: #fafafa;
+  --accent-color: #1a3a5c;
+  --accent-text: #ffffff;
+  --accent-subtle: rgba(26, 58, 92, 0.07);
+  --surface-raised: #f7f7f7;
+  --accent-secondary: #0066cc;
+  --accent-tertiary: #004499;
+  --glow-primary: rgba(26, 58, 92, 0.15);
+  --glow-secondary: rgba(0, 102, 204, 0.10);
+  --gradient-hero: linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(26, 58, 92, 0.03);
 }
 
 /* ─── Stone — claro, terracota cálida, ámbar ─── */
 :root.theme-stone {
   --component-background: #f0ebe3;
-  --page-background:      #f7f3ec;
-  --total-background:     #e8e1d8;
-  --letter-color:         #1a160e;
-  --border-color:         #c8bfb0;
-  --hover-bg:             #1a160e;
-  --hover-text:           #f7f3ec;
-  --accent-color:         #b05b2a;
-  --accent-text:          #ffffff;
-  --accent-subtle:        rgba(176, 91, 42, 0.07);
-  --surface-raised:       #faf6f0;
-  --accent-secondary:     #e05c00;
-  --accent-tertiary:      #8b1a00;
-  --glow-primary:         rgba(176, 91, 42, 0.15);
-  --glow-secondary:       rgba(224, 92, 0, 0.10);
-  --gradient-hero:        linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
-  --gradient-border:      linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:         rgba(176, 91, 42, 0.03);
+  --page-background: #f7f3ec;
+  --total-background: #e8e1d8;
+  --letter-color: #1a160e;
+  --border-color: #c8bfb0;
+  --hover-bg: #1a160e;
+  --hover-text: #f7f3ec;
+  --accent-color: #b05b2a;
+  --accent-text: #ffffff;
+  --accent-subtle: rgba(176, 91, 42, 0.07);
+  --surface-raised: #faf6f0;
+  --accent-secondary: #e05c00;
+  --accent-tertiary: #8b1a00;
+  --glow-primary: rgba(176, 91, 42, 0.15);
+  --glow-secondary: rgba(224, 92, 0, 0.10);
+  --gradient-hero: linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow: rgba(176, 91, 42, 0.03);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -136,13 +136,13 @@
   /* Calculado desde --border-color del tema activo */
   --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
 
-  --space-1:  4px;
-  --space-2:  8px;
-  --space-3:  12px;
-  --space-4:  16px;
-  --space-5:  24px;
-  --space-6:  32px;
-  --space-8:  48px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
   --space-10: 64px;
   --space-12: 96px;
 
@@ -150,15 +150,46 @@
 }
 
 /* Sidebar responsive */
-@media (min-width: 120rem) { :root { --sidebar-width: 27rem; } }
-@media (min-width: 160rem) { :root { --sidebar-width: 32rem; } }
-@media (min-width: 240rem) { :root { --sidebar-width: 37rem; } }
+@media (min-width: 120rem) {
+  :root {
+    --sidebar-width: 27rem;
+  }
+}
+
+@media (min-width: 160rem) {
+  :root {
+    --sidebar-width: 32rem;
+  }
+}
+
+@media (min-width: 240rem) {
+  :root {
+    --sidebar-width: 37rem;
+  }
+}
 
 /* Tipografía */
-html { font-size: 16px; }
-@media (min-width: 120rem) { html { font-size: 17px; } }
-@media (min-width: 160rem) { html { font-size: 19px; } }
-@media (min-width: 240rem) { html { font-size: 22px; } }
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 120rem) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 160rem) {
+  html {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 240rem) {
+  html {
+    font-size: 22px;
+  }
+}
 
 /* Reset */
 *,
@@ -176,8 +207,13 @@ body {
 }
 
 /* Scrollbar oculta en todos los navegadores */
-* { scrollbar-width: none; }
-*::-webkit-scrollbar { display: none; }
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
 
 /* ═══════════════════════════════════════════════════════
    ICONOS DE NAVEGACIÓN (PNG con filtro CSS)
@@ -436,8 +472,15 @@ button:hover .nav-icon {
 }
 
 @keyframes cv-modal-in {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #cv-modal[data-open="true"] {
@@ -518,12 +561,10 @@ button:hover .nav-icon {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
   pointer-events: none;
 }
