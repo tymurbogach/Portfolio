@@ -7,7 +7,7 @@ const home = (await getHomeData()) as HomeData;
 const contact = (await getContactData()) as ContactData;
 
 const { hero, stats } = home;
-const { cv_link, cv_preview } = contact;
+const { cv_url } = contact;
 ---
 
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
@@ -67,6 +67,7 @@ const { cv_link, cv_preview } = contact;
       <!-- CV button -->
       <button
         id="cv-view-btn"
+        data-cv-url={cv_url}
         class="flex items-center gap-2 px-4 py-2
                text-[0.52rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
                border border-[var(--border-color)]
@@ -89,7 +90,7 @@ const { cv_link, cv_preview } = contact;
   </main>
 </section>
 
-<Modal iframeSrc={cv_preview} downloadHref={cv_link} />
+<Modal downloadHref={cv_url} />
 
 <script>
   import '../../scripts/cvModal';

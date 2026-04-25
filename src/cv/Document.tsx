@@ -1,8 +1,7 @@
 import React from "react";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
-import type { CvData } from "../data/cv";
+import type { CvData } from "./data";
 
-// ── Colores ───────────────────────────────────────────
 const c = {
   black: "#111111",
   dark: "#2a2a2a",
@@ -13,7 +12,6 @@ const c = {
   bg: "#ffffff",
 };
 
-// ── Estilos ───────────────────────────────────────────
 const s = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
@@ -25,7 +23,6 @@ const s = StyleSheet.create({
     paddingHorizontal: 44,
   },
 
-  // ── Header ──────────────────────────────────────────
   header: {
     marginBottom: 6,
   },
@@ -63,7 +60,6 @@ const s = StyleSheet.create({
     color: c.light,
   },
 
-  // ── Sections ─────────────────────────────────────────
   section: {
     marginTop: 10,
   },
@@ -82,7 +78,6 @@ const s = StyleSheet.create({
     marginBottom: 6,
   },
 
-  // ── Text blocks ─────────────────────────────────────
   summary: {
     fontSize: 8.2,
     lineHeight: 1.5,
@@ -115,7 +110,6 @@ const s = StyleSheet.create({
     marginBottom: 3,
   },
 
-  // ── Bullets ─────────────────────────────────────────
   bullet: {
     flexDirection: "row",
     paddingLeft: 8,
@@ -134,7 +128,6 @@ const s = StyleSheet.create({
     lineHeight: 1.4,
   },
 
-  // ── Languages ───────────────────────────────────────
   langRow: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -149,7 +142,6 @@ const s = StyleSheet.create({
     color: c.light,
   },
 
-  // ── References ──────────────────────────────────────
   refsRow: {
     flexDirection: "row",
     marginTop: 4,
@@ -178,8 +170,7 @@ const s = StyleSheet.create({
   },
 });
 
-// ── Helpers ───────────────────────────────────────────
-const Section = ({ title, children }: any) => (
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <View style={s.section}>
     <Text style={s.sectionLabel}>{title}</Text>
     <View style={s.sectionRule} />
@@ -194,22 +185,12 @@ const Bullet = ({ text }: { text: string }) => (
   </View>
 );
 
-// ── Documento ─────────────────────────────────────────
 export default function CVDocument({ data }: { data: CvData }) {
-  const {
-    personal,
-    summary,
-    experience,
-    projects,
-    education,
-    languages,
-    references,
-  } = data;
+  const { personal, summary, experience, projects, education, languages, references } = data;
 
   return (
     <Document>
       <Page size="A4" style={s.page}>
-        {/* ── Header ── */}
         <View style={s.header}>
           <Text style={s.headerName}>{personal.name}</Text>
           <Text style={s.headerTitle}>{personal.title}</Text>
@@ -229,12 +210,10 @@ export default function CVDocument({ data }: { data: CvData }) {
           <Text>{personal.location}</Text>
         </View>
 
-        {/* ── Resumen ── */}
         <Section title="Resumen">
           <Text style={s.summary}>{summary}</Text>
         </Section>
 
-        {/* ── Experiencia ── */}
         <Section title="Experiencia Profesional">
           {experience.map((exp, i) => (
             <View key={i} style={s.block}>
@@ -252,7 +231,6 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        {/* ── Proyectos ── */}
         <Section title="Proyectos Personales">
           {projects.map((proj, i) => (
             <View key={i} style={s.block}>
@@ -267,7 +245,6 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        {/* ── Educación ── */}
         <Section title="Educación">
           {education.map((edu, i) => (
             <View key={i} style={s.block}>
@@ -280,7 +257,6 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        {/* ── Idiomas ── */}
         <Section title="Idiomas">
           <View style={s.langRow}>
             {languages.map((l, i) => (
@@ -291,7 +267,6 @@ export default function CVDocument({ data }: { data: CvData }) {
           </View>
         </Section>
 
-        {/* ── Referencias ── */}
         <Section title="Referencias">
           <View style={s.refsRow}>
             {references.map((ref, i) => (

@@ -1,5 +1,5 @@
 ---
-const { iframeSrc, downloadHref } = Astro.props;
+const { downloadHref } = Astro.props;
 ---
 
 <div
@@ -28,7 +28,6 @@ const { iframeSrc, downloadHref } = Astro.props;
     <iframe
       id="cv-iframe"
       src=""
-      data-src={iframeSrc}
       style="flex:1; border:none; width:100%;"
       allow="autoplay"
     />
