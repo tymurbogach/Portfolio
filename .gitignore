@@ -1,32 +1,41 @@
 # build output
 dist/
- 
+bin/
+obj/
+
 # generated types
 .astro/
- 
+astro.d.ts
+
 # dependencies
 node_modules/
- 
+package-lock.json.log
+
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
- 
+
 # environment variables
 .env
 .env.*
 !.env.example
- 
+
 # editor / IDE
 .vscode/
 .idea/
- 
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 # macOS / Windows
 .DS_Store
 Thumbs.db
- 
-# AI assistants
+
+# AI assistants & Tools
 .claude/
 .gemini/
 .superpowers/
@@ -34,3 +43,9 @@ Thumbs.db
 *.local.json
 skills-lock.json
 scratch/
+CLAUDE.md
+
+# Playwright/Cypress (si los usas luego)
+test-results/
+playwright-report/
+blob-report/
