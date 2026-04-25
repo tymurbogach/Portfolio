@@ -1,5 +1,5 @@
 ---
-import IndexContent from "../components/sections/IndexContent.astro";
+import ProfilePanel from "../components/sections/ProfilePanel.astro";
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
@@ -8,13 +8,12 @@ const { pageLabel = "", scrollable = true } = Astro.props;
   <!-- ═══════════════════════════════════════════════════
        SIDEBAR (izquierda)
        ═══════════════════════════════════════════════════ -->
-       <!--añadir div de abajo para poner separacion: border-r border-[var(--border-subtle)] -->
-  <div 
+  <div
     class="hidden laptop:flex shrink-0 items-center justify-center
            laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
     style="width: var(--sidebar-width);"
   >
-    <IndexContent />
+    <ProfilePanel />
   </div>
 
   <!-- ═══════════════════════════════════════════════════
@@ -44,7 +43,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
             </p>
 
             <!-- Línea decorativa -->
-            <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4 text-glow"></div>
+            <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4"></div>
 
           </div>
         </div>

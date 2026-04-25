@@ -7,12 +7,7 @@
       "DOM.Iterable"
     ],
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "astro:content": [
-        ".astro/types.d.ts"
-      ]
-    }
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src",

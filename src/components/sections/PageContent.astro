@@ -1,13 +1,10 @@
 ---
-import HomeContent from "./HomeContent.astro";
-import AboutContent from "./AboutContent.astro";
-import ResumeContent from "./ResumeContent.astro";
-import ProjectsContent from "./ProjectsContent.astro";
-import ContactContent from "./ContactContent.astro";
+import Hero from "./Hero.astro";
+import About from "./About.astro";
+import Resume from "./Resume.astro";
+import Projects from "./Projects.astro";
+import Contact from "./Contact.astro";
 
-// ==========================================
-// 2. IMPORTACIONES DE DATOS
-// ==========================================
 import {
   getSite,
   getHomeData,
@@ -16,12 +13,16 @@ import {
   getProjects,
   getContactData,
   getSocialLinks,
+  getLabeledSections,
 } from "../../lib/content";
 
+import type { SiteData, NavPage } from "../../lib/content";
+
 // ==========================================
-// 3. RESOLUCIÓN DE PROMESAS (Data Fetching)
+// FETCH (tipado explícito para evitar fallos)
 // ==========================================
-const site = await getSite();
+
+const site: SiteData = await getSite();
 const homeData = await getHomeData();
 const aboutData = await getAboutData();
 const resumeData = await getResumeData();
@@ -30,26 +31,26 @@ const contactData = await getContactData();
 const socialLinks = await getSocialLinks();
 
 // ==========================================
-// 4. LÓGICA DE SECCIONES (El arreglo del Scroll)
+// SECCIONES
 // ==========================================
-// Filtramos explícitamente "home" del array dinámico.
-// De esta forma evitamos generar dos etiquetas con id="home",
-// lo cual es un error grave de HTML que rompe el autoscroll.
-const labeledSections = site.pages.filter(
-  (page) => page.path.replace(/^\//, "") !== "home",
-);
+
+const labeledSections: NavPage[] = getLabeledSections(site);
+
+// helper limpio
+const getSectionId = (path: string) => path.replace(/^\//, "");
 ---
 
 <div class="flex flex-col w-full">
+  <!-- HOME -->
   <section id="home" class="flex items-center justify-center" aria-label="Home">
     <div class="w-full">
-      <HomeContent home={homeData} />
+      <Hero home={homeData} />
     </div>
   </section>
 
   {
-    labeledSections.map((page) => {
-      const sectionId = page.path.replace(/^\//, "");
+    labeledSections.map((page: NavPage) => {
+      const sectionId = getSectionId(page.path);
 
       return (
         <section
@@ -57,9 +58,8 @@ const labeledSections = site.pages.filter(
           class="pt-[4rem] laptop:pt-[2rem] border-t border-[var(--border-subtle)]"
           aria-labelledby={`heading-${sectionId}`}
         >
-          {/* --- Encabezado de la sección --- */}
+          {/* HEADER */}
           <div class="mb-4 laptop:mb-7">
-            {/* Nota de mejora: Cambiado <p> a <h2> para correcta semántica y accesibilidad usando aria-labelledby */}
             <h2
               id={`heading-${sectionId}`}
               class="text-xs laptop:text-base fhd:text-lg
@@ -68,18 +68,17 @@ const labeledSections = site.pages.filter(
             >
               {page.sectionLabel}
             </h2>
+
             <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
           </div>
 
-          {/* --- Contenido de la sección --- */}
+          {/* CONTENT */}
           <div class="pb-[3rem] laptop:pb-[4rem]">
-            {sectionId === "about" && <AboutContent about={aboutData} />}
-            {sectionId === "resume" && <ResumeContent resume={resumeData} />}
-            {sectionId === "projects" && (
-              <ProjectsContent projects={projects} />
-            )}
+            {sectionId === "about" && <About about={aboutData} />}
+            {sectionId === "resume" && <Resume resume={resumeData} />}
+            {sectionId === "projects" && <Projects projects={projects} />}
             {sectionId === "contact" && (
-              <ContactContent contact={contactData} socialLinks={socialLinks} />
+              <Contact contact={contactData} socialLinks={socialLinks} />
             )}
           </div>
         </section>

@@ -1,0 +1,44 @@
+---
+/* Campo de formulario con label flotante y underline animado.
+   El patrón peer de Tailwind requiere input ANTES que label como siblings. */
+
+export interface Props {
+  id: string;
+  name: string;
+  type?: string;
+  label: string;
+  required?: boolean;
+}
+
+const { id, name, type = "text", label, required = false } = Astro.props;
+---
+
+<div class="relative pt-[1.4rem] pb-[0.2rem] mb-[1.4rem] group">
+  <input
+    {id}
+    {type}
+    {name}
+    required={required || undefined}
+    autocomplete="off"
+    placeholder={label}
+    class="bg-transparent border-none border-b border-[var(--border-subtle)] py-[0.4rem] px-0
+           text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+           w-full outline-none transition-colors duration-[250ms] placeholder-transparent
+           focus:border-[var(--letter-color)] peer"
+  />
+  <label
+    for={id}
+    class="absolute top-[1.4rem] left-0 text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive]
+           text-[var(--letter-color)] opacity-40 translate-y-[0.35rem] transition-all duration-200
+           pointer-events-none uppercase tracking-[0.15em]
+           peer-focus:translate-y-0 peer-focus:text-[0.5rem] peer-focus:tracking-[0.35em] peer-focus:opacity-45
+           peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[0.5rem]
+           peer-[:not(:placeholder-shown)]:tracking-[0.35em] peer-[:not(:placeholder-shown)]:opacity-45"
+  >
+    {label}
+  </label>
+  <!-- Underline de acento que crece desde la izquierda al enfocar el campo -->
+  <div
+    class="absolute bottom-[0.2rem] left-0 h-[1px] w-0 bg-[var(--accent-color)] transition-all duration-300 group-focus-within:w-full"
+  />
+</div>

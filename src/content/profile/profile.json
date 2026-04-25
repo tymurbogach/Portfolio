@@ -1,5 +1,7 @@
 {
-  "name": "Timur Bogach",
-  "nameDisplay": "TIMUR BOGACH",
-  "role": "full stack developer"
+  "profile": {
+    "name": "Timur Bogach",
+    "nameDisplay": "TIMUR BOGACH",
+    "role": "full stack developer"
+  }
 }

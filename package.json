@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-5-0",
+  "name": "portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.10.0",
+    "astro": "^6.1.9",
     "simple-icons": "^16.17.0",
     "tailwindcss": "^4.1.10"
+  },
+  "overrides": {
+    "vite": "^7.0.0"
   }
+
 }

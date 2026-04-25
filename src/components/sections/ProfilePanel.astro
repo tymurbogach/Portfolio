@@ -1,4 +1,5 @@
 ---
+import Modal from "../ui/Modal.astro";
 import { getHomeData, getContactData } from "../../lib/content";
 import type { HomeData, ContactData } from "../../lib/content";
 
@@ -47,7 +48,7 @@ const { cv_link, cv_preview } = contact;
         class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]"
       >
         {
-          stats.map(({ n, label }) => (
+          stats.map(({ n, label }: { n: string; label: string }) => (
             <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)] surface-accent">
               <span
                 class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
@@ -79,10 +80,8 @@ const { cv_link, cv_preview } = contact;
           fill="currentColor"
           style="color: var(--accent-color); flex-shrink:0"
         >
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
-          <path
-            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
-          ></path>
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
         </svg>
         <span>View CV</span>
       </button>
@@ -90,34 +89,8 @@ const { cv_link, cv_preview } = contact;
   </main>
 </section>
 
-<!-- CV Preview Modal -->
-<div
-  id="cv-modal"
-  style="display:none; position:fixed; inset:0; z-index:200;
-            background: rgba(0,0,0,0.95); backdrop-filter: blur(6px);"
->
-  <div style="position:absolute; inset:0; display:flex; flex-direction:column;">
-    <div
-      style="display:flex; justify-content:flex-end; align-items:center; gap:12px; padding:16px 24px; flex-shrink:0;"
-    >
-      <a
-        id="cv-download-btn"
-        href={cv_link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cv-modal-action cv-modal-accent"
-      >
-        Download PDF
-      </a>
-      <button id="cv-close-btn" class="cv-modal-action"> ✕ Close </button>
-    </div>
-    <iframe
-      id="cv-iframe"
-      src=""
-      data-src={cv_preview}
-      style="flex:1; border:none; width:100%;"
-      allow="autoplay"
-    >
-    </iframe>
-  </div>
-</div>
+<Modal iframeSrc={cv_preview} downloadHref={cv_link} />
+
+<script>
+  import '../../scripts/cvModal';
+</script>

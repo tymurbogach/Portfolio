@@ -1,43 +1,45 @@
 {
-  "frontend": [
-    { "slug": "html5",       "color": "#e34f26", "label": "HTML5"      },
-    { "slug": "css",         "color": "#1572b6", "label": "CSS / SCSS" },
-    { "slug": "javascript",  "color": "#f7df1e", "label": "JavaScript" },
-    { "slug": "typescript",  "color": "#3178c6", "label": "TypeScript" },
-    { "slug": "tailwindcss", "color": "#06b6d4", "label": "Tailwind"   },
-    { "slug": "angular",     "color": "#dd0031", "label": "Angular"    },
-    { "slug": "vuedotjs",    "color": "#41b883", "label": "Vue.js"     },
-    { "slug": "react",       "color": "#61dafb", "label": "React"      },
-    { "slug": "astro",       "color": "#ff5d01", "label": "Astro"      }
-  ],
-  "backend": [
-    { "slug": "php",     "color": "#777bb3", "label": "PHP"     },
-    { "slug": "laravel", "color": "#ff2d20", "label": "Laravel" },
-    { "slug": "openjdk", "color": "#ed8b00", "label": "Java"    },
-    { "slug": "mysql",   "color": "#00758f", "label": "MySQL"   },
-    { "slug": "git",     "color": "#f05032", "label": "Git"     },
-    { "slug": "android", "color": "#3ddc84", "label": "Android" }
-  ],
-  "homelab": [
-    { "slug": "docker",       "color": "#2496ed", "label": "Docker"       },
-    { "slug": "nginx",        "color": "#009900", "label": "Nginx"        },
-    { "slug": "linux",        "color": "#fcc624", "label": "Linux"        },
-    { "slug": "windows",      "color": "#0078d4", "label": "Windows"      },
-    { "slug": "raspberrypi",  "color": "#c51a4a", "label": "Raspberry Pi" },
-    { "slug": "truenas",      "color": "#0095d5", "label": "TrueNAS"      },
-    { "slug": "tailscale",    "color": "#3b82f6", "label": "Tailscale"    },
-    { "slug": "cloudflare",   "color": "#f6821f", "label": "Cloudflare"   },
-    { "slug": "portainer",    "color": "#20c997", "label": "Portainer"    },
-    { "slug": "pihole",       "color": "#ef4444", "label": "Pi-hole"      },
-    { "slug": "jellyfin",     "color": "#a855f7", "label": "Jellyfin"     },
-    { "slug": "immich",       "color": "#4250af", "label": "Immich"       },
-    { "slug": "ollama",       "color": "#8b5cf6", "label": "Ollama"       },
-    { "slug": "uptimekuma",   "color": "#5cdd8b", "label": "Uptime Kuma"  }
-  ],
-  "languages": [
-    { "flag": "🇷🇺", "lang": "Russian",   "level": "native" },
-    { "flag": "🇺🇦", "lang": "Ukrainian", "level": "native" },
-    { "flag": "🇪🇸", "lang": "Spanish",   "level": "fluent" },
-    { "flag": "🇬🇧", "lang": "English",   "level": "fluent" }
-  ]
+  "data": {
+    "frontend": [
+      { "slug": "html5",       "color": "#e34f26", "label": "HTML5"      },
+      { "slug": "css",         "color": "#1572b6", "label": "CSS / SCSS" },
+      { "slug": "javascript",  "color": "#f7df1e", "label": "JavaScript" },
+      { "slug": "typescript",  "color": "#3178c6", "label": "TypeScript" },
+      { "slug": "tailwindcss", "color": "#06b6d4", "label": "Tailwind"   },
+      { "slug": "angular",     "color": "#dd0031", "label": "Angular"    },
+      { "slug": "vuedotjs",    "color": "#41b883", "label": "Vue.js"     },
+      { "slug": "react",       "color": "#61dafb", "label": "React"      },
+      { "slug": "astro",       "color": "#ff5d01", "label": "Astro"      }
+    ],
+    "backend": [
+      { "slug": "php",     "color": "#777bb3", "label": "PHP"     },
+      { "slug": "laravel", "color": "#ff2d20", "label": "Laravel" },
+      { "slug": "openjdk", "color": "#ed8b00", "label": "Java"    },
+      { "slug": "mysql",   "color": "#00758f", "label": "MySQL"   },
+      { "slug": "git",     "color": "#f05032", "label": "Git"     },
+      { "slug": "android", "color": "#3ddc84", "label": "Android" }
+    ],
+    "homelab": [
+      { "slug": "docker",      "color": "#2496ed", "label": "Docker"       },
+      { "slug": "nginx",       "color": "#009900", "label": "Nginx"        },
+      { "slug": "linux",       "color": "#fcc624", "label": "Linux"        },
+      { "slug": "windows",     "color": "#0078d4", "label": "Windows"      },
+      { "slug": "raspberrypi", "color": "#c51a4a", "label": "Raspberry Pi" },
+      { "slug": "truenas",     "color": "#0095d5", "label": "TrueNAS"      },
+      { "slug": "tailscale",   "color": "#3b82f6", "label": "Tailscale"    },
+      { "slug": "cloudflare",  "color": "#f6821f", "label": "Cloudflare"   },
+      { "slug": "portainer",   "color": "#20c997", "label": "Portainer"    },
+      { "slug": "pihole",      "color": "#ef4444", "label": "Pi-hole"      },
+      { "slug": "jellyfin",    "color": "#a855f7", "label": "Jellyfin"     },
+      { "slug": "immich",      "color": "#4250af", "label": "Immich"       },
+      { "slug": "ollama",      "color": "#8b5cf6", "label": "Ollama"       },
+      { "slug": "uptimekuma",  "color": "#5cdd8b", "label": "Uptime Kuma"  }
+    ],
+    "languages": [
+      { "flag": "🇷🇺", "lang": "Russian",   "level": "native" },
+      { "flag": "🇺🇦", "lang": "Ukrainian", "level": "native" },
+      { "flag": "🇪🇸", "lang": "Spanish",   "level": "fluent" },
+      { "flag": "🇬🇧", "lang": "English",   "level": "fluent" }
+    ]
+  }
 }

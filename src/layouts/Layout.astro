@@ -1,10 +1,10 @@
 ---
 import "../styles/global.css";
-import Header from "../components/global/HeaderContent.astro";
-import Footer from "../components/global/FooterContent.astro";
-import Name from "../components/global/Name.astro";
-import Navigation from "../components/global/Navigation.astro";
-import SocialMedia from "../components/global/SocialMedia.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import NameCard from "../components/layout/NameCard.astro";
+import NavBar from "../components/layout/NavBar.astro";
+import SocialLinks from "../components/ui/SocialLinks.astro";
 import DualMain from "./DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile } from "../lib/content";
@@ -76,12 +76,12 @@ const ogImageUrl = `${site.url}${ogImage}`;
 
     <!-- Scripts -->
     <script src="../scripts/themeToggle.ts"></script>
-    <script src="../scripts/navIndicator.ts"></script>
-    <script src="../scripts/cvModal.ts"></script>
     <script src="../scripts/contactForm.ts"></script>
     <script src="../scripts/sectionNav.ts"></script>
   </head>
 
+  <!-- position:fixed en body evita el scroll nativo del documento;
+       el scroll real ocurre solo dentro del panel de contenido -->
   <body
     class="bg-[var(--total-background)] text-[var(--letter-color)]"
     style="position:fixed; inset:0;"
@@ -101,15 +101,15 @@ const ogImageUrl = `${site.url}${ogImage}`;
          DESKTOP — ELEMENTOS FIJOS
          ═══════════════════════════════════════════════ -->
     <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
-      <Name nameDisplay={profile.nameDisplay} role={profile.role} />
+      <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
 
     <div class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40">
-      <Navigation pages={site.pages} />
+      <NavBar pages={site.pages} />
     </div>
 
     <div class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40">
-      <SocialMedia />
+      <SocialLinks />
     </div>
 
     <!-- ═══════════════════════════════════════════════

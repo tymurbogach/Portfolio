@@ -1,0 +1,58 @@
+---
+import Chip from "../ui/Chip.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import type { ResumeData } from "../../lib/content";
+
+interface Props { resume: ResumeData; }
+const { resume } = Astro.props;
+const { frontend, backend, homelab, languages } = resume;
+---
+
+<section class="flex flex-col w-full gap-9 laptop:gap-12">
+
+  <!-- Frontend + Backend en dos columnas o apilados en móvil -->
+  <div class="grid grid-cols-1 mobile:grid-cols-2 gap-8 laptop:gap-10">
+
+    <div class="flex flex-col gap-4">
+      <SectionHeading label="Frontend" />
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
+        {frontend.map(({ slug, color, label }) => (
+          <Chip {slug} {color} {label} />
+        ))}
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <SectionHeading label="Backend" />
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
+        {backend.map(({ slug, color, label }) => (
+          <Chip {slug} {color} {label} />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <SectionHeading label="Homelab & DevOps" />
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
+      {homelab.map(({ slug, color, label }) => (
+        <Chip {slug} {color} {label} />
+      ))}
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <SectionHeading label="Languages" />
+    <div class="grid grid-cols-4 gap-2">
+      {languages.map(({ flag, lang, level }) => (
+        <div class="flex flex-col items-center gap-1 px-2 py-3
+                    border border-[var(--border-subtle)] bg-[var(--surface-raised)] text-center">
+          <span class="text-xl">{flag}</span>
+          <span class="text-xs font-bold leading-snug">{lang}</span>
+          <span class="text-[0.55rem] tracking-[0.3em] uppercase opacity-40">{level}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</section>

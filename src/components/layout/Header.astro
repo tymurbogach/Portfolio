@@ -1,6 +1,6 @@
 ---
-import Name from "./Name.astro";
-import Navigation from "./Navigation.astro";
+import NameCard from "./NameCard.astro";
+import NavBar from "./NavBar.astro";
 import { getProfile, getSite } from "../../lib/content";
 
 const profile = await getProfile();
@@ -10,6 +10,6 @@ const site    = await getSite();
 <header
   class="w-full h-auto flex flex-col items-center justify-center mobile:flex-row mobile:justify-between gap-0 m-0"
 >
-  <Name nameDisplay={profile.nameDisplay} role={profile.role} />
-  <Navigation pages={site.pages} />
+  <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
+  <NavBar pages={site.pages} />
 </header>

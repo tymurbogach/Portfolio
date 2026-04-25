@@ -9,6 +9,10 @@ const { pages } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
+<script>
+  import '../../scripts/navIndicator';
+</script>
+
 <div
   class="relative w-full h-[3rem]
   mobile:w-[20rem] mobile:h-[4.5rem]
@@ -25,13 +29,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
            mobile:shadow-md tablet:shadow-lg"
   >
     {
-      pages.map((page, i) => (
+      pages.map((page: NavPage, i: number) => (
         <a
           href={page.path}
           data-active={currentPath === page.path ? "true" : "false"}
           class:list={[
             "group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden",
-            "text-[var(--letter-color)]",
+            "text-[var(--letter-color)] data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent-color)]",
             i < pages.length - 1 ? "border-r border-[var(--border-color)]" : "",
             "font-light tracking-wide laptop:tracking-widest",
             "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
@@ -40,9 +44,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
           ]}
         >
           <span
-            class="nav-mask w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
-                   transition-all duration-200 group-hover:scale-125"
-            style={`-webkit-mask-image:url('${page.icon}');mask-image:url('${page.icon}');`}
+            class="inline-block w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
+                   transition-all duration-200 group-hover:scale-125 bg-[var(--letter-color)] group-hover:bg-[var(--hover-text)]
+                   data-[active=true]:bg-[var(--accent-color)] opacity-65 group-hover:opacity-100 data-[active=true]:opacity-100"
+            style={`-webkit-mask-image:url('${page.icon}');mask-image:url('${page.icon}');
+                    -webkit-mask-size: contain; mask-size: contain;
+                    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+                    -webkit-mask-position: center; mask-position: center;`}
             aria-hidden="true"
           />
           <span>{page.label}</span>

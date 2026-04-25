@@ -1,0 +1,16 @@
+---
+/* Encabezado de sección: etiqueta tiny-caps + línea divisora con tono del acento. */
+
+export interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="flex items-center gap-3">
+  <h2 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40 shrink-0">
+    {label}
+  </h2>
+  <div class="flex-1 h-px opacity-20" style="background: var(--accent-color);" />
+</div>

@@ -1,21 +1,23 @@
 {
-  "name": "Timur Bogach",
-  "title": "Timur Bogach",
-  "url": "https://nastymur.com",
-  "lang": "es",
-  "description": "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Available for freelance projects.",
-  "ogImage": "/img/gopnik.png",
-  "pageDescriptions": {
-    "home": "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Software solutions, web development, and freelance projects.",
-    "about": "About Timur Bogach — Full Stack Developer with a background in music and the automotive industry, now building web applications.",
-    "resume": "Timur Bogach's skills and tech stack — HTML, CSS, JavaScript, TypeScript, Laravel, Angular, Astro, Tailwind and more.",
-    "projects": "Projects by Timur Bogach — web applications, tools, and experiments built with modern technologies.",
-    "contact": "Get in touch with Timur Bogach — available for freelance web development projects from Orihuela, Alicante, Spain."
-  },
-  "pages": [
-    { "path": "/about",    "label": "About",    "icon": "/img/about.png",    "sectionLabel": "— who i am"      },
-    { "path": "/resume",   "label": "Resume",   "icon": "/img/resume.png",   "sectionLabel": "— skills & stack" },
-    { "path": "/projects", "label": "Projects", "icon": "/img/projects.png", "sectionLabel": "— my work"        },
-    { "path": "/contact",  "label": "Contact",  "icon": "/img/contact.png",  "sectionLabel": "— let's talk"     }
-  ]
+  "site": {
+    "name": "Timur Bogach",
+    "title": "Timur Bogach",
+    "url": "https://nastymur.com",
+    "lang": "es",
+    "description": "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Available for freelance projects.",
+    "ogImage": "/img/gopnik.png",
+    "pageDescriptions": {
+      "home":     "Timur Bogach — Full Stack Developer based in Orihuela, Alicante. Software solutions, web development, and freelance projects.",
+      "about":    "About Timur Bogach — Full Stack Developer with a background in music and the automotive industry, now building web applications.",
+      "resume":   "Timur Bogach's skills and tech stack — HTML, CSS, JavaScript, TypeScript, Laravel, Angular, Astro, Tailwind and more.",
+      "projects": "Projects by Timur Bogach — web applications, tools, and experiments built with modern technologies.",
+      "contact":  "Get in touch with Timur Bogach — available for freelance web development projects from Orihuela, Alicante, Spain."
+    },
+    "pages": [
+      { "path": "/about",    "label": "About",    "icon": "/img/about.png",    "sectionLabel": "— who i am"       },
+      { "path": "/resume",   "label": "Resume",   "icon": "/img/resume.png",   "sectionLabel": "— skills & stack"  },
+      { "path": "/projects", "label": "Projects", "icon": "/img/projects.png", "sectionLabel": "— my work"         },
+      { "path": "/contact",  "label": "Contact",  "icon": "/img/contact.png",  "sectionLabel": "— let's talk"      }
+    ]
+  }
 }
