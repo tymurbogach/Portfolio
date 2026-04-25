@@ -67,8 +67,8 @@ const contact = defineCollection({
     location: z.string(),
     statusStr: z.string(),
     statusActive: z.boolean(),
-    cv_link: z.string().url(),
-    cv_preview: z.string().url(),
+    cv_link: z.string(),
+    cv_preview: z.string(),
     formSubject: z.string()
   })
 });

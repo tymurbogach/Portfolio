@@ -4,8 +4,8 @@
     "location": "Orihuela, Alicante",
     "statusStr": "Available",
     "statusActive": true,
-    "cv_link": "https://drive.google.com/uc?export=download&id=1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe",
-    "cv_preview": "https://drive.google.com/file/d/1hXaSMT9TW_HA2exh7ZKNCkrLm2IfQzDe/preview",
+    "cv_link": "/cv.pdf",
+    "cv_preview": "/cv.pdf",
     "formSubject": "New message from nastymur.com"
   }
 }

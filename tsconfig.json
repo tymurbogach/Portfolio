@@ -7,7 +7,9 @@
       "DOM.Iterable"
     ],
     "skipLibCheck": true,
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "include": [
     "src",
