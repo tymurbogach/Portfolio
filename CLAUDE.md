@@ -11,9 +11,9 @@
 
 ## Skills activas
 
-- frontend-design
 - caveman
 - context7
+- frontend-design
 - code-review
 - code-simplifier
 - security-guidance

@@ -1,13 +1,14 @@
 ---
+interface Props {
+  downloadHref: string;
+}
+
 const { downloadHref } = Astro.props;
 ---
 
-<div
-  id="cv-modal"
-  style="display:none; position:fixed; inset:0; z-index:200; background: rgba(0,0,0,0.95); backdrop-filter: blur(6px);"
->
-  <div style="position:absolute; inset:0; display:flex; flex-direction:column;">
-    <div style="display:flex; justify-content:flex-end; align-items:center; gap:12px; padding:16px 24px; flex-shrink:0;">
+<div id="cv-modal" class="cv-modal">
+  <div class="cv-modal-inner">
+    <div class="cv-modal-toolbar">
       <a
         id="cv-download-btn"
         href={downloadHref}
@@ -28,13 +29,44 @@ const { downloadHref } = Astro.props;
     <iframe
       id="cv-iframe"
       src=""
-      style="flex:1; border:none; width:100%;"
+      class="cv-modal-iframe"
       allow="autoplay"
     />
   </div>
 </div>
 
 <style>
+  .cv-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(6px);
+  }
+
+  .cv-modal-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cv-modal-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    flex-shrink: 0;
+  }
+
+  .cv-modal-iframe {
+    flex: 1;
+    border: none;
+    width: 100%;
+  }
+
   @keyframes modal-in {
     from {
       opacity: 0;

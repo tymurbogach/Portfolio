@@ -1,6 +1,6 @@
 ---
-import Chip from "../ui/Chip.astro";
-import SectionHeading from "../ui/SectionHeading.astro";
+import Chip from "../../components/ui/Chip.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
 import type { ResumeData } from "../../lib/content";
 
 interface Props { resume: ResumeData; }
@@ -16,7 +16,7 @@ const { frontend, backend, homelab, languages } = resume;
     <div class="flex flex-col gap-4">
       <SectionHeading label="Frontend" />
       <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-        {frontend.map(({ slug, color, label }) => (
+        {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip {slug} {color} {label} />
         ))}
       </div>
@@ -25,7 +25,7 @@ const { frontend, backend, homelab, languages } = resume;
     <div class="flex flex-col gap-4">
       <SectionHeading label="Backend" />
       <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-        {backend.map(({ slug, color, label }) => (
+        {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip {slug} {color} {label} />
         ))}
       </div>
@@ -35,7 +35,7 @@ const { frontend, backend, homelab, languages } = resume;
   <div class="flex flex-col gap-4">
     <SectionHeading label="Homelab & DevOps" />
     <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-      {homelab.map(({ slug, color, label }) => (
+      {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
         <Chip {slug} {color} {label} />
       ))}
     </div>
@@ -44,7 +44,7 @@ const { frontend, backend, homelab, languages } = resume;
   <div class="flex flex-col gap-4">
     <SectionHeading label="Languages" />
     <div class="grid grid-cols-4 gap-2">
-      {languages.map(({ flag, lang, level }) => (
+      {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <div class="flex flex-col items-center gap-1 px-2 py-3
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)] text-center">
           <span class="text-xl">{flag}</span>

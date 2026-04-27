@@ -1,8 +1,7 @@
 ---
 import NameCard from "./NameCard.astro";
 import NavBar from "./NavBar.astro";
-import { getProfile, getSite } from "../../lib/content";
-
+import { getSite, getProfile } from "../../lib/content";
 const profile = await getProfile();
 const site    = await getSite();
 ---

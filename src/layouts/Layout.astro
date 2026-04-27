@@ -5,13 +5,21 @@ import Footer from "../components/layout/Footer.astro";
 import NameCard from "../components/layout/NameCard.astro";
 import NavBar from "../components/layout/NavBar.astro";
 import SocialLinks from "../components/ui/SocialLinks.astro";
-import DualMain from "./DualMain.astro";
+import DualMain from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile } from "../lib/content";
-import type { SiteData, ProfileData } from "../lib/content";
 
-const site    = (await getSite())    as SiteData;
-const profile = (await getProfile()) as ProfileData;
+interface Props {
+  title: string;
+  dual?: boolean;
+  scrollable?: boolean;
+  pageLabel?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const site    = await getSite();
+const profile = await getProfile();
 
 const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") || "home") as keyof typeof site.pageDescriptions;
 const defaultDescription = site.pageDescriptions[pathKey] ?? site.description;
@@ -75,9 +83,9 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" />
 
     <!-- Scripts -->
-    <script src="../scripts/themeToggle.ts"></script>
-    <script src="../scripts/contactForm.ts"></script>
-    <script src="../scripts/sectionNav.ts"></script>
+    <script src="@/scripts/themeToggle.ts"></script>
+    <script src="@/scripts/contactForm.ts"></script>
+    <script src="@/scripts/sectionNav.ts"></script>
   </head>
 
   <!-- position:fixed en body evita el scroll nativo del documento;

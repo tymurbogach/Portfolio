@@ -1,5 +1,11 @@
 ---
 import ProfilePanel from "../components/sections/ProfilePanel.astro";
+
+interface Props {
+  pageLabel?: string;
+  scrollable?: boolean;
+}
+
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 

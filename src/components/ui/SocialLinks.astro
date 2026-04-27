@@ -1,8 +1,7 @@
 ---
 import { getSocialLinks } from "../../lib/content";
 import type { SocialLink } from "../../lib/content";
-
-const socialLinks = (await getSocialLinks()) as SocialLink;
+const socialLinks = await getSocialLinks();
 ---
 
 <div
@@ -21,7 +20,7 @@ const socialLinks = (await getSocialLinks()) as SocialLink;
               mobile:shadow-md tablet:shadow-lg"
   >
     {
-      socialLinks.map(({ url, icon, name }) => (
+      socialLinks.map(({ url, icon, name }: SocialLink) => (
         <a
           href={url}
           target="_blank"

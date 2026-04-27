@@ -12,6 +12,11 @@ export type NavPage = {
   sectionLabel: string;
 };
 
+// Extendemos NavPage para la vista
+export type LabeledSection = NavPage & {
+  sectionId: string;
+};
+
 export type SiteData = {
   name: string;
   title: string;
@@ -26,7 +31,7 @@ export type SiteData = {
     projects: string;
     contact: string;
   };
-  pages: NavPage[];
+  pages: NavPage[]; // En teoría es un array
 };
 
 // ==========================================
@@ -41,14 +46,6 @@ export type ContactData = CollectionEntry<"contact">["data"];
 export type SocialLink  = CollectionEntry<"social">["data"][number];
 export type Project     = CollectionEntry<"projects">;
 
-// ==========================================
-// 3. HELPERS
-// ==========================================
-
-// Normaliza "/about" → "about"
-function normalizePath(path: string): string {
-  return path.replace(/^\//, "");
-}
 
 // ==========================================
 // 4. FETCH FUNCTIONS
@@ -93,23 +90,42 @@ export async function getContactData(): Promise<ContactData> {
 export async function getSocialLinks(): Promise<SocialLink[]> {
   const entry = await getEntry("social", "data");
   if (!entry) throw new Error("Missing social data");
-  return entry.data;
+  return entry.data as SocialLink[];
 }
 
 export async function getProjects(): Promise<Project[]> {
   const entries = await getCollection("projects");
-
   return entries.sort(
     (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
   );
 }
 
 // ==========================================
-// 5. LÓGICA DE SECCIONES
+// 5. LÓGICA DE SECCIONES (Refactorizada)
 // ==========================================
 
-export function getLabeledSections(site: SiteData): NavPage[] {
-  return site.pages.filter(
-    (page) => normalizePath(page.path) !== "home"
-  );
+// 1. Helper infalible
+export function getSectionId(path: any): string {
+  // Forzamos a que sea string y si no existe devolvemos vacío
+  const cleanPath = `${path ?? ""}`;
+  return cleanPath.replace(/^\//, "");
+}
+
+// 2. Función de secciones ultra-segura
+export function getLabeledSections(site: any): LabeledSection[] {
+  // Si site o site.pages no existen, usamos un array vacío
+  const pagesRaw = site?.pages || [];
+  
+  // Convertimos a array si es un objeto y aseguramos el tipo
+  const pagesArray = (Array.isArray(pagesRaw) ? pagesRaw : Object.values(pagesRaw)) as NavPage[];
+
+  return pagesArray
+    .filter((page) => {
+      const id = getSectionId(page?.path);
+      return id !== "" && id !== "home";
+    })
+    .map((page) => ({
+      ...page,
+      sectionId: getSectionId(page.path)
+    }));
 }
