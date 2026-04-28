@@ -2,174 +2,193 @@
 
 /* ═══════════════════════════════════════════════════════
    BREAKPOINTS PERSONALIZADOS
-   Extienden los de Tailwind; úsalos con prefijos mobile:, tablet:, etc.
    ═══════════════════════════════════════════════════════ */
 @theme {
-  --breakpoint-mobile: 30rem;
-  --breakpoint-tablet: 48rem;
-  --breakpoint-laptop: 80rem;
+  --breakpoint-mobile:  30rem;
+  --breakpoint-tablet:  48rem;
+  --breakpoint-laptop:  80rem;
   --breakpoint-desktop: 100rem;
-  --breakpoint-fhd: 120rem;
-  --breakpoint-qhd: 160rem;
-  --breakpoint-uhd: 240rem;
+  --breakpoint-fhd:     120rem;
+  --breakpoint-qhd:     160rem;
+  --breakpoint-uhd:     240rem;
 }
 
 /* ═══════════════════════════════════════════════════════
    TEMAS
-   Se aplican con <html class="theme-*">
-
-   Variables obligatorias que todo tema debe definir:
-     --component-background  fondo de bloques UI (nav, cards)
-     --page-background       fondo del panel de contenido central
-     --total-background      fondo del body exterior (el más profundo)
-     --letter-color          color de texto principal
-     --border-color          borde estándar (opaco)
-     --hover-bg              fondo en hover de elementos interactivos
-     --hover-text            texto sobre hover-bg
-     --accent-color          acento principal
-     --accent-text           texto sobre fondo de acento (para botones filled)
-     --accent-subtle         acento diluido (indicadores activos, fondos sutiles)
-     --surface-raised        superficie elevada por encima de page-background
-     --border-subtle         calculado desde --border-color en :root, no redefinir
-     --accent-secondary      acento secundario (gradientes, tags)
-     --accent-tertiary       acento terciario (gradientes profundos)
-     --glow-primary          glow neón del acento principal
-     --glow-secondary        glow del acento secundario
-     --gradient-hero         gradiente de fondo del hero
-     --gradient-border       gradiente para líneas decorativas y texto-gradiente
-     --surface-glow          capa de color sutil sobre superficies (surface-accent)
+   Regla de contraste entre capas:
+     total-background → component-background → page-background
+     Diferencia mínima: 8–12 puntos de luminosidad entre capas
+     border-color: siempre visible sin subir brillo
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Void (default) — oscuro cálido, teal + naranja dorado ─── */
+/* ─── Void — oscuro cálido, teal + naranja dorado ─── */
+/* Aumentado contraste entre capas y bordes más visibles */
 :root.theme-void {
-  --component-background: #1a1e22;
-  --page-background: #111416;
-  --total-background: #0c0d0f;
-  --letter-color: #e6f1f5;
-  --border-color: #1c2a30;
-  --hover-bg: #ffb36a;
-  --hover-text: #0a0b0c;
-  --accent-color: #4db7b3;
-  --accent-text: #050506;
-  --accent-subtle: rgba(77, 183, 179, 0.12);
-  --surface-raised: #1e2428;
-  --border-subtle: rgba(28, 42, 48, 0.8);
-  --accent-secondary: #ff8a3d;
-  --accent-tertiary: #ff5c2e;
-  --glow-primary: rgba(77, 183, 179, 0.35);
-  --glow-secondary: rgba(255, 138, 61, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(77, 183, 179, 0.10) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(77, 183, 179, 0.05);
+  --component-background: #232c33;   /* +5L respecto al original */
+  --page-background:       #151a1e;  /* panel central más diferenciado */
+  --total-background:      #090b0d;  /* exterior más profundo */
+  --letter-color:          #eaf4f8;  /* texto ligeramente más brillante */
+  --border-color:          #2e4550;  /* borde más visible, no invisible */
+  --hover-bg:              #ffb36a;
+  --hover-text:            #0a0b0c;
+  --accent-color:          #4db7b3;
+  --accent-text:           #050506;
+  --accent-subtle:         rgba(77, 183, 179, 0.15);
+  --surface-raised:        #2a353d;  /* más separación de page-background */
+  --border-subtle:         rgba(46, 69, 80, 0.7);
+  --accent-secondary:      #ff8a3d;
+  --accent-tertiary:       #ff5c2e;
+  --glow-primary:          rgba(77, 183, 179, 0.40);
+  --glow-secondary:        rgba(255, 138, 61, 0.30);
+  --gradient-hero:         linear-gradient(135deg, rgba(77, 183, 179, 0.12) 0%, transparent 60%);
+  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:          rgba(77, 183, 179, 0.06);
 }
 
 /* ─── Abyss — azul profundo, cyan eléctrico + magenta ─── */
 :root.theme-abyss {
-  --component-background: #15152a;
-  --page-background: #0e0e20;
-  --total-background: #080815;
-  --letter-color: #e4e0f5;
-  --border-color: #1a1a2a;
-  --hover-bg: #e040c8;
-  --hover-text: #07070d;
-  --accent-color: #00ccee;
-  --accent-text: #030308;
-  --accent-subtle: rgba(0, 204, 238, 0.12);
-  --surface-raised: #1a1a30;
-  --border-subtle: rgba(26, 26, 42, 0.9);
-  --accent-secondary: #e040c8;
-  --accent-tertiary: #cc006e;
-  --glow-primary: rgba(0, 204, 238, 0.35);
-  --glow-secondary: rgba(224, 64, 200, 0.25);
-  --gradient-hero: linear-gradient(135deg, rgba(0, 204, 238, 0.10) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(0, 204, 238, 0.05);
+  --component-background: #1c1c35;
+  --page-background:       #111125;
+  --total-background:      #07070f;
+  --letter-color:          #ece8ff;
+  --border-color:          #2a2a4a;
+  --hover-bg:              #e040c8;
+  --hover-text:            #07070d;
+  --accent-color:          #00ccee;
+  --accent-text:           #030308;
+  --accent-subtle:         rgba(0, 204, 238, 0.14);
+  --surface-raised:        #232340;
+  --border-subtle:         rgba(42, 42, 74, 0.75);
+  --accent-secondary:      #e040c8;
+  --accent-tertiary:       #cc006e;
+  --glow-primary:          rgba(0, 204, 238, 0.40);
+  --glow-secondary:        rgba(224, 64, 200, 0.30);
+  --gradient-hero:         linear-gradient(135deg, rgba(0, 204, 238, 0.12) 0%, transparent 60%);
+  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:          rgba(0, 204, 238, 0.06);
 }
 
 /* ─── Chalk — claro, neutro frío, azul marino ─── */
+/* Más separación entre capas en claro */
 :root.theme-chalk {
-  --component-background: #f5f5f5;
-  --page-background: #fafafa;
-  --total-background: #f0f0f0;
-  --letter-color: #111111;
-  --border-color: #d0d0d0;
-  --hover-bg: #111111;
-  --hover-text: #fafafa;
-  --accent-color: #1a3a5c;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(26, 58, 92, 0.07);
-  --surface-raised: #f7f7f7;
-  --accent-secondary: #0066cc;
-  --accent-tertiary: #004499;
-  --glow-primary: rgba(26, 58, 92, 0.15);
-  --glow-secondary: rgba(0, 102, 204, 0.10);
-  --gradient-hero: linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(26, 58, 92, 0.03);
+  --component-background: #ebebeb;
+  --page-background:       #f8f8f8;
+  --total-background:      #d8d8d8;  /* exterior claramente más oscuro */
+  --letter-color:          #0d0d0d;
+  --border-color:          #b0b0b0;  /* borde más oscuro, visible sin esfuerzo */
+  --hover-bg:              #111111;
+  --hover-text:            #f8f8f8;
+  --accent-color:          #1a3a5c;
+  --accent-text:           #ffffff;
+  --accent-subtle:         rgba(26, 58, 92, 0.09);
+  --surface-raised:        #f2f2f2;
+  --border-subtle:         rgba(100, 100, 100, 0.35);
+  --accent-secondary:      #0066cc;
+  --accent-tertiary:       #004499;
+  --glow-primary:          rgba(26, 58, 92, 0.18);
+  --glow-secondary:        rgba(0, 102, 204, 0.12);
+  --gradient-hero:         linear-gradient(135deg, rgba(26, 58, 92, 0.07) 0%, transparent 60%);
+  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:          rgba(26, 58, 92, 0.04);
 }
 
 /* ─── Stone — claro, terracota cálida, ámbar ─── */
 :root.theme-stone {
-  --component-background: #f0ebe3;
-  --page-background: #f7f3ec;
-  --total-background: #e8e1d8;
-  --letter-color: #1a160e;
-  --border-color: #c8bfb0;
-  --hover-bg: #1a160e;
-  --hover-text: #f7f3ec;
-  --accent-color: #b05b2a;
-  --accent-text: #ffffff;
-  --accent-subtle: rgba(176, 91, 42, 0.07);
-  --surface-raised: #faf6f0;
-  --accent-secondary: #e05c00;
-  --accent-tertiary: #8b1a00;
-  --glow-primary: rgba(176, 91, 42, 0.15);
-  --glow-secondary: rgba(224, 92, 0, 0.10);
-  --gradient-hero: linear-gradient(135deg, rgba(176, 91, 42, 0.05) 0%, transparent 60%);
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow: rgba(176, 91, 42, 0.03);
+  --component-background: #e8e0d5;
+  --page-background:       #f5f0e8;
+  --total-background:      #d0c8bc;  /* exterior claramente más oscuro */
+  --letter-color:          #15120a;
+  --border-color:          #a89880;  /* borde marrón visible */
+  --hover-bg:              #1a160e;
+  --hover-text:            #f5f0e8;
+  --accent-color:          #b05b2a;
+  --accent-text:           #ffffff;
+  --accent-subtle:         rgba(176, 91, 42, 0.09);
+  --surface-raised:        #f0ebe0;
+  --border-subtle:         rgba(120, 100, 80, 0.35);
+  --accent-secondary:      #e05c00;
+  --accent-tertiary:       #8b1a00;
+  --glow-primary:          rgba(176, 91, 42, 0.18);
+  --glow-secondary:        rgba(224, 92, 0, 0.12);
+  --gradient-hero:         linear-gradient(135deg, rgba(176, 91, 42, 0.07) 0%, transparent 60%);
+  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:          rgba(176, 91, 42, 0.04);
+}
+
+/* ─── Ember — oscuro carbón, rojo carmín + dorado ─── */
+/* Nuevo tema oscuro de alto contraste */
+:root.theme-ember {
+  --component-background: #251a1a;
+  --page-background:       #160e0e;
+  --total-background:      #0a0606;
+  --letter-color:          #f5ece8;
+  --border-color:          #3d2020;
+  --hover-bg:              #e8c84a;
+  --hover-text:            #0a0606;
+  --accent-color:          #e8443a;
+  --accent-text:           #ffffff;
+  --accent-subtle:         rgba(232, 68, 58, 0.14);
+  --surface-raised:        #2e1f1f;
+  --border-subtle:         rgba(61, 32, 32, 0.75);
+  --accent-secondary:      #e8c84a;
+  --accent-tertiary:       #c8960a;
+  --glow-primary:          rgba(232, 68, 58, 0.40);
+  --glow-secondary:        rgba(232, 200, 74, 0.30);
+  --gradient-hero:         linear-gradient(135deg, rgba(232, 68, 58, 0.12) 0%, transparent 60%);
+  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:          rgba(232, 68, 58, 0.06);
+}
+
+/* ─── Forest — oscuro musgo, verde lima + ámbar ─── */
+:root.theme-forest {
+  --component-background: #1a2218;
+  --page-background:       #10160e;
+  --total-background:      #080b07;
+  --letter-color:          #e8f2e4;
+  --border-color:          #2a3d26;
+  --hover-bg:              #d4a843;
+  --hover-text:            #080b07;
+  --accent-color:          #6ec95a;
+  --accent-text:           #080b07;
+  --accent-subtle:         rgba(110, 201, 90, 0.14);
+  --surface-raised:        #212c1e;
+  --border-subtle:         rgba(42, 61, 38, 0.75);
+  --accent-secondary:      #d4a843;
+  --accent-tertiary:       #b07820;
+  --glow-primary:          rgba(110, 201, 90, 0.38);
+  --glow-secondary:        rgba(212, 168, 67, 0.28);
+  --gradient-hero:         linear-gradient(135deg, rgba(110, 201, 90, 0.12) 0%, transparent 60%);
+  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --surface-glow:          rgba(110, 201, 90, 0.05);
 }
 
 /* ═══════════════════════════════════════════════════════
    TOKENS GLOBALES
    ═══════════════════════════════════════════════════════ */
 :root {
-  /* --border-subtle no se define por tema; se deriva automáticamente */
-  --border-subtle: color-mix(in srgb, var(--border-color) 50%, transparent);
+  --border-subtle: color-mix(in srgb, var(--border-color) 55%, transparent);
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-8: 48px;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-8:  48px;
   --space-10: 64px;
   --space-12: 96px;
 
   --sidebar-width: 22rem;
 }
 
-/* Sidebar crece con la pantalla para mantener proporciones */
-@media (min-width: 120rem) {
-  :root { --sidebar-width: 27rem; }
-}
-
-@media (min-width: 160rem) {
-  :root { --sidebar-width: 32rem; }
-}
-
-@media (min-width: 240rem) {
-  :root { --sidebar-width: 37rem; }
-}
+@media (min-width: 120rem) { :root { --sidebar-width: 27rem; } }
+@media (min-width: 160rem) { :root { --sidebar-width: 32rem; } }
+@media (min-width: 240rem) { :root { --sidebar-width: 37rem; } }
 
 /* ═══════════════════════════════════════════════════════
    TIPOGRAFÍA Y RESET
    ═══════════════════════════════════════════════════════ */
-
-/* Base de 16px; sube con la pantalla para mantener legibilidad en alta densidad */
 html { font-size: 16px; }
-
 @media (min-width: 120rem) { html { font-size: 17px; } }
 @media (min-width: 160rem) { html { font-size: 19px; } }
 @media (min-width: 240rem) { html { font-size: 22px; } }
@@ -181,8 +200,7 @@ html { font-size: 16px; }
   font-family: "Poiret One", cursive;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
@@ -190,22 +208,17 @@ body {
 
 html { scroll-behavior: smooth; }
 
-/* Scrollbar oculta — el contenido sigue siendo scrollable */
 * { scrollbar-width: none; }
 *::-webkit-scrollbar { display: none; }
 
-/* Focus ring accesible: visible solo con teclado, no con ratón */
 *:focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
 /* ═══════════════════════════════════════════════════════
-   UTILIDADES CYBERPUNK
-   @utility de Tailwind v4: Tailwind las reconoce para purging,
-   autocomplete y variantes (hover:, dark:, etc.)
+   UTILIDADES
    ═══════════════════════════════════════════════════════ */
-
 @utility text-gradient {
   background: var(--gradient-border);
   -webkit-background-clip: text;
@@ -233,51 +246,42 @@ html { scroll-behavior: smooth; }
     0 0 20px var(--glow-primary);
 }
 
-/* Línea divisora con gradiente de acento */
 @utility gradient-line {
   height: 1px;
   background: var(--gradient-border);
   opacity: 0.6;
 }
 
-/* Fondo con tono del acento principal, sin romper el contraste */
 @utility surface-accent {
   background: var(--surface-glow);
 }
 
-/* Gradiente de fondo para el hero */
 @utility hero-gradient {
   background: var(--gradient-hero);
 }
 
-/* Borde izquierdo neón con glow, para citas y bloques destacados */
 @utility neon-left-border {
   border-left: 2px solid var(--accent-color);
   box-shadow: -3px 0 12px var(--glow-primary);
   padding-left: 1rem;
 }
 
-/* Badge de acento secundario, para tags y etiquetas secundarias */
 @utility tag-secondary {
   background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
   border: 1px solid var(--accent-secondary);
   color: var(--accent-secondary);
 }
 
-/* Glow en hover para tarjetas y bloques interactivos */
 @utility hover-glow {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-
   &:hover {
     box-shadow: 0 0 15px var(--glow-primary);
     border-color: var(--accent-color);
   }
 }
 
-/* Overlay de scanlines sobre superficies, evoca estética CRT */
 @utility scanlines {
   position: relative;
-
   &::after {
     content: "";
     position: absolute;
