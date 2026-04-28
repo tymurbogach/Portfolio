@@ -1,29 +1,28 @@
 ---
-import ProjectCard from "../../components/ui/ProjectCard.astro";
-import type { Project } from '../../lib/content';
+import ProjectCard  from "../../components/ui/ProjectCard.astro";
+import type { Project } from "../../lib/content";
 
-interface Props { projects: Project[]; }
+interface Props {
+  projects: Project[];
+}
+
 const { projects } = Astro.props;
 ---
 
 <div class="flex flex-col gap-3 w-full">
-  {
-    projects.map(({ data: project }: { data: Project }) => {
-      const isDemo =
-        project.link?.includes("github.io") ||
-        project.link?.includes("netlify") ||
-        project.link?.includes("vercel");
+  {projects.map((entry: Project) => {
+    const { title, description, image, link, tags } = entry.data;
+    const isDemo = link?.includes("github.io") || link?.includes("netlify") || link?.includes("vercel");
 
-      return (
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          link={project.link}
-          image={project.image}
-          type={isDemo ? "demo" : "source"}
-          tags={project.tags ?? []}
-        />
-      );
-    })
-  }
+    return (
+      <ProjectCard
+        title={title}
+        description={description}
+        image={image}
+        link={link}
+        type={isDemo ? "demo" : "source"}
+        tags={tags ?? []}
+      />
+    );
+  })}
 </div>

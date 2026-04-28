@@ -1,7 +1,7 @@
 ---
 interface Props {
   nameDisplay: string;
-  role: string;
+  role:        string;
 }
 
 const { nameDisplay, role } = Astro.props;
@@ -9,35 +9,40 @@ const { nameDisplay, role } = Astro.props;
 
 <div
   class="w-full h-[3rem] cursor-pointer
-  mobile:w-[20rem] mobile:h-[4.5rem]
-  tablet:w-[20rem] tablet:h-[4.5rem]
-  laptop:w-[25rem] laptop:h-[5rem]
-  fhd:w-[30rem] fhd:h-[5.5rem]
-  qhd:w-[35rem] qhd:h-[6rem]
-  uhd:w-[40rem] uhd:h-[6.5rem]"
+         mobile:w-[20rem]  mobile:h-[4.5rem]
+         tablet:w-[20rem]  tablet:h-[4.5rem]
+         laptop:w-[25rem]  laptop:h-[5rem]
+         fhd:w-[30rem]     fhd:h-[5.5rem]
+         qhd:w-[35rem]     qhd:h-[6rem]
+         uhd:w-[40rem]     uhd:h-[6.5rem]"
 >
-  <a href="/" class="no-underline w-full h-full" aria-label="Inicio">
+  <a href="/" class="group no-underline w-full h-full" aria-label="Inicio">
     <div
       class="flex flex-col items-center justify-center text-center w-full h-full
              bg-[var(--component-background)] border border-[var(--border-color)]
              shadow-none rounded-none my-0 mx-0
              mobile:shadow-md tablet:shadow-lg
-             hover:mobile:shadow-lg hover:tablet:shadow-xl"
+             hover:mobile:shadow-lg hover:tablet:shadow-xl
+             transition-colors duration-200
+             group-hover:bg-[var(--hover-bg)]"
     >
       <h1
-        class="font-bold text-[var(--letter-color)]
+        class="font-bold
                tracking-[1rem] laptop:tracking-[0.8rem] fhd:tracking-[0.9rem] qhd:tracking-[1rem] uhd:tracking-[1.2rem]
                text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
                fhd:text-4xl qhd:text-5xl uhd:text-6xl
-               mt-[0.4rem]"
+               mt-[0.4rem]
+               text-[var(--letter-color)] group-hover:text-[var(--hover-text)]
+               transition-colors duration-200"
       >
         {nameDisplay}
       </h1>
       <p
-        class="text-[var(--letter-color)]
-               text-sm mobile:text-base tablet:text-lg laptop:text-xl
+        class="text-sm mobile:text-base tablet:text-lg laptop:text-xl
                fhd:text-2xl qhd:text-3xl uhd:text-4xl
-               mt-[-0.4rem] mb-[0.4rem]"
+               mt-[-0.4rem] mb-[0.4rem]
+               text-[var(--letter-color)] group-hover:text-[var(--hover-text)]
+               transition-colors duration-200"
       >
         {role}
       </p>

@@ -1,27 +1,36 @@
 ---
 import "../styles/global.css";
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
-import NameCard from "../components/layout/NameCard.astro";
-import NavBar from "../components/layout/NavBar.astro";
+import Header     from "../components/layout/Header.astro";
+import Footer     from "../components/layout/Footer.astro";
+import NameCard   from "../components/layout/NameCard.astro";
+import NavBar     from "../components/layout/NavBar.astro";
 import SocialLinks from "../components/ui/SocialLinks.astro";
-import DualMain from "../layouts/DualMain.astro";
+import DualMain   from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile } from "../lib/content";
 
+// ==========================================
+// PROPS
+// ==========================================
 interface Props {
-  title: string;
-  dual?: boolean;
-  scrollable?: boolean;
-  pageLabel?: string;
+  title:        string;
+  dual?:        boolean;
+  scrollable?:  boolean;
+  pageLabel?:   string;
   description?: string;
-  ogImage?: string;
+  ogImage?:     string;
 }
 
+// ==========================================
+// DATOS
+// ==========================================
 const site    = await getSite();
 const profile = await getProfile();
 
-const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") || "home") as keyof typeof site.pageDescriptions;
+const pathKey = (
+  Astro.url.pathname.replace(/^\/|\/$/g, "") || "home"
+) as keyof typeof site.pageDescriptions;
+
 const defaultDescription = site.pageDescriptions[pathKey] ?? site.description;
 
 const {
@@ -42,10 +51,10 @@ const ogImageUrl = `${site.url}${ogImage}`;
   <head>
     <meta charset="UTF-8" />
 
-    <!-- ⚡ Anti-flash: aplica el tema guardado ANTES del primer paint -->
+    <!-- Anti-flash: aplica el tema guardado ANTES del primer paint -->
     <script is:inline>
       (function () {
-        var t = localStorage.getItem("theme");
+        var t     = localStorage.getItem("theme");
         var valid = ["theme-void", "theme-abyss", "theme-chalk", "theme-stone"];
         if (t && valid.indexOf(t) !== -1) {
           document.documentElement.classList.remove("theme-void");
@@ -54,27 +63,27 @@ const ogImageUrl = `${site.url}${ogImage}`;
       })();
     </script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{pageTitle}</title>
 
     <!-- SEO -->
     <meta name="description" content={description} />
-    <meta name="author" content={site.name} />
+    <meta name="author"      content={site.name} />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={pageTitle} />
+    <meta property="og:title"       content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:url" content={site.url} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image"       content={ogImageUrl} />
+    <meta property="og:url"         content={site.url} />
+    <meta property="og:type"        content="website" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image"       content={ogImageUrl} />
 
     <ClientRouter />
 
@@ -82,7 +91,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" />
 
-    <!-- Scripts -->
+    <!-- Scripts globales -->
     <script src="@/scripts/themeToggle.ts"></script>
     <script src="@/scripts/contactForm.ts"></script>
     <script src="@/scripts/sectionNav.ts"></script>
@@ -94,9 +103,10 @@ const ogImageUrl = `${site.url}${ogImage}`;
     class="bg-[var(--total-background)] text-[var(--letter-color)]"
     style="position:fixed; inset:0;"
   >
-    <!-- ═══════════════════════════════════════════════
+
+    <!-- ═══════════════════════════════════
          MÓVIL — HEADER / FOOTER FIJOS
-         ═══════════════════════════════════════════════ -->
+         ═══════════════════════════════════ -->
     <header class="block laptop:hidden fixed top-0 left-0 w-full z-30">
       <Header />
     </header>
@@ -105,9 +115,9 @@ const ogImageUrl = `${site.url}${ogImage}`;
       <Footer />
     </footer>
 
-    <!-- ═══════════════════════════════════════════════
+    <!-- ═══════════════════════════════════
          DESKTOP — ELEMENTOS FIJOS
-         ═══════════════════════════════════════════════ -->
+         ═══════════════════════════════════ -->
     <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
       <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
@@ -120,12 +130,12 @@ const ogImageUrl = `${site.url}${ogImage}`;
       <SocialLinks />
     </div>
 
-    <!-- ═══════════════════════════════════════════════
-         MAIN LAYOUT
-         ═══════════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════
+         MAIN
+         ═══════════════════════════════════ -->
     <main
       class="fixed inset-x-0 z-20
-             top-[3rem] mobile:top-[4.5rem] tablet:top-[4.5rem]
+             top-[3rem]    mobile:top-[4.5rem]    tablet:top-[4.5rem]
              bottom-[2.5rem] mobile:bottom-[4.5rem] tablet:bottom-[4.5rem]
              laptop:inset-0 laptop:p-[6rem]
              flex items-center justify-center"
@@ -136,22 +146,21 @@ const ogImageUrl = `${site.url}${ogImage}`;
                border border-[var(--border-subtle)]
                flex items-center justify-center overflow-hidden"
       >
-        {
-          dual ? (
-            <DualMain pageLabel={pageLabel} scrollable={scrollable}>
-              <slot />
-            </DualMain>
-          ) : (
-            <div
-              class="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden
-                     p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem]
-                     laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem]"
-            >
-              <slot />
-            </div>
-          )
-        }
+        {dual ? (
+          <DualMain pageLabel={pageLabel} scrollable={scrollable}>
+            <slot />
+          </DualMain>
+        ) : (
+          <div
+            class="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden
+                   p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem]
+                   laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem]"
+          >
+            <slot />
+          </div>
+        )}
       </div>
     </main>
+
   </body>
 </html>

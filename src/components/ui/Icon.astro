@@ -2,39 +2,39 @@
 import * as si from "simple-icons";
 
 interface Props {
-  slug: string;
+  slug:   string;
   color?: string;
-  size?: number;
-  label: string;
+  size?:  number;
+  label:  string;
 }
 
 const { slug, color, size = 20, label } = Astro.props;
-const key = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
+
+const key  = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
 const icon = (si as { [key: string]: { path: string; hex: string } })[key];
+
 const fillColor = color ?? (icon ? `#${icon.hex}` : "currentColor");
-const path = icon?.path ?? "";
-const hasIcon = !!icon;
+const path      = icon?.path ?? "";
+const hasIcon   = !!icon;
 ---
 
-{
-  hasIcon ? (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      aria-label={label}
-      style={`fill: ${fillColor}; flex-shrink: 0; opacity: 0.85;`}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d={path} />
-    </svg>
-  ) : (
-    <span
-      aria-hidden="true"
-      style={`display:inline-block; width:${size}px; height:${size}px; flex-shrink:0;
+{hasIcon ? (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    aria-label={label}
+    xmlns="http://www.w3.org/2000/svg"
+    style={`fill: ${fillColor}; flex-shrink: 0; opacity: 0.85;`}
+  >
+    <path d={path} />
+  </svg>
+) : (
+  <span
+    aria-hidden="true"
+    style={`display:inline-block; width:${size}px; height:${size}px; flex-shrink:0;
             background:${color ?? "currentColor"}; opacity:0.5;
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);`}
-    />
-  )
-}
+  />
+)}

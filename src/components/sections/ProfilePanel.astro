@@ -1,70 +1,60 @@
 ---
 import Modal from "../../components/ui/Modal.astro";
 import { getHomeData, getContactData } from "../../lib/content";
-import type { HomeData, ContactData } from "../../lib/content";
 
-const home = (await getHomeData()) as HomeData;
-const contact = (await getContactData()) as ContactData;
+const home    = await getHomeData();
+const contact = await getContactData();
 
 const { hero, stats } = home;
-const { cv_url } = contact;
+const { cv_url }      = contact;
 ---
 
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
-  <!-- Main content — stacks vertically on laptop sidebar, 2-col on fhd+ (index page) -->
+
   <main
-    class="flex flex-col fhd:flex-row
-         flex-1 min-h-0 fhd:h-full
-         items-center justify-center
-         gap-6 fhd:gap-10 fhd:py-4"
+    class="flex flex-col fhd:flex-row flex-1 min-h-0 fhd:h-full
+           items-center justify-center gap-6 fhd:gap-10 fhd:py-4"
   >
-    <!-- Column 1: photo + identity -->
-    <div
-      class="flex flex-col items-center gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center"
-    >
+    <!-- Columna 1: foto + subtítulo -->
+    <div class="flex flex-col items-center gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
       <img
         src="/img/gopnik.png"
         alt="Timur Bogach"
         class="w-full h-auto object-contain pointer-events-none
-         max-w-[7rem] mobile:max-w-[9rem]
-         laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
+               max-w-[7rem]  mobile:max-w-[9rem]
+               laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
       />
-
       <p
         class="text-[0.65rem] mobile:text-xs laptop:text-[0.65rem] fhd:text-sm qhd:text-base
-                text-center opacity-70 leading-relaxed max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]"
+               text-center opacity-70 leading-relaxed
+               max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]"
       >
         {hero.subtitle1}<br />
         {hero.subtitle2}
       </p>
     </div>
 
-    <!-- Column 2: CV + stats -->
-    <div
-      class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center"
-    >
-      <!-- Stats row -->
-      <div
-        class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]"
-      >
-        {
-          stats.map(({ n, label }: { n: string; label: string }) => (
-            <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)] surface-accent">
-              <span
-                class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
-                style="color: var(--accent-color)"
-              >
-                {n}
-              </span>
-              <span class="text-[0.52rem] fhd:text-[0.55rem] tracking-[0.2em] uppercase opacity-45 mt-0.5">
-                {label}
-              </span>
-            </div>
-          ))
-        }
+    <!-- Columna 2: stats + botón CV -->
+    <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
+        {stats.map(({ n, label }: { n: string; label: string }) => (
+          <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)] surface-accent">
+            <span
+              class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
+              style="color: var(--accent-color)"
+            >
+              {n}
+            </span>
+            <span class="text-[0.52rem] fhd:text-[0.55rem] tracking-[0.2em] uppercase opacity-45 mt-0.5">
+              {label}
+            </span>
+          </div>
+        ))}
       </div>
 
-      <!-- CV button -->
+      <!-- Botón CV -->
       <button
         id="cv-view-btn"
         data-cv-url={cv_url}
@@ -74,24 +64,20 @@ const { cv_url } = contact;
                hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-bg)]
                transition-all duration-200 cursor-pointer"
       >
-        <svg
-          viewBox="0 0 16 16"
-          width="10"
-          height="10"
-          fill="currentColor"
-          style="color: var(--accent-color); flex-shrink:0"
-        >
+        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="color:var(--accent-color); flex-shrink:0">
           <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
           <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
         </svg>
         <span>View CV</span>
       </button>
+
     </div>
   </main>
+
 </section>
 
 <Modal downloadHref={cv_url} />
 
 <script>
-  import '../../scripts/cvModal';
+  import "../../scripts/cvModal";
 </script>

@@ -1,24 +1,26 @@
 ---
-import Button from "../../components/ui/Button.astro";
+import Button       from "../../components/ui/Button.astro";
 import type { HomeData } from "../../lib/content";
 
 interface Props {
   home: HomeData;
 }
 
-const { home } = Astro.props;
+const { home }              = Astro.props;
 const { hero, techStrip, cta } = home;
 ---
 
 <div class="relative flex flex-col justify-center w-full h-full gap-[clamp(1rem,2.5vw,2rem)] overflow-hidden">
+
   <!-- Background dot grid -->
   <div
     class="absolute -inset-16 -z-10 pointer-events-none"
-    style="background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px); background-size: 28px 28px; opacity: 0.06;"
+    style="background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+           background-size: 28px 28px; opacity: 0.06;"
     aria-hidden="true"
   />
 
-  <!-- Triple-clic en este div activa el cambio de tema (ver themeToggle.ts) -->
+  <!-- Titles — triple-click activa theme toggle (ver themeToggle.ts) -->
   <div class="flex flex-col gap-4 max-w-[52ch]" id="theme-toggle">
     <h1 class="text-[clamp(2rem,5vw,4rem)] font-black -tracking-[0.01em] leading-[1.15] text-[var(--letter-color)] m-0">
       {hero.title1}<br />
@@ -33,7 +35,7 @@ const { hero, techStrip, cta } = home;
   <!-- CTAs -->
   <div class="flex flex-wrap gap-4 items-center">
     <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
-    <Button variant="ghost" href={cta.secondaryHref}>{cta.secondary}</Button>
+    <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
   </div>
 
   <!-- Tech strip -->
@@ -44,4 +46,5 @@ const { hero, techStrip, cta } = home;
     </p>
     <div class="h-px bg-[var(--border-subtle)]" />
   </div>
+
 </div>

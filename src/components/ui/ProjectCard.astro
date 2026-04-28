@@ -1,11 +1,11 @@
 ---
 interface Props {
-  title: string;
+  title:       string;
   description: string;
-  link: string;
-  image?: string;
-  type?: "source" | "demo";
-  tags?: string[];
+  link?:       string;
+  image?:      string;
+  type?:       "source" | "demo";
+  tags?:       string[];
 }
 
 const {
@@ -16,6 +16,7 @@ const {
   type = "source",
   tags = [],
 } = Astro.props;
+
 const isDemo = type === "demo";
 ---
 
@@ -29,60 +30,55 @@ const isDemo = type === "demo";
          transition-all duration-300"
   style="min-height: 8rem;"
 >
-  <!-- Left: image block, fixed width -->
-  <div
-    class="relative shrink-0 overflow-hidden"
-    style="width: 10rem; min-width: 10rem;"
-  >
-    <!-- Badge -->
+  <!-- Imagen -->
+  <div class="relative shrink-0 overflow-hidden" style="width: 10rem; min-width: 10rem;">
+
+    <!-- Badge live / src -->
     <span
-      class="absolute top-3 left-3 z-20 text-[0.45rem] tracking-[0.2em] px-2 py-1 font-bold uppercase
-                 border border-[var(--border-subtle)] bg-[var(--page-background)] text-[var(--letter-color)] opacity-80"
+      class="absolute top-3 left-3 z-20
+             text-[0.45rem] tracking-[0.2em] px-2 py-1 font-bold uppercase
+             border border-[var(--border-subtle)] bg-[var(--page-background)]
+             text-[var(--letter-color)] opacity-80"
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
 
-    {
-      image ? (
-        <img
-          src={image}
-          alt={title}
-          loading="lazy"
-          class="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105
+    {image ? (
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        class="w-full h-full object-cover opacity-75
+               group-hover:opacity-100 group-hover:scale-105
                transition-all duration-500"
-        />
-      ) : (
-        <div
-          class="w-full h-full flex items-center justify-center
-                  bg-[var(--total-background)] group-hover:bg-[var(--surface-raised)]
-                  transition-colors duration-300"
-        >
-          <span class="text-[0.5rem] tracking-[0.15em] uppercase opacity-25 font-bold text-center px-3 leading-relaxed">
-            {title}
-          </span>
-        </div>
-      )
-    }
+      />
+    ) : (
+      <div
+        class="w-full h-full flex items-center justify-center
+               bg-[var(--total-background)] group-hover:bg-[var(--surface-raised)]
+               transition-colors duration-300"
+      >
+        <span class="text-[0.5rem] tracking-[0.15em] uppercase opacity-25 font-bold text-center px-3 leading-relaxed">
+          {title}
+        </span>
+      </div>
+    )}
 
-    <!-- Accent line grows on hover -->
+    <!-- Línea de acento que crece al hacer hover -->
     <div
-      class="absolute left-0 top-0 w-[2px] h-0 group-hover:h-full
-                transition-all duration-400"
+      class="absolute left-0 top-0 w-[2px] h-0 group-hover:h-full transition-all duration-400"
       style="background: var(--accent-color);"
-    >
-    </div>
+    />
   </div>
 
-  <!-- Right: content -->
+  <!-- Contenido -->
   <div
     class="flex flex-col justify-between flex-1 min-w-0 px-4 py-3
-              bg-[var(--page-background)] group-hover:bg-[var(--surface-raised)]
-              transition-colors duration-200 overflow-hidden"
+           bg-[var(--page-background)] group-hover:bg-[var(--surface-raised)]
+           transition-colors duration-200 overflow-hidden"
   >
     <div class="flex flex-col gap-1.5 overflow-hidden">
-      <h3
-        class="text-xs mobile:text-sm laptop:text-base fhd:text-lg font-bold tracking-[0.1em] uppercase leading-none"
-      >
+      <h3 class="text-xs mobile:text-sm laptop:text-base fhd:text-lg font-bold tracking-[0.1em] uppercase leading-none">
         {title}
       </h3>
       <p
@@ -94,30 +90,25 @@ const isDemo = type === "demo";
     </div>
 
     <div class="flex items-center justify-between gap-2 shrink-0">
-      {
-        tags.length > 0 && (
-          <div class="flex flex-wrap gap-1">
-            {tags.map((tag: string) => (
-              <span
-                class="text-[0.45rem] tracking-[0.1em] px-1.5 py-0.5 uppercase
-                         border border-[var(--border-subtle)] opacity-45"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )
-      }
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-1">
+          {tags.map((tag: string) => (
+            <span
+              class="text-[0.45rem] tracking-[0.1em] px-1.5 py-0.5 uppercase
+                     border border-[var(--border-subtle)] opacity-45"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       <span
         class="flex items-center gap-1.5 text-[0.55rem] fhd:text-xs tracking-[0.2em] uppercase
-                   opacity-35 group-hover:opacity-90 transition-opacity duration-300 ml-auto shrink-0"
+               opacity-35 group-hover:opacity-90 transition-opacity duration-300 ml-auto shrink-0"
         style="color: var(--accent-color)"
       >
         {isDemo ? "demo" : "code"}
-        <span
-          class="transition-transform duration-300 group-hover:translate-x-1"
-          >→</span
-        >
+        <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </span>
     </div>
   </div>

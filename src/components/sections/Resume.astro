@@ -1,23 +1,26 @@
 ---
-import Chip from "../../components/ui/Chip.astro";
+import Chip           from "../../components/ui/Chip.astro";
 import SectionHeading from "../../components/ui/SectionHeading.astro";
 import type { ResumeData } from "../../lib/content";
 
-interface Props { resume: ResumeData; }
-const { resume } = Astro.props;
+interface Props {
+  resume: ResumeData;
+}
+
+const { resume }                               = Astro.props;
 const { frontend, backend, homelab, languages } = resume;
 ---
 
 <section class="flex flex-col w-full gap-9 laptop:gap-12">
 
-  <!-- Frontend + Backend en dos columnas o apilados en móvil -->
+  <!-- Frontend + Backend en dos columnas -->
   <div class="grid grid-cols-1 mobile:grid-cols-2 gap-8 laptop:gap-10">
 
     <div class="flex flex-col gap-4">
       <SectionHeading label="Frontend" />
       <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-        {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-          <Chip {slug} {color} {label} />
+         {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
+          <Chip slug={slug} color={color} label={label} />
         ))}
       </div>
     </div>
@@ -26,21 +29,24 @@ const { frontend, backend, homelab, languages } = resume;
       <SectionHeading label="Backend" />
       <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
         {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-          <Chip {slug} {color} {label} />
+          <Chip slug={slug} color={color} label={label} />
         ))}
       </div>
     </div>
+
   </div>
 
+  <!-- Homelab -->
   <div class="flex flex-col gap-4">
     <SectionHeading label="Homelab & DevOps" />
     <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
       {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-        <Chip {slug} {color} {label} />
+        <Chip slug={slug} color={color} label={label} />
       ))}
     </div>
   </div>
 
+  <!-- Languages -->
   <div class="flex flex-col gap-4">
     <SectionHeading label="Languages" />
     <div class="grid grid-cols-4 gap-2">

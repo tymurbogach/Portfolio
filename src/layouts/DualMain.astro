@@ -1,8 +1,11 @@
 ---
 import ProfilePanel from "../components/sections/ProfilePanel.astro";
 
+// ==========================================
+// PROPS
+// ==========================================
 interface Props {
-  pageLabel?: string;
+  pageLabel?:  string;
   scrollable?: boolean;
 }
 
@@ -11,9 +14,9 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 
 <div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
 
-  <!-- ═══════════════════════════════════════════════════
-       SIDEBAR (izquierda)
-       ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════
+       SIDEBAR izquierda (solo desktop)
+       ═══════════════════════════════════ -->
   <div
     class="hidden laptop:flex shrink-0 items-center justify-center
            laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
@@ -22,63 +25,52 @@ const { pageLabel = "", scrollable = true } = Astro.props;
     <ProfilePanel />
   </div>
 
-  <!-- ═══════════════════════════════════════════════════
+  <!-- ═══════════════════════════════════
        PANEL DERECHO
-       ═══════════════════════════════════════════════════ -->
-  <div
-    class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden"
-  >
+       ═══════════════════════════════════ -->
+  <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
 
-    <!-- ═══════════════════════════════════════════════════
-         TÍTULO DE SECCIÓN
-         ═══════════════════════════════════════════════════ -->
-    {
-      pageLabel && (
-        <div class="shrink-0
-          px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-          pt-[1rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
-          pb-4 laptop:pb-7"
-        >
-          <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
-
-            <!-- Título -->
-            <p class="text-xs laptop:text-base fhd:text-lg
-                      tracking-[0.45em] uppercase font-bold
-                      text-[var(--letter-color)] text-glow">
-              {pageLabel}
-            </p>
-
-            <!-- Línea decorativa -->
-            <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4"></div>
-
-          </div>
+    <!-- Título de sección (opcional) -->
+    {pageLabel && (
+      <div
+        class="shrink-0
+               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
+               laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+               pt-[1rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
+               pb-4 laptop:pb-7"
+      >
+        <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
+          <p
+            class="text-xs laptop:text-base fhd:text-lg
+                   tracking-[0.45em] uppercase font-bold
+                   text-[var(--letter-color)] text-glow"
+          >
+            {pageLabel}
+          </p>
+          <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
         </div>
-      )
-    }
+      </div>
+    )}
 
-    <!-- ═══════════════════════════════════════════════════
-         CONTENIDO
-         ═══════════════════════════════════════════════════ -->
-    {
-      scrollable ? (
-        <div
-          id="content-scroll"
-          class="flex-1 overflow-y-auto overflow-x-hidden
-                 px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
-                 pb-[4rem] laptop:pb-[5rem]"
-        >
-          <div class="w-full laptop:max-w-[72ch] laptop:mx-auto">
-            <slot />
-          </div>
+    <!-- Contenido scrollable o centrado -->
+    {scrollable ? (
+      <div
+        id="content-scroll"
+        class="flex-1 overflow-y-auto overflow-x-hidden
+               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
+               pb-[4rem] laptop:pb-[5rem]"
+      >
+        <div class="w-full laptop:max-w-[72ch] laptop:mx-auto">
+          <slot />
         </div>
-      ) : (
-        <div class="flex-1 flex items-center justify-center px-[1.25rem] laptop:px-[4.5rem]">
-          <div class="w-full laptop:max-w-[72ch]">
-            <slot />
-          </div>
+      </div>
+    ) : (
+      <div class="flex-1 flex items-center justify-center px-[1.25rem] laptop:px-[4.5rem]">
+        <div class="w-full laptop:max-w-[72ch]">
+          <slot />
         </div>
-      )
-    }
+      </div>
+    )}
 
   </div>
 </div>

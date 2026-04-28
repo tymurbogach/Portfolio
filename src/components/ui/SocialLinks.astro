@@ -31,21 +31,27 @@ const socialLinks = await getSocialLinks();
                transition-all duration-250 ease-in-out
                hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
         >
-          <img
-            src={icon}
-            alt={`${name} Icon`}
-            class="nav-icon w-[1.2rem] h-[1.2rem]
-                 mobile:w-[1.4rem] mobile:h-[1.4rem]
-                 tablet:w-[1.6rem] tablet:h-[1.6rem]
-                 laptop:w-[1.8rem] laptop:h-[1.8rem]
-                 fhd:w-[2rem]     fhd:h-[2rem]
-                 qhd:w-[2.4rem]   qhd:h-[2.4rem]
-                 uhd:w-[2.8rem]   uhd:h-[2.8rem]
-                 opacity-70 transition-all duration-200
-                 group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-sm"
-          />
-        </a>
-      ))
-    }
+          <!-- Máscara CSS igual que NavBar: el color lo da bg-, no el img src -->
+        <span
+          class="inline-block
+                 w-[1.2rem] h-[1.2rem]
+                 mobile:w-[1.4rem]  mobile:h-[1.4rem]
+                 tablet:w-[1.6rem]  tablet:h-[1.6rem]
+                 laptop:w-[1.8rem]  laptop:h-[1.8rem]
+                 fhd:w-[2rem]       fhd:h-[2rem]
+                 qhd:w-[2.4rem]     qhd:h-[2.4rem]
+                 uhd:w-[2.8rem]     uhd:h-[2.8rem]
+                 bg-[var(--letter-color)] group-hover:bg-[var(--hover-text)]
+                 opacity-70 group-hover:opacity-100
+                 transition-all duration-200
+                 group-hover:scale-125 group-hover:drop-shadow-sm"
+          style={`-webkit-mask-image: url('${icon}'); mask-image: url('${icon}');
+                  -webkit-mask-size: contain;     mask-size: contain;
+                  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+                  -webkit-mask-position: center;  mask-position: center;`}
+          aria-hidden="true"
+        />
+      </a>
+    ))}
   </div>
 </div>

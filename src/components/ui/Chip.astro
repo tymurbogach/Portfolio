@@ -2,16 +2,22 @@
 import Icon from "./Icon.astro";
 
 export interface Props {
-  slug: string;
+  slug:   string;
   color?: string;
-  label: string;
+  label:  string;
 }
 
 const { slug, color, label } = Astro.props;
 ---
 
-<span class="flex items-center gap-2.5 h-11 px-3.5 border border-[var(--border-subtle)] bg-[var(--surface-raised)] transition-all duration-200 hover:border-[var(--accent-color)] hover:-translate-y-0.5 cursor-default overflow-hidden">
-  <Icon {slug} color={color} size={18} label={label} />
+<span
+  class="flex items-center gap-2.5 h-11 px-3.5
+         border border-[var(--border-subtle)] bg-[var(--surface-raised)]
+         transition-all duration-200
+         hover:border-[var(--accent-color)] hover:-translate-y-0.5
+         cursor-default overflow-hidden"
+>
+  <Icon slug={slug} color={color} size={18} label={label} />
   <span class="text-[0.65rem] tracking-[0.08em] uppercase font-bold opacity-80 whitespace-nowrap overflow-hidden text-ellipsis">
     {label}
   </span>
