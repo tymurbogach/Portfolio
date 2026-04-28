@@ -2,42 +2,10 @@ import { getEntry, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 // ==========================================
-// 1. TIPOS BASE
+// TIPOS DERIVADOS DE LOS SCHEMAS ZOD
+// Siempre sincronizados con content.config.ts
 // ==========================================
-
-export type NavPage = {
-  path: string;
-  label: string;
-  icon: string;
-  sectionLabel: string;
-};
-
-// Extendemos NavPage para la vista
-export type LabeledSection = NavPage & {
-  sectionId: string;
-};
-
-export type SiteData = {
-  name: string;
-  title: string;
-  url: string;
-  lang: string;
-  description: string;
-  ogImage: string;
-  pageDescriptions: {
-    home: string;
-    about: string;
-    resume: string;
-    projects: string;
-    contact: string;
-  };
-  pages: NavPage[]; // En teoría es un array
-};
-
-// ==========================================
-// 2. TIPOS DE COLECCIONES
-// ==========================================
-
+export type SiteData    = CollectionEntry<"site">["data"];
 export type ProfileData = CollectionEntry<"profile">["data"];
 export type HomeData    = CollectionEntry<"home">["data"];
 export type AboutData   = CollectionEntry<"about">["data"];
@@ -46,86 +14,68 @@ export type ContactData = CollectionEntry<"contact">["data"];
 export type SocialLink  = CollectionEntry<"social">["data"][number];
 export type Project     = CollectionEntry<"projects">;
 
+// Tipo derivado de SiteData — no duplicar la definición
+export type NavPage = SiteData["pages"][number];
+
+// NavPage enriquecida con sectionId calculado
+export type LabeledSection = NavPage & { sectionId: string };
 
 // ==========================================
-// 4. FETCH FUNCTIONS
+// HELPER INTERNO
+// Centraliza el fetch y el manejo de errores
+// ==========================================
+async function fetchEntry<T>(collection: string, id: string): Promise<T> {
+  const entry = await getEntry(collection as any, id);
+  if (!entry) throw new Error(`[content] Missing entry: ${collection}/${id}`);
+  return entry.data as T;
+}
+
+// ==========================================
+// FETCH FUNCTIONS
+// Cada función es un wrapper tipado de fetchEntry
 // ==========================================
 
-export async function getSite(): Promise<SiteData> {
-  const entry = await getEntry("site", "site");
-  if (!entry) throw new Error("Missing site data");
-  return entry.data;
-}
+// id = key del objeto en site.json → "site"
+export const getSite        = () => fetchEntry<SiteData>   ("site",    "site");
 
-export async function getProfile(): Promise<ProfileData> {
-  const entry = await getEntry("profile", "profile");
-  if (!entry) throw new Error("Missing profile data");
-  return entry.data;
-}
+// id = key del objeto en profile.json → "profile"
+export const getProfile     = () => fetchEntry<ProfileData>("profile", "profile");
 
-export async function getHomeData(): Promise<HomeData> {
-  const entry = await getEntry("home", "data");
-  if (!entry) throw new Error("Missing home data");
-  return entry.data;
-}
+// id = key del objeto en cada data.json → "data"
+export const getHomeData    = () => fetchEntry<HomeData>   ("home",    "data");
+export const getAboutData   = () => fetchEntry<AboutData>  ("about",   "data");
+export const getResumeData  = () => fetchEntry<ResumeData> ("resume",  "data");
+export const getContactData = () => fetchEntry<ContactData>("contact", "data");
 
-export async function getAboutData(): Promise<AboutData> {
-  const entry = await getEntry("about", "data");
-  if (!entry) throw new Error("Missing about data");
-  return entry.data;
-}
-
-export async function getResumeData(): Promise<ResumeData> {
-  const entry = await getEntry("resume", "data");
-  if (!entry) throw new Error("Missing resume data");
-  return entry.data;
-}
-
-export async function getContactData(): Promise<ContactData> {
-  const entry = await getEntry("contact", "data");
-  if (!entry) throw new Error("Missing contact data");
-  return entry.data;
-}
-
+// social/data.json → el valor de "data" ES el array directamente
 export async function getSocialLinks(): Promise<SocialLink[]> {
-  const entry = await getEntry("social", "data");
-  if (!entry) throw new Error("Missing social data");
-  return entry.data as SocialLink[];
+  return fetchEntry<SocialLink[]>("social", "data");
 }
 
+// projects usa getCollection porque son múltiples entradas via glob
 export async function getProjects(): Promise<Project[]> {
   const entries = await getCollection("projects");
-  return entries.sort(
-    (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
-  );
+  return entries.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 }
 
 // ==========================================
-// 5. LÓGICA DE SECCIONES (Refactorizada)
+// HELPERS DE SECCIONES
 // ==========================================
 
-// 1. Helper infalible
-export function getSectionId(path: any): string {
-  // Forzamos a que sea string y si no existe devolvemos vacío
-  const cleanPath = `${path ?? ""}`;
-  return cleanPath.replace(/^\//, "");
+// Extrae el id limpio de un path: "/about" → "about"
+export function getSectionId(path: string): string {
+  return path.replace(/^\//, "");
 }
 
-// 2. Función de secciones ultra-segura
-export function getLabeledSections(site: any): LabeledSection[] {
-  // Si site o site.pages no existen, usamos un array vacío
-  const pagesRaw = site?.pages || [];
-  
-  // Convertimos a array si es un objeto y aseguramos el tipo
-  const pagesArray = (Array.isArray(pagesRaw) ? pagesRaw : Object.values(pagesRaw)) as NavPage[];
-
-  return pagesArray
+// Filtra home y construye LabeledSection[] desde site.pages
+export function getLabeledSections(site: SiteData): LabeledSection[] {
+  return site.pages
     .filter((page) => {
-      const id = getSectionId(page?.path);
+      const id = getSectionId(page.path);
       return id !== "" && id !== "home";
     })
     .map((page) => ({
       ...page,
-      sectionId: getSectionId(page.path)
+      sectionId: getSectionId(page.path),
     }));
 }

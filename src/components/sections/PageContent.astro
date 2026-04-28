@@ -4,7 +4,6 @@ import About from "./About.astro";
 import Resume from "./Resume.astro";
 import Projects from "./Projects.astro";
 import Contact from "./Contact.astro";
-
 import {
   getSite,
   getHomeData,
@@ -14,73 +13,62 @@ import {
   getContactData,
   getSocialLinks,
   getLabeledSections,
-  getSectionId,
 } from "../../lib/content";
 
-import type { SiteData, NavPage } from "../../lib/content";
-
 // ==========================================
-// FETCH (tipado explícito para evitar fallos)
+// FETCH DE DATOS
 // ==========================================
-
-const site: SiteData = await getSite();
-const homeData = await getHomeData();
-const aboutData = await getAboutData();
-const resumeData = await getResumeData();
-const projects = await getProjects();
+const site        = await getSite();
+const homeData    = await getHomeData();
+const aboutData   = await getAboutData();
+const resumeData  = await getResumeData();
+const projects    = await getProjects();
 const contactData = await getContactData();
 const socialLinks = await getSocialLinks();
 
-// ==========================================
-// SECCIONES
-// ==========================================
-
-const labeledSections: NavPage[] = getLabeledSections(site);
+// Secciones navegables (excluye home)
+const sections = getLabeledSections(site);
 ---
 
 <div class="flex flex-col w-full">
+
   <!-- HOME -->
-  <section id="home" class="flex items-center justify-center" aria-label="Home">
+  <section
+    id="home"
+    class="flex items-center justify-center"
+    aria-label="Home"
+  >
     <div class="w-full">
       <Hero home={homeData} />
     </div>
   </section>
 
-  {
-    labeledSections.map((page) => {
-      const sectionId = getSectionId(page.path);
-
-      return (
-        <section
-          id={sectionId}
-          class="pt-[4rem] laptop:pt-[2rem] border-t border-[var(--border-subtle)]"
-          aria-labelledby={`heading-${sectionId}`}
+  <!-- SECCIONES DINÁMICAS -->
+  {sections.map((section) => (
+    <section
+      id={section.sectionId}
+      class="pt-[4rem] laptop:pt-[2rem] border-t border-[var(--border-subtle)]"
+      aria-labelledby={`heading-${section.sectionId}`}
+    >
+      <!-- HEADER DE SECCIÓN -->
+      <div class="mb-4 laptop:mb-7">
+        <h2
+          id={`heading-${section.sectionId}`}
+          class="text-xs laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold text-[var(--letter-color)] text-glow"
         >
-          {/* HEADER */}
-          <div class="mb-4 laptop:mb-7">
-            <h2
-              id={`heading-${sectionId}`}
-              class="text-xs laptop:text-base fhd:text-lg
-                     tracking-[0.45em] uppercase font-bold
-                     text-[var(--letter-color)] text-glow"
-            >
-              {page.sectionLabel}
-            </h2>
+          {section.sectionLabel}
+        </h2>
+        <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
+      </div>
 
-            <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
-          </div>
+      <!-- CONTENIDO DE SECCIÓN -->
+      <div class="pb-[3rem] laptop:pb-[4rem]">
+        {section.sectionId === "about"    && <About    about={aboutData} />}
+        {section.sectionId === "resume"   && <Resume   resume={resumeData} />}
+        {section.sectionId === "projects" && <Projects projects={projects} />}
+        {section.sectionId === "contact"  && <Contact  contact={contactData} socialLinks={socialLinks} />}
+      </div>
+    </section>
+  ))}
 
-          {/* CONTENT */}
-          <div class="pb-[3rem] laptop:pb-[4rem]">
-            {sectionId === "about" && <About about={aboutData} />}
-            {sectionId === "resume" && <Resume resume={resumeData} />}
-            {sectionId === "projects" && <Projects projects={projects} />}
-            {sectionId === "contact" && (
-              <Contact contact={contactData} socialLinks={socialLinks} />
-            )}
-          </div>
-        </section>
-      );
-    })
-  }
 </div>
