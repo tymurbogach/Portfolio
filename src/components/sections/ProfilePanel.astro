@@ -14,59 +14,74 @@ const { cv_url }               = contact;
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
 
   <main
-    class="flex flex-col fhd:flex-row flex-1 min-h-0 fhd:h-full
-           items-center justify-center gap-6 fhd:gap-10 fhd:py-4"
+    class="flex flex-col fhd:flex-row flex-1 min-h-0 items-center justify-center gap-5 fhd:gap-10 fhd:py-4"
   >
-    <!-- Columna 1: foto + subtítulo -->
-    <div class="flex flex-col items-center gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
-      <img
-        src="/img/gopnik.png"
-        alt="Timur Bogach"
-        class="w-full h-auto object-contain pointer-events-none
-               max-w-[7rem]  mobile:max-w-[9rem]
-               laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
-      />
-      <p
-        class="text-[0.65rem] mobile:text-xs laptop:text-[0.65rem] fhd:text-sm qhd:text-base
-               text-center opacity-70 leading-relaxed
-               max-w-[22rem] laptop:max-w-[16rem] fhd:max-w-[24rem]"
-      >
-        {subtitle1}<br />
-        {subtitle2}
-      </p>
+    <!-- Col 1: foto + status -->
+    <div class="flex flex-col items-center gap-3 fhd:gap-5 fhd:flex-1 fhd:justify-center">
+      <div class="relative">
+        <!-- accent frame -->
+        <div
+          class="absolute pointer-events-none"
+          style="inset: -4px; border: 1px solid var(--accent-color); opacity: 0.25;"
+          aria-hidden="true"
+        />
+        <img
+          src="/img/gopnik.png"
+          alt="Timur Bogach"
+          class="w-full h-auto object-contain pointer-events-none
+                 max-w-[7rem]  mobile:max-w-[9rem]
+                 laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
+        />
+      </div>
+
+      <!-- terminal status line -->
+      <div class="flex flex-col items-center gap-0.5 text-center">
+        <p
+          class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs leading-[1.6] m-0"
+          style="opacity: 0.45; max-width: 16rem;"
+        >
+          {subtitle1}<br />{subtitle2}
+        </p>
+      </div>
     </div>
 
-    <!-- Columna 2: stats + botón CV -->
-    <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center">
+    <!-- Col 2: stats + CV -->
+    <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center w-full max-w-[16rem] laptop:max-w-[14rem]">
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 gap-2 w-full max-w-[18rem] laptop:max-w-[14rem] fhd:max-w-[22rem]">
+      <!-- Stats terminal style -->
+      <div class="flex flex-col gap-1.5 w-full">
         {stats.map(({ n, label }: { n: string; label: string }) => (
-          <div class="flex flex-col px-3 py-2 border border-[var(--border-subtle)] bg-[var(--surface-raised)] surface-accent">
+          <div
+            class="flex items-baseline gap-3 px-3 py-2"
+            style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
+          >
             <span
-              class="text-base fhd:text-xl qhd:text-2xl font-bold leading-none"
-              style="color: var(--accent-color)"
+              class="font-display text-xl fhd:text-2xl leading-none"
+              style="color: var(--accent-color);"
             >
               {n}
             </span>
-            <span class="text-[0.52rem] fhd:text-[0.55rem] tracking-[0.2em] uppercase opacity-45 mt-0.5">
+            <span
+              class="text-[0.45rem] fhd:text-[0.5rem] tracking-[0.25em] uppercase"
+              style="opacity: 0.4;"
+            >
               {label}
             </span>
           </div>
         ))}
       </div>
 
-      <!-- Botón CV -->
+      <!-- CV button -->
       <button
         id="cv-view-btn"
         data-cv-url={cv_url}
-        class="flex items-center gap-2 px-4 py-2
-               text-[0.52rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
+        class="flex items-center gap-2 px-4 py-2 w-full justify-center
+               text-[0.5rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
                border border-[var(--border-color)]
-               hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] hover:border-[var(--hover-bg)]
+               hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
                transition-all duration-200 cursor-pointer"
       >
-        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="color:var(--accent-color); flex-shrink:0">
+        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="flex-shrink:0">
           <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
           <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
         </svg>

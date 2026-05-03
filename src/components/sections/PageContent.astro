@@ -36,7 +36,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
   <!-- HOME -->
   <section
     id="home"
-    class="flex items-center justify-center"
+    class="flex items-start laptop:items-center justify-center pt-6 laptop:pt-0"
     aria-label="Home"
   >
     <div class="w-full">
@@ -55,9 +55,9 @@ const sections: LabeledSection[] = getLabeledSections(site);
       <div class="mb-4 laptop:mb-7">
         <h2
           id={`heading-${section.sectionId}`}
-          class="text-xs laptop:text-base fhd:text-lg tracking-[0.45em] uppercase font-bold text-[var(--letter-color)] text-glow"
+          class="font-display text-lg laptop:text-2xl fhd:text-3xl tracking-[0.08em] text-[var(--letter-color)] text-glow m-0"
         >
-          {section.sectionLabel}
+          <span style="color: var(--accent-color); opacity: 0.7;">/ </span>{section.sectionLabel}
         </h2>
         <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
       </div>

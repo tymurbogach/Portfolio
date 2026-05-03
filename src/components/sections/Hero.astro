@@ -9,41 +9,61 @@ interface Props {
 const { hero: { title1, title2, subtitle1, subtitle2, techStrip, cta } } = Astro.props;
 ---
 
-<div class="relative flex flex-col justify-center w-full h-full gap-[clamp(1rem,2.5vw,2rem)] overflow-hidden">
+<div class="relative flex flex-col justify-center w-full h-full gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
 
   <!-- Background dot grid -->
   <div
     class="absolute -inset-16 -z-10 pointer-events-none"
     style="background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
-           background-size: 28px 28px; opacity: 0.06;"
+           background-size: 28px 28px; opacity: 0.12;"
     aria-hidden="true"
   />
 
-  <!-- Titles — triple-click activa theme toggle (ver themeToggle.ts) -->
-  <div class="flex flex-col gap-4 max-w-[52ch]" id="theme-toggle">
-    <h1 class="text-[clamp(2rem,5vw,4rem)] font-black -tracking-[0.01em] leading-[1.15] text-[var(--letter-color)] m-0">
+  <!-- Accent slash — diagonal brutalist element -->
+  <div
+    class="absolute -z-10 pointer-events-none opacity-[0.04]"
+    style="right: -4rem; top: -8rem; width: 32rem; height: 32rem;
+           border: 3px solid var(--accent-color);
+           transform: rotate(15deg);"
+    aria-hidden="true"
+  />
+
+  <!-- Titles -->
+  <div class="flex flex-col gap-2 max-w-[52ch]" id="theme-toggle">
+
+    <!-- System prefix -->
+    <p class="text-[0.6rem] tracking-[0.35em] uppercase m-0"
+       style="color: var(--accent-color); opacity: 0.7;">
+      &gt; PORTFOLIO.SYS — OPERATOR IDENTIFIED
+    </p>
+
+    <h1 class="font-display m-0 leading-[0.92]"
+        style="font-size: clamp(3.2rem, 7vw, 6.5rem);">
       {title1}<br />
-      <span class="opacity-45">{title2}</span>
+      <span style="opacity: 0.35;">{title2}</span>
     </h1>
-    <p class="text-[clamp(0.85rem,1.4vw,1.05rem)] text-[var(--letter-color)] opacity-55 leading-[1.75] m-0">
+
+    <p class="text-[clamp(0.72rem,1.2vw,0.9rem)] leading-[1.85] m-0"
+       style="opacity: 0.55; max-width: 46ch;">
       {subtitle1}<br />
       {subtitle2}
     </p>
   </div>
 
   <!-- CTAs -->
-  <div class="flex flex-wrap gap-4 items-center">
+  <div class="flex flex-wrap gap-3 items-center">
     <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
     <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
   </div>
 
   <!-- Tech strip -->
-  <div class="flex flex-col gap-2.5 max-w-[52ch]">
-    <div class="h-px bg-[var(--border-subtle)]" />
-    <p class="text-[0.52rem] tracking-[0.4em] uppercase opacity-38 m-0 whitespace-nowrap overflow-hidden text-ellipsis">
+  <div class="flex flex-col gap-2 max-w-[52ch]">
+    <div class="h-px" style="background: var(--border-color);" />
+    <p class="text-[0.5rem] tracking-[0.45em] uppercase m-0 whitespace-nowrap overflow-hidden text-ellipsis"
+       style="opacity: 0.3; font-family: 'JetBrains Mono', monospace;">
       {techStrip}
     </p>
-    <div class="h-px bg-[var(--border-subtle)]" />
+    <div class="h-px" style="background: var(--border-color);" />
   </div>
 
 </div>

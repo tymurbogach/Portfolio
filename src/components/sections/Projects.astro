@@ -10,7 +10,7 @@ const { projects } = Astro.props;
 ---
 
 <div class="flex flex-col gap-3 w-full">
-  {projects.map((entry: Project) => {
+  {projects.map((entry: Project, i: number) => {
     const { title, description, image, link, tags } = entry.data;
     const isDemo = link?.includes("github.io") || link?.includes("netlify") || link?.includes("vercel");
 
@@ -22,6 +22,7 @@ const { projects } = Astro.props;
         link={link}
         type={isDemo ? "demo" : "source"}
         tags={tags ?? []}
+        index={i + 1}
       />
     );
   })}

@@ -21,28 +21,27 @@
      border-color: siempre visible sin subir brillo
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Void — oscuro cálido, teal + naranja dorado ─── */
-/* Aumentado contraste entre capas y bordes más visibles */
+/* ─── Void — spray booth night. warm black + electric teal + primer orange ─── */
 :root.theme-void {
-  --component-background: #232c33;   /* +5L respecto al original */
-  --page-background:       #151a1e;  /* panel central más diferenciado */
-  --total-background:      #090b0d;  /* exterior más profundo */
-  --letter-color:          #eaf4f8;  /* texto ligeramente más brillante */
-  --border-color:          #2e4550;  /* borde más visible, no invisible */
-  --hover-bg:              #ffb36a;
-  --hover-text:            #0a0b0c;
-  --accent-color:          #4db7b3;
-  --accent-text:           #050506;
-  --accent-subtle:         rgba(77, 183, 179, 0.15);
-  --surface-raised:        #2a353d;  /* más separación de page-background */
-  --border-subtle:         rgba(46, 69, 80, 0.7);
-  --accent-secondary:      #ff8a3d;
-  --accent-tertiary:       #ff5c2e;
-  --glow-primary:          rgba(77, 183, 179, 0.40);
-  --glow-secondary:        rgba(255, 138, 61, 0.30);
-  --gradient-hero:         linear-gradient(135deg, rgba(77, 183, 179, 0.12) 0%, transparent 60%);
+  --component-background: #1C1C18;
+  --page-background:       #131310;
+  --total-background:      #0C0C0A;
+  --letter-color:          #E2DDD0;
+  --border-color:          #2C2C26;
+  --hover-bg:              #FF5722;
+  --hover-text:            #0C0C0A;
+  --accent-color:          #00E5B4;
+  --accent-text:           #0C0C0A;
+  --accent-subtle:         rgba(0, 229, 180, 0.10);
+  --surface-raised:        #222220;
+  --border-subtle:         rgba(44, 44, 38, 0.75);
+  --accent-secondary:      #FF5722;
+  --accent-tertiary:       #E64A19;
+  --glow-primary:          rgba(0, 229, 180, 0.35);
+  --glow-secondary:        rgba(255, 87, 34, 0.25);
+  --gradient-hero:         linear-gradient(135deg, rgba(0, 229, 180, 0.07) 0%, transparent 55%);
   --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(77, 183, 179, 0.06);
+  --surface-glow:          rgba(0, 229, 180, 0.04);
 }
 
 /* ─── Abyss — azul profundo, cyan eléctrico + magenta ─── */
@@ -197,7 +196,18 @@ html { font-size: 16px; }
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "Poiret One", cursive;
+  font-family: "JetBrains Mono", "Courier New", monospace;
+}
+
+/* Grain texture — primer surface feel */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
 html, body {
@@ -295,4 +305,13 @@ html { scroll-behavior: smooth; }
     );
     pointer-events: none;
   }
+}
+
+@utility font-display {
+  font-family: "Bebas Neue", "Impact", sans-serif;
+  letter-spacing: 0.03em;
+}
+
+@utility font-signature {
+  font-family: "Poiret One", cursive;
 }

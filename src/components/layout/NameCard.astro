@@ -19,30 +19,38 @@ const { nameDisplay, role } = Astro.props;
   <a href="/" class="nav-link group no-underline w-full h-full" aria-label="Inicio">
     <div
       class="flex flex-col items-center justify-center text-center w-full h-full
-             bg-[var(--component-background)] border border-[var(--border-color)]
+             bg-[var(--component-background)]
+             border border-[var(--border-color)]
              shadow-none rounded-none my-0 mx-0
              mobile:shadow-md tablet:shadow-lg
              hover:mobile:shadow-lg hover:tablet:shadow-xl
              transition-colors duration-200
              group-hover:bg-[var(--hover-bg)]"
+      style="position: relative; overflow: hidden;"
     >
+      <!-- accent left bar -->
+      <div
+        class="absolute left-0 top-0 h-full transition-all duration-300"
+        style="width: 2px; background: var(--accent-color); opacity: 0.7;"
+        aria-hidden="true"
+      />
+
       <h1
-        class="font-bold
-               tracking-[1rem] laptop:tracking-[0.8rem] fhd:tracking-[0.9rem] qhd:tracking-[1rem] uhd:tracking-[1.2rem]
+        class="font-bold font-signature m-0 mt-[0.3rem]
+               tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
                text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
                fhd:text-4xl qhd:text-5xl uhd:text-6xl
-               mt-[0.4rem]
                text-[var(--letter-color)] group-hover:text-[var(--hover-text)]
                transition-colors duration-200"
       >
         {nameDisplay}
       </h1>
       <p
-        class="text-sm mobile:text-base tablet:text-lg laptop:text-xl
-               fhd:text-2xl qhd:text-3xl uhd:text-4xl
-               mt-[-0.4rem] mb-[0.4rem]
+        class="text-[0.55rem] mobile:text-[0.6rem] laptop:text-[0.65rem] fhd:text-xs
+               tracking-[0.3em] uppercase m-0 mb-[0.3rem]
                text-[var(--letter-color)] group-hover:text-[var(--hover-text)]
                transition-colors duration-200"
+        style="opacity: 0.5;"
       >
         {role}
       </p>
