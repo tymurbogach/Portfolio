@@ -73,6 +73,24 @@ const home = defineCollection({
   }),
 });
 
+// Objeto con key "data" → getEntry("hero", "data")
+const hero = defineCollection({
+  loader: file('src/content/hero/data.json'),
+  schema: z.object({
+    title1:    z.string(),
+    title2:    z.string(),
+    subtitle1: z.string(),
+    subtitle2: z.string(),
+    techStrip: z.string(),
+    cta: z.object({
+      primary:       z.string(),
+      primaryHref:   z.string(),
+      secondary:     z.string(),
+      secondaryHref: z.string(),
+    }),
+  }),
+});
+
 // Objeto con key "data" → getEntry("about", "data")
 const about = defineCollection({
   loader: file('src/content/about/data.json'),
@@ -150,5 +168,5 @@ const projects = defineCollection({
 });
 
 export const collections = {
-  site, profile, home, about, resume, contact, social, projects,
+  site, profile, home, hero, about, resume, contact, social, projects,
 };

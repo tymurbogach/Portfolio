@@ -8,6 +8,7 @@ import type { CollectionEntry } from "astro:content";
 export type SiteData    = CollectionEntry<"site">["data"];
 export type ProfileData = CollectionEntry<"profile">["data"];
 export type HomeData    = CollectionEntry<"home">["data"];
+export type HeroData    = CollectionEntry<"hero">["data"];
 export type AboutData   = CollectionEntry<"about">["data"];
 export type ResumeData  = CollectionEntry<"resume">["data"];
 export type ContactData = CollectionEntry<"contact">["data"];
@@ -43,6 +44,7 @@ export const getProfile     = () => fetchEntry<ProfileData>("profile", "profile"
 
 // id = key del objeto en cada data.json → "data"
 export const getHomeData    = () => fetchEntry<HomeData>   ("home",    "data");
+export const getHeroData    = () => fetchEntry<HeroData>   ("hero",    "data");
 export const getAboutData   = () => fetchEntry<AboutData>  ("about",   "data");
 export const getResumeData  = () => fetchEntry<ResumeData> ("resume",  "data");
 export const getContactData = () => fetchEntry<ContactData>("contact", "data");

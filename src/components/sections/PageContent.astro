@@ -7,6 +7,7 @@ import Contact  from "./Contact.astro";
 import {
   getSite,
   getHomeData,
+  getHeroData,
   getAboutData,
   getResumeData,
   getProjects,
@@ -21,6 +22,7 @@ import type { LabeledSection } from "../../lib/content";
 // ==========================================
 const site        = await getSite();
 const homeData    = await getHomeData();
+const heroData    = await getHeroData();
 const aboutData   = await getAboutData();
 const resumeData  = await getResumeData();
 const projects    = await getProjects();
@@ -40,7 +42,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
     aria-label="Home"
   >
     <div class="w-full">
-      <Hero home={homeData} />
+      <Hero hero={heroData} />
     </div>
   </section>
 
