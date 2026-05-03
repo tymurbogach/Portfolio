@@ -1,8 +1,4 @@
-// ═══════════════════════════════════════════════════════
-// NAVEGACIÓN DE SECCIÓN ÚNICA
-// Gestiona: scroll inicial, sincronización URL ↔ sección,
-// intercept de clicks de nav para scroll suave.
-// ═══════════════════════════════════════════════════════
+import { positionIndicator } from "./navUtils";
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -35,27 +31,13 @@ function scrollToSection(
   });
 }
 
-/** Mueve el indicator dorado al enlace activo. */
-function repositionIndicator(): void {
-  const indicator = document.getElementById("nav-indicator") as HTMLElement | null;
-  if (!indicator) return;
-  const container = indicator.closest("div") as HTMLElement | null;
-  const nav = container?.querySelector("nav") as HTMLElement | null;
-  const active = nav?.querySelector<HTMLElement>('.nav-link[data-active="true"]');
-  if (!container || !nav || !active) return;
-  const cr = container.getBoundingClientRect();
-  const ar = active.getBoundingClientRect();
-  indicator.style.left  = `${ar.left - cr.left}px`;
-  indicator.style.width = `${ar.width}px`;
-}
-
 /** Marca el enlace de nav correspondiente como activo y reposiciona el indicator. */
 function setActiveNav(sectionId: string): void {
   const targetPath = sectionId === "home" ? "/" : `/${sectionId}`;
   document.querySelectorAll<HTMLElement>(".nav-link[data-active]").forEach((link) => {
     link.dataset.active = String(link.getAttribute("href") === targetPath);
   });
-  repositionIndicator();
+  positionIndicator();
 }
 
 function initSectionNav(): void {

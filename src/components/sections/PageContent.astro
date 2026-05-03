@@ -6,7 +6,6 @@ import Projects from "./Projects.astro";
 import Contact  from "./Contact.astro";
 import {
   getSite,
-  getHomeData,
   getHeroData,
   getAboutData,
   getResumeData,
@@ -21,7 +20,6 @@ import type { LabeledSection } from "../../lib/content";
 // FETCH DE DATOS
 // ==========================================
 const site        = await getSite();
-const homeData    = await getHomeData();
 const heroData    = await getHeroData();
 const aboutData   = await getAboutData();
 const resumeData  = await getResumeData();

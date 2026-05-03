@@ -5,7 +5,7 @@
 import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
 
 // 3. Añadir al array valid[] en el script is:inline de Layout.astro (anti-flash)
-const THEMES = ["theme-void", "theme-abyss", "theme-chalk", "theme-stone"] as const;
+const THEMES = ["theme-void", "theme-abyss", "theme-chalk", "theme-stone", "theme-ember", "theme-forest"] as const;
 
 function applyTheme(theme: string): void {
   const root = document.documentElement;
