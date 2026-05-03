@@ -1,0 +1,383 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - banner [ref=e3]:
+      - link "Inicio" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]:
+          - heading "TIMUR BOGACH" [level=1] [ref=e7]
+          - paragraph [ref=e8]: full stack developer
+      - navigation [ref=e10]:
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e13]: About
+        - link "Resume" [ref=e14] [cursor=pointer]:
+          - /url: /resume
+          - generic [ref=e16]: Resume
+        - link "Projects" [ref=e17] [cursor=pointer]:
+          - /url: /projects
+          - generic [ref=e19]: Projects
+        - link "Contact" [ref=e20] [cursor=pointer]:
+          - /url: /contact
+          - generic [ref=e22]: Contact
+  - contentinfo [ref=e23]:
+    - contentinfo [ref=e24]:
+      - generic [ref=e26]:
+        - link "Facebook" [ref=e27] [cursor=pointer]:
+          - /url: https://www.facebook.com/Timurnator/
+        - link "Instagram" [ref=e29] [cursor=pointer]:
+          - /url: https://www.instagram.com/timurnator_/
+        - link "GitHub" [ref=e31] [cursor=pointer]:
+          - /url: https://github.com/TimurTwerKing
+        - link "LinkedIn" [ref=e33] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/tymur-bogach-51939324a/
+        - link "X / Twitter" [ref=e35] [cursor=pointer]:
+          - /url: https://x.com/BogachTimur
+  - main [ref=e37]:
+    - generic [ref=e43]:
+      - region "Home" [ref=e44]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - heading "Tymur Bogach. I make it run." [level=1] [ref=e48]:
+              - text: Tymur Bogach.
+              - text: I make it run.
+            - paragraph [ref=e49]:
+              - text: Full-stack developer. I own the stack — from schema to deploy.
+              - text: Code that ships, servers that stay up, and too many side projects.
+          - generic [ref=e50]:
+            - link "Explore my work →" [ref=e51] [cursor=pointer]:
+              - /url: /projects
+            - link "Let's work together" [ref=e52] [cursor=pointer]:
+              - /url: /contact
+          - paragraph [ref=e55]: TypeScript · Laravel · Angular · Astro · Docker · Linux · PostgreSQL · Nginx
+      - region "— who i am" [ref=e57]:
+        - heading "— who i am" [level=2] [ref=e59]
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - heading "Journey" [level=3] [ref=e64]
+            - generic [ref=e65]:
+              - generic [ref=e70]:
+                - generic [ref=e71]:
+                  - generic [ref=e72]: 2012 — 17
+                  - generic [ref=e73]: Mechanic & Paint Tech
+                - paragraph [ref=e74]: Renault Trucks and others. Multi-brand repair, painting and diagnostics across commercial vehicles.
+              - generic [ref=e79]:
+                - generic [ref=e80]:
+                  - generic [ref=e81]: 2017 — 24
+                  - generic [ref=e82]: Body & Paint — Grupo Marcos
+                - paragraph [ref=e83]: High-precision automotive body repair and refinishing. Built precision and team coordination over 7 years.
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - generic [ref=e90]: "2022"
+                  - generic [ref=e91]: Switched to code
+                - paragraph [ref=e92]: Started web development from zero. HTML, CSS, Java first, then deeper into JS, TypeScript, and frameworks.
+              - generic [ref=e97]:
+                - generic [ref=e98]:
+                  - generic [ref=e99]: "2023"
+                  - generic [ref=e100]: Homelab phase begins
+                - paragraph [ref=e101]: "Self-hosted everything: Docker stacks, TrueNAS, Nginx, Raspberry Pi, Tailscale VPN mesh."
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - generic [ref=e108]: "2025"
+                  - generic [ref=e109]: GesinFlot — Dev Team
+                - paragraph [ref=e110]: Mobile app development with Android Studio, UI/UX design, API integration and APK deployment.
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Now
+                  - generic [ref=e117]: Full Stack Developer
+                - paragraph [ref=e118]: Building, learning, shipping. Looking for the right team.
+          - generic [ref=e119]:
+            - heading "Education" [level=3] [ref=e120]
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - generic [ref=e123]: 2023 — 2025
+                - generic [ref=e124]:
+                  - paragraph [ref=e125]: Advanced Technical Certificate
+                  - paragraph [ref=e126]: Web Application Development · EFA El Campico
+              - generic [ref=e127]:
+                - generic [ref=e128]: 2008 — 2011
+                - generic [ref=e129]:
+                  - paragraph [ref=e130]: Technical Qualification
+                  - paragraph [ref=e131]: Automotive Bodywork & Refinishing · IES El Palmeral
+          - generic [ref=e132]:
+            - heading "When not coding" [level=3] [ref=e133]
+            - generic [ref=e134]:
+              - generic [ref=e135]:
+                - generic [ref=e136]: 🎵
+                - generic [ref=e137]: Music
+              - generic [ref=e138]:
+                - generic [ref=e139]: 🖥
+                - generic [ref=e140]: Self-hosting
+              - generic [ref=e141]:
+                - generic [ref=e142]: 🎸
+                - generic [ref=e143]: Guitar
+              - generic [ref=e144]:
+                - generic [ref=e145]: 🌙
+                - generic [ref=e146]: Late nights
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - generic [ref=e149]: 📍
+              - generic [ref=e150]: Orihuela, Alicante — Spain
+            - blockquote [ref=e151]:
+              - paragraph [ref=e152]: "\"Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie.\""
+              - paragraph [ref=e153]: — Hope you get the reference.
+      - region "— skills & stack" [ref=e154]:
+        - heading "— skills & stack" [level=2] [ref=e156]
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - heading "Frontend" [level=2] [ref=e163]
+              - generic [ref=e165]:
+                - generic [ref=e166]:
+                  - img "HTML5" [ref=e167]
+                  - generic [ref=e169]: HTML5
+                - generic [ref=e170]:
+                  - img "CSS / SCSS" [ref=e171]
+                  - generic [ref=e173]: CSS / SCSS
+                - generic [ref=e174]:
+                  - img "JavaScript" [ref=e175]
+                  - generic [ref=e177]: JavaScript
+                - generic [ref=e178]:
+                  - img "TypeScript" [ref=e179]
+                  - generic [ref=e181]: TypeScript
+                - generic [ref=e182]:
+                  - img "Tailwind" [ref=e183]
+                  - generic [ref=e185]: Tailwind
+                - generic [ref=e186]:
+                  - img "Angular" [ref=e187]
+                  - generic [ref=e189]: Angular
+                - generic [ref=e190]:
+                  - img "Vue.js" [ref=e191]
+                  - generic [ref=e193]: Vue.js
+                - generic [ref=e194]:
+                  - img "React" [ref=e195]
+                  - generic [ref=e197]: React
+                - generic [ref=e198]:
+                  - img "Astro" [ref=e199]
+                  - generic [ref=e201]: Astro
+            - generic [ref=e202]:
+              - heading "Backend" [level=2] [ref=e204]
+              - generic [ref=e206]:
+                - generic [ref=e207]:
+                  - img "PHP" [ref=e208]
+                  - generic [ref=e210]: PHP
+                - generic [ref=e211]:
+                  - img "Laravel" [ref=e212]
+                  - generic [ref=e214]: Laravel
+                - generic [ref=e215]:
+                  - img "Java" [ref=e216]
+                  - generic [ref=e218]: Java
+                - generic [ref=e219]:
+                  - img "MySQL" [ref=e220]
+                  - generic [ref=e222]: MySQL
+                - generic [ref=e223]:
+                  - img "Git" [ref=e224]
+                  - generic [ref=e226]: Git
+                - generic [ref=e227]:
+                  - img "Android" [ref=e228]
+                  - generic [ref=e230]: Android
+          - generic [ref=e231]:
+            - heading "Homelab & DevOps" [level=2] [ref=e233]
+            - generic [ref=e235]:
+              - generic [ref=e236]:
+                - img "Docker" [ref=e237]
+                - generic [ref=e239]: Docker
+              - generic [ref=e240]:
+                - img "Nginx" [ref=e241]
+                - generic [ref=e243]: Nginx
+              - generic [ref=e244]:
+                - img "Linux" [ref=e245]
+                - generic [ref=e247]: Linux
+              - generic [ref=e250]: Windows
+              - generic [ref=e251]:
+                - img "Raspberry Pi" [ref=e252]
+                - generic [ref=e254]: Raspberry Pi
+              - generic [ref=e255]:
+                - img "TrueNAS" [ref=e256]
+                - generic [ref=e258]: TrueNAS
+              - generic [ref=e259]:
+                - img "Tailscale" [ref=e260]
+                - generic [ref=e262]: Tailscale
+              - generic [ref=e263]:
+                - img "Cloudflare" [ref=e264]
+                - generic [ref=e266]: Cloudflare
+              - generic [ref=e267]:
+                - img "Portainer" [ref=e268]
+                - generic [ref=e270]: Portainer
+              - generic [ref=e271]:
+                - img "Pi-hole" [ref=e272]
+                - generic [ref=e274]: Pi-hole
+              - generic [ref=e275]:
+                - img "Jellyfin" [ref=e276]
+                - generic [ref=e278]: Jellyfin
+              - generic [ref=e279]:
+                - img "Immich" [ref=e280]
+                - generic [ref=e282]: Immich
+              - generic [ref=e283]:
+                - img "Ollama" [ref=e284]
+                - generic [ref=e286]: Ollama
+              - generic [ref=e287]:
+                - img "Uptime Kuma" [ref=e288]
+                - generic [ref=e290]: Uptime Kuma
+          - generic [ref=e291]:
+            - heading "Languages" [level=2] [ref=e293]
+            - generic [ref=e295]:
+              - generic [ref=e296]:
+                - generic [ref=e297]: 🇷🇺
+                - generic [ref=e298]: Russian
+                - generic [ref=e299]: native
+              - generic [ref=e300]:
+                - generic [ref=e301]: 🇺🇦
+                - generic [ref=e302]: Ukrainian
+                - generic [ref=e303]: native
+              - generic [ref=e304]:
+                - generic [ref=e305]: 🇪🇸
+                - generic [ref=e306]: Spanish
+                - generic [ref=e307]: fluent
+              - generic [ref=e308]:
+                - generic [ref=e309]: 🇬🇧
+                - generic [ref=e310]: English
+                - generic [ref=e311]: fluent
+      - region "— my work" [ref=e312]:
+        - heading "— my work" [level=2] [ref=e314]
+        - generic [ref=e317]:
+          - link "● live Valorant Valorant Aplicacion que muestra ARMAS, MAPAS y Agentes del videojuego usando la API. JavaScript API demo →" [ref=e318] [cursor=pointer]:
+            - /url: https://timurtwerking.github.io/Valorant/
+            - generic [ref=e319]:
+              - generic [ref=e320]: ● live
+              - img "Valorant" [ref=e321]
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - heading "Valorant" [level=3] [ref=e324]
+                - paragraph [ref=e325]: Aplicacion que muestra ARMAS, MAPAS y Agentes del videojuego usando la API.
+              - generic [ref=e326]:
+                - generic [ref=e327]:
+                  - generic [ref=e328]: JavaScript
+                  - generic [ref=e329]: API
+                - generic [ref=e330]:
+                  - text: demo
+                  - generic [ref=e331]: →
+          - link "⌥ src CluckinBell CluckinBell Gestor de colegio con Angular y Laravel Angular Laravel code →" [ref=e332] [cursor=pointer]:
+            - /url: https://github.com/TimurTwerKing/CluckinBell
+            - generic [ref=e333]:
+              - generic [ref=e334]: ⌥ src
+              - img "CluckinBell" [ref=e335]
+            - generic [ref=e336]:
+              - generic [ref=e337]:
+                - heading "CluckinBell" [level=3] [ref=e338]
+                - paragraph [ref=e339]: Gestor de colegio con Angular y Laravel
+              - generic [ref=e340]:
+                - generic [ref=e341]:
+                  - generic [ref=e342]: Angular
+                  - generic [ref=e343]: Laravel
+                - generic [ref=e344]:
+                  - text: code
+                  - generic [ref=e345]: →
+          - link "⌥ src Guitar Store Guitar Store E-commerce de guitarras creado con HTML y CSS HTML CSS code →" [ref=e346] [cursor=pointer]:
+            - /url: https://github.com/TimurTwerKing/GuitarStore
+            - generic [ref=e347]:
+              - generic [ref=e348]: ⌥ src
+              - img "Guitar Store" [ref=e349]
+            - generic [ref=e350]:
+              - generic [ref=e351]:
+                - heading "Guitar Store" [level=3] [ref=e352]
+                - paragraph [ref=e353]: E-commerce de guitarras creado con HTML y CSS
+              - generic [ref=e354]:
+                - generic [ref=e355]:
+                  - generic [ref=e356]: HTML
+                  - generic [ref=e357]: CSS
+                - generic [ref=e358]:
+                  - text: code
+                  - generic [ref=e359]: →
+          - link "⌥ src Proyecto Angular Marvel Proyecto Angular Marvel Aplicación web desarrollada con Angular que consume la API de Marvel, mostrando personajes y detalles. Angular API code →" [ref=e360] [cursor=pointer]:
+            - /url: https://github.com/TimurTwerKing/angular_marvel_app
+            - generic [ref=e361]:
+              - generic [ref=e362]: ⌥ src
+              - img "Proyecto Angular Marvel" [ref=e363]
+            - generic [ref=e364]:
+              - generic [ref=e365]:
+                - heading "Proyecto Angular Marvel" [level=3] [ref=e366]
+                - paragraph [ref=e367]: Aplicación web desarrollada con Angular que consume la API de Marvel, mostrando personajes y detalles.
+              - generic [ref=e368]:
+                - generic [ref=e369]:
+                  - generic [ref=e370]: Angular
+                  - generic [ref=e371]: API
+                - generic [ref=e372]:
+                  - text: code
+                  - generic [ref=e373]: →
+          - link "⌥ src LazyTrip LazyTrip Aplicación de planificación de viajes autoalojada. Itinerarios, mapas y gestión de rutas desde tu propio servidor. TypeScript Docker Self-hosted code →" [ref=e374] [cursor=pointer]:
+            - /url: https://github.com/TimurTwerKing/LazyTrip
+            - generic [ref=e375]:
+              - generic [ref=e376]: ⌥ src
+              - img "LazyTrip" [ref=e377]
+            - generic [ref=e378]:
+              - generic [ref=e379]:
+                - heading "LazyTrip" [level=3] [ref=e380]
+                - paragraph [ref=e381]: Aplicación de planificación de viajes autoalojada. Itinerarios, mapas y gestión de rutas desde tu propio servidor.
+              - generic [ref=e382]:
+                - generic [ref=e383]:
+                  - generic [ref=e384]: TypeScript
+                  - generic [ref=e385]: Docker
+                  - generic [ref=e386]: Self-hosted
+                - generic [ref=e387]:
+                  - text: code
+                  - generic [ref=e388]: →
+      - region "— let's talk" [ref=e389]:
+        - heading "— let's talk" [level=2] [ref=e391]
+        - generic [ref=e393]:
+          - generic [ref=e394]:
+            - generic [ref=e395]:
+              - generic [ref=e396]:
+                - generic [ref=e397]: Email
+                - link "Timurnator@gmail.com" [ref=e398] [cursor=pointer]:
+                  - /url: mailto:Timurnator@gmail.com
+              - generic [ref=e399]:
+                - generic [ref=e400]: Location
+                - generic [ref=e401]: Orihuela, Alicante
+              - generic [ref=e402]:
+                - generic [ref=e403]: Status
+                - generic [ref=e404]: Available
+            - generic [ref=e406]:
+              - generic [ref=e407]:
+                - generic [ref=e408]:
+                  - textbox "Name *" [ref=e409]
+                  - generic: Name *
+                - generic [ref=e410]:
+                  - textbox "Email *" [ref=e411]
+                  - generic: Email *
+                - generic [ref=e412]:
+                  - textbox "Project" [ref=e413]
+                  - generic: Project
+                - generic [ref=e414]:
+                  - textbox "Budget" [ref=e415]
+                  - generic: Budget
+              - generic [ref=e416]:
+                - textbox "Your message *" [ref=e417]
+                - button "Send" [ref=e418] [cursor=pointer]:
+                  - generic [ref=e419]: Send
+                  - img [ref=e420]
+          - generic [ref=e422]:
+            - link "GitHub GitHub" [ref=e423] [cursor=pointer]:
+              - /url: https://github.com/TimurTwerKing
+              - img "GitHub" [ref=e424]
+              - text: GitHub
+            - link "LinkedIn LinkedIn" [ref=e425] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/tymur-bogach-51939324a/
+              - img "LinkedIn" [ref=e426]
+              - text: LinkedIn
+            - link "CV" [ref=e427] [cursor=pointer]:
+              - /url: /cv.pdf
+              - img [ref=e428]
+              - text: CV
+  - generic [ref=e433]:
+    - button "Menu" [ref=e434]:
+      - img [ref=e436]
+      - generic: Menu
+    - button "Inspect" [ref=e440]:
+      - img [ref=e442]
+      - generic: Inspect
+    - button "Audit" [ref=e444]:
+      - img [ref=e446]
+      - generic: Audit
+    - button "Settings" [ref=e449]:
+      - img [ref=e451]
+      - generic: Settings
