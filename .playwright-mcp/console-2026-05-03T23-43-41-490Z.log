@@ -1,1 +1,6 @@
 [     346ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://172.27.112.57:4321/img/LazyTripLogo.png:0
+[ 2568172ms] [LOG] [vite] server connection lost. Polling for restart... @ http://172.27.112.57:4321/@vite/client:1598
+[ 2584934ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://172.27.112.57:4321/img/LazyTripLogo.png:0
+[ 2679218ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://172.27.112.57:4321/@id/astro/runtime/client/dev-toolbar/entrypoint.js:0
+[ 2679922ms] [LOG] [vite] server connection lost. Polling for restart... @ http://172.27.112.57:4321/@vite/client:1598
+[ 2681119ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://172.27.112.57:4321/img/LazyTripLogo.png:0
