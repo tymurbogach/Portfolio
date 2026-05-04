@@ -1,0 +1,148 @@
+---
+const starters = [
+  { q: "What's your tech stack?",        label: "stack?"        },
+  { q: "Tell me about your background",  label: "background?"   },
+  { q: "Are you available for work?",    label: "available?"    },
+];
+---
+
+<script>
+  import "../../scripts/chat";
+</script>
+
+<!--
+  Widget panel — positioned above SocialBotPanel.
+  data-open drives CSS visibility/transform.
+-->
+<div
+  id="chat-widget"
+  data-open="false"
+  class="hidden laptop:flex flex-col"
+  style="
+    position: fixed;
+    bottom: calc(5rem + 1.5rem);
+    right: 3rem;
+    width: 25rem;
+    max-height: 30rem;
+    z-index: 50;
+    background: var(--page-background);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+    pointer-events: none;
+  "
+  aria-label="Chat with Tymur's AI"
+  aria-hidden="true"
+>
+  <!-- Header -->
+  <div
+    class="flex items-center justify-between shrink-0 px-4 py-2.5"
+    style="border-bottom: 1px solid var(--border-color); background: var(--component-background);"
+  >
+    <span class="font-display tracking-[0.06em] text-base" style="color: var(--accent-color);">
+      &gt;_ CHAT.SYS
+    </span>
+    <button
+      id="chat-close-btn"
+      class="text-[0.7rem] tracking-[0.2em] uppercase px-2 py-0.5
+             border border-[var(--border-color)] hover:border-[var(--accent-color)]
+             hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
+      style="font-family: inherit;"
+      aria-label="Close chat"
+    >×</button>
+  </div>
+
+  <!-- Messages -->
+  <div
+    id="chat-messages"
+    class="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 min-h-0"
+    style="font-size: 0.72rem; line-height: 1.7;"
+  >
+    <!-- Welcome message -->
+    <div class="chat-msg chat-msg--bot">
+      Hey — I'm TymurBot. Ask me anything about Tymur, his stack, or just say hi.
+    </div>
+
+    <!-- Starter suggestions -->
+    <div class="chat-starters flex flex-wrap gap-1.5 mt-1">
+      {starters.map(s => (
+        <button
+          class="chat-starter text-[0.58rem] tracking-[0.12em] uppercase px-2.5 py-1
+                 border border-[var(--border-color)] hover:border-[var(--accent-color)]
+                 hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
+          data-q={s.q}
+          style="font-family: inherit; background: transparent; color: inherit; opacity: 0.6;"
+        >[ {s.label} ]</button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div
+    class="shrink-0 flex gap-0"
+    style="border-top: 1px solid var(--border-color);"
+  >
+    <input
+      id="chat-input"
+      type="text"
+      placeholder="> type your message..."
+      autocomplete="off"
+      class="flex-1 px-4 py-3 text-[0.7rem]"
+      style="
+        background: var(--component-background);
+        border: none;
+        outline: none;
+        color: var(--letter-color);
+        font-family: 'JetBrains Mono', monospace;
+      "
+    />
+    <button
+      id="chat-send-btn"
+      class="px-4 py-3 text-[0.65rem] tracking-[0.2em] uppercase font-bold
+             transition-colors duration-150 cursor-pointer disabled:opacity-30"
+      style="
+        background: var(--accent-color);
+        color: var(--accent-text);
+        border: none;
+        font-family: inherit;
+        min-width: 4rem;
+      "
+    >→</button>
+  </div>
+</div>
+
+<style is:global>
+  /* Chat open state */
+  #chat-widget[data-open="true"] {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
+    pointer-events: auto !important;
+    aria-hidden: false;
+  }
+
+  /* Message bubbles */
+  .chat-msg {
+    max-width: 85%;
+    padding: 0.5rem 0.75rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .chat-msg--user {
+    align-self: flex-end;
+    border: 1px solid var(--border-color);
+    background: var(--component-background);
+    color: var(--letter-color);
+  }
+
+  .chat-msg--bot {
+    align-self: flex-start;
+    border-left: 2px solid var(--accent-color);
+    background: var(--surface-glow);
+    color: var(--letter-color);
+    padding-left: 0.75rem;
+  }
+</style>
