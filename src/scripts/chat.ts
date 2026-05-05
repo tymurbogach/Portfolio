@@ -4,7 +4,10 @@ const SESSION_KEY = "chat_session_id";
 function getSessionId(): string {
   let id = sessionStorage.getItem(SESSION_KEY);
   if (!id) {
-    id = crypto.randomUUID();
+    // crypto.randomUUID() requires secure context; fallback for plain HTTP
+    id = (typeof crypto.randomUUID === "function")
+      ? crypto.randomUUID()
+      : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
     sessionStorage.setItem(SESSION_KEY, id);
   }
   return id;
