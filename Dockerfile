@@ -1,24 +1,27 @@
-# ETAPA 1: Construcción (Node.js compila el código)
 FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Copiar configuración de dependencias e instalarlas
 COPY package*.json ./
 RUN npm install
 
-# Copiar resto del código fuente y compilar Astro
 COPY . .
 RUN npm run build
 
-# ETAPA 2: Producción (Solo Nginx limpio)
-FROM nginx:alpine
+# ── Production ────────────────────────────────────────────────────────────────
+FROM node:22-alpine
 
-# Copiamos la web estática ya compilada
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Copiamos la configuración personalizada de Nginx
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+# Only production deps needed at runtime
+COPY package*.json ./
+RUN npm install --omit=dev
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 4321
+
+ENV HOST=0.0.0.0
+ENV PORT=4321
+
+CMD ["node", "dist/server/entry.mjs"]

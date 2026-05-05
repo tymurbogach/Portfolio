@@ -5,8 +5,12 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio-web
     ports:
-      - "80:80"
+      - "80:4321"
     restart: unless-stopped
+    environment:
+      - OLLAMA_URL=${OLLAMA_URL:-http://host.docker.internal:11434}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - webnet
 

@@ -96,13 +96,13 @@ function initChat(): void {
 
   function open(): void {
     isOpen = true;
-    widget.dataset.open = "true";
+    widget!.dataset.open = "true";
     input!.focus();
   }
 
   function close(): void {
     isOpen = false;
-    widget.dataset.open = "false";
+    widget!.dataset.open = "false";
   }
 
   toggle.addEventListener("click", (e) => {

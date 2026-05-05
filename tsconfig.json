@@ -6,6 +6,7 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "types": ["node"],
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
