@@ -8,8 +8,8 @@ interface Props {
 
 const { hero: { title1, title2, subtitle1, subtitle2, techStrip, cta } } = Astro.props;
 ---
-
-<div class="relative flex flex-col justify-center w-full h-full gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
+<section class="gap-10 laptop:gap-12 flex-col justify-center w-full h-full 
+gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
 
   <!-- Background dot grid -->
   <div
@@ -66,4 +66,4 @@ const { hero: { title1, title2, subtitle1, subtitle2, techStrip, cta } } = Astro
     <div class="h-px" style="background: var(--border-color);" />
   </div>
 
-</div>
+</section>
