@@ -17,7 +17,7 @@ export const OLLAMA_CONFIG = {
 } as const;
 
 // ── Runtime config (set via env vars in Docker) ────────────────────────────────
-export const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
+export const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://192.168.18.4:11434";
 
 // Messages to retain per session (pairs: user + assistant). Keeps context without
 // blowing num_ctx on long conversations.
