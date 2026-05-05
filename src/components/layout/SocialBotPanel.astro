@@ -1,18 +1,11 @@
----
-import { getSocialLinks } from "../../lib/content";
-import type { SocialLink } from "../../lib/content";
-
-const socialLinks = await getSocialLinks();
----
-
 <div
   class="w-full h-[2.5rem]
-         mobile:w-[20rem] mobile:h-[4.5rem]
-         tablet:w-[20rem] tablet:h-[4.5rem]
-         laptop:w-[25rem] laptop:h-[5rem]
-         fhd:w-[30rem]   fhd:h-[5.5rem]
-         qhd:w-[35rem]   qhd:h-[6rem]
-         uhd:w-[40rem]   uhd:h-[6.5rem]"
+         mobile:w-[4.5rem] mobile:h-[4.5rem]
+         tablet:w-[4.5rem] tablet:h-[4.5rem]
+         laptop:w-[5rem] laptop:h-[5rem]
+         fhd:w-[5.5rem]   fhd:h-[5.5rem]
+         qhd:w-[6rem]   qhd:h-[6rem]
+         uhd:w-[6.5rem]   uhd:h-[6.5rem]"
 >
   <div
     class="flex flex-row items-center justify-center text-center w-full h-full
@@ -20,40 +13,7 @@ const socialLinks = await getSocialLinks();
            shadow-none rounded-none my-0 mx-0
            mobile:shadow-md tablet:shadow-lg"
   >
-    <!-- Social icons (same as SocialLinks) -->
-    {socialLinks.map(({ url, icon, name }: SocialLink) => (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={name}
-        class="group flex flex-col items-center justify-center h-full flex-1
-               text-[var(--letter-color)] p-[0.75rem]
-               border-r border-[var(--border-color)]
-               transition-all duration-250 ease-in-out
-               hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-      >
-        <span
-          class="inline-block
-                 w-[1.2rem] h-[1.2rem]
-                 mobile:w-[1.4rem]  mobile:h-[1.4rem]
-                 tablet:w-[1.6rem]  tablet:h-[1.6rem]
-                 laptop:w-[1.8rem]  laptop:h-[1.8rem]
-                 fhd:w-[2rem]       fhd:h-[2rem]
-                 qhd:w-[2.4rem]     qhd:h-[2.4rem]
-                 uhd:w-[2.8rem]     uhd:h-[2.8rem]
-                 bg-[var(--letter-color)] group-hover:bg-[var(--hover-text)]
-                 opacity-70 group-hover:opacity-100
-                 transition-all duration-200
-                 group-hover:scale-125"
-          style={`-webkit-mask-image: url('${icon}'); mask-image: url('${icon}');
-                  -webkit-mask-size: contain;     mask-size: contain;
-                  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-                  -webkit-mask-position: center;  mask-position: center;`}
-          aria-hidden="true"
-        />
-      </a>
-    ))}
+    
 
     <!-- Bot toggle button -->
     <button
