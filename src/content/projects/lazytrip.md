@@ -5,5 +5,5 @@ image: "/img/LazyTripLogo.png"
 link: "https://lazytripz.nastymur.com"
 type: "demo"
 tags: ["TypeScript", "Docker", "Self-hosted"]
-order: 5
+order: 1
 ---

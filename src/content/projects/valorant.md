@@ -5,5 +5,5 @@ image: "/img/ValorantLogo.jpg"
 link: "https://timurtwerking.github.io/Valorant/"
 type: "demo"
 tags: ["JavaScript", "API"]
-order: 1
+order: 2
 ---

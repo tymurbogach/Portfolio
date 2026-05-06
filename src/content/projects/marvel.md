@@ -4,5 +4,5 @@ description: "Aplicación web desarrollada con Angular que consume la API de Mar
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
 link: "https://github.com/TimurTwerKing/angular_marvel_app"
 tags: ["Angular", "API"]
-order: 4
+order: 3
 ---
