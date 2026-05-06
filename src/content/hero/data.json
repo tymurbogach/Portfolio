@@ -2,8 +2,8 @@
   "data": {
     "title1": "Tymur Bogach.",
     "title2": "I make it run.",
-    "subtitle1": "Full-stack developer. I own the stack — from schema to deploy.",
-    "subtitle2": "Code that ships, servers that stay up, and too many side projects.",
+    "subtitle1": "Precision built in — not bolted on.",
+    "subtitle2": "Full ownership: schema design to production deploy.",
     "techStrip": "TypeScript  ·  Laravel  ·  Angular  ·  Astro  ·  Docker  ·  Linux  ·  PostgreSQL  ·  Nginx",
     "cta": {
       "primary": "Explore my work →",

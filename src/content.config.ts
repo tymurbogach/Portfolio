@@ -49,6 +49,7 @@ const profile = defineCollection({
     name:        z.string(),
     nameDisplay: z.string(),
     role:        z.string(),
+    bio:         z.string(),
   }),
 });
 

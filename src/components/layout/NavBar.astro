@@ -46,8 +46,8 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
           class="inline-block w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
                  transition-all duration-200 group-hover:scale-125
                  bg-[var(--letter-color)] group-hover:bg-[var(--hover-text)]
-                 data-[active=true]:bg-[var(--accent-color)]
-                 opacity-65 group-hover:opacity-100 data-[active=true]:opacity-100"
+                 group-data-[active=true]:bg-[var(--accent-color)]
+                 opacity-65 group-hover:opacity-100 group-data-[active=true]:opacity-100"
           style={`-webkit-mask-image:url('${page.icon}'); mask-image:url('${page.icon}');
                   -webkit-mask-size:contain;     mask-size:contain;
                   -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
@@ -68,3 +68,21 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     aria-hidden="true"
   />
 </div>
+
+<style>
+  /* Active state always wins over hover */
+  .nav-link[data-active="true"] {
+    background-color: var(--accent-subtle) !important;
+    color: var(--accent-color) !important;
+  }
+
+  /* Touch devices: suppress sticky hover on non-active links */
+  @media (hover: none) {
+    .nav-link:not([data-active="true"]):hover {
+      background-color: transparent !important;
+      color: var(--letter-color) !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+</style>

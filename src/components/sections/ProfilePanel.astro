@@ -1,14 +1,14 @@
 ---
 import Modal from "../../components/ui/Modal.astro";
-import { getHeroData, getHomeData, getContactData } from "../../lib/content";
+import { getProfile, getHomeData, getContactData } from "../../lib/content";
 
-const hero    = await getHeroData();
+const profile = await getProfile();
 const home    = await getHomeData();
 const contact = await getContactData();
 
-const { subtitle1, subtitle2 } = hero;
-const { stats }                = home;
-const { cv_url }               = contact;
+const { bio }    = profile;
+const { stats }  = home;
+const { cv_url } = contact;
 ---
 
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
@@ -40,7 +40,7 @@ const { cv_url }               = contact;
           class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs leading-[1.6] m-0"
           style="opacity: 0.45; max-width: 16rem;"
         >
-          {subtitle1}<br />{subtitle2}
+          {bio}
         </p>
       </div>
     </div>

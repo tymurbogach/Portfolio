@@ -146,6 +146,25 @@ const ogImageUrl = `${site.url}${ogImage}`;
       <SocialBotPanel />
     </div>
 
+    <!-- Mobile chat FAB — visible only below laptop breakpoint -->
+    <button
+      class="chat-toggle block laptop:hidden fixed z-40 cursor-pointer
+             flex items-center gap-1.5 px-3 py-2
+             bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
+             transition-all duration-200 hover:opacity-100"
+      style="
+        background: color-mix(in srgb, var(--component-background) 75%, transparent);
+        border: 1px solid color-mix(in srgb, var(--border-color) 65%, transparent);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        opacity: 0.7;
+      "
+      aria-label="Open AI chat"
+    >
+      <span style="color: var(--accent-color); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1;">&gt;_</span>
+      <span style="font-size: 0.42rem; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.6; font-family: 'JetBrains Mono', monospace;">bot</span>
+    </button>
+
     <ChatWidget />
 
     <!-- ═══════════════════════════════════

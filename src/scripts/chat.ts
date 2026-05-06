@@ -85,15 +85,15 @@ async function sendMessage(text: string, messagesEl: HTMLElement, inputEl: HTMLI
 }
 
 function initChat(): void {
-  const widget    = document.getElementById("chat-widget");
-  const toggle    = document.getElementById("chat-toggle-btn");
-  const closeBtn  = document.getElementById("chat-close-btn");
-  const messages  = document.getElementById("chat-messages");
-  const input     = document.getElementById("chat-input") as HTMLInputElement | null;
-  const sendBtn   = document.getElementById("chat-send-btn");
-  const starters  = document.querySelectorAll<HTMLElement>(".chat-starter");
+  const widget   = document.getElementById("chat-widget");
+  const toggles  = document.querySelectorAll<HTMLElement>(".chat-toggle");
+  const closeBtn = document.getElementById("chat-close-btn");
+  const messages = document.getElementById("chat-messages");
+  const input    = document.getElementById("chat-input") as HTMLInputElement | null;
+  const sendBtn  = document.getElementById("chat-send-btn");
+  const starters = document.querySelectorAll<HTMLElement>(".chat-starter");
 
-  if (!widget || !toggle || !messages || !input || !sendBtn) return;
+  if (!widget || !toggles.length || !messages || !input || !sendBtn) return;
 
   let isOpen = false;
 
@@ -108,9 +108,11 @@ function initChat(): void {
     widget!.dataset.open = "false";
   }
 
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    isOpen ? close() : open();
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      isOpen ? close() : open();
+    });
   });
 
   closeBtn?.addEventListener("click", (e) => { e.stopPropagation(); close(); });
@@ -119,7 +121,7 @@ function initChat(): void {
   document.addEventListener("click", (e) => {
     if (!isOpen) return;
     if (widget.contains(e.target as Node)) return;
-    if ((e.target as Element).id === "chat-toggle-btn") return;
+    if ((e.target as Element).closest(".chat-toggle")) return;
     close();
   });
 
