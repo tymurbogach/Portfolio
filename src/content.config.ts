@@ -163,6 +163,7 @@ const projects = defineCollection({
     description: z.string(),
     image:       z.string(),
     link:        z.string().url().optional(),
+    type:        z.enum(["demo", "source"]).optional(),
     tags:        z.array(z.string()).optional(),
     order:       z.number().optional(),
   }),
