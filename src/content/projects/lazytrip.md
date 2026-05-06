@@ -1,8 +1,8 @@
 ---
 title: "LazyTrip"
-description: "Aplicación de planificación de viajes autoalojada. Itinerarios, mapas y gestión de rutas desde tu propio servidor."
+description: "Aplicación de planificación de viajes con recomendaciones por la IA."
 image: "/img/LazyTripLogo.png"
-link: "https://github.com/TimurTwerKing/LazyTrip"
+link: "https://lazytripz.nastymur.com"
 tags: ["TypeScript", "Docker", "Self-hosted"]
 order: 5
 ---

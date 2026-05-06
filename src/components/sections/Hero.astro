@@ -8,8 +8,8 @@ interface Props {
 
 const { hero: { title1, title2, subtitle1, subtitle2, techStrip, cta } } = Astro.props;
 ---
-<section class="flex flex-col justify-center w-full h-full
-               gap-8 laptop:gap-10 fhd:gap-12 overflow-hidden">
+<section class="gap-10 laptop:gap-12 flex-col justify-center w-full h-full 
+gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
 
   <!-- Background dot grid -->
   <div
@@ -51,13 +51,13 @@ const { hero: { title1, title2, subtitle1, subtitle2, techStrip, cta } } = Astro
   </div>
 
   <!-- CTAs -->
-  <div class="flex flex-wrap gap-3 items-center">
+  <div class="flex flex-wrap pt-4 gap-3 items-center">
     <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
     <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
   </div>
 
   <!-- Tech strip -->
-  <div class="flex flex-col gap-2 max-w-[52ch]">
+  <div class="flex flex-col pt-4 gap-2 max-w-[52ch]">
     <div class="h-px" style="background: var(--border-color);" />
     <p class="text-[0.5rem] tracking-[0.45em] uppercase m-0 whitespace-nowrap overflow-hidden text-ellipsis"
        style="opacity: 0.3; font-family: 'JetBrains Mono', monospace;">
