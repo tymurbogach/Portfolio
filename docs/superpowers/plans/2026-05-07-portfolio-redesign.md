@@ -98,41 +98,7 @@ git commit -m "style: add marquee animation and responsive projects-grid CSS"
 
 ---
 
-## Task 2: Resume Content Data — Add Missing Skills
-
-**Files:**
-- Modify: `src/content/resume/data.json`
-
-- [ ] **Step 1: Add skills to resume data**
-
-In `src/content/resume/data.json`, add to `backend` array (after Android):
-```json
-{ "slug": "python", "color": "#3776ab", "label": "Python" }
-```
-
-Add to `homelab` array (after Uptime Kuma):
-```json
-{ "slug": "proxmox", "color": "#e57000", "label": "Proxmox" },
-{ "slug": "n8n",     "color": "#ea4b71", "label": "n8n" }
-```
-
-- [ ] **Step 2: Verify build**
-
-```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
-```
-Expected: no errors.
-
-- [ ] **Step 3: Commit**
-
-```bash
-git add src/content/resume/data.json
-git commit -m "content: add Python, Proxmox, n8n to resume skills"
-```
-
----
-
-## Task 3: DualMain — Remove Width Constraint + Add Scroll Snap
+## Task 2: DualMain — Remove Width Constraint + Add Scroll Snap
 
 **Files:**
 - Modify: `src/layouts/DualMain.astro` (lines 56–63 of current file)
