@@ -1,16 +1,14 @@
 ---
 import Modal from "../../components/ui/Modal.astro";
-import { getProfile, getHomeData, getContactData, getAboutData } from "../../lib/content";
+import { getProfile, getHomeData, getContactData } from "../../lib/content";
 
 const profile = await getProfile();
 const home    = await getHomeData();
 const contact = await getContactData();
-const about   = await getAboutData();
 
 const { nameDisplay, role, bio }           = profile;
 const { stats }                            = home;
 const { cv_url, statusStr, statusActive }  = contact;
-const { quote }                            = about;
 ---
 
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
@@ -86,21 +84,6 @@ const { quote }                            = about;
         </div>
       ))}
     </div>
-
-    <!-- Matrix quote -->
-    {quote && (
-      <div
-        class="neon-left-border pl-4 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem]"
-        style="opacity: 0.55;"
-      >
-        <p class="italic text-[0.55rem] fhd:text-[0.65rem] leading-relaxed m-0">
-          "{quote.text}"
-        </p>
-        <p class="text-[0.42rem] not-italic tracking-widest uppercase mt-1.5 m-0" style="opacity: 0.5;">
-          — {quote.author}
-        </p>
-      </div>
-    )}
 
   </div>
 
