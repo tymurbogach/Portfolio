@@ -49,20 +49,20 @@ const { cv_url } = contact;
     <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center w-full max-w-[16rem] laptop:max-w-[14rem]">
 
       <!-- Stats terminal style -->
-      <div class="flex flex-row gap-2 w-full">
+      <div class="flex flex-col gap-1.5 w-full">
         {stats.map(({ n, label }: { n: string; label: string }) => (
           <div
-            class="flex flex-col items-center flex-1 px-2 py-2"
+            class="flex items-baseline gap-3 px-3 py-2"
             style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
           >
             <span
-              class="font-display text-lg fhd:text-xl leading-none"
+              class="font-display text-xl fhd:text-2xl leading-none"
               style="color: var(--accent-color);"
             >
               {n}
             </span>
             <span
-              class="text-[0.4rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase mt-0.5 text-center"
+              class="text-[0.45rem] fhd:text-[0.5rem] tracking-[0.25em] uppercase"
               style="opacity: 0.4;"
             >
               {label}

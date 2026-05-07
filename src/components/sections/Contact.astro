@@ -1,6 +1,5 @@
 ---
-import FormField      from "../ui/FormField.astro";
-import SectionHeading from "../ui/SectionHeading.astro";
+import FormField from "../../components/ui/FormField.astro";
 import type { ContactData, SocialLink } from "../../lib/content";
 
 interface Props {
@@ -8,137 +7,130 @@ interface Props {
   socialLinks: SocialLink[];
 }
 
-const { contact, socialLinks } = Astro.props;
+const { contact, socialLinks }                                  = Astro.props;
 const { email, location, statusStr, statusActive, cv_url, formSubject } = contact;
+
 ---
 
 <script>
   import "../../scripts/contactForm";
 </script>
 
-<div class="h-full flex flex-col gap-5 px-6 laptop:px-10 py-6 overflow-hidden">
+<div class="w-full flex flex-col gap-8 fhd:gap-10">
 
-  <SectionHeading label="Contact" />
+  <!-- Info grid: email, location, status -->
+  <div class="grid grid-cols-1 mobile:grid-cols-3 gap-2">
 
-  <div class="flex-1 flex gap-8 min-h-0 overflow-hidden">
-
-    <!-- Left: Form (55%) -->
-    <div class="flex-[11] flex flex-col min-h-0 overflow-hidden">
-      <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-0 h-full">
-        <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
-        <input type="hidden" name="subject"    value={formSubject} />
-
-        <div
-          id="form-status"
-          class="hidden py-2 px-3 mb-3 text-[0.6rem] tracking-[0.15em] text-center"
-          style="border: 1px solid var(--border-subtle); color: var(--letter-color);"
-        />
-
-        <!-- 2×2 field grid -->
-        <div class="grid grid-cols-2 gap-x-6">
-          <FormField id="f-name"    name="name"    label="Name *"    required />
-          <FormField id="f-email"   name="email"   type="email" label="Email *" required />
-          <FormField id="f-project" name="project" label="Project" />
-          <FormField id="f-budget"  name="budget"  label="Budget" />
-        </div>
-
-        <!-- Textarea + submit -->
-        <div class="relative flex-1 mt-2 min-h-0">
-          <textarea
-            id="f-message"
-            name="message"
-            required
-            placeholder="Your message *"
-            class="bg-transparent p-3 pb-10
-                   text-[0.85rem] text-[var(--letter-color)]
-                   w-full h-full resize-none outline-none transition-colors duration-[250ms]
-                   focus:border-[var(--accent-color)]
-                   placeholder:text-[0.65rem] placeholder:tracking-[0.2em] placeholder:uppercase
-                   placeholder:opacity-35"
-            style="border: 1px solid var(--border-subtle); font-family: 'Poiret One', cursive;"
-          />
-          <button
-            id="submit-btn"
-            type="submit"
-            class="absolute bottom-[0.75rem] right-[0.75rem] flex items-center gap-2 py-[0.35rem] px-3.5
-                   border-none cursor-pointer transition-all duration-200
-                   hover:opacity-85 hover:translate-x-[2px]
-                   disabled:opacity-30 disabled:cursor-default disabled:transform-none"
-            style="background: var(--letter-color); color: var(--page-background);"
-          >
-            <span style="font-family: 'Poiret One', cursive; font-size: 0.55rem; letter-spacing: 0.35em; text-transform: uppercase; font-weight: bold;">Send</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                 stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
-              <path d="M4 10h12M12 5l5 5-5 5" />
-            </svg>
-          </button>
-        </div>
-      </form>
+    <div class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+      <span class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40">Email</span>
+      <a
+        href={`mailto:${email}`}
+        class="text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--accent-color)] hover:opacity-70 transition-opacity"
+      >
+        {email}
+      </a>
     </div>
 
-    <!-- Right: Info + Social (45%) -->
-    <div class="flex-[9] flex flex-col gap-6 justify-between overflow-hidden">
-
-      <!-- Info items — accent left border, no box -->
-      <div class="flex flex-col gap-5">
-
-        <div class="border-l-2 pl-3 flex flex-col gap-0.5"
-             style="border-color: var(--accent-color);">
-          <span class="text-[0.46rem] uppercase tracking-[0.3em] font-bold" style="opacity: 0.32;">Email</span>
-          <a
-            href={`mailto:${email}`}
-            class="text-sm font-bold hover:opacity-70 transition-opacity"
-            style="color: var(--accent-color);"
-          >{email}</a>
-        </div>
-
-        <div class="border-l-2 pl-3 flex flex-col gap-0.5"
-             style="border-color: var(--accent-color);">
-          <span class="text-[0.46rem] uppercase tracking-[0.3em] font-bold" style="opacity: 0.32;">Location</span>
-          <span class="text-sm font-bold">{location}</span>
-        </div>
-
-        <div class="border-l-2 pl-3 flex flex-col gap-0.5"
-             style="border-color: var(--accent-color);">
-          <span class="text-[0.46rem] uppercase tracking-[0.3em] font-bold" style="opacity: 0.32;">Status</span>
-          <span class="flex items-center gap-2 text-sm font-bold">
-            <span
-              class="rounded-full shrink-0"
-              style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent-color)" : "var(--border-color)"};`}
-            />
-            {statusStr}
-          </span>
-        </div>
-
-      </div>
-
-      <!-- Social + CV links -->
-      <div class="flex flex-wrap gap-2">
-        {socialLinks
-          .filter((s: SocialLink) => s.name === "LinkedIn" || s.name === "GitHub")
-          .map((link: SocialLink) => (
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-2 px-3 py-2 text-[0.52rem] tracking-[0.2em] uppercase font-bold
-                     border border-[var(--border-color)]
-                     hover:border-[var(--accent-color)] hover:text-[var(--accent-color)]
-                     transition-all duration-200"
-            >{link.name}</a>
-          ))
-        }
-        <a
-          href={cv_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-3 py-2 text-[0.52rem] tracking-[0.2em] uppercase font-bold
-                 border border-[var(--border-color)]
-                 hover:border-[var(--accent-color)] hover:text-[var(--accent-color)]
-                 transition-all duration-200"
-        >CV →</a>
-      </div>
-
+    <div class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+      <span class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40">Location</span>
+      <span class="text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--letter-color)]">{location}</span>
     </div>
+
+    <div class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
+      <span class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40">Status</span>
+      <span class="flex items-center gap-[0.4rem] text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--letter-color)]">
+        <span class={`w-[6px] h-[6px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
+        {statusStr}
+      </span>
+    </div>
+
   </div>
+
+  <!-- Formulario de contacto -->
+  <form id="contact-form" autocomplete="off" data-email={email}>
+    <input type="hidden" name="access_key"  value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
+    <input type="hidden" name="subject"     value={formSubject} />
+
+    <!-- Status feedback -->
+    <div
+      id="form-status"
+      class="hidden py-3 px-4 mb-4 border border-[var(--border-subtle)]
+             text-xs tracking-[0.15em] text-center text-[var(--letter-color)]"
+    />
+
+    <!-- Campos en dos columnas -->
+    <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-y-0 min-[30rem]:gap-x-8">
+      <FormField id="f-name"    name="name"    label="Name *"    required />
+      <FormField id="f-email"   name="email"   type="email" label="Email *" required />
+      <FormField id="f-project" name="project" label="Project" />
+      <FormField id="f-budget"  name="budget"  label="Budget" />
+    </div>
+
+    <!-- Textarea con botón de envío superpuesto -->
+    <div class="relative mb-2">
+      <textarea
+        id="f-message"
+        name="message"
+        rows="5"
+        required
+        placeholder="Your message *"
+        class="bg-transparent border border-[var(--border-subtle)] p-4 pb-12
+               text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+               w-full resize-none outline-none transition-colors duration-[250ms]
+               focus:border-[var(--accent-color)]
+               placeholder:text-[0.7rem] placeholder:tracking-[0.2em] placeholder:uppercase
+               placeholder:opacity-35 placeholder:font-['Poiret_One',cursive]"
+      />
+      <button
+        id="submit-btn"
+        type="submit"
+        class="absolute bottom-[0.8rem] right-[0.8rem] flex items-center gap-2 py-[0.4rem] px-4
+               bg-[var(--letter-color)] text-[var(--page-background)]
+               border-none cursor-pointer transition-all duration-200
+               hover:opacity-85 hover:translate-x-[2px]
+               disabled:opacity-30 disabled:cursor-default disabled:transform-none"
+      >
+        <span class="font-['Poiret_One',cursive] text-[0.6rem] tracking-[0.35em] uppercase font-bold">Send</span>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M4 10h12M12 5l5 5-5 5" />
+        </svg>
+      </button>
+    </div>
+  </form>
+
+</div>
+
+<!-- Links rápidos: redes sociales y CV -->
+<div class="flex flex-wrap gap-2">
+  {socialLinks.filter((s: SocialLink) => s.name === "LinkedIn" || s.name === "GitHub")
+      .map((link: SocialLink) => (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold
+             border border-[var(--border-color)]
+             hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
+    >
+      <img src={link.icon} class="w-3 h-3 opacity-60" alt={link.name}
+           style="filter: brightness(0) saturate(100%);" />
+      {link.name}
+    </a>
+  ))}
+
+  <a
+    href={cv_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold
+           border border-[var(--border-color)]
+           hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
+  >
+    <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" class="text-[var(--accent-color)] shrink-0">
+      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+      <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+    </svg>
+    CV
+  </a>
 </div>

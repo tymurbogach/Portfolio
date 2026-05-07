@@ -1,5 +1,5 @@
 ---
-import { getAboutData } from "../../lib/content";
+import Button       from "../../components/ui/Button.astro";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -7,129 +7,71 @@ interface Props {
 }
 
 const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
-const { location, quote } = await getAboutData();
 
 const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux · Raspberry Pi · Self-hosting · Ollama · NAS · Nginx · Tailwind · Cloudflare · PHP · Python · SCSS · Git · Claude API · n8n · AI Integration · ";
 ---
+<section class="gap-10 laptop:gap-12 flex-col justify-center w-full h-full
+gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
 
-<div class="relative h-full flex flex-col overflow-hidden hero-gradient">
-
-  <!-- Dot grid background -->
+  <!-- Background dot grid -->
   <div
-    class="absolute inset-0 -z-10 pointer-events-none"
+    class="absolute -inset-16 -z-10 pointer-events-none"
     style="background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
-           background-size: 32px 32px; opacity: 0.10;"
+           background-size: 28px 28px; opacity: 0.12;"
     aria-hidden="true"
   />
 
-  <!-- Main content row — fills available height -->
-  <div class="flex-1 flex items-center gap-8 px-6 laptop:px-10 min-h-0">
-
-    <!-- Left: content (flex-[3]) -->
-    <div class="flex-[3] flex flex-col gap-5 min-w-0" id="theme-toggle">
-
-      <!-- Role label -->
-      <span
-        class="text-[0.58rem] tracking-[0.35em] uppercase"
-        style="color: var(--accent-color); opacity: 0.65;"
-      >&gt; FRONTEND DEVELOPER · SYSTEMS ENTHUSIAST</span>
-
-      <!-- Titles -->
-      <div class="flex flex-col gap-1">
-        <h1
-          class="font-display m-0 leading-[0.95]"
-          style="font-size: clamp(2.4rem, 4.5vw + 0.5rem, 5.5rem);"
-        >{title1}</h1>
-        <p
-          class="font-display m-0 leading-[0.95]"
-          style="font-size: clamp(2.4rem, 4.5vw + 0.5rem, 5.5rem); opacity: 0.22;"
-        >{title2}</p>
-      </div>
-
-      <!-- Subtitle -->
-      <p
-        class="m-0 leading-relaxed"
-        style="font-size: clamp(0.72rem, 1.1vw, 0.95rem); opacity: 0.5; max-width: 44ch;"
-      >
-        {subtitle1}<br />{subtitle2}
-      </p>
-
-      <!-- CTA buttons — use data-scroll-target (intercepted by sectionNav.ts) -->
-      <div class="flex flex-wrap gap-3 pt-1">
-        <button
-          data-scroll-target="projects"
-          class="px-5 py-2.5 text-[0.58rem] tracking-[0.3em] uppercase font-bold cursor-pointer
-                 transition-opacity duration-200 hover:opacity-80"
-          style="background: var(--accent-color); color: var(--accent-text); border: 1px solid var(--accent-color);"
-        >
-          {cta.primary}
-        </button>
-        <button
-          data-scroll-target="contact"
-          class="px-5 py-2.5 text-[0.58rem] tracking-[0.3em] uppercase font-bold cursor-pointer
-                 transition-all duration-200 hover:opacity-80"
-          style="background: transparent; border: 1px solid var(--border-color); color: var(--letter-color);"
-        >
-          {cta.secondary}
-        </button>
-      </div>
-    </div>
-
-    <!-- Right: ghost name decoration (desktop only) -->
-    <div
-      class="flex-[2] relative hidden laptop:flex items-center justify-end
-             select-none pointer-events-none overflow-hidden"
-      aria-hidden="true"
-    >
-      <span
-        class="font-display leading-none"
-        style="font-size: clamp(8rem, 14vw, 15rem);
-               color: var(--letter-color);
-               opacity: 0.025;
-               white-space: nowrap;"
-      >TIMUR</span>
-    </div>
-  </div>
-
-  <!-- Marquee strip -->
+  <!-- Accent slash — diagonal brutalist element -->
   <div
-    class="w-full overflow-hidden shrink-0 py-3"
-    style="border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);"
+    class="absolute -z-10 pointer-events-none opacity-[0.04]"
+    style="right: -4rem; top: -8rem; width: 32rem; height: 32rem;
+           border: 3px solid var(--accent-color);
+           transform: rotate(15deg);"
     aria-hidden="true"
-  >
-    <div
-      class="marquee-track"
-      style="font-size: 0.48rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: bold;
-             opacity: 0.28; color: var(--letter-color);"
-    >
-      <span>{MARQUEE}</span>
-      <span>{MARQUEE}</span>
-    </div>
+  />
+
+  <!-- Titles -->
+  <div class="flex flex-col gap-2 max-w-[52ch]" id="theme-toggle">
+
+    <!-- System prefix -->
+    <p class="text-[0.6rem] tracking-[0.35em] uppercase m-0"
+       style="color: var(--accent-color); opacity: 0.7;">
+      &gt; PORTFOLIO.SYS — OPERATOR IDENTIFIED
+    </p>
+
+    <h1 class="font-display m-0 leading-[0.92]"
+        style="font-size: clamp(3.2rem, 7vw, 6.5rem);">
+      {title1}<br />
+      <span style="opacity: 0.35;">{title2}</span>
+    </h1>
+
+    <p class="text-[clamp(0.72rem,1.2vw,0.9rem)] leading-[1.85] m-0"
+       style="opacity: 0.55; max-width: 46ch;">
+      {subtitle1}<br />
+      {subtitle2}
+    </p>
   </div>
 
-  <!-- Bottom strip: location + quote -->
-  <div
-    class="flex items-center gap-6 px-6 laptop:px-10 py-4 shrink-0 overflow-hidden"
-    style="border-top: 1px solid var(--border-color);"
-  >
-    {location && (
-      <span
-        class="text-[0.52rem] tracking-[0.25em] uppercase flex items-center gap-2 shrink-0"
-        style="opacity: 0.38;"
-      >
-        <span>📍</span><span>{location.label}</span>
-      </span>
-    )}
-    {quote && (
+  <!-- CTAs -->
+  <div class="flex flex-wrap pt-4 gap-3 items-center">
+    <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
+    <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
+  </div>
+
+  <!-- Marquee strip (animated) -->
+  <div class="flex flex-col pt-4 gap-2">
+    <div class="h-px" style="background: var(--border-color);" />
+    <div class="overflow-hidden" aria-hidden="true">
       <div
-        class="border-l-2 pl-4 flex-1 min-w-0 overflow-hidden"
-        style="border-color: var(--accent-color); opacity: 0.45;"
+        class="marquee-track"
+        style="font-size: 0.5rem; letter-spacing: 0.45em; text-transform: uppercase; font-weight: bold;
+               opacity: 0.3; font-family: 'JetBrains Mono', monospace; color: var(--letter-color);"
       >
-        <p class="text-[0.55rem] italic leading-snug m-0 truncate">
-          "{quote.text}" — {quote.author}
-        </p>
+        <span>{MARQUEE}</span>
+        <span>{MARQUEE}</span>
       </div>
-    )}
+    </div>
+    <div class="h-px" style="background: var(--border-color);" />
   </div>
 
-</div>
+</section>

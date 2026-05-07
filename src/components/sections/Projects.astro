@@ -1,6 +1,5 @@
 ---
-import ProjectCard    from "../ui/ProjectCard.astro";
-import SectionHeading from "../ui/SectionHeading.astro";
+import ProjectCard  from "../../components/ui/ProjectCard.astro";
 import type { Project } from "../../lib/content";
 
 interface Props {
@@ -10,25 +9,20 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<div class="h-full flex flex-col gap-5 px-6 laptop:px-10 py-6 overflow-hidden">
+<div class="flex flex-col gap-3 w-full">
+  {projects.map((entry: Project, i: number) => {
+    const { title, description, image, link, type, tags } = entry.data;
 
-  <SectionHeading label="Projects" />
-
-  <div class="flex-1 projects-grid min-h-0">
-    {projects.map((entry: Project, i: number) => {
-      const { title, description, image, link, type, tags } = entry.data;
-      return (
-        <ProjectCard
-          title={title}
-          description={description}
-          image={image}
-          link={link}
-          type={type ?? "source"}
-          tags={tags ?? []}
-          index={i + 1}
-        />
-      );
-    })}
-  </div>
-
+    return (
+      <ProjectCard
+        title={title}
+        description={description}
+        image={image}
+        link={link}
+        type={type ?? "source"}
+        tags={tags ?? []}
+        index={i + 1}
+      />
+    );
+  })}
 </div>

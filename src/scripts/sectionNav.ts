@@ -52,6 +52,14 @@ function initSectionNav(): void {
   scrollToSection(scrollEl, initSection, "instant");
   setActiveNav(initSection);
 
+  // ── Home section: fill viewport height ──────────────────────────────────
+  const homeSection = document.getElementById("home");
+  const setHomeHeight = () => {
+    if (homeSection) homeSection.style.minHeight = `${scrollEl.clientHeight}px`;
+  };
+  setHomeHeight();
+  window.addEventListener("resize", setHomeHeight, { signal: ac.signal });
+
   // ── Sincronización URL ↔ sección al scrollear ────────────────────────────
   let currentSection = initSection;
   let ticking = false;
