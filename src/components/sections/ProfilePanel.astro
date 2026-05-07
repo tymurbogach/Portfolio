@@ -1,95 +1,125 @@
 ---
 import Modal from "../../components/ui/Modal.astro";
-import { getProfile, getHomeData, getContactData } from "../../lib/content";
+import { getProfile, getHomeData, getContactData, getAboutData } from "../../lib/content";
 
 const profile = await getProfile();
 const home    = await getHomeData();
 const contact = await getContactData();
+const about   = await getAboutData();
 
-const { bio }    = profile;
-const { stats }  = home;
-const { cv_url } = contact;
+const { nameDisplay, role, bio }           = profile;
+const { stats }                            = home;
+const { cv_url, statusStr, statusActive }  = contact;
+const { quote }                            = about;
 ---
 
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
 
-  <main
-    class="flex flex-col fhd:flex-row flex-1 min-h-0 items-center justify-center gap-5 fhd:gap-10 fhd:py-4"
-  >
-    <!-- Col 1: foto + status -->
-    <div class="flex flex-col items-center gap-3 fhd:gap-5 fhd:flex-1 fhd:justify-center">
-      <div class="relative">
-        <!-- accent frame -->
-        <div
-          class="absolute pointer-events-none"
-          style="inset: -4px; border: 1px solid var(--accent-color); opacity: 0.25;"
-          aria-hidden="true"
-        />
-        <img
-          src="/img/gopnik.png"
-          alt="Timur Bogach"
-          class="w-full h-auto object-contain pointer-events-none
-                 max-w-[7rem]  mobile:max-w-[9rem]
-                 laptop:max-w-[8rem] fhd:max-w-[14rem] qhd:max-w-[18rem] uhd:max-w-[22rem]"
-        />
-      </div>
+  <div class="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 laptop:gap-3 fhd:gap-5">
 
-      <!-- terminal status line -->
-      <div class="flex flex-col items-center gap-0.5 text-center">
-        <p
-          class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs leading-[1.6] m-0"
-          style="opacity: 0.45; max-width: 16rem;"
+    <!-- Name + role -->
+    <div class="text-center">
+      <p class="font-display text-base laptop:text-lg fhd:text-2xl tracking-[0.1em] m-0 leading-tight">
+        {nameDisplay}
+      </p>
+      <p class="text-[0.48rem] tracking-[0.35em] uppercase m-0 mt-1"
+         style="color: var(--accent-color); opacity: 0.7;">
+        {role}
+      </p>
+    </div>
+
+    <!-- Photo -->
+    <div class="relative">
+      <div
+        class="absolute pointer-events-none"
+        style="inset: -4px; border: 1px solid var(--accent-color); opacity: 0.25;"
+        aria-hidden="true"
+      />
+      <img
+        src="/img/gopnik.png"
+        alt="Timur Bogach"
+        class="w-full h-auto object-contain pointer-events-none
+               max-w-[6rem] mobile:max-w-[7rem]
+               laptop:max-w-[7rem] fhd:max-w-[11rem] qhd:max-w-[15rem]"
+      />
+    </div>
+
+    <!-- Bio -->
+    <p
+      class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs leading-[1.6] m-0 text-center"
+      style="opacity: 0.45; max-width: 15rem;"
+    >
+      {bio}
+    </p>
+
+    <!-- Status -->
+    <div class="flex items-center gap-2">
+      <span
+        class="rounded-full shrink-0"
+        style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent-color)" : "var(--border-color)"}; ${statusActive ? "animation: pulse 2s infinite;" : ""}`}
+        aria-hidden="true"
+      />
+      <span class="text-[0.48rem] tracking-[0.2em] uppercase font-bold" style="opacity: 0.5;">
+        {statusStr}
+      </span>
+    </div>
+
+    <!-- Stats (horizontal row) -->
+    <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem]">
+      {stats.map(({ n, label }: { n: string; label: string }) => (
+        <div
+          class="flex flex-col items-center flex-1 px-1.5 py-2"
+          style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
         >
-          {bio}
+          <span
+            class="font-display text-base fhd:text-xl leading-none"
+            style="color: var(--accent-color);"
+          >
+            {n}
+          </span>
+          <span
+            class="text-[0.36rem] fhd:text-[0.42rem] tracking-[0.12em] uppercase mt-0.5 text-center"
+            style="opacity: 0.4;"
+          >
+            {label}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Matrix quote -->
+    {quote && (
+      <div
+        class="neon-left-border pl-4 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem]"
+        style="opacity: 0.55;"
+      >
+        <p class="italic text-[0.55rem] fhd:text-[0.65rem] leading-relaxed m-0">
+          "{quote.text}"
+        </p>
+        <p class="text-[0.42rem] not-italic tracking-widest uppercase mt-1.5 m-0" style="opacity: 0.5;">
+          — {quote.author}
         </p>
       </div>
-    </div>
+    )}
 
-    <!-- Col 2: stats + CV -->
-    <div class="flex flex-col items-center fhd:items-start gap-4 fhd:gap-5 fhd:flex-1 fhd:justify-center w-full max-w-[16rem] laptop:max-w-[14rem]">
+  </div>
 
-      <!-- Stats terminal style -->
-      <div class="flex flex-col gap-1.5 w-full">
-        {stats.map(({ n, label }: { n: string; label: string }) => (
-          <div
-            class="flex items-baseline gap-3 px-3 py-2"
-            style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
-          >
-            <span
-              class="font-display text-xl fhd:text-2xl leading-none"
-              style="color: var(--accent-color);"
-            >
-              {n}
-            </span>
-            <span
-              class="text-[0.45rem] fhd:text-[0.5rem] tracking-[0.25em] uppercase"
-              style="opacity: 0.4;"
-            >
-              {label}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <!-- CV button -->
-      <button
-        id="cv-view-btn"
-        data-cv-url={cv_url}
-        class="flex items-center gap-2 px-4 py-2 w-full justify-center
-               text-[0.5rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
-               border border-[var(--border-color)]
-               hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
-               transition-all duration-200 cursor-pointer"
-      >
-        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="flex-shrink:0">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-        </svg>
-        <span>View CV</span>
-      </button>
-
-    </div>
-  </main>
+  <!-- CV button — always anchored at bottom -->
+  <button
+    id="cv-view-btn"
+    data-cv-url={cv_url}
+    class="flex items-center gap-2 px-4 py-2 w-full justify-center
+           text-[0.5rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
+           border border-[var(--border-color)]
+           hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
+           transition-all duration-200 cursor-pointer shrink-0"
+  >
+    <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="flex-shrink:0">
+      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+      <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+    </svg>
+    <span>View CV</span>
+  </button>
 
 </section>
 
