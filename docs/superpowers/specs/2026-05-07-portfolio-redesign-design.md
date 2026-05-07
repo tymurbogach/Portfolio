@@ -102,7 +102,7 @@ CSS implementation: duplicate track for seamless loop, `animation: marquee 30s l
 **Goal:** Fit in 100dvh. Remove quote + location (now in Hero). Remove hobbies row (replaced by tiny icon strip).
 
 **Layout:** 2 columns.  
-- Left (55%): Journey timeline — vertical line (1px accent) with dot markers. Max 4 entries via `slice(0, 4)` in component (no JSON change). Each entry: year (accent color, small caps) + event (bold) + detail (opacity 0.5, 1 line max).  
+- Left (55%): Journey timeline — vertical line (1px accent) with dot markers. Sort journey by year descending, `slice(0, 4)` → shows: Now → 2025 → 2023 → 2022. No JSON change. Each entry: year (accent color, small caps) + event (bold) + detail (opacity 0.5, 1 line max).  
 - Right (45%): Education (2 items, stacked, no box — accent left border + title + sub + years) + Hobbies (inline icon row, 4–6 icons, opacity 0.4, small label on hover).
 
 **Removed:** `quote`, `location` (moved to Hero).  
@@ -137,8 +137,13 @@ CSS implementation: duplicate track for seamless loop, `animation: marquee 30s l
 - No border on card → `background: var(--component-background)` + hover: `box-shadow: 0 0 20px var(--glow-primary)` + `transform: translateY(-2px)`
 - Index number: bottom-right ghost, opacity 0.04 (keep existing pattern)
 
-**Grid:** 2 columns on `laptop+`, 1 column on `mobile/tablet`. Gap `1rem`.  
-**Fits viewport:** 2 rows × 2 cols = 4 cards visible. Order by `order` field.
+**Grid — all 5 projects visible, no section scroll:**
+- `mobile`: horizontal scroll row (`overflow-x: auto; scroll-snap-type: x mandatory`), cards ~280px wide. Section stays 100dvh.
+- `tablet`: 2 cols, 3 rows. Cards compact (image aspect-ratio 2/1 at this breakpoint). Fits ~768px height.
+- `laptop`: 3 cols, 2 rows (3+2). `grid-template-columns: repeat(3, 1fr)`.
+- `fhd+`: 5 cols, 1 row. All cards in single line.
+
+Cards ordered by `order` field. Gap `0.75rem`.
 
 **ProjectCard.astro:** Full rewrite — image moves from left column to top of card.
 
