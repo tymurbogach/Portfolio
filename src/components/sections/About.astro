@@ -1,102 +1,95 @@
 ---
+import SectionHeading from "../ui/SectionHeading.astro";
 import type { AboutData } from "../../lib/content";
 
 interface Props {
   about: AboutData;
 }
 
-const { about }                              = Astro.props;
-const { journey, education, hobbies, location, quote } = about;
+const { about: { journey, education, hobbies } } = Astro.props;
+
+// 4 most recent entries: take last 4 from array, reverse to show newest first
+const recentJourney = [...journey].slice(-4).reverse();
 ---
 
-<section class="flex flex-col gap-10 laptop:gap-12 w-full">
+<div class="h-full flex flex-col gap-5 px-6 laptop:px-10 py-6 overflow-hidden">
 
-  <!-- JOURNEY -->
-  <div class="flex flex-col gap-5">
-    <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Journey</h3>
-    <div class="flex flex-col">
-      {journey.map(({ year, event, detail, active }: { year: string; event: string; detail: string; active: boolean }, i: number) => (
-        <div class="flex gap-4 laptop:gap-6">
+  <SectionHeading label="About" />
 
-          <!-- Timeline dot + line -->
-          <div class="flex flex-col items-center shrink-0 pt-[3px]">
-            <div class={`w-[7px] h-[7px] rounded-full border-2 shrink-0 z-10
-              ${active
-                ? "border-[var(--accent-color)] bg-[var(--accent-color)]"
-                : "border-[var(--border-color)] bg-[var(--page-background)]"}`}
-            />
-            {i < journey.length - 1 && (
-              <div class="w-px flex-1 my-1 bg-[var(--border-subtle)]" />
-            )}
-          </div>
+  <div class="flex-1 flex gap-8 min-h-0 overflow-hidden">
 
-          <!-- Content -->
-          <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""}`}>
-            <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
-              <span class="text-[0.55rem] tracking-[0.2em] uppercase opacity-35 font-bold whitespace-nowrap">
-                {year}
-              </span>
-              <span class={`text-sm laptop:text-base font-bold ${active ? "text-[var(--accent-color)]" : ""}`}>
-                {event}
-              </span>
-            </div>
-            <p class="text-xs laptop:text-sm opacity-65 leading-relaxed">{detail}</p>
-          </div>
+    <!-- Left: Timeline (55%) -->
+    <div class="flex-[11] relative flex flex-col overflow-hidden">
 
+      <!-- Vertical accent line -->
+      <div
+        class="absolute left-0 top-0 bottom-0 w-px"
+        style="background: var(--accent-color); opacity: 0.2;"
+      />
+
+      {recentJourney.map((entry: any, i: number) => (
+        <div
+          class="relative pl-5 flex flex-col gap-0.5"
+          style={i < recentJourney.length - 1 ? "padding-bottom: 1.5rem;" : ""}
+        >
+          <!-- Dot -->
+          <div
+            class="absolute rounded-full"
+            style={`left: -3.5px; top: 6px; width: 7px; height: 7px;
+                    background: var(--accent-color);
+                    ${entry.active ? "box-shadow: 0 0 6px var(--glow-primary);" : "opacity: 0.5;"}`}
+          />
+          <span
+            class="text-[0.5rem] tracking-[0.25em] uppercase font-bold"
+            style="color: var(--accent-color);"
+          >{entry.year}</span>
+          <p
+            class="font-display leading-tight m-0"
+            style="font-size: clamp(0.85rem, 1.4vw, 1.05rem);"
+          >{entry.event}</p>
+          <p
+            class="text-[0.65rem] leading-snug m-0 line-clamp-2"
+            style="opacity: 0.42;"
+          >{entry.detail}</p>
         </div>
       ))}
     </div>
-  </div>
 
-  <!-- EDUCATION -->
-  <div class="flex flex-col gap-4">
-    <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">Education</h3>
-    <div class="flex flex-col gap-2">
-      {education.map(({ years, title, sub }: { years: string; title: string; sub: string }) => (
-        <div class="flex gap-4 items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-          <span class="text-[0.55rem] tracking-[0.15em] uppercase opacity-35 font-bold whitespace-nowrap mt-0.5 shrink-0">
-            {years}
-          </span>
-          <div>
-            <p class="text-sm font-bold leading-snug">{title}</p>
-            <p class="text-[0.58rem] tracking-[0.1em] uppercase opacity-45 mt-0.5">{sub}</p>
+    <!-- Right: Education + Hobbies (45%) -->
+    <div class="flex-[9] flex flex-col gap-6 overflow-hidden">
+
+      <!-- Education -->
+      <div class="flex flex-col gap-3">
+        <span class="text-[0.5rem] tracking-[0.35em] uppercase font-bold" style="opacity: 0.32;">Education</span>
+        {education.map((edu: any) => (
+          <div
+            class="border-l-2 pl-3 flex flex-col gap-0.5"
+            style="border-color: var(--accent-color);"
+          >
+            <span class="text-[0.48rem] tracking-[0.15em] uppercase" style="opacity: 0.32;">{edu.years}</span>
+            <p
+              class="font-display leading-tight m-0"
+              style="font-size: clamp(0.8rem, 1.2vw, 0.95rem);"
+            >{edu.title}</p>
+            <p class="text-[0.58rem] uppercase tracking-wide m-0" style="opacity: 0.42;">{edu.sub}</p>
           </div>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- HOBBIES -->
-  <div class="flex flex-col gap-4">
-    <h3 class="text-[0.6rem] tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
-    <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
-      {hobbies.map(({ icon, label }: { icon: string; label: string }) => (
-        <div class="flex items-center gap-3 px-4 py-3 border border-[var(--border-subtle)] text-sm laptop:text-base opacity-65 bg-[var(--surface-raised)]">
-          <span class="text-base">{icon}</span>
-          <span class="tracking-[0.1em]">{label}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- LOCATION + QUOTE -->
-  <div class="flex flex-col gap-6">
-    {location && (
-      <div class="flex items-center gap-3 text-xs laptop:text-sm opacity-50 tracking-[0.2em] uppercase">
-        <span>📍</span>
-        <span>{location.label}</span>
+        ))}
       </div>
-    )}
-    {quote && (
-      <blockquote class="border-l-2 border-[var(--accent-color)] pl-5 laptop:pl-7">
-        <p class="italic leading-relaxed text-sm mobile:text-base laptop:text-lg fhd:text-xl opacity-75">
-          "{quote.text}"
-        </p>
-        <p class="mt-2 text-[0.65rem] not-italic opacity-35 tracking-widest">
-          — {quote.author}
-        </p>
-      </blockquote>
-    )}
-  </div>
 
-</section>
+      <!-- Hobbies -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[0.5rem] tracking-[0.35em] uppercase font-bold" style="opacity: 0.32;">When not coding</span>
+        <div class="flex gap-5">
+          {hobbies.map((hobby: any) => (
+            <span
+              class="text-xl transition-opacity duration-200 cursor-default hover:opacity-80"
+              style="opacity: 0.32;"
+              title={hobby.label ?? hobby}
+            >{hobby.icon ?? hobby}</span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
