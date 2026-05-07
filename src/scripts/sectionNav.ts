@@ -46,14 +46,6 @@ function initSectionNav(): void {
 
   const ac = new AbortController();
 
-  // ── Altura mínima de la sección Home = altura visible del panel ──────────
-  const homeSection = document.getElementById("home");
-  const setHomeHeight = () => {
-    if (homeSection) homeSection.style.minHeight = `${scrollEl.clientHeight}px`;
-  };
-  setHomeHeight();
-  window.addEventListener("resize", setHomeHeight, { signal: ac.signal });
-
   // ── Scroll inicial a la sección correspondiente a la URL ─────────────────
   const rawPath = window.location.pathname.replace(/\/$/, "") || "/";
   const initSection = rawPath === "/" ? "home" : rawPath.replace(/^\//, "");
@@ -94,6 +86,23 @@ function initSectionNav(): void {
         if (!document.getElementById(targetId)) return; // sección ausente → nav normal
 
         e.preventDefault();
+        currentSection = targetId;
+        history.pushState(null, "", href);
+        scrollToSection(scrollEl, targetId, "smooth");
+        setActiveNav(targetId);
+      },
+      { signal: ac.signal }
+    );
+  });
+
+  // ── data-scroll-target: Hero CTAs and any element that should trigger section scroll ──
+  document.querySelectorAll<HTMLElement>("[data-scroll-target]").forEach((el) => {
+    el.addEventListener(
+      "click",
+      () => {
+        const targetId = el.getAttribute("data-scroll-target") ?? "";
+        if (!targetId || !document.getElementById(targetId)) return;
+        const href = targetId === "home" ? "/" : `/${targetId}`;
         currentSection = targetId;
         history.pushState(null, "", href);
         scrollToSection(scrollEl, targetId, "smooth");
