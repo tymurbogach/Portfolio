@@ -315,3 +315,44 @@ html { scroll-behavior: smooth; }
 @utility font-signature {
   font-family: "Poiret One", cursive;
 }
+
+/* ═══════════════════════════════════════════════════════
+   MARQUEE — infinite horizontal scroll strip
+   ═══════════════════════════════════════════════════════ */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROJECTS GRID — responsive grid (avoids overflow-hidden conflict)
+   mobile: 2-col · laptop: 3-col · fhd: 5-col
+   ═══════════════════════════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  align-content: start;
+}
+
+@media (min-width: 80rem) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 120rem) {
+  .projects-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
