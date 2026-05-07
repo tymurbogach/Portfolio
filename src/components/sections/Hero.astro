@@ -40,16 +40,19 @@ gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
     </p>
 
     <h1 class="font-display m-0 leading-[0.92]"
-        style="font-size: clamp(3.2rem, 7vw, 6.5rem);">
+        style="font-size: clamp(2rem, 4.5vw, 4.5rem);">
       {title1}<br />
       <span style="opacity: 0.35;">{title2}</span>
     </h1>
 
-    <p class="text-[clamp(0.72rem,1.2vw,0.9rem)] leading-[1.85] m-0"
-       style="opacity: 0.55; max-width: 46ch;">
-      {subtitle1}<br />
-      {subtitle2}
-    </p>
+    <blockquote class="neon-left-border pl-5 m-0 max-w-[46ch]">
+      <p class="italic leading-relaxed text-sm laptop:text-base m-0" style="opacity: 0.75;">
+        "{subtitle1}"
+      </p>
+      <p class="mt-1.5 text-[0.62rem] not-italic tracking-widest m-0" style="opacity: 0.35;">
+        {subtitle2}
+      </p>
+    </blockquote>
   </div>
 
   <!-- CTAs -->
