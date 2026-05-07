@@ -1,64 +1,101 @@
 ---
-import Chip           from "../../components/ui/Chip.astro";
-import SectionHeading from "../../components/ui/SectionHeading.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import Icon           from "../ui/Icon.astro";
 import type { ResumeData } from "../../lib/content";
 
 interface Props {
   resume: ResumeData;
 }
 
-const { resume }                               = Astro.props;
-const { frontend, backend, homelab, languages } = resume;
+const { resume: { frontend, backend, homelab, languages } } = Astro.props;
+
+function levelWidth(level: string): number {
+  const map: Record<string, number> = { native: 100, fluent: 85, intermediate: 60, basic: 35 };
+  return map[level] ?? 50;
+}
 ---
 
-<section class="flex flex-col w-full gap-9 laptop:gap-12">
+<div class="h-full flex flex-col gap-5 px-6 laptop:px-10 py-6 overflow-hidden">
 
-  <!-- Frontend + Backend en dos columnas -->
-  <div class="grid grid-cols-1 mobile:grid-cols-2 gap-8 laptop:gap-10">
+  <SectionHeading label="Resume" />
 
-    <div class="flex flex-col gap-4">
-      <SectionHeading label="Frontend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-         {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-          <Chip slug={slug} color={color} label={label} />
-        ))}
-      </div>
-    </div>
+  <div class="flex-1 flex gap-8 min-h-0 overflow-hidden">
 
-    <div class="flex flex-col gap-4">
-      <SectionHeading label="Backend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-        {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-          <Chip slug={slug} color={color} label={label} />
-        ))}
-      </div>
-    </div>
+    <!-- Left: Frontend + Backend -->
+    <div class="flex-1 flex flex-col gap-5 overflow-hidden min-w-0">
 
-  </div>
-
-  <!-- Homelab -->
-  <div class="flex flex-col gap-4">
-    <SectionHeading label="Homelab & DevOps" />
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-2.5">
-      {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-        <Chip slug={slug} color={color} label={label} />
-      ))}
-    </div>
-  </div>
-
-  <!-- Languages -->
-  <div class="flex flex-col gap-4">
-    <SectionHeading label="Languages" />
-    <div class="grid grid-cols-4 gap-2">
-      {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
-        <div class="flex flex-col items-center gap-1 px-2 py-3
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)] text-center">
-          <span class="text-xl">{flag}</span>
-          <span class="text-xs font-bold leading-snug">{lang}</span>
-          <span class="text-[0.55rem] tracking-[0.3em] uppercase opacity-40">{level}</span>
+      <!-- Frontend -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[0.48rem] tracking-[0.35em] uppercase font-bold" style="opacity: 0.32;">Frontend</span>
+        <div class="flex flex-wrap gap-x-4 gap-y-1.5">
+          {frontend.map((skill: any) => (
+            <span class="flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-100" style="opacity: 0.55;">
+              <Icon slug={skill.slug} color={skill.color} size={14} label={skill.label} />
+              <span class="text-[0.62rem]">{skill.label}</span>
+            </span>
+          ))}
         </div>
-      ))}
+      </div>
+
+      <!-- Separator -->
+      <div class="h-px shrink-0" style="background: var(--accent-color); opacity: 0.12;" />
+
+      <!-- Backend -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[0.48rem] tracking-[0.35em] uppercase font-bold" style="opacity: 0.32;">Backend</span>
+        <div class="flex flex-wrap gap-x-4 gap-y-1.5">
+          {backend.map((skill: any) => (
+            <span class="flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-100" style="opacity: 0.55;">
+              <Icon slug={skill.slug} color={skill.color} size={14} label={skill.label} />
+              <span class="text-[0.62rem]">{skill.label}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Vertical separator -->
+    <div class="w-px shrink-0" style="background: var(--accent-color); opacity: 0.10;" />
+
+    <!-- Right: Homelab + Languages -->
+    <div class="flex-1 flex flex-col gap-5 overflow-hidden min-w-0">
+
+      <!-- Homelab -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[0.48rem] tracking-[0.35em] uppercase font-bold" style="opacity: 0.32;">Homelab & DevOps</span>
+        <div class="flex flex-wrap gap-x-4 gap-y-1.5">
+          {homelab.map((skill: any) => (
+            <span class="flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-100" style="opacity: 0.55;">
+              <Icon slug={skill.slug} color={skill.color} size={14} label={skill.label} />
+              <span class="text-[0.62rem]">{skill.label}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Separator -->
+      <div class="h-px shrink-0" style="background: var(--accent-color); opacity: 0.12;" />
+
+      <!-- Languages -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[0.48rem] tracking-[0.35em] uppercase font-bold" style="opacity: 0.32;">Languages</span>
+        <div class="flex flex-col gap-3">
+          {languages.map((lang: any) => (
+            <div class="flex items-center gap-3">
+              <span class="text-base shrink-0">{lang.flag}</span>
+              <span class="text-[0.65rem] font-bold shrink-0" style="width: 5rem; opacity: 0.65;">{lang.lang}</span>
+              <div class="flex-1 h-0.5 relative" style="background: var(--border-color);">
+                <div
+                  class="absolute left-0 top-0 h-full"
+                  style={`width: ${levelWidth(lang.level)}%; background: var(--accent-color); opacity: 0.65;`}
+                />
+              </div>
+              <span class="text-[0.45rem] tracking-[0.2em] uppercase shrink-0" style="opacity: 0.32; width: 4rem; text-align: right;">{lang.level}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   </div>
-
-</section>
+</div>
