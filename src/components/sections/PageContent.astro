@@ -16,9 +16,6 @@ import {
 } from "../../lib/content";
 import type { LabeledSection } from "../../lib/content";
 
-// ==========================================
-// FETCH DE DATOS
-// ==========================================
 const site        = await getSite();
 const heroData    = await getHeroData();
 const aboutData   = await getAboutData();
@@ -27,48 +24,29 @@ const projects    = await getProjects();
 const contactData = await getContactData();
 const socialLinks = await getSocialLinks();
 
-// Secciones navegables (excluye home)
 const sections: LabeledSection[] = getLabeledSections(site);
 ---
 
 <div class="flex flex-col w-full">
 
-  <!-- HOME -->
   <section
     id="home"
-    class="flex items-start laptop:items-center justify-center pt-[4rem] laptop:pt-[2rem] "
+    class="h-[100dvh] overflow-hidden [scroll-snap-align:start] flex-shrink-0"
     aria-label="Home"
   >
-    <div class="w-full">
-      <Hero hero={heroData} />
-    </div>
+    <Hero hero={heroData} />
   </section>
 
-  <!-- SECCIONES DINÁMICAS -->
   {sections.map((section: LabeledSection) => (
     <section
       id={section.sectionId}
-      class="pt-[4rem] laptop:pt-[2rem] border-t border-[var(--border-subtle)]"
+      class="h-[100dvh] overflow-hidden [scroll-snap-align:start] flex-shrink-0"
       aria-labelledby={`heading-${section.sectionId}`}
     >
-      <!-- Header de sección -->
-      <div class="mb-4 laptop:mb-7">
-        <h2
-          id={`heading-${section.sectionId}`}
-          class="font-display text-lg laptop:text-2xl fhd:text-3xl tracking-[0.08em] text-[var(--letter-color)] text-glow m-0"
-        >
-          <span style="color: var(--accent-color); opacity: 0.7;">/ </span>{section.sectionLabel}
-        </h2>
-        <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
-      </div>
-
-      <!-- Contenido de sección -->
-      <div class="pb-[3rem] laptop:pb-[4rem]">
-        {section.sectionId === "about"    && <About    about={aboutData} />}
-        {section.sectionId === "resume"   && <Resume   resume={resumeData} />}
-        {section.sectionId === "projects" && <Projects projects={projects} />}
-        {section.sectionId === "contact"  && <Contact  contact={contactData} socialLinks={socialLinks} />}
-      </div>
+      {section.sectionId === "about"    && <About    about={aboutData} />}
+      {section.sectionId === "resume"   && <Resume   resume={resumeData} />}
+      {section.sectionId === "projects" && <Projects projects={projects} />}
+      {section.sectionId === "contact"  && <Contact  contact={contactData} socialLinks={socialLinks} />}
     </section>
   ))}
 
