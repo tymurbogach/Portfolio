@@ -77,7 +77,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
   }
 
   /* Touch devices: suppress sticky hover on non-active links */
-  @media (hover: none) {
+  @media (pointer: coarse) {
     .nav-link:not([data-active="true"]):hover {
       background-color: transparent !important;
       color: var(--letter-color) !important;

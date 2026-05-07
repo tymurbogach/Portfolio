@@ -10,8 +10,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
 
 const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux · Raspberry Pi · Self-hosting · Ollama · NAS · Nginx · Tailwind · Cloudflare · PHP · Python · SCSS · Git · Claude API · n8n · AI Integration · ";
 ---
-<section class="gap-10 laptop:gap-12 flex-col justify-center w-full h-full
-gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
+<section class="flex flex-col w-full gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
 
   <!-- Background dot grid -->
   <div
@@ -32,15 +31,9 @@ gap-[clamp(1.25rem,2.5vw,2.25rem)] overflow-hidden">
 
   <!-- Titles -->
   <div class="flex flex-col gap-2 max-w-[52ch]" id="theme-toggle">
-
-    <!-- System prefix -->
-    <p class="text-[0.6rem] tracking-[0.35em] uppercase m-0"
-       style="color: var(--accent-color); opacity: 0.7;">
-      &gt; PORTFOLIO.SYS — OPERATOR IDENTIFIED
-    </p>
-
-    <h1 class="font-display m-0 leading-[0.92]"
-        style="font-size: clamp(3.2rem, 6vw, 7rem);">
+<!-- BIG tittle -->
+    <h1 class="font-display m-0 leading-[0.92] "
+        style="font-size: clamp(3.2rem, 5vw, 7rem);">
       {title1}<br />
       <span style="opacity: 0.35;">{title2}</span>
     </h1>

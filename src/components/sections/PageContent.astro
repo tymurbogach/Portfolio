@@ -32,10 +32,19 @@ const sections: LabeledSection[] = getLabeledSections(site);
   <!-- HOME -->
   <section
     id="home"
-    class="flex items-start laptop:items-center justify-center pt-[4rem] laptop:pt-[2rem] [scroll-snap-align:start]"
+    class="pt-[4rem] laptop:pt-[2rem]"
     aria-label="Home"
   >
-    <div class="w-full">
+    <div class="mb-4 laptop:mb-7">
+      <h2
+        class="text-[0.6rem] tracking-[0.35em] uppercase font-bold m-0"
+        style="color: var(--accent-color); opacity: 0.7;"
+      >
+        &gt; PORTFOLIO.SYS — OPERATOR IDENTIFIED
+      </h2>
+      <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
+    </div>
+    <div class="pb-[3rem] laptop:pb-[4rem]">
       <Hero hero={heroData} />
     </div>
   </section>
@@ -44,21 +53,20 @@ const sections: LabeledSection[] = getLabeledSections(site);
   {sections.map((section: LabeledSection) => (
     <section
       id={section.sectionId}
-      class="pt-[4rem] laptop:pt-[2rem] border-t border-[var(--border-subtle)] [scroll-snap-align:start]"
+      class="pt-[4rem] laptop:pt-[2rem]"
       aria-labelledby={`heading-${section.sectionId}`}
     >
-      <!-- Header de sección -->
       <div class="mb-4 laptop:mb-7">
         <h2
           id={`heading-${section.sectionId}`}
-          class="font-display text-lg laptop:text-2xl fhd:text-3xl tracking-[0.08em] text-[var(--letter-color)] text-glow m-0"
+          class="text-[0.6rem] tracking-[0.35em] uppercase font-bold m-0"
+          style="color: var(--accent-color); opacity: 0.7;"
         >
-          <span style="color: var(--accent-color); opacity: 0.7;">/ </span>{section.sectionLabel}
+          &gt; {section.sectionLabel.toUpperCase()}
         </h2>
         <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
       </div>
 
-      <!-- Contenido de sección -->
       <div class="pb-[3rem] laptop:pb-[4rem]">
         {section.sectionId === "about"    && <About    about={aboutData} />}
         {section.sectionId === "resume"   && <Resume   resume={resumeData} />}
