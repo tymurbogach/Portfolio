@@ -12,14 +12,14 @@ interface Props {
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
-<div class="flex flex-col laptop:flex-row hidpi:flex-row w-full h-full overflow-hidden">
+<div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
 
   <!-- ═══════════════════════════════════
        SIDEBAR izquierda (solo desktop)
        ═══════════════════════════════════ -->
   <div
-    class="hidden laptop:flex hidpi:flex shrink-0 items-center justify-center
-           laptop:p-[2.5rem] hidpi:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
+    class="hidden laptop:flex shrink-0 items-center justify-center
+           laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
     style="width: var(--sidebar-width);"
   >
     <ProfilePanel />
@@ -57,10 +57,10 @@ const { pageLabel = "", scrollable = true } = Astro.props;
       <div
         id="content-scroll"
         class="flex-1 overflow-y-auto overflow-x-hidden
-               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem] hidpi:px-[4.5rem]
-               pb-[4rem] laptop:pb-[5rem] hidpi:pb-[5rem]"
+               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
+               pb-[4rem] laptop:pb-[5rem]"
       >
-        <div class="w-full laptop:max-w-[72ch] laptop:mx-auto hidpi:max-w-[72ch] hidpi:mx-auto">
+        <div class="w-full laptop:max-w-[72ch] laptop:mx-auto">
           <slot />
         </div>
       </div>

@@ -18,13 +18,12 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
          mobile:w-[20rem]  mobile:h-[4.5rem]
          tablet:w-[20rem]  tablet:h-[4.5rem]
          laptop:w-[25rem]  laptop:h-[5rem]
-         hidpi:w-[25rem]   hidpi:h-[5rem]
          fhd:w-[30rem]     fhd:h-[5.5rem]
          qhd:w-[35rem]     qhd:h-[6rem]
          uhd:w-[40rem]     uhd:h-[6.5rem]"
 >
   <nav
-    class="relative flex flex-row items-center justify-center text-center w-full h-[3.5rem] laptop:h-full hidpi:h-full
+    class="relative flex flex-row items-center justify-center text-center w-full h-[3.5rem] laptop:h-full
            bg-[var(--component-background)] border border-[var(--border-color)]
            shadow-none rounded-none my-0 mx-0
            mobile:shadow-md tablet:shadow-lg"
@@ -38,13 +37,13 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
           "text-[var(--letter-color)] data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent-color)]",
           i < pages.length - 1 ? "border-r border-[var(--border-color)]" : "",
           "font-light tracking-wide laptop:tracking-widest",
-          "text-xs mobile:text-sm tablet:text-base laptop:text-lg hidpi:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
+          "text-xs mobile:text-sm tablet:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
           "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200",
           "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
         ]}
       >
         <span
-          class="inline-block w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8 hidpi:w-8 hidpi:h-8
+          class="inline-block w-5 h-5 mobile:w-6 mobile:h-6 tablet:w-7 tablet:h-7 laptop:w-8 laptop:h-8
                  transition-all duration-200 group-hover:scale-125
                  bg-[var(--letter-color)] group-hover:bg-[var(--hover-text)]
                  group-data-[active=true]:bg-[var(--accent-color)]

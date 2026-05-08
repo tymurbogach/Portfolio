@@ -68,13 +68,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
           document.documentElement.classList.remove("theme-void");
           document.documentElement.classList.add(t);
         }
-        // HiDPI: aplica layout de laptop cuando el DPR >= 1.25
-        // Cubre 125%, 150%, 175%, 200% de escala OS/navegador
-        var dpr = window.devicePixelRatio || 1;
-        document.documentElement.style.setProperty("--dpr", dpr);
-        if (dpr >= 1.25) {
-          document.documentElement.classList.add("hidpi");
-        }
       })();
     </script>
 
@@ -126,36 +119,36 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <!-- ═══════════════════════════════════
          MÓVIL — HEADER / FOOTER FIJOS
          ═══════════════════════════════════ -->
-    <header class="block laptop:hidden hidpi:hidden fixed top-0 left-0 w-full z-30">
+    <header class="block laptop:hidden fixed top-0 left-0 w-full z-30">
       <Header />
     </header>
 
-    <footer class="block laptop:hidden hidpi:hidden fixed bottom-0 left-0 w-full z-30">
+    <footer class="block laptop:hidden fixed bottom-0 left-0 w-full z-30">
       <Footer />
     </footer>
 
     <!-- ═══════════════════════════════════
          DESKTOP — ELEMENTOS FIJOS
          ═══════════════════════════════════ -->
-    <div class="hidden laptop:flex hidpi:flex fixed top-[3rem] left-[3rem] z-40">
+    <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
       <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
 
-    <div class="hidden laptop:flex hidpi:flex fixed top-[3rem] right-[3rem] z-40">
+    <div class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40">
       <NavBar pages={site.pages} />
     </div>
 
-    <div class="hidden laptop:flex hidpi:flex fixed bottom-[3rem] left-[3rem] z-40">
+    <div class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40">
       <SocialLinks />
     </div>
 
-    <div class="hidden laptop:flex hidpi:flex fixed bottom-[3rem] right-[3rem] z-40">
+    <div class="hidden laptop:flex fixed bottom-[3rem] right-[3rem] z-40">
       <SocialBotPanel />
     </div>
 
     <!-- Mobile chat FAB — visible only below laptop breakpoint -->
     <button
-      class="chat-toggle block laptop:hidden hidpi:hidden fixed z-40 cursor-pointer
+      class="chat-toggle block laptop:hidden fixed z-40 cursor-pointer
              flex items-center gap-1.5 px-3 py-2
              bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
              transition-all duration-200 hover:opacity-100"
@@ -182,7 +175,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
              top-[3rem] mobile:top-[4.5rem] tablet:top-[4.5rem]
              bottom-[2.5rem] mobile:bottom-[4.5rem] tablet:bottom-[4.5rem]
              laptop:inset-0 laptop:p-[6rem]
-             hidpi:inset-0 hidpi:p-[6rem]
              flex items-center justify-center"
     >
       <div

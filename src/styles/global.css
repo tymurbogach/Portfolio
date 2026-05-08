@@ -13,8 +13,6 @@
   --breakpoint-uhd:     240rem;
 }
 
-/* Variant activo cuando JS detecta devicePixelRatio >= 1.25 */
-@variant hidpi (.hidpi &);
 
 /* ═══════════════════════════════════════════════════════
    TEMAS
@@ -360,11 +358,3 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* ═══════════════════════════════════════════════════════
-   HIDPI — hero title font-size override
-   A 960px viewport (DPR=2), 4vw=38px < min 3.2rem → se queda pequeño.
-   Doblamos el multiplicador vw para compensar.
-   ═══════════════════════════════════════════════════════ */
-html.hidpi .hero-title {
-  font-size: clamp(3.2rem, 8vw, 7rem) !important;
-}

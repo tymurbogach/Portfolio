@@ -18,7 +18,7 @@ const { frontend, backend, homelab, languages } = resume;
 
     <div class="flex flex-col gap-3">
       <SectionHeading label="Frontend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
          {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip slug={slug} color={color} label={label} />
         ))}
@@ -27,7 +27,7 @@ const { frontend, backend, homelab, languages } = resume;
 
     <div class="flex flex-col gap-3">
       <SectionHeading label="Backend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
         {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip slug={slug} color={color} label={label} />
         ))}
@@ -39,7 +39,7 @@ const { frontend, backend, homelab, languages } = resume;
   <!-- Homelab -->
   <div class="flex flex-col gap-3">
     <SectionHeading label="Homelab & DevOps" />
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
       {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
         <Chip slug={slug} color={color} label={label} />
       ))}
