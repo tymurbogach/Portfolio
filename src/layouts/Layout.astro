@@ -119,36 +119,40 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <!-- ═══════════════════════════════════
          MÓVIL — HEADER / FOOTER FIJOS
          ═══════════════════════════════════ -->
-    <header class="block laptop:hidden fixed top-0 left-0 w-full z-30">
+    <header class="block laptop:hidden laptop-scaled:hidden fixed top-0 left-0 w-full z-30">
       <Header />
     </header>
 
-    <footer class="block laptop:hidden fixed bottom-0 left-0 w-full z-30">
+    <footer class="block laptop:hidden laptop-scaled:hidden fixed bottom-0 left-0 w-full z-30">
       <Footer />
     </footer>
 
     <!-- ═══════════════════════════════════
          DESKTOP — ELEMENTOS FIJOS
          ═══════════════════════════════════ -->
-    <div class="hidden laptop:flex fixed top-[3rem] left-[3rem] z-40">
+    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+         style="top: var(--fixed-offset); left: var(--fixed-offset);">
       <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
 
-    <div class="hidden laptop:flex fixed top-[3rem] right-[3rem] z-40">
+    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+         style="top: var(--fixed-offset); right: var(--fixed-offset);">
       <NavBar pages={site.pages} />
     </div>
 
-    <div class="hidden laptop:flex fixed bottom-[3rem] left-[3rem] z-40">
+    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+         style="bottom: var(--fixed-offset); left: var(--fixed-offset);">
       <SocialLinks />
     </div>
 
-    <div class="hidden laptop:flex fixed bottom-[3rem] right-[3rem] z-40">
+    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+         style="bottom: var(--fixed-offset); right: var(--fixed-offset);">
       <SocialBotPanel />
     </div>
 
     <!-- Mobile chat FAB — visible only below laptop breakpoint -->
     <button
-      class="chat-toggle block laptop:hidden fixed z-40 cursor-pointer
+      class="chat-toggle block laptop:hidden laptop-scaled:hidden fixed z-40 cursor-pointer
              flex items-center gap-1.5 px-3 py-2
              bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
              transition-all duration-200 hover:opacity-100"
@@ -171,10 +175,10 @@ const ogImageUrl = `${site.url}${ogImage}`;
          MAIN
          ═══════════════════════════════════ -->
     <main
-      class="fixed inset-x-0 z-20
+      class="main-layout fixed inset-x-0 z-20
              top-[3rem] mobile:top-[4.5rem] tablet:top-[4.5rem]
              bottom-[2.5rem] mobile:bottom-[4.5rem] tablet:bottom-[4.5rem]
-             laptop:inset-0 laptop:p-[6rem]
+             laptop:inset-0 laptop-scaled:inset-0
              flex items-center justify-center"
     >
       <div

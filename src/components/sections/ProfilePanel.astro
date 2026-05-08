@@ -17,10 +17,10 @@ const { cv_url, statusStr, statusActive }  = contact;
 
     <!-- Name + role -->
     <div class="text-center">
-      <p class="font-display text-base laptop:text-lg hidpi:text-lg fhd:text-2xl tracking-[0.1em] m-0 leading-tight">
+      <p class="font-display text-base laptop:text-lg hidpi:text-lg fhd:text-2xl qhd:text-3xl tracking-[0.1em] m-0 leading-tight">
         {nameDisplay}
       </p>
-      <p class="text-[0.45rem] tracking-[0.35em] uppercase m-0 mt-0.5"
+      <p class="text-[0.45rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.35em] uppercase m-0 mt-0.5"
          style="color: var(--accent-color); opacity: 0.7;">
         {role}
       </p>
@@ -44,7 +44,7 @@ const { cv_url, statusStr, statusActive }  = contact;
 
     <!-- Bio -->
     <p
-      class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs leading-[1.6] m-0 text-center"
+      class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs qhd:text-sm leading-[1.6] m-0 text-center"
       style="opacity: 0.45; max-width: 15rem;"
     >
       {bio}
@@ -57,7 +57,7 @@ const { cv_url, statusStr, statusActive }  = contact;
         style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent-color)" : "var(--border-color)"}; ${statusActive ? "animation: pulse 2s infinite;" : ""}`}
         aria-hidden="true"
       />
-      <span class="text-[0.48rem] tracking-[0.2em] uppercase font-bold" style="opacity: 0.5;">
+      <span class="text-[0.48rem] fhd:text-[0.6rem] qhd:text-xs tracking-[0.2em] uppercase font-bold" style="opacity: 0.5;">
         {statusStr}
       </span>
     </div>
@@ -70,13 +70,13 @@ const { cv_url, statusStr, statusActive }  = contact;
           style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
         >
           <span
-            class="font-display text-base fhd:text-xl leading-none"
+            class="font-display text-base fhd:text-xl qhd:text-2xl leading-none"
             style="color: var(--accent-color);"
           >
             {n}
           </span>
           <span
-            class="text-[0.36rem] fhd:text-[0.42rem] tracking-[0.12em] uppercase mt-0.5 text-center"
+            class="text-[0.36rem] fhd:text-[0.42rem] qhd:text-[0.55rem] tracking-[0.12em] uppercase mt-0.5 text-center"
             style="opacity: 0.4;"
           >
             {label}
@@ -92,7 +92,7 @@ const { cv_url, statusStr, statusActive }  = contact;
     id="cv-view-btn"
     data-cv-url={cv_url}
     class="flex items-center gap-2 px-4 py-2 w-full justify-center
-           text-[0.5rem] fhd:text-xs tracking-[0.35em] uppercase font-bold
+           text-[0.5rem] fhd:text-xs qhd:text-sm tracking-[0.35em] uppercase font-bold
            border border-[var(--border-color)]
            hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
            transition-all duration-200 cursor-pointer shrink-0"

@@ -32,19 +32,19 @@ const sections: LabeledSection[] = getLabeledSections(site);
   <!-- HOME -->
   <section
     id="home"
-    class="pt-[4rem] laptop:pt-[2rem]"
+    class="pt-[4rem] laptop:pt-[2rem] laptop-scaled:pt-[2rem]"
     aria-label="Home"
   >
-    <div class="mb-3 laptop:mb-5">
+    <div class="mb-3 laptop:mb-5 laptop-scaled:mb-5">
       <h2
-        class="text-[0.6rem] tracking-[0.35em] uppercase font-bold m-0"
+        class="text-[0.6rem] fhd:text-[0.7rem] qhd:text-xs tracking-[0.35em] uppercase font-bold m-0"
         style="color: var(--accent-color); opacity: 0.7;"
       >
         &gt; PORTFOLIO.SYS — OPERATOR IDENTIFIED
       </h2>
-      <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3" />
+      <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3 laptop-scaled:mt-3" />
     </div>
-    <div class="pb-[3rem] laptop:pb-[4rem]">
+    <div class="pb-[3rem] laptop:pb-[4rem] laptop-scaled:pb-[4rem]">
       <Hero hero={heroData} />
     </div>
   </section>
@@ -53,21 +53,21 @@ const sections: LabeledSection[] = getLabeledSections(site);
   {sections.map((section: LabeledSection) => (
     <section
       id={section.sectionId}
-      class="pt-[4rem] laptop:pt-[2rem] border-t border-[var(--border-subtle)]"
+      class="pt-[4rem] laptop:pt-[2rem] laptop-scaled:pt-[2rem] border-t border-[var(--border-subtle)]"
       aria-labelledby={`heading-${section.sectionId}`}
     >
-      <div class="mb-3 laptop:mb-5">
+      <div class="mb-3 laptop:mb-5 laptop-scaled:mb-5">
         <h2
           id={`heading-${section.sectionId}`}
-          class="text-[0.6rem] tracking-[0.35em] uppercase font-bold m-0"
+          class="text-[0.6rem] fhd:text-[0.7rem] qhd:text-xs tracking-[0.35em] uppercase font-bold m-0"
           style="color: var(--accent-color); opacity: 0.7;"
         >
           &gt; {section.sectionLabel.toUpperCase()}
         </h2>
-        <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3" />
+        <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3 laptop-scaled:mt-3" />
       </div>
 
-      <div class="pb-[3rem] laptop:pb-[4rem]">
+      <div class="pb-[3rem] laptop:pb-[4rem] laptop-scaled:pb-[4rem]">
         {section.sectionId === "about"    && <About    about={aboutData} />}
         {section.sectionId === "resume"   && <Resume   resume={resumeData} />}
         {section.sectionId === "projects" && <Projects projects={projects} />}

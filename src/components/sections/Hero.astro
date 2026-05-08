@@ -39,10 +39,10 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
     </h1>
 
     <blockquote class="pl-5 m-0 gap-2">
-      <p class="italic leading-relaxed text-sm laptop:text-base m-0" style="opacity: 0.75;">
+      <p class="italic leading-relaxed text-sm laptop:text-base fhd:text-lg qhd:text-xl m-0" style="opacity: 0.75;">
         "{subtitle1}"
       </p>
-      <p class="mt-1.5 text-[0.62rem] not-italic tracking-widest m-0" style="opacity: 0.35;">
+      <p class="mt-1.5 text-[0.62rem] fhd:text-xs qhd:text-sm not-italic tracking-widest m-0" style="opacity: 0.35;">
         {subtitle2}
       </p>
     </blockquote>
@@ -60,7 +60,7 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
     <div class="overflow-hidden" aria-hidden="true">
       <div
         class="marquee-track"
-        style="font-size: 0.5rem; letter-spacing: 0.45em; text-transform: uppercase; font-weight: bold;
+        style="font-size: clamp(0.5rem, 0.35vw, 0.85rem); letter-spacing: 0.45em; text-transform: uppercase; font-weight: bold;
                opacity: 0.3; font-family: 'JetBrains Mono', monospace; color: var(--letter-color);"
       >
         <span>{MARQUEE}</span>

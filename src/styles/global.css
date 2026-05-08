@@ -1,172 +1,167 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════
-   BREAKPOINTS PERSONALIZADOS
+   VARIANTE — escalado OS alto
+   Activa layout escritorio cuando DPR ≥ 1.4 y viewport ≥ 60rem.
+   Cubre portátiles 1080p/1440p con escalado 150-200%.
    ═══════════════════════════════════════════════════════ */
-@theme {
-  --breakpoint-mobile:  30rem;
-  --breakpoint-tablet:  48rem;
-  --breakpoint-laptop:  80rem;
-  --breakpoint-desktop: 100rem;
-  --breakpoint-fhd:     120rem;
-  --breakpoint-qhd:     160rem;
-  --breakpoint-uhd:     240rem;
-}
-
+@variant laptop-scaled (@media (min-resolution: 1.4dppx) and (min-width: 60rem));
 
 /* ═══════════════════════════════════════════════════════
-   TEMAS
-   Regla de contraste entre capas:
-     total-background → component-background → page-background
-     Diferencia mínima: 8–12 puntos de luminosidad entre capas
-     border-color: siempre visible sin subir brillo
+   BREAKPOINTS
+   ═══════════════════════════════════════════════════════ */
+@theme {
+  --breakpoint-mobile:  30rem;   /* ≈  480px */
+  --breakpoint-tablet:  48rem;   /* ≈  768px */
+  --breakpoint-laptop:  80rem;   /* ≈ 1280px */
+  --breakpoint-desktop: 100rem;  /* ≈ 1600px */
+  --breakpoint-fhd:     120rem;  /* ≈ 1920px */
+  --breakpoint-qhd:     160rem;  /* ≈ 2560px */
+  --breakpoint-uhd:     240rem;  /* ≈ 3840px */
+}
+
+/* ═══════════════════════════════════════════════════════
+   TEMAS — variables semánticas por tema
+   Contraste entre capas: total-bg → page-bg → component-bg
+   Diferencia mínima: 8-12 puntos de luminosidad entre capas.
+   --gradient-border es idéntico en todos los temas (usa variables)
+   y se define una sola vez en :root.
    ═══════════════════════════════════════════════════════ */
 
-/* ─── Void — spray booth night. warm black + electric teal + primer orange ─── */
-:root.theme-void {
+:root.theme-void {  /* spray booth night — warm black · electric teal · primer orange */
   --component-background: #1C1C18;
   --page-background:       #131310;
   --total-background:      #0C0C0A;
   --letter-color:          #E2DDD0;
   --border-color:          #2C2C26;
+  --border-subtle:         rgba(44, 44, 38, 0.75);
   --hover-bg:              #FF5722;
   --hover-text:            #0C0C0A;
   --accent-color:          #00E5B4;
   --accent-text:           #0C0C0A;
   --accent-subtle:         rgba(0, 229, 180, 0.10);
-  --surface-raised:        #222220;
-  --border-subtle:         rgba(44, 44, 38, 0.75);
   --accent-secondary:      #FF5722;
   --accent-tertiary:       #E64A19;
+  --surface-raised:        #222220;
+  --surface-glow:          rgba(0, 229, 180, 0.04);
   --glow-primary:          rgba(0, 229, 180, 0.35);
   --glow-secondary:        rgba(255, 87, 34, 0.25);
   --gradient-hero:         linear-gradient(135deg, rgba(0, 229, 180, 0.07) 0%, transparent 55%);
-  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(0, 229, 180, 0.04);
 }
 
-/* ─── Abyss — azul profundo, cyan eléctrico + magenta ─── */
-:root.theme-abyss {
+:root.theme-abyss { /* azul profundo — cyan eléctrico · magenta */
   --component-background: #1c1c35;
   --page-background:       #111125;
   --total-background:      #07070f;
   --letter-color:          #ece8ff;
   --border-color:          #2a2a4a;
+  --border-subtle:         rgba(42, 42, 74, 0.75);
   --hover-bg:              #e040c8;
   --hover-text:            #07070d;
   --accent-color:          #00ccee;
   --accent-text:           #030308;
   --accent-subtle:         rgba(0, 204, 238, 0.14);
-  --surface-raised:        #232340;
-  --border-subtle:         rgba(42, 42, 74, 0.75);
   --accent-secondary:      #e040c8;
   --accent-tertiary:       #cc006e;
+  --surface-raised:        #232340;
+  --surface-glow:          rgba(0, 204, 238, 0.06);
   --glow-primary:          rgba(0, 204, 238, 0.40);
   --glow-secondary:        rgba(224, 64, 200, 0.30);
   --gradient-hero:         linear-gradient(135deg, rgba(0, 204, 238, 0.12) 0%, transparent 60%);
-  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(0, 204, 238, 0.06);
 }
 
-/* ─── Chalk — claro, neutro frío, azul marino ─── */
-/* Más separación entre capas en claro */
-:root.theme-chalk {
+:root.theme-chalk { /* claro neutro frío — azul marino */
   --component-background: #ebebeb;
   --page-background:       #f8f8f8;
-  --total-background:      #d8d8d8;  /* exterior claramente más oscuro */
+  --total-background:      #d8d8d8;
   --letter-color:          #0d0d0d;
-  --border-color:          #b0b0b0;  /* borde más oscuro, visible sin esfuerzo */
+  --border-color:          #b0b0b0;
+  --border-subtle:         rgba(100, 100, 100, 0.35);
   --hover-bg:              #111111;
   --hover-text:            #f8f8f8;
   --accent-color:          #1a3a5c;
   --accent-text:           #ffffff;
   --accent-subtle:         rgba(26, 58, 92, 0.09);
-  --surface-raised:        #f2f2f2;
-  --border-subtle:         rgba(100, 100, 100, 0.35);
   --accent-secondary:      #0066cc;
   --accent-tertiary:       #004499;
+  --surface-raised:        #f2f2f2;
+  --surface-glow:          rgba(26, 58, 92, 0.04);
   --glow-primary:          rgba(26, 58, 92, 0.18);
   --glow-secondary:        rgba(0, 102, 204, 0.12);
   --gradient-hero:         linear-gradient(135deg, rgba(26, 58, 92, 0.07) 0%, transparent 60%);
-  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(26, 58, 92, 0.04);
 }
 
-/* ─── Stone — claro, terracota cálida, ámbar ─── */
-:root.theme-stone {
+:root.theme-stone { /* claro terracota cálida — ámbar */
   --component-background: #e8e0d5;
   --page-background:       #f5f0e8;
-  --total-background:      #d0c8bc;  /* exterior claramente más oscuro */
+  --total-background:      #d0c8bc;
   --letter-color:          #15120a;
-  --border-color:          #a89880;  /* borde marrón visible */
+  --border-color:          #a89880;
+  --border-subtle:         rgba(120, 100, 80, 0.35);
   --hover-bg:              #1a160e;
   --hover-text:            #f5f0e8;
   --accent-color:          #b05b2a;
   --accent-text:           #ffffff;
   --accent-subtle:         rgba(176, 91, 42, 0.09);
-  --surface-raised:        #f0ebe0;
-  --border-subtle:         rgba(120, 100, 80, 0.35);
   --accent-secondary:      #e05c00;
   --accent-tertiary:       #8b1a00;
+  --surface-raised:        #f0ebe0;
+  --surface-glow:          rgba(176, 91, 42, 0.04);
   --glow-primary:          rgba(176, 91, 42, 0.18);
   --glow-secondary:        rgba(224, 92, 0, 0.12);
   --gradient-hero:         linear-gradient(135deg, rgba(176, 91, 42, 0.07) 0%, transparent 60%);
-  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(176, 91, 42, 0.04);
 }
 
-/* ─── Ember — oscuro carbón, rojo carmín + dorado ─── */
-/* Nuevo tema oscuro de alto contraste */
-:root.theme-ember {
+:root.theme-ember { /* oscuro carbón — rojo carmín · dorado */
   --component-background: #251a1a;
   --page-background:       #160e0e;
   --total-background:      #0a0606;
   --letter-color:          #f5ece8;
   --border-color:          #3d2020;
+  --border-subtle:         rgba(61, 32, 32, 0.75);
   --hover-bg:              #e8c84a;
   --hover-text:            #0a0606;
   --accent-color:          #e8443a;
   --accent-text:           #ffffff;
   --accent-subtle:         rgba(232, 68, 58, 0.14);
-  --surface-raised:        #2e1f1f;
-  --border-subtle:         rgba(61, 32, 32, 0.75);
   --accent-secondary:      #e8c84a;
   --accent-tertiary:       #c8960a;
+  --surface-raised:        #2e1f1f;
+  --surface-glow:          rgba(232, 68, 58, 0.06);
   --glow-primary:          rgba(232, 68, 58, 0.40);
   --glow-secondary:        rgba(232, 200, 74, 0.30);
   --gradient-hero:         linear-gradient(135deg, rgba(232, 68, 58, 0.12) 0%, transparent 60%);
-  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(232, 68, 58, 0.06);
 }
 
-/* ─── Forest — oscuro musgo, verde lima + ámbar ─── */
-:root.theme-forest {
+:root.theme-forest { /* oscuro musgo — verde lima · ámbar */
   --component-background: #1a2218;
   --page-background:       #10160e;
   --total-background:      #080b07;
   --letter-color:          #e8f2e4;
   --border-color:          #2a3d26;
+  --border-subtle:         rgba(42, 61, 38, 0.75);
   --hover-bg:              #d4a843;
   --hover-text:            #080b07;
   --accent-color:          #6ec95a;
   --accent-text:           #080b07;
   --accent-subtle:         rgba(110, 201, 90, 0.14);
-  --surface-raised:        #212c1e;
-  --border-subtle:         rgba(42, 61, 38, 0.75);
   --accent-secondary:      #d4a843;
   --accent-tertiary:       #b07820;
+  --surface-raised:        #212c1e;
+  --surface-glow:          rgba(110, 201, 90, 0.05);
   --glow-primary:          rgba(110, 201, 90, 0.38);
   --glow-secondary:        rgba(212, 168, 67, 0.28);
   --gradient-hero:         linear-gradient(135deg, rgba(110, 201, 90, 0.12) 0%, transparent 60%);
-  --gradient-border:       linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --surface-glow:          rgba(110, 201, 90, 0.05);
 }
 
 /* ═══════════════════════════════════════════════════════
    TOKENS GLOBALES
+   ─ derivados: fórmula idéntica para todos los temas
+   ─ spacing: escala fija en px
+   ─ layout: se sobreescriben por resolución/escalado abajo
    ═══════════════════════════════════════════════════════ */
 :root {
-  --border-subtle: color-mix(in srgb, var(--border-color) 55%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
 
   --space-1:  4px;
   --space-2:  8px;
@@ -178,17 +173,96 @@
   --space-10: 64px;
   --space-12: 96px;
 
-  --sidebar-width: 22rem;
+  /* Layout base (mobile) */
+  --sidebar-width:  22rem;
+  --main-padding:    6rem;  /* padding del box principal en modo desktop */
+  --fixed-offset:    3rem;  /* distancia de namecard/nav/social al borde de pantalla */
+  --nav-width:       100%;  /* ancho nav — full en mobile tiny */
+  --nav-height:      3rem;
+  --nav-icon-size:   1.25rem;
 }
 
-@media (min-width: 120rem) { :root { --sidebar-width: 27rem; } }
-@media (min-width: 160rem) { :root { --sidebar-width: 32rem; } }
-@media (min-width: 240rem) { :root { --sidebar-width: 37rem; } }
+/* ── Mobile ≥ 480px ──────────────────────────────────── */
+@media (min-width: 30rem) {
+  :root {
+    --nav-width:     20rem;
+    --nav-height:    4.5rem;
+    --nav-icon-size: 1.5rem;
+  }
+}
+
+/* ── Tablet ≥ 768px ──────────────────────────────────── */
+@media (min-width: 48rem) {
+  :root {
+    --nav-icon-size: 1.75rem;
+  }
+}
+
+/* ── Laptop escalado (DPR ≥ 1.4, viewport 60–79rem) ─────
+   Portátiles 1080p/1440p con OS scaling 150-200%.
+   A ≥ 80rem, el breakpoint laptop estándar toma el control.  */
+@media (min-resolution: 1.4dppx) and (min-width: 60rem) and (max-width: 79rem) {
+  :root {
+    --sidebar-width: 18rem;
+    --main-padding:  4.5rem;
+    --fixed-offset:  2.5rem;
+    --nav-width:     22rem;
+    --nav-height:    4.75rem;
+    --nav-icon-size: 1.75rem;
+  }
+}
+
+/* ── Laptop ≥ 1280px ─────────────────────────────────── */
+@media (min-width: 80rem) {
+  :root {
+    --nav-width:     25rem;
+    --nav-height:    5rem;
+    --nav-icon-size: 2rem;
+    --fixed-offset:  3rem;
+    --main-padding:  6rem;
+  }
+}
+
+/* ── FHD ≥ 1920px ────────────────────────────────────── */
+@media (min-width: 120rem) {
+  :root {
+    --sidebar-width: 27rem;
+    --nav-width:     30rem;
+    --nav-height:    5.5rem;
+    --fixed-offset:  3.5rem;
+    --main-padding:  7rem;
+  }
+}
+
+/* ── QHD ≥ 2560px ────────────────────────────────────── */
+@media (min-width: 160rem) {
+  :root {
+    --sidebar-width: 32rem;
+    --nav-width:     35rem;
+    --nav-height:    6rem;
+    --fixed-offset:  4rem;
+    --main-padding:  8rem;
+  }
+}
+
+/* ── UHD 4K ≥ 3840px ─────────────────────────────────── */
+@media (min-width: 240rem) {
+  :root {
+    --sidebar-width: 37rem;
+    --nav-width:     40rem;
+    --nav-height:    6.5rem;
+    --fixed-offset:  4.5rem;
+    --main-padding:  9rem;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════
    TIPOGRAFÍA Y RESET
    ═══════════════════════════════════════════════════════ */
-html { font-size: 16px; }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
 @media (min-width: 120rem) { html { font-size: 17px; } }
 @media (min-width: 160rem) { html { font-size: 19px; } }
 @media (min-width: 240rem) { html { font-size: 22px; } }
@@ -198,6 +272,20 @@ html { font-size: 16px; }
 *::after {
   box-sizing: border-box;
   font-family: "JetBrains Mono", "Courier New", monospace;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { display: none; }
+
+*:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 /* Grain texture — primer surface feel */
@@ -211,20 +299,10 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow-x: hidden;
-}
-
-html { scroll-behavior: smooth; }
-
-* { scrollbar-width: none; }
-*::-webkit-scrollbar { display: none; }
-
-*:focus-visible {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
+/* ── Padding del box principal — activo solo en layout desktop ── */
+@media (min-width: 80rem),
+       (min-resolution: 1.4dppx) and (min-width: 60rem) and (max-width: 79rem) {
+  .main-layout { padding: var(--main-padding); }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -333,28 +411,5 @@ html { scroll-behavior: smooth; }
 
 .marquee-track:hover {
   animation-play-state: paused;
-}
-
-/* ═══════════════════════════════════════════════════════
-   PROJECTS GRID — responsive grid (avoids overflow-hidden conflict)
-   mobile: 2-col · laptop: 3-col · fhd: 5-col
-   ═══════════════════════════════════════════════════════ */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  align-content: start;
-}
-
-@media (min-width: 80rem) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 120rem) {
-  .projects-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
 }
 

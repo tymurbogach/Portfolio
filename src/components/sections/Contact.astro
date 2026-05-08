@@ -22,7 +22,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
   <div class="grid grid-cols-1 tablet:grid-cols-3 gap-2">
 
     <div class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-      <span class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40">Email</span>
+      <span class="text-[0.55rem] fhd:text-[0.65rem] qhd:text-xs tracking-[0.4em] uppercase font-bold opacity-40">Email</span>
       <a
         href={`mailto:${email}`}
         class="text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--accent-color)] hover:opacity-70 transition-opacity"
@@ -32,12 +32,12 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
     </div>
 
     <div class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-      <span class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40">Location</span>
+      <span class="text-[0.55rem] fhd:text-[0.65rem] qhd:text-xs tracking-[0.4em] uppercase font-bold opacity-40">Location</span>
       <span class="text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--letter-color)]">{location}</span>
     </div>
 
     <div class="flex flex-col gap-[0.3rem] py-3 px-4 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-      <span class="text-[0.55rem] tracking-[0.4em] uppercase font-bold opacity-40">Status</span>
+      <span class="text-[0.55rem] fhd:text-[0.65rem] qhd:text-xs tracking-[0.4em] uppercase font-bold opacity-40">Status</span>
       <span class="flex items-center gap-[0.4rem] text-[clamp(0.75rem,1.2vw,0.9rem)] font-bold text-[var(--letter-color)]">
         <span class={`w-[6px] h-[6px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
         {statusStr}
@@ -55,7 +55,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
     <div
       id="form-status"
       class="hidden py-3 px-4 mb-4 border border-[var(--border-subtle)]
-             text-xs tracking-[0.15em] text-center text-[var(--letter-color)]"
+             text-xs fhd:text-sm qhd:text-base tracking-[0.15em] text-center text-[var(--letter-color)]"
     />
 
     <!-- Campos en dos columnas -->
@@ -90,7 +90,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
                hover:opacity-85 hover:translate-x-[2px]
                disabled:opacity-30 disabled:cursor-default disabled:transform-none"
       >
-        <span class="font-['Poiret_One',cursive] text-[0.6rem] tracking-[0.35em] uppercase font-bold">Send</span>
+        <span class="font-['Poiret_One',cursive] text-[0.6rem] fhd:text-xs qhd:text-sm tracking-[0.35em] uppercase font-bold">Send</span>
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
              stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
           <path d="M4 10h12M12 5l5 5-5 5" />
@@ -109,7 +109,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-bold
+      class="flex items-center gap-2 px-4 py-2 text-xs fhd:text-sm qhd:text-base tracking-[0.2em] uppercase font-bold
              border border-[var(--border-color)]
              hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
     >

@@ -12,14 +12,14 @@ interface Props {
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
-<div class="flex flex-col laptop:flex-row w-full h-full overflow-hidden">
+<div class="flex flex-col laptop:flex-row laptop-scaled:flex-row w-full h-full overflow-hidden">
 
   <!-- ═══════════════════════════════════
        SIDEBAR izquierda (solo desktop)
        ═══════════════════════════════════ -->
   <div
-    class="hidden laptop:flex shrink-0 items-center justify-center
-           laptop:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
+    class="hidden laptop:flex laptop-scaled:flex shrink-0 items-center justify-center
+           laptop:p-[2.5rem] laptop-scaled:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
     style="width: var(--sidebar-width);"
   >
     <ProfilePanel />
@@ -35,20 +35,18 @@ const { pageLabel = "", scrollable = true } = Astro.props;
       <div
         class="shrink-0
                px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-               laptop:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-               pt-[1rem] laptop:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
-               pb-4 laptop:pb-7"
+               laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
+               pt-[1rem] laptop:pt-[1.5rem] laptop-scaled:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
+               pb-4 laptop:pb-7 laptop-scaled:pb-7"
       >
-        <div class="w-full laptop:max-w-[72ch] laptop:mx-auto fhd:max-w-[90ch] qhd:max-w-[100ch]">
-          <p
-            class="text-xs laptop:text-base fhd:text-lg
-                   tracking-[0.45em] uppercase font-bold
-                   text-[var(--letter-color)] text-glow"
-          >
-            {pageLabel}
-          </p>
-          <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4" />
-        </div>
+        <p
+          class="text-xs laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl
+                 tracking-[0.45em] uppercase font-bold
+                 text-[var(--letter-color)] text-glow"
+        >
+          {pageLabel}
+        </p>
+        <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4 laptop-scaled:mt-4" />
       </div>
     )}
 
@@ -57,18 +55,16 @@ const { pageLabel = "", scrollable = true } = Astro.props;
       <div
         id="content-scroll"
         class="flex-1 overflow-y-auto overflow-x-hidden
-               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem] laptop:px-[4.5rem]
-               pb-[4rem] laptop:pb-[5rem]"
+               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
+               laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem] uhd:px-[8rem]
+               pb-[4rem] laptop:pb-[5rem] laptop-scaled:pb-[5rem] fhd:pb-[6rem] qhd:pb-[7rem]"
       >
-        <div class="w-full laptop:max-w-[72ch] laptop:mx-auto">
-          <slot />
-        </div>
+        <slot />
       </div>
     ) : (
-      <div class="flex-1 flex items-center justify-center px-[1.25rem] laptop:px-[4.5rem]">
-        <div class="w-full laptop:max-w-[72ch]">
-          <slot />
-        </div>
+      <div class="flex-1 flex items-center justify-center
+                  px-[1.25rem] laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem] uhd:px-[8rem]">
+        <slot />
       </div>
     )}
 

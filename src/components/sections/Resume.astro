@@ -53,9 +53,9 @@ const { frontend, backend, homelab, languages } = resume;
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <div class="flex items-center gap-2 px-3 py-1.5
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-          <span class="text-sm">{flag}</span>
-          <span class="text-xs font-bold">{lang}</span>
-          <span class="text-[0.5rem] tracking-[0.25em] uppercase opacity-40">{level}</span>
+          <span class="text-sm fhd:text-base qhd:text-lg">{flag}</span>
+          <span class="text-xs fhd:text-sm qhd:text-base font-bold">{lang}</span>
+          <span class="text-[0.5rem] fhd:text-[0.6rem] qhd:text-xs tracking-[0.25em] uppercase opacity-40">{level}</span>
         </div>
       ))}
     </div>
