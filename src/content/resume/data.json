@@ -7,8 +7,6 @@
       { "slug": "typescript",  "color": "#3178c6", "label": "TypeScript" },
       { "slug": "tailwindcss", "color": "#06b6d4", "label": "Tailwind"   },
       { "slug": "angular",     "color": "#dd0031", "label": "Angular"    },
-      { "slug": "vuedotjs",    "color": "#41b883", "label": "Vue.js"     },
-      { "slug": "react",       "color": "#61dafb", "label": "React"      },
       { "slug": "astro",       "color": "#ff5d01", "label": "Astro"      }
     ],
     "backend": [
