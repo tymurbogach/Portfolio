@@ -13,7 +13,7 @@ const { cv_url, statusStr, statusActive }  = contact;
 
 <section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
 
-  <div class="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 laptop:gap-3 fhd:gap-5">
+  <div class="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 laptop:gap-3 hidpi:gap-3 fhd:gap-5">
 
     <!-- Photo -->
     <div class="relative">
@@ -27,13 +27,13 @@ const { cv_url, statusStr, statusActive }  = contact;
         alt="Timur Bogach"
         class="w-full h-auto object-contain pointer-events-none
                max-w-[6rem] mobile:max-w-[7rem]
-               laptop:max-w-[7rem] fhd:max-w-[11rem] qhd:max-w-[15rem]"
+               laptop:max-w-[7rem] hidpi:max-w-[7rem] fhd:max-w-[11rem] qhd:max-w-[15rem]"
       />
     </div>
 
     <!-- Bio -->
     <p
-      class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs leading-[1.6] m-0 text-center"
+      class="text-[0.52rem] laptop:text-[0.55rem] hidpi:text-[0.55rem] fhd:text-xs leading-[1.6] m-0 text-center"
       style="opacity: 0.45; max-width: 15rem;"
     >
       {bio}
@@ -52,7 +52,7 @@ const { cv_url, statusStr, statusActive }  = contact;
     </div>
 
     <!-- Stats (horizontal row) -->
-    <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem]">
+    <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] hidpi:max-w-[14rem] fhd:max-w-[18rem]">
       {stats.map(({ n, label }: { n: string; label: string }) => (
         <div
           class="flex flex-col items-center flex-1 px-1.5 py-2"

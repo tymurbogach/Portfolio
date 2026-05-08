@@ -32,7 +32,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
   <!-- HOME -->
   <section
     id="home"
-    class="pt-[4rem] laptop:pt-[2rem]"
+    class="pt-[4rem] laptop:pt-[2rem] hidpi:pt-[2rem]"
     aria-label="Home"
   >
     <div class="mb-4 laptop:mb-7">
@@ -53,7 +53,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
   {sections.map((section: LabeledSection) => (
     <section
       id={section.sectionId}
-      class="pt-[4rem] laptop:pt-[2rem]"
+      class="pt-[4rem] laptop:pt-[2rem] hidpi:pt-[2rem] border-t border-[var(--border-subtle)]"
       aria-labelledby={`heading-${section.sectionId}`}
     >
       <div class="mb-4 laptop:mb-7">
