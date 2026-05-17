@@ -13,7 +13,7 @@ const { journey, education, hobbies } = about;
 
   <!-- JOURNEY -->
   <div class="flex flex-col gap-5">
-    <h3 class="text-[0.6rem] fhd:text-[0.7rem] qhd:text-xs tracking-[0.5em] uppercase font-bold opacity-40">Journey</h3>
+    <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs tracking-[0.5em] uppercase font-bold opacity-40">Journey</h3>
     <div class="flex flex-col">
       {journey.map(({ year, event, detail, active }: { year: string; event: string; detail: string; active: boolean }, i: number) => (
         <div class="flex gap-4 laptop:gap-6">
@@ -33,14 +33,14 @@ const { journey, education, hobbies } = about;
           <!-- Content -->
           <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
-              <span class="text-[0.55rem] fhd:text-[0.65rem] qhd:text-xs tracking-[0.2em] uppercase opacity-35 font-bold whitespace-nowrap">
+              <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs tracking-[0.2em] uppercase opacity-35 font-bold whitespace-nowrap">
                 {year}
               </span>
-              <span class={`text-sm laptop:text-base fhd:text-lg qhd:text-xl font-bold ${active ? "text-[var(--accent-color)]" : ""}`}>
+              <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl font-bold ${active ? "text-[var(--accent-color)]" : ""}`}>
                 {event}
               </span>
             </div>
-            <p class="text-xs laptop:text-sm fhd:text-base qhd:text-lg opacity-65 leading-relaxed">{detail}</p>
+            <p class="text-xs laptop:text-sm laptop-scaled:text-sm fhd:text-base qhd:text-lg opacity-65 leading-relaxed">{detail}</p>
           </div>
 
         </div>
@@ -50,17 +50,17 @@ const { journey, education, hobbies } = about;
 
  <!-- EDUCATION -->
 <div class="flex flex-col gap-4">
-  <h3 class="text-[0.6rem] fhd:text-[0.7rem] qhd:text-xs tracking-[0.5em] uppercase font-bold opacity-40">Education</h3>
+  <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs tracking-[0.5em] uppercase font-bold opacity-40">Education</h3>
 
   <div class="flex flex-col gap-2">
     {education.map(({ years, title, sub }: { years: string; title: string; sub: string }) => (
       <div class="flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
         <div>
-          <p class="text-sm fhd:text-base qhd:text-lg font-bold leading-snug">{title}</p>
-          <p class="text-[0.58rem] fhd:text-xs qhd:text-sm tracking-[0.1em] uppercase opacity-45 mt-0.5">{sub}</p>
+          <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl font-bold leading-snug">{title}</p>
+          <p class="text-[0.58rem] laptop:text-[0.67rem] laptop-scaled:text-[0.67rem] fhd:text-xs qhd:text-sm tracking-[0.1em] uppercase opacity-45 mt-0.5">{sub}</p>
         </div>
 
-        <span class="text-[0.55rem] fhd:text-[0.65rem] qhd:text-xs tracking-[0.15em] uppercase opacity-35 font-bold whitespace-nowrap mt-0.5 shrink-0">
+        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs tracking-[0.15em] uppercase opacity-35 font-bold whitespace-nowrap mt-0.5 shrink-0">
           {years}
         </span>
       </div>
@@ -70,10 +70,10 @@ const { journey, education, hobbies } = about;
 
   <!-- HOBBIES -->
   <div class="flex flex-col gap-4">
-    <h3 class="text-[0.6rem] fhd:text-[0.7rem] qhd:text-xs tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
+    <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
     <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
       {hobbies.map(({ icon, label }: { icon: string; label: string }) => (
-        <div class="flex items-center gap-3 px-4 py-3 border border-[var(--border-subtle)] text-sm laptop:text-base fhd:text-lg opacity-65 bg-[var(--surface-raised)]">
+        <div class="flex items-center gap-3 px-4 py-4 border border-[var(--border-subtle)] text-sm laptop:text-base fhd:text-lg opacity-65 bg-[var(--surface-raised)]">
           <span class="text-base">{icon}</span>
           <span class="tracking-[0.1em]">{label}</span>
         </div>

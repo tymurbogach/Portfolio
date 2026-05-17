@@ -11,23 +11,23 @@ const { resume }                               = Astro.props;
 const { frontend, backend, homelab, languages } = resume;
 ---
 
-<section class="flex flex-col w-full gap-6 laptop:gap-8">
+<section class="flex flex-col w-full gap-6 laptop:gap-8 fhd:gap-10">
 
   <!-- Frontend + Backend en dos columnas -->
   <div class="grid grid-cols-1 mobile:grid-cols-2 gap-6 laptop:gap-8">
 
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 laptop:gap-4">
       <SectionHeading label="Frontend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 laptop:gap-3">
          {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip slug={slug} color={color} label={label} />
         ))}
       </div>
     </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 laptop:gap-4">
       <SectionHeading label="Backend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 laptop:gap-3">
         {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip slug={slug} color={color} label={label} />
         ))}
@@ -37,9 +37,9 @@ const { frontend, backend, homelab, languages } = resume;
   </div>
 
   <!-- Homelab -->
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-3 laptop:gap-4">
     <SectionHeading label="Homelab & DevOps" />
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 laptop:gap-3">
       {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
         <Chip slug={slug} color={color} label={label} />
       ))}
@@ -47,15 +47,15 @@ const { frontend, backend, homelab, languages } = resume;
   </div>
 
   <!-- Languages -->
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-3 laptop:gap-4">
     <SectionHeading label="Languages" />
-    <div class="flex flex-wrap gap-2">
+    <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
-        <div class="flex items-center gap-2 px-3 py-1.5
+        <div class="flex flex-col items-center justify-center gap-1 py-3 laptop:py-4
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-          <span class="text-sm fhd:text-base qhd:text-lg">{flag}</span>
-          <span class="text-xs fhd:text-sm qhd:text-base font-bold">{lang}</span>
-          <span class="text-[0.5rem] fhd:text-[0.6rem] qhd:text-xs tracking-[0.25em] uppercase opacity-40">{level}</span>
+          <span class="text-xl laptop:text-2xl fhd:text-3xl">{flag}</span>
+          <span class="text-xs laptop:text-sm fhd:text-base font-bold tracking-[0.05em]">{lang}</span>
+          <span class="text-[0.5rem] laptop:text-[0.58rem] fhd:text-[0.65rem] tracking-[0.25em] uppercase opacity-40">{level}</span>
         </div>
       ))}
     </div>

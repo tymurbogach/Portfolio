@@ -32,10 +32,15 @@ const sections: LabeledSection[] = getLabeledSections(site);
   <!-- HOME -->
   <section
     id="home"
-    class="pt-[4rem] laptop:pt-[2rem] laptop-scaled:pt-[2rem]"
+    class="pt-[4rem] laptop:pt-0 laptop-scaled:pt-0
+           laptop:h-[calc(100vh-12rem)] laptop:flex laptop:flex-col
+           laptop-scaled:h-[calc(100vh-9rem)] laptop-scaled:flex laptop-scaled:flex-col
+           fhd:h-[calc(100vh-14rem)] qhd:h-[calc(100vh-16rem)] uhd:h-[calc(100vh-18rem)]"
     aria-label="Home"
   >
-    <div class="mb-3 laptop:mb-5 laptop-scaled:mb-5">
+    <!-- Label al top — igual que todas las secciones -->
+    <div class="mb-3 laptop:mb-4 laptop-scaled:mb-4 shrink-0
+                laptop:pt-[2rem] laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]">
       <h2
         class="text-[0.6rem] fhd:text-[0.7rem] qhd:text-xs tracking-[0.35em] uppercase font-bold m-0"
         style="color: var(--accent-color); opacity: 0.7;"
@@ -44,7 +49,8 @@ const sections: LabeledSection[] = getLabeledSections(site);
       </h2>
       <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3 laptop-scaled:mt-3" />
     </div>
-    <div class="pb-[3rem] laptop:pb-[4rem] laptop-scaled:pb-[4rem]">
+    <!-- Hero fills all remaining space -->
+    <div class="pb-[3rem] laptop:pb-0 laptop-scaled:pb-0 laptop:flex-1 laptop:min-h-0 laptop:relative laptop-scaled:relative">
       <Hero hero={heroData} />
     </div>
   </section>

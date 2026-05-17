@@ -11,20 +11,10 @@ const { stats }                            = home;
 const { cv_url, statusStr, statusActive }  = contact;
 ---
 
-<section class="flex flex-col justify-between w-full h-full min-h-0 gap-4">
+<section class="flex flex-col w-full h-full min-h-0">
 
-  <div class="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 laptop:gap-3 fhd:gap-5">
-
-    <!-- Name + role -->
-    <div class="text-center">
-      <p class="font-display text-base laptop:text-lg hidpi:text-lg fhd:text-2xl qhd:text-3xl tracking-[0.1em] m-0 leading-tight">
-        {nameDisplay}
-      </p>
-      <p class="text-[0.45rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.35em] uppercase m-0 mt-0.5"
-         style="color: var(--accent-color); opacity: 0.7;">
-        {role}
-      </p>
-    </div>
+  <div class="flex flex-col items-center gap-4 laptop:gap-4 fhd:gap-6
+              pt-[10%] laptop:pt-[15%] laptop-scaled:pt-[15%] fhd:pt-[18%] qhd:pt-[20%]">
 
     <!-- Photo -->
     <div class="relative">
@@ -38,13 +28,13 @@ const { cv_url, statusStr, statusActive }  = contact;
         alt="Timur Bogach"
         class="w-full h-auto object-contain pointer-events-none
                max-w-[6rem] mobile:max-w-[7rem]
-               laptop:max-w-[7rem] fhd:max-w-[11rem] qhd:max-w-[15rem]"
+               laptop:max-w-[9rem] laptop-scaled:max-w-[9rem] fhd:max-w-[12rem] qhd:max-w-[16rem]"
       />
     </div>
 
     <!-- Bio -->
     <p
-      class="text-[0.52rem] laptop:text-[0.55rem] fhd:text-xs qhd:text-sm leading-[1.6] m-0 text-center"
+      class="text-[0.52rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-xs qhd:text-sm leading-[1.6] m-0 text-center"
       style="opacity: 0.45; max-width: 15rem;"
     >
       {bio}
@@ -57,7 +47,7 @@ const { cv_url, statusStr, statusActive }  = contact;
         style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent-color)" : "var(--border-color)"}; ${statusActive ? "animation: pulse 2s infinite;" : ""}`}
         aria-hidden="true"
       />
-      <span class="text-[0.48rem] fhd:text-[0.6rem] qhd:text-xs tracking-[0.2em] uppercase font-bold" style="opacity: 0.5;">
+      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs tracking-[0.2em] uppercase font-bold" style="opacity: 0.5;">
         {statusStr}
       </span>
     </div>
@@ -70,13 +60,13 @@ const { cv_url, statusStr, statusActive }  = contact;
           style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
         >
           <span
-            class="font-display text-base fhd:text-xl qhd:text-2xl leading-none"
+            class="font-display text-base laptop:text-xl laptop-scaled:text-xl fhd:text-2xl qhd:text-3xl leading-none"
             style="color: var(--accent-color);"
           >
             {n}
           </span>
           <span
-            class="text-[0.36rem] fhd:text-[0.42rem] qhd:text-[0.55rem] tracking-[0.12em] uppercase mt-0.5 text-center"
+            class="text-[0.36rem] laptop:text-[0.44rem] laptop-scaled:text-[0.44rem] fhd:text-[0.5rem] qhd:text-[0.6rem] tracking-[0.12em] uppercase mt-0.5 text-center"
             style="opacity: 0.4;"
           >
             {label}
@@ -87,12 +77,12 @@ const { cv_url, statusStr, statusActive }  = contact;
 
   </div>
 
-  <!-- CV button — always anchored at bottom -->
+  <!-- CV button — anchored at bottom -->
   <button
     id="cv-view-btn"
     data-cv-url={cv_url}
-    class="flex items-center gap-2 px-4 py-2 w-full justify-center
-           text-[0.5rem] fhd:text-xs qhd:text-sm tracking-[0.35em] uppercase font-bold
+    class="mt-auto flex items-center gap-2 px-4 py-2 w-full justify-center
+           text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm tracking-[0.35em] uppercase font-bold
            border border-[var(--border-color)]
            hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
            transition-all duration-200 cursor-pointer shrink-0"
