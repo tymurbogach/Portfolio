@@ -7,8 +7,8 @@ interface Props {
   resume: ResumeData;
 }
 
-const { resume }                               = Astro.props;
-const { frontend, backend, homelab, languages } = resume;
+const { resume }                                          = Astro.props;
+const { frontend, backend, homelab, homelabExtra, languages } = resume;
 ---
 
 <section class="flex flex-col w-full gap-6 laptop:gap-8 fhd:gap-10">
@@ -43,6 +43,26 @@ const { frontend, backend, homelab, languages } = resume;
       {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
         <Chip slug={slug} color={color} label={label} />
       ))}
+      {homelabExtra && homelabExtra > 0 && (
+        <span
+          class="flex items-center justify-center gap-1.5
+                 h-11 laptop:h-14 laptop-scaled:h-14 fhd:h-16 qhd:h-20 uhd:h-24
+                 px-3.5 laptop:px-4
+                 border border-dashed border-[var(--border-subtle)]
+                 cursor-default"
+          style="opacity: 0.45;"
+          title={`${homelabExtra} more tools without icons`}
+        >
+          <span
+            class="text-[0.7rem] laptop:text-[0.78rem] fhd:text-xs font-bold"
+            style="color: var(--accent-color);"
+          >+{homelabExtra}</span>
+          <span
+            class="text-[0.55rem] laptop:text-[0.62rem] tracking-[0.12em] uppercase font-bold"
+            style="color: var(--letter-color);"
+          >more</span>
+        </span>
+      )}
     </div>
   </div>
 

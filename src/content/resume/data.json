@@ -39,6 +39,7 @@
       { "slug": "watchtower",  "color": "#416271", "label": "Watchtower"  },
       { "slug": "git",         "color": "#f05032", "label": "Git"         }
     ],
+    "homelabExtra": 16,
     "languages": [
       { "flag": "🇷🇺", "lang": "Russian",   "level": "native" },
       { "flag": "🇺🇦", "lang": "Ukrainian", "level": "native" },

@@ -104,10 +104,11 @@ const about = defineCollection({
 const resume = defineCollection({
   loader: file('src/content/resume/data.json'),
   schema: z.object({
-    frontend:  z.array(techSkill),
-    backend:   z.array(techSkill),
-    homelab:   z.array(techSkill),
-    languages: z.array(z.object({
+    frontend:     z.array(techSkill),
+    backend:      z.array(techSkill),
+    homelab:      z.array(techSkill),
+    homelabExtra: z.number().optional(),
+    languages:    z.array(z.object({
       flag:  z.string(),
       lang:  z.string(),
       level: z.enum(['native', 'fluent', 'intermediate', 'basic']),
