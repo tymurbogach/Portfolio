@@ -42,13 +42,11 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
     aria-hidden="true"
   />
 
-  <!-- BLOQUE PRINCIPAL: título arriba, cita+CTAs centrados en espacio restante -->
-  <div class="flex flex-col flex-1 min-h-0 gap-8
+  <!-- BLOQUE PRINCIPAL: hijos directos del flex-col; my-auto en CTAs usa espacio real -->
+  <div class="flex flex-col flex-1 min-h-0
               laptop:flex-none laptop:shrink-0 laptop:gap-4">
 
-    <!-- Título — triple clic activa cambio de tema
-         Móvil: "Software" izquierda / "Solutions" derecha (stagger diagonal)
-         Desktop: ambas izquierda, leading compacto -->
+    <!-- Título -->
     <div id="theme-toggle">
       <h1
         class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
@@ -59,31 +57,26 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
       </h1>
     </div>
 
-    <!-- Cita + CTAs: flex-1 llena espacio; CTAs con my-auto flotan entre cita y marquee -->
-    <div class="flex-1 flex flex-col laptop:flex-none laptop:gap-3">
+    <!-- Cita: gap desde el título con mt-8 en móvil -->
+    <div class="flex flex-col gap-1.5 text-center mt-8 laptop:mt-0">
+      <p
+        class="italic leading-[1.7] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
+        style="opacity: 0.65;"
+      >
+        "{subtitle1}"
+      </p>
+      <p
+        class="text-[0.6rem] laptop:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base not-italic tracking-[0.3em] m-0"
+        style="opacity: 0.28;"
+      >
+        {subtitle2}
+      </p>
+    </div>
 
-      <!-- Cita -->
-      <div class="flex flex-col gap-1.5 text-center shrink-0">
-        <p
-          class="italic leading-[1.7] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
-          style="opacity: 0.65;"
-        >
-          "{subtitle1}"
-        </p>
-        <p
-          class="text-[0.6rem] laptop:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base not-italic tracking-[0.3em] m-0"
-          style="opacity: 0.28;"
-        >
-          {subtitle2}
-        </p>
-      </div>
-
-      <!-- CTAs — my-auto los centra dinámicamente entre la cita y el marquee -->
-      <div class="flex flex-wrap gap-3 items-center justify-center my-auto laptop:my-0 laptop:justify-start">
-        <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
-        <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
-      </div>
-
+    <!-- CTAs: my-auto los centra entre la cita (arriba) y el marquee (abajo) -->
+    <div class="flex flex-wrap gap-3 items-center justify-center my-auto laptop:my-0 laptop:justify-start">
+      <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
+      <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
     </div>
 
   </div>
