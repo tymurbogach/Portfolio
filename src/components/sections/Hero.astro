@@ -42,9 +42,9 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
     aria-hidden="true"
   />
 
-  <!-- BLOQUE PRINCIPAL: contenido centrado verticalmente en móvil -->
-  <div class="flex flex-col flex-1 min-h-0 justify-center gap-8
-              laptop:flex-none laptop:shrink-0 laptop:justify-start laptop:gap-4">
+  <!-- BLOQUE PRINCIPAL: título arriba, cita+CTAs centrados en espacio restante -->
+  <div class="flex flex-col flex-1 min-h-0 gap-8
+              laptop:flex-none laptop:shrink-0 laptop:gap-4">
 
     <!-- Título — triple clic activa cambio de tema
          Móvil: "Software" izquierda / "Solutions" derecha (stagger diagonal)
@@ -59,8 +59,9 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
       </h1>
     </div>
 
-    <!-- Cita + CTAs agrupados (fondo en móvil vía justify-between) -->
-    <div class="flex flex-col gap-10">
+    <!-- Cita + CTAs: flex-1 para ocupar espacio restante, justify-center los centra -->
+    <div class="flex-1 flex flex-col justify-center gap-10
+                laptop:flex-none laptop:justify-start">
 
       <!-- Cita — centrada en móvil para contrastar con el stagger del título -->
       <div class="flex flex-col gap-1.5 text-center ">
