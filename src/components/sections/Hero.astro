@@ -59,12 +59,11 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
       </h1>
     </div>
 
-    <!-- Cita + CTAs: flex-1 para ocupar espacio restante, justify-center los centra -->
-    <div class="flex-1 flex flex-col justify-center gap-10
-                laptop:flex-none laptop:justify-start">
+    <!-- Cita + CTAs: flex-1 llena espacio; CTAs con my-auto flotan entre cita y marquee -->
+    <div class="flex-1 flex flex-col laptop:flex-none laptop:gap-3">
 
-      <!-- Cita — centrada en móvil para contrastar con el stagger del título -->
-      <div class="flex flex-col gap-1.5 text-center ">
+      <!-- Cita -->
+      <div class="flex flex-col gap-1.5 text-center shrink-0">
         <p
           class="italic leading-[1.7] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
           style="opacity: 0.65;"
@@ -79,8 +78,8 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
         </p>
       </div>
 
-      <!-- CTAs — centrados en móvil -->
-      <div class="flex flex-wrap gap-3 items-center justify-center laptop:justify-start">
+      <!-- CTAs — my-auto los centra dinámicamente entre la cita y el marquee -->
+      <div class="flex flex-wrap gap-3 items-center justify-center my-auto laptop:my-0 laptop:justify-start">
         <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
         <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
       </div>
