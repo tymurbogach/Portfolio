@@ -52,10 +52,14 @@ function initSectionNav(): void {
   scrollToSection(scrollEl, initSection, "instant");
   setActiveNav(initSection);
 
-  // ── Home section: fill viewport height ──────────────────────────────────
+  // ── Home section: fill viewport height (desktop only) ───────────────────
   const homeSection = document.getElementById("home");
+  const isDesktop = () =>
+    window.matchMedia("(min-width: 80rem)").matches ||
+    window.matchMedia("(min-resolution: 1.4dppx) and (min-width: 60rem)").matches;
   const setHomeHeight = () => {
-    if (homeSection) homeSection.style.minHeight = `${scrollEl.clientHeight}px`;
+    if (!homeSection) return;
+    homeSection.style.minHeight = isDesktop() ? `${scrollEl.clientHeight}px` : "";
   };
   setHomeHeight();
   window.addEventListener("resize", setHomeHeight, { signal: ac.signal });

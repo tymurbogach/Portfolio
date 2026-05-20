@@ -24,7 +24,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
     <!-- Info cards -->
     <div class="flex flex-col gap-2">
       <div class="flex flex-col gap-[0.4rem] py-4 px-5 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs tracking-[0.4em] uppercase font-bold opacity-40">Email</span>
+        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.4em] uppercase font-bold opacity-40">Email</span>
         <a
           href={`mailto:${email}`}
           class="text-[clamp(0.8rem,1.1vw,1rem)] font-bold text-[var(--accent-color)] hover:opacity-70 transition-opacity break-all"
@@ -34,12 +34,12 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
       </div>
 
       <div class="flex flex-col gap-[0.4rem] py-4 px-5 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs tracking-[0.4em] uppercase font-bold opacity-40">Location</span>
+        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.4em] uppercase font-bold opacity-40">Location</span>
         <span class="text-[clamp(0.8rem,1.1vw,1rem)] font-bold text-[var(--letter-color)]">{location}</span>
       </div>
 
       <div class="flex flex-col gap-[0.4rem] py-4 px-5 border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs tracking-[0.4em] uppercase font-bold opacity-40">Status</span>
+        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.4em] uppercase font-bold opacity-40">Status</span>
         <span class="flex items-center gap-[0.4rem] text-[clamp(0.8rem,1.1vw,1rem)] font-bold text-[var(--letter-color)]">
           <span class={`w-[6px] h-[6px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
           {statusStr}
@@ -48,7 +48,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
     </div>
 
     <!-- Decorative quote -->
-    <p class="hidden laptop:block laptop-scaled:block text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm leading-[1.8] opacity-35 tracking-[0.06em] neon-left-border">
+    <p class="hidden laptop:block laptop-scaled:block text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base leading-[1.8] opacity-35 tracking-[0.06em] neon-left-border">
       Open to freelance projects,<br />collaborations & full-time roles.<br />Response within 24 h.
     </p>
 
@@ -61,7 +61,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-2 px-4 py-2
-                 text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-xs qhd:text-sm
+                 text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base
                  tracking-[0.2em] uppercase font-bold
                  border border-[var(--border-color)]
                  hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
@@ -133,7 +133,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
                  hover:opacity-85 hover:translate-x-[2px]
                  disabled:opacity-30 disabled:cursor-default disabled:transform-none"
         >
-          <span class="font-['Poiret_One',cursive] text-[0.65rem] laptop:text-[0.72rem] laptop-scaled:text-[0.72rem] fhd:text-xs qhd:text-sm tracking-[0.35em] uppercase font-bold">Send</span>
+          <span class="font-['Poiret_One',cursive] text-[0.65rem] laptop:text-[0.72rem] laptop-scaled:text-[0.72rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold">Send</span>
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
                stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
             <path d="M4 10h12M12 5l5 5-5 5" />

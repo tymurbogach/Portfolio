@@ -1,9 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 
-// ==========================================
+// ═══════════════════════════════════════════════════════
 // SCHEMAS REUTILIZABLES
-// ==========================================
+// ═══════════════════════════════════════════════════════
 const techSkill = z.object({
   slug:  z.string(),
   color: z.string(),
@@ -17,11 +17,18 @@ const navPage = z.object({
   sectionLabel: z.string(),
 });
 
-// ==========================================
-// COLECCIONES
-// ==========================================
+const cta = z.object({
+  primary:       z.string(),
+  primaryHref:   z.string(),
+  secondary:     z.string(),
+  secondaryHref: z.string(),
+});
 
-// Objeto con key "site" → getEntry("site", "site")
+// ═══════════════════════════════════════════════════════
+// COLECCIONES
+// ═══════════════════════════════════════════════════════
+
+// getEntry("site", "site")
 const site = defineCollection({
   loader: file('src/content/site/site.json'),
   schema: z.object({
@@ -42,7 +49,7 @@ const site = defineCollection({
   }),
 });
 
-// Objeto con key "profile" → getEntry("profile", "profile")
+// getEntry("profile", "profile")
 const profile = defineCollection({
   loader: file('src/content/profile/profile.json'),
   schema: z.object({
@@ -53,7 +60,8 @@ const profile = defineCollection({
   }),
 });
 
-// Objeto con key "data" → getEntry("home", "data")
+// getEntry("home", "data")
+// Contiene hero (título, subtítulo, CTAs) + stats del sidebar
 const home = defineCollection({
   loader: file('src/content/home/data.json'),
   schema: z.object({
@@ -62,37 +70,13 @@ const home = defineCollection({
       title2:    z.string(),
       subtitle1: z.string(),
       subtitle2: z.string(),
+      cta,
     }),
-    stats:     z.array(z.object({ n: z.string(), label: z.string() })),
-    techStrip: z.string(),
-    cta: z.object({
-      primary:       z.string(),
-      primaryHref:   z.string(),
-      secondary:     z.string(),
-      secondaryHref: z.string(),
-    }),
+    stats: z.array(z.object({ n: z.string(), label: z.string() })),
   }),
 });
 
-// Objeto con key "data" → getEntry("hero", "data")
-const hero = defineCollection({
-  loader: file('src/content/hero/data.json'),
-  schema: z.object({
-    title1:    z.string(),
-    title2:    z.string(),
-    subtitle1: z.string(),
-    subtitle2: z.string(),
-    techStrip: z.string(),
-    cta: z.object({
-      primary:       z.string(),
-      primaryHref:   z.string(),
-      secondary:     z.string(),
-      secondaryHref: z.string(),
-    }),
-  }),
-});
-
-// Objeto con key "data" → getEntry("about", "data")
+// getEntry("about", "data")
 const about = defineCollection({
   loader: file('src/content/about/data.json'),
   schema: z.object({
@@ -116,7 +100,7 @@ const about = defineCollection({
   }),
 });
 
-// Objeto con key "data" → getEntry("resume", "data")
+// getEntry("resume", "data")
 const resume = defineCollection({
   loader: file('src/content/resume/data.json'),
   schema: z.object({
@@ -131,7 +115,7 @@ const resume = defineCollection({
   }),
 });
 
-// Objeto con key "data" → getEntry("contact", "data")
+// getEntry("contact", "data")
 const contact = defineCollection({
   loader: file('src/content/contact/data.json'),
   schema: z.object({
@@ -144,8 +128,7 @@ const contact = defineCollection({
   }),
 });
 
-// Objeto con key "data" → el data ES el array directamente
-// getEntry("social", "data") devuelve SocialLink[]
+// getEntry("social", "data") → el valor ES el array directamente
 const social = defineCollection({
   loader: file('src/content/social/data.json'),
   schema: z.array(z.object({
@@ -155,7 +138,7 @@ const social = defineCollection({
   })),
 });
 
-// Múltiples entradas via glob → getCollection("projects")
+// getCollection("projects") → múltiples entradas via glob
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
@@ -170,5 +153,5 @@ const projects = defineCollection({
 });
 
 export const collections = {
-  site, profile, home, hero, about, resume, contact, social, projects,
+  site, profile, home, about, resume, contact, social, projects,
 };

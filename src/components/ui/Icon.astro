@@ -6,9 +6,10 @@ interface Props {
   color?: string;
   size?:  number;
   label:  string;
+  class?: string;
 }
 
-const { slug, color, size = 20, label } = Astro.props;
+const { slug, color, size = 20, label, class: extraClass = "" } = Astro.props;
 
 const key  = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
 const icon = (si as { [key: string]: { path: string; hex: string } })[key];
@@ -26,6 +27,7 @@ const hasIcon   = !!icon;
     height={size}
     aria-label={label}
     xmlns="http://www.w3.org/2000/svg"
+    class={extraClass}
     style={`fill: ${fillColor}; flex-shrink: 0; opacity: 0.85;`}
   >
     <path d={path} />
@@ -33,6 +35,7 @@ const hasIcon   = !!icon;
 ) : (
   <span
     aria-hidden="true"
+    class={extraClass}
     style={`display:inline-block; width:${size}px; height:${size}px; flex-shrink:0;
             background:${color ?? "currentColor"}; opacity:0.5;
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);`}

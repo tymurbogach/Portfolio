@@ -11,14 +11,14 @@ const { slug, color, label } = Astro.props;
 ---
 
 <span
-  class="flex items-center gap-2.5 h-11 laptop:h-14 laptop-scaled:h-14 fhd:h-16 qhd:h-20 px-3.5 laptop:px-4
+  class="flex items-center gap-2.5 h-11 laptop:h-14 laptop-scaled:h-14 fhd:h-16 qhd:h-20 uhd:h-24 px-3.5 laptop:px-4
          border border-[var(--border-subtle)] bg-[var(--surface-raised)]
          transition-all duration-200
          hover:border-[var(--accent-color)] hover:-translate-y-0.5
          cursor-default overflow-hidden"
 >
-  <Icon slug={slug} color={color} size={18} label={label} />
-  <span class="text-[0.65rem] laptop:text-[0.72rem] laptop-scaled:text-[0.72rem] fhd:text-xs qhd:text-sm tracking-[0.08em] uppercase font-bold opacity-80 whitespace-nowrap overflow-hidden text-ellipsis">
+  <Icon slug={slug} color={color} size={18} label={label} class="w-[1.125rem] h-[1.125rem]" />
+  <span class="text-[0.65rem] laptop:text-[0.72rem] laptop-scaled:text-[0.72rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.08em] uppercase font-bold opacity-80 whitespace-nowrap overflow-hidden text-ellipsis">
     {label}
   </span>
 </span>

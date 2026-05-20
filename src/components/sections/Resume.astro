@@ -18,7 +18,7 @@ const { frontend, backend, homelab, languages } = resume;
 
     <div class="flex flex-col gap-3 laptop:gap-4">
       <SectionHeading label="Frontend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 laptop:gap-3">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] fhd:grid-cols-[repeat(auto-fill,minmax(155px,1fr))] qhd:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] uhd:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 laptop:gap-3 fhd:gap-4 qhd:gap-5">
          {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip slug={slug} color={color} label={label} />
         ))}
@@ -27,7 +27,7 @@ const { frontend, backend, homelab, languages } = resume;
 
     <div class="flex flex-col gap-3 laptop:gap-4">
       <SectionHeading label="Backend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 laptop:gap-3">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] fhd:grid-cols-[repeat(auto-fill,minmax(155px,1fr))] qhd:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] uhd:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 laptop:gap-3 fhd:gap-4 qhd:gap-5">
         {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
           <Chip slug={slug} color={color} label={label} />
         ))}
@@ -39,7 +39,7 @@ const { frontend, backend, homelab, languages } = resume;
   <!-- Homelab -->
   <div class="flex flex-col gap-3 laptop:gap-4">
     <SectionHeading label="Homelab & DevOps" />
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 laptop:gap-3">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] fhd:grid-cols-[repeat(auto-fill,minmax(155px,1fr))] qhd:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] uhd:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 laptop:gap-3 fhd:gap-4 qhd:gap-5">
       {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
         <Chip slug={slug} color={color} label={label} />
       ))}
@@ -53,9 +53,9 @@ const { frontend, backend, homelab, languages } = resume;
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <div class="flex flex-col items-center justify-center gap-1 py-3 laptop:py-4
                     border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-          <span class="text-xl laptop:text-2xl fhd:text-3xl">{flag}</span>
-          <span class="text-xs laptop:text-sm fhd:text-base font-bold tracking-[0.05em]">{lang}</span>
-          <span class="text-[0.5rem] laptop:text-[0.58rem] fhd:text-[0.65rem] tracking-[0.25em] uppercase opacity-40">{level}</span>
+          <span class="text-xl laptop:text-2xl fhd:text-3xl qhd:text-4xl uhd:text-5xl">{flag}</span>
+          <span class="text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl font-bold tracking-[0.05em]">{lang}</span>
+          <span class="text-[0.5rem] laptop:text-[0.58rem] fhd:text-[0.65rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase opacity-40">{level}</span>
         </div>
       ))}
     </div>

@@ -33,9 +33,11 @@ const sections: LabeledSection[] = getLabeledSections(site);
   <section
     id="home"
     class="pt-[4rem] laptop:pt-0 laptop-scaled:pt-0
-           laptop:h-[calc(100vh-12rem)] laptop:flex laptop:flex-col
-           laptop-scaled:h-[calc(100vh-9rem)] laptop-scaled:flex laptop-scaled:flex-col
-           fhd:h-[calc(100vh-14rem)] qhd:h-[calc(100vh-16rem)] uhd:h-[calc(100vh-18rem)]"
+           laptop:h-[calc(100vh-12rem)] laptop:max-h-[46rem] laptop:flex laptop:flex-col
+           laptop-scaled:h-[calc(100vh-9rem)] laptop-scaled:max-h-[44rem] laptop-scaled:flex laptop-scaled:flex-col
+           fhd:h-[calc(100vh-14rem)] fhd:max-h-[44rem]
+           qhd:h-[calc(100vh-16rem)] qhd:max-h-[48rem]
+           uhd:h-[calc(100vh-18rem)] uhd:max-h-[60rem]"
     aria-label="Home"
   >
     <!-- Label al top — igual que todas las secciones -->
@@ -50,7 +52,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
       <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3 laptop-scaled:mt-3" />
     </div>
     <!-- Hero fills all remaining space -->
-    <div class="pb-[3rem] laptop:pb-0 laptop-scaled:pb-0 laptop:flex-1 laptop:min-h-0 laptop:relative laptop-scaled:relative">
+    <div class="pb-[3rem] laptop:pb-0 laptop-scaled:pb-0 laptop:flex-1 laptop:min-h-0 laptop:flex laptop:flex-col laptop-scaled:flex laptop-scaled:flex-col">
       <Hero hero={heroData} />
     </div>
   </section>

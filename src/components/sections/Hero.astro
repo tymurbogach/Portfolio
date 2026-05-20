@@ -1,5 +1,5 @@
 ---
-import Button       from "../../components/ui/Button.astro";
+import Button   from "../../components/ui/Button.astro";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -11,11 +11,15 @@ const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
 const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux · Raspberry Pi · Self-hosting · Ollama · NAS · Nginx · Tailwind · Cloudflare · PHP · Python · SCSS · Git · Claude API · n8n · AI Integration · ";
 ---
 
-<div class="flex flex-col w-full gap-6 relative
-            laptop:absolute laptop:inset-0 laptop:gap-0
-            laptop:grid laptop:grid-cols-1 laptop:grid-rows-[1fr_auto]">
+<!--
+  Layout desktop: título + cita + CTAs en un bloque compacto arriba.
+  Spacer flex-1 empuja el marquee al fondo. Sin espacio estúpido entre título y botones.
+  Móvil: flex-col normal apilado.
+-->
+<div class="flex flex-col w-full gap-5 relative
+            laptop:flex-1 laptop-scaled:flex-1 laptop:gap-0 laptop-scaled:gap-0">
 
-  <!-- Background dot grid -->
+  <!-- Decoración: cuadrícula de puntos -->
   <div
     class="absolute -inset-16 -z-10 pointer-events-none"
     style="background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
@@ -23,45 +27,48 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
     aria-hidden="true"
   />
 
-  <!-- Accent slash -->
+  <!-- Decoración: slash diagonal de acento -->
   <div
     class="absolute -z-10 pointer-events-none opacity-[0.03]"
     style="right: -6rem; top: -10rem; width: 40rem; height: 40rem;
-           border: 3px solid var(--accent-color);
-           transform: rotate(15deg);"
+           border: 3px solid var(--accent-color); transform: rotate(15deg);"
     aria-hidden="true"
   />
 
-  <!-- CENTER: HUGE title — fills grid row 1 (1fr) -->
+  <!-- Espacio superior — solo desktop, escala con la pantalla -->
   <div
-    class="flex flex-col justify-center items-center text-center min-w-0"
-    id="theme-toggle"
-  >
-    <h1
-      class="font-display m-0 w-full"
-      style="font-size: clamp(3.5rem, 10vw, 16rem); line-height: 0.88; letter-spacing: -0.01em;"
-    >
-      {title1}<br />
-      <span style="opacity: 0.28;">{title2}</span>
-    </h1>
-  </div>
+    class="hidden laptop:block laptop:shrink-0
+           laptop:h-10 fhd:h-12 qhd:h-16 uhd:h-20"
+    aria-hidden="true"
+  />
 
-  <!-- BOTTOM: Quote wide + CTAs + Marquee — grid row 2 (auto) -->
-  <div class="flex flex-col gap-3 laptop:gap-4 laptop:pb-2 min-w-0">
+  <!-- BLOQUE PRINCIPAL: título + cita + CTAs juntos, sin espacio entre ellos -->
+  <div class="flex flex-col gap-3 laptop:gap-4 laptop:shrink-0">
 
-    <!-- Quote — full width, stretched, no max-width -->
+    <!-- Título — triple clic activa cambio de tema -->
+    <div id="theme-toggle">
+      <h1
+        class="font-display m-0 w-full"
+        style="font-size: clamp(3rem, 9vw, 18rem); line-height: 0.88; letter-spacing: -0.01em;"
+      >
+        {title1}<br />
+        <span style="opacity: 0.28;">{title2}</span>
+      </h1>
+    </div>
+
+    <!-- Cita -->
     <div class="flex flex-col gap-1.5">
       <p
-        class="italic leading-[1.7] text-sm laptop:text-base fhd:text-lg qhd:text-xl m-0"
+        class="italic leading-[1.7] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
         style="opacity: 0.65;"
       >
         "{subtitle1}"
       </p>
       <p
-        class="text-[0.6rem] laptop:text-[0.68rem] fhd:text-xs not-italic tracking-[0.3em] m-0"
+        class="text-[0.6rem] laptop:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base not-italic tracking-[0.3em] m-0"
         style="opacity: 0.28;"
       >
-        — {subtitle2}
+        {subtitle2}
       </p>
     </div>
 
@@ -71,24 +78,24 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
       <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
     </div>
 
-    <!-- Marquee strip -->
-    <div class="flex flex-col gap-2">
-      <div class="h-px" style="background: var(--border-color);" />
-      <div class="overflow-hidden" aria-hidden="true">
-        <div
-          class="marquee-track"
-          style="font-size: clamp(0.55rem, 0.45vw, 0.9rem); letter-spacing: 0.45em;
-                 text-transform: uppercase; font-weight: bold;
-                 opacity: 0.28; font-family: 'JetBrains Mono', monospace;
-                 color: var(--letter-color);"
-        >
-          <span>{MARQUEE}</span>
-          <span>{MARQUEE}</span>
-        </div>
-      </div>
-      <div class="h-px" style="background: var(--border-color);" />
-    </div>
+  </div>
 
+  <!-- Franja marquee — mt-auto la ancla al fondo en desktop -->
+  <div class="flex flex-col gap-2 laptop:mt-auto laptop-scaled:mt-auto laptop:shrink-0 laptop:pb-8 fhd:pb-10 qhd:pb-12">
+    <div class="h-px" style="background: var(--border-color);" />
+    <div class="overflow-hidden" aria-hidden="true">
+      <div
+        class="marquee-track"
+        style="font-size: clamp(0.55rem, 0.5vw, 1rem); letter-spacing: 0.45em;
+               text-transform: uppercase; font-weight: bold;
+               opacity: 0.28; font-family: 'JetBrains Mono', monospace;
+               color: var(--letter-color);"
+      >
+        <span>{MARQUEE}</span>
+        <span>{MARQUEE}</span>
+      </div>
+    </div>
+    <div class="h-px" style="background: var(--border-color);" />
   </div>
 
 </div>

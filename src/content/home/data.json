@@ -1,23 +1,22 @@
 {
   "data": {
     "hero": {
-      "title1": "Full-stack developer.",
-      "title2": "Precision obsessive.",
-      "subtitle1": "10+ years building things with my hands.",
-      "subtitle2": "Now building them in code."
+      "title1": "Software",
+      "title2": "Solutions.",
+      "subtitle1": "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie.",
+      "subtitle2": "— Hope you get the reference.",
+      "cta": {
+        "primary": "Explore my work →",
+        "primaryHref": "/projects",
+        "secondary": "Let's work together",
+        "secondaryHref": "/contact"
+      }
     },
     "stats": [
       { "n": "10+",  "label": "years precision" },
       { "n": "4",    "label": "languages"        },
       { "n": "15+",  "label": "projects shipped" },
       { "n": "24/7", "label": "self-hosted"      }
-    ],
-    "techStrip": "TypeScript  ·  Laravel  ·  Angular  ·  Astro  ·  Docker  ·  Linux",
-    "cta": {
-      "primary": "View work →",
-      "primaryHref": "/projects",
-      "secondary": "Let's talk",
-      "secondaryHref": "/contact"
-    }
+    ]
   }
 }

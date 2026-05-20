@@ -163,16 +163,6 @@
 :root {
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
 
-  --space-1:  4px;
-  --space-2:  8px;
-  --space-3:  12px;
-  --space-4:  16px;
-  --space-5:  24px;
-  --space-6:  32px;
-  --space-8:  48px;
-  --space-10: 64px;
-  --space-12: 96px;
-
   /* Layout base (mobile) */
   --sidebar-width:  22rem;
   --main-padding:    6rem;  /* padding del box principal en modo desktop */
