@@ -30,9 +30,14 @@
       { "slug": "jellyfin",    "color": "#a855f7", "label": "Jellyfin"     },
       { "slug": "immich",      "color": "#4250af", "label": "Immich"       },
       { "slug": "ollama",      "color": "#8b5cf6", "label": "Ollama"       },
-      { "slug": "uptimekuma",  "color": "#5cdd8b", "label": "Uptime Kuma"  },
-      { "slug": "n8n",         "color": "#EA4B71", "label": "n8n"          },
-      { "slug": "git",         "color": "#f05032", "label": "Git"          }
+      { "slug": "uptimekuma",   "color": "#5cdd8b", "label": "Uptime Kuma" },
+      { "slug": "sonarr",      "color": "#2596BE", "label": "Sonarr"      },
+      { "slug": "radarr",      "color": "#FFCB3D", "label": "Radarr"      },
+      { "slug": "transmission","color": "#D70008", "label": "Transmission" },
+      { "slug": "homarr",      "color": "#FA5252", "label": "Homarr"      },
+      { "slug": "searxng",     "color": "#3050FF", "label": "SearXNG"     },
+      { "slug": "watchtower",  "color": "#416271", "label": "Watchtower"  },
+      { "slug": "git",         "color": "#f05032", "label": "Git"         }
     ],
     "languages": [
       { "flag": "🇷🇺", "lang": "Russian",   "level": "native" },
