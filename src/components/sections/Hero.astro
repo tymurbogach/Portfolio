@@ -17,7 +17,7 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
   Móvil: flex-col normal apilado.
 -->
 <div class="flex flex-col w-full gap-5 relative
-            laptop:flex-1 laptop-scaled:flex-1 laptop:gap-0 laptop-scaled:gap-0">
+            flex-1 laptop:gap-0 laptop-scaled:gap-0">
 
   <!-- Decoración: cuadrícula de puntos -->
   <div
@@ -80,8 +80,8 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
 
   </div>
 
-  <!-- Franja marquee — mt-auto la ancla al fondo en desktop -->
-  <div class="flex flex-col gap-2 laptop:mt-auto laptop-scaled:mt-auto laptop:shrink-0 laptop:pb-8 fhd:pb-10 qhd:pb-12">
+  <!-- Franja marquee — mt-auto la ancla al fondo siempre -->
+  <div class="flex flex-col gap-2 mt-auto laptop:shrink-0 laptop:pb-8 fhd:pb-10 qhd:pb-12">
     <div class="h-px" style="background: var(--border-color);" />
     <div class="overflow-hidden" aria-hidden="true">
       <div
