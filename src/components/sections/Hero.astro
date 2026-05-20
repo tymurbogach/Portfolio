@@ -46,22 +46,24 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
   <div class="flex flex-col flex-1 min-h-0 justify-between
               laptop:flex-none laptop:shrink-0 laptop:justify-start laptop:gap-4">
 
-    <!-- Título — triple clic activa cambio de tema -->
+    <!-- Título — triple clic activa cambio de tema
+         Móvil: "Software" izquierda / "Solutions." derecha (stagger diagonal)
+         Desktop: ambas izquierda, leading compacto -->
     <div id="theme-toggle">
       <h1
-        class="font-display m-0 w-full leading-[1.1] laptop:leading-[0.88]"
-        style="font-size: clamp(3rem, 9vw, 18rem); letter-spacing: -0.01em;"
+        class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
+        style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
       >
-        {title1}<br />
-        <span style="opacity: 0.28;">{title2}</span>
+        <span class="block text-left">{title1}</span>
+        <span class="block text-right laptop:text-left" style="opacity: 0.28;">{title2}</span>
       </h1>
     </div>
 
     <!-- Cita + CTAs agrupados (fondo en móvil vía justify-between) -->
     <div class="flex flex-col gap-3">
 
-      <!-- Cita -->
-      <div class="flex flex-col gap-1.5">
+      <!-- Cita — centrada en móvil para contrastar con el stagger del título -->
+      <div class="flex flex-col gap-1.5 text-center laptop:text-left">
         <p
           class="italic leading-[1.7] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
           style="opacity: 0.65;"
@@ -76,8 +78,8 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
         </p>
       </div>
 
-      <!-- CTAs -->
-      <div class="flex flex-wrap gap-3 items-center">
+      <!-- CTAs — centrados en móvil -->
+      <div class="flex flex-wrap gap-3 items-center justify-center laptop:justify-start">
         <Button variant="primary" href={cta.primaryHref}>{cta.primary}</Button>
         <Button variant="ghost"   href={cta.secondaryHref}>{cta.secondary}</Button>
       </div>
