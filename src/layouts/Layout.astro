@@ -54,6 +54,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
 
     <!-- Anti-flash: aplica el tema guardado ANTES del primer paint -->
     <script is:inline>
+      history.scrollRestoration = "manual";
       (function () {
         var t = localStorage.getItem("theme");
         var valid = [
