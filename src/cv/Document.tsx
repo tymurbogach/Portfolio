@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
-import type { CvData } from "./data";
+import type { CvData, CvSkillGroup } from "./data";
 
 const c = {
   black: "#111111",
@@ -142,6 +142,27 @@ const s = StyleSheet.create({
     color: c.light,
   },
 
+  skillRow: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    marginBottom: 3,
+  },
+
+  skillCategory: {
+    fontFamily: "Helvetica-Bold",
+    fontSize: 7.5,
+    color: c.accent,
+    width: 72,
+    flexShrink: 0,
+  },
+
+  skillItems: {
+    flex: 1,
+    fontSize: 7.8,
+    color: c.dark,
+    lineHeight: 1.4,
+  },
+
   refsRow: {
     flexDirection: "row",
     marginTop: 4,
@@ -185,8 +206,15 @@ const Bullet = ({ text }: { text: string }) => (
   </View>
 );
 
+const SkillRow = ({ group }: { group: CvSkillGroup }) => (
+  <View style={s.skillRow}>
+    <Text style={s.skillCategory}>{group.category}</Text>
+    <Text style={s.skillItems}>{group.items.join("  ·  ")}</Text>
+  </View>
+);
+
 export default function CVDocument({ data }: { data: CvData }) {
-  const { personal, summary, experience, projects, education, languages, references } = data;
+  const { personal, summary, skills, experience, projects, education, languages, references } = data;
 
   return (
     <Document>
@@ -210,11 +238,17 @@ export default function CVDocument({ data }: { data: CvData }) {
           <Text>{personal.location}</Text>
         </View>
 
-        <Section title="Resumen">
+        <Section title="Profile">
           <Text style={s.summary}>{summary}</Text>
         </Section>
 
-        <Section title="Experiencia Profesional">
+        <Section title="Skills">
+          {skills.map((group, i) => (
+            <SkillRow key={i} group={group} />
+          ))}
+        </Section>
+
+        <Section title="Work Experience">
           {experience.map((exp, i) => (
             <View key={i} style={s.block}>
               <View style={s.topRow}>
@@ -231,7 +265,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        <Section title="Proyectos Personales">
+        <Section title="Personal Projects">
           {projects.map((proj, i) => (
             <View key={i} style={s.block}>
               <View style={s.topRow}>
@@ -245,7 +279,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        <Section title="Educación">
+        <Section title="Education">
           {education.map((edu, i) => (
             <View key={i} style={s.block}>
               <View style={s.topRow}>
@@ -257,7 +291,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        <Section title="Idiomas">
+        <Section title="Languages">
           <View style={s.langRow}>
             {languages.map((l, i) => (
               <Text key={i} style={s.langItem}>
@@ -267,7 +301,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           </View>
         </Section>
 
-        <Section title="Referencias">
+        <Section title="References">
           <View style={s.refsRow}>
             {references.map((ref, i) => (
               <View key={i} style={s.refCol}>

@@ -35,9 +35,15 @@ export type CvReference = {
   email: string;
 };
 
+export type CvSkillGroup = {
+  category: string;
+  items: string[];
+};
+
 export type CvData = {
   personal: CvPersonal;
   summary: string;
+  skills: CvSkillGroup[];
   experience: CvExperience[];
   projects: CvProject[];
   education: CvEducation[];
@@ -57,56 +63,61 @@ export const cvData: CvData = {
   },
 
   summary:
-    "Desarrollador web con formación en DAW y más de 10 años de experiencia profesional previa en automoción, donde desarrollé precisión, disciplina y atención al detalle. Administro un homelab con más de 25 servicios Docker automatizados. Busco aplicar mis habilidades técnicas y capacidad de resolución de problemas en un equipo de desarrollo profesional.",
+    "I'm a web programming enthusiast with a passion for music and computers. I have a professional background in the automotive industry as a painter and bodybuilder specialist. I've developed my skills in precision, patience, and attention to detail for over 10 years. Known for my dark humor and energetic personality. I look forward to collaborating with professionals who share my enthusiasm for growing in this industry like a mushroom.\n\nFollowing the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie. (Hope you get the reference!)",
+
+  skills: [
+    { category: "Programming",  items: ["HTML", "CSS", "SCSS", "JavaScript", "TypeScript", "Java", "PHP", "MySQL"] },
+    { category: "Frameworks",   items: ["Angular", "Laravel", "Tailwind", "Astro"] },
+    { category: "Tools",        items: ["Android Studio", "Windows", "Linux"] },
+    { category: "Expertise",    items: ["Mobile & Web App Development", "API Integration", "UI/UX Design", "Version Control & Deployment", "Performance Optimization"] },
+    { category: "Soft Skills",  items: ["Project Management", "Teamwork", "Time Management", "Leadership", "Communication", "Critical Thinking", "Public Relations"] },
+  ],
 
   experience: [
     {
-      company: "GesinFlot (TDI Data)",
-      role: "Prácticas curriculares — Desarrollo Full Stack",
+      company: "GesinFlot",
+      role: "Development team",
       period: "2025",
-      location: "Orihuela, España",
+      location: "Orihuela, Spain",
       bullets: [
-        "Desarrollo de aplicaciones web con Angular y Laravel en entorno de equipo.",
-        "Administración de base de datos MySQL y servidor Linux en producción.",
-        "Desarrollo móvil con Android Studio, diseño UI/UX, integración de APIs REST y flujo de despliegue de APK.",
+        "Mobile app development (Android Studio), UI/UX design, API integration, and APK deployment.",
       ],
     },
     {
       company: "Grupo Marcos",
-      role: "Técnico de Carrocería y Pintura",
+      role: "Body and Paint Technician",
       period: "2017 – 2024",
-      location: "Orihuela, España",
+      location: "Orihuela, Spain",
       bullets: [
-        "Reparación de carrocería y pintura de alta precisión durante 7 años, coordinando equipos de trabajo bajo estándares de calidad exigentes.",
-        "Desarrollé habilidades de resolución de problemas, gestión del tiempo y atención al detalle directamente transferibles al desarrollo de software.",
+        "Automotive body repair and refinishing with high attention to detail and team coordination.",
       ],
     },
     {
-      company: "Renault Trucks, La Basca y otros",
-      role: "Mecánico, Técnico de Carrocería y Pintura",
+      company: "Renault Trucks, La Basca and others",
+      role: "Mechanic, Body and Paint Technician",
       period: "2012 – 2017",
-      location: "Alicante, España",
+      location: "Alicante, Spain",
       bullets: [
-        "Reparación y diagnóstico mecánico de vehículos comerciales de múltiples marcas.",
+        "Commercial vehicle repair, painting, and mechanical diagnostics across multiple brands.",
       ],
     },
   ],
 
   projects: [
     {
-      name: "Homelab Personal",
-      status: "Activo",
+      name: "Personal Homelab",
+      status: "Active",
       bullets: [
-        "Diseñé y administro un NAS con TrueNAS SCALE y +25 servicios Docker (Jellyfin, Immich, Arr Stack, Portainer, Uptime Kuma) gestionados con Docker Compose y Dockge.",
-        "Implementé acceso remoto seguro con Tailscale (VPN mesh) y Cloudflare Tunnels, eliminando puertos abiertos.",
-        "Automatización completa: descarga, extracción, clasificación por idioma/calidad con custom formats y perfiles personalizados.",
+        "Built and manage a NAS with TrueNAS SCALE running 25+ Docker services (Jellyfin, Immich, Arr Stack, Portainer, Uptime Kuma) orchestrated with Docker Compose and Dockge.",
+        "Implemented secure remote access via Tailscale (mesh VPN) and Cloudflare Tunnels with zero open ports.",
+        "Full automation pipeline: download, extraction, and classification by language/quality using custom formats and profiles.",
       ],
     },
     {
-      name: "Portfolio Web — nastymur.com",
-      status: "Producción",
+      name: "Portfolio — nastymur.com",
+      status: "Production",
       bullets: [
-        "Construido con Astro + Tailwind CSS. Desplegado en Raspberry Pi con Nginx, accesible vía Cloudflare Tunnel propio.",
+        "Built with Astro + Tailwind CSS. Self-hosted on Raspberry Pi with Nginx, served via own Cloudflare Tunnel.",
       ],
     },
   ],
@@ -114,35 +125,35 @@ export const cvData: CvData = {
   education: [
     {
       school: "EFA El Campico",
-      degree: "CFGS Desarrollo de Aplicaciones Web (DAW)",
+      degree: "Advanced Technical Certificate in Web App Development",
       period: "2023 – 2025",
     },
     {
       school: "IES El Palmeral",
-      degree: "Técnico en Carrocería de Vehículos",
+      degree: "Technical Qualification in Automotive Bodywork and Refinishing",
       period: "2008 – 2011",
     },
   ],
 
   languages: [
-    { name: "Español", level: "Fluido" },
-    { name: "Ruso", level: "Nativo" },
-    { name: "Ucraniano", level: "Nativo" },
-    { name: "Inglés", level: "Intermedio" },
+    { name: "English", level: "Intermediate" },
+    { name: "Russian", level: "Native" },
+    { name: "Ukrainian", level: "Native" },
+    { name: "Spanish", level: "Fluent" },
   ],
 
   references: [
     {
       name: "Tatiana Pérez Zamora",
-      role: "Senior Developer / Team Lead — TDI Data",
+      role: "Senior Developer / Team Lead",
       phone: "+34 655 84 35 05",
-      email: "tatiana.perez@tdi-data.com",
+      email: "Tatiana.perez@tdi-data.com",
     },
     {
       name: "Sergio Murcia Mateo",
-      role: "Developer / SysAdmin — TDI Data",
+      role: "Developer / System Admin",
       phone: "+34 601 23 45 05",
-      email: "sergio.murcia@tdi-data.com",
+      email: "Sergio.murcia@tdi-data.com",
     },
   ],
 };
