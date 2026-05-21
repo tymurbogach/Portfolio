@@ -52,43 +52,6 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
       Open to freelance projects,<br />collaborations & full-time roles.<br />Response within 24 h.
     </p>
 
-    <!-- Social + CV links -->
-    <div class="flex flex-wrap gap-2">
-      {socialLinks.filter((s: SocialLink) => s.name === "LinkedIn" || s.name === "GitHub")
-          .map((link: SocialLink) => (
-        <a
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2
-                 text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base
-                 tracking-[0.2em] uppercase font-bold
-                 border border-[var(--border-color)]
-                 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
-        >
-          <img src={link.icon} class="w-3 h-3 opacity-60" alt={link.name}
-               style="filter: brightness(0) saturate(100%);" />
-          {link.name}
-        </a>
-      ))}
-
-      <a
-        href={cv_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex items-center gap-2 px-4 py-2
-               text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-xs qhd:text-sm
-               tracking-[0.2em] uppercase font-bold
-               border border-[var(--border-color)]
-               hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] transition-all duration-200"
-      >
-        <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" class="text-[var(--accent-color)] shrink-0">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-        </svg>
-        CV
-      </a>
-    </div>
   </div>
 
   <!-- RIGHT: form -->
