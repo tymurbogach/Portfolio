@@ -40,8 +40,19 @@ export type CvSkillGroup = {
   items: string[];
 };
 
+export type CvLabels = {
+  profile: string;
+  skills: string;
+  experience: string;
+  projects: string;
+  education: string;
+  languages: string;
+  references: string;
+};
+
 export type CvData = {
   personal: CvPersonal;
+  labels: CvLabels;
   summary: string;
   skills: CvSkillGroup[];
   experience: CvExperience[];
@@ -60,6 +71,16 @@ export const cvData: CvData = {
     email: "Timurnator@gmail.com",
     website: "nastymur.com",
     github: "github.com/TimurTwerKing",
+  },
+
+  labels: {
+    profile:    "Profile",
+    skills:     "Skills",
+    experience: "Work Experience",
+    projects:   "Personal Projects",
+    education:  "Education",
+    languages:  "Languages",
+    references: "References",
   },
 
   summary:

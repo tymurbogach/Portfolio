@@ -8,8 +8,9 @@ import SocialLinks     from "../components/ui/SocialLinks.astro";
 import SocialBotPanel  from "../components/layout/SocialBotPanel.astro";
 import ChatWidget      from "../components/layout/ChatWidget.astro";
 import DualMain        from "../layouts/DualMain.astro";
+import Modal           from "../components/ui/Modal.astro";
 import { ClientRouter } from "astro:transitions";
-import { getSite, getProfile } from "../lib/content";
+import { getSite, getProfile, getContactData } from "../lib/content";
 
 // ==========================================
 // PROPS
@@ -26,8 +27,9 @@ interface Props {
 // ==========================================
 // DATOS
 // ==========================================
-const site = await getSite();
+const site    = await getSite();
 const profile = await getProfile();
+const contact = await getContactData();
 
 const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
   "home") as keyof typeof site.pageDescriptions;
@@ -171,6 +173,10 @@ const ogImageUrl = `${site.url}${ogImage}`;
     </button>
 
     <ChatWidget />
+
+    <!-- Modal CV — fuera de <main> para evitar conflicto de stacking context -->
+    <Modal downloadHref={contact.cv_url} />
+    <script src="@/scripts/cvModal.ts"></script>
 
     <!-- ═══════════════════════════════════
          MAIN

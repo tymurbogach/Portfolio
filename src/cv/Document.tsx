@@ -214,7 +214,7 @@ const SkillRow = ({ group }: { group: CvSkillGroup }) => (
 );
 
 export default function CVDocument({ data }: { data: CvData }) {
-  const { personal, summary, skills, experience, projects, education, languages, references } = data;
+  const { personal, labels, summary, skills, experience, projects, education, languages, references } = data;
 
   return (
     <Document>
@@ -238,17 +238,17 @@ export default function CVDocument({ data }: { data: CvData }) {
           <Text>{personal.location}</Text>
         </View>
 
-        <Section title="Profile">
+        <Section title={labels.profile}>
           <Text style={s.summary}>{summary}</Text>
         </Section>
 
-        <Section title="Skills">
+        <Section title={labels.skills}>
           {skills.map((group, i) => (
             <SkillRow key={i} group={group} />
           ))}
         </Section>
 
-        <Section title="Work Experience">
+        <Section title={labels.experience}>
           {experience.map((exp, i) => (
             <View key={i} style={s.block}>
               <View style={s.topRow}>
@@ -265,7 +265,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        <Section title="Personal Projects">
+        <Section title={labels.projects}>
           {projects.map((proj, i) => (
             <View key={i} style={s.block}>
               <View style={s.topRow}>
@@ -279,7 +279,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        <Section title="Education">
+        <Section title={labels.education}>
           {education.map((edu, i) => (
             <View key={i} style={s.block}>
               <View style={s.topRow}>
@@ -291,7 +291,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           ))}
         </Section>
 
-        <Section title="Languages">
+        <Section title={labels.languages}>
           <View style={s.langRow}>
             {languages.map((l, i) => (
               <Text key={i} style={s.langItem}>
@@ -301,7 +301,7 @@ export default function CVDocument({ data }: { data: CvData }) {
           </View>
         </Section>
 
-        <Section title="References">
+        <Section title={labels.references}>
           <View style={s.refsRow}>
             {references.map((ref, i) => (
               <View key={i} style={s.refCol}>

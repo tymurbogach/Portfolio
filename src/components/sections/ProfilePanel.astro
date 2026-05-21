@@ -1,5 +1,4 @@
 ---
-import Modal from "../../components/ui/Modal.astro";
 import { getProfile, getHomeData, getContactData } from "../../lib/content";
 
 const profile = await getProfile();
@@ -77,27 +76,40 @@ const { cv_url, statusStr, statusActive }  = contact;
 
   </div>
 
-  <!-- CV button — anchored at bottom -->
-  <button
-    id="cv-view-btn"
-    data-cv-url={cv_url}
-    class="mt-auto flex items-center gap-2 px-4 py-2 w-full justify-center
-           text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
-           border border-[var(--border-color)]
-           hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
-           transition-all duration-200 cursor-pointer shrink-0"
-  >
-    <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" style="flex-shrink:0">
-      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-      <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-    </svg>
-    <span>View CV</span>
-  </button>
+  <!-- CV buttons — anchored at bottom -->
+  <div class="mt-auto flex w-full shrink-0">
+    <button
+      data-cv-trigger
+      data-cv-url={cv_url}
+      data-cv-filename="Tymur_Bogach_CV_EN.pdf"
+      class="flex-1 flex items-center gap-1.5 px-3 py-2 justify-center
+             text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
+             border border-[var(--border-color)]
+             hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
+             transition-all duration-200 cursor-pointer"
+    >
+      <svg viewBox="0 0 16 16" width="9" height="9" fill="currentColor" style="flex-shrink:0">
+        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+      </svg>
+      <span>CV · EN</span>
+    </button>
+    <button
+      data-cv-trigger
+      data-cv-url="/cv-es.pdf"
+      data-cv-filename="Tymur_Bogach_CV_ES.pdf"
+      class="flex-1 flex items-center gap-1.5 px-3 py-2 justify-center
+             text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
+             border border-l-0 border-[var(--border-color)]
+             hover:bg-[var(--accent-color)] hover:text-[var(--accent-text)] hover:border-[var(--accent-color)]
+             transition-all duration-200 cursor-pointer"
+    >
+      <svg viewBox="0 0 16 16" width="9" height="9" fill="currentColor" style="flex-shrink:0">
+        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+      </svg>
+      <span>CV · ES</span>
+    </button>
+  </div>
 
 </section>
-
-<Modal downloadHref={cv_url} />
-
-<script>
-  import "../../scripts/cvModal";
-</script>
