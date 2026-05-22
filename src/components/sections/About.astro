@@ -72,35 +72,12 @@ const { journey, education, hobbies } = about;
   <div class="flex flex-col gap-4">
     <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
 
-    <div class="grid grid-cols-2 gap-2 laptop:gap-3 fhd:gap-3.5">
-      {hobbies.map(({ icon, label, detail }: { icon: string; label: string; detail?: string }, i: number) => (
-        <div class="relative flex flex-col justify-between gap-3 p-3 laptop:p-4 fhd:p-5
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-
-          <!-- index — top right -->
-          <span class="absolute top-2.5 right-3 text-[0.4rem] laptop:text-[0.45rem] tracking-[0.3em] font-bold opacity-20">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-
-          <!-- emoji -->
-          <span class="text-2xl laptop:text-3xl fhd:text-4xl leading-none select-none">
-            {icon}
-          </span>
-
-          <!-- label + detail -->
-          <div class="flex flex-col gap-0.5">
-            <p class="font-signature text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl leading-tight m-0">
-              {label}
-            </p>
-            {detail && (
-              <p class="text-[0.48rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm
-                        tracking-[0.06em] leading-snug opacity-40 m-0">
-                {detail}
-              </p>
-            )}
-          </div>
-
-        </div>
+    <div class="flex flex-wrap gap-x-5 gap-y-2">
+      {hobbies.map(({ icon, label }: { icon: string; label: string; detail?: string }) => (
+        <span class="flex items-center gap-1.5">
+          <span class="text-base fhd:text-lg leading-none select-none">{icon}</span>
+          <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl opacity-70">{label}</span>
+        </span>
       ))}
     </div>
   </div>
