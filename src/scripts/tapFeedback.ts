@@ -1,3 +1,13 @@
+/** Apply a CSS animation class, then remove it when done. */
+function animate(el: HTMLElement, cls: string): void {
+  el.classList.remove(cls);
+  void el.offsetWidth; // force reflow to restart animation
+  el.classList.add(cls);
+  const cleanup = () => el.classList.remove(cls);
+  el.addEventListener("animationend", cleanup, { once: true });
+  setTimeout(cleanup, 1100); // fallback — animationend unreliable on mobile
+}
+
 function setup(ac: AbortController): void {
   document.addEventListener(
     "touchstart",
@@ -7,21 +17,20 @@ function setup(ac: AbortController): void {
       );
       if (!el) return;
 
-      // nav-tap-pressed only for real nav links (have data-active attribute)
-      // NameCard has nav-link class but no data-active — its bg is on an inner div
-      // so nav-tap-pressed would be invisible; use tap-pressed instead
-      const isNav = el.classList.contains("nav-link") && el.hasAttribute("data-active");
+      const isRealNav = el.classList.contains("nav-link") && el.hasAttribute("data-active");
 
-      // Skip active nav link — already highlighted, no feedback needed
-      if (isNav && el.dataset.active === "true") return;
-
-      const cls = isNav ? "nav-tap-pressed" : "tap-pressed";
-      el.classList.remove(cls);
-      void el.offsetWidth; // force reflow to restart animation
-      el.classList.add(cls);
-      const cleanup = () => el.classList.remove(cls);
-      el.addEventListener("animationend", cleanup, { once: true });
-      setTimeout(cleanup, 1100);
+      if (isRealNav) {
+        // Nav links: <a> is the visual cell — skip if already active, flash bg otherwise
+        if (el.dataset.active === "true") return;
+        animate(el, "nav-tap-pressed");
+      } else if (el.classList.contains("nav-link")) {
+        // NameCard: nav-link but no data-active — bg lives on inner <div>, not <a>
+        // Applying nav-tap-pressed to <a> would be invisible; target the inner div instead
+        const inner = el.querySelector<HTMLElement>(":scope > div");
+        animate(inner ?? el, "nav-tap-pressed");
+      } else {
+        animate(el, "tap-pressed");
+      }
     },
     { passive: true, signal: ac.signal }
   );
