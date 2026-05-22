@@ -108,6 +108,7 @@ const resume = defineCollection({
     backend:      z.array(techSkill),
     homelab:      z.array(techSkill),
     homelabExtra: z.number().optional(),
+    ai:           z.array(techSkill).optional(),
     languages:    z.array(z.object({
       flag:  z.string(),
       lang:  z.string(),

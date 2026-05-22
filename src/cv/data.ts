@@ -92,6 +92,7 @@ export const cvData: CvData = {
     { category: "Tools",        items: ["Android Studio", "Windows", "Linux"] },
     { category: "Expertise",    items: ["Mobile & Web App Development", "API Integration", "UI/UX Design", "Version Control & Deployment", "Performance Optimization"] },
     { category: "Soft Skills",  items: ["Project Management", "Teamwork", "Time Management", "Leadership", "Communication", "Critical Thinking", "Public Relations"] },
+    { category: "AI Tooling",   items: ["Claude Code", "OpenCode", "MCP Protocol", "AI Agents", "Prompt Engineering", "Ollama", "Open WebUI"] },
   ],
 
   experience: [
