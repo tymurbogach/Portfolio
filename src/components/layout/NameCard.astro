@@ -19,16 +19,19 @@ const { nameDisplay, role } = Astro.props;
   <a href="/" class="nav-link group no-underline w-full h-full" aria-label="Inicio">
     <div
       class="flex flex-col items-center justify-center text-center w-full h-full
-             bg-[var(--component-background)]
+             bg-[var(--component-background)] text-[var(--letter-color)]
              border border-[var(--border-color)]
              shadow-none rounded-none my-0 mx-0
              mobile:shadow-md tablet:shadow-lg
-             can-hover:hover:mobile:shadow-lg can-hover:hover:tablet:shadow-xl
-             transition-colors duration-200
-             can-hover:group-hover:bg-[var(--hover-bg)]"
+             transition-all duration-200
+             can-hover:hover:bg-[var(--hover-bg)]
+             can-hover:hover:text-[var(--hover-text)]
+             can-hover:hover:scale-105
+             can-hover:hover:shadow-md
+             can-hover:hover:z-10"
       style="position: relative; overflow: hidden;"
     >
-      <!-- accent left bar — brightens on hover -->
+      <!-- accent left bar — brightens on cell hover -->
       <div
         class="absolute left-0 top-0 h-full transition-all duration-300
                opacity-70 can-hover:group-hover:opacity-100"
@@ -36,22 +39,18 @@ const { nameDisplay, role } = Astro.props;
         aria-hidden="true"
       />
 
+      <!-- h1 and p inherit color from parent div — same pattern as nav label spans -->
       <h1
         class="font-bold font-signature m-0 mt-[0.3rem]
                tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
                text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
-               fhd:text-4xl qhd:text-5xl uhd:text-6xl
-               text-[var(--letter-color)] can-hover:group-hover:text-[var(--hover-text)]
-               transition-all duration-200 can-hover:group-hover:scale-105"
+               fhd:text-4xl qhd:text-5xl uhd:text-6xl"
       >
         {nameDisplay}
       </h1>
       <p
         class="text-[0.55rem] mobile:text-[0.6rem] laptop:text-[0.65rem] fhd:text-xs
-               tracking-[0.3em] uppercase m-0 mb-[0.3rem]
-               text-[var(--letter-color)] can-hover:group-hover:text-[var(--hover-text)]
-               opacity-50 can-hover:group-hover:opacity-80
-               transition-all duration-200"
+               tracking-[0.3em] uppercase m-0 mb-[0.3rem] opacity-50"
       >
         {role}
       </p>
