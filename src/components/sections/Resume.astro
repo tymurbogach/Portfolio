@@ -9,8 +9,6 @@ interface Props {
 const { resume } = Astro.props;
 const { frontend, backend, homelab, ai, languages } = resume;
 
-const SHOW_MAX = 12;
-
 const categories = [
   { label: "Frontend",   skills: frontend },
   { label: "Backend",    skills: backend  },
@@ -21,66 +19,58 @@ const categories = [
 
 <section class="flex flex-col w-full gap-6 laptop:gap-7 fhd:gap-9">
 
-  {categories.map(({ label, skills }) => {
-    const hasMore = skills.length > SHOW_MAX;
-    const extraCount = skills.length - SHOW_MAX;
-    return (
-      <div class="resume-section flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
+  {categories.map(({ label, skills }) => (
+    <div class="resume-section flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
 
-        <span
-          class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
-                 tracking-[0.5em] uppercase font-bold opacity-40"
-        >
-          {label}
-        </span>
+      <span
+        class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
+               tracking-[0.5em] uppercase font-bold opacity-40"
+      >
+        {label}
+      </span>
 
-        <div class="grid grid-cols-[repeat(auto-fill,10rem)] justify-center gap-x-3 gap-y-3 laptop:grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] laptop:justify-start laptop:gap-x-4 laptop:gap-y-3.5 fhd:gap-5">
-          {skills.map(({ slug, color, label: skillLabel }: { slug: string; color: string; label: string }, i: number) => (
+      <div
+        class="resume-grid overflow-hidden
+               max-h-[6rem] laptop:max-h-[6.75rem] fhd:max-h-[8.5rem]
+               grid grid-cols-[repeat(auto-fill,10rem)] justify-center gap-x-3 gap-y-3
+               laptop:grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] laptop:justify-start laptop:gap-x-4 laptop:gap-y-3.5 fhd:gap-5"
+      >
+        {skills.map(({ slug, color, label: skillLabel }: { slug: string; color: string; label: string }) => (
+          <span class="flex items-start gap-1.5 laptop:gap-2">
+            <Icon slug={slug} color={color} size={13} label={skillLabel} class="mt-[1px] shrink-0" />
             <span
-              class:list={[
-                "flex items-start gap-1.5 laptop:gap-2",
-                i >= SHOW_MAX && "resume-extra hidden",
-              ]}
+              class="text-[0.62rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+                     tracking-[0.06em] leading-snug"
+              style="opacity: 0.75;"
             >
-              <Icon slug={slug} color={color} size={13} label={skillLabel} class="mt-[1px] shrink-0" />
-              <span
-                class="text-[0.62rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
-                       tracking-[0.06em] leading-snug"
-                style="opacity: 0.75;"
-              >
-                {skillLabel}
-              </span>
+              {skillLabel}
             </span>
-          ))}
-        </div>
-
-        {hasMore && (
-          <button
-            class="resume-toggle self-start flex items-center gap-1 mt-0.5 cursor-pointer"
-            style="opacity: 0.4;"
-            aria-expanded="false"
-          >
-            <span
-              class="resume-toggle-label
-                     text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
-                     tracking-[0.15em] uppercase"
-              style="color: var(--accent-color); font-weight: bold;"
-            >
-              +{extraCount}
-            </span>
-            <span
-              class="resume-toggle-word
-                     text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
-                     tracking-[0.15em] uppercase"
-            >
-              more
-            </span>
-          </button>
-        )}
-
+          </span>
+        ))}
       </div>
-    );
-  })}
+
+      <button
+        class="resume-toggle hidden self-start flex items-center gap-1 mt-0.5 cursor-pointer"
+        style="opacity: 0.4;"
+        aria-expanded="false"
+      >
+        <span
+          class="resume-toggle-label
+                 text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
+                 tracking-[0.15em] uppercase"
+          style="color: var(--accent-color); font-weight: bold;"
+        ></span>
+        <span
+          class="resume-toggle-word
+                 text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
+                 tracking-[0.15em] uppercase"
+        >
+          more
+        </span>
+      </button>
+
+    </div>
+  ))}
 
   <!-- Languages -->
   <div class="flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
@@ -123,24 +113,45 @@ const categories = [
 
 <script>
   function initResumeToggles() {
-    document.querySelectorAll<HTMLButtonElement>(".resume-toggle").forEach((btn) => {
+    document.querySelectorAll<HTMLElement>(".resume-section").forEach((section) => {
+      const grid    = section.querySelector<HTMLElement>(".resume-grid");
+      const btn     = section.querySelector<HTMLButtonElement>(".resume-toggle");
+      const labelEl = btn?.querySelector<HTMLElement>(".resume-toggle-label");
+      const wordEl  = btn?.querySelector<HTMLElement>(".resume-toggle-word");
+      if (!grid || !btn) return;
+
+      const update = () => {
+        const overflows = grid.scrollHeight > grid.clientHeight + 2;
+        btn.classList.toggle("hidden", !overflows && btn.getAttribute("aria-expanded") !== "true");
+        if (labelEl && btn.getAttribute("aria-expanded") !== "true") {
+          // count hidden items (those below the visible area)
+          const gridBottom = grid.getBoundingClientRect().bottom;
+          const hidden = [...grid.children].filter(
+            (el) => el.getBoundingClientRect().top >= gridBottom - 2
+          ).length;
+          labelEl.textContent = hidden > 0 ? `+${hidden}` : "";
+        }
+      };
+
       btn.addEventListener("click", () => {
-        const section = btn.closest<HTMLElement>(".resume-section");
-        if (!section) return;
-
-        const extras = section.querySelectorAll<HTMLElement>(".resume-extra");
-        const labelEl = btn.querySelector<HTMLElement>(".resume-toggle-label");
-        const wordEl  = btn.querySelector<HTMLElement>(".resume-toggle-word");
-        if (!extras.length) return;
-
         const expanded = btn.getAttribute("aria-expanded") === "true";
-
-        extras.forEach((el) => el.classList.toggle("hidden", expanded));
-        btn.setAttribute("aria-expanded", String(!expanded));
-
-        if (labelEl) labelEl.textContent = expanded ? `+${extras.length}` : "−";
-        if (wordEl)  wordEl.textContent  = expanded ? "more" : "less";
+        if (expanded) {
+          grid.style.maxHeight = "";
+          btn.setAttribute("aria-expanded", "false");
+          if (wordEl) wordEl.textContent = "more";
+          update();
+        } else {
+          grid.style.maxHeight = "none";
+          btn.setAttribute("aria-expanded", "true");
+          if (labelEl) labelEl.textContent = "−";
+          if (wordEl)  wordEl.textContent  = "less";
+          btn.classList.remove("hidden");
+        }
       });
+
+      const ro = new ResizeObserver(update);
+      ro.observe(grid);
+      update();
     });
   }
 
