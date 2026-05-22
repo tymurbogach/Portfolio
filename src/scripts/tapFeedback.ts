@@ -1,20 +1,24 @@
-function initTapFeedback(ac: AbortController) {
+function setup(ac: AbortController): void {
   document.addEventListener(
     "touchstart",
     (e) => {
-      const target = (e.target as Element).closest<HTMLElement>(
+      const el = (e.target as Element).closest<HTMLElement>(
         "a, button, [role='button']"
       );
-      if (!target || target.classList.contains("nav-link")) return;
+      if (!el) return;
 
-      target.classList.remove("tap-active");
-      void target.offsetWidth;
-      target.classList.add("tap-active");
-      target.addEventListener(
-        "animationend",
-        () => target.classList.remove("tap-active"),
-        { once: true }
-      );
+      const isNav = el.classList.contains("nav-link");
+
+      // Skip active nav link — already highlighted, no feedback needed
+      if (isNav && el.dataset.active === "true") return;
+
+      const cls = isNav ? "nav-tap-pressed" : "tap-pressed";
+      el.classList.remove(cls);
+      void el.offsetWidth; // force reflow to restart animation
+      el.classList.add(cls);
+      el.addEventListener("animationend", () => el.classList.remove(cls), {
+        once: true,
+      });
     },
     { passive: true, signal: ac.signal }
   );
@@ -22,7 +26,7 @@ function initTapFeedback(ac: AbortController) {
 
 document.addEventListener("astro:page-load", () => {
   const ac = new AbortController();
-  initTapFeedback(ac);
+  setup(ac);
   document.addEventListener("astro:before-preparation", () => ac.abort(), {
     once: true,
   });

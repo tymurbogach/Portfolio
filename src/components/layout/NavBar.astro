@@ -81,30 +81,12 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     }
   }
 
-  @keyframes nav-tap-flash {
-    0%   { background-color: var(--hover-bg); color: var(--hover-text); }
-    50%  { background-color: var(--hover-bg); color: var(--hover-text); }
-    100% { background-color: transparent;     color: var(--letter-color); }
+  @keyframes nav-tap {
+    0%, 50% { background-color: var(--hover-bg); color: var(--hover-text); }
+    100%    { background-color: transparent;      color: var(--letter-color); }
   }
-
-  .nav-link.nav-tapped {
-    animation: nav-tap-flash 1s ease-out !important;
+  .nav-tap-pressed {
+    animation: nav-tap 1s ease-out !important;
   }
 </style>
 
-<script>
-  function setupTapFlash() {
-    document.querySelectorAll<HTMLElement>('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (link.dataset.active === 'true') return;
-        link.classList.remove('nav-tapped');
-        void link.offsetWidth;
-        link.classList.add('nav-tapped');
-        link.addEventListener('animationend', () => link.classList.remove('nav-tapped'), { once: true });
-      });
-    });
-  }
-
-  setupTapFlash();
-  document.addEventListener('astro:page-load', setupTapFlash);
-</script>
