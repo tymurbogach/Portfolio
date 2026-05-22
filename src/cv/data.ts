@@ -152,8 +152,8 @@ export const cvData: CvData = {
     },
     {
       school: "IES El Palmeral",
-      degree: "Technical Qualification in Automotive Bodywork and Refinishing",
-      period: "2008 – 2011",
+      degree: "Technical Certificate in Automotive Body & Paint",
+      period: "2008 – 2010",
     },
   ],
 

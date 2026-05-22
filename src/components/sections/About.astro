@@ -71,13 +71,55 @@ const { journey, education, hobbies } = about;
   <!-- HOBBIES -->
   <div class="flex flex-col gap-4">
     <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
-    <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
-      {hobbies.map(({ icon, label }: { icon: string; label: string }) => (
-        <div class="flex items-center gap-3 px-4 py-4 border border-[var(--border-subtle)] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl opacity-65 bg-[var(--surface-raised)]">
-          <span class="text-base">{icon}</span>
-          <span class="tracking-[0.1em]">{label}</span>
+
+    <div class="border border-[var(--border-subtle)] overflow-hidden">
+
+      <!-- Terminal header -->
+      <div class="flex items-center justify-between px-4 py-2 border-b border-[var(--border-subtle)] bg-[var(--total-background)]">
+        <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.2em] uppercase opacity-35">
+          timur@nastymur:~/hobbies
+        </span>
+        <div class="flex gap-1.5">
+          <div class="w-2 h-2 rounded-full opacity-30" style="background:var(--letter-color)" />
+          <div class="w-2 h-2 rounded-full opacity-30" style="background:var(--letter-color)" />
+          <div class="w-2 h-2 rounded-full opacity-30" style="background:var(--letter-color)" />
         </div>
-      ))}
+      </div>
+
+      <!-- Terminal body -->
+      <div class="px-4 laptop:px-5 py-3 laptop:py-4 fhd:py-5 flex flex-col gap-2.5 laptop:gap-3 fhd:gap-3.5 bg-[var(--component-background)]">
+        {hobbies.map(({ icon, label, detail }: { icon: string; label: string; detail?: string }) => (
+          <div class="flex items-center gap-2 laptop:gap-3">
+            <span
+              class="text-[0.65rem] laptop:text-[0.72rem] fhd:text-sm font-bold shrink-0"
+              style="color: var(--accent-color); opacity: 0.8;"
+            >$</span>
+            <span class="text-base laptop:text-lg fhd:text-xl shrink-0">{icon}</span>
+            <span
+              class="text-[0.62rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+                     tracking-[0.06em]"
+              style="opacity: 0.75;"
+            >{label}</span>
+            {detail && (
+              <span
+                class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
+                       tracking-[0.08em] italic"
+                style="opacity: 0.3;"
+              ># {detail}</span>
+            )}
+          </div>
+        ))}
+
+        <!-- Blinking cursor -->
+        <div class="flex items-center gap-2 laptop:gap-3">
+          <span
+            class="text-[0.65rem] laptop:text-[0.72rem] fhd:text-sm font-bold shrink-0"
+            style="color: var(--accent-color); opacity: 0.8;"
+          >$</span>
+          <span class="terminal-cursor inline-block w-[0.45rem] laptop:w-[0.5rem] fhd:w-[0.6rem] h-[0.85em] opacity-60" style="background: var(--accent-color);" />
+        </div>
+      </div>
+
     </div>
   </div>
 

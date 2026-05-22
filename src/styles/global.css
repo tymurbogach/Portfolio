@@ -388,6 +388,12 @@ body::after {
 /* ═══════════════════════════════════════════════════════
    MARQUEE — infinite horizontal scroll strip
    ═══════════════════════════════════════════════════════ */
+@keyframes blink {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 0; }
+}
+.terminal-cursor { animation: blink 1s step-end infinite; }
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

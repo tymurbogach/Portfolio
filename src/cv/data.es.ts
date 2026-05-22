@@ -90,8 +90,8 @@ export const cvDataEs: CvData = {
     },
     {
       school: "IES El Palmeral",
-      degree: "Técnico en Carrocería de Vehículos Automóviles",
-      period: "2008 – 2011",
+      degree: "Técnico en Carrocería y Pintura de Vehículos Automóviles",
+      period: "2008 – 2010",
     },
   ],
 

@@ -47,21 +47,21 @@
     ],
     "education": [
       {
+        "years": "2008 — 2010",
+        "title": "Technical Certificate",
+        "sub": "Automotive Body & Paint · IES El Palmeral"
+      },
+      {
         "years": "2023 — 2025",
         "title": "Advanced Technical Certificate",
         "sub": "Web Application Development · EFA El Campico"
-      },
-      {
-        "years": "2008 — 2011",
-        "title": "Technical Qualification",
-        "sub": "Automotive Bodywork & Refinishing · IES El Palmeral"
       }
     ],
     "hobbies": [
-      { "icon": "🎵", "label": "Music" },
-      { "icon": "🖥", "label": "Self-hosting" },
-      { "icon": "🎸", "label": "Guitar" },
-      { "icon": "🌙", "label": "Late nights" }
+      { "icon": "🎵", "label": "Music",        "detail": "production & listening"      },
+      { "icon": "🖥", "label": "Self-hosting", "detail": "always something running"    },
+      { "icon": "🎸", "label": "Guitar",       "detail": "for over a decade"           },
+      { "icon": "🌙", "label": "Late nights",  "detail": "peak productivity hours"     }
     ]
   }
 }

@@ -94,8 +94,9 @@ const about = defineCollection({
       sub:   z.string(),
     })),
     hobbies: z.array(z.object({
-      icon:  z.string(),
-      label: z.string(),
+      icon:   z.string(),
+      label:  z.string(),
+      detail: z.string().optional(),
     })),
   }),
 });
