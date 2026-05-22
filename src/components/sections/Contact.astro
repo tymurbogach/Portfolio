@@ -7,8 +7,8 @@ interface Props {
   socialLinks: SocialLink[];
 }
 
-const { contact, socialLinks }                                              = Astro.props;
-const { intro, email, location, statusStr, statusActive, cv_url, formSubject } = contact;
+const { contact }                                                           = Astro.props;
+const { intro, email, location, statusStr, statusActive, formSubject }      = contact;
 
 ---
 
@@ -16,58 +16,79 @@ const { intro, email, location, statusStr, statusActive, cv_url, formSubject } =
   import "../../scripts/contactForm";
 </script>
 
-<div class="w-full flex flex-col gap-6 laptop:gap-8 fhd:gap-10">
+<div class="w-full flex flex-col gap-8 laptop:gap-10 fhd:gap-12">
 
-  <!-- Intro line — full width -->
-  {intro && (
-    <p class="text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl
-              opacity-55 tracking-[0.04em] leading-relaxed m-0">
-      {intro}
-    </p>
-  )}
+  <!-- Split row: LEFT info | divider | RIGHT form -->
+  <div class="flex flex-col laptop:flex-row laptop-scaled:flex-row gap-6 laptop:gap-0">
 
-  <!-- Content row -->
-  <div class="flex flex-col laptop:flex-row laptop-scaled:flex-row gap-6 laptop:gap-8 fhd:gap-12">
+    <!-- LEFT: heading + info -->
+    <div class="flex flex-col justify-between gap-6 laptop:gap-8
+                laptop:w-[40%] laptop-scaled:w-[40%] fhd:w-[38%]
+                shrink-0 laptop:pr-10 fhd:pr-14">
 
-    <!-- LEFT: compact info block + quote -->
-    <div class="flex flex-col gap-4 laptop:gap-5 laptop:w-[38%] laptop-scaled:w-[38%] fhd:w-[35%] shrink-0">
+      <!-- Heading block -->
+      <div class="relative">
+        <span
+          class="absolute right-0 top-0 font-display leading-none select-none pointer-events-none
+                 text-[6rem] laptop:text-[8rem] fhd:text-[10rem]"
+          style="color: var(--letter-color); opacity: 0.04;"
+          aria-hidden="true"
+        >01</span>
 
-      <!-- Email — prominent -->
-      <a
-        href={`mailto:${email}`}
-        class="text-[clamp(0.9rem,1.3vw,1.15rem)] font-bold text-[var(--accent-color)]
-               can-hover:hover:opacity-70 transition-opacity break-all leading-snug"
-      >
-        {email}
-      </a>
+        <h2 class="font-display uppercase tracking-[0.12em] leading-none m-0
+                   text-[clamp(2rem,4vw,3rem)] fhd:text-[clamp(2.5rem,3.5vw,4rem)]">
+          Contact
+        </h2>
 
-      <!-- Thin separator -->
-      <div class="h-px bg-[var(--border-subtle)] opacity-50" />
-
-      <!-- Location + Status — single row -->
-      <div class="flex items-center gap-3
-                  text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm
-                  tracking-[0.25em] uppercase font-bold opacity-40">
-        <span>{location}</span>
-        <span>·</span>
-        <span class="flex items-center gap-1.5">
-          <span class={`w-[5px] h-[5px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
-          {statusStr}
-        </span>
+        {intro && (
+          <p class="text-sm laptop:text-base fhd:text-lg
+                    opacity-55 tracking-[0.03em] leading-relaxed mt-3 mb-0">
+            {intro}
+          </p>
+        )}
       </div>
 
-      <!-- Decorative quote -->
-      <p class="hidden laptop:block laptop-scaled:block text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base leading-[1.8] opacity-35 tracking-[0.06em] neon-left-border">
-        Open to freelance projects,<br />collaborations & full-time roles.<br />Response within 24 h.
-      </p>
+      <!-- Info block -->
+      <div class="flex flex-col gap-4 laptop:gap-5">
+        <div class="h-px bg-[var(--border-subtle)] opacity-40" />
+
+        <a
+          href={`mailto:${email}`}
+          class="text-[clamp(0.85rem,1.3vw,1.1rem)] font-bold text-[var(--accent-color)]
+                 can-hover:hover:opacity-70 transition-opacity break-all leading-snug"
+        >
+          {email}
+        </a>
+
+        <div class="flex items-center gap-3
+                    text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm
+                    tracking-[0.25em] uppercase font-bold opacity-40">
+          <span>{location}</span>
+          <span>·</span>
+          <span class="flex items-center gap-1.5">
+            <span class={`w-[5px] h-[5px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
+            {statusStr}
+          </span>
+        </div>
+
+        <p class="hidden laptop:block laptop-scaled:block
+                  text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+                  leading-[1.8] opacity-35 tracking-[0.06em] neon-left-border">
+          Open to freelance projects,<br />collaborations & full-time roles.<br />Response within 24 h.
+        </p>
+      </div>
 
     </div>
 
+    <!-- Vertical divider (desktop only) -->
+    <div class="hidden laptop:block laptop-scaled:block w-px self-stretch shrink-0
+                bg-[var(--border-subtle)] opacity-25" />
+
     <!-- RIGHT: form -->
-    <div class="flex-1 min-w-0">
+    <div class="flex-1 min-w-0 laptop:pl-10 fhd:pl-14">
       <form id="contact-form" autocomplete="off" data-email={email}>
-        <input type="hidden" name="access_key"  value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
-        <input type="hidden" name="subject"     value={formSubject} />
+        <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
+        <input type="hidden" name="subject"    value={formSubject} />
 
         <div
           id="form-status"
@@ -76,16 +97,15 @@ const { intro, email, location, statusStr, statusActive, cv_url, formSubject } =
         />
 
         <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-y-0 min-[30rem]:gap-x-8">
-          <FormField id="f-name"    name="name"    label="Name *"    required />
-          <FormField id="f-email"   name="email"   type="email" label="Email *" required />
-          <FormField id="f-project" name="project" label="Project" />
+          <FormField id="f-name"  name="name"  label="Name *"  required />
+          <FormField id="f-email" name="email" type="email" label="Email *" required />
         </div>
 
         <div class="mb-2">
           <textarea
             id="f-message"
             name="message"
-            rows="6"
+            rows="7"
             required
             placeholder="Your message *"
             class="bg-transparent border border-[var(--border-subtle)] p-4
@@ -97,8 +117,7 @@ const { intro, email, location, statusStr, statusActive, cv_url, formSubject } =
           />
         </div>
 
-        <!-- Submit — outside textarea, right-aligned -->
-        <div class="flex justify-end">
+        <div class="flex justify-end mt-1">
           <button
             id="submit-btn"
             type="submit"
@@ -118,6 +137,24 @@ const { intro, email, location, statusStr, statusActive, cv_url, formSubject } =
       </form>
     </div>
 
+  </div>
+
+  <!-- Chatbot CTA -->
+  <div class="flex items-center justify-center gap-3 pt-4 border-t border-[var(--border-subtle)]"
+       style="opacity: 0.45;">
+    <span class="text-[0.52rem] laptop:text-[0.58rem] fhd:text-[0.65rem] tracking-[0.35em] uppercase font-bold">
+      or try
+    </span>
+    <button
+      class="chat-toggle flex items-center gap-1.5
+             text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.72rem] tracking-[0.25em] uppercase font-bold
+             text-[var(--accent-color)] bg-transparent border-none cursor-pointer
+             can-hover:hover:opacity-70 transition-opacity"
+    >
+      <span class="font-mono text-[0.7rem]">&gt;_</span>
+      TymurBot
+      <span class="transition-transform duration-200 can-hover:hover:translate-x-[2px]">→</span>
+    </button>
   </div>
 
 </div>
