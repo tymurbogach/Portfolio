@@ -20,7 +20,6 @@
       { "slug": "docker",        "color": "#2496ed", "label": "Docker"        },
       { "slug": "nginx",         "color": "#009900", "label": "Nginx"         },
       { "slug": "linux",         "color": "#fcc624", "label": "Linux"         },
-      { "slug": "windows",       "color": "#0078d4", "label": "Windows"       },
       { "slug": "raspberrypi",   "color": "#c51a4a", "label": "Raspberry Pi"  },
       { "slug": "truenas",       "color": "#0095d5", "label": "TrueNAS"       },
       { "slug": "tailscale",     "color": "#3b82f6", "label": "Tailscale"     },
