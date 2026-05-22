@@ -19,13 +19,12 @@ const { nameDisplay, role } = Astro.props;
   <a href="/" class="nav-link group no-underline w-full h-full" aria-label="Inicio">
     <div
       class="flex flex-col items-center justify-center text-center w-full h-full
-             bg-[var(--component-background)] text-[var(--letter-color)]
+             bg-[var(--component-background)]
              border border-[var(--border-color)]
              shadow-none rounded-none my-0 mx-0
              mobile:shadow-md tablet:shadow-lg
              transition-all duration-200
              can-hover:hover:bg-[var(--hover-bg)]
-             can-hover:hover:text-[var(--hover-text)]
              can-hover:hover:scale-105
              can-hover:hover:shadow-md
              can-hover:hover:z-10"
@@ -39,18 +38,21 @@ const { nameDisplay, role } = Astro.props;
         aria-hidden="true"
       />
 
-      <!-- h1 and p inherit color from parent div — same pattern as nav label spans -->
       <h1
         class="font-bold font-signature m-0 mt-[0.3rem]
                tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
                text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
-               fhd:text-4xl qhd:text-5xl uhd:text-6xl"
+               fhd:text-4xl qhd:text-5xl uhd:text-6xl
+               text-[var(--letter-color)] can-hover:hover:text-[var(--hover-text)]
+               transition-colors duration-200"
       >
         {nameDisplay}
       </h1>
       <p
         class="text-[0.55rem] mobile:text-[0.6rem] laptop:text-[0.65rem] fhd:text-xs
-               tracking-[0.3em] uppercase m-0 mb-[0.3rem] opacity-50"
+               tracking-[0.3em] uppercase m-0 mb-[0.3rem]
+               text-[var(--letter-color)] can-hover:hover:text-[var(--hover-text)]
+               opacity-50 transition-colors duration-200"
       >
         {role}
       </p>
