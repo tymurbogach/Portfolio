@@ -7,7 +7,10 @@ function setup(ac: AbortController): void {
       );
       if (!el) return;
 
-      const isNav = el.classList.contains("nav-link");
+      // nav-tap-pressed only for real nav links (have data-active attribute)
+      // NameCard has nav-link class but no data-active — its bg is on an inner div
+      // so nav-tap-pressed would be invisible; use tap-pressed instead
+      const isNav = el.classList.contains("nav-link") && el.hasAttribute("data-active");
 
       // Skip active nav link — already highlighted, no feedback needed
       if (isNav && el.dataset.active === "true") return;
