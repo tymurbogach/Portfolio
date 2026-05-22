@@ -72,10 +72,9 @@ const { journey, education, hobbies } = about;
   <div class="flex flex-col gap-4">
     <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
 
-    <div class="flex flex-col">
-      {hobbies.map(({ icon, label, detail }: { icon: string; label: string; detail?: string }, i: number) => (
-        <div class={`flex items-center justify-between gap-4 py-2.5 laptop:py-3 fhd:py-3.5
-                     ${i < hobbies.length - 1 ? "border-b border-[var(--border-subtle)]" : ""}`}>
+    <div class="grid grid-cols-1 laptop:grid-cols-2 gap-x-6 gap-y-0">
+      {hobbies.map(({ icon, label, detail }: { icon: string; label: string; detail?: string }) => (
+        <div class="flex items-center justify-between gap-4 py-2.5 fhd:py-3">
           <div class="flex items-center gap-2.5">
             <span class="text-sm fhd:text-base leading-none select-none opacity-80">{icon}</span>
             <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none">{label}</span>
