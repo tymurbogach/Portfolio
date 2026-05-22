@@ -66,6 +66,7 @@ function initSectionNav(): void {
 
   // ── Sincronización URL ↔ sección al scrollear ────────────────────────────
   let currentSection = initSection;
+  let lockedTarget: string | null = null; // set during smooth scroll to prevent revert
   let ticking = false;
 
   scrollEl.addEventListener(
@@ -74,6 +75,10 @@ function initSectionNav(): void {
       if (!ticking) {
         requestAnimationFrame(() => {
           const active = getActiveSection(scrollEl);
+          if (lockedTarget) {
+            if (active === lockedTarget) lockedTarget = null; // arrived at target
+            else { ticking = false; return; }                  // still scrolling, skip
+          }
           if (active !== currentSection) {
             currentSection = active;
             const url = active === "home" ? "/" : `/${active}`;
@@ -88,6 +93,16 @@ function initSectionNav(): void {
     { signal: ac.signal }
   );
 
+  function navigateTo(targetId: string, href: string, push: boolean): void {
+    if (!document.getElementById(targetId)) return;
+    lockedTarget = targetId;
+    currentSection = targetId;
+    if (push) history.pushState(null, "", href);
+    else history.replaceState(null, "", href);
+    scrollToSection(scrollEl, targetId, "smooth");
+    setActiveNav(targetId);
+  }
+
   // ── Intercept de clicks en la nav para scroll suave ──────────────────────
   document.querySelectorAll<HTMLAnchorElement>(".nav-link[href]").forEach((link) => {
     link.addEventListener(
@@ -95,13 +110,8 @@ function initSectionNav(): void {
       (e) => {
         const href = link.getAttribute("href") ?? "";
         const targetId = href.replace(/^\//, "") || "home";
-        if (!document.getElementById(targetId)) return; // sección ausente → nav normal
-
         e.preventDefault();
-        currentSection = targetId;
-        history.pushState(null, "", href);
-        scrollToSection(scrollEl, targetId, "smooth");
-        setActiveNav(targetId);
+        navigateTo(targetId, href, true);
       },
       { signal: ac.signal }
     );
@@ -113,12 +123,9 @@ function initSectionNav(): void {
       "click",
       () => {
         const targetId = el.getAttribute("data-scroll-target") ?? "";
-        if (!targetId || !document.getElementById(targetId)) return;
+        if (!targetId) return;
         const href = targetId === "home" ? "/" : `/${targetId}`;
-        currentSection = targetId;
-        history.pushState(null, "", href);
-        scrollToSection(scrollEl, targetId, "smooth");
-        setActiveNav(targetId);
+        navigateTo(targetId, href, true);
       },
       { signal: ac.signal }
     );
