@@ -1,84 +1,147 @@
 ---
-import Chip           from "../../components/ui/Chip.astro";
-import SectionHeading from "../../components/ui/SectionHeading.astro";
+import Icon          from "../../components/ui/Icon.astro";
 import type { ResumeData } from "../../lib/content";
 
 interface Props {
   resume: ResumeData;
 }
 
-const { resume }                                          = Astro.props;
-const { frontend, backend, homelab, homelabExtra, languages } = resume;
+const { resume } = Astro.props;
+const { frontend, backend, homelab, ai, languages } = resume;
+
+const SHOW_MAX = 12;
+
+const categories = [
+  { label: "Frontend",   skills: frontend },
+  { label: "Backend",    skills: backend  },
+  { label: "Homelab",    skills: homelab  },
+  ...(ai && ai.length ? [{ label: "AI Tooling", skills: ai }] : []),
+];
 ---
 
-<section class="flex flex-col w-full gap-6 laptop:gap-8 fhd:gap-10">
+<section class="flex flex-col w-full gap-6 laptop:gap-7 fhd:gap-9">
 
-  <!-- Frontend + Backend en dos columnas -->
-  <div class="grid grid-cols-1 mobile:grid-cols-2 gap-6 laptop:gap-8">
+  {categories.map(({ label, skills }) => {
+    const hasMore = skills.length > SHOW_MAX;
+    const extraCount = skills.length - SHOW_MAX;
+    return (
+      <div class="resume-section flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
 
-    <div class="flex flex-col gap-3 laptop:gap-4">
-      <SectionHeading label="Frontend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] fhd:grid-cols-[repeat(auto-fill,minmax(155px,1fr))] qhd:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] uhd:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 laptop:gap-3 fhd:gap-4 qhd:gap-5">
-         {frontend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-          <Chip slug={slug} color={color} label={label} />
-        ))}
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-3 laptop:gap-4">
-      <SectionHeading label="Backend" />
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] fhd:grid-cols-[repeat(auto-fill,minmax(155px,1fr))] qhd:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] uhd:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 laptop:gap-3 fhd:gap-4 qhd:gap-5">
-        {backend.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-          <Chip slug={slug} color={color} label={label} />
-        ))}
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Homelab -->
-  <div class="flex flex-col gap-3 laptop:gap-4">
-    <SectionHeading label="Homelab & DevOps" />
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(115px,1fr))] laptop:grid-cols-[repeat(auto-fill,minmax(130px,1fr))] fhd:grid-cols-[repeat(auto-fill,minmax(155px,1fr))] qhd:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] uhd:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-2 laptop:gap-3 fhd:gap-4 qhd:gap-5">
-      {homelab.map(({ slug, color, label }: { slug: string; color: string; label: string }) => (
-        <Chip slug={slug} color={color} label={label} />
-      ))}
-      {homelabExtra && homelabExtra > 0 && (
         <span
-          class="flex items-center justify-center gap-1.5
-                 h-11 laptop:h-14 laptop-scaled:h-14 fhd:h-16 qhd:h-20 uhd:h-24
-                 px-3.5 laptop:px-4
-                 border border-dashed border-[var(--border-subtle)]
-                 cursor-default"
-          style="opacity: 0.45;"
-          title={`${homelabExtra} more tools without icons`}
+          class="text-[0.52rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm
+                 tracking-[0.22em] uppercase font-bold"
+          style="color: var(--accent-color); opacity: 0.7;"
         >
-          <span
-            class="text-[0.7rem] laptop:text-[0.78rem] fhd:text-xs font-bold"
-            style="color: var(--accent-color);"
-          >+{homelabExtra}</span>
-          <span
-            class="text-[0.55rem] laptop:text-[0.62rem] tracking-[0.12em] uppercase font-bold"
-            style="color: var(--letter-color);"
-          >more</span>
+          {label}
         </span>
-      )}
-    </div>
-  </div>
+
+        <div class="flex flex-wrap gap-x-5 gap-y-2.5 laptop:gap-x-6 fhd:gap-x-8 fhd:gap-y-3">
+          {skills.map(({ slug, color, label: skillLabel }: { slug: string; color: string; label: string }, i: number) => (
+            <span
+              class:list={[
+                "flex items-center gap-1.5 laptop:gap-2",
+                i >= SHOW_MAX && "resume-extra hidden",
+              ]}
+            >
+              <Icon slug={slug} color={color} size={13} label={skillLabel} />
+              <span
+                class="text-[0.62rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+                       tracking-[0.06em] whitespace-nowrap"
+                style="opacity: 0.75;"
+              >
+                {skillLabel}
+              </span>
+            </span>
+          ))}
+        </div>
+
+        {hasMore && (
+          <button
+            class="resume-toggle self-start flex items-center gap-1 mt-0.5 cursor-pointer"
+            style="opacity: 0.4;"
+            aria-expanded="false"
+          >
+            <span
+              class="resume-toggle-label
+                     text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
+                     tracking-[0.15em] uppercase"
+              style="color: var(--accent-color); font-weight: bold;"
+            >
+              +{extraCount}
+            </span>
+            <span
+              class="resume-toggle-word
+                     text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
+                     tracking-[0.15em] uppercase"
+            >
+              more
+            </span>
+          </button>
+        )}
+
+      </div>
+    );
+  })}
 
   <!-- Languages -->
-  <div class="flex flex-col gap-3 laptop:gap-4">
-    <SectionHeading label="Languages" />
-    <div class="grid grid-cols-2 mobile:grid-cols-4 gap-2 laptop:gap-3">
+  <div class="flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
+
+    <span
+      class="text-[0.52rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm
+             tracking-[0.22em] uppercase font-bold"
+      style="color: var(--accent-color); opacity: 0.7;"
+    >
+      Languages
+    </span>
+
+    <div class="flex flex-wrap gap-x-5 gap-y-2.5 laptop:gap-x-6 fhd:gap-x-8 fhd:gap-y-3">
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
-        <div class="flex flex-col items-center justify-center gap-1 py-3 laptop:py-4
-                    border border-[var(--border-subtle)] bg-[var(--surface-raised)]">
-          <span class="text-xl laptop:text-2xl fhd:text-3xl qhd:text-4xl uhd:text-5xl">{flag}</span>
-          <span class="text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl font-bold tracking-[0.05em]">{lang}</span>
-          <span class="text-[0.5rem] laptop:text-[0.58rem] fhd:text-[0.65rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase opacity-40">{level}</span>
-        </div>
+        <span class="flex items-center gap-1.5 laptop:gap-2">
+          <span class="text-sm laptop:text-base fhd:text-lg" aria-hidden="true">{flag}</span>
+          <span
+            class="text-[0.62rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+                   tracking-[0.06em] whitespace-nowrap"
+            style="opacity: 0.75;"
+          >
+            {lang}
+          </span>
+          <span
+            class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs
+                   tracking-[0.15em] uppercase"
+            style="opacity: 0.3;"
+          >
+            · {level}
+          </span>
+        </span>
       ))}
     </div>
+
   </div>
 
 </section>
+
+<script>
+  function initResumeToggles() {
+    document.querySelectorAll<HTMLButtonElement>(".resume-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const section = btn.closest<HTMLElement>(".resume-section");
+        if (!section) return;
+
+        const extras = section.querySelectorAll<HTMLElement>(".resume-extra");
+        const labelEl = btn.querySelector<HTMLElement>(".resume-toggle-label");
+        const wordEl  = btn.querySelector<HTMLElement>(".resume-toggle-word");
+        if (!extras.length) return;
+
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+
+        extras.forEach((el) => el.classList.toggle("hidden", expanded));
+        btn.setAttribute("aria-expanded", String(!expanded));
+
+        if (labelEl) labelEl.textContent = expanded ? `+${extras.length}` : "−";
+        if (wordEl)  wordEl.textContent  = expanded ? "more" : "less";
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initResumeToggles);
+</script>
