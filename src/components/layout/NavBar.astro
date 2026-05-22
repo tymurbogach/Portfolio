@@ -88,5 +88,11 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
   .nav-tap-pressed {
     animation: nav-tap 1s ease-out !important;
   }
+
+  /* Kill native iOS tap highlight */
+  .nav-link {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
 </style>
 

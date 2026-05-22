@@ -16,9 +16,9 @@ function setup(ac: AbortController): void {
       el.classList.remove(cls);
       void el.offsetWidth; // force reflow to restart animation
       el.classList.add(cls);
-      el.addEventListener("animationend", () => el.classList.remove(cls), {
-        once: true,
-      });
+      const cleanup = () => el.classList.remove(cls);
+      el.addEventListener("animationend", cleanup, { once: true });
+      setTimeout(cleanup, 1100);
     },
     { passive: true, signal: ac.signal }
   );
