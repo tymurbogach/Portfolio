@@ -122,6 +122,7 @@ const resume = defineCollection({
 const contact = defineCollection({
   loader: file('src/content/contact/data.json'),
   schema: z.object({
+    intro:        z.string().optional(),
     email:        z.string().email(),
     location:     z.string(),
     statusStr:    z.string(),
