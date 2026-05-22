@@ -27,7 +27,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
         <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.4em] uppercase font-bold opacity-40">Email</span>
         <a
           href={`mailto:${email}`}
-          class="text-[clamp(0.8rem,1.1vw,1rem)] font-bold text-[var(--accent-color)] hover:opacity-70 transition-opacity break-all"
+          class="text-[clamp(0.8rem,1.1vw,1rem)] font-bold text-[var(--accent-color)] can-hover:hover:opacity-70 transition-opacity break-all"
         >
           {email}
         </a>
@@ -93,7 +93,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject } = contac
           class="absolute bottom-[0.8rem] right-[0.8rem] flex items-center gap-2 py-[0.5rem] px-5
                  bg-[var(--letter-color)] text-[var(--page-background)]
                  border-none cursor-pointer transition-all duration-200
-                 hover:opacity-85 hover:translate-x-[2px]
+                 can-hover:hover:opacity-85 can-hover:hover:translate-x-[2px]
                  disabled:opacity-30 disabled:cursor-default disabled:transform-none"
         >
           <span class="font-['Poiret_One',cursive] text-[0.65rem] laptop:text-[0.72rem] laptop-scaled:text-[0.72rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold">Send</span>

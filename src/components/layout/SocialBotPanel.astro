@@ -22,7 +22,7 @@
       class="chat-toggle group flex flex-col items-center justify-center h-full flex-1 gap-0.5
              text-[var(--letter-color)] p-[0.75rem] cursor-pointer
              transition-all duration-250 ease-in-out
-             hover:bg-[var(--accent-color)]"
+             can-hover:hover:bg-[var(--accent-color)]"
       style="border: none; background: transparent;"
     >
       <span
@@ -38,8 +38,11 @@
 </div>
 
 <style>
-  #chat-toggle-btn:hover span {
-    color: var(--accent-text) !important;
-    opacity: 1 !important;
+  /* Gate to pointer devices — touch browsers would leave span stuck in hover state */
+  @media (hover: hover) and (pointer: fine) {
+    #chat-toggle-btn:hover span {
+      color: var(--accent-text) !important;
+      opacity: 1 !important;
+    }
   }
 </style>

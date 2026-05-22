@@ -29,7 +29,7 @@ const indexStr = String(index).padStart(2, "0");
   rel="noopener noreferrer"
   class="group flex flex-col overflow-hidden
          border border-[var(--border-color)]
-         hover:border-[var(--accent-color)]
+         can-hover:hover:border-[var(--accent-color)]
          transition-all duration-300"
   style="position: relative;"
 >
@@ -65,13 +65,13 @@ const indexStr = String(index).padStart(2, "0");
         alt={title}
         loading="lazy"
         class="w-full h-full object-cover opacity-60
-               group-hover:opacity-90 group-hover:scale-105
+               can-hover:group-hover:opacity-90 can-hover:group-hover:scale-105
                transition-all duration-500"
       />
     ) : (
       <div
         class="w-full h-full flex flex-col items-center justify-center gap-2
-               bg-[var(--component-background)] group-hover:bg-[var(--surface-raised)]
+               bg-[var(--component-background)] can-hover:group-hover:bg-[var(--surface-raised)]
                transition-colors duration-300"
       >
         <span
@@ -89,7 +89,7 @@ const indexStr = String(index).padStart(2, "0");
   <!-- Content — bottom -->
   <div
     class="flex flex-col justify-between flex-1 px-3 py-3
-           bg-[var(--page-background)] group-hover:bg-[var(--surface-raised)]
+           bg-[var(--page-background)] can-hover:group-hover:bg-[var(--surface-raised)]
            transition-colors duration-200 overflow-hidden"
     style="position: relative; z-index: 1;"
   >
@@ -124,7 +124,7 @@ const indexStr = String(index).padStart(2, "0");
         style="color: var(--accent-color); opacity: 0.4;"
       >
         {isDemo ? "demo" : "code"}
-        <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">→</span>
       </span>
     </div>
   </div>

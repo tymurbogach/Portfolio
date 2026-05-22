@@ -7,6 +7,9 @@
    ═══════════════════════════════════════════════════════ */
 @variant laptop-scaled (@media (min-resolution: 1.4dppx) and (min-width: 60rem));
 
+/* Hover only on true pointer devices — prevents :hover sticking on iOS/Android after tap */
+@variant can-hover (@media (hover: hover) and (pointer: fine));
+
 /* ═══════════════════════════════════════════════════════
    BREAKPOINTS
    ═══════════════════════════════════════════════════════ */
@@ -278,6 +281,12 @@ html, body {
   outline-offset: 2px;
 }
 
+/* Remove native blue/grey tap highlight and 300ms delay on all interactive elements */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 /* Grain texture — primer surface feel */
 body::after {
   content: "";
@@ -353,9 +362,12 @@ body::after {
 
 @utility hover-glow {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  &:hover {
-    box-shadow: 0 0 15px var(--glow-primary);
-    border-color: var(--accent-color);
+  /* Only activate on pointer devices — prevents sticky state on touch */
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: 0 0 15px var(--glow-primary);
+      border-color: var(--accent-color);
+    }
   }
 }
 
@@ -413,7 +425,8 @@ body::after {
   animation: marquee 40s linear infinite;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+/* Only pause marquee on pointer hover — on touch it would stay paused forever */
+@media (hover: hover) and (pointer: fine) {
+  .marquee-track:hover { animation-play-state: paused; }
 }
 

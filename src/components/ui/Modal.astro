@@ -20,7 +20,7 @@ const { downloadHref } = Astro.props;
                text-[0.6rem] tracking-[0.3em] uppercase font-bold
                border border-[var(--accent-color)] text-[var(--accent-color)] bg-transparent
                transition-all duration-200
-               hover:bg-[var(--accent-color)] hover:text-[#0a0a0a]"
+               can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[#0a0a0a]"
       >
         Download PDF
       </a>
@@ -30,7 +30,7 @@ const { downloadHref } = Astro.props;
                text-[0.6rem] tracking-[0.3em] uppercase font-bold
                border border-[rgba(255,255,255,0.2)] text-[rgba(255,255,255,0.8)] bg-transparent
                transition-all duration-200
-               hover:border-[rgba(255,255,255,0.8)] hover:text-[#ffffff]"
+               can-hover:hover:border-[rgba(255,255,255,0.8)] can-hover:hover:text-[#ffffff]"
       >
         ✕ Close
       </button>

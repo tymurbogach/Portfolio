@@ -34,14 +34,14 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
           "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
           "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200",
-          "hover:scale-105 hover:shadow-md hover:z-10 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
+          "can-hover:hover:scale-105 can-hover:hover:shadow-md can-hover:hover:z-10 can-hover:hover:bg-[var(--hover-bg)] can-hover:hover:text-[var(--hover-text)]",
         ]}
       >
         <span
-          class="inline-block transition-all duration-200 group-hover:scale-125
-                 bg-[var(--letter-color)] group-hover:bg-[var(--hover-text)]
+          class="inline-block transition-all duration-200 can-hover:group-hover:scale-125
+                 bg-[var(--letter-color)] can-hover:group-hover:bg-[var(--hover-text)]
                  group-data-[active=true]:bg-[var(--accent-color)]
-                 opacity-65 group-hover:opacity-100 group-data-[active=true]:opacity-100"
+                 opacity-65 can-hover:group-hover:opacity-100 group-data-[active=true]:opacity-100"
           style={`width: var(--nav-icon-size); height: var(--nav-icon-size);
                   -webkit-mask-image:url('${page.icon}'); mask-image:url('${page.icon}');
                   -webkit-mask-size:contain;     mask-size:contain;
@@ -71,16 +71,6 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     color: var(--accent-color) !important;
   }
 
-  /* Touch devices: suppress sticky hover */
-  @media (hover: none) {
-    .nav-link:not([data-active="true"]):hover {
-      background-color: transparent !important;
-      color: var(--letter-color) !important;
-      transform: none !important;
-      box-shadow: none !important;
-    }
-  }
-
   @keyframes nav-tap {
     0%, 50% { background-color: var(--hover-bg); color: var(--hover-text); }
     100%    { background-color: transparent;      color: var(--letter-color); }
@@ -89,10 +79,5 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     animation: nav-tap 1s ease-out !important;
   }
 
-  /* Kill native iOS tap highlight */
-  .nav-link {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
 </style>
 

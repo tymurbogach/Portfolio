@@ -23,9 +23,9 @@ const { nameDisplay, role } = Astro.props;
              border border-[var(--border-color)]
              shadow-none rounded-none my-0 mx-0
              mobile:shadow-md tablet:shadow-lg
-             hover:mobile:shadow-lg hover:tablet:shadow-xl
+             can-hover:hover:mobile:shadow-lg can-hover:hover:tablet:shadow-xl
              transition-colors duration-200
-             group-hover:bg-[var(--hover-bg)]"
+             can-hover:group-hover:bg-[var(--hover-bg)]"
       style="position: relative; overflow: hidden;"
     >
       <!-- accent left bar -->
@@ -40,7 +40,7 @@ const { nameDisplay, role } = Astro.props;
                tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
                text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
                fhd:text-4xl qhd:text-5xl uhd:text-6xl
-               text-[var(--letter-color)] group-hover:text-[var(--hover-text)]
+               text-[var(--letter-color)] can-hover:group-hover:text-[var(--hover-text)]
                transition-colors duration-200"
       >
         {nameDisplay}
@@ -48,7 +48,7 @@ const { nameDisplay, role } = Astro.props;
       <p
         class="text-[0.55rem] mobile:text-[0.6rem] laptop:text-[0.65rem] fhd:text-xs
                tracking-[0.3em] uppercase m-0 mb-[0.3rem]
-               text-[var(--letter-color)] group-hover:text-[var(--hover-text)]
+               text-[var(--letter-color)] can-hover:group-hover:text-[var(--hover-text)]
                transition-colors duration-200"
         style="opacity: 0.5;"
       >

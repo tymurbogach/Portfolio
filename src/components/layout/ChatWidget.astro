@@ -42,8 +42,8 @@ const starters = [
     <button
       id="chat-close-btn"
       class="text-[0.7rem] tracking-[0.2em] uppercase px-2 py-0.5
-             border border-[var(--border-color)] hover:border-[var(--accent-color)]
-             hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
+             border border-[var(--border-color)] can-hover:hover:border-[var(--accent-color)]
+             can-hover:hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
       style="font-family: inherit;"
       aria-label="Close chat"
     >×</button>
@@ -65,8 +65,8 @@ const starters = [
       {starters.map(s => (
         <button
           class="chat-starter text-[0.58rem] tracking-[0.12em] uppercase px-2.5 py-1
-                 border border-[var(--border-color)] hover:border-[var(--accent-color)]
-                 hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
+                 border border-[var(--border-color)] can-hover:hover:border-[var(--accent-color)]
+                 can-hover:hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
           data-q={s.q}
           style="font-family: inherit; background: transparent; color: inherit; opacity: 0.6;"
         >[ {s.label} ]</button>
