@@ -71,13 +71,18 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     color: var(--accent-color) !important;
   }
 
-  /* Touch devices: suppress sticky hover on non-active links */
+  /* Touch devices: suppress sticky hover + add press feedback */
   @media (hover: none) {
     .nav-link:not([data-active="true"]):hover {
       background-color: transparent !important;
       color: var(--letter-color) !important;
       transform: none !important;
       box-shadow: none !important;
+    }
+    .nav-link:active {
+      transform: scale(0.93) !important;
+      opacity: 0.6 !important;
+      transition-duration: 0ms !important;
     }
   }
 
