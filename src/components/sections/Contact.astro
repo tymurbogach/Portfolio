@@ -16,29 +16,30 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
   import "../../scripts/contactForm";
 </script>
 
-<div class="w-full flex flex-col gap-8 laptop:gap-10 fhd:gap-12">
+<div class="w-full flex flex-col gap-7 laptop:gap-9 fhd:gap-11">
 
   {intro && (
     <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
-              leading-[1.8] opacity-60 tracking-[0.04em] m-0
-              border-l-2 border-[var(--accent-color)] border-opacity-40 pl-3">
+              leading-[1.8] opacity-60 tracking-[0.04em] m-0 pl-3
+              border-l-2 border-[var(--accent-color)]">
       {intro}
     </p>
   )}
 
-  <div class="text-gradient text-glow gradient-line" />
+  <!-- Status panel — corner bracket card -->
+  <div class="relative border border-[var(--border-subtle)] bg-[var(--surface-raised)] p-5 laptop:p-6 fhd:p-7">
+    <span class="absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 border-[var(--accent-color)]" aria-hidden="true" />
+    <span class="absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 border-[var(--accent-color)] opacity-40" aria-hidden="true" />
 
-  <!-- Info block -->
-  <div class="flex flex-col gap-5">
-    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-x-8 gap-y-5">
+    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-5">
 
-      <!-- Left col: Email + Location -->
-      <div class="flex flex-col gap-5">
+      <!-- Left: Email + Location -->
+      <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <span class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase font-bold opacity-30">Email</span>
+          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-30">Email</span>
           <a
             href={`mailto:${email}`}
-            class="text-[clamp(0.85rem,1.5vw,1.2rem)] fhd:text-[clamp(1rem,1.5vw,1.5rem)] font-bold text-[var(--accent-color)]
+            class="text-[clamp(0.82rem,1.4vw,1.1rem)] fhd:text-[clamp(0.95rem,1.4vw,1.35rem)] font-bold text-[var(--accent-color)]
                    can-hover:hover:opacity-70 transition-opacity break-all leading-snug self-start"
           >
             {email}
@@ -46,59 +47,53 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         </div>
 
         <div class="flex flex-col gap-1">
-          <span class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase font-bold opacity-30">Location</span>
-          <span class="text-[0.62rem] laptop:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.15em] uppercase font-bold opacity-55">{location}</span>
+          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-30">Location</span>
+          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold opacity-55">{location}</span>
         </div>
       </div>
 
-      <!-- Right col: CV buttons top-aligned -->
-      <div class="flex flex-row flex-wrap gap-2 items-start mobile:flex-col">
-        <span class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase font-bold opacity-30">Curriculum</span>
-        <a
-          href={cv_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2
-                 text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
-                 border border-[var(--accent-color)] text-[var(--accent-color)]
-                 can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
-                 transition-all duration-200"
-        >
-          <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-            <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-          </svg>
-          CV · EN
-        </a>
-        <a
-          href="/cv-es.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2
-                 text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
-                 border border-[var(--accent-color)] text-[var(--accent-color)]
-                 can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
-                 transition-all duration-200"
-        >
-          <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-            <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-          </svg>
-          CV · ES
-        </a>
+      <!-- Right: Curriculum -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-30">Curriculum</span>
+        <div class="flex flex-row flex-wrap gap-2 mobile:flex-col mobile:items-start">
+          <a
+            href={cv_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2
+                   text-[0.55rem] laptop:text-[0.62rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
+                   border border-[var(--accent-color)] text-[var(--accent-color)]
+                   can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
+                   transition-all duration-200"
+          >
+            <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+              <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
+            </svg>
+            CV · EN
+          </a>
+          <a
+            href="/cv-es.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2
+                   text-[0.55rem] laptop:text-[0.62rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
+                   border border-[var(--accent-color)] text-[var(--accent-color)]
+                   can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
+                   transition-all duration-200"
+          >
+            <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+              <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
+            </svg>
+            CV · ES
+          </a>
+        </div>
       </div>
 
     </div>
-
-    <!-- Footnote -->
-    <p class="text-center text-[0.52rem] laptop:text-[0.57rem] fhd:text-[0.65rem] qhd:text-xs
-              tracking-[0.2em] leading-[2] opacity-40 m-0 uppercase">
-      Need more context? &nbsp;·&nbsp; Download the CV &nbsp;·&nbsp; or ask the bot at the bottom-right &nbsp;<span class="font-mono text-[var(--accent-color)] opacity-70">↘</span>
-    </p>
   </div>
 
-  <div class="text-gradient text-glow gradient-line" />
-
   <!-- Form -->
-  <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-5">
+  <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
     <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
     <input type="hidden" name="subject"    value={formSubject} />
 
@@ -108,12 +103,11 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
              text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm tracking-[0.2em] text-center text-[var(--letter-color)]"
     />
 
-    <!-- Name + Email -->
-    <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-4">
       <input
         id="f-name" name="name" type="text" required autocomplete="off"
         placeholder="Name"
-        class="bg-transparent w-full outline-none px-3 py-2
+        class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
                font-['Poiret_One',cursive] text-[var(--letter-color)]
                border border-[var(--border-color)] focus:border-[var(--accent-color)]
@@ -124,7 +118,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       <input
         id="f-email" name="email" type="email" required autocomplete="off"
         placeholder="Email"
-        class="bg-transparent w-full outline-none px-3 py-2
+        class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
                font-['Poiret_One',cursive] text-[var(--letter-color)]
                border border-[var(--border-color)] focus:border-[var(--accent-color)]
@@ -134,7 +128,6 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       />
     </div>
 
-    <!-- Message -->
     <textarea
       id="f-message" name="message" rows="5" required
       placeholder="Message"
@@ -147,8 +140,10 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
              placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
     />
 
-    <!-- Submit -->
-    <div class="flex justify-end">
+    <div class="flex items-center justify-between gap-4">
+      <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.22em] uppercase opacity-25 font-bold">
+        // responds within 24h
+      </span>
       <Button id="submit-btn" type="submit" variant="primary">
         Send
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -159,5 +154,10 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     </div>
   </form>
 
+  <!-- Bot hint -->
+  <p class="text-center text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs
+            tracking-[0.22em] leading-[2] opacity-30 m-0 uppercase">
+    Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent-color)] opacity-70">↘</span>
+  </p>
 
 </div>
