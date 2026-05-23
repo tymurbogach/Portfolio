@@ -281,6 +281,11 @@ html, body {
   outline-offset: 2px;
 }
 
+textarea:focus-visible,
+input:focus-visible {
+  outline: none;
+}
+
 /* Remove native blue/grey tap highlight and 300ms delay on all interactive elements */
 a, button {
   -webkit-tap-highlight-color: transparent;

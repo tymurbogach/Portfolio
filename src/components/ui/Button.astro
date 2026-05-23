@@ -5,6 +5,7 @@ export interface Props {
   variant?: Variant;
   href?:    string;
   type?:    "submit" | "button";
+  id?:      string;
   class?:   string;
 }
 
@@ -12,6 +13,7 @@ const {
   variant,
   href,
   type = "button",
+  id,
   class: extraClass = "",
 } = Astro.props;
 
@@ -29,6 +31,6 @@ const buttonClasses = `${baseClasses} ${variantClasses[resolvedVariant]} ${extra
 const Element = href ? "a" : "button";
 ---
 
-<Element href={href} type={href ? undefined : type} class={buttonClasses}>
+<Element href={href} type={href ? undefined : type} id={id} class={buttonClasses}>
   <slot />
 </Element>

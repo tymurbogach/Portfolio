@@ -1,5 +1,5 @@
 ---
-import FormField from "../../components/ui/FormField.astro";
+import Button from "../../components/ui/Button.astro";
 import type { ContactData, SocialLink } from "../../lib/content";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { contact }                                                           = Astro.props;
-const { intro, email, location, statusStr, statusActive, formSubject }      = contact;
+const { intro, email, location, statusStr, statusActive, formSubject, cv_url } = contact;
 
 ---
 
@@ -18,129 +18,137 @@ const { intro, email, location, statusStr, statusActive, formSubject }      = co
 
 <div class="w-full flex flex-col gap-8 laptop:gap-10 fhd:gap-12">
 
-  <!-- Split row: LEFT info | divider | RIGHT form -->
-  <div class="flex flex-col laptop:flex-row laptop-scaled:flex-row gap-6 laptop:gap-0">
-
-    <!-- LEFT: heading + info -->
-    <div class="flex flex-col justify-between gap-6 laptop:gap-8
-                laptop:w-[40%] laptop-scaled:w-[40%] fhd:w-[38%]
-                shrink-0 laptop:pr-10 fhd:pr-14">
-
-      <!-- Heading block -->
-      <div class="relative">
-        <span
-          class="absolute right-0 top-0 font-display leading-none select-none pointer-events-none
-                 text-[6rem] laptop:text-[8rem] fhd:text-[10rem]"
-          style="color: var(--letter-color); opacity: 0.04;"
-          aria-hidden="true"
-        >01</span>
-
-        <h2 class="font-display uppercase tracking-[0.12em] leading-none m-0
-                   text-[clamp(2rem,4vw,3rem)] fhd:text-[clamp(2.5rem,3.5vw,4rem)]">
-          Contact
-        </h2>
-
-        {intro && (
-          <p class="text-sm laptop:text-base fhd:text-lg
-                    opacity-55 tracking-[0.03em] leading-relaxed mt-3 mb-0">
-            {intro}
-          </p>
-        )}
-      </div>
-
-      <!-- Info block -->
-      <div class="flex flex-col gap-4 laptop:gap-5">
-        <div class="h-px bg-[var(--border-subtle)] opacity-40" />
-
-        <a
-          href={`mailto:${email}`}
-          class="text-[clamp(0.85rem,1.3vw,1.1rem)] font-bold text-[var(--accent-color)]
-                 can-hover:hover:opacity-70 transition-opacity break-all leading-snug"
-        >
-          {email}
-        </a>
-
-        <div class="flex items-center gap-3
-                    text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm
-                    tracking-[0.25em] uppercase font-bold opacity-40">
-          <span>{location}</span>
-          <span>·</span>
-          <span class="flex items-center gap-1.5">
-            <span class={`w-[5px] h-[5px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
-            {statusStr}
-          </span>
-        </div>
-
-        <p class="hidden laptop:block laptop-scaled:block
-                  text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
-                  leading-[1.8] opacity-35 tracking-[0.06em] neon-left-border">
-          Open to freelance projects,<br />collaborations & full-time roles.<br />Response within 24 h.
-        </p>
-      </div>
-
+  <!-- Info block -->
+  <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-1">
+      <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Email</span>
+      <a
+        href={`mailto:${email}`}
+        class="text-[clamp(1.1rem,2vw,1.6rem)] fhd:text-[clamp(1.4rem,2vw,2rem)] font-bold text-[var(--accent-color)]
+               can-hover:hover:opacity-70 transition-opacity break-all leading-snug self-start"
+      >
+        {email}
+      </a>
     </div>
 
-    <!-- Vertical divider (desktop only) -->
-    <div class="hidden laptop:block laptop-scaled:block w-px self-stretch shrink-0
-                bg-[var(--border-subtle)] opacity-25" />
-
-    <!-- RIGHT: form -->
-    <div class="flex-1 min-w-0 laptop:pl-10 fhd:pl-14">
-      <form id="contact-form" autocomplete="off" data-email={email}>
-        <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
-        <input type="hidden" name="subject"    value={formSubject} />
-
-        <div
-          id="form-status"
-          class="hidden py-3 px-4 mb-4 border border-[var(--border-subtle)]
-                 text-xs fhd:text-sm qhd:text-base tracking-[0.15em] text-center text-[var(--letter-color)]"
-        />
-
-        <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-y-0 min-[30rem]:gap-x-8">
-          <FormField id="f-name"  name="name"  label="Name *"  required />
-          <FormField id="f-email" name="email" type="email" label="Email *" required />
-        </div>
-
-        <div class="mb-2">
-          <textarea
-            id="f-message"
-            name="message"
-            rows="7"
-            required
-            placeholder="Your message *"
-            class="bg-transparent border border-[var(--border-subtle)] p-4
-                   text-[clamp(0.85rem,1.1vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
-                   w-full resize-none outline-none transition-colors duration-[250ms]
-                   focus:border-[var(--accent-color)]
-                   placeholder:text-[0.7rem] placeholder:tracking-[0.2em] placeholder:uppercase
-                   placeholder:opacity-35 placeholder:font-['Poiret_One',cursive]"
-          />
-        </div>
-
-        <div class="flex justify-end mt-1">
-          <button
-            id="submit-btn"
-            type="submit"
-            class="flex items-center gap-2 py-[0.5rem] px-5
-                   bg-[var(--letter-color)] text-[var(--page-background)]
-                   border-none cursor-pointer transition-all duration-200
-                   can-hover:hover:opacity-85 can-hover:hover:translate-x-[2px]
-                   disabled:opacity-30 disabled:cursor-default disabled:transform-none"
-          >
-            <span class="font-['Poiret_One',cursive] text-[0.65rem] laptop:text-[0.72rem] laptop-scaled:text-[0.72rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold">Send</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                 stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
-              <path d="M4 10h12M12 5l5 5-5 5" />
-            </svg>
-          </button>
-        </div>
-      </form>
+    <div class="flex flex-wrap gap-x-8 gap-y-3">
+      <div class="flex flex-col gap-1">
+        <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Location</span>
+        <span class="text-[0.62rem] fhd:text-[0.7rem] tracking-[0.15em] uppercase font-bold opacity-55">{location}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Status</span>
+        <span class="flex items-center gap-1.5 text-[0.62rem] fhd:text-[0.7rem] tracking-[0.15em] uppercase font-bold opacity-55">
+          <span class={`w-[5px] h-[5px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
+          {statusStr}
+        </span>
+      </div>
     </div>
 
+    <div class="h-px bg-[var(--border-subtle)] opacity-40" />
+
+    {intro && (
+      <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs
+                leading-[1.8] opacity-40 tracking-[0.04em] m-0">
+        {intro}
+      </p>
+    )}
+
+    <!-- CV buttons -->
+    <div class="flex flex-wrap gap-2 pt-1">
+      <button
+        data-cv-trigger
+        data-cv-url={cv_url}
+        data-cv-filename="Tymur_Bogach_CV_EN.pdf"
+        class="flex items-center gap-2 px-4 py-2 cursor-pointer bg-transparent
+               text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
+               border border-[var(--border-color)] text-[var(--letter-color)]
+               can-hover:hover:border-[var(--accent-color)] can-hover:hover:text-[var(--accent-color)]
+               transition-all duration-200"
+      >
+        <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" style="flex-shrink:0; opacity:0.5;">
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        </svg>
+        CV · EN
+      </button>
+      <button
+        data-cv-trigger
+        data-cv-url="/cv-es.pdf"
+        data-cv-filename="Tymur_Bogach_CV_ES.pdf"
+        class="flex items-center gap-2 px-4 py-2 cursor-pointer bg-transparent
+               text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
+               border border-[var(--border-color)] text-[var(--letter-color)]
+               can-hover:hover:border-[var(--accent-color)] can-hover:hover:text-[var(--accent-color)]
+               transition-all duration-200"
+      >
+        <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" style="flex-shrink:0; opacity:0.5;">
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        </svg>
+        CV · ES
+      </button>
+    </div>
   </div>
 
+  <!-- Form -->
+  <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-5">
+    <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
+    <input type="hidden" name="subject"    value={formSubject} />
+
+    <div
+      id="form-status"
+      class="hidden py-2 px-3 border border-[var(--border-subtle)]
+             text-[0.65rem] tracking-[0.2em] text-center text-[var(--letter-color)]"
+    />
+
+    <!-- Name + Email -->
+    <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-5">
+      <input
+        id="f-name" name="name" type="text" required autocomplete="off"
+        placeholder="Name"
+        class="bg-transparent w-full outline-none px-3 py-2
+               text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+               border border-[var(--border-subtle)] focus:border-[var(--accent-color)]
+               transition-colors duration-200
+               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
+      />
+      <input
+        id="f-email" name="email" type="email" required autocomplete="off"
+        placeholder="Email"
+        class="bg-transparent w-full outline-none px-3 py-2
+               text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+               border border-[var(--border-subtle)] focus:border-[var(--accent-color)]
+               transition-colors duration-200
+               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
+      />
+    </div>
+
+    <!-- Message -->
+    <textarea
+      id="f-message" name="message" rows="5" required
+      placeholder="Message"
+      class="bg-transparent w-full outline-none p-3
+             text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+             resize-none border border-[var(--border-subtle)]
+             transition-colors duration-200 focus-visible:outline-none
+             placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
+    />
+
+    <!-- Submit -->
+    <div class="flex justify-end">
+      <Button id="submit-btn" type="submit" variant="primary">
+        Send
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+          <path d="M4 10h12M12 5l5 5-5 5" />
+        </svg>
+      </Button>
+    </div>
+  </form>
+
   <!-- Chatbot CTA -->
-  <div class="flex items-center justify-center gap-3 pt-4 border-t border-[var(--border-subtle)]"
+  <div class="flex items-center justify-center gap-3 pt-4"
        style="opacity: 0.45;">
     <span class="text-[0.52rem] laptop:text-[0.58rem] fhd:text-[0.65rem] tracking-[0.35em] uppercase font-bold">
       or try

@@ -2,11 +2,10 @@
 import type { HeroData } from "../../lib/content";
 
 interface Props {
-  hero:  HeroData;
-  cvUrl: string;
+  hero: HeroData;
 }
 
-const { hero: { title1, title2, subtitle1, subtitle2 }, cvUrl } = Astro.props;
+const { hero: { title1, title2, subtitle1, subtitle2 } } = Astro.props;
 
 const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular · Astro · PHP · Laravel · Java · MySQL · MariaDB · Docker · Linux · Nginx · Git · Raspberry Pi · TrueNAS · Tailscale · Cloudflare · Ollama · Jellyfin · Immich · Sonarr · Radarr · Portainer · Pi-hole · Homarr · SearXNG · Watchtower · Windows · ";
 ---
@@ -78,44 +77,6 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
         )}
       </div>
 
-      <!-- CV buttons -->
-      <div class="flex flex-wrap gap-2">
-        <button
-          data-cv-trigger
-          data-cv-url={cvUrl}
-          data-cv-filename="Tymur_Bogach_CV_EN.pdf"
-          class="flex items-center gap-2 px-4 py-2 cursor-pointer
-                 text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base
-                 tracking-[0.25em] uppercase font-bold
-                 border border-[var(--border-color)]
-                 can-hover:hover:border-[var(--accent-color)] can-hover:hover:text-[var(--accent-color)]
-                 transition-all duration-200"
-        >
-          <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" style="flex-shrink:0; opacity:0.5;">
-            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-          </svg>
-          CV · EN
-        </button>
-
-        <button
-          data-cv-trigger
-          data-cv-url="/cv-es.pdf"
-          data-cv-filename="Tymur_Bogach_CV_ES.pdf"
-          class="flex items-center gap-2 px-4 py-2 cursor-pointer
-                 text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base
-                 tracking-[0.25em] uppercase font-bold
-                 border border-[var(--border-color)]
-                 can-hover:hover:border-[var(--accent-color)] can-hover:hover:text-[var(--accent-color)]
-                 transition-all duration-200"
-        >
-          <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" style="flex-shrink:0; opacity:0.5;">
-            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-          </svg>
-          CV · ES
-        </button>
-      </div>
     </div>
 
   </div>
