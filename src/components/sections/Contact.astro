@@ -24,7 +24,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Email</span>
       <a
         href={`mailto:${email}`}
-        class="text-[clamp(1.1rem,2vw,1.6rem)] fhd:text-[clamp(1.4rem,2vw,2rem)] font-bold text-[var(--accent-color)]
+        class="text-[clamp(0.85rem,1.5vw,1.2rem)] fhd:text-[clamp(1rem,1.5vw,1.5rem)] font-bold text-[var(--accent-color)]
                can-hover:hover:opacity-70 transition-opacity break-all leading-snug self-start"
       >
         {email}
@@ -49,7 +49,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
     {intro && (
       <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs
-                leading-[1.8] opacity-40 tracking-[0.04em] m-0">
+                leading-[1.8] opacity-60 tracking-[0.04em] m-0">
         {intro}
       </p>
     )}
@@ -62,13 +62,12 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         data-cv-filename="Tymur_Bogach_CV_EN.pdf"
         class="flex items-center gap-2 px-4 py-2 cursor-pointer bg-transparent
                text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
-               border border-[var(--border-color)] text-[var(--letter-color)]
-               can-hover:hover:border-[var(--accent-color)] can-hover:hover:text-[var(--accent-color)]
+               border border-[var(--accent-color)] text-[var(--accent-color)]
+               can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
                transition-all duration-200"
       >
-        <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" style="flex-shrink:0; opacity:0.5;">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+          <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
         </svg>
         CV · EN
       </button>
@@ -78,13 +77,12 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         data-cv-filename="Tymur_Bogach_CV_ES.pdf"
         class="flex items-center gap-2 px-4 py-2 cursor-pointer bg-transparent
                text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
-               border border-[var(--border-color)] text-[var(--letter-color)]
-               can-hover:hover:border-[var(--accent-color)] can-hover:hover:text-[var(--accent-color)]
+               border border-[var(--accent-color)] text-[var(--accent-color)]
+               can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
                transition-all duration-200"
       >
-        <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" style="flex-shrink:0; opacity:0.5;">
-          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+          <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
         </svg>
         CV · ES
       </button>
@@ -109,7 +107,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         placeholder="Name"
         class="bg-transparent w-full outline-none px-3 py-2
                text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
-               border border-[var(--border-subtle)] focus:border-[var(--accent-color)]
+               border border-[var(--border-color)] focus:border-[var(--accent-color)]
                transition-colors duration-200
                placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
       />
@@ -118,7 +116,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         placeholder="Email"
         class="bg-transparent w-full outline-none px-3 py-2
                text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
-               border border-[var(--border-subtle)] focus:border-[var(--accent-color)]
+               border border-[var(--border-color)] focus:border-[var(--accent-color)]
                transition-colors duration-200
                placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
       />
@@ -130,7 +128,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       placeholder="Message"
       class="bg-transparent w-full outline-none p-3
              text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
-             resize-none border border-[var(--border-subtle)]
+             resize-none border border-[var(--border-color)] focus:border-[var(--accent-color)]
              transition-colors duration-200 focus-visible:outline-none
              placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
     />
