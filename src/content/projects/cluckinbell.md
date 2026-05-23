@@ -1,6 +1,6 @@
 ---
 title: "CluckinBell"
-description: "Gestor de colegio con Angular y Laravel"
+description: "School management app built with Angular and Laravel."
 image: "/img/CluckinBellLogo.png"
 link: "https://github.com/TimurTwerKing/CluckinBell"
 tags: ["Angular", "Laravel"]

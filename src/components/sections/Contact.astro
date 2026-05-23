@@ -18,76 +18,84 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
 <div class="w-full flex flex-col gap-8 laptop:gap-10 fhd:gap-12">
 
+  {intro && (
+    <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+              leading-[1.8] opacity-60 tracking-[0.04em] m-0
+              border-l-2 border-[var(--accent-color)] border-opacity-40 pl-3">
+      {intro}
+    </p>
+  )}
+
+  <div class="text-gradient text-glow gradient-line" />
+
   <!-- Info block -->
   <div class="flex flex-col gap-5">
-    <div class="flex flex-col gap-1">
-      <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Email</span>
-      <a
-        href={`mailto:${email}`}
-        class="text-[clamp(0.85rem,1.5vw,1.2rem)] fhd:text-[clamp(1rem,1.5vw,1.5rem)] font-bold text-[var(--accent-color)]
-               can-hover:hover:opacity-70 transition-opacity break-all leading-snug self-start"
-      >
-        {email}
-      </a>
-    </div>
+    <div class="grid grid-cols-1 mobile:grid-cols-2 gap-x-8 gap-y-5">
 
-    <div class="flex flex-wrap gap-x-8 gap-y-3">
-      <div class="flex flex-col gap-1">
-        <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Location</span>
-        <span class="text-[0.62rem] fhd:text-[0.7rem] tracking-[0.15em] uppercase font-bold opacity-55">{location}</span>
+      <!-- Left col: Email + Location -->
+      <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-1">
+          <span class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase font-bold opacity-30">Email</span>
+          <a
+            href={`mailto:${email}`}
+            class="text-[clamp(0.85rem,1.5vw,1.2rem)] fhd:text-[clamp(1rem,1.5vw,1.5rem)] font-bold text-[var(--accent-color)]
+                   can-hover:hover:opacity-70 transition-opacity break-all leading-snug self-start"
+          >
+            {email}
+          </a>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase font-bold opacity-30">Location</span>
+          <span class="text-[0.62rem] laptop:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.15em] uppercase font-bold opacity-55">{location}</span>
+        </div>
       </div>
-      <div class="flex flex-col gap-1">
-        <span class="text-[0.45rem] fhd:text-[0.52rem] tracking-[0.3em] uppercase font-bold opacity-30">Status</span>
-        <span class="flex items-center gap-1.5 text-[0.62rem] fhd:text-[0.7rem] tracking-[0.15em] uppercase font-bold opacity-55">
-          <span class={`w-[5px] h-[5px] rounded-full shrink-0 ${statusActive ? "bg-[var(--accent-color)]" : "bg-gray-500"}`} />
-          {statusStr}
-        </span>
+
+      <!-- Right col: CV buttons top-aligned -->
+      <div class="flex flex-row flex-wrap gap-2 items-start mobile:flex-col">
+        <span class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] qhd:text-xs uhd:text-sm tracking-[0.25em] uppercase font-bold opacity-30">Curriculum</span>
+        <a
+          href={cv_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-4 py-2
+                 text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
+                 border border-[var(--accent-color)] text-[var(--accent-color)]
+                 can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
+                 transition-all duration-200"
+        >
+          <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+            <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
+          </svg>
+          CV · EN
+        </a>
+        <a
+          href="/cv-es.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-4 py-2
+                 text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
+                 border border-[var(--accent-color)] text-[var(--accent-color)]
+                 can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
+                 transition-all duration-200"
+        >
+          <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+            <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
+          </svg>
+          CV · ES
+        </a>
       </div>
+
     </div>
 
-    <div class="h-px bg-[var(--border-subtle)] opacity-40" />
-
-    {intro && (
-      <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs
-                leading-[1.8] opacity-60 tracking-[0.04em] m-0">
-        {intro}
-      </p>
-    )}
-
-    <!-- CV buttons -->
-    <div class="flex flex-wrap gap-2 pt-1">
-      <button
-        data-cv-trigger
-        data-cv-url={cv_url}
-        data-cv-filename="Tymur_Bogach_CV_EN.pdf"
-        class="flex items-center gap-2 px-4 py-2 cursor-pointer bg-transparent
-               text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
-               border border-[var(--accent-color)] text-[var(--accent-color)]
-               can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
-               transition-all duration-200"
-      >
-        <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-          <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-        </svg>
-        CV · EN
-      </button>
-      <button
-        data-cv-trigger
-        data-cv-url="/cv-es.pdf"
-        data-cv-filename="Tymur_Bogach_CV_ES.pdf"
-        class="flex items-center gap-2 px-4 py-2 cursor-pointer bg-transparent
-               text-[0.58rem] laptop:text-[0.65rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
-               border border-[var(--accent-color)] text-[var(--accent-color)]
-               can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]
-               transition-all duration-200"
-      >
-        <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-          <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-        </svg>
-        CV · ES
-      </button>
-    </div>
+    <!-- Footnote -->
+    <p class="text-center text-[0.52rem] laptop:text-[0.57rem] fhd:text-[0.65rem] qhd:text-xs
+              tracking-[0.2em] leading-[2] opacity-40 m-0 uppercase">
+      Need more context? &nbsp;·&nbsp; Download the CV &nbsp;·&nbsp; or ask the bot at the bottom-right &nbsp;<span class="font-mono text-[var(--accent-color)] opacity-70">↘</span>
+    </p>
   </div>
+
+  <div class="text-gradient text-glow gradient-line" />
 
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-5">
@@ -97,7 +105,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     <div
       id="form-status"
       class="hidden py-2 px-3 border border-[var(--border-subtle)]
-             text-[0.65rem] tracking-[0.2em] text-center text-[var(--letter-color)]"
+             text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm tracking-[0.2em] text-center text-[var(--letter-color)]"
     />
 
     <!-- Name + Email -->
@@ -106,19 +114,23 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         id="f-name" name="name" type="text" required autocomplete="off"
         placeholder="Name"
         class="bg-transparent w-full outline-none px-3 py-2
-               text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+               text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
+               font-['Poiret_One',cursive] text-[var(--letter-color)]
                border border-[var(--border-color)] focus:border-[var(--accent-color)]
                transition-colors duration-200
-               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
+               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
+               placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
       />
       <input
         id="f-email" name="email" type="email" required autocomplete="off"
         placeholder="Email"
         class="bg-transparent w-full outline-none px-3 py-2
-               text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+               text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
+               font-['Poiret_One',cursive] text-[var(--letter-color)]
                border border-[var(--border-color)] focus:border-[var(--accent-color)]
                transition-colors duration-200
-               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
+               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
+               placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
       />
     </div>
 
@@ -127,10 +139,12 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       id="f-message" name="message" rows="5" required
       placeholder="Message"
       class="bg-transparent w-full outline-none p-3
-             text-[clamp(0.85rem,1.3vw,1rem)] font-['Poiret_One',cursive] text-[var(--letter-color)]
+             text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
+             font-['Poiret_One',cursive] text-[var(--letter-color)]
              resize-none border border-[var(--border-color)] focus:border-[var(--accent-color)]
              transition-colors duration-200 focus-visible:outline-none
-             placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase placeholder:text-[0.75rem]"
+             placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
+             placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
     />
 
     <!-- Submit -->
@@ -145,22 +159,5 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     </div>
   </form>
 
-  <!-- Chatbot CTA -->
-  <div class="flex items-center justify-center gap-3 pt-4"
-       style="opacity: 0.45;">
-    <span class="text-[0.52rem] laptop:text-[0.58rem] fhd:text-[0.65rem] tracking-[0.35em] uppercase font-bold">
-      or try
-    </span>
-    <button
-      class="chat-toggle flex items-center gap-1.5
-             text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.72rem] tracking-[0.25em] uppercase font-bold
-             text-[var(--accent-color)] bg-transparent border-none cursor-pointer
-             can-hover:hover:opacity-70 transition-opacity"
-    >
-      <span class="font-mono text-[0.7rem]">&gt;_</span>
-      TymurBot
-      <span class="transition-transform duration-200 can-hover:hover:translate-x-[2px]">→</span>
-    </button>
-  </div>
 
 </div>

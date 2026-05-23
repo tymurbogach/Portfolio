@@ -78,36 +78,36 @@ const { cv_url, statusStr, statusActive }  = contact;
 
   <!-- CV buttons — anchored at bottom -->
   <div class="mt-auto flex w-full shrink-0">
-    <button
-      data-cv-trigger
-      data-cv-url={cv_url}
-      data-cv-filename="Tymur_Bogach_CV_EN.pdf"
+    <a
+      href={cv_url}
+      target="_blank"
+      rel="noopener noreferrer"
       class="flex-1 flex items-center gap-1.5 px-3 py-2 justify-center
              text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
              border border-[var(--border-color)]
              can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)] can-hover:hover:border-[var(--accent-color)]
-             transition-all duration-200 cursor-pointer"
+             transition-all duration-200"
     >
       <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
         <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
       </svg>
       <span>CV · EN</span>
-    </button>
-    <button
-      data-cv-trigger
-      data-cv-url="/cv-es.pdf"
-      data-cv-filename="Tymur_Bogach_CV_ES.pdf"
+    </a>
+    <a
+      href="/cv-es.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
       class="flex-1 flex items-center gap-1.5 px-3 py-2 justify-center
              text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
              border border-l-0 border-[var(--border-color)]
              can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)] can-hover:hover:border-[var(--accent-color)]
-             transition-all duration-200 cursor-pointer"
+             transition-all duration-200"
     >
       <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
         <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
       </svg>
       <span>CV · ES</span>
-    </button>
+    </a>
   </div>
 
 </section>

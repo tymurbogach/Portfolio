@@ -17,7 +17,7 @@ const categories = [
 ];
 ---
 
-<section class="flex flex-col w-full gap-6 laptop:gap-7 fhd:gap-9">
+<section class="grid grid-cols-1 laptop:grid-cols-2 laptop-scaled:grid-cols-2 w-full gap-6 laptop:gap-x-10 laptop:gap-y-7 fhd:gap-x-14 fhd:gap-y-9">
 
   {categories.map(({ label, skills }) => (
     <div class="resume-section flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
@@ -32,8 +32,9 @@ const categories = [
       <div
         class="resume-grid overflow-hidden
                max-h-[6rem] laptop:max-h-[6.75rem] fhd:max-h-[8.5rem]
-               grid grid-cols-[repeat(auto-fill,10rem)] justify-center gap-x-3 gap-y-3
-               laptop:grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] laptop:justify-start laptop:gap-x-4 laptop:gap-y-3.5 fhd:gap-5"
+               grid grid-cols-2 gap-x-3 gap-y-3
+               laptop:gap-x-4 laptop:gap-y-3.5 fhd:gap-5
+               pl-3 laptop:pl-4 fhd:pl-5"
       >
         {skills.map(({ slug, color, label: skillLabel }: { slug: string; color: string; label: string }) => (
           <span class="flex items-start gap-1.5 laptop:gap-2">
@@ -73,7 +74,7 @@ const categories = [
   ))}
 
   <!-- Languages -->
-  <div class="flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
+  <div class="flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3 laptop:col-span-2 laptop-scaled:col-span-2">
 
     <span
       class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
@@ -82,8 +83,9 @@ const categories = [
       Languages
     </span>
 
-    <div class="grid grid-cols-[repeat(auto-fill,10rem)] justify-center gap-x-3 gap-y-3
-                laptop:grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] laptop:justify-start laptop:gap-x-4 laptop:gap-y-3.5 fhd:gap-5">
+    <div class="grid grid-cols-2 gap-x-3 gap-y-3
+                laptop:flex laptop:justify-around laptop:gap-0
+                pl-3 laptop:pl-4 fhd:pl-5">
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <span class="flex items-start laptop:items-center gap-1.5 laptop:gap-2">
           <span class="text-sm laptop:text-base fhd:text-lg shrink-0" aria-hidden="true">{flag}</span>

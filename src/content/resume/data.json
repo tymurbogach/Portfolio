@@ -60,8 +60,7 @@
       { "slug": "ollama",            "color": "#8b5cf6", "label": "Ollama"             },
       { "slug": "chatbot",           "color": "#0066FF", "label": "AI Agents"          },
       { "slug": "opencode",          "color": "#3b82f6", "label": "OpenCode"           },
-      { "slug": "promptengineering", "color": "#ec4899", "label": "Prompt Engineering" },
-      { "slug": "openwebui",         "color": "#06b6d4", "label": "Open WebUI"         }
+      { "slug": "promptengineering", "color": "#ec4899", "label": "Prompt Engineering" }
     ],
     "languages": [
       { "flag": "🇷🇺", "lang": "Russian",   "level": "native" },

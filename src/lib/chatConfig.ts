@@ -64,7 +64,7 @@ DevOps: Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare, Port
 - **CluckinBell** — school management system. Angular + Laravel.
 - **Guitar Store** — static e-commerce for guitars. HTML/CSS.
 - **Angular Marvel App** — Marvel API, characters and details.
-- **LazyTrip** — self-hosted travel planner with maps. TypeScript + Docker.
+- **LazyTripZ** — self-hosted travel planner with AI recommendations. Laravel + Angular + TypeScript + Docker.
 - **This portfolio** — Astro 6, Tailwind v4, running on a Pi in his living room.
 
 ## Languages

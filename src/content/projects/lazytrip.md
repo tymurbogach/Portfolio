@@ -1,9 +1,9 @@
 ---
-title: "LazyTrip"
-description: "Aplicación de planificación de viajes con recomendaciones por la IA."
+title: "LazyTripZ"
+description: "AI-powered travel planning app with smart recommendations."
 image: "/img/LazyTripLogo.png"
 link: "https://lazytripz.nastymur.com"
 type: "demo"
-tags: ["TypeScript", "Docker", "Self-hosted"]
+tags: ["Laravel", "Angular", "TypeScript", "Docker", "Self-hosted"]
 order: 1
 ---

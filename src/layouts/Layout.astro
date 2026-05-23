@@ -8,7 +8,6 @@ import SocialLinks     from "../components/ui/SocialLinks.astro";
 import SocialBotPanel  from "../components/layout/SocialBotPanel.astro";
 import ChatWidget      from "../components/layout/ChatWidget.astro";
 import DualMain        from "../layouts/DualMain.astro";
-import Modal           from "../components/ui/Modal.astro";
 import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile, getContactData } from "../lib/content";
 
@@ -175,9 +174,6 @@ const ogImageUrl = `${site.url}${ogImage}`;
 
     <ChatWidget />
 
-    <!-- Modal CV — fuera de <main> para evitar conflicto de stacking context -->
-    <Modal downloadHref={contact.cv_url} />
-    <script src="@/scripts/cvModal.ts"></script>
 
     <!-- ═══════════════════════════════════
          MAIN

@@ -1,6 +1,6 @@
 ---
 title: "Valorant"
-description: "Aplicacion que muestra ARMAS, MAPAS y Agentes del videojuego usando la API."
+description: "App showcasing weapons, maps, and agents from the game using the Valorant API."
 image: "/img/ValorantLogo.jpg"
 link: "https://timurtwerking.github.io/Valorant/"
 type: "demo"
