@@ -26,11 +26,8 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     </p>
   )}
 
-  <!-- Status panel — corner bracket card -->
-  <div class="relative border border-[var(--border-subtle)] bg-[var(--surface-raised)] p-5 laptop:p-6 fhd:p-7">
-    <span class="absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 border-[var(--accent-color)]" aria-hidden="true" />
-    <span class="absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 border-[var(--accent-color)] opacity-40" aria-hidden="true" />
-
+  <!-- Info block -->
+  <div>
     <div class="grid grid-cols-1 mobile:grid-cols-2 gap-5">
 
       <!-- Left: Email + Location -->
@@ -90,10 +87,12 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       </div>
 
     </div>
+
   </div>
 
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
+    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold opacity-30 m-0">// send a message</p>
     <input type="hidden" name="access_key" value="6f16785c-509f-43aa-bd91-8c38b7d49f94" />
     <input type="hidden" name="subject"    value={formSubject} />
 

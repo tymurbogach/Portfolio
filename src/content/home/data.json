@@ -1,10 +1,10 @@
 {
   "data": {
     "hero": {
-      "title1": "Software",
-      "title2": "Solutions",
-      "subtitle1": "I'm a web programming enthusiast with a passion for music and computers. I have a professional background in the automotive industry as a painter and bodywork specialist — 10+ years of precision, patience, and attention to detail. Known for my dark humor and energetic personality. I look forward to collaborating with professionals who share my enthusiasm for growing in this industry like a mushroom.",
-      "subtitle2": "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie. (Hope you get the reference!)",
+      "title1": "FORGE",
+      "title2": "DEPLOY",
+      "subtitle1": "10 years building things with my hands. Now I build with code — same obsession, different tools.",
+      "subtitle2": "Following the white rabbit, choosing the right Morpheus pill, and eating the Oracle cookie.",
       "cta": {
         "primary": "Explore my work →",
         "primaryHref": "/projects",

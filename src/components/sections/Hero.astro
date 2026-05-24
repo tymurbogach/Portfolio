@@ -1,20 +1,16 @@
 ---
+import Button from "../../components/ui/Button.astro";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
   hero: HeroData;
 }
 
-const { hero: { title1, title2, subtitle1, subtitle2 } } = Astro.props;
+const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
 
 const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular · Astro · PHP · Laravel · Java · MySQL · MariaDB · Docker · Linux · Nginx · Git · Raspberry Pi · TrueNAS · Tailscale · Cloudflare · Ollama · Jellyfin · Immich · Sonarr · Radarr · Portainer · Pi-hole · Homarr · SearXNG · Watchtower · Windows · ";
 ---
 
-<!--
-  Layout desktop: título + cita + CTAs en un bloque compacto arriba.
-  Spacer flex-1 empuja el marquee al fondo. Sin espacio estúpido entre título y botones.
-  Móvil: flex-col normal apilado.
--->
 <div class="flex flex-col w-full gap-5 relative
             flex-1 laptop:gap-0 laptop-scaled:gap-0">
 
@@ -28,26 +24,24 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
 
   <!-- Decoración: slash diagonal de acento -->
   <div
-    class="absolute -z-10 pointer-events-none opacity-[0.03]"
+    class="absolute -z-10 pointer-events-none opacity-[0.06]"
     style="right: -6rem; top: -10rem; width: 40rem; height: 40rem;
            border: 3px solid var(--accent-color); transform: rotate(15deg);"
     aria-hidden="true"
   />
 
-  <!-- Espacio superior — solo desktop, escala con la pantalla -->
+  <!-- Espacio superior — solo desktop -->
   <div
     class="hidden laptop:block laptop:shrink-0
            laptop:h-10 fhd:h-12 qhd:h-16 uhd:h-20"
     aria-hidden="true"
   />
 
-  <!-- BLOQUE PRINCIPAL: contenido centrado verticalmente en móvil -->
+  <!-- BLOQUE PRINCIPAL -->
   <div class="flex flex-col flex-1 min-h-0 justify-center gap-8
               laptop:flex-none laptop:shrink-0 laptop:justify-start laptop:gap-4">
 
-    <!-- Título — triple clic activa cambio de tema
-         Móvil: "Software" izquierda / "Solutions" derecha (stagger diagonal)
-         Desktop: ambas izquierda, leading compacto -->
+    <!-- Título — triple clic activa cambio de tema -->
     <div id="theme-toggle">
       <h1
         class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
@@ -58,30 +52,106 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
       </h1>
     </div>
 
-    <!-- Bio + links -->
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-col gap-1.5">
-        <p
-          class="leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
-          style="opacity: 0.6;"
-        >
-          {subtitle1}
-        </p>
-        {subtitle2 && (
-          <p
-            class="text-[0.6rem] laptop:text-[0.68rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.3em] m-0"
-            style="opacity: 0.28;"
-          >
-            {subtitle2}
-          </p>
-        )}
-      </div>
+    <!-- Bio + CTAs -->
+    <div class="flex flex-col gap-5 laptop:gap-4">
+      <p
+        class="leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
+        style="opacity: 0.6;"
+      >
+        {subtitle1}
+      </p>
 
+      {cta && (
+        <div class="flex flex-wrap gap-3">
+          <Button href={cta.primaryHref} variant="primary">
+            {cta.primary}
+          </Button>
+          <Button href={cta.secondaryHref} variant="ghost">
+            {cta.secondary}
+          </Button>
+        </div>
+      )}
     </div>
+
+    <!-- Matrix quote — typewriter hacker effect -->
+    <div
+      class="text-start text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs
+             tracking-[0.2em] leading-[1.9] m-0 italic"
+      style="opacity: 0.30; height: 5.5em; overflow: hidden;"
+      aria-label={subtitle2}
+      data-quote={subtitle2}
+      id="matrix-quote-wrap"
+    >
+      <div><span id="matrix-text"></span><span
+        id="matrix-cursor"
+        style="display:inline-block; width:1px; height:0.9em; vertical-align:middle;
+               background:var(--accent-color); margin-left:1px;"
+      ></span></div>
+      <div
+        id="matrix-comment"
+        style="opacity:0; transition:opacity 0.5s; color:var(--accent-color);
+               font-style:normal; font-weight:bold; margin-top:0.3em;"
+      >// reference: DETECTED</div>
+    </div>
+
+    <script>
+      function initMatrixTypewriter() {
+        const wrap    = document.getElementById('matrix-quote-wrap');
+        const textEl  = document.getElementById('matrix-text');
+        const cursor  = document.getElementById('matrix-cursor');
+        const comment = document.getElementById('matrix-comment');
+        if (!wrap || !textEl || !cursor || !comment) return;
+
+        const QUOTE = wrap.dataset.quote ?? '';
+        let idx = 0;
+        let timer: ReturnType<typeof setTimeout>;
+
+        let blink = true;
+        const blinkTimer = setInterval(() => {
+          cursor.style.opacity = (blink = !blink) ? '1' : '0';
+        }, 530);
+
+        function type() {
+          if (idx < QUOTE.length) {
+            textEl.textContent = QUOTE.slice(0, ++idx);
+            timer = setTimeout(type, 35 + Math.random() * 25);
+          } else {
+            timer = setTimeout(() => {
+              comment.style.opacity = '1';
+              timer = setTimeout(erase, 2800);
+            }, 3000);
+          }
+        }
+
+        function erase() {
+          comment.style.opacity = '0';
+          timer = setTimeout(() => {
+            function del() {
+              if (idx > 0) {
+                textEl.textContent = QUOTE.slice(0, --idx);
+                timer = setTimeout(del, 18 + Math.random() * 12);
+              } else {
+                timer = setTimeout(type, 1200);
+              }
+            }
+            del();
+          }, 500);
+        }
+
+        type();
+
+        document.addEventListener('astro:before-preparation', () => {
+          clearTimeout(timer);
+          clearInterval(blinkTimer);
+        }, { once: true });
+      }
+
+      document.addEventListener('astro:page-load', initMatrixTypewriter);
+    </script>
 
   </div>
 
-  <!-- Franja marquee — mt-auto la ancla al fondo siempre -->
+  <!-- Franja marquee — mt-auto ancla al fondo -->
   <div class="flex flex-col gap-2 mt-auto laptop:shrink-0 laptop:pb-8 fhd:pb-10 qhd:pb-12">
     <div class="h-px" style="background: var(--border-color);" />
     <div class="overflow-hidden" aria-hidden="true">
@@ -89,7 +159,7 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
         class="marquee-track"
         style="font-size: clamp(0.55rem, 0.5vw, 1rem); letter-spacing: 0.45em;
                text-transform: uppercase; font-weight: bold;
-               opacity: 0.28; font-family: 'JetBrains Mono', monospace;
+               opacity: 0.28; font-family: inherit;
                color: var(--letter-color);"
       >
         <span>{MARQUEE}</span>
