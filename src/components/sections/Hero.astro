@@ -7,8 +7,6 @@ interface Props {
 }
 
 const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
-
-const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular · Astro · PHP · Laravel · Java · MySQL · MariaDB · Docker · Linux · Nginx · Git · Raspberry Pi · TrueNAS · Tailscale · Cloudflare · Ollama · Jellyfin · Immich · Sonarr · Radarr · Portainer · Pi-hole · Homarr · SearXNG · Watchtower · Windows · ";
 ---
 
 <div class="flex flex-col w-full gap-5 relative
@@ -151,22 +149,5 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
 
   </div>
 
-  <!-- Franja marquee — mt-auto ancla al fondo -->
-  <div class="flex flex-col gap-2 mt-auto laptop:shrink-0 laptop:pb-8 fhd:pb-10 qhd:pb-12">
-    <div class="h-px" style="background: var(--border-color);" />
-    <div class="overflow-hidden" aria-hidden="true">
-      <div
-        class="marquee-track"
-        style="font-size: clamp(0.55rem, 0.5vw, 1rem); letter-spacing: 0.45em;
-               text-transform: uppercase; font-weight: bold;
-               opacity: 0.28; font-family: inherit;
-               color: var(--letter-color);"
-      >
-        <span>{MARQUEE}</span>
-        <span>{MARQUEE}</span>
-      </div>
-    </div>
-    <div class="h-px" style="background: var(--border-color);" />
-  </div>
 
 </div>

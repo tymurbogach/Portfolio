@@ -46,6 +46,8 @@ const {
 
 const pageTitle = `${title} — ${site.name}`;
 const ogImageUrl = `${site.url}${ogImage}`;
+
+const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular · Astro · PHP · Laravel · Java · MySQL · MariaDB · Docker · Linux · Nginx · Git · Raspberry Pi · TrueNAS · Tailscale · Cloudflare · Ollama · Jellyfin · Immich · Sonarr · Radarr · Portainer · Pi-hole · Homarr · SearXNG · Watchtower · Windows · ";
 ---
 
 <!doctype html>
@@ -151,6 +153,29 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
          style="bottom: var(--fixed-offset); right: var(--fixed-offset);">
       <SocialBotPanel />
+    </div>
+
+    <!-- ═══════════════════════════════════
+         MARQUEE STRIP — fixed bottom, desktop only
+         ═══════════════════════════════════ -->
+    <div
+      class="hidden laptop:block laptop-scaled:block fixed bottom-0 left-0 right-0 z-[35] overflow-hidden"
+      style="background: var(--total-background);"
+      aria-hidden="true"
+    >
+      <div class="h-px" style="background: var(--border-color); opacity: 0.4;" />
+      <div class="overflow-hidden py-[0.25rem]">
+        <div
+          class="marquee-track"
+          style="font-size: clamp(0.42rem, 0.38vw, 0.65rem); letter-spacing: 0.45em;
+                 text-transform: uppercase; font-weight: bold;
+                 opacity: 0.22; font-family: inherit;
+                 color: var(--letter-color);"
+        >
+          <span>{MARQUEE}</span>
+          <span>{MARQUEE}</span>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile chat FAB — visible only below laptop breakpoint -->
