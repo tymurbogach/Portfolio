@@ -28,16 +28,10 @@ const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
     aria-hidden="true"
   />
 
-  <!-- Espacio superior — solo desktop -->
-  <div
-    class="hidden laptop:block laptop:shrink-0
-           laptop:h-10 fhd:h-12 qhd:h-16 uhd:h-20"
-    aria-hidden="true"
-  />
-
   <!-- BLOQUE PRINCIPAL -->
   <div class="flex flex-col flex-1 min-h-0 justify-center gap-8
-              laptop:flex-none laptop:shrink-0 laptop:justify-start laptop:gap-4">
+              laptop:flex-none laptop:shrink-0 laptop:justify-center laptop:gap-4
+              laptop:my-auto">
 
     <!-- Título — triple clic activa cambio de tema -->
     <div id="theme-toggle">
