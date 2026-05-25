@@ -99,7 +99,10 @@ function renderLinks(profile) {
 }
 
 function render(config) {
-  const { profile, summary, experience, education, theme, layout } = config;
+  const { profile, summary, experience, education, theme, layout, labels } = config;
+  const labelSummary    = labels?.summary    ?? 'Summary';
+  const labelExperience = labels?.experience ?? 'Professional Experience';
+  const labelEducation  = labels?.education  ?? 'Education';
   const marginMm    = layout?.page?.marginMm ?? 10;
   const baseFont    = layout?.density?.baseFontPx ?? 8.6;
   const headingFont = layout?.density?.headingFontPx ?? 11;
@@ -173,15 +176,15 @@ function render(config) {
           ${photoUrl ? `<img class="photo" src="${photoUrl}" alt="Profile photo" />` : ''}
         </section>
         <section>
-          <h2 class="section-title">Summary</h2>
+          <h2 class="section-title">${escapeHtml(labelSummary)}</h2>
           <p class="summary">${escapeHtml(summary ?? '')}</p>
         </section>
         <section>
-          <h2 class="section-title">Professional Experience</h2>
+          <h2 class="section-title">${escapeHtml(labelExperience)}</h2>
           <div class="exp-list">${renderExperience(experience ?? [])}</div>
         </section>
         <section>
-          <h2 class="section-title">Education</h2>
+          <h2 class="section-title">${escapeHtml(labelEducation)}</h2>
           <div class="edu-list">${renderEducation(education ?? [])}</div>
           <div class="overflow-banner">Content overflow detected. Reduce text to keep the CV at one page.</div>
         </section>
