@@ -98,11 +98,26 @@ function renderLinks(profile) {
   }).join('<span class="dot">&bull;</span>');
 }
 
+function renderReferences(items) {
+  if (!items?.length) return '';
+  return items.map((item) => `
+    <article class="ref-item">
+      <div class="ref-head">
+        <span class="ref-name">${escapeHtml(item.name ?? '')}</span>
+        <span class="ref-role">${escapeHtml(item.role ?? '')}</span>
+      </div>
+      ${item.phone ? `<div class="ref-contact"><span class="ref-label">Phone:</span> ${escapeHtml(item.phone)}</div>` : ''}
+      ${item.email ? `<div class="ref-contact"><span class="ref-label">Email:</span> ${escapeHtml(item.email)}</div>` : ''}
+    </article>
+  `).join('');
+}
+
 function render(config) {
-  const { profile, summary, experience, education, theme, layout, labels } = config;
+  const { profile, summary, experience, education, references, theme, layout, labels } = config;
   const labelSummary    = labels?.summary    ?? 'Summary';
   const labelExperience = labels?.experience ?? 'Professional Experience';
   const labelEducation  = labels?.education  ?? 'Education';
+  const labelReferences = labels?.references ?? 'References';
   const marginMm    = layout?.page?.marginMm ?? 10;
   const baseFont    = layout?.density?.baseFontPx ?? 8.6;
   const headingFont = layout?.density?.headingFontPx ?? 11;
@@ -159,6 +174,13 @@ function render(config) {
       ul { margin: 4px 0 0 0; padding-left: 14px; }
       li { margin: 2px 0; line-height: 1.3; }
       .edu-highlights li { line-height: 1.25; }
+      .ref-list { margin-top: 6px; display: flex; gap: var(--item-gap); flex-wrap: wrap; }
+      .ref-item { flex: 1 1 45%; }
+      .ref-head { display: flex; flex-direction: column; gap: 1px; margin-bottom: 3px; }
+      .ref-name { color: var(--c-primary); font-weight: 700; font-family: var(--font-head); }
+      .ref-role { color: var(--c-accent); font-weight: 500; font-size: calc(var(--font-base) - 0.5px); }
+      .ref-contact { color: var(--c-muted); font-size: calc(var(--font-base) - 0.5px); line-height: 1.4; }
+      .ref-label { font-weight: 500; color: var(--c-primary); }
       .overflow-banner { display: none; margin-top: 4px; padding: 6px; border: 1px solid #8b0000; background: #ffe5e5; color: #8b0000; font-size: 10px; font-weight: 700; }
       html[data-overflow="1"] .overflow-banner { display: block; }
       @media print { body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
@@ -186,8 +208,13 @@ function render(config) {
         <section>
           <h2 class="section-title">${escapeHtml(labelEducation)}</h2>
           <div class="edu-list">${renderEducation(education ?? [])}</div>
-          <div class="overflow-banner">Content overflow detected. Reduce text to keep the CV at one page.</div>
         </section>
+        ${references?.length ? `
+        <section>
+          <h2 class="section-title">${escapeHtml(labelReferences)}</h2>
+          <div class="ref-list">${renderReferences(references)}</div>
+          <div class="overflow-banner">Content overflow detected. Reduce text to keep the CV at one page.</div>
+        </section>` : `<div class="overflow-banner">Content overflow detected. Reduce text to keep the CV at one page.</div>`}
       </div>
     </main>
     <script>

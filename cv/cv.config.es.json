@@ -62,10 +62,25 @@
       "highlights": []
     }
   ],
+  "references": [
+    {
+      "name": "Sergio Murcia Mateo",
+      "role": "Desarrollador / Administrador de Sistemas",
+      "phone": "+34 601 23 45 05",
+      "email": "Sergio.murcia@tdi-data.com"
+    },
+    {
+      "name": "Tatiana Pérez Zamora",
+      "role": "Desarrolladora Senior / Team Lead",
+      "phone": "+34 655 84 35 05",
+      "email": "Tatiana.perez@tdi-data.com"
+    }
+  ],
   "labels": {
     "summary": "Perfil Profesional",
     "experience": "Experiencia Profesional",
-    "education": "Formación"
+    "education": "Formación",
+    "references": "Referencias"
   },
   "theme": {
     "primary": "#131310",
