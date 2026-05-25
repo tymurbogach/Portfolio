@@ -10,7 +10,7 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Desarrollador con mentalidad de ingeniero. Tras más de una década aplicando alta precisión y resolución de problemas en el sector de la automoción, ahora traslado esa misma atención al detalle al desarrollo de software. Experiencia demostrable en desarrollo de aplicaciones móviles y web (GesinFlot, nastymur.com) y administración de infraestructura propia (Docker, Tailscale, Nginx, TrueNAS). Busco aportar mi capacidad analítica y adaptabilidad a un equipo de ingeniería sólido.",
+  "summary": "Desarrollador con mentalidad de ingeniero. Tras más de una década aplicando alta precisión y resolución de problemas en el sector de la automoción, ahora traslado esa misma atención al detalle al desarrollo de software. Experiencia demostrable en desarrollo de aplicaciones móviles y web (GesinFlot, nastymur.com) y administración de infraestructura propia self-hosted. Busco aportar mi capacidad analítica y adaptabilidad a un equipo de ingeniería sólido.",
   "experience": [
     {
       "company": "GesinFlot",
@@ -54,7 +54,7 @@
       "period": "2023 — 2025",
       "highlights": [
         "Desarrollo web full-stack: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL.",
-        "Frameworks y herramientas: Angular, Laravel, Docker, Git."
+        "Frameworks y herramientas: Angular, Astro, Tailwind CSS, Laravel, Docker, Git."
       ]
     },
     {
