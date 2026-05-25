@@ -1,0 +1,86 @@
+{
+  "profile": {
+    "fullName": "TYMUR BOGACH",
+    "headline": "Desarrollador Full Stack",
+    "email": "timurnator@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/tymur-bogach-51939324a/",
+    "github": "https://github.com/TimurTwerKing",
+    "website": "https://nastymur.com",
+    "location": "Orihuela, Alicante — España",
+    "phone": "",
+    "photoUrl": ""
+  },
+  "summary": "Técnico de precisión reconvertido en desarrollador. 10+ años de experiencia en el sector de la automoción, ahora construyendo aplicaciones web full-stack. Autodidacta desde 2022 — app móvil publicada (GesinFlot), homelab propio con Docker y redes, y buscando el equipo adecuado para seguir creciendo.",
+  "experience": [
+    {
+      "company": "GesinFlot",
+      "role": "Desarrollador Junior",
+      "location": "España",
+      "period": "2025",
+      "bullets": [
+        "Desarrollo de aplicación móvil Android con Android Studio y Java.",
+        "Diseño de flujos UI/UX e integración de APIs REST para gestión de flotas.",
+        "Generación y firma de APKs para distribución interna."
+      ]
+    },
+    {
+      "company": "Grupo Marcos — Carrocería y Pintura",
+      "role": "Técnico Senior de Carrocería y Pintura",
+      "location": "Orihuela, España",
+      "period": "2017 — 2024",
+      "bullets": [
+        "Reparación de alta precisión y acabados de pintura en vehículos multimarca.",
+        "Coordinación de flujos de trabajo y control de calidad en equipo.",
+        "Desarrollo de hábitos de precisión, atención al detalle y resolución sistemática de problemas."
+      ]
+    },
+    {
+      "company": "Renault Trucks y Multimarca",
+      "role": "Mecánico y Técnico de Pintura",
+      "location": "España",
+      "period": "2012 — 2017",
+      "bullets": [
+        "Reparación, pintura y diagnóstico de vehículos comerciales de diversas marcas.",
+        "Diagnóstico sistemático y aislamiento de averías desde primeros principios."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "EFA El Campico",
+      "degree": "CFGS — Desarrollo de Aplicaciones Web",
+      "period": "2023 — 2025",
+      "highlights": [
+        "Desarrollo web full-stack: HTML, CSS, JavaScript, TypeScript, PHP, SQL.",
+        "Frameworks y herramientas: Angular, Laravel, Docker, Git."
+      ]
+    },
+    {
+      "institution": "IES El Palmeral",
+      "degree": "CFGM — Carrocería y Pintura",
+      "period": "2008 — 2010",
+      "highlights": []
+    }
+  ],
+  "theme": {
+    "primary": "#131310",
+    "accent": "#00E5B4",
+    "headingFont": "Rubik",
+    "bodyFont": "Rubik"
+  },
+  "layout": {
+    "page": {
+      "size": "A4",
+      "marginMm": 10
+    },
+    "density": {
+      "baseFontPx": 9.2,
+      "headingFontPx": 11,
+      "sectionGapPx": 12,
+      "itemGapPx": 8
+    },
+    "constraints": {
+      "maxPages": 1
+    }
+  }
+}
