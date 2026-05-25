@@ -90,8 +90,8 @@ function renderLinks(profile) {
 
   return links.map((link) => {
     const icon = link.icon ? `<span class="icon">${link.icon}</span>` : '';
-    if (link.href) {
-      const href = safeUrl(link.href) || link.href;
+    const href = safeUrl(link.href);
+    if (href) {
       return `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${icon}${escapeHtml(link.label)}</a>`;
     }
     return `<span>${icon}${escapeHtml(link.label)}</span>`;
@@ -170,7 +170,7 @@ function render(config) {
             <div class="headline">${escapeHtml(profile?.headline ?? '')}</div>
             <div class="contacts">${renderLinks(profile ?? {})}</div>
           </div>
-          ${photoUrl ? `<img class="photo" src="${escapeHtml(photoUrl)}" alt="Profile photo" />` : ''}
+          ${photoUrl ? `<img class="photo" src="${photoUrl}" alt="Profile photo" />` : ''}
         </section>
         <section>
           <h2 class="section-title">Summary</h2>
