@@ -53,7 +53,7 @@
       "degree": "Advanced Technical Certificate — Web Application Development",
       "period": "2023 — 2025",
       "highlights": [
-        "Full-stack web development: HTML, CSS, JavaScript, TypeScript, PHP, SQL.",
+        "Full-stack web: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL (MySQL/MariaDB).",
         "Frameworks and tooling: Angular, Laravel, Docker, Git."
       ]
     },
@@ -62,6 +62,15 @@
       "degree": "Technical Certificate — Automotive Body & Paint",
       "period": "2008 — 2010",
       "highlights": []
+    },
+    {
+      "institution": "Self-Hosted Infrastructure",
+      "degree": "Homelab & DevOps",
+      "period": "2022 — present",
+      "highlights": [
+        "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
+        "Self-hosted portfolio and services stack (nastymur.com)."
+      ]
     },
     {
       "institution": "Languages",
