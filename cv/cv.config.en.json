@@ -10,7 +10,7 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Developer with an engineering mindset. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications (GesinFlot, nastymur.com) and managing custom self-hosted infrastructure. Looking to bring my analytical skills and adaptability to a strong engineering team.",
+  "summary": "Developer with an engineering mindset. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications (GesinFlot, nastymur.com) and managing custom self-hosted infrastructure. Actively integrates AI tooling (Claude Code, Ollama, MCP) into the development workflow. Looking to bring my analytical skills and adaptability to a strong engineering team.",
   "experience": [
     {
       "company": "GesinFlot",
@@ -63,7 +63,7 @@
       "period": "2022 — present",
       "highlights": [
         "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
-        "Built and self-deployed personal portfolio (nastymur.com) alongside 25+ services — media, AI, monitoring, networking."
+        "Self-hosted platform running 25+ services and live projects — local LLM inference (Ollama), media, monitoring, networking."
       ]
     },
     {
