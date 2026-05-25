@@ -15,12 +15,14 @@
     {
       "company": "GesinFlot",
       "role": "Equipo de Desarrollo",
-      "location": "España",
+      "location": "Murcia, España",
       "period": "2025",
       "bullets": [
         "Desarrollo de aplicación móvil Android con Android Studio y Java.",
         "Diseño de flujos UI/UX e integración de APIs REST para gestión de flotas.",
-        "Generación y firma de APKs para distribución interna."
+        "Diagnóstico y resolución de bugs en la pila Android/Java; gestión de infraestructura FTP/SFTP para entrega de ficheros a clientes.",
+        "Generación y firma de APKs para distribución interna.",
+        "Interlocución directa con clientes para recogida de requisitos y seguimiento del proyecto."
       ]
     },
     {
@@ -37,7 +39,7 @@
     {
       "company": "Renault Trucks y Multimarca",
       "role": "Mecánico y Técnico de Pintura",
-      "location": "España",
+      "location": "Orihuela, España",
       "period": "2012 — 2017",
       "bullets": [
         "Reparación, pintura y diagnóstico de vehículos comerciales de diversas marcas.",
