@@ -17,11 +17,22 @@ function toFileUrl(absolutePath) {
 function findChromeBinary() {
   const fromEnv = process.env.CHROME_BIN;
   if (fromEnv && fs.existsSync(fromEnv)) return fromEnv;
+
   const candidates = ['/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome'];
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) return candidate;
   }
-  throw new Error('Chrome/Chromium not found. Set CHROME_BIN env var.');
+
+  // Puppeteer cache fallback
+  const puppeteerDir = path.join(process.env.HOME ?? '', '.cache/puppeteer/chrome');
+  if (fs.existsSync(puppeteerDir)) {
+    for (const entry of fs.readdirSync(puppeteerDir)) {
+      const candidate = path.join(puppeteerDir, entry, 'chrome-linux64/chrome');
+      if (fs.existsSync(candidate)) return candidate;
+    }
+  }
+
+  throw new Error('Chrome/Chromium not found. Set CHROME_BIN env var or install chromium.');
 }
 
 function parseOverflow(dom) {

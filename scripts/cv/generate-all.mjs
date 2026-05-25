@@ -5,10 +5,6 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
-if (!process.env.CHROME_BIN) {
-  process.env.CHROME_BIN = '/usr/bin/chromium';
-}
-
 function generate(configPath, outputPath) {
   console.log(`\n→ Generating ${outputPath}...`);
   const result = spawnSync(
