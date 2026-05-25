@@ -26,24 +26,18 @@
       ]
     },
     {
-      "company": "Grupo Marcos — Carrocería y Pintura",
-      "role": "Técnico Senior de Carrocería y Pintura",
+      "companies": [
+        "Grupo Marcos — Carrocería y Pintura",
+        "Renault Trucks y Multimarca",
+        "La Basca, Beniel"
+      ],
+      "role": "Técnico de Carrocería y Pintura",
       "location": "Orihuela, España",
-      "period": "2017 — 2024",
+      "period": "2012 — 2024",
       "bullets": [
-        "Reparación de alta precisión y acabados de pintura en vehículos multimarca.",
-        "Coordinación de flujos de trabajo y control de calidad en equipo.",
-        "Desarrollo de hábitos de precisión, atención al detalle y resolución sistemática de problemas."
-      ]
-    },
-    {
-      "company": "Renault Trucks y Multimarca",
-      "role": "Mecánico y Técnico de Pintura",
-      "location": "Orihuela, España",
-      "period": "2012 — 2017",
-      "bullets": [
-        "Reparación, pintura y diagnóstico de vehículos comerciales de diversas marcas.",
-        "Diagnóstico sistemático y aislamiento de averías desde primeros principios."
+        "Trabajo completo de chapa y pintura en vehículos multimarca: reparación estructural, preparación, aplicación y acabado.",
+        "Coordinación de flujos de taller y control de calidad en equipo.",
+        "Desarrollo de hábitos de precisión y resolución sistemática de problemas — hoy aplicados al software."
       ]
     }
   ],

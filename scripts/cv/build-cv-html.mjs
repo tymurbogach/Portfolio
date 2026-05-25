@@ -30,16 +30,20 @@ function renderExperience(items) {
   return (items ?? []).map((item) => {
     const location = item.location ? `<div class="exp-loc">${escapeHtml(item.location)}</div>` : '';
     const period = item.period ? `<div class="exp-period">${escapeHtml(item.period)}</div>` : '';
+    let subHtml;
+    if (item.companies?.length) {
+      subHtml = `<div class="exp-sub"><div class="exp-company">${escapeHtml(item.companies[0])}</div>${period}</div>`
+        + item.companies.slice(1).map(c => `<div class="exp-company-extra">${escapeHtml(c)}</div>`).join('');
+    } else {
+      subHtml = `<div class="exp-sub"><div class="exp-company">${escapeHtml(item.company ?? '')}</div>${period}</div>`;
+    }
     return `
       <article class="exp-item">
         <header class="exp-head">
           <div class="exp-role">${escapeHtml(item.role ?? '')}</div>
           ${location}
         </header>
-        <div class="exp-sub">
-          <div class="exp-company">${escapeHtml(item.company ?? '')}</div>
-          ${period}
-        </div>
+        ${subHtml}
         ${renderList(item.bullets, 'exp-bullets')}
       </article>
     `;
@@ -169,6 +173,7 @@ function render(config) {
       .exp-loc, .exp-period { color: var(--c-muted); white-space: nowrap; font-size: calc(var(--font-base) - 0.5px); }
       .exp-sub { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
       .exp-company { color: var(--c-accent); font-weight: 500; }
+      .exp-company-extra { color: var(--c-accent); font-weight: 500; font-size: calc(var(--font-base) - 0.5px); }
       .edu-degree { color: var(--c-primary); font-weight: 700; font-family: var(--font-head); }
       .edu-period, .edu-school { color: var(--c-muted); }
       ul { margin: 4px 0 0 0; padding-left: 14px; }
