@@ -53,15 +53,9 @@
       "degree": "CFGS — Desarrollo de Aplicaciones Web",
       "period": "2023 — 2025",
       "highlights": [
-        "Desarrollo web full-stack: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL (MySQL/MariaDB).",
+        "Desarrollo web full-stack: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL.",
         "Frameworks y herramientas: Angular, Laravel, Docker, Git."
       ]
-    },
-    {
-      "institution": "IES El Palmeral",
-      "degree": "CFGM — Carrocería y Pintura",
-      "period": "2008 — 2010",
-      "highlights": []
     },
     {
       "institution": "Infraestructura Propia",
@@ -69,8 +63,14 @@
       "period": "2022 — presente",
       "highlights": [
         "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
-        "Portfolio y servicios self-hosted (nastymur.com)."
+        "Más de 25 aplicaciones self-hosted funcionando en conjunto — media, IA, monitorización y proyectos propios, incluido nastymur.com."
       ]
+    },
+    {
+      "institution": "IES El Palmeral",
+      "degree": "CFGM — Carrocería y Pintura",
+      "period": "2008 — 2010",
+      "highlights": []
     },
     {
       "institution": "Idiomas",

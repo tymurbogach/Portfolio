@@ -53,15 +53,9 @@
       "degree": "Advanced Technical Certificate — Web Application Development",
       "period": "2023 — 2025",
       "highlights": [
-        "Full-stack web: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL (MySQL/MariaDB).",
+        "Full-stack web: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL.",
         "Frameworks and tooling: Angular, Laravel, Docker, Git."
       ]
-    },
-    {
-      "institution": "IES El Palmeral",
-      "degree": "Technical Certificate — Automotive Body & Paint",
-      "period": "2008 — 2010",
-      "highlights": []
     },
     {
       "institution": "Self-Hosted Infrastructure",
@@ -69,8 +63,14 @@
       "period": "2022 — present",
       "highlights": [
         "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
-        "Self-hosted portfolio and services stack (nastymur.com)."
+        "25+ self-hosted apps running in concert — media, AI, monitoring, personal projects including nastymur.com."
       ]
+    },
+    {
+      "institution": "IES El Palmeral",
+      "degree": "Technical Certificate — Automotive Body & Paint",
+      "period": "2008 — 2010",
+      "highlights": []
     },
     {
       "institution": "Languages",
