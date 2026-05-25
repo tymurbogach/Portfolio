@@ -10,10 +10,10 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Developer with an analytical mindset and lifelong technology enthusiast. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications and managing custom self-hosted infrastructure. I actively integrate AI tooling into my development workflow to streamline processes. Looking to bring my analytical skills and adaptability to a strong engineering team.",
+  "summary": "Developer with an analytical mindset and a lifelong passion for technology. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications and managing self-hosted infrastructure. I actively integrate AI tooling into my development workflow to streamline processes. Looking to bring my analytical skills and adaptability to a strong engineering team.",
   "experience": [
     {
-      "company": "GesinFlot",
+      "company": "GesinFlot by TDI",
       "role": "Development Team",
       "location": "Murcia, Spain",
       "period": "2025",
@@ -26,23 +26,23 @@
       ]
     },
     {
-      "company": "Grupo Marcos — Body & Paint",
+      "company": "Grupo Marcos — Centrochapa",
       "role": "Senior Automotive Technician",
       "location": "Orihuela, Spain",
       "period": "2017 — 2024",
       "bullets": [
-        "Full management of structural and aesthetic repair on multi-brand vehicles: surface prep, paint application, and high-precision finishing.",
+        "Managed structural and aesthetic repair on multi-brand vehicles: surface prep, paint application, and high-precision finishing.",
         "Coordinated workshop workflows and quality control across a team of technicians.",
         "Developed precision-first habits and systematic problem-solving — methodologies now applied to the software development cycle."
       ]
     },
     {
-      "company": "Renault Trucks, La Basca & Multi-brand",
+      "company": "Renault Trucks, La Basca, Lizard",
       "role": "Body & Paint Technician",
       "location": "Orihuela, Spain",
       "period": "2012 — 2017",
       "bullets": [
-        "Body repair, painting, and structural assessment on commercial and multi-brand vehicles.",
+        "Performed body repair, painting, and structural assessment on commercial and multi-brand vehicles.",
         "Developed systematic diagnostic approach and first-principles fault isolation."
       ]
     }
@@ -100,7 +100,7 @@
   ],
   "theme": {
     "primary": "#131310",
-    "accent": "#2a7a6e",
+    "accent": "#00B89A",
     "headingFont": "Rubik",
     "bodyFont": "Rubik"
   },
