@@ -95,8 +95,9 @@ function renderLinks(profile) {
   return links.map((link) => {
     const icon = link.icon ? `<span class="icon">${link.icon}</span>` : '';
     const href = safeUrl(link.href);
+    const isWebsite = link.icon === ICONS.website;
     if (href) {
-      return `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${icon}${escapeHtml(link.label)}</a>`;
+      return `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer"${isWebsite ? ' class="contact-website"' : ''}>${icon}${escapeHtml(link.label)}</a>`;
     }
     return `<span>${icon}${escapeHtml(link.label)}</span>`;
   }).join('<span class="dot">&bull;</span>');
@@ -164,6 +165,7 @@ function render(config) {
       .icon { display: inline-flex; align-items: center; }
       .icon svg { vertical-align: middle; }
       .dot { color: #97a3b4; }
+      .contact-website { color: var(--c-accent) !important; }
       .photo { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid #ecf0f5; }
       .section-title { margin: 0; color: var(--c-primary); font-family: var(--font-head); font-size: var(--font-heading); font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; padding-bottom: 4px; border-bottom: 0.5px solid #d0d6de; }
       .summary { margin: 6px 0 0; line-height: 1.35; }
