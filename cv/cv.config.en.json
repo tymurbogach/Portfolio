@@ -10,7 +10,7 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Developer with an engineering mindset. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications (GesinFlot, nastymur.com) and managing custom self-hosted infrastructure. Actively integrates AI tooling (Claude Code, Ollama, MCP) into the development workflow. Looking to bring my analytical skills and adaptability to a strong engineering team.",
+  "summary": "Developer with an engineering mindset. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications (GesinFlot, nastymur.com) and managing custom self-hosted infrastructure. I actively integrate AI tooling (Claude Code, Ollama, MCP) into my development workflow to streamline processes. Looking to bring my analytical skills and adaptability to a strong engineering team.",
   "experience": [
     {
       "company": "GesinFlot",
@@ -20,20 +20,20 @@
       "bullets": [
         "Developed Android mobile application using Android Studio and Java.",
         "Designed UI/UX flows and integrated REST APIs for fleet management features.",
-        "Diagnosed and resolved bugs across the Android/Java stack; maintained FTP/SFTP infrastructure for client file delivery.",
+        "Diagnosed and resolved bugs across the Android/Java stack; managed FTP/SFTP infrastructure for secure client file delivery.",
         "Built and signed APK releases for internal distribution.",
-        "Acted as technical point of contact with clients, gathering requirements and communicating progress."
+        "Acted as technical point of contact with clients for requirements gathering and ongoing project follow-up."
       ]
     },
     {
       "company": "Grupo Marcos — Body & Paint",
-      "role": "Senior Body & Paint Technician",
+      "role": "Senior Automotive Technician",
       "location": "Orihuela, Spain",
       "period": "2017 — 2024",
       "bullets": [
-        "Full-scope body & paint work: structural repair, surface prep, spray painting, and finishing on multi-brand vehicles.",
+        "Full management of structural and aesthetic repair on multi-brand vehicles: surface prep, paint application, and high-precision finishing.",
         "Coordinated workshop workflows and quality control across a team of technicians.",
-        "Developed precision-first habits and systematic problem-solving — now applied to software development."
+        "Developed precision-first habits and systematic problem-solving — methodologies now applied to the software development cycle."
       ]
     },
     {
@@ -42,7 +42,7 @@
       "location": "Orihuela, Spain",
       "period": "2012 — 2017",
       "bullets": [
-        "Body repair, painting, and diagnostics across commercial and multi-brand vehicles.",
+        "Body repair, painting, and structural assessment on commercial and multi-brand vehicles.",
         "Developed systematic diagnostic approach and first-principles fault isolation."
       ]
     }
@@ -58,12 +58,12 @@
       ]
     },
     {
-      "institution": "Self-Hosted Infrastructure",
+      "institution": "Self-Hosted Production Environment",
       "degree": "Homelab & DevOps",
       "period": "2022 — present",
       "highlights": [
         "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
-        "Self-hosted platform running 25+ services and live projects — local LLM inference (Ollama), media, monitoring, networking."
+        "Maintaining a personal platform with 25+ live services and projects — local LLM inference (Ollama), media servers, networking, and monitoring."
       ]
     },
     {
@@ -80,7 +80,7 @@
         "Russian — Native",
         "Ukrainian — Native",
         "Spanish — Fluent",
-        "English — Intermediate"
+        "English — Intermediate (Technical)"
       ]
     }
   ],

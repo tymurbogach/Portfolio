@@ -10,7 +10,7 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Desarrollador con mentalidad de ingeniero. Tras más de una década aplicando alta precisión y resolución de problemas en el sector de la automoción, ahora traslado esa misma atención al detalle al desarrollo de software. Experiencia demostrable en desarrollo de aplicaciones móviles y web (GesinFlot, nastymur.com) y administración de infraestructura propia self-hosted. Integra activamente herramientas de IA (Claude Code, Ollama, MCP) en el flujo de desarrollo. Busco aportar mi capacidad analítica y adaptabilidad a un equipo de ingeniería sólido.",
+  "summary": "Desarrollador con mentalidad de ingeniero. Tras más de una década aplicando alta precisión y resolución de problemas en el sector de la automoción, ahora traslado esa misma atención al detalle al desarrollo de software. Experiencia demostrable en desarrollo de aplicaciones móviles y web (GesinFlot, nastymur.com) y en la administración de infraestructura propia (self-hosted). Integro activamente herramientas de IA (Claude Code, Ollama, MCP) en mi flujo de desarrollo para optimizar procesos. Busco aportar mi capacidad analítica y adaptabilidad a un equipo de ingeniería sólido.",
   "experience": [
     {
       "company": "GesinFlot",
@@ -18,22 +18,22 @@
       "location": "Murcia, España",
       "period": "2025",
       "bullets": [
-        "Desarrollo de aplicación móvil Android con Android Studio y Java.",
-        "Diseño de flujos UI/UX e integración de APIs REST para gestión de flotas.",
-        "Diagnóstico y resolución de bugs en la pila Android/Java; gestión de infraestructura FTP/SFTP para entrega de ficheros a clientes.",
+        "Desarrollo de aplicación móvil Android utilizando Android Studio y Java.",
+        "Diseño de flujos UI/UX e integración de APIs REST para la gestión de flotas.",
+        "Diagnóstico y resolución de bugs en la pila Android/Java; gestión de infraestructura FTP/SFTP para la entrega segura de ficheros a clientes.",
         "Generación y firma de APKs para distribución interna.",
-        "Interlocución directa con clientes para recogida de requisitos y seguimiento del proyecto."
+        "Interlocución directa con clientes para la toma de requisitos y el seguimiento continuo del proyecto."
       ]
     },
     {
       "company": "Grupo Marcos — Carrocería y Pintura",
-      "role": "Técnico Senior de Carrocería y Pintura",
+      "role": "Técnico Superior de Automoción",
       "location": "Orihuela, España",
       "period": "2017 — 2024",
       "bullets": [
-        "Trabajo completo de chapa y pintura en vehículos multimarca: reparación estructural, preparación, aplicación y acabado.",
-        "Coordinación de flujos de taller y control de calidad en equipo.",
-        "Desarrollo de hábitos de precisión y resolución sistemática de problemas — hoy aplicados al software."
+        "Gestión integral de reparación estructural y estética en vehículos multimarca: preparación, aplicación y acabado de alta precisión.",
+        "Coordinación de flujos de trabajo del taller y control de calidad en equipo.",
+        "Desarrollo de hábitos de precisión y resolución sistemática de problemas — metodologías hoy aplicadas al ciclo de desarrollo de software."
       ]
     },
     {
@@ -42,7 +42,7 @@
       "location": "Orihuela, España",
       "period": "2012 — 2017",
       "bullets": [
-        "Reparación de chapa, pintura y diagnóstico en vehículos comerciales y multimarca.",
+        "Reparación, pintura y evaluación estructural en vehículos comerciales y multimarca.",
         "Diagnóstico sistemático y aislamiento de averías desde primeros principios."
       ]
     }
@@ -58,12 +58,12 @@
       ]
     },
     {
-      "institution": "Infraestructura Propia",
+      "institution": "Entorno de producción Self-Hosted",
       "degree": "Homelab & DevOps",
       "period": "2022 — presente",
       "highlights": [
         "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
-        "Plataforma self-hosted con más de 25 servicios y proyectos en producción — inferencia LLM local (Ollama), media, monitorización, redes."
+        "Mantenimiento de una plataforma propia con más de 25 servicios y proyectos en producción, incluyendo inferencia de LLMs en local (Ollama), servidores multimedia, redes y monitorización."
       ]
     },
     {
@@ -80,7 +80,7 @@
         "Ruso — Nativo",
         "Ucraniano — Nativo",
         "Español — Fluido",
-        "Inglés — Intermedio"
+        "Inglés — Intermedio Técnico"
       ]
     }
   ],
