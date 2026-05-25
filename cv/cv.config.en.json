@@ -1,0 +1,86 @@
+{
+  "profile": {
+    "fullName": "TYMUR BOGACH",
+    "headline": "Full Stack Developer",
+    "email": "timurnator@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/tymur-bogach-51939324a/",
+    "github": "https://github.com/TimurTwerKing",
+    "website": "https://nastymur.com",
+    "location": "Orihuela, Alicante — Spain",
+    "phone": "",
+    "photoUrl": ""
+  },
+  "summary": "Craftsman turned developer. Former automotive precision technician with 10+ years of hands-on experience, now building full-stack web applications. Self-taught since 2022 — shipped a mobile app (GesinFlot), built a homelab from scratch, and now looking for the right team to grow with.",
+  "experience": [
+    {
+      "company": "GesinFlot",
+      "role": "Junior Developer",
+      "location": "Spain",
+      "period": "2025",
+      "bullets": [
+        "Developed Android mobile application using Android Studio and Java.",
+        "Designed UI/UX flows and integrated REST APIs for fleet management features.",
+        "Built and signed APK releases for internal distribution."
+      ]
+    },
+    {
+      "company": "Grupo Marcos — Body & Paint",
+      "role": "Senior Body & Paint Technician",
+      "location": "Orihuela, Spain",
+      "period": "2017 — 2024",
+      "bullets": [
+        "High-precision automotive body repair and refinishing for multi-brand vehicles.",
+        "Coordinated repair workflows and quality control across a team of technicians.",
+        "Built habits of precision, attention to tolerances, and systematic problem-solving."
+      ]
+    },
+    {
+      "company": "Renault Trucks & Multi-brand",
+      "role": "Mechanic & Paint Technician",
+      "location": "Spain",
+      "period": "2012 — 2017",
+      "bullets": [
+        "Commercial vehicle repair, painting, and diagnostics across multiple brands.",
+        "Developed systematic diagnostic approach and first-principles fault isolation."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "EFA El Campico",
+      "degree": "Advanced Technical Certificate — Web Application Development",
+      "period": "2023 — 2025",
+      "highlights": [
+        "Full-stack web development: HTML, CSS, JavaScript, TypeScript, PHP, SQL.",
+        "Frameworks and tooling: Angular, Laravel, Docker, Git."
+      ]
+    },
+    {
+      "institution": "IES El Palmeral",
+      "degree": "Technical Certificate — Automotive Body & Paint",
+      "period": "2008 — 2010",
+      "highlights": []
+    }
+  ],
+  "theme": {
+    "primary": "#131310",
+    "accent": "#00E5B4",
+    "headingFont": "Rubik",
+    "bodyFont": "Rubik"
+  },
+  "layout": {
+    "page": {
+      "size": "A4",
+      "marginMm": 10
+    },
+    "density": {
+      "baseFontPx": 9.2,
+      "headingFontPx": 11,
+      "sectionGapPx": 12,
+      "itemGapPx": 8
+    },
+    "constraints": {
+      "maxPages": 1
+    }
+  }
+}
