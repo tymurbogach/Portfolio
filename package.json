@@ -6,7 +6,10 @@
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cv:pdf": "node scripts/cv/generate-all.mjs",
+    "cv:pdf:en": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.en.json public/cv.pdf",
+    "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/cv-es.pdf"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.2",
