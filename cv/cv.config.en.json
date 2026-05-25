@@ -14,7 +14,7 @@
   "experience": [
     {
       "company": "GesinFlot",
-      "role": "Junior Developer",
+      "role": "Development Team",
       "location": "Spain",
       "period": "2025",
       "bullets": [
@@ -60,6 +60,17 @@
       "degree": "Technical Certificate — Automotive Body & Paint",
       "period": "2008 — 2010",
       "highlights": []
+    },
+    {
+      "institution": "Languages",
+      "degree": "Language Proficiency",
+      "period": "",
+      "highlights": [
+        "Russian — Native",
+        "Ukrainian — Native",
+        "Spanish — Fluent",
+        "English — Intermediate"
+      ]
     }
   ],
   "references": [

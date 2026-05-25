@@ -14,7 +14,7 @@
   "experience": [
     {
       "company": "GesinFlot",
-      "role": "Desarrollador Junior",
+      "role": "Equipo de Desarrollo",
       "location": "España",
       "period": "2025",
       "bullets": [
@@ -60,6 +60,17 @@
       "degree": "CFGM — Carrocería y Pintura",
       "period": "2008 — 2010",
       "highlights": []
+    },
+    {
+      "institution": "Idiomas",
+      "degree": "Nivel de Idiomas",
+      "period": "",
+      "highlights": [
+        "Ruso — Nativo",
+        "Ucraniano — Nativo",
+        "Español — Fluido",
+        "Inglés — Intermedio"
+      ]
     }
   ],
   "references": [
