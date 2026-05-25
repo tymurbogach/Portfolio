@@ -26,18 +26,24 @@
       ]
     },
     {
-      "companies": [
-        "Grupo Marcos — Body & Paint",
-        "Renault Trucks & Multi-brand",
-        "La Basca, Beniel"
-      ],
-      "role": "Body & Paint Technician",
+      "company": "Grupo Marcos — Body & Paint",
+      "role": "Senior Body & Paint Technician",
       "location": "Orihuela, Spain",
-      "period": "2012 — 2024",
+      "period": "2017 — 2024",
       "bullets": [
-        "Full-scope body & paint work across multiple brands: structural repair, surface prep, spray painting, and finishing.",
+        "Full-scope body & paint work: structural repair, surface prep, spray painting, and finishing on multi-brand vehicles.",
         "Coordinated workshop workflows and quality control across a team of technicians.",
         "Developed precision-first habits and systematic problem-solving — now applied to software development."
+      ]
+    },
+    {
+      "company": "Renault Trucks, La Basca & Multi-brand",
+      "role": "Body & Paint Technician",
+      "location": "Orihuela, Spain",
+      "period": "2012 — 2017",
+      "bullets": [
+        "Body repair, painting, and diagnostics across commercial and multi-brand vehicles.",
+        "Developed systematic diagnostic approach and first-principles fault isolation."
       ]
     }
   ],
