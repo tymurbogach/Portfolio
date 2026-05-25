@@ -10,13 +10,13 @@
     "journey": [
       {
         "year": "2012 — 17",
-        "event": "Mechanic & Paint Tech",
-        "detail": "Renault Trucks and others. Multi-brand repair, painting and diagnostics across commercial vehicles.",
+        "event": "Body & Paint Tech",
+        "detail": "Renault Trucks, La Basca, Lizard. Multi-brand repair, painting and diagnostics across commercial vehicles.",
         "active": false
       },
       {
         "year": "2017 — 24",
-        "event": "Body & Paint — Grupo Marcos",
+        "event": "Body & Paint — Grupo Marcos, Centrochapa",
         "detail": "High-precision automotive body repair and refinishing. Built precision and team coordination over 7 years.",
         "active": false
       },
@@ -34,7 +34,7 @@
       },
       {
         "year": "2025",
-        "event": "GesinFlot — Dev Team",
+        "event": "GesinFlot by TDI — Dev Team",
         "detail": "Mobile app development with Android Studio, UI/UX design, API integration and APK deployment.",
         "active": false
       },
