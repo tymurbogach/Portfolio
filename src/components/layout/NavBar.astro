@@ -20,7 +20,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
   <nav
     class="relative flex flex-row items-center justify-center text-center w-full h-full
            bg-[var(--component-background)] border border-[var(--border-color)]
-           shadow-none rounded-none my-0 mx-0
+           shadow-none rounded-none my-0 mx-0 overflow-visible
            mobile:shadow-md tablet:shadow-lg"
   >
     {pages.map((page: NavPage, i: number) => (
@@ -28,12 +28,12 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
         href={page.path}
         data-active={currentPath === page.path ? "true" : "false"}
         class:list={[
-          "group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0 overflow-hidden",
+          "group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0",
           "text-[var(--letter-color)] data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent-color)]",
           i < pages.length - 1 ? "border-r border-[var(--border-color)]" : "",
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
           "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-          "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition-colors duration-200",
+          "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition duration-200",
           "can-hover:hover:scale-105 can-hover:hover:shadow-md can-hover:hover:z-10 can-hover:hover:bg-[var(--hover-bg)] can-hover:hover:text-[var(--hover-text)]",
         ]}
       >
@@ -65,10 +65,20 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
 </div>
 
 <style>
-  /* Active state always wins over hover */
   .nav-link[data-active="true"] {
     background-color: var(--accent-subtle) !important;
     color: var(--accent-color) !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link[data-active="true"]:hover {
+      background-color: var(--hover-bg) !important;
+      color: var(--hover-text) !important;
+    }
+    .nav-link[data-active="true"]:hover > span:first-child {
+      background-color: var(--hover-text) !important;
+      opacity: 1 !important;
+    }
   }
 
   @keyframes nav-tap {
