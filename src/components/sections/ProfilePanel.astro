@@ -1,113 +1,16 @@
 ---
-import { getProfile, getHomeData, getContactData } from "../../lib/content";
-
-const profile = await getProfile();
-const home    = await getHomeData();
-const contact = await getContactData();
-
-const { nameDisplay, role, bio }           = profile;
-const { stats }                            = home;
-const { cv_url, statusStr, statusActive }  = contact;
 ---
 
-<section class="flex flex-col w-full h-full min-h-0">
-
-  <div class="flex flex-col items-center gap-4 laptop:gap-4 fhd:gap-6
-              pt-[10%] laptop:pt-[15%] laptop-scaled:pt-[15%] fhd:pt-[18%] qhd:pt-[20%]">
-
-    <!-- Photo -->
-    <div class="relative">
-      <div
-        class="absolute pointer-events-none"
-        style="inset: -4px; border: 1px solid var(--accent-color); opacity: 0.25;"
-        aria-hidden="true"
-      />
-      <img
-        src="/img/gopnik.png"
-        alt="Tymur Bogach"
-        class="w-full h-auto object-contain pointer-events-none
-               max-w-[6rem] mobile:max-w-[7rem]
-               laptop:max-w-[9rem] laptop-scaled:max-w-[9rem] fhd:max-w-[12rem] qhd:max-w-[16rem] uhd:max-w-[22rem]"
-      />
-    </div>
-
-    <!-- Bio -->
-    <p
-      class="text-[0.62rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base leading-[1.6] m-0 text-center"
-      style="opacity: 0.45; max-width: 15rem;"
-    >
-      {bio}
-    </p>
-
-    <!-- Status -->
-    <div class="flex items-center gap-2">
-      <span
-        class="rounded-full shrink-0"
-        style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent-color)" : "var(--border-color)"}; ${statusActive ? "animation: pulse 2s infinite;" : ""}`}
-        aria-hidden="true"
-      />
-      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold" style="opacity: 0.5;">
-        {statusStr}
-      </span>
-    </div>
-
-    <!-- Stats (horizontal row) -->
-    <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem] uhd:max-w-[28rem]">
-      {stats.map(({ n, label }: { n: string; label: string }) => (
-        <div
-          class="flex flex-col items-center flex-1 px-1.5 py-2"
-          style="border-left: 2px solid var(--accent-color); background: var(--surface-glow);"
-        >
-          <span
-            class="font-display text-base laptop:text-xl laptop-scaled:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl leading-none"
-            style="color: var(--accent-color);"
-          >
-            {n}
-          </span>
-          <span
-            class="text-[0.42rem] laptop:text-[0.5rem] laptop-scaled:text-[0.5rem] fhd:text-[0.58rem] qhd:text-[0.68rem] uhd:text-xs tracking-[0.2em] uppercase mt-0.5 text-center"
-            style="opacity: 0.4;"
-          >
-            {label}
-          </span>
-        </div>
-      ))}
-    </div>
-
-  </div>
-
-  <!-- CV buttons — anchored at bottom -->
-  <div class="mt-auto flex w-full shrink-0">
-    <a
-      href={cv_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex-1 flex items-center gap-1.5 px-3 py-2 justify-center
-             text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
-             border border-[var(--border-color)]
-             can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)] can-hover:hover:border-[var(--accent-color)]
-             transition-all duration-200"
-    >
-      <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-        <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-      </svg>
-      <span>CV · EN</span>
-    </a>
-    <a
-      href="/cv-es.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex-1 flex items-center gap-1.5 px-3 py-2 justify-center
-             text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
-             border border-l-0 border-[var(--border-color)]
-             can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)] can-hover:hover:border-[var(--accent-color)]
-             transition-all duration-200"
-    >
-      <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-        <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-      </svg>
-      <span>CV · ES</span>
-    </a>
-  </div>
-
+<section class="relative w-full h-full overflow-hidden">
+  <img
+    src="/img/gopnik.png"
+    alt="Tymur Bogach"
+    class="w-full h-full object-cover object-top pointer-events-none"
+  />
+  <span
+    class="absolute bottom-4 left-4 text-[0.55rem] tracking-[0.35em] uppercase font-bold select-none"
+    style="color: var(--accent-color); opacity: 0.6;"
+  >
+    tasteless
+  </span>
 </section>
