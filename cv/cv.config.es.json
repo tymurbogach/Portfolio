@@ -26,24 +26,25 @@
       ]
     },
     {
-      "company": "Grupo Marcos — Centrochapa",
-      "role": "Técnico Superior de Automoción",
-      "location": "Orihuela, España",
-      "period": "2017 — 2024",
+      "company": "Infraestructura Personal (Homelab)",
+      "role": "DevOps / SysAdmin",
+      "location": "Remoto",
+      "period": "2022 — presente",
       "bullets": [
-        "Gestión integral de reparación estructural y estética en vehículos multimarca: preparación, aplicación y acabado de alta precisión.",
-        "Coordinación de flujos de trabajo del taller y control de calidad en equipo.",
-        "Desarrollo de hábitos de precisión y resolución sistemática de problemas — metodologías hoy aplicadas al ciclo de desarrollo de software."
+        "Administración de servidor bare-metal con TrueNAS SCALE y ZFS — pools de almacenamiento por niveles: NVMe/SSD para servicios y bases de datos, HDD para copias de seguridad.",
+        "Despliegue y mantenimiento de 25+ servicios en Docker (Portainer), incluyendo PostgreSQL, Redis y stacks con modelos ML (Immich con pgvecto-rs).",
+        "Arquitectura de red externa segura mediante túneles Cloudflared y VPN Mesh (Tailscale); gestión de dominios y proxy inverso (Nginx).",
+        "Pipelines de automatización con APIs de terceros; hardware acceleration (iGPU passthrough) para transcodificación de vídeo; monitorización con Scrutiny y Uptime-Kuma."
       ]
     },
     {
-      "company": "Renault Trucks, La Basca, Lizard",
-      "role": "Técnico de Carrocería y Pintura",
-      "location": "Orihuela, España",
-      "period": "2012 — 2017",
+      "company": "Centrochapa (Grupo Marcos) · Renault Trucks · Talleres La Basca",
+      "role": "Técnico Especialista en Carrocería y Pintura",
+      "location": "Vega Baja, España",
+      "period": "2012 — 2024",
       "bullets": [
-        "Reparación, pintura y evaluación estructural en vehículos comerciales y multimarca.",
-        "Diagnóstico sistemático y aislamiento de averías desde primeros principios."
+        "Reparación integral de vehículos siniestrados: tiro en bancada, soldadura MIG/MAG, sustitución de paneles y ciclos completos de pintura al agua — sellados, barniz y pulimento.",
+        "Carrocería industrial en vehículos pesados y semirremolques frigoríficos: soldadura estructural, remachado y sellados técnicos para garantizar hermeticidad."
       ]
     }
   ],
@@ -55,15 +56,6 @@
       "highlights": [
         "Desarrollo web full-stack: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL.",
         "Frameworks y herramientas: Angular, Astro, Tailwind, Laravel, Docker, Git."
-      ]
-    },
-    {
-      "institution": "Entorno de producción Self-Hosted",
-      "degree": "Homelab & DevOps",
-      "period": "2022 — presente",
-      "highlights": [
-        "Docker, Nginx, Linux, Raspberry Pi, TrueNAS, Tailscale, Cloudflare.",
-        "Mantenimiento de una plataforma propia con más de 25 servicios y proyectos en producción, incluyendo inferencia de LLMs en local (Ollama), servidores multimedia, redes y monitorización."
       ]
     },
     {
