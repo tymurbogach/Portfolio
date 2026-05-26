@@ -46,7 +46,7 @@ const indexStr = String(index).padStart(2, "0");
   >{indexStr}</span>
 
   <!-- Image — top -->
-  <div class="relative w-full overflow-hidden shrink-0" style="aspect-ratio: 16/9;">
+  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--component-background)]" style="aspect-ratio: 16/9;">
 
     <!-- Badge -->
     <span
@@ -64,9 +64,9 @@ const indexStr = String(index).padStart(2, "0");
         src={image}
         alt={title}
         loading="lazy"
-        class="w-full h-full object-cover
-               can-hover:group-hover:scale-105
-               transition-all duration-500"
+        class="w-full h-full object-contain p-4
+               transition-opacity duration-300
+               can-hover:group-hover:opacity-80"
       />
     ) : (
       <div
