@@ -10,7 +10,7 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Developer with an analytical mindset and a lifelong passion for technology. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Proven experience delivering mobile and web applications and managing self-hosted infrastructure. I actively integrate AI tooling into my development workflow to streamline processes. Looking to bring my analytical skills and adaptability to a strong engineering team.",
+  "summary": "Developer with an analytical mindset and a lifelong passion for technology. After over a decade of precision-driven problem-solving in the automotive sector, I now apply that same meticulous attention to detail to software development. Demonstrated experience delivering mobile and web applications and managing self-hosted infrastructure. I actively integrate AI tooling into my development workflow to streamline processes. Looking to bring my analytical skills and adaptability to a strong engineering team.",
   "experience": [
     {
       "company": "GesinFlot by TDI",
@@ -32,9 +32,9 @@
       "period": "2022 — present",
       "bullets": [
         "Bare-metal server administration with TrueNAS SCALE and ZFS — tiered storage pools: NVMe/SSD for services and databases, HDD for backups.",
-        "Deploy and maintain 25+ containerized services via Docker and Portainer, including PostgreSQL, Redis, and ML inference stacks (Immich with pgvecto-rs).",
-        "Secure external network architecture via Cloudflared tunnels and Tailscale VPN mesh; domain management and reverse proxy (Nginx).",
-        "Automation pipelines with third-party API integrations; iGPU passthrough for real-time video transcoding; hardware monitoring with Scrutiny and Uptime-Kuma."
+        "Deploy and maintain 40+ containerized services across 8 Docker stacks (NAS + Raspberry Pi): media automation, local LLM inference, and ML-powered photo management.",
+        "Secure external access via Cloudflared tunnels and Tailscale VPN mesh; VPN traffic routing; reverse proxy and domain management.",
+        "iGPU passthrough for real-time video transcoding; automated updates; full monitoring stack."
       ]
     },
     {
@@ -43,7 +43,7 @@
       "location": "Vega Baja, Spain",
       "period": "2012 — 2024",
       "bullets": [
-        "End-to-end collision repair on multi-brand vehicles: bench straightening, MIG/MAG welding, panel replacement, and full refinishing — seam sealing, paint, clear coat, and polishing.",
+        "Independently managed the full collision repair cycle on multi-brand vehicles — from structural assessment to final delivery: bench straightening, MIG/MAG welding, panel replacement, seam sealing, paint, clear coat, and polishing.",
         "Heavy-duty industrial bodywork on commercial trucks and refrigerated trailers: structural welding, riveting, and technical sealing for pressure integrity."
       ]
     }
@@ -55,7 +55,7 @@
       "period": "2023 — 2025",
       "highlights": [
         "Full-stack web: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL.",
-        "Frameworks and tooling: Angular, Astro, Tailwind, Laravel, Docker, Git."
+        "Frameworks and tooling: Angular, Astro, Tailwind, Laravel, Docker, Git, Postman."
       ]
     },
     {
@@ -79,7 +79,7 @@
   "references": [
     {
       "name": "Sergio Murcia Mateo",
-      "role": "Developer / System Admin",
+      "role": "Senior Developer / System Admin",
       "phone": "+34 601 23 45 05",
       "email": "Sergio.murcia@tdi-data.com"
     },

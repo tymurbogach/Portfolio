@@ -14,7 +14,8 @@
       { "slug": "laravel", "color": "#ff2d20", "label": "Laravel" },
       { "slug": "openjdk", "color": "#ed8b00", "label": "Java"    },
       { "slug": "mysql",   "color": "#00758f", "label": "MySQL"   },
-      { "slug": "mariadb", "color": "#003545", "label": "MariaDB" }
+      { "slug": "mariadb", "color": "#003545", "label": "MariaDB" },
+      { "slug": "postman", "color": "#ff6c37", "label": "Postman" }
     ],
     "homelab": [
       { "slug": "docker",        "color": "#2496ed", "label": "Docker"        },
@@ -29,6 +30,7 @@
       { "slug": "jellyfin",      "color": "#a855f7", "label": "Jellyfin"      },
       { "slug": "immich",        "color": "#4250af", "label": "Immich"        },
       { "slug": "ollama",        "color": "#8b5cf6", "label": "Ollama"        },
+      { "slug": "openwebui",     "color": "#2563eb", "label": "Open WebUI"    },
       { "slug": "uptimekuma",    "color": "#5cdd8b", "label": "Uptime Kuma"   },
       { "slug": "sonarr",        "color": "#2596be", "label": "Sonarr"        },
       { "slug": "radarr",        "color": "#ffcb3d", "label": "Radarr"        },

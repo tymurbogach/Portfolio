@@ -10,7 +10,7 @@
     "phone": "",
     "photoUrl": ""
   },
-  "summary": "Desarrollador con mentalidad analítica y vocación tecnológica de siempre. Tras más de una década aplicando alta precisión y resolución de problemas en el sector de la automoción, ahora traslado esa misma atención al detalle al desarrollo de software. Experiencia sólida en desarrollo de aplicaciones móviles y web, y en la administración de infraestructura propia. Integro activamente herramientas de IA en mi flujo de desarrollo para optimizar procesos. Busco aportar mi capacidad analítica y adaptabilidad a un equipo de ingeniería sólido.",
+  "summary": "Desarrollador con mentalidad analítica y vocación tecnológica de siempre. Tras más de una década aplicando alta precisión y resolución de problemas en el sector de la automoción, ahora traslado esa misma atención al detalle al desarrollo de software. Experiencia demostrable en desarrollo de aplicaciones móviles y web, y en la administración de infraestructura propia. Integro activamente herramientas de IA en mi flujo de desarrollo para optimizar procesos. Busco aportar mi capacidad analítica y adaptabilidad a un equipo de ingeniería sólido.",
   "experience": [
     {
       "company": "GesinFlot by TDI",
@@ -32,9 +32,9 @@
       "period": "2022 — presente",
       "bullets": [
         "Administración de servidor bare-metal con TrueNAS SCALE y ZFS — pools de almacenamiento por niveles: NVMe/SSD para servicios y bases de datos, HDD para copias de seguridad.",
-        "Despliegue y mantenimiento de 25+ servicios en Docker (Portainer), incluyendo PostgreSQL, Redis y stacks con modelos ML (Immich con pgvecto-rs).",
-        "Arquitectura de red externa segura mediante túneles Cloudflared y VPN Mesh (Tailscale); gestión de dominios y proxy inverso (Nginx).",
-        "Pipelines de automatización con APIs de terceros; hardware acceleration (iGPU passthrough) para transcodificación de vídeo; monitorización con Scrutiny y Uptime-Kuma."
+        "Despliegue y mantenimiento de 40+ servicios en 8 stacks Docker (NAS + Raspberry Pi): automatización multimedia, inferencia LLM local y gestión de fotos con ML.",
+        "Acceso externo seguro mediante túneles Cloudflared y VPN Mesh (Tailscale); enrutamiento de tráfico por VPN; proxy inverso y gestión de dominios.",
+        "iGPU passthrough para transcodificación de vídeo en tiempo real; actualizaciones automáticas; monitorización completa."
       ]
     },
     {
@@ -43,7 +43,7 @@
       "location": "Vega Baja, España",
       "period": "2012 — 2024",
       "bullets": [
-        "Reparación integral de vehículos siniestrados: tiro en bancada, soldadura MIG/MAG, sustitución de paneles y ciclos completos de pintura al agua — sellados, barniz y pulimento.",
+        "Gestión autónoma del ciclo completo de reparación de vehículos siniestrados — desde el diagnóstico estructural hasta la entrega final: tiro en bancada, soldadura MIG/MAG, sustitución de paneles, sellados, pintura al agua, barniz y pulimento.",
         "Carrocería industrial en vehículos pesados y semirremolques frigoríficos: soldadura estructural, remachado y sellados técnicos para garantizar hermeticidad."
       ]
     }
@@ -55,7 +55,7 @@
       "period": "2023 — 2025",
       "highlights": [
         "Desarrollo web full-stack: HTML, CSS, JavaScript, TypeScript, PHP, Java, SQL.",
-        "Frameworks y herramientas: Angular, Astro, Tailwind, Laravel, Docker, Git."
+        "Frameworks y herramientas: Angular, Astro, Tailwind, Laravel, Docker, Git, Postman."
       ]
     },
     {
@@ -79,7 +79,7 @@
   "references": [
     {
       "name": "Sergio Murcia Mateo",
-      "role": "Desarrollador / Administrador de Sistemas",
+      "role": "Desarrollador Senior / Administrador de Sistemas",
       "phone": "+34 601 23 45 05",
       "email": "Sergio.murcia@tdi-data.com"
     },
