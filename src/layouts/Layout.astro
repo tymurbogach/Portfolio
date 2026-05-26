@@ -109,10 +109,11 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
     />
 
     <!-- Scripts globales -->
-    <script src="@/scripts/themeToggle.ts"></script>
-    <script src="@/scripts/contactForm.ts"></script>
-    <script src="@/scripts/sectionNav.ts"></script>
-    <script src="@/scripts/tapFeedback.ts"></script>
+    <script>
+      import "../scripts/themeToggle";
+      import "../scripts/sectionNav";
+      import "../scripts/tapFeedback";
+    </script>
   </head>
 
   <!-- position:fixed en body evita el scroll nativo del documento;

@@ -6,7 +6,7 @@ interface Props {
   hero: HeroData;
 }
 
-const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
+const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.props;
 ---
 
 <div class="flex flex-col w-full gap-5 relative
@@ -65,80 +65,32 @@ const { hero: { title1, title2, subtitle1, subtitle2, cta } } = Astro.props;
       )}
     </div>
 
-    <!-- Matrix quote — typewriter hacker effect -->
+    <!-- Matrix typewriter -->
     <div
-      class="text-start text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs
-             tracking-[0.2em] leading-[1.9] m-0 italic"
-      style="opacity: 0.30; height: 5.5em; overflow: hidden;"
-      aria-label={subtitle2}
+      id="matrix-wrap"
+      class="text-center text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs
+             tracking-[0.2em] leading-[1.8] italic"
+      style="opacity:0.3; height:5.5em; overflow:hidden;"
       data-quote={subtitle2}
-      id="matrix-quote-wrap"
+      data-comment={comment}
+      aria-label={subtitle2}
     >
-      <div><span id="matrix-text"></span><span
-        id="matrix-cursor"
-        style="display:inline-block; width:1px; height:0.9em; vertical-align:middle;
-               background:var(--accent-color); margin-left:1px;"
-      ></span></div>
+      <div>
+        <span id="matrix-text"></span><span
+          id="matrix-cursor"
+          style="display:inline-block; width:1px; height:0.85em; vertical-align:middle;
+                 background:var(--accent-color); margin-left:1px;"
+        ></span>
+      </div>
       <div
         id="matrix-comment"
-        style="opacity:0; transition:opacity 0.5s; color:var(--accent-color);
-               font-style:normal; font-weight:bold; margin-top:0.3em; text-align:center;"
-      >I hope you get the reference.</div>
+        class="not-italic font-bold opacity-0 transition-opacity duration-500"
+        style="margin-top:0.4em; color:var(--accent-color);"
+      ></div>
     </div>
 
     <script>
-      function initMatrixTypewriter() {
-        const wrap    = document.getElementById('matrix-quote-wrap');
-        const textEl  = document.getElementById('matrix-text');
-        const cursor  = document.getElementById('matrix-cursor');
-        const comment = document.getElementById('matrix-comment');
-        if (!wrap || !textEl || !cursor || !comment) return;
-
-        const QUOTE = wrap.dataset.quote ?? '';
-        let idx = 0;
-        let timer: ReturnType<typeof setTimeout>;
-
-        let blink = true;
-        const blinkTimer = setInterval(() => {
-          cursor.style.opacity = (blink = !blink) ? '1' : '0';
-        }, 530);
-
-        function type() {
-          if (idx < QUOTE.length) {
-            textEl.textContent = QUOTE.slice(0, ++idx);
-            timer = setTimeout(type, 35 + Math.random() * 25);
-          } else {
-            timer = setTimeout(() => {
-              comment.style.opacity = '1';
-              timer = setTimeout(erase, 2800);
-            }, 3000);
-          }
-        }
-
-        function erase() {
-          comment.style.opacity = '0';
-          timer = setTimeout(() => {
-            function del() {
-              if (idx > 0) {
-                textEl.textContent = QUOTE.slice(0, --idx);
-                timer = setTimeout(del, 18 + Math.random() * 12);
-              } else {
-                timer = setTimeout(type, 1200);
-              }
-            }
-            del();
-          }, 500);
-        }
-
-        type();
-
-        document.addEventListener('astro:before-preparation', () => {
-          clearTimeout(timer);
-          clearInterval(blinkTimer);
-        }, { once: true });
-      }
-
-      document.addEventListener('astro:page-load', initMatrixTypewriter);
+      import "../../scripts/typewriter";
     </script>
 
   </div>

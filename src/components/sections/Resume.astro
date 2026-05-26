@@ -114,48 +114,5 @@ const categories = [
 </section>
 
 <script>
-  function initResumeToggles() {
-    document.querySelectorAll<HTMLElement>(".resume-section").forEach((section) => {
-      const grid    = section.querySelector<HTMLElement>(".resume-grid");
-      const btn     = section.querySelector<HTMLButtonElement>(".resume-toggle");
-      const labelEl = btn?.querySelector<HTMLElement>(".resume-toggle-label");
-      const wordEl  = btn?.querySelector<HTMLElement>(".resume-toggle-word");
-      if (!grid || !btn) return;
-
-      const update = () => {
-        const overflows = grid.scrollHeight > grid.clientHeight + 2;
-        btn.classList.toggle("hidden", !overflows && btn.getAttribute("aria-expanded") !== "true");
-        if (labelEl && btn.getAttribute("aria-expanded") !== "true") {
-          // count hidden items (those below the visible area)
-          const gridBottom = grid.getBoundingClientRect().bottom;
-          const hidden = [...grid.children].filter(
-            (el) => el.getBoundingClientRect().top >= gridBottom - 2
-          ).length;
-          labelEl.textContent = hidden > 0 ? `+${hidden}` : "";
-        }
-      };
-
-      btn.addEventListener("click", () => {
-        const expanded = btn.getAttribute("aria-expanded") === "true";
-        if (expanded) {
-          grid.style.maxHeight = "";
-          btn.setAttribute("aria-expanded", "false");
-          if (wordEl) wordEl.textContent = "more";
-          update();
-        } else {
-          grid.style.maxHeight = "none";
-          btn.setAttribute("aria-expanded", "true");
-          if (labelEl) labelEl.textContent = "−";
-          if (wordEl)  wordEl.textContent  = "less";
-          btn.classList.remove("hidden");
-        }
-      });
-
-      const ro = new ResizeObserver(update);
-      ro.observe(grid);
-      update();
-    });
-  }
-
-  document.addEventListener("astro:page-load", initResumeToggles);
+  import "../../scripts/resumeToggles";
 </script>

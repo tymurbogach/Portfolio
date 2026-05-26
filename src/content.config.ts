@@ -70,6 +70,7 @@ const home = defineCollection({
       title2:    z.string(),
       subtitle1: z.string(),
       subtitle2: z.string(),
+      comment:   z.string(),
       cta,
     }),
     stats: z.array(z.object({ n: z.string(), label: z.string() })),
