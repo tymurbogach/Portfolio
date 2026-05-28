@@ -32,9 +32,10 @@
       "period": "2022 — presente",
       "bullets": [
         "Administración de servidor bare-metal con TrueNAS SCALE y ZFS — pools de almacenamiento por niveles: NVMe/SSD para servicios y bases de datos, HDD para copias de seguridad.",
-        "Despliegue y mantenimiento de 40+ servicios en 8 stacks Docker (NAS + Raspberry Pi): automatización multimedia, inferencia LLM local y gestión de fotos con ML.",
-        "Acceso externo seguro mediante túneles Cloudflared y VPN Mesh (Tailscale); enrutamiento de tráfico por VPN; proxy inverso y gestión de dominios.",
-        "iGPU passthrough para transcodificación de vídeo en tiempo real; actualizaciones automáticas; monitorización completa."
+        "Despliegue y mantenimiento de 40+ servicios en 8 stacks Docker (NAS + Raspberry Pi).",
+        "Pipeline multimedia de extremo a extremo: intercomunicación REST API, reglas de calidad Custom Formats/regex, adquisición automatizada, post-procesado y streaming acelerado por iGPU.",
+        "Servicios de IA self-hosted: API de inferencia LLM local consumida por un widget de chat personalizado integrado en el portfolio; gestión de fotos con ML y búsqueda por similitud vectorial.",
+        "Acceso externo seguro mediante túneles Cloudflared y VPN Mesh (Tailscale); enrutamiento de tráfico por VPN; proxy inverso, gestión de dominios, actualizaciones automáticas y monitorización completa."
       ]
     },
     {

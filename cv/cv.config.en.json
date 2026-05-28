@@ -32,9 +32,10 @@
       "period": "2022 — present",
       "bullets": [
         "Bare-metal server administration with TrueNAS SCALE and ZFS — tiered storage pools: NVMe/SSD for services and databases, HDD for backups.",
-        "Deploy and maintain 40+ containerized services across 8 Docker stacks (NAS + Raspberry Pi): media automation, local LLM inference, and ML-powered photo management.",
-        "Secure external access via Cloudflared tunnels and Tailscale VPN mesh; VPN traffic routing; reverse proxy and domain management.",
-        "iGPU passthrough for real-time video transcoding; automated updates; full monitoring stack."
+        "Deploy and maintain 40+ containerized services across 8 Docker stacks (NAS + Raspberry Pi).",
+        "End-to-end automated media pipeline: REST API intercommunication, Custom Formats/regex quality rules, automated acquisition, post-processing, and iGPU-accelerated streaming.",
+        "Self-hosted AI services: local LLM inference API consumed by a custom portfolio chat widget; ML-powered photo management with vector-based similarity search.",
+        "Secure external access via Cloudflared tunnels and Tailscale VPN mesh; VPN traffic routing; reverse proxy, domain management, automated updates, and monitoring."
       ]
     },
     {
