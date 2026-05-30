@@ -457,6 +457,17 @@ body::after {
   .marquee-track:hover { animation-play-state: paused; }
 }
 
+/* ── Theme toggle: hint pulse on page load ──────────────── */
+@keyframes theme-badge-pulse {
+  0%, 100% { box-shadow: none; }
+  50%       { box-shadow: 0 0 8px var(--accent-color), 0 0 18px var(--accent-color); }
+}
+[data-theme-label] {
+  animation: theme-badge-pulse 0.7s ease-in-out 2;
+  animation-delay: 0.6s;
+  animation-fill-mode: backwards;
+}
+
 /* ── Contact form: spinner ──────────────────────────────── */
 @keyframes form-spin {
   to { transform: rotate(360deg); }

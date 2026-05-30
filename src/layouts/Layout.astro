@@ -62,10 +62,13 @@ const MARQUEE = site.marquee ?? "";
       (function () {
         var t = localStorage.getItem("theme");
         var valid = JSON.parse(document.documentElement.dataset.themes || "[]");
-        if (t && valid.indexOf(t) !== -1) {
-          document.documentElement.classList.remove("theme-void");
-          document.documentElement.classList.add(t);
-        }
+        var active = (t && valid.indexOf(t) !== -1) ? t : (valid[0] || "theme-void");
+        document.documentElement.classList.remove("theme-void");
+        document.documentElement.classList.add(active);
+        document.addEventListener("DOMContentLoaded", function () {
+          var badge = document.querySelector("[data-theme-label]");
+          if (badge) badge.textContent = active.replace("theme-", "");
+        });
       })();
     </script>
 
