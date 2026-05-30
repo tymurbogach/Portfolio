@@ -21,6 +21,14 @@ function createMsgEl(role: "user" | "bot", text = ""): HTMLElement {
   return el;
 }
 
+function createTypingEl(): HTMLElement {
+  const el = document.createElement("div");
+  el.className = "chat-typing";
+  el.setAttribute("aria-label", "Typing…");
+  for (let i = 0; i < 3; i++) el.appendChild(document.createElement("span"));
+  return el;
+}
+
 async function sendMessage(text: string, messagesEl: HTMLElement, inputEl: HTMLInputElement, sendBtn: HTMLElement): Promise<void> {
   if (!text.trim()) return;
 
@@ -31,10 +39,14 @@ async function sendMessage(text: string, messagesEl: HTMLElement, inputEl: HTMLI
   // User bubble
   messagesEl.appendChild(createMsgEl("user", text));
 
-  // Bot bubble (streaming)
-  const botEl = createMsgEl("bot");
-  messagesEl.appendChild(botEl);
+  // Typing indicator while waiting for first token
+  const typingEl = createTypingEl();
+  messagesEl.appendChild(typingEl);
   messagesEl.scrollTop = messagesEl.scrollHeight;
+
+  // Bot bubble (streaming) — inserted when first token arrives
+  const botEl = createMsgEl("bot");
+  let botInserted = false;
 
   try {
     const res = await fetch(CHAT_API, {
@@ -44,7 +56,9 @@ async function sendMessage(text: string, messagesEl: HTMLElement, inputEl: HTMLI
     });
 
     if (!res.ok || !res.body) {
+      typingEl.remove();
       botEl.textContent = "⚠ Service unavailable";
+      messagesEl.appendChild(botEl);
       return;
     }
 
@@ -67,14 +81,25 @@ async function sendMessage(text: string, messagesEl: HTMLElement, inputEl: HTMLI
         try {
           const chunk = JSON.parse(stripped);
           if (chunk.token) {
+            if (!botInserted) {
+              typingEl.remove();
+              messagesEl.appendChild(botEl);
+              botInserted = true;
+            }
             botEl.textContent += chunk.token;
             messagesEl.scrollTop = messagesEl.scrollHeight;
           }
-          if (chunk.error) botEl.textContent = `⚠ ${chunk.error}`;
+          if (chunk.error) {
+            typingEl.remove();
+            if (!botInserted) { messagesEl.appendChild(botEl); botInserted = true; }
+            botEl.textContent = `⚠ ${chunk.error}`;
+          }
         } catch { /* partial */ }
       }
     }
   } catch {
+    typingEl.remove();
+    if (!botInserted) { messagesEl.appendChild(botEl); botInserted = true; }
     botEl.textContent = "⚠ Could not connect to chat service";
   } finally {
     inputEl.disabled = false;
@@ -117,12 +142,13 @@ function initChat(): void {
 
   closeBtn?.addEventListener("click", (e) => { e.stopPropagation(); close(); });
 
-  // Close on outside click
+  // Close on outside click only when conversation hasn't started (input empty + no user messages)
   document.addEventListener("click", (e) => {
     if (!isOpen) return;
     if (widget.contains(e.target as Node)) return;
     if ((e.target as Element).closest(".chat-toggle")) return;
-    close();
+    const hasConversation = messages.querySelector(".chat-msg--user") !== null || (input?.value.trim().length ?? 0) > 0;
+    if (!hasConversation) close();
   });
 
   sendBtn.addEventListener("click", () => sendMessage(input.value, messages, input, sendBtn));

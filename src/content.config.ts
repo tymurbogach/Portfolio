@@ -45,7 +45,8 @@ const site = defineCollection({
       projects: z.string(),
       contact:  z.string(),
     }),
-    pages: z.array(navPage),
+    pages:   z.array(navPage),
+    marquee: z.string().optional(),
   }),
 });
 

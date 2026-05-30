@@ -1,0 +1,83 @@
+---
+interface Props {
+  id?:        string;
+  titleLabel: string;
+}
+
+const { id = "cv-modal", titleLabel } = Astro.props;
+---
+
+<script>
+  import "../../scripts/cvModal";
+</script>
+
+<div
+  id={id}
+  data-open="false"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4"
+  style="pointer-events: none;"
+  role="dialog"
+  aria-modal="true"
+  aria-label={titleLabel}
+>
+  <!-- Backdrop -->
+  <div
+    id="cv-modal-backdrop"
+    class="absolute inset-0 transition-opacity duration-300"
+    style="background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); opacity: 0;"
+  />
+
+  <!-- Panel -->
+  <div
+    class="relative flex flex-col w-full max-w-4xl fhd:max-w-6xl
+           border border-[var(--border-color)]
+           bg-[var(--component-background)]
+           transition-all duration-300 overflow-hidden"
+    style="
+      height: min(90vh, 72rem);
+      transform: scale(0.95);
+      opacity: 0;
+    "
+    id="cv-modal-panel"
+  >
+
+    <!-- Header -->
+    <div class="flex items-center justify-between px-4 py-2 shrink-0 border-b border-[var(--border-color)]">
+      <span class="text-[0.5rem] laptop:text-[0.6rem] fhd:text-xs tracking-[0.35em] uppercase font-bold opacity-40">
+        &gt; {titleLabel}
+      </span>
+      <div class="flex items-center gap-3">
+        <a
+          id="cv-modal-download"
+          href="#"
+          download
+          class="flex items-center gap-1.5
+                 text-[0.48rem] laptop:text-[0.55rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
+                 text-[var(--accent-color)] opacity-70
+                 can-hover:hover:opacity-100 transition-opacity duration-200"
+        >
+          <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
+          </svg>
+          Download
+        </a>
+        <button
+          id="cv-modal-close"
+          class="text-[0.9rem] fhd:text-base leading-none opacity-40 can-hover:hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+      </div>
+    </div>
+
+    <!-- Iframe -->
+    <iframe
+      id="cv-modal-iframe"
+      src=""
+      data-src=""
+      class="flex-1 w-full border-none"
+      title={titleLabel}
+    />
+  </div>
+</div>

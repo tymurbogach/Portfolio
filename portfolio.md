@@ -53,7 +53,7 @@ src/
 │   ├── projects.astro         ← /projects
 │   └── contact.astro          ← /contact
 ├── scripts/
-│   ├── themeToggle.ts         ← cicla temas (THEMES array); triple-clic en #theme-toggle
+│   ├── themeToggle.ts         ← cicla temas (THEMES array); clic en #theme-toggle
 │   ├── sectionNav.ts          ← scroll SPA: URL ↔ sección, scroll suave, popstate
 │   ├── navIndicator.ts        ← posiciona línea bajo enlace activo en nav
 │   ├── cvModal.ts             ← abre/cierra modal CV, carga iframe lazy
@@ -123,7 +123,7 @@ Tipos exportados: `SiteData`, `ProfileData`, `HomeData`, `AboutData`, `ResumeDat
 
 ## Patrones no obvios
 
-- **Cambio de tema**: Triple-clic en el div `id="theme-toggle"` (el bloque del h1 en Hero). Cicla el array THEMES. Se preserva en `localStorage["theme"]`.
+- **Cambio de tema**: Clic en el div `id="theme-toggle"` (el bloque del h1 en Hero). Cicla el array THEMES. Badge `[data-theme-label]` muestra el nombre activo. Se preserva en `localStorage["theme"]`.
 - **Anti-flash de tema**: Script `is:inline` en `<head>` aplica el tema guardado antes del primer paint.
 - **body position:fixed**: El body tiene `position:fixed; inset:0` para evitar scroll nativo del documento. El scroll real ocurre solo dentro de `#content-scroll`.
 - **SPA routing falso**: El sitio es una sola página con todas las secciones; la URL cambia con `history.replaceState` al scrollear. `sectionNav.ts` lo gestiona.

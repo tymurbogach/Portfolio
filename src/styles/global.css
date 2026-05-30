@@ -73,25 +73,25 @@
   --gradient-hero:         linear-gradient(135deg, rgba(0, 204, 238, 0.12) 0%, transparent 60%);
 }
 
-:root.theme-chalk { /* claro neutro frío — azul marino */
-  --component-background: #ebebeb;
-  --page-background:       #f8f8f8;
-  --total-background:      #d8d8d8;
-  --letter-color:          #0d0d0d;
-  --border-color:          #b0b0b0;
-  --border-subtle:         rgba(100, 100, 100, 0.35);
-  --hover-bg:              #111111;
-  --hover-text:            #f8f8f8;
-  --accent-color:          #1a3a5c;
+:root.theme-neon { /* vaporwave — purpura-negro · rosa neón · amarillo eléctrico */
+  --component-background: #1e1428;
+  --page-background:       #120d1a;
+  --total-background:      #0a0710;
+  --letter-color:          #f0e8ff;
+  --border-color:          #2e1e42;
+  --border-subtle:         rgba(46, 30, 66, 0.75);
+  --hover-bg:              #f0e000;
+  --hover-text:            #0a0710;
+  --accent-color:          #ff1f8e;
   --accent-text:           #ffffff;
-  --accent-subtle:         rgba(26, 58, 92, 0.09);
-  --accent-secondary:      #0066cc;
-  --accent-tertiary:       #004499;
-  --surface-raised:        #f2f2f2;
-  --surface-glow:          rgba(26, 58, 92, 0.04);
-  --glow-primary:          rgba(26, 58, 92, 0.18);
-  --glow-secondary:        rgba(0, 102, 204, 0.12);
-  --gradient-hero:         linear-gradient(135deg, rgba(26, 58, 92, 0.07) 0%, transparent 60%);
+  --accent-subtle:         rgba(255, 31, 142, 0.12);
+  --accent-secondary:      #f0e000;
+  --accent-tertiary:       #c8b800;
+  --surface-raised:        #261a35;
+  --surface-glow:          rgba(255, 31, 142, 0.06);
+  --glow-primary:          rgba(255, 31, 142, 0.42);
+  --glow-secondary:        rgba(240, 224, 0, 0.28);
+  --gradient-hero:         linear-gradient(135deg, rgba(255, 31, 142, 0.12) 0%, transparent 60%);
 }
 
 :root.theme-stone { /* claro terracota cálida — ámbar */
@@ -136,25 +136,46 @@
   --gradient-hero:         linear-gradient(135deg, rgba(232, 68, 58, 0.12) 0%, transparent 60%);
 }
 
-:root.theme-forest { /* oscuro musgo — verde lima · ámbar */
-  --component-background: #1a2218;
-  --page-background:       #10160e;
-  --total-background:      #080b07;
-  --letter-color:          #e8f2e4;
-  --border-color:          #2a3d26;
-  --border-subtle:         rgba(42, 61, 38, 0.75);
-  --hover-bg:              #d4a843;
-  --hover-text:            #080b07;
-  --accent-color:          #6ec95a;
-  --accent-text:           #080b07;
-  --accent-subtle:         rgba(110, 201, 90, 0.14);
-  --accent-secondary:      #d4a843;
-  --accent-tertiary:       #b07820;
-  --surface-raised:        #212c1e;
-  --surface-glow:          rgba(110, 201, 90, 0.05);
-  --glow-primary:          rgba(110, 201, 90, 0.38);
-  --glow-secondary:        rgba(212, 168, 67, 0.28);
-  --gradient-hero:         linear-gradient(135deg, rgba(110, 201, 90, 0.12) 0%, transparent 60%);
+:root.theme-ice { /* ártico — pizarra oscura · azul hielo · plata */
+  --component-background: #161e28;
+  --page-background:       #0e1520;
+  --total-background:      #070d15;
+  --letter-color:          #ddeeff;
+  --border-color:          #1e2e40;
+  --border-subtle:         rgba(30, 46, 64, 0.75);
+  --hover-bg:              #a0c8e8;
+  --hover-text:            #070d15;
+  --accent-color:          #5ee0f8;
+  --accent-text:           #050c12;
+  --accent-subtle:         rgba(94, 224, 248, 0.10);
+  --accent-secondary:      #a0c8e8;
+  --accent-tertiary:       #6890b0;
+  --surface-raised:        #1c2838;
+  --surface-glow:          rgba(94, 224, 248, 0.05);
+  --glow-primary:          rgba(94, 224, 248, 0.38);
+  --glow-secondary:        rgba(160, 200, 232, 0.22);
+  --gradient-hero:         linear-gradient(135deg, rgba(94, 224, 248, 0.10) 0%, transparent 60%);
+}
+
+:root.theme-amber { /* terminal retro — negro cálido · ámbar · naranja quemado */
+  --component-background: #1a1400;
+  --page-background:       #100d00;
+  --total-background:      #080600;
+  --letter-color:          #f5dfa0;
+  --border-color:          #2e2200;
+  --border-subtle:         rgba(46, 34, 0, 0.75);
+  --hover-bg:              #ff6600;
+  --hover-text:            #080600;
+  --accent-color:          #ffaa00;
+  --accent-text:           #080600;
+  --accent-subtle:         rgba(255, 170, 0, 0.12);
+  --accent-secondary:      #ff6600;
+  --accent-tertiary:       #cc4400;
+  --surface-raised:        #201800;
+  --surface-glow:          rgba(255, 170, 0, 0.05);
+  --glow-primary:          rgba(255, 170, 0, 0.40);
+  --glow-secondary:        rgba(255, 102, 0, 0.28);
+  --gradient-hero:         linear-gradient(135deg, rgba(255, 170, 0, 0.10) 0%, transparent 60%);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -165,6 +186,7 @@
    ═══════════════════════════════════════════════════════ */
 :root {
   --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  --scroll-offset: 60px;
 
   /* Layout base (mobile) */
   --sidebar-width:  22rem;
@@ -433,5 +455,49 @@ body::after {
 /* Only pause marquee on pointer hover — on touch it would stay paused forever */
 @media (hover: hover) and (pointer: fine) {
   .marquee-track:hover { animation-play-state: paused; }
+}
+
+/* ── Contact form: spinner ──────────────────────────────── */
+@keyframes form-spin {
+  to { transform: rotate(360deg); }
+}
+.form-spinner {
+  animation: form-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Contact form: status error variant ─────────────────── */
+.form-status--error {
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+/* ── Contact form: success block ────────────────────────── */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+.form-success__line {
+  height: 1px;
+  width: 100%;
+  background: var(--accent-color);
+  opacity: 0.4;
+}
+.form-success__heading {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  color: var(--accent-color);
+}
+.form-success__body {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.55;
+  letter-spacing: 0.06em;
+  font-size: clamp(0.75rem, 1.1vw, 0.85rem);
 }
 

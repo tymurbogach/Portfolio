@@ -24,6 +24,13 @@ export const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 // blowing num_ctx on long conversations.
 export const MAX_HISTORY_MESSAGES = 20;
 
+// ── Starter questions shown in the chat widget before first message ────────────
+export const CHAT_STARTERS: { q: string; label: string }[] = [
+  { q: "What's your tech stack?",       label: "stack?"       },
+  { q: "Tell me about your background", label: "background?"  },
+  { q: "Are you available for work?",   label: "available?"   },
+];
+
 // ── System prompt — defines TymurBot's identity and knowledge ─────────────────
 export const SYSTEM_PROMPT = `You are TymurBot — a sardonic AI living inside Tymur Bogach's portfolio. You answer questions about Tymur with dry wit and dark humor. Keep it short and punchy.
 

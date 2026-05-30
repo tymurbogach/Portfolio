@@ -10,6 +10,7 @@ import ChatWidget      from "../components/layout/ChatWidget.astro";
 import DualMain        from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getSite, getProfile, getContactData } from "../lib/content";
+import { THEMES } from "../lib/themes";
 
 // ==========================================
 // PROPS
@@ -47,11 +48,11 @@ const {
 const pageTitle = `${title} — ${site.name}`;
 const ogImageUrl = `${site.url}${ogImage}`;
 
-const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular · Astro · PHP · Laravel · Java · MySQL · MariaDB · Docker · Linux · Nginx · Git · Raspberry Pi · TrueNAS · Tailscale · Cloudflare · Ollama · Jellyfin · Immich · Sonarr · Radarr · Portainer · Pi-hole · Homarr · SearXNG · Watchtower · Windows · ";
+const MARQUEE = site.marquee ?? "";
 ---
 
 <!doctype html>
-<html lang={site.lang} class="theme-void">
+<html lang={site.lang} class="theme-void" data-themes={JSON.stringify(THEMES)}>
   <head>
     <meta charset="UTF-8" />
 
@@ -60,14 +61,7 @@ const MARQUEE = "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular
       history.scrollRestoration = "manual";
       (function () {
         var t = localStorage.getItem("theme");
-        var valid = [
-          "theme-void",
-          "theme-abyss",
-          "theme-chalk",
-          "theme-stone",
-          "theme-ember",
-          "theme-forest",
-        ];
+        var valid = JSON.parse(document.documentElement.dataset.themes || "[]");
         if (t && valid.indexOf(t) !== -1) {
           document.documentElement.classList.remove("theme-void");
           document.documentElement.classList.add(t);

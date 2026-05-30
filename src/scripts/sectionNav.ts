@@ -4,12 +4,17 @@ function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-/** Sección cuyo top esté más abajo que el punto de referencia (scrollTop + 60px). */
+function getScrollOffset(): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue("--scroll-offset").trim();
+  return parseInt(raw, 10) || 60;
+}
+
+/** Sección cuyo top esté más abajo que el punto de referencia (scrollTop + scroll-offset). */
 function getActiveSection(scrollEl: HTMLElement): string {
   const sections = Array.from(
     scrollEl.querySelectorAll<HTMLElement>("section[id]")
   );
-  const ref = scrollEl.scrollTop + 60;
+  const ref = scrollEl.scrollTop + getScrollOffset();
   let active = sections[0]?.id ?? "home";
   for (const s of sections) {
     if (s.offsetTop <= ref) active = s.id;

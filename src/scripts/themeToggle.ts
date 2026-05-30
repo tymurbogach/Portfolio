@@ -1,11 +1,6 @@
-// Temas disponibles en orden de ciclo. Para añadir uno:
-// 1. Añadir bloque CSS :root.theme-* en global.css con todas las variables obligatorias
-// 2. Añadir el string al array THEMES
-
 import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
-
-// 3. Añadir al array valid[] en el script is:inline de Layout.astro (anti-flash)
-const THEMES = ["theme-void", "theme-abyss", "theme-chalk", "theme-stone", "theme-ember", "theme-forest"] as const;
+import { THEMES } from "../lib/themes";
+export { THEMES };
 
 function applyTheme(theme: string): void {
   const root = document.documentElement;
@@ -13,6 +8,8 @@ function applyTheme(theme: string): void {
     if (cls.startsWith("theme-")) root.classList.remove(cls);
   });
   root.classList.add(theme);
+  const badge = document.querySelector<HTMLElement>("[data-theme-label]");
+  if (badge) badge.textContent = theme.replace("theme-", "");
 }
 
 function initThemeToggle(): void {
@@ -24,16 +21,11 @@ function initThemeToggle(): void {
 
   applyTheme(THEMES[idx]);
 
-  // Clonar para limpiar listeners anteriores (necesario en SPA con astro:page-load)
   const newBtn = btn.cloneNode(true) as HTMLElement;
   btn.parentNode?.replaceChild(newBtn, btn);
 
-  // Triple-clic nativo (e.detail === 3) para cambiar tema
   newBtn.addEventListener("click", (e) => {
-    if (e.detail < 3) return;
     e.preventDefault();
-    e.stopPropagation();
-
     idx = (idx + 1) % THEMES.length;
     applyTheme(THEMES[idx]);
     localStorage.setItem("theme", THEMES[idx]);

@@ -34,7 +34,11 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
               laptop:my-auto">
 
     <!-- Título — triple clic activa cambio de tema -->
-    <div id="theme-toggle">
+    <div
+      id="theme-toggle"
+      class="group relative cursor-pointer select-none can-hover:hover:opacity-90 transition-opacity duration-200"
+      title="Click to change theme"
+    >
       <h1
         class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
         style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
@@ -42,6 +46,25 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
         <span class="block text-left">{title1}</span>
         <span class="block text-right" style="opacity: 0.28;">{title2}</span>
       </h1>
+      <!-- Theme indicator — always visible, shows active theme -->
+      <div class="flex justify-end mt-1">
+        <span
+          id="theme-hint"
+          class="inline-flex flex-col items-end gap-0.5
+                 opacity-35 can-hover:group-hover:opacity-80
+                 transition-opacity duration-200 select-none"
+          aria-label="Click the title to change theme"
+        >
+          <span class="text-[0.38rem] laptop:text-[0.42rem] tracking-[0.3em] uppercase font-bold"
+                style="color: var(--letter-color);">// theme</span>
+          <span
+            class="text-[0.48rem] laptop:text-[0.55rem] fhd:text-[0.6rem] tracking-[0.25em] uppercase font-bold
+                   px-1.5 py-0.5 border border-[var(--accent-color)]"
+            style="color: var(--accent-color);"
+            data-theme-label
+          ></span>
+        </span>
+      </div>
     </div>
 
     <!-- Bio + CTAs -->

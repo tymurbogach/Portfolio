@@ -21,16 +21,16 @@ const {
 
 const isDemo   = type === "demo";
 const indexStr = String(index).padStart(2, "0");
+const hoverBorder = link ? "can-hover:hover:border-[var(--accent-color)]" : "";
+const cardClass = `group flex flex-col overflow-hidden border border-[var(--border-color)] ${hoverBorder} transition-all duration-300`;
 ---
 
+{link ? (
 <a
   href={link}
   target="_blank"
   rel="noopener noreferrer"
-  class="group flex flex-col overflow-hidden
-         border border-[var(--border-color)]
-         can-hover:hover:border-[var(--accent-color)]
-         transition-all duration-300"
+  class={cardClass}
   style="position: relative;"
 >
   <!-- Large muted index — background element -->
@@ -129,3 +129,94 @@ const indexStr = String(index).padStart(2, "0");
     </div>
   </div>
 </a>
+) : (
+<div
+  class={cardClass}
+  style="position: relative;"
+>
+  <!-- Large muted index — background element -->
+  <span
+    class="font-display absolute pointer-events-none select-none"
+    style="right: 0.5rem; bottom: -0.25rem;
+           font-size: clamp(3rem, 5vw, 4rem);
+           line-height: 1;
+           color: var(--letter-color);
+           opacity: 0.04;
+           z-index: 0;"
+    aria-hidden="true"
+  >{indexStr}</span>
+
+  <!-- Image — top -->
+  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--component-background)]" style="aspect-ratio: 16/9;">
+
+    <!-- Badge -->
+    <span
+      class="absolute top-2 left-3 z-20
+             text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
+             border border-[var(--border-subtle)] bg-[var(--page-background)]
+             text-[var(--letter-color)]"
+      style="opacity: 0.75;"
+    >
+      {isDemo ? "● live" : "⌥ src"}
+    </span>
+
+    {image ? (
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        class="w-full h-full object-contain p-4"
+      />
+    ) : (
+      <div
+        class="w-full h-full flex flex-col items-center justify-center gap-2
+               bg-[var(--component-background)]"
+      >
+        <span
+          class="font-display text-4xl"
+          style="color: var(--accent-color); opacity: 0.2;"
+        >{indexStr}</span>
+        <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
+              style="opacity: 0.2;">
+          {title}
+        </span>
+      </div>
+    )}
+  </div>
+
+  <!-- Content — bottom -->
+  <div
+    class="flex flex-col justify-between flex-1 px-3 py-3
+           bg-[var(--page-background)]
+           transition-colors duration-200 overflow-hidden"
+    style="position: relative; z-index: 1;"
+  >
+    <div class="flex flex-col gap-1 overflow-hidden">
+      <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0">
+        {title}
+      </h3>
+      <p
+        class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
+        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
+      >
+        {description}
+      </p>
+    </div>
+
+    <div class="flex items-center justify-between gap-2 shrink-0 mt-2">
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-1">
+          {tags.map((tag: string) => (
+            <span
+              class="text-[0.4rem] fhd:text-[0.5rem] qhd:text-[0.6rem] uhd:text-xs tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold"
+              style="border: 1px solid var(--border-color); opacity: 0.5;"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+)}
