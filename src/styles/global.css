@@ -52,130 +52,88 @@
   --gradient-hero:         linear-gradient(135deg, rgba(0, 229, 180, 0.07) 0%, transparent 55%);
 }
 
-:root.theme-abyss { /* azul profundo — cyan eléctrico · magenta */
-  --component-background: #1c1c35;
-  --page-background:       #111125;
-  --total-background:      #07070f;
-  --letter-color:          #ece8ff;
-  --border-color:          #2a2a4a;
-  --border-subtle:         rgba(42, 42, 74, 0.75);
-  --hover-bg:              #e040c8;
-  --hover-text:            #07070d;
-  --accent-color:          #00ccee;
-  --accent-text:           #030308;
-  --accent-subtle:         rgba(0, 204, 238, 0.14);
-  --accent-secondary:      #e040c8;
-  --accent-tertiary:       #cc006e;
-  --surface-raised:        #232340;
-  --surface-glow:          rgba(0, 204, 238, 0.06);
-  --glow-primary:          rgba(0, 204, 238, 0.40);
-  --glow-secondary:        rgba(224, 64, 200, 0.30);
-  --gradient-hero:         linear-gradient(135deg, rgba(0, 204, 238, 0.12) 0%, transparent 60%);
+:root.theme-dracula { /* dracula — negro púrpura · violeta · rosa */
+  --component-background: #282A36;
+  --page-background:       #1E2029;
+  --total-background:      #191A24;
+  --letter-color:          #F8F8F2;
+  --border-color:          #44475A;
+  --border-subtle:         rgba(68, 71, 90, 0.75);
+  --hover-bg:              #FF79C6;
+  --hover-text:            #191A24;
+  --accent-color:          #BD93F9;
+  --accent-text:           #191A24;
+  --accent-subtle:         rgba(189, 147, 249, 0.12);
+  --accent-secondary:      #FF79C6;
+  --accent-tertiary:       #8BE9FD;
+  --surface-raised:        #313341;
+  --surface-glow:          rgba(189, 147, 249, 0.05);
+  --glow-primary:          rgba(189, 147, 249, 0.40);
+  --glow-secondary:        rgba(255, 121, 198, 0.30);
+  --gradient-hero:         linear-gradient(135deg, rgba(189, 147, 249, 0.10) 0%, transparent 60%);
 }
 
-:root.theme-neon { /* vaporwave — purpura-negro · rosa neón · amarillo eléctrico */
-  --component-background: #1e1428;
-  --page-background:       #120d1a;
-  --total-background:      #0a0710;
-  --letter-color:          #f0e8ff;
-  --border-color:          #2e1e42;
-  --border-subtle:         rgba(46, 30, 66, 0.75);
-  --hover-bg:              #f0e000;
-  --hover-text:            #0a0710;
-  --accent-color:          #ff1f8e;
-  --accent-text:           #ffffff;
-  --accent-subtle:         rgba(255, 31, 142, 0.12);
-  --accent-secondary:      #f0e000;
-  --accent-tertiary:       #c8b800;
-  --surface-raised:        #261a35;
-  --surface-glow:          rgba(255, 31, 142, 0.06);
-  --glow-primary:          rgba(255, 31, 142, 0.42);
-  --glow-secondary:        rgba(240, 224, 0, 0.28);
-  --gradient-hero:         linear-gradient(135deg, rgba(255, 31, 142, 0.12) 0%, transparent 60%);
+:root.theme-nord { /* nord — ártico pizarra · frost · aurora */
+  --component-background: #3B4252;
+  --page-background:       #2E3440;
+  --total-background:      #242933;
+  --letter-color:          #ECEFF4;
+  --border-color:          #434C5E;
+  --border-subtle:         rgba(67, 76, 94, 0.75);
+  --hover-bg:              #D08770;
+  --hover-text:            #242933;
+  --accent-color:          #88C0D0;
+  --accent-text:           #242933;
+  --accent-subtle:         rgba(136, 192, 208, 0.12);
+  --accent-secondary:      #D08770;
+  --accent-tertiary:       #EBCB8B;
+  --surface-raised:        #434C5E;
+  --surface-glow:          rgba(136, 192, 208, 0.04);
+  --glow-primary:          rgba(136, 192, 208, 0.35);
+  --glow-secondary:        rgba(208, 135, 112, 0.25);
+  --gradient-hero:         linear-gradient(135deg, rgba(136, 192, 208, 0.10) 0%, transparent 60%);
 }
 
-:root.theme-stone { /* claro terracota cálida — ámbar */
-  --component-background: #e8e0d5;
-  --page-background:       #f5f0e8;
-  --total-background:      #d0c8bc;
-  --letter-color:          #15120a;
-  --border-color:          #a89880;
-  --border-subtle:         rgba(120, 100, 80, 0.35);
-  --hover-bg:              #1a160e;
-  --hover-text:            #f5f0e8;
-  --accent-color:          #b05b2a;
-  --accent-text:           #ffffff;
-  --accent-subtle:         rgba(176, 91, 42, 0.09);
-  --accent-secondary:      #e05c00;
-  --accent-tertiary:       #8b1a00;
-  --surface-raised:        #f0ebe0;
-  --surface-glow:          rgba(176, 91, 42, 0.04);
-  --glow-primary:          rgba(176, 91, 42, 0.18);
-  --glow-secondary:        rgba(224, 92, 0, 0.12);
-  --gradient-hero:         linear-gradient(135deg, rgba(176, 91, 42, 0.07) 0%, transparent 60%);
+:root.theme-gruvbox { /* gruvbox — retro cálido oscuro · naranja quemado · ocre */
+  --component-background: #3C3836;
+  --page-background:       #282828;
+  --total-background:      #1D2021;
+  --letter-color:          #EBDBB2;
+  --border-color:          #504945;
+  --border-subtle:         rgba(80, 73, 69, 0.75);
+  --hover-bg:              #FABD2F;
+  --hover-text:            #1D2021;
+  --accent-color:          #FE8019;
+  --accent-text:           #1D2021;
+  --accent-subtle:         rgba(254, 128, 25, 0.12);
+  --accent-secondary:      #FABD2F;
+  --accent-tertiary:       #B8BB26;
+  --surface-raised:        #504945;
+  --surface-glow:          rgba(254, 128, 25, 0.04);
+  --glow-primary:          rgba(254, 128, 25, 0.38);
+  --glow-secondary:        rgba(250, 189, 47, 0.28);
+  --gradient-hero:         linear-gradient(135deg, rgba(254, 128, 25, 0.10) 0%, transparent 60%);
 }
 
-:root.theme-ember { /* oscuro carbón — rojo carmín · dorado */
-  --component-background: #251a1a;
-  --page-background:       #160e0e;
-  --total-background:      #0a0606;
-  --letter-color:          #f5ece8;
-  --border-color:          #3d2020;
-  --border-subtle:         rgba(61, 32, 32, 0.75);
-  --hover-bg:              #e8c84a;
-  --hover-text:            #0a0606;
-  --accent-color:          #e8443a;
-  --accent-text:           #ffffff;
-  --accent-subtle:         rgba(232, 68, 58, 0.14);
-  --accent-secondary:      #e8c84a;
-  --accent-tertiary:       #c8960a;
-  --surface-raised:        #2e1f1f;
-  --surface-glow:          rgba(232, 68, 58, 0.06);
-  --glow-primary:          rgba(232, 68, 58, 0.40);
-  --glow-secondary:        rgba(232, 200, 74, 0.30);
-  --gradient-hero:         linear-gradient(135deg, rgba(232, 68, 58, 0.12) 0%, transparent 60%);
-}
-
-:root.theme-ice { /* ártico — pizarra oscura · azul hielo · plata */
-  --component-background: #161e28;
-  --page-background:       #0e1520;
-  --total-background:      #070d15;
-  --letter-color:          #ddeeff;
-  --border-color:          #1e2e40;
-  --border-subtle:         rgba(30, 46, 64, 0.75);
-  --hover-bg:              #a0c8e8;
-  --hover-text:            #070d15;
-  --accent-color:          #5ee0f8;
-  --accent-text:           #050c12;
-  --accent-subtle:         rgba(94, 224, 248, 0.10);
-  --accent-secondary:      #a0c8e8;
-  --accent-tertiary:       #6890b0;
-  --surface-raised:        #1c2838;
-  --surface-glow:          rgba(94, 224, 248, 0.05);
-  --glow-primary:          rgba(94, 224, 248, 0.38);
-  --glow-secondary:        rgba(160, 200, 232, 0.22);
-  --gradient-hero:         linear-gradient(135deg, rgba(94, 224, 248, 0.10) 0%, transparent 60%);
-}
-
-:root.theme-amber { /* terminal retro — negro cálido · ámbar · naranja quemado */
-  --component-background: #1a1400;
-  --page-background:       #100d00;
-  --total-background:      #080600;
-  --letter-color:          #f5dfa0;
-  --border-color:          #2e2200;
-  --border-subtle:         rgba(46, 34, 0, 0.75);
-  --hover-bg:              #ff6600;
-  --hover-text:            #080600;
-  --accent-color:          #ffaa00;
-  --accent-text:           #080600;
-  --accent-subtle:         rgba(255, 170, 0, 0.12);
-  --accent-secondary:      #ff6600;
-  --accent-tertiary:       #cc4400;
-  --surface-raised:        #201800;
-  --surface-glow:          rgba(255, 170, 0, 0.05);
-  --glow-primary:          rgba(255, 170, 0, 0.40);
-  --glow-secondary:        rgba(255, 102, 0, 0.28);
-  --gradient-hero:         linear-gradient(135deg, rgba(255, 170, 0, 0.10) 0%, transparent 60%);
+:root.theme-solarized { /* solarized light — papel cálido · cyan ártico · azul */
+  --component-background: #FDF6E3;
+  --page-background:       #EEE8D5;
+  --total-background:      #C4BCA7;
+  --letter-color:          #586E75;
+  --border-color:          #93A1A1;
+  --border-subtle:         rgba(147, 161, 161, 0.50);
+  --hover-bg:              #002B36;
+  --hover-text:            #FDF6E3;
+  --accent-color:          #2AA198;
+  --accent-text:           #FDF6E3;
+  --accent-subtle:         rgba(42, 161, 152, 0.10);
+  --accent-secondary:      #268BD2;
+  --accent-tertiary:       #B58900;
+  --surface-raised:        #FDF6E3;
+  --surface-glow:          rgba(42, 161, 152, 0.04);
+  --glow-primary:          rgba(42, 161, 152, 0.22);
+  --glow-secondary:        rgba(38, 139, 210, 0.16);
+  --gradient-hero:         linear-gradient(135deg, rgba(42, 161, 152, 0.08) 0%, transparent 60%);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -308,9 +266,10 @@ input:focus-visible {
   outline: none;
 }
 
-/* Remove native blue/grey tap highlight and 300ms delay on all interactive elements */
+/* Remove native tap highlight, callout menu, and 300ms delay on interactive elements */
 a, button {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
   touch-action: manipulation;
 }
 
@@ -442,6 +401,60 @@ body::after {
   }
 }
 
+/* ── Botones de acción — sistema unificado ─────────────────────────────────
+   btn-base  : base compartida (display, cursor, transición solo en desktop)
+   btn-primary: borde acento → rellena acento en hover/active
+   btn-ghost  : borde sutil → rellena acento en hover/active (añade opacity-65 si se quiere atenuado)
+   tapFeedback.ts detecta btn-primary/btn-ghost y NO aplica tap-pressed — CSS lo gestiona.
+   ─────────────────────────────────────────────────────────────────────────── */
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  /* Transición solo en desktop pointer — en touch :active es instantáneo */
+  @media (hover: hover) and (pointer: fine) {
+    transition: background-color 200ms ease, color 200ms ease,
+                border-color 200ms ease, opacity 200ms ease;
+  }
+}
+
+@utility btn-primary {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  background-color: transparent;
+  &:active {
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--accent-color);
+      color: var(--accent-text);
+    }
+  }
+}
+
+@utility btn-ghost {
+  border: 1px solid var(--border-color);
+  color: var(--letter-color);
+  background-color: transparent;
+  &:active {
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+    border-color: var(--accent-color);
+    opacity: 1;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--accent-color);
+      color: var(--accent-text);
+      border-color: var(--accent-color);
+      opacity: 1;
+    }
+  }
+}
+
 /* ═══════════════════════════════════════════════════════
    MARQUEE — infinite horizontal scroll strip
    ═══════════════════════════════════════════════════════ */
@@ -459,6 +472,17 @@ body::after {
 }
 .nav-tap-pressed {
   animation: nav-tap 1s ease-out !important;
+}
+
+/* NameCard: text returns to letter-color while bg is still orange,
+   prevents near-black text on dark bg ("fade to black" artifact) */
+@keyframes namecard-tap {
+  0%   { background-color: var(--hover-bg); color: var(--hover-text);   }
+  30%  { background-color: var(--hover-bg); color: var(--letter-color); }
+  100% { background-color: transparent;     color: var(--letter-color); }
+}
+.namecard-tap-pressed {
+  animation: namecard-tap 0.5s ease-out !important;
 }
 
 @keyframes blink {

@@ -54,7 +54,7 @@ const { id = "cv-modal", titleLabel } = Astro.props;
           class="flex items-center gap-1.5
                  text-[0.48rem] laptop:text-[0.55rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
                  text-[var(--accent-color)] opacity-70
-                 can-hover:hover:opacity-100 transition-opacity duration-200"
+                 can-hover:hover:opacity-100 active:opacity-100 transition-opacity duration-200"
         >
           <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
@@ -63,7 +63,7 @@ const { id = "cv-modal", titleLabel } = Astro.props;
         </a>
         <button
           id="cv-modal-close"
-          class="text-[0.9rem] fhd:text-base leading-none opacity-40 can-hover:hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+          class="text-[0.9rem] fhd:text-base leading-none opacity-40 can-hover:hover:opacity-100 active:opacity-100 transition-opacity duration-200 cursor-pointer"
           aria-label="Close modal"
         >
           ×

@@ -17,13 +17,16 @@ const {
   class: extraClass = "",
 } = Astro.props;
 
+// btn-base: display, cursor, text-decoration, transition (desktop only)
+// btn-primary / btn-ghost: border, color, bg, :active fill, :hover fill
+// tapFeedback.ts detects these class names and skips JS animation for them
 const baseClasses =
-  "inline-flex items-center gap-1.5 px-6 py-2.5 text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.3em] uppercase font-bold text-decoration-none transition-all duration-200";
+  "btn-base gap-1.5 px-6 py-2.5 text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.3em] uppercase font-bold";
 
 const variantClasses: { [K in Variant]: string } = {
-  primary: "border border-[var(--accent-color)] text-[var(--accent-color)] can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[var(--accent-text)]",
-  ghost:   "border border-[var(--border-color)] text-[var(--letter-color)] opacity-65 can-hover:hover:opacity-100 can-hover:hover:bg-[var(--hover-bg)] can-hover:hover:text-[var(--hover-text)] can-hover:hover:border-[var(--hover-bg)]",
-  accent:  "border border-[var(--accent-color)] text-[var(--accent-color)] can-hover:hover:bg-[var(--accent-color)] can-hover:hover:text-[#0a0a0a]",
+  primary: "btn-primary",
+  ghost:   "btn-ghost opacity-65",
+  accent:  "btn-primary",
 };
 
 const resolvedVariant: Variant = variant ?? "primary";

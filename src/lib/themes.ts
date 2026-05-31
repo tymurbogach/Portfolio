@@ -1,11 +1,9 @@
 export const THEMES = [
   "theme-void",
-  "theme-abyss",
-  "theme-stone",
-  "theme-ember",
-  "theme-neon",
-  "theme-ice",
-  "theme-amber",
+  "theme-dracula",
+  "theme-nord",
+  "theme-gruvbox",
+  "theme-solarized",
 ] as const;
 
 export type Theme = (typeof THEMES)[number];
