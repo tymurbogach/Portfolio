@@ -8,7 +8,7 @@ const { nameDisplay, role } = Astro.props;
 ---
 
 <div
-  class="w-full h-[3rem] cursor-pointer
+  class="nav-panel w-full h-[3rem] cursor-pointer
          mobile:w-[20rem]  mobile:h-[4.5rem]
          tablet:w-[20rem]  tablet:h-[4.5rem]
          laptop:w-[25rem]  laptop:h-[5rem]
@@ -16,38 +16,27 @@ const { nameDisplay, role } = Astro.props;
          qhd:w-[35rem]     qhd:h-[6rem]
          uhd:w-[40rem]     uhd:h-[6.5rem]"
 >
-  <a href="/" class="nav-link group no-underline w-full h-full" aria-label="Inicio">
-    <div
-      class="flex flex-col items-center justify-center text-center w-full h-full
-             bg-[var(--component-background)]
-             border border-[var(--border-color)]
-             shadow-none rounded-none my-0 mx-0
-             mobile:shadow-md tablet:shadow-lg
-             transition-all duration-200
-             can-hover:hover:bg-[var(--hover-bg)]
-             can-hover:hover:scale-105
-             can-hover:hover:shadow-md
-             can-hover:hover:z-10"
-      style="position: relative; overflow: hidden;"
+  <a
+    href="/"
+    class="nav-cell nav-link group no-underline w-full h-full
+           flex flex-col items-center justify-center text-center"
+    aria-label="Inicio"
+  >
+    <h1
+      class="font-bold font-signature m-0 mt-[0.3rem]
+             tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
+             text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
+             fhd:text-4xl qhd:text-5xl uhd:text-6xl
+             transition-colors duration-200"
     >
-      <h1
-        class="font-bold font-signature m-0 mt-[0.3rem]
-               tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
-               text-xl mobile:text-xl tablet:text-2xl laptop:text-3xl
-               fhd:text-4xl qhd:text-5xl uhd:text-6xl
-               text-[var(--letter-color)] can-hover:group-hover:text-[var(--hover-text)]
-               transition-colors duration-200"
-      >
-        {nameDisplay}
-      </h1>
-      <p
-        class="text-[0.55rem] mobile:text-[0.6rem] laptop:text-[0.65rem] fhd:text-xs
-               tracking-[0.3em] uppercase m-0 mb-[0.3rem]
-               text-[var(--letter-color)] can-hover:group-hover:text-[var(--hover-text)]
-               opacity-50 transition-colors duration-200"
-      >
-        {role}
-      </p>
-    </div>
+      {nameDisplay}
+    </h1>
+    <p
+      class="text-[0.55rem] mobile:text-[0.6rem] laptop:text-[0.65rem] fhd:text-xs
+             tracking-[0.3em] uppercase m-0 mb-[0.3rem]
+             opacity-50 transition-colors duration-200"
+    >
+      {role}
+    </p>
   </a>
 </div>

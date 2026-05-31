@@ -424,6 +424,24 @@ body::after {
   font-family: "Poiret One", cursive;
 }
 
+/* Contenedor panel compartido — NavBar, NameCard, SocialLinks, SocialBotPanel */
+@utility nav-panel {
+  @apply bg-[var(--component-background)] border border-[var(--border-color)] rounded-none m-0 shadow-none;
+  @apply mobile:shadow-md tablet:shadow-lg;
+}
+
+/* Celda interactiva — mismo hover/tap en todos los botones de nav */
+@utility nav-cell {
+  background: transparent;
+  border: none;
+  @apply text-[var(--letter-color)] transition duration-200;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @apply bg-[var(--hover-bg)] text-[var(--hover-text)] scale-105 shadow-md z-10;
+    }
+  }
+}
+
 /* ═══════════════════════════════════════════════════════
    MARQUEE — infinite horizontal scroll strip
    ═══════════════════════════════════════════════════════ */
@@ -433,6 +451,14 @@ body::after {
 }
 .tap-pressed {
   animation: tap-pressed 1s ease-out !important;
+}
+
+@keyframes nav-tap {
+  0%, 50% { background-color: var(--hover-bg); color: var(--hover-text); }
+  100%    { background-color: transparent;      color: var(--letter-color); }
+}
+.nav-tap-pressed {
+  animation: nav-tap 1s ease-out !important;
 }
 
 @keyframes blink {

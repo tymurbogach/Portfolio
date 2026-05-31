@@ -18,23 +18,19 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
   style="width: var(--nav-width); height: var(--nav-height);"
 >
   <nav
-    class="relative flex flex-row items-center justify-center text-center w-full h-full
-           bg-[var(--component-background)] border border-[var(--border-color)]
-           shadow-none rounded-none my-0 mx-0 overflow-visible
-           mobile:shadow-md tablet:shadow-lg"
+    class="nav-panel relative flex flex-row items-center justify-center text-center w-full h-full overflow-visible"
   >
     {pages.map((page: NavPage, i: number) => (
       <a
         href={page.path}
         data-active={currentPath === page.path ? "true" : "false"}
         class:list={[
-          "group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0",
-          "text-[var(--letter-color)] data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent-color)]",
+          "nav-cell group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0",
+          "data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent-color)]",
           i < pages.length - 1 ? "border-r border-[var(--border-color)]" : "",
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
           "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-          "gap-0.5 p-2 mobile:p-3 tablet:p-4 transition duration-200",
-          "can-hover:hover:scale-105 can-hover:hover:shadow-md can-hover:hover:z-10 can-hover:hover:bg-[var(--hover-bg)] can-hover:hover:text-[var(--hover-text)]",
+          "gap-0.5 p-2 mobile:p-3 tablet:p-4",
         ]}
       >
         <span
@@ -54,7 +50,6 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     ))}
   </nav>
 
-  <!-- Indicador de página activa — fuera del nav para que overflow:hidden no lo corte -->
   <div
     id="nav-indicator"
     style="position:absolute; bottom:0; height:2px; background:var(--accent-color);
@@ -80,14 +75,4 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
       opacity: 1 !important;
     }
   }
-
-  @keyframes nav-tap {
-    0%, 50% { background-color: var(--hover-bg); color: var(--hover-text); }
-    100%    { background-color: transparent;      color: var(--letter-color); }
-  }
-  .nav-tap-pressed {
-    animation: nav-tap 1s ease-out !important;
-  }
-
 </style>
-

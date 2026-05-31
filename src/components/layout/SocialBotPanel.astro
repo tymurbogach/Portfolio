@@ -1,48 +1,29 @@
-<div
-  class="w-full h-[2.5rem]
-         mobile:w-[4.5rem] mobile:h-[4.5rem]
-         tablet:w-[4.5rem] tablet:h-[4.5rem]
-         laptop:w-[5rem] laptop:h-[5rem]
-         fhd:w-[5.5rem]   fhd:h-[5.5rem]
-         qhd:w-[6rem]   qhd:h-[6rem]
-         uhd:w-[6.5rem]   uhd:h-[6.5rem]"
->
-  <div
-    class="flex flex-row items-center justify-center text-center w-full h-full
-           bg-[var(--component-background)] border border-[var(--border-color)]
-           shadow-none rounded-none my-0 mx-0
-           mobile:shadow-md tablet:shadow-lg"
-  >
-    
-
-    <!-- Bot toggle button -->
+<div style="width: var(--nav-height); height: var(--nav-height);">
+  <div class="nav-panel flex flex-row w-full h-full">
     <button
       id="chat-toggle-btn"
       aria-label="Open AI chat"
-      class="chat-toggle group flex flex-col items-center justify-center h-full flex-1 gap-0.5
-             text-[var(--letter-color)] p-[0.75rem] cursor-pointer
-             transition-all duration-250 ease-in-out
-             can-hover:hover:bg-[var(--accent-color)]"
-      style="border: none; background: transparent;"
+      class="nav-cell chat-toggle group flex flex-col items-center justify-center text-center h-full flex-1 min-w-0
+             gap-0.5 p-2 tablet:p-3"
     >
       <span
-        class="font-display text-sm laptop:text-base"
-        style="color: var(--accent-color); line-height: 1; transition: color 0.25s;"
-      >&gt;_</span>
+        class="inline-block transition-all duration-200 can-hover:group-hover:scale-125
+               bg-[var(--letter-color)] can-hover:group-hover:bg-[var(--hover-text)]
+               opacity-65 can-hover:group-hover:opacity-100
+               can-hover:group-hover:drop-shadow-sm"
+        style="width: calc(var(--nav-icon-size) * 1.4); height: calc(var(--nav-icon-size) * 1.4);
+               -webkit-mask-image: url('/img/bot.png'); mask-image: url('/img/bot.png');
+               -webkit-mask-size: contain; mask-size: contain;
+               -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+               -webkit-mask-position: center; mask-position: center;"
+        aria-hidden="true"
+      />
       <span
-        class="text-[0.42rem] tracking-[0.2em] uppercase font-bold"
-        style="opacity: 0.45; transition: opacity 0.25s;"
-      >bot</span>
+        class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.6rem]
+               tracking-[0.3em] uppercase
+               opacity-50 can-hover:group-hover:opacity-80
+               transition-opacity duration-200"
+      >BOT</span>
     </button>
   </div>
 </div>
-
-<style>
-  /* Gate to pointer devices — touch browsers would leave span stuck in hover state */
-  @media (hover: hover) and (pointer: fine) {
-    #chat-toggle-btn:hover span {
-      color: var(--accent-text) !important;
-      opacity: 1 !important;
-    }
-  }
-</style>

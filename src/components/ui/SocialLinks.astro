@@ -13,12 +13,7 @@ const socialLinks = await getSocialLinks();
   qhd:w-[35rem] qhd:h-[6rem]
   uhd:w-[40rem] uhd:h-[6.5rem]"
 >
-  <div
-    class="flex flex-row items-center justify-center text-center w-full h-full
-              bg-[var(--component-background)] border border-[var(--border-color)]
-              shadow-none rounded-none my-0 mx-0
-              mobile:shadow-md tablet:shadow-lg"
-  >
+  <div class="nav-panel flex flex-row items-center justify-center text-center w-full h-full">
     {
       socialLinks.map(({ url, icon, name }: SocialLink) => (
         <a
