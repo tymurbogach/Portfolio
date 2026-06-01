@@ -46,7 +46,6 @@ const site = defineCollection({
       contact:  z.string(),
     }),
     pages:   z.array(navPage),
-    marquee: z.string().optional(),
   }),
 });
 

@@ -491,22 +491,6 @@ body::after {
 }
 .terminal-cursor { animation: blink 1s step-end infinite; }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-}
-
-/* Only pause marquee on pointer hover — on touch it would stay paused forever */
-@media (hover: hover) and (pointer: fine) {
-  .marquee-track:hover { animation-play-state: paused; }
-}
-
 /* ── Theme toggle: hint pulse on page load ──────────────── */
 @keyframes theme-badge-pulse {
   0%, 100% { box-shadow: none; }

@@ -13,7 +13,6 @@
       "projects": "Projects by Tymur Bogach — web applications, tools, and experiments built with modern technologies.",
       "contact":  "Get in touch with Tymur Bogach — available for freelance web development projects from Orihuela, Alicante, Spain."
     },
-    "marquee": "HTML5 · CSS · JavaScript · TypeScript · Tailwind · Angular · Astro · PHP · Laravel · Java · MySQL · MariaDB · Docker · Linux · Nginx · Git · Raspberry Pi · TrueNAS · Tailscale · Cloudflare · Ollama · Jellyfin · Immich · Sonarr · Radarr · Portainer · Pi-hole · Homarr · SearXNG · Watchtower · Windows · ",
     "pages": [
       { "path": "/about",    "label": "About",    "icon": "/img/about.png",    "sectionLabel": "— who i am"       },
       { "path": "/resume",   "label": "Resume",   "icon": "/img/resume.png",   "sectionLabel": "— skills & stack"  },
