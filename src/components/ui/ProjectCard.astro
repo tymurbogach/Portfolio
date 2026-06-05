@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+
 interface Props {
   title:       string;
   description: string;
@@ -23,6 +25,27 @@ const isDemo   = type === "demo";
 const indexStr = String(index).padStart(2, "0");
 const hoverBorder = link ? "can-hover:hover:border-[var(--accent-color)]" : "";
 const cardClass = `group flex flex-col overflow-hidden border border-[var(--border-color)] ${hoverBorder} transition-all duration-300`;
+
+const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
+  "Angular":     { slug: "angular",      color: "#DD0031" },
+  "Laravel":     { slug: "laravel" },
+  "TypeScript":  { slug: "typescript" },
+  "JavaScript":  { slug: "javascript" },
+  "Docker":      { slug: "docker" },
+  "HTML":        { slug: "html5" },
+  "CSS":         { slug: "css",         color: "#663399" },
+  "PHP":         { slug: "php" },
+  "MySQL":       { slug: "mysql" },
+  "PostgreSQL":  { slug: "postgresql" },
+  "Vue":         { slug: "vuedotjs" },
+  "React":       { slug: "react" },
+  "Node":        { slug: "nodedotjs" },
+  "Python":      { slug: "python" },
+  "Astro":       { slug: "astro" },
+  "Tailwind":    { slug: "tailwindcss" },
+  "TailwindCSS": { slug: "tailwindcss" },
+  "API":         { slug: "postman",       color: "#FF6C37" },
+};
 ---
 
 {link ? (
@@ -64,7 +87,7 @@ const cardClass = `group flex flex-col overflow-hidden border border-[var(--bord
         src={image}
         alt={title}
         loading="lazy"
-        class="w-full h-full object-contain p-4
+        class="w-full h-full object-cover
                transition-opacity duration-300
                can-hover:group-hover:opacity-80"
       />
@@ -88,39 +111,70 @@ const cardClass = `group flex flex-col overflow-hidden border border-[var(--bord
 
   <!-- Content — bottom -->
   <div
-    class="flex flex-col justify-between flex-1 px-3 py-3
+    class="flex flex-col flex-1 px-3 py-3 gap-2
            bg-[var(--page-background)] can-hover:group-hover:bg-[var(--surface-raised)]
            transition-colors duration-200 overflow-hidden"
     style="position: relative; z-index: 1;"
   >
-    <div class="flex flex-col gap-1 overflow-hidden">
-      <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0">
-        {title}
-      </h3>
+    <!-- Title + description -->
+    <div class="flex flex-col gap-1">
+      <div class="flex items-center gap-2">
+        <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0">
+          {title}
+        </h3>
+        {tags.includes("Self-hosted") && (
+          <span
+            class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0"
+            style="border: 1px solid var(--accent-color); color: var(--accent-color); opacity: 0.55;"
+          >self-hosted</span>
+        )}
+      </div>
       <p
         class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
+        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       >
         {description}
       </p>
     </div>
 
-    <div class="flex items-center justify-between gap-2 shrink-0 mt-2">
+    <!-- Stack + link -->
+    <div class="flex items-end justify-between gap-2 mt-auto">
       {tags.length > 0 && (
-        <div class="flex flex-wrap gap-1">
-          {tags.map((tag: string) => (
-            <span
-              class="text-[0.4rem] fhd:text-[0.5rem] qhd:text-[0.6rem] uhd:text-xs tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold"
-              style="border: 1px solid var(--border-color); opacity: 0.5;"
-            >
-              {tag}
-            </span>
-          ))}
+        <div class="flex flex-col gap-1">
+          <span
+            class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
+            style="color: var(--accent-color); opacity: 0.5;"
+          >built with</span>
+          <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
+            {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
+              const entry = TAG_SLUGS[tag];
+              return entry ? (
+                <div class="flex flex-col items-center gap-[2px]">
+                  <Icon
+                    slug={entry.slug}
+                    color={entry.color}
+                    size={12}
+                    label={tag}
+                    class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5"
+                  />
+                  <span
+                    class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none"
+                    style="opacity: 0.35;"
+                  >{tag}</span>
+                </div>
+              ) : (
+                <span
+                  class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold self-end"
+                  style="border: 1px solid var(--border-color); opacity: 0.4;"
+                >{tag}</span>
+              );
+            })}
+          </div>
         </div>
       )}
       <span
         class="flex items-center gap-1 text-[0.48rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
-               transition-opacity duration-300 ml-auto shrink-0"
+               transition-opacity duration-300 ml-auto shrink-0 self-end pb-0.5"
         style="color: var(--accent-color); opacity: 0.4;"
       >
         {isDemo ? "demo" : "code"}
@@ -165,7 +219,7 @@ const cardClass = `group flex flex-col overflow-hidden border border-[var(--bord
         src={image}
         alt={title}
         loading="lazy"
-        class="w-full h-full object-contain p-4"
+        class="w-full h-full object-cover"
       />
     ) : (
       <div
@@ -186,37 +240,66 @@ const cardClass = `group flex flex-col overflow-hidden border border-[var(--bord
 
   <!-- Content — bottom -->
   <div
-    class="flex flex-col justify-between flex-1 px-3 py-3
+    class="flex flex-col flex-1 px-3 py-3 gap-2
            bg-[var(--page-background)]
            transition-colors duration-200 overflow-hidden"
     style="position: relative; z-index: 1;"
   >
-    <div class="flex flex-col gap-1 overflow-hidden">
-      <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0">
-        {title}
-      </h3>
+    <!-- Title + description -->
+    <div class="flex flex-col gap-1">
+      <div class="flex items-center gap-2">
+        <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0">
+          {title}
+        </h3>
+        {tags.includes("Self-hosted") && (
+          <span
+            class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0"
+            style="border: 1px solid var(--accent-color); color: var(--accent-color); opacity: 0.55;"
+          >self-hosted</span>
+        )}
+      </div>
       <p
         class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
+        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       >
         {description}
       </p>
     </div>
 
-    <div class="flex items-center justify-between gap-2 shrink-0 mt-2">
-      {tags.length > 0 && (
-        <div class="flex flex-wrap gap-1">
-          {tags.map((tag: string) => (
-            <span
-              class="text-[0.4rem] fhd:text-[0.5rem] qhd:text-[0.6rem] uhd:text-xs tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold"
-              style="border: 1px solid var(--border-color); opacity: 0.5;"
-            >
-              {tag}
-            </span>
-          ))}
+    <!-- Stack -->
+    {tags.length > 0 && (
+      <div class="flex flex-col gap-1 mt-auto">
+        <span
+          class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
+          style="color: var(--accent-color); opacity: 0.5;"
+        >built with</span>
+        <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
+          {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
+            const entry = TAG_SLUGS[tag];
+            return entry ? (
+              <div class="flex flex-col items-center gap-[2px]">
+                <Icon
+                  slug={entry.slug}
+                  color={entry.color}
+                  size={12}
+                  label={tag}
+                  class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5"
+                />
+                <span
+                  class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none"
+                  style="opacity: 0.35;"
+                >{tag}</span>
+              </div>
+            ) : (
+              <span
+                class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold"
+                style="border: 1px solid var(--border-color); opacity: 0.4;"
+              >{tag}</span>
+            );
+          })}
         </div>
-      )}
-    </div>
+      </div>
+    )}
   </div>
 </div>
 )}

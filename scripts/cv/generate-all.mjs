@@ -23,5 +23,5 @@ function generate(configPath, outputPath) {
   console.log(`✓ Done: ${outputPath}`);
 }
 
-generate('cv/cv.config.en.json', 'public/cv.pdf');
-generate('cv/cv.config.es.json', 'public/cv-es.pdf');
+generate('cv/cv.config.en.json', 'public/TymurBogach_CV_EN.pdf');
+generate('cv/cv.config.es.json', 'public/TymurBogach_CV_ES.pdf');
