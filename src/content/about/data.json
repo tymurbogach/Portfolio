@@ -9,15 +9,15 @@
     },
     "journey": [
       {
-        "year": "2012 — 24",
-        "event": "Senior Body & Paint Technician",
-        "detail": "Centrochapa (Grupo Marcos) · Renault Trucks · Talleres La Basca. End-to-end collision repair: bench straightening, MIG/MAG welding, full refinishing. Heavy-duty industrial bodywork on commercial trucks and refrigerated trailers.",
-        "active": false
+        "year": "Now",
+        "event": "Full Stack Developer",
+        "detail": "Building, learning, shipping. Looking for the right team.",
+        "active": true
       },
       {
-        "year": "2022",
-        "event": "Switched to code",
-        "detail": "Started web development from zero. HTML, CSS, Java first, then deeper into JS, TypeScript, and frameworks.",
+        "year": "2025",
+        "event": "GesinFlot by TDI — Dev Team",
+        "detail": "Mobile app development with Android Studio, UI/UX design, API integration and APK deployment.",
         "active": false
       },
       {
@@ -27,28 +27,28 @@
         "active": false
       },
       {
-        "year": "2025",
-        "event": "GesinFlot by TDI — Dev Team",
-        "detail": "Mobile app development with Android Studio, UI/UX design, API integration and APK deployment.",
+        "year": "2022",
+        "event": "Switched to code",
+        "detail": "Started web development from zero. HTML, CSS, Java first, then deeper into JS, TypeScript, and frameworks.",
         "active": false
       },
       {
-        "year": "Now",
-        "event": "Full Stack Developer",
-        "detail": "Building, learning, shipping. Looking for the right team.",
-        "active": true
+        "year": "2012 — 24",
+        "event": "Senior Body & Paint Technician",
+        "detail": "Centrochapa (Grupo Marcos) · Renault Trucks · Talleres La Basca. End-to-end collision repair: bench straightening, MIG/MAG welding, full refinishing. Heavy-duty industrial bodywork on commercial trucks and refrigerated trailers.",
+        "active": false
       }
     ],
     "education": [
       {
-        "years": "2008 — 2010",
-        "title": "Technical Certificate",
-        "sub": "Automotive Body & Paint · IES El Palmeral"
-      },
-      {
         "years": "2023 — 2025",
         "title": "Advanced Technical Certificate",
         "sub": "Web Application Development · EFA El Campico"
+      },
+      {
+        "years": "2008 — 2010",
+        "title": "Technical Certificate",
+        "sub": "Automotive Body & Paint · IES El Palmeral"
       }
     ],
     "hobbies": [
