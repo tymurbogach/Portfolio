@@ -1,8 +1,6 @@
 {
   "data": {
     "frontend": [
-      { "slug": "html5",       "color": "#e34f26", "label": "HTML5"      },
-      { "slug": "css",         "color": "#1572b6", "label": "CSS / SCSS" },
       { "slug": "javascript",  "color": "#f7df1e", "label": "JavaScript" },
       { "slug": "typescript",  "color": "#3178c6", "label": "TypeScript" },
       { "slug": "tailwindcss", "color": "#06b6d4", "label": "Tailwind"   },
@@ -14,7 +12,6 @@
       { "slug": "laravel", "color": "#ff2d20", "label": "Laravel" },
       { "slug": "openjdk", "color": "#ed8b00", "label": "Java"    },
       { "slug": "mysql",   "color": "#00758f", "label": "MySQL"   },
-      { "slug": "mariadb", "color": "#003545", "label": "MariaDB" },
       { "slug": "postman", "color": "#ff6c37", "label": "Postman" }
     ],
     "homelab": [
