@@ -47,7 +47,13 @@ function initResumeToggles() {
       if (btn.getAttribute("aria-expanded") === "true") return;
       applyCollapsed();
       const overflows = grid.scrollHeight > grid.clientHeight + 2;
-      btn.classList.toggle("hidden", !overflows);
+      if (overflows) {
+        btn.classList.remove("hidden");
+        btn.classList.add("flex");
+      } else {
+        btn.classList.add("hidden");
+        btn.classList.remove("flex");
+      }
       if (labelEl) {
         const gridBottom = grid.getBoundingClientRect().bottom;
         const hidden = [...grid.children].filter(
@@ -71,6 +77,7 @@ function initResumeToggles() {
         if (labelEl) labelEl.textContent = "−";
         if (wordEl)  wordEl.textContent  = "less";
         btn.classList.remove("hidden");
+        btn.classList.add("flex");
       }
     }, { signal: ac.signal });
 

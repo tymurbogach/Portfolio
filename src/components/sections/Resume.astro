@@ -21,10 +21,7 @@ const categories = [
   {categories.map(({ label, skills }) => (
     <div class="resume-section flex flex-col gap-2.5">
 
-      <span class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
-                   tracking-[0.5em] uppercase font-bold opacity-40">
-        {label}
-      </span>
+      <span class="cat-label">{label}</span>
 
       <div class="resume-grid
                   grid grid-cols-2 gap-1.5 overflow-hidden
@@ -33,16 +30,13 @@ const categories = [
         {skills.map(({ slug, color: c, label: l }: { slug: string; color: string; label: string }) => (
           <span class="skill-chip">
             <Icon slug={slug} color={c} size={15} label={l} class="shrink-0" />
-            <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm
-                         tracking-[0.05em] leading-none truncate opacity-80">
-              {l}
-            </span>
+            <span class="chip-label">{l}</span>
           </span>
         ))}
       </div>
 
       <button
-        class="resume-toggle hidden flex self-start items-center gap-1 mt-0.5 cursor-pointer
+        class="resume-toggle hidden self-start items-center gap-1 mt-0.5 cursor-pointer
                opacity-40 text-[0.5rem] laptop:text-[0.55rem] tracking-[0.15em] uppercase
                transition-opacity duration-200 can-hover:hover:opacity-100 active:opacity-100"
         aria-expanded="false"
@@ -57,17 +51,13 @@ const categories = [
   <!-- Languages -->
   <div class="flex flex-col gap-2.5 laptop:col-span-2 laptop-scaled:col-span-2">
 
-    <span class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
-                 tracking-[0.5em] uppercase font-bold opacity-40">
-      Languages
-    </span>
+    <span class="cat-label">Languages</span>
 
     <div class="flex flex-wrap gap-1.5 laptop:justify-around fhd:gap-2.5">
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <span class="skill-chip">
           <span class="text-[0.9rem] laptop:text-base fhd:text-lg leading-none shrink-0" aria-hidden="true">{flag}</span>
-          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm
-                       tracking-[0.05em] leading-none truncate opacity-80">{lang}</span>
+          <span class="chip-label">{lang}</span>
           <span class="text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs
                        tracking-[0.15em] uppercase leading-none opacity-35">{level}</span>
         </span>

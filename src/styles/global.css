@@ -389,6 +389,33 @@ body::after {
   @apply mobile:shadow-md tablet:shadow-lg;
 }
 
+/* Etiqueta de categoría — tiny-caps tracking-wide, usada en Resume, About, SectionHeading */
+@utility cat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.4;
+  @media (min-width: 80rem)  { font-size: 0.68rem; }
+  @media (min-width: 120rem) { font-size: 0.78rem; }
+  @media (min-width: 160rem) { font-size: 0.75rem; }  /* qhd: text-xs = 0.75rem */
+  @media (min-width: 240rem) { font-size: 0.875rem; } /* uhd: text-sm */
+}
+
+/* Texto de chip — etiqueta de skill o idioma dentro de skill-chip */
+@utility chip-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.8;
+  @media (min-width: 80rem)  { font-size: 0.65rem; }
+  @media (min-width: 120rem) { font-size: 0.75rem; }
+  @media (min-width: 160rem) { font-size: 0.875rem; } /* qhd: text-sm */
+}
+
 @utility skill-chip {
   display: flex;
   align-items: center;

@@ -13,7 +13,7 @@ const { journey, education, hobbies } = about;
 
   <!-- JOURNEY -->
   <div class="flex flex-col gap-5">
-    <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm tracking-[0.5em] uppercase font-bold opacity-40">Journey</h3>
+    <h3 class="cat-label">Journey</h3>
     <div class="flex flex-col">
       {journey.map(({ year, event, detail, active }: { year: string; event: string; detail: string; active: boolean }, i: number) => (
         <div class="flex gap-4 laptop:gap-6">
@@ -50,7 +50,7 @@ const { journey, education, hobbies } = about;
 
  <!-- EDUCATION -->
 <div class="flex flex-col gap-4">
-  <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm tracking-[0.5em] uppercase font-bold opacity-40">Education</h3>
+  <h3 class="cat-label">Education</h3>
 
   <div class="flex flex-col gap-2">
     {education.map(({ years, title, sub }: { years: string; title: string; sub: string }) => (
@@ -70,7 +70,7 @@ const { journey, education, hobbies } = about;
 
   <!-- HOBBIES -->
   <div class="flex flex-col gap-4">
-    <h3 class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm tracking-[0.5em] uppercase font-bold opacity-40">When not coding</h3>
+    <h3 class="cat-label">When not coding</h3>
 
     <div class="grid grid-cols-1 laptop:grid-cols-2 gap-x-6 gap-y-0">
       {hobbies.map(({ icon, label, detail }: { icon: string; label: string; detail?: string }) => (
