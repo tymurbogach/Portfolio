@@ -1,14 +1,12 @@
 ---
 import Button from "../../components/ui/Button.astro";
 import type { HeroData } from "../../lib/content";
-import { getVisitorStats } from "../../lib/umami";
 
 interface Props {
   hero: HeroData;
 }
 
 const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.props;
-const stats = await getVisitorStats();
 ---
 
 <div class="flex flex-col w-full gap-5 relative
@@ -87,28 +85,26 @@ const stats = await getVisitorStats();
       )}
     </div>
 
-    <!-- Visit counter -->
-    {stats && (
-      <div class="flex gap-3">
-        {[
-          { n: stats.pageviews, label: "views" },
-          { n: stats.visitors, label: "visitors" },
-        ].map(({ n, label }) => (
-          <div class="flex flex-col items-center px-3 py-1.5
-                      border border-[var(--border-color)] bg-[var(--surface-glow)]">
-            <span class="font-display text-base laptop:text-lg fhd:text-xl
-                         leading-none"
-                  style="color: var(--accent-color);">
-              {n.toLocaleString()}
-            </span>
-            <span class="text-[0.5rem] tracking-[0.2em] uppercase mt-0.5"
-                  style="opacity: 0.4;">
-              {label}
-            </span>
-          </div>
-        ))}
-      </div>
-    )}
+    <!-- Visit counter (hydrated client-side via /api/stats) -->
+    <div id="visit-counter" class="flex gap-3 opacity-0 transition-opacity duration-500">
+      {[
+        { id: "stat-views", label: "views" },
+        { id: "stat-visitors", label: "visitors" },
+      ].map(({ id, label }) => (
+        <div class="flex flex-col items-center px-3 py-1.5
+                    border border-[var(--border-color)] bg-[var(--surface-glow)]">
+          <span id={id}
+                class="font-display text-base laptop:text-lg fhd:text-xl leading-none"
+                style="color: var(--accent-color);">—</span>
+          <span class="text-[0.5rem] tracking-[0.2em] uppercase mt-0.5"
+                style="opacity: 0.4;">{label}</span>
+        </div>
+      ))}
+    </div>
+
+    <script>
+      import "../../scripts/visitCounter";
+    </script>
 
     <!-- Matrix typewriter -->
     <div
