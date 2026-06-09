@@ -29,6 +29,7 @@
       { "slug": "ollama",        "color": "#8b5cf6", "label": "Ollama"        },
       { "slug": "openwebui",     "color": "#2563eb", "label": "Open WebUI"    },
       { "slug": "uptimekuma",    "color": "#5cdd8b", "label": "Uptime Kuma"   },
+      { "slug": "umami",         "color": "#7857ff", "label": "Umami"         },
       { "slug": "sonarr",        "color": "#2596be", "label": "Sonarr"        },
       { "slug": "radarr",        "color": "#ffcb3d", "label": "Radarr"        },
       { "slug": "transmission",  "color": "#d70008", "label": "Transmission"  },
