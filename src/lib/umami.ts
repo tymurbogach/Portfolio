@@ -10,12 +10,12 @@ async function getToken(): Promise<string | null> {
   if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
 
   try {
-    const res = await fetch(`${import.meta.env.UMAMI_URL}/api/auth/login`, {
+    const res = await fetch(`${process.env.UMAMI_URL}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: import.meta.env.UMAMI_USERNAME,
-        password: import.meta.env.UMAMI_PASSWORD,
+        username: process.env.UMAMI_USERNAME,
+        password: process.env.UMAMI_PASSWORD,
       }),
       signal: AbortSignal.timeout(2000),
     });
@@ -41,7 +41,7 @@ export async function getVisitorStats(): Promise<UmamiStats | null> {
       timezone: "UTC",
     });
     const res = await fetch(
-      `${import.meta.env.UMAMI_URL}/api/websites/${import.meta.env.UMAMI_WEBSITE_ID}/stats?${params}`,
+      `${process.env.UMAMI_URL}/api/websites/${process.env.UMAMI_WEBSITE_ID}/stats?${params}`,
       {
         headers: { Authorization: `Bearer ${token}` },
         signal: AbortSignal.timeout(2000),
