@@ -1,128 +1,160 @@
 ---
-import Icon          from "../../components/ui/Icon.astro";
+import Icon from "../../components/ui/Icon.astro";
 import type { ResumeData } from "../../lib/content";
 
-interface Props {
-  resume: ResumeData;
-}
+interface Props { resume: ResumeData; }
 
 const { resume } = Astro.props;
 const { frontend, backend, homelab, ai, languages } = resume;
 
 const categories = [
-  { label: "Frontend",   skills: frontend, color: "var(--accent-color)"     },
-  { label: "Backend",    skills: backend,  color: "var(--accent-secondary)" },
-  { label: "Homelab",    skills: homelab,  color: "var(--accent-tertiary)"  },
-  ...(ai?.length ? [{ label: "AI Tooling", skills: ai, color: "var(--accent-color)" }] : []),
+  { label: "Frontend",   skills: frontend },
+  { label: "Backend",    skills: backend  },
+  { label: "Homelab",    skills: homelab  },
+  ...(ai?.length ? [{ label: "AI Tooling", skills: ai }] : []),
 ];
 ---
 
-<section class="grid grid-cols-1 laptop:grid-cols-2 laptop-scaled:grid-cols-2 w-full gap-8 laptop:gap-x-10 laptop:gap-y-12 fhd:gap-x-14 fhd:gap-y-16 qhd:gap-y-20 uhd:gap-y-24">
+<section class="grid grid-cols-1 laptop:grid-cols-2 laptop-scaled:grid-cols-2 w-full
+                gap-8 laptop:gap-x-10 laptop:gap-y-10 fhd:gap-x-14 fhd:gap-y-14">
 
-  {categories.map(({ label, skills, color }) => (
-    <div class="resume-section flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3">
+  {categories.map(({ label, skills }) => (
+    <div class="resume-section flex flex-col gap-2.5">
 
-      <span
-        class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
-               tracking-[0.5em] uppercase font-bold"
-        style={`color: ${color};`}
-      >
-        {label}
-      </span>
+      <span class="cat-label">{label}</span>
 
-      <div
-        class="resume-grid overflow-hidden flex flex-wrap
-               gap-1.5 laptop:gap-2 fhd:gap-2.5
-               max-h-[8rem] laptop:max-h-[6rem] fhd:max-h-[7.5rem] qhd:max-h-[9rem] uhd:max-h-[12rem]"
-        style={`--cat: ${color};`}
-      >
-        {skills.map(({ slug, color: iconColor, label: skillLabel }: { slug: string; color: string; label: string }) => (
-          <span class="skill-chip flex items-center gap-1.5
-                       px-2 py-[0.3rem] laptop:px-2.5 laptop:py-[0.35rem] fhd:px-3 fhd:py-1.5
-                       rounded transition-colors duration-150">
-            <Icon slug={slug} color={iconColor} size={15} label={skillLabel} class="shrink-0" />
-            <span
-              class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base
-                     tracking-[0.05em] leading-none whitespace-nowrap"
-              style="opacity: 0.8;"
-            >
-              {skillLabel}
-            </span>
+      <div class="resume-grid chip-grid max-h-[8.5rem] laptop:max-h-[9rem] fhd:max-h-[11rem] qhd:max-h-[13rem]">
+        {skills.map(({ slug, color: c, label: l }: { slug: string; color: string; label: string }) => (
+          <span class="skill-chip">
+            <Icon slug={slug} color={c} size={15} label={l} class="shrink-0" />
+            <span class="chip-label">{l}</span>
           </span>
         ))}
       </div>
 
-      <button
-        class="resume-toggle hidden self-start flex items-center gap-1 mt-0.5 cursor-pointer
-               transition-opacity duration-200 can-hover:hover:opacity-100 active:opacity-100"
-        style="opacity: 0.4;"
-        aria-expanded="false"
-      >
-        <span
-          class="resume-toggle-label
-                 text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
-                 tracking-[0.15em] uppercase"
-          style="color: var(--accent-color); font-weight: bold;"
-        ></span>
-        <span
-          class="resume-toggle-word
-                 text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem]
-                 tracking-[0.15em] uppercase"
-        >
-          more
-        </span>
+      <button class="resume-toggle hidden flex self-start toggle-btn" aria-expanded="false">
+        <span class="resume-toggle-label" style="color: var(--accent-color); font-weight: bold;"></span>
+        <span class="resume-toggle-word">more</span>
       </button>
 
     </div>
   ))}
 
   <!-- Languages -->
-  <div class="flex flex-col gap-2 laptop:gap-2.5 fhd:gap-3 laptop:col-span-2 laptop-scaled:col-span-2">
-
-    <span
-      class="text-[0.6rem] laptop:text-[0.68rem] laptop-scaled:text-[0.68rem] fhd:text-[0.78rem] qhd:text-xs uhd:text-sm
-             tracking-[0.5em] uppercase font-bold opacity-40"
-    >
-      Languages
-    </span>
-
-    <div class="grid grid-cols-2 gap-x-3 gap-y-3
-                laptop:flex laptop:justify-around laptop:gap-0
-                pl-3 laptop:pl-4 fhd:pl-5">
+  <div class="flex flex-col gap-2.5 laptop:col-span-2 laptop-scaled:col-span-2">
+    <span class="cat-label" style="opacity: 0.4;">Languages</span>
+    <div class="chip-wrap laptop:justify-around">
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
-        <span class="flex items-start laptop:items-center gap-1.5 laptop:gap-2">
-          <span class="text-sm laptop:text-base fhd:text-lg shrink-0" aria-hidden="true">{flag}</span>
-          <span class="flex flex-col laptop:flex-row laptop:items-center laptop:gap-1.5">
-            <span
-              class="text-[0.62rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
-                     tracking-[0.06em]"
-              style="opacity: 0.75;"
-            >
-              {lang}
-            </span>
-            <span
-              class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs
-                     tracking-[0.15em] uppercase"
-              style="opacity: 0.3;"
-            >
-              {level}
-            </span>
-          </span>
+        <span class="skill-chip">
+          <span class="lang-flag" aria-hidden="true">{flag}</span>
+          <span class="chip-label">{lang}</span>
+          <span class="chip-level">{level}</span>
         </span>
       ))}
     </div>
-
   </div>
 
 </section>
 
 <style>
+  .cat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.4;
+  }
+
+  /* Mobile: 2-col grid — chips aligned in equal rows */
+  .chip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.375rem;
+    overflow: hidden;
+  }
+
+  /* Desktop: flex-wrap — chips size to content */
+  @media (min-width: 80rem) {
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+
+  .chip-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    overflow: hidden;
+  }
+
   .skill-chip {
-    border: 1px solid color-mix(in srgb, var(--cat) 22%, transparent);
-    background: color-mix(in srgb, var(--cat) 5%, transparent);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: background 150ms;
+    border: 1px solid color-mix(in srgb, var(--accent-color) 18%, transparent);
+    background: color-mix(in srgb, var(--accent-color) 4%, transparent);
+    min-width: 0;
   }
   .skill-chip:hover {
-    background: color-mix(in srgb, var(--cat) 13%, transparent);
+    background: color-mix(in srgb, var(--accent-color) 10%, transparent);
+  }
+
+  .chip-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.8;
+  }
+  .chip-level {
+    font-size: 0.45rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1;
+    opacity: 0.35;
+  }
+  .lang-flag {
+    font-size: 0.9rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .toggle-btn {
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.125rem;
+    cursor: pointer;
+    opacity: 0.4;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: opacity 200ms;
+  }
+  .toggle-btn:hover { opacity: 1; }
+
+  @media (min-width: 80rem) {
+    .cat-label  { font-size: 0.68rem; }
+    .chip-label { font-size: 0.65rem; }
+    .lang-flag  { font-size: 1rem; }
+    .toggle-btn { font-size: 0.55rem; }
+  }
+  @media (min-width: 120rem) {
+    .cat-label  { font-size: 0.78rem; }
+    .chip-label { font-size: 0.75rem; }
+    .chip-grid, .chip-wrap { gap: 0.625rem; }
+    .skill-chip { padding: 0.375rem 0.75rem; }
+    .lang-flag  { font-size: 1.125rem; }
+  }
+  @media (min-width: 160rem) {
+    .cat-label  { font-size: 0.85rem; }
+    .chip-label { font-size: 0.875rem; }
+    .chip-level { font-size: 0.6rem; }
   }
 </style>
 

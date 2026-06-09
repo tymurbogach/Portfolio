@@ -1,3 +1,30 @@
+const MAX_ROWS = 4;
+
+function calcRowsHeight(grid: HTMLElement, rows: number): number {
+  const prev = grid.style.maxHeight;
+  grid.style.maxHeight = "none";
+
+  const items = [...grid.children] as HTMLElement[];
+  const containerTop = grid.getBoundingClientRect().top;
+  let rowCount = 0;
+  let prevTop = -1;
+  let maxBottom = 0;
+
+  for (const item of items) {
+    const rect = item.getBoundingClientRect();
+    const relTop = Math.round(rect.top - containerTop);
+    if (relTop > prevTop) {
+      rowCount++;
+      prevTop = relTop;
+    }
+    if (rowCount > rows) break;
+    maxBottom = Math.max(maxBottom, rect.bottom - containerTop);
+  }
+
+  grid.style.maxHeight = prev;
+  return maxBottom;
+}
+
 function initResumeToggles() {
   const cleanups: (() => void)[] = [];
 
@@ -9,11 +36,19 @@ function initResumeToggles() {
     if (!grid || !btn) return;
 
     const ac = new AbortController();
+    let collapsedHeight = 0;
+
+    const applyCollapsed = () => {
+      collapsedHeight = calcRowsHeight(grid, MAX_ROWS);
+      if (collapsedHeight > 0) grid.style.maxHeight = `${collapsedHeight}px`;
+    };
 
     const update = () => {
+      if (btn.getAttribute("aria-expanded") === "true") return;
+      applyCollapsed();
       const overflows = grid.scrollHeight > grid.clientHeight + 2;
-      btn.classList.toggle("hidden", !overflows && btn.getAttribute("aria-expanded") !== "true");
-      if (labelEl && btn.getAttribute("aria-expanded") !== "true") {
+      btn.classList.toggle("hidden", !overflows);
+      if (labelEl) {
         const gridBottom = grid.getBoundingClientRect().bottom;
         const hidden = [...grid.children].filter(
           (el) => el.getBoundingClientRect().top >= gridBottom - 2
@@ -25,12 +60,13 @@ function initResumeToggles() {
     btn.addEventListener("click", () => {
       const expanded = btn.getAttribute("aria-expanded") === "true";
       if (expanded) {
-        grid.style.maxHeight = "";
+        grid.classList.remove("is-expanded");
         btn.setAttribute("aria-expanded", "false");
         if (wordEl) wordEl.textContent = "more";
         update();
       } else {
         grid.style.maxHeight = "none";
+        grid.classList.add("is-expanded");
         btn.setAttribute("aria-expanded", "true");
         if (labelEl) labelEl.textContent = "−";
         if (wordEl)  wordEl.textContent  = "less";
@@ -38,7 +74,9 @@ function initResumeToggles() {
       }
     }, { signal: ac.signal });
 
-    const ro = new ResizeObserver(update);
+    const ro = new ResizeObserver(() => {
+      if (btn.getAttribute("aria-expanded") !== "true") update();
+    });
     ro.observe(grid);
     update();
 
