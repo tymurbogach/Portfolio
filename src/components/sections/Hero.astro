@@ -38,7 +38,14 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
       class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
       style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
     >
-      <span class="block text-left">{title1}</span>
+      <span class="flex items-baseline justify-between w-full">
+        <span>{title1}</span>
+        <span id="stat-visitors"
+              class="opacity-0 transition-opacity duration-500 font-sans font-normal
+                     text-[0.45rem] laptop:text-[0.5rem] tracking-[0.25em] uppercase"
+              style="color: var(--accent-color);">
+        </span>
+      </span>
       <span class="block text-right" style="opacity: 0.28;">{title2}</span>
     </h1>
 
@@ -83,23 +90,6 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
           </Button>
         </div>
       )}
-    </div>
-
-    <!-- Visit counter (hydrated client-side via /api/stats) -->
-    <div id="visit-counter" class="flex gap-3 opacity-0 transition-opacity duration-500">
-      {[
-        { id: "stat-views", label: "views" },
-        { id: "stat-visitors", label: "visitors" },
-      ].map(({ id, label }) => (
-        <div class="flex flex-col items-center px-3 py-1.5
-                    border border-[var(--border-color)] bg-[var(--surface-glow)]">
-          <span id={id}
-                class="font-display text-base laptop:text-lg fhd:text-xl leading-none"
-                style="color: var(--accent-color);">—</span>
-          <span class="text-[0.5rem] tracking-[0.2em] uppercase mt-0.5"
-                style="opacity: 0.4;">{label}</span>
-        </div>
-      ))}
     </div>
 
     <script>
