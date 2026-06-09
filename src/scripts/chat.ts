@@ -125,12 +125,14 @@ function initChat(): void {
   function open(): void {
     isOpen = true;
     widget!.dataset.open = "true";
+    widget!.removeAttribute("aria-hidden");
     input!.focus();
   }
 
   function close(): void {
     isOpen = false;
     widget!.dataset.open = "false";
+    widget!.setAttribute("aria-hidden", "true");
   }
 
   toggles.forEach((toggle) => {
@@ -147,7 +149,9 @@ function initChat(): void {
     if (!isOpen) return;
     if (widget.contains(e.target as Node)) return;
     if ((e.target as Element).closest(".chat-toggle")) return;
-    const hasConversation = messages.querySelector(".chat-msg--user") !== null || (input?.value.trim().length ?? 0) > 0;
+    const hasConversation = messages.querySelector(".chat-msg--user") !== null
+      || (input?.value.trim().length ?? 0) > 0
+      || input === document.activeElement;
     if (!hasConversation) close();
   });
 
