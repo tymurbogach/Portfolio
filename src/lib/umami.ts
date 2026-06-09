@@ -6,16 +6,21 @@ interface UmamiStats {
 let cachedToken: string | null = null;
 let tokenExpiry = 0;
 
+const UMAMI_URL      = import.meta.env.UMAMI_URL      ?? process.env.UMAMI_URL;
+const UMAMI_USERNAME = import.meta.env.UMAMI_USERNAME ?? process.env.UMAMI_USERNAME;
+const UMAMI_PASSWORD = import.meta.env.UMAMI_PASSWORD ?? process.env.UMAMI_PASSWORD;
+const UMAMI_WEBSITE  = import.meta.env.UMAMI_WEBSITE_ID ?? process.env.UMAMI_WEBSITE_ID;
+
 async function getToken(): Promise<string | null> {
   if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
 
   try {
-    const res = await fetch(`${import.meta.env.UMAMI_URL}/api/auth/login`, {
+    const res = await fetch(`${UMAMI_URL}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: import.meta.env.UMAMI_USERNAME,
-        password: import.meta.env.UMAMI_PASSWORD,
+        username: UMAMI_USERNAME,
+        password: UMAMI_PASSWORD,
       }),
       signal: AbortSignal.timeout(2000),
     });
@@ -41,7 +46,7 @@ export async function getVisitorStats(): Promise<UmamiStats | null> {
       timezone: "UTC",
     });
     const res = await fetch(
-      `${import.meta.env.UMAMI_URL}/api/websites/${import.meta.env.UMAMI_WEBSITE_ID}/stats?${params}`,
+      `${UMAMI_URL}/api/websites/${UMAMI_WEBSITE}/stats?${params}`,
       {
         headers: { Authorization: `Bearer ${token}` },
         signal: AbortSignal.timeout(2000),
