@@ -197,8 +197,10 @@ const ogImageUrl = `${site.url}${ogImage}`;
       <div
         class="w-full h-full
                bg-[var(--page-background)]
-               border border-[var(--border-subtle)]
+               border border-[var(--border-color)]
                flex items-center justify-center overflow-hidden"
+        style="box-shadow: inset 0 0 120px color-mix(in srgb, var(--accent-color) 2.5%, transparent),
+                           inset 0 0 40px color-mix(in srgb, var(--accent-secondary) 1%, transparent);"
       >
         {
           dual ? (

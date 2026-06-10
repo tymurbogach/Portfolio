@@ -98,10 +98,10 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       >
         <span
           class="font-display text-4xl"
-          style="color: var(--accent-color); opacity: 0.2;"
+          style="color: var(--accent-color); opacity: 0.25;"
         >{indexStr}</span>
         <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
-              style="opacity: 0.2;">
+              style="opacity: 0.25;">
           {title}
         </span>
       </div>
@@ -130,7 +130,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       </div>
       <p
         class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
+        style="opacity: 0.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       >
         {description}
       </p>
@@ -142,7 +142,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
         <div class="flex flex-col gap-1">
           <span
             class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
-            style="color: var(--accent-color); opacity: 0.5;"
+            style="color: var(--accent-color); opacity: 0.55;"
           >built with</span>
           <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
             {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
@@ -154,11 +154,11 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
                     color={entry.color}
                     size={12}
                     label={tag}
-                    class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5"
+                    class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6"
                   />
                   <span
                     class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none"
-                    style="opacity: 0.35;"
+                    style="opacity: 0.40;"
                   >{tag}</span>
                 </div>
               ) : (
@@ -226,10 +226,10 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       >
         <span
           class="font-display text-4xl"
-          style="color: var(--accent-color); opacity: 0.2;"
+          style="color: var(--accent-color); opacity: 0.25;"
         >{indexStr}</span>
         <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
-              style="opacity: 0.2;">
+              style="opacity: 0.25;">
           {title}
         </span>
       </div>
@@ -258,7 +258,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       </div>
       <p
         class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="opacity: 0.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
+        style="opacity: 0.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       >
         {description}
       </p>

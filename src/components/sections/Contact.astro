@@ -33,25 +33,25 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       <!-- Left: Email + Location -->
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-30">Email</span>
+          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Email</span>
           <a
             href={`mailto:${email}`}
             class="text-[clamp(0.82rem,1.4vw,1.1rem)] fhd:text-[clamp(0.95rem,1.4vw,1.35rem)] font-bold text-[var(--accent-color)]
-                   opacity-80 can-hover:hover:opacity-100 active:opacity-100 transition-opacity break-all leading-snug self-start"
+                   opacity-70 can-hover:hover:opacity-100 active:opacity-100 transition-opacity break-all leading-snug self-start"
           >
             {email}
           </a>
         </div>
 
         <div class="flex flex-col gap-1">
-          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-30">Location</span>
+          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Location</span>
           <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold opacity-55">{location}</span>
         </div>
       </div>
 
       <!-- Right: Curriculum -->
       <div class="flex flex-col gap-2">
-        <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-30">Curriculum</span>
+        <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Curriculum</span>
         <div class="flex flex-row flex-wrap gap-2 mobile:flex-col mobile:items-start">
           <a
             href={cv_url}
@@ -86,7 +86,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
-    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold opacity-30 m-0">// send a message</p>
+    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold opacity-25 m-0">// send a message</p>
     <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
     <input type="hidden" name="subject"    value={formSubject} />
 
@@ -104,6 +104,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
                font-['Poiret_One',cursive] text-[var(--letter-color)]
                border border-[var(--border-color)] focus:border-[var(--accent-color)]
+               focus:bg-[color-mix(in_srgb,var(--accent-color)_3%,transparent)]
                transition-colors duration-200
                placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
                placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
@@ -115,6 +116,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
                font-['Poiret_One',cursive] text-[var(--letter-color)]
                border border-[var(--border-color)] focus:border-[var(--accent-color)]
+               focus:bg-[color-mix(in_srgb,var(--accent-color)_3%,transparent)]
                transition-colors duration-200
                placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
                placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
@@ -128,6 +130,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
              text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
              font-['Poiret_One',cursive] text-[var(--letter-color)]
              resize-none border border-[var(--border-color)] focus:border-[var(--accent-color)]
+             focus:bg-[color-mix(in_srgb,var(--accent-color)_3%,transparent)]
              transition-colors duration-200 focus-visible:outline-none
              placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
              placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
@@ -149,8 +152,8 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
   <!-- Bot hint -->
   <p class="text-center text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs
-            tracking-[0.22em] leading-[2] opacity-30 m-0 uppercase">
-    Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent-color)] opacity-70">↘</span>
+            tracking-[0.22em] leading-[2] opacity-25 m-0 uppercase">
+    Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent-color)]">↘</span>
   </p>
 
 </div>

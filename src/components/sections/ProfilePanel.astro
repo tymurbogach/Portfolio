@@ -20,7 +20,7 @@ const { cv_url, statusStr, statusActive }  = contact;
     <div class="relative">
       <div
         class="absolute pointer-events-none"
-        style="inset: -4px; border: 1px solid var(--accent-color); opacity: 0.25;"
+        style="inset: -4px; border: 1px solid var(--accent-secondary); opacity: 0.30;"
         aria-hidden="true"
       />
       <img
@@ -35,7 +35,7 @@ const { cv_url, statusStr, statusActive }  = contact;
     <!-- Bio -->
     <p
       class="text-[0.62rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base leading-[1.6] m-0 text-center"
-      style="opacity: 0.45; max-width: 15rem;"
+      style="opacity: 0.55; max-width: 15rem;"
     >
       {bio}
     </p>
@@ -47,7 +47,7 @@ const { cv_url, statusStr, statusActive }  = contact;
         style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent-color)" : "var(--border-color)"}; ${statusActive ? "animation: pulse 2s infinite;" : ""}`}
         aria-hidden="true"
       />
-      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold" style="opacity: 0.5;">
+      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold" style="opacity: 0.55;">
         {statusStr}
       </span>
     </div>

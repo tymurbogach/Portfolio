@@ -15,8 +15,8 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
   <!-- Decoración: cuadrícula de puntos -->
   <div
     class="absolute -inset-16 -z-10 pointer-events-none"
-    style="background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
-           background-size: 28px 28px; opacity: 0.10;"
+    style="background-image: radial-gradient(circle, var(--accent-secondary) 1px, transparent 1px);
+           background-size: 28px 28px; opacity: 0.06;"
     aria-hidden="true"
   />
 
@@ -24,7 +24,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
   <div
     class="absolute -z-10 pointer-events-none opacity-[0.06]"
     style="right: -6rem; top: -10rem; width: 40rem; height: 40rem;
-           border: 3px solid var(--accent-color); transform: rotate(15deg);"
+           border: 3px solid var(--accent-secondary); transform: rotate(15deg);"
     aria-hidden="true"
   />
 
@@ -42,11 +42,12 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
         <span>{title1}</span>
         <span id="stat-visitors"
               class="opacity-0 transition-opacity duration-500 font-sans font-normal
-                     text-[0.45rem] laptop:text-[0.5rem] tracking-[0.25em] uppercase"
+                     text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
+                     tracking-[0.25em] uppercase"
               style="color: var(--accent-color);">
         </span>
       </span>
-      <span class="block text-right" style="opacity: 0.28;">{title2}</span>
+      <span class="block text-right" style="opacity: 0.25;">{title2}</span>
     </h1>
 
     <!-- Theme toggle button — debajo del título, alineado derecha -->
@@ -60,12 +61,14 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
         aria-label="Change theme"
         type="button"
       >
-        <span class="text-[0.38rem] laptop:text-[0.42rem] tracking-[0.3em] uppercase font-bold"
+        <span class="text-[0.38rem] laptop:text-[0.42rem] fhd:text-[0.48rem] qhd:text-[0.52rem] uhd:text-xs
+                     tracking-[0.3em] uppercase font-bold"
               style="color: var(--letter-color);">// theme</span>
         <span
-          class="text-[0.48rem] laptop:text-[0.55rem] fhd:text-[0.6rem] tracking-[0.25em] uppercase font-bold
-                 px-1.5 py-0.5 border border-[var(--accent-color)]"
-          style="color: var(--accent-color);"
+          class="text-[0.48rem] laptop:text-[0.55rem] fhd:text-[0.6rem] qhd:text-[0.65rem] uhd:text-xs
+                 tracking-[0.25em] uppercase font-bold
+                 px-1.5 py-0.5 border border-[var(--accent-secondary)]"
+          style="color: var(--accent-secondary);"
           data-theme-label
         >void</span>
       </button>
@@ -75,7 +78,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
     <div class="flex flex-col gap-5 laptop:gap-4">
       <p
         class="leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
-        style="opacity: 0.6;"
+        style="opacity: 0.55;"
       >
         {subtitle1}
       </p>
@@ -99,9 +102,9 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
     <!-- Matrix typewriter -->
     <div
       id="matrix-wrap"
-      class="text-center text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs
+      class="text-center text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs uhd:text-sm
              tracking-[0.2em] leading-[1.8] italic"
-      style="opacity:0.3; height:5.5em; overflow:hidden;"
+      style="opacity:0.25; height:5.5em; overflow:hidden;"
       data-quote={subtitle2}
       data-comment={comment}
       aria-label={subtitle2}
