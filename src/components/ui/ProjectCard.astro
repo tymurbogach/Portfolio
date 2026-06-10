@@ -75,9 +75,8 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
     <span
       class="absolute top-2 left-3 z-20
              text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
-             border border-[var(--border-subtle)] bg-[var(--page-background)]
-             text-[var(--letter-color)]"
-      style="opacity: 0.75;"
+             border border-[var(--border-subtle)] bg-[var(--page-background)]"
+      style={`opacity: 0.85; color: ${isDemo ? "var(--accent-color)" : "var(--accent-secondary)"};`}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
@@ -207,9 +206,8 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
     <span
       class="absolute top-2 left-3 z-20
              text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
-             border border-[var(--border-subtle)] bg-[var(--page-background)]
-             text-[var(--letter-color)]"
-      style="opacity: 0.75;"
+             border border-[var(--border-subtle)] bg-[var(--page-background)]"
+      style={`opacity: 0.85; color: ${isDemo ? "var(--accent-color)" : "var(--accent-secondary)"};`}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>

@@ -385,7 +385,7 @@ body::after {
 
 /* Contenedor panel compartido — NavBar, NameCard, SocialLinks, SocialBotPanel */
 @utility nav-panel {
-  @apply bg-[var(--component-background)] border border-[var(--border-color)] rounded-none m-0 shadow-none;
+  @apply bg-[var(--component-background)] border-y border-[var(--border-color)] rounded-none m-0 shadow-none;
   @apply mobile:shadow-md tablet:shadow-lg;
 }
 
@@ -477,6 +477,24 @@ body::after {
     &:hover {
       background-color: var(--accent-color);
       color: var(--accent-text);
+    }
+  }
+}
+
+@utility btn-accent {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  background-color: transparent;
+  &:active {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+    border-color: var(--hover-bg);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--hover-bg);
+      color: var(--hover-text);
+      border-color: var(--hover-bg);
     }
   }
 }

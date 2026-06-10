@@ -25,7 +25,7 @@ const categories = [
 
       <div class="resume-grid
                   grid grid-cols-2 gap-1.5 overflow-hidden
-                  laptop:flex laptop:flex-wrap laptop:gap-2 fhd:gap-2.5
+                  laptop:grid-cols-3 fhd:gap-2.5
                   max-h-[8.5rem] laptop:max-h-[9rem] fhd:max-h-[11rem] qhd:max-h-[13rem]">
         {skills.map(({ slug, color: c, label: l }: { slug: string; color: string; label: string }) => (
           <span class="skill-chip">
@@ -53,7 +53,7 @@ const categories = [
 
     <span class="cat-label">Languages</span>
 
-    <div class="flex flex-wrap gap-1.5 laptop:justify-around fhd:gap-2.5">
+    <div class="grid grid-cols-2 gap-1.5 overflow-hidden laptop:grid-cols-4 fhd:gap-2.5">
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <span class="skill-chip">
           <span class="text-[0.9rem] laptop:text-base fhd:text-lg leading-none shrink-0" aria-hidden="true">{flag}</span>
