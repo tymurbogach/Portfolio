@@ -45,7 +45,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
         <div class="flex flex-col gap-1">
           <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Location</span>
-          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold opacity-55">{location}</span>
+          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold" style="color: var(--chart-2); opacity: 0.65;">{location}</span>
         </div>
       </div>
 
@@ -86,7 +86,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
-    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold opacity-25 m-0">// send a message</p>
+    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold m-0" style="color: var(--chart-2); opacity: 0.4;">// send a message</p>
     <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
     <input type="hidden" name="subject"    value={formSubject} />
 
@@ -137,7 +137,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     />
 
     <div class="flex items-center justify-between gap-4">
-      <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.22em] uppercase opacity-25 font-bold">
+      <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.22em] uppercase font-bold" style="color: var(--chart-2); opacity: 0.4;">
         // responds within 24h
       </span>
       <Button id="submit-btn" type="submit" variant="primary">
