@@ -92,7 +92,7 @@
   --popover-foreground: rgb(236, 239, 244);
   --primary: rgb(255, 0, 200);
   --primary-foreground: rgb(255, 255, 255);
-  --secondary: rgb(30, 30, 63);
+  --secondary: rgb(52, 52, 100);
   --secondary-foreground: rgb(236, 239, 244);
   --muted: rgb(21, 21, 48);
   --muted-foreground: rgb(128, 133, 166);
@@ -494,15 +494,11 @@ body::after {
   color: var(--accent);
   background-color: transparent;
   &:active {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-    border-color: var(--secondary);
+    background-color: color-mix(in srgb, var(--accent) 18%, transparent);
   }
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: var(--secondary);
-      color: var(--secondary-foreground);
-      border-color: var(--secondary);
+      background-color: color-mix(in srgb, var(--accent) 18%, transparent);
     }
   }
 }

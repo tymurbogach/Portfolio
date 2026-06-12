@@ -12,14 +12,14 @@
     "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/cv-es.pdf"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.2",
-    "@astrojs/node": "^10.0.6",
-    "@astrojs/react": "^5.0.4",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/node": "^10.1.4",
+    "@astrojs/react": "^5.0.7",
     "@react-pdf/renderer": "^4.5.1",
     "@tailwindcss/vite": "^4.1.10",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.1.9",
+    "astro": "^6.4.6",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "simple-icons": "^16.17.0",
