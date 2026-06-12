@@ -43,6 +43,7 @@
   --accent-subtle:    color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow:     color-mix(in srgb, var(--accent) 6%, transparent);
   --gradient-border:  linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:          rgba(0, 0, 0, 0.55);
 
   /* Layout — non-theme, mobile base */
   --scroll-offset:  60px;
@@ -74,6 +75,12 @@
   --chart-2:              rgb(144, 0, 255);
   --chart-3:              rgb(0, 229, 255);
   --chart-4:              rgb(0, 255, 204);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.75);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -96,6 +103,12 @@
   --chart-2:              rgb(38, 139, 210);
   --chart-3:              rgb(133, 153, 0);
   --chart-4:              rgb(181, 137, 0);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.55);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -105,10 +118,25 @@
   --background:           rgb(0, 43, 54);
   --foreground:           rgb(147, 161, 161);
   --card:                 rgb(7, 54, 66);
+  --primary:              rgb(211, 54, 130);
+  --primary-foreground:   rgb(0, 43, 54);
+  --secondary:            rgb(42, 161, 152);
+  --secondary-foreground: rgb(0, 43, 54);
   --muted:                rgb(88, 110, 117);
   --muted-foreground:     rgb(88, 110, 117);
+  --accent:               rgb(203, 75, 22);
+  --accent-foreground:    rgb(255, 255, 255);
   --border:               rgb(88, 110, 117);
-  --secondary:            rgb(42, 161, 152);
+  --chart-1:              rgb(211, 54, 130);
+  --chart-2:              rgb(38, 139, 210);
+  --chart-3:              rgb(133, 153, 0);
+  --chart-4:              rgb(181, 137, 0);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.75);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -131,6 +159,12 @@
   --chart-2:              rgb(132, 210, 226);
   --chart-3:              rgb(251, 226, 167);
   --chart-4:              rgb(243, 160, 202);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.55);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -153,6 +187,12 @@
   --chart-2:              rgb(228, 162, 177);
   --chart-3:              rgb(198, 123, 150);
   --chart-4:              rgb(23, 92, 108);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.75);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -175,6 +215,12 @@
   --chart-2:              rgb(85, 107, 47);
   --chart-3:              rgb(70, 130, 180);
   --chart-4:              rgb(255, 111, 0);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.55);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -197,6 +243,12 @@
   --chart-2:              rgb(104, 159, 56);
   --chart-3:              rgb(100, 181, 246);
   --chart-4:              rgb(255, 160, 0);
+  /* Derived composites */
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.75);
 }
 
 /* ═══════════════════════════════════════════════════
