@@ -1,9 +1,3 @@
-export const THEMES = [
-  "theme-void",
-  "theme-dracula",
-  "theme-nord",
-  "theme-gruvbox",
-  "theme-solarized",
-] as const;
-
-export type Theme = (typeof THEMES)[number];
+export const MODES = ["dark", "light"] as const;
+export type Mode = (typeof MODES)[number];
+export const DEFAULT_MODE: Mode = "dark";

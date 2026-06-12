@@ -23,8 +23,8 @@ const {
 
 const isDemo   = type === "demo";
 const indexStr = String(index).padStart(2, "0");
-const hoverBorder = link ? "can-hover:hover:border-[var(--accent-color)]" : "";
-const cardClass = `group flex flex-col overflow-hidden border border-[var(--border-color)] ${hoverBorder} transition-all duration-300`;
+const hoverBorder = link ? "can-hover:hover:border-[var(--accent)]" : "";
+const cardClass = `group flex flex-col overflow-hidden border border-[var(--border)] ${hoverBorder} transition-all duration-300`;
 
 const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "Angular":     { slug: "angular",      color: "#DD0031" },
@@ -62,21 +62,21 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
     style="right: 0.5rem; bottom: -0.25rem;
            font-size: clamp(3rem, 5vw, 4rem);
            line-height: 1;
-           color: var(--letter-color);
+           color: var(--foreground);
            opacity: 0.04;
            z-index: 0;"
     aria-hidden="true"
   >{indexStr}</span>
 
   <!-- Image — top -->
-  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--component-background)]" style="aspect-ratio: 16/9;">
+  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--card)]" style="aspect-ratio: 16/9;">
 
     <!-- Badge -->
     <span
       class="absolute top-2 left-3 z-20
              text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
-             border border-[var(--border-subtle)] bg-[var(--page-background)]"
-      style={`opacity: 0.85; color: ${isDemo ? "var(--accent-color)" : "var(--accent-secondary)"};`}
+             border border-[var(--border-subtle)] bg-[var(--background)]"
+      style={`opacity: 0.85; color: ${isDemo ? "var(--accent)" : "var(--primary)"};`}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
@@ -93,12 +93,12 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
     ) : (
       <div
         class="w-full h-full flex flex-col items-center justify-center gap-2
-               bg-[var(--component-background)] can-hover:group-hover:bg-[var(--surface-raised)]
+               bg-[var(--card)] can-hover:group-hover:bg-[var(--muted)]
                transition-colors duration-300"
       >
         <span
           class="font-display text-4xl"
-          style="color: var(--accent-color); opacity: 0.25;"
+          style="color: var(--accent); opacity: 0.25;"
         >{indexStr}</span>
         <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
               style="opacity: 0.25;">
@@ -111,7 +111,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   <!-- Content — bottom -->
   <div
     class="flex flex-col flex-1 px-3 py-3 gap-2
-           bg-[var(--page-background)] can-hover:group-hover:bg-[var(--surface-raised)]
+           bg-[var(--background)] can-hover:group-hover:bg-[var(--muted)]
            transition-colors duration-200 overflow-hidden"
     style="position: relative; z-index: 1;"
   >
@@ -124,7 +124,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
         {tags.includes("Self-hosted") && (
           <span
             class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0"
-            style="border: 1px solid var(--accent-color); color: var(--accent-color); opacity: 0.55;"
+            style="border: 1px solid var(--accent); color: var(--accent); opacity: 0.55;"
           >self-hosted</span>
         )}
       </div>
@@ -142,7 +142,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
         <div class="flex flex-col gap-1">
           <span
             class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
-            style="color: var(--accent-color); opacity: 0.55;"
+            style="color: var(--accent); opacity: 0.55;"
           >built with</span>
           <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
             {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
@@ -164,7 +164,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
               ) : (
                 <span
                   class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold self-end"
-                  style="border: 1px solid var(--border-color); opacity: 0.4;"
+                  style="border: 1px solid var(--border); opacity: 0.4;"
                 >{tag}</span>
               );
             })}
@@ -174,7 +174,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       <span
         class="flex items-center gap-1 text-[0.48rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
                transition-opacity duration-300 ml-auto shrink-0 self-end pb-0.5"
-        style="color: var(--accent-color); opacity: 0.4;"
+        style="color: var(--accent); opacity: 0.4;"
       >
         {isDemo ? "demo" : "code"}
         <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">→</span>
@@ -193,21 +193,21 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
     style="right: 0.5rem; bottom: -0.25rem;
            font-size: clamp(3rem, 5vw, 4rem);
            line-height: 1;
-           color: var(--letter-color);
+           color: var(--foreground);
            opacity: 0.04;
            z-index: 0;"
     aria-hidden="true"
   >{indexStr}</span>
 
   <!-- Image — top -->
-  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--component-background)]" style="aspect-ratio: 16/9;">
+  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--card)]" style="aspect-ratio: 16/9;">
 
     <!-- Badge -->
     <span
       class="absolute top-2 left-3 z-20
              text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
-             border border-[var(--border-subtle)] bg-[var(--page-background)]"
-      style={`opacity: 0.85; color: ${isDemo ? "var(--accent-color)" : "var(--accent-secondary)"};`}
+             border border-[var(--border-subtle)] bg-[var(--background)]"
+      style={`opacity: 0.85; color: ${isDemo ? "var(--accent)" : "var(--primary)"};`}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
@@ -222,11 +222,11 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
     ) : (
       <div
         class="w-full h-full flex flex-col items-center justify-center gap-2
-               bg-[var(--component-background)]"
+               bg-[var(--card)]"
       >
         <span
           class="font-display text-4xl"
-          style="color: var(--accent-color); opacity: 0.25;"
+          style="color: var(--accent); opacity: 0.25;"
         >{indexStr}</span>
         <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
               style="opacity: 0.25;">
@@ -239,7 +239,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   <!-- Content — bottom -->
   <div
     class="flex flex-col flex-1 px-3 py-3 gap-2
-           bg-[var(--page-background)]
+           bg-[var(--background)]
            transition-colors duration-200 overflow-hidden"
     style="position: relative; z-index: 1;"
   >
@@ -252,7 +252,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
         {tags.includes("Self-hosted") && (
           <span
             class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0"
-            style="border: 1px solid var(--accent-color); color: var(--accent-color); opacity: 0.55;"
+            style="border: 1px solid var(--accent); color: var(--accent); opacity: 0.55;"
           >self-hosted</span>
         )}
       </div>
@@ -269,7 +269,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       <div class="flex flex-col gap-1 mt-auto">
         <span
           class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
-          style="color: var(--accent-color); opacity: 0.5;"
+          style="color: var(--accent); opacity: 0.5;"
         >built with</span>
         <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
           {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
@@ -291,7 +291,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
             ) : (
               <span
                 class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold"
-                style="border: 1px solid var(--border-color); opacity: 0.4;"
+                style="border: 1px solid var(--border); opacity: 0.4;"
               >{tag}</span>
             );
           })}

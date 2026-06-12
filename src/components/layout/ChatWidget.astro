@@ -15,8 +15,8 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
   data-open="false"
   class="flex flex-col"
   style="
-    background: var(--total-background);
-    border: 1px solid var(--border-color);
+    background: var(--background);
+    border: 1px solid var(--border);
     overflow: hidden;
     transform-origin: bottom right;
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -30,16 +30,16 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
   <!-- Header -->
   <div
     class="flex items-center justify-between shrink-0 px-4 py-2.5"
-    style="border-bottom: 1px solid var(--border-color); background: var(--component-background);"
+    style="border-bottom: 1px solid var(--border); background: var(--card);"
   >
-    <span class="font-display tracking-[0.06em] text-base" style="color: var(--accent-color);">
+    <span class="font-display tracking-[0.06em] text-base" style="color: var(--accent);">
       &gt;_ CHAT.SYS
     </span>
     <button
       id="chat-close-btn"
       class="text-[0.7rem] tracking-[0.2em] uppercase px-2 py-0.5
-             border border-[var(--border-color)] can-hover:hover:border-[var(--accent-color)]
-             can-hover:hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
+             border border-[var(--border)] can-hover:hover:border-[var(--accent)]
+             can-hover:hover:text-[var(--accent)] transition-colors duration-150 cursor-pointer"
       style="font-family: inherit;"
       aria-label="Close chat"
     >×</button>
@@ -61,8 +61,8 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
       {starters.map(s => (
         <button
           class="chat-starter text-[0.58rem] tracking-[0.12em] uppercase px-2.5 py-1
-                 border border-[var(--border-color)] can-hover:hover:border-[var(--accent-color)]
-                 can-hover:hover:text-[var(--accent-color)] transition-colors duration-150 cursor-pointer"
+                 border border-[var(--border)] can-hover:hover:border-[var(--accent)]
+                 can-hover:hover:text-[var(--accent)] transition-colors duration-150 cursor-pointer"
           data-q={s.q}
           style="font-family: inherit; background: transparent; color: inherit; opacity: 0.6;"
         >[ {s.label} ]</button>
@@ -73,7 +73,7 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
   <!-- Input -->
   <div
     class="shrink-0 flex gap-0"
-    style="border-top: 1px solid var(--border-color);"
+    style="border-top: 1px solid var(--border);"
   >
     <input
       id="chat-input"
@@ -82,10 +82,10 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
       autocomplete="off"
       class="flex-1 px-4 py-3 text-[0.7rem]"
       style="
-        background: var(--component-background);
+        background: var(--card);
         border: none;
         outline: none;
-        color: var(--letter-color);
+        color: var(--foreground);
         font-family: 'JetBrains Mono', monospace;
       "
     />
@@ -94,8 +94,8 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
       class="px-4 py-3 text-[0.65rem] tracking-[0.2em] uppercase font-bold
              transition-colors duration-150 cursor-pointer disabled:opacity-30"
       style="
-        background: var(--accent-color);
-        color: var(--accent-text);
+        background: var(--accent);
+        color: var(--accent-foreground);
         border: none;
         font-family: inherit;
         min-width: 4rem;
@@ -145,16 +145,16 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
 
   .chat-msg--user {
     align-self: flex-end;
-    border: 1px solid var(--border-color);
-    background: var(--component-background);
-    color: var(--letter-color);
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
   }
 
   .chat-msg--bot {
     align-self: flex-start;
-    border-left: 2px solid var(--accent-color);
+    border-left: 2px solid var(--accent);
     background: var(--surface-glow);
-    color: var(--letter-color);
+    color: var(--foreground);
     padding-left: 0.75rem;
   }
 
@@ -165,14 +165,14 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
     gap: 4px;
     align-items: center;
     padding: 0.5rem 0.75rem;
-    border-left: 2px solid var(--accent-color);
+    border-left: 2px solid var(--accent);
     background: var(--surface-glow);
   }
   .chat-typing span {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: var(--accent-color);
+    background: var(--accent);
     opacity: 0.6;
     animation: chat-dot 1.2s ease-in-out infinite;
   }

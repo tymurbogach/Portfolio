@@ -10,6 +10,9 @@
 /* Hover only on true pointer devices — prevents :hover sticking on iOS/Android after tap */
 @variant can-hover (@media (hover: hover) and (pointer: fine));
 
+/* Dark mode variant — .dark class on <html> */
+@custom-variant dark (&:is(.dark *));
+
 /* ═══════════════════════════════════════════════════════
    BREAKPOINTS
    ═══════════════════════════════════════════════════════ */
@@ -24,136 +27,143 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   TEMAS — variables semánticas por tema
-   Contraste entre capas: total-bg → page-bg → component-bg
-   Diferencia mínima: 8-12 puntos de luminosidad entre capas.
-   --gradient-border es idéntico en todos los temas (usa variables)
-   y se define una sola vez en :root.
-   ═══════════════════════════════════════════════════════ */
-
-:root.theme-void {  /* spray booth night — warm black · electric teal · primer orange */
-  --component-background: #1E1E1B;
-  --page-background:       #131310;
-  --total-background:      #0C0C0A;
-  --letter-color:          #E2DDD0;
-  --border-color:          #313028;
-  --border-subtle:         rgba(49, 48, 40, 0.75);
-  --hover-bg:              #FF5722;
-  --hover-text:            #0C0C0A;
-  --accent-color:          #00E5B4;
-  --accent-text:           #0C0C0A;
-  --accent-subtle:         rgba(0, 229, 180, 0.10);
-  --accent-secondary:      #FF5722;
-  --accent-tertiary:       #E64A19;
-  --surface-raised:        #282825;
-  --surface-glow:          rgba(0, 229, 180, 0.06);
-  --glow-primary:          rgba(0, 229, 180, 0.35);
-  --glow-secondary:        rgba(255, 87, 34, 0.25);
-  --gradient-hero:         linear-gradient(135deg, rgba(0, 229, 180, 0.07) 0%, transparent 55%);
-}
-
-:root.theme-dracula { /* dracula — negro púrpura · violeta · rosa */
-  --component-background: #282A36;
-  --page-background:       #1E2029;
-  --total-background:      #191A24;
-  --letter-color:          #F8F8F2;
-  --border-color:          #44475A;
-  --border-subtle:         rgba(68, 71, 90, 0.75);
-  --hover-bg:              #FF79C6;
-  --hover-text:            #191A24;
-  --accent-color:          #BD93F9;
-  --accent-text:           #191A24;
-  --accent-subtle:         rgba(189, 147, 249, 0.12);
-  --accent-secondary:      #FF79C6;
-  --accent-tertiary:       #8BE9FD;
-  --surface-raised:        #313341;
-  --surface-glow:          rgba(189, 147, 249, 0.06);
-  --glow-primary:          rgba(189, 147, 249, 0.40);
-  --glow-secondary:        rgba(255, 121, 198, 0.30);
-  --gradient-hero:         linear-gradient(135deg, rgba(189, 147, 249, 0.10) 0%, transparent 60%);
-}
-
-:root.theme-nord { /* nord — ártico pizarra · frost · aurora */
-  --component-background: #3B4252;
-  --page-background:       #2E3440;
-  --total-background:      #242933;
-  --letter-color:          #ECEFF4;
-  --border-color:          #434C5E;
-  --border-subtle:         rgba(67, 76, 94, 0.75);
-  --hover-bg:              #D08770;
-  --hover-text:            #242933;
-  --accent-color:          #88C0D0;
-  --accent-text:           #242933;
-  --accent-subtle:         rgba(136, 192, 208, 0.12);
-  --accent-secondary:      #D08770;
-  --accent-tertiary:       #EBCB8B;
-  --surface-raised:        #4C5568;
-  --surface-glow:          rgba(136, 192, 208, 0.06);
-  --glow-primary:          rgba(136, 192, 208, 0.35);
-  --glow-secondary:        rgba(208, 135, 112, 0.25);
-  --gradient-hero:         linear-gradient(135deg, rgba(136, 192, 208, 0.10) 0%, transparent 60%);
-}
-
-:root.theme-gruvbox { /* gruvbox — retro cálido oscuro · naranja quemado · ocre */
-  --component-background: #3C3836;
-  --page-background:       #282828;
-  --total-background:      #1D2021;
-  --letter-color:          #EBDBB2;
-  --border-color:          #504945;
-  --border-subtle:         rgba(80, 73, 69, 0.75);
-  --hover-bg:              #FABD2F;
-  --hover-text:            #1D2021;
-  --accent-color:          #FE8019;
-  --accent-text:           #1D2021;
-  --accent-subtle:         rgba(254, 128, 25, 0.12);
-  --accent-secondary:      #FABD2F;
-  --accent-tertiary:       #B8BB26;
-  --surface-raised:        #5C5550;
-  --surface-glow:          rgba(254, 128, 25, 0.06);
-  --glow-primary:          rgba(254, 128, 25, 0.38);
-  --glow-secondary:        rgba(250, 189, 47, 0.28);
-  --gradient-hero:         linear-gradient(135deg, rgba(254, 128, 25, 0.10) 0%, transparent 60%);
-}
-
-:root.theme-solarized { /* solarized light — papel cálido · cyan ártico · azul */
-  --component-background: #FDF6E3;
-  --page-background:       #EEE8D5;
-  --total-background:      #C4BCA7;
-  --letter-color:          #586E75;
-  --border-color:          #93A1A1;
-  --border-subtle:         rgba(147, 161, 161, 0.50);
-  --hover-bg:              #002B36;
-  --hover-text:            #FDF6E3;
-  --accent-color:          #2AA198;
-  --accent-text:           #FDF6E3;
-  --accent-subtle:         rgba(42, 161, 152, 0.10);
-  --accent-secondary:      #268BD2;
-  --accent-tertiary:       #B58900;
-  --surface-raised:        #FFFEF5;
-  --surface-glow:          rgba(42, 161, 152, 0.04);
-  --glow-primary:          rgba(42, 161, 152, 0.22);
-  --glow-secondary:        rgba(38, 139, 210, 0.16);
-  --gradient-hero:         linear-gradient(135deg, rgba(42, 161, 152, 0.08) 0%, transparent 60%);
-}
-
-/* ═══════════════════════════════════════════════════════
-   TOKENS GLOBALES
-   ─ derivados: fórmula idéntica para todos los temas
-   ─ spacing: escala fija en px
-   ─ layout: se sobreescriben por resolución/escalado abajo
+   TWEAKCN CYBERPUNK — LIGHT (default)
    ═══════════════════════════════════════════════════════ */
 :root {
-  --gradient-border: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-  --scroll-offset: 60px;
+  --background: rgb(248, 249, 250);
+  --foreground: rgb(12, 12, 29);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(12, 12, 29);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(12, 12, 29);
+  --primary: rgb(255, 0, 200);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: rgb(240, 240, 255);
+  --secondary-foreground: rgb(12, 12, 29);
+  --muted: rgb(240, 240, 255);
+  --muted-foreground: rgb(128, 133, 166);
+  --accent: rgb(0, 255, 204);
+  --accent-foreground: rgb(12, 12, 29);
+  --destructive: rgb(255, 61, 0);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border: rgb(223, 230, 233);
+  --input: rgb(223, 230, 233);
+  --ring: rgb(255, 0, 200);
+  --chart-1: rgb(255, 0, 200);
+  --chart-2: rgb(144, 0, 255);
+  --chart-3: rgb(0, 229, 255);
+  --chart-4: rgb(0, 255, 204);
+  --chart-5: rgb(255, 230, 0);
+  --sidebar: rgb(240, 240, 255);
+  --sidebar-foreground: rgb(12, 12, 29);
+  --sidebar-primary: rgb(255, 0, 200);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(0, 255, 204);
+  --sidebar-accent-foreground: rgb(12, 12, 29);
+  --sidebar-border: rgb(223, 230, 233);
+  --sidebar-ring: rgb(255, 0, 200);
+  --radius: 0.5rem;
 
-  /* Layout base (mobile) */
+  /* === DERIVED — portfolio-specific composites === */
+  --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:    color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:     color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border:  linear-gradient(90deg, var(--accent), var(--primary));
+
+  /* === LAYOUT — non-theme spacing (mobile base) === */
+  --scroll-offset:  60px;
   --sidebar-width:  22rem;
-  --main-padding:    6rem;  /* padding del box principal en modo desktop */
-  --fixed-offset:    3rem;  /* distancia de namecard/nav/social al borde de pantalla */
-  --nav-width:       100%;  /* ancho nav — full en mobile tiny */
+  --main-padding:    6rem;
+  --fixed-offset:    3rem;
+  --nav-width:       100%;
   --nav-height:      3rem;
   --nav-icon-size:   1.25rem;
 }
+
+/* ═══════════════════════════════════════════════════════
+   TWEAKCN CYBERPUNK — DARK
+   ═══════════════════════════════════════════════════════ */
+.dark {
+  --background: rgb(12, 12, 29);
+  --foreground: rgb(236, 239, 244);
+  --card: rgb(30, 30, 63);
+  --card-foreground: rgb(236, 239, 244);
+  --popover: rgb(30, 30, 63);
+  --popover-foreground: rgb(236, 239, 244);
+  --primary: rgb(255, 0, 200);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: rgb(30, 30, 63);
+  --secondary-foreground: rgb(236, 239, 244);
+  --muted: rgb(21, 21, 48);
+  --muted-foreground: rgb(128, 133, 166);
+  --accent: rgb(0, 255, 204);
+  --accent-foreground: rgb(12, 12, 29);
+  --destructive: rgb(255, 61, 0);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border: rgb(46, 46, 94);
+  --input: rgb(46, 46, 94);
+  --ring: rgb(255, 0, 200);
+  --chart-1: rgb(255, 0, 200);
+  --chart-2: rgb(144, 0, 255);
+  --chart-3: rgb(0, 229, 255);
+  --chart-4: rgb(0, 255, 204);
+  --chart-5: rgb(255, 230, 0);
+  --sidebar: rgb(12, 12, 29);
+  --sidebar-foreground: rgb(236, 239, 244);
+  --sidebar-primary: rgb(255, 0, 200);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(0, 255, 204);
+  --sidebar-accent-foreground: rgb(12, 12, 29);
+  --sidebar-border: rgb(46, 46, 94);
+  --sidebar-ring: rgb(255, 0, 200);
+}
+
+/* ═══════════════════════════════════════════════════════
+   @theme inline — Tailwind token mapping
+   ═══════════════════════════════════════════════════════ */
+@theme inline {
+  --color-background:              var(--background);
+  --color-foreground:              var(--foreground);
+  --color-card:                    var(--card);
+  --color-card-foreground:         var(--card-foreground);
+  --color-popover:                 var(--popover);
+  --color-popover-foreground:      var(--popover-foreground);
+  --color-primary:                 var(--primary);
+  --color-primary-foreground:      var(--primary-foreground);
+  --color-secondary:               var(--secondary);
+  --color-secondary-foreground:    var(--secondary-foreground);
+  --color-muted:                   var(--muted);
+  --color-muted-foreground:        var(--muted-foreground);
+  --color-accent:                  var(--accent);
+  --color-accent-foreground:       var(--accent-foreground);
+  --color-destructive:             var(--destructive);
+  --color-destructive-foreground:  var(--destructive-foreground);
+  --color-border:                  var(--border);
+  --color-input:                   var(--input);
+  --color-ring:                    var(--ring);
+  --color-chart-1:                 var(--chart-1);
+  --color-chart-2:                 var(--chart-2);
+  --color-chart-3:                 var(--chart-3);
+  --color-chart-4:                 var(--chart-4);
+  --color-chart-5:                 var(--chart-5);
+  --color-sidebar:                 var(--sidebar);
+  --color-sidebar-foreground:      var(--sidebar-foreground);
+  --color-sidebar-primary:         var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:          var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border:          var(--sidebar-border);
+  --color-sidebar-ring:            var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT — responsive spacing overrides
+   ═══════════════════════════════════════════════════════ */
 
 /* ── Mobile ≥ 480px ──────────────────────────────────── */
 @media (min-width: 30rem) {
@@ -230,15 +240,6 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   OPACITY SCALE — 5 niveles semánticos
-   0.25 ambient (decor, bg text)
-   0.40 muted   (cat-labels, metadata)
-   0.55 secondary (bio, subtitles, detail text)
-   0.70 primary-dim (important labels, years)
-   1.00 full    (primary content, accents)
-   ═══════════════════════════════════════════════════════ */
-
-/* ═══════════════════════════════════════════════════════
    TIPOGRAFÍA Y RESET
    ═══════════════════════════════════════════════════════ */
 html {
@@ -266,7 +267,7 @@ html, body {
 *::-webkit-scrollbar { display: none; }
 
 *:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -310,23 +311,23 @@ body::after {
 }
 
 @utility neon-border {
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent);
   box-shadow:
-    0 0 6px var(--glow-primary),
-    0 0 20px var(--glow-primary),
-    inset 0 0 6px var(--glow-primary);
+    0 0 6px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 20px color-mix(in srgb, var(--accent) 35%, transparent),
+    inset 0 0 6px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 @utility neon-glow {
   box-shadow:
-    0 0 10px var(--glow-primary),
-    0 0 30px var(--glow-secondary);
+    0 0 10px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
 @utility text-glow {
   text-shadow:
-    0 0 8px var(--glow-primary),
-    0 0 20px var(--glow-primary);
+    0 0 8px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 @utility gradient-line {
@@ -340,19 +341,19 @@ body::after {
 }
 
 @utility hero-gradient {
-  background: var(--gradient-hero);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 55%);
 }
 
 @utility neon-left-border {
-  border-left: 2px solid var(--accent-color);
-  box-shadow: -3px 0 12px var(--glow-primary);
+  border-left: 2px solid var(--accent);
+  box-shadow: -3px 0 12px color-mix(in srgb, var(--accent) 35%, transparent);
   padding-left: 1rem;
 }
 
 @utility tag-secondary {
-  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
-  border: 1px solid var(--accent-secondary);
-  color: var(--accent-secondary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border: 1px solid var(--primary);
+  color: var(--primary);
 }
 
 @utility hover-glow {
@@ -360,8 +361,8 @@ body::after {
   /* Only activate on pointer devices — prevents sticky state on touch */
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      box-shadow: 0 0 15px var(--glow-primary);
-      border-color: var(--accent-color);
+      box-shadow: 0 0 15px color-mix(in srgb, var(--accent) 35%, transparent);
+      border-color: var(--accent);
     }
   }
 }
@@ -394,7 +395,7 @@ body::after {
 
 /* Contenedor panel compartido — NavBar, NameCard, SocialLinks, SocialBotPanel */
 @utility nav-panel {
-  @apply bg-[var(--component-background)] border-y border-[var(--border-color)] rounded-none m-0 shadow-none;
+  @apply bg-[var(--card)] border-y border-[var(--border)] rounded-none m-0 shadow-none;
   @apply mobile:shadow-md tablet:shadow-lg;
 }
 
@@ -407,8 +408,8 @@ body::after {
   opacity: 0.4;
   @media (min-width: 80rem)  { font-size: 0.68rem; }
   @media (min-width: 120rem) { font-size: 0.78rem; }
-  @media (min-width: 160rem) { font-size: 0.75rem; }  /* qhd: text-xs = 0.75rem */
-  @media (min-width: 240rem) { font-size: 0.875rem; } /* uhd: text-sm */
+  @media (min-width: 160rem) { font-size: 0.75rem; }
+  @media (min-width: 240rem) { font-size: 0.875rem; }
 }
 
 /* Texto de chip — etiqueta de skill o idioma dentro de skill-chip */
@@ -422,7 +423,7 @@ body::after {
   opacity: 0.8;
   @media (min-width: 80rem)  { font-size: 0.65rem; }
   @media (min-width: 120rem) { font-size: 0.75rem; }
-  @media (min-width: 160rem) { font-size: 0.875rem; } /* qhd: text-sm */
+  @media (min-width: 160rem) { font-size: 0.875rem; }
 }
 
 @utility skill-chip {
@@ -432,11 +433,11 @@ body::after {
   padding: 0.3rem 0.5rem;
   border-radius: 0.25rem;
   transition: background 150ms;
-  border: 1px solid color-mix(in srgb, var(--accent-color) 18%, transparent);
-  background: color-mix(in srgb, var(--accent-color) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
   min-width: 0;
   @media (hover: hover) and (pointer: fine) {
-    &:hover { background: color-mix(in srgb, var(--accent-color) 10%, transparent); }
+    &:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
   }
   @media (min-width: 120rem) {
     padding: 0.375rem 0.75rem;
@@ -448,10 +449,10 @@ body::after {
 @utility nav-cell {
   background: transparent;
   border: none;
-  @apply text-[var(--letter-color)] transition duration-200;
+  @apply text-[var(--foreground)] transition duration-200;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      @apply bg-[var(--hover-bg)] text-[var(--hover-text)] scale-105 shadow-md z-10;
+      @apply bg-[var(--secondary)] text-[var(--secondary-foreground)] scale-105 shadow-md z-10;
     }
   }
 }
@@ -459,15 +460,13 @@ body::after {
 /* ── Botones de acción — sistema unificado ─────────────────────────────────
    btn-base  : base compartida (display, cursor, transición solo en desktop)
    btn-primary: borde acento → rellena acento en hover/active
-   btn-ghost  : borde sutil → rellena acento en hover/active (añade opacity-65 si se quiere atenuado)
-   tapFeedback.ts detecta btn-primary/btn-ghost y NO aplica tap-pressed — CSS lo gestiona.
+   btn-ghost  : borde sutil → rellena acento en hover/active
    ─────────────────────────────────────────────────────────────────────────── */
 @utility btn-base {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   cursor: pointer;
-  /* Transición solo en desktop pointer — en touch :active es instantáneo */
   @media (hover: hover) and (pointer: fine) {
     transition: background-color 200ms ease, color 200ms ease,
                 border-color 200ms ease, opacity 200ms ease;
@@ -475,61 +474,61 @@ body::after {
 }
 
 @utility btn-primary {
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
+  border: 1px solid var(--accent);
+  color: var(--accent);
   background-color: transparent;
   &:active {
-    background-color: var(--accent-color);
-    color: var(--accent-text);
+    background-color: var(--accent);
+    color: var(--accent-foreground);
   }
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: var(--accent-color);
-      color: var(--accent-text);
+      background-color: var(--accent);
+      color: var(--accent-foreground);
     }
   }
 }
 
 @utility btn-accent {
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
+  border: 1px solid var(--accent);
+  color: var(--accent);
   background-color: transparent;
   &:active {
-    background-color: var(--hover-bg);
-    color: var(--hover-text);
-    border-color: var(--hover-bg);
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    border-color: var(--secondary);
   }
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: var(--hover-bg);
-      color: var(--hover-text);
-      border-color: var(--hover-bg);
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+      border-color: var(--secondary);
     }
   }
 }
 
 @utility btn-ghost {
-  border: 1px solid var(--border-color);
-  color: var(--letter-color);
+  border: 1px solid var(--border);
+  color: var(--foreground);
   background-color: transparent;
   &:active {
-    background-color: var(--accent-color);
-    color: var(--accent-text);
-    border-color: var(--accent-color);
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    border-color: var(--accent);
     opacity: 1;
   }
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: var(--accent-color);
-      color: var(--accent-text);
-      border-color: var(--accent-color);
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+      border-color: var(--accent);
       opacity: 1;
     }
   }
 }
 
 /* ═══════════════════════════════════════════════════════
-   MARQUEE — infinite horizontal scroll strip
+   ANIMACIONES
    ═══════════════════════════════════════════════════════ */
 @keyframes tap-pressed {
   0%, 40% { opacity: 0.4; }
@@ -540,19 +539,17 @@ body::after {
 }
 
 @keyframes nav-tap {
-  0%, 50% { background-color: var(--hover-bg); color: var(--hover-text); }
-  100%    { background-color: transparent;      color: var(--letter-color); }
+  0%, 50% { background-color: var(--secondary); color: var(--secondary-foreground); }
+  100%    { background-color: transparent;       color: var(--foreground); }
 }
 .nav-tap-pressed {
   animation: nav-tap 1s ease-out !important;
 }
 
-/* NameCard: text returns to letter-color while bg is still orange,
-   prevents near-black text on dark bg ("fade to black" artifact) */
 @keyframes namecard-tap {
-  0%   { background-color: var(--hover-bg); color: var(--hover-text);   }
-  30%  { background-color: var(--hover-bg); color: var(--letter-color); }
-  100% { background-color: transparent;     color: var(--letter-color); }
+  0%   { background-color: var(--secondary); color: var(--secondary-foreground); }
+  30%  { background-color: var(--secondary); color: var(--foreground); }
+  100% { background-color: transparent;      color: var(--foreground); }
 }
 .namecard-tap-pressed {
   animation: namecard-tap 0.5s ease-out !important;
@@ -563,17 +560,6 @@ body::after {
   50%       { opacity: 0; }
 }
 .terminal-cursor { animation: blink 1s step-end infinite; }
-
-/* ── Theme toggle: hint pulse on page load ──────────────── */
-@keyframes theme-badge-pulse {
-  0%, 100% { box-shadow: none; }
-  50%       { box-shadow: 0 0 8px var(--accent-color), 0 0 18px var(--accent-color); }
-}
-[data-theme-label] {
-  animation: theme-badge-pulse 0.7s ease-in-out 2;
-  animation-delay: 0.6s;
-  animation-fill-mode: backwards;
-}
 
 /* ── Contact form: spinner ──────────────────────────────── */
 @keyframes form-spin {
@@ -586,8 +572,8 @@ body::after {
 
 /* ── Contact form: status error variant ─────────────────── */
 .form-status--error {
-  color: var(--accent-secondary);
-  border-color: var(--accent-secondary);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 /* ── Contact form: success block ────────────────────────── */
@@ -600,7 +586,7 @@ body::after {
 .form-success__line {
   height: 1px;
   width: 100%;
-  background: var(--accent-color);
+  background: var(--accent);
   opacity: 0.4;
 }
 .form-success__heading {
@@ -609,7 +595,7 @@ body::after {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   font-size: clamp(0.7rem, 1.2vw, 0.9rem);
-  color: var(--accent-color);
+  color: var(--accent);
 }
 .form-success__body {
   margin: 0;
@@ -618,4 +604,3 @@ body::after {
   letter-spacing: 0.06em;
   font-size: clamp(0.75rem, 1.1vw, 0.85rem);
 }
-

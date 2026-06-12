@@ -31,8 +31,8 @@ const { id = "cv-modal", titleLabel } = Astro.props;
   <!-- Panel -->
   <div
     class="relative flex flex-col w-full max-w-4xl fhd:max-w-6xl
-           border border-[var(--border-color)]
-           bg-[var(--component-background)]
+           border border-[var(--border)]
+           bg-[var(--card)]
            transition-all duration-300 overflow-hidden"
     style="
       height: min(90vh, 72rem);
@@ -43,7 +43,7 @@ const { id = "cv-modal", titleLabel } = Astro.props;
   >
 
     <!-- Header -->
-    <div class="flex items-center justify-between px-4 py-2 shrink-0 border-b border-[var(--border-color)]">
+    <div class="flex items-center justify-between px-4 py-2 shrink-0 border-b border-[var(--border)]">
       <span class="text-[0.5rem] laptop:text-[0.6rem] fhd:text-xs tracking-[0.35em] uppercase font-bold opacity-40">
         &gt; {titleLabel}
       </span>
@@ -54,7 +54,7 @@ const { id = "cv-modal", titleLabel } = Astro.props;
           download
           class="flex items-center gap-1.5
                  text-[0.48rem] laptop:text-[0.55rem] fhd:text-xs tracking-[0.25em] uppercase font-bold
-                 text-[var(--accent-color)] opacity-70
+                 text-[var(--accent)] opacity-70
                  can-hover:hover:opacity-100 active:opacity-100 transition-opacity duration-200"
         >
           <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">

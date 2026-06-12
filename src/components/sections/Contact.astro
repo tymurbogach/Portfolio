@@ -21,7 +21,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
   {intro && (
     <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
               leading-[1.8] opacity-60 tracking-[0.04em] m-0 pl-3
-              border-l-2 border-[var(--accent-secondary)]">
+              border-l-2 border-[var(--primary)]">
       {intro}
     </p>
   )}
@@ -36,7 +36,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
           <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Email</span>
           <a
             href={`mailto:${email}`}
-            class="text-[clamp(0.82rem,1.4vw,1.1rem)] fhd:text-[clamp(0.95rem,1.4vw,1.35rem)] font-bold text-[var(--accent-color)]
+            class="text-[clamp(0.82rem,1.4vw,1.1rem)] fhd:text-[clamp(0.95rem,1.4vw,1.35rem)] font-bold text-[var(--accent)]
                    opacity-70 can-hover:hover:opacity-100 active:opacity-100 transition-opacity break-all leading-snug self-start"
           >
             {email}
@@ -93,7 +93,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     <div
       id="form-status"
       class="hidden py-2 px-3 border border-[var(--border-subtle)]
-             text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm tracking-[0.2em] text-center text-[var(--letter-color)]"
+             text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm tracking-[0.2em] text-center text-[var(--foreground)]"
     />
 
     <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-4">
@@ -102,9 +102,9 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         placeholder="Name"
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
-               font-['Poiret_One',cursive] text-[var(--letter-color)]
-               border border-[var(--border-color)] focus:border-[var(--accent-color)]
-               focus:bg-[color-mix(in_srgb,var(--accent-color)_3%,transparent)]
+               font-['Poiret_One',cursive] text-[var(--foreground)]
+               border border-[var(--border)] focus:border-[var(--accent)]
+               focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
                placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
                placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
@@ -114,9 +114,9 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
         placeholder="Email"
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
-               font-['Poiret_One',cursive] text-[var(--letter-color)]
-               border border-[var(--border-color)] focus:border-[var(--accent-color)]
-               focus:bg-[color-mix(in_srgb,var(--accent-color)_3%,transparent)]
+               font-['Poiret_One',cursive] text-[var(--foreground)]
+               border border-[var(--border)] focus:border-[var(--accent)]
+               focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
                placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
                placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
@@ -128,9 +128,9 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       placeholder="Message"
       class="bg-transparent w-full outline-none p-3
              text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
-             font-['Poiret_One',cursive] text-[var(--letter-color)]
-             resize-none border border-[var(--border-color)] focus:border-[var(--accent-color)]
-             focus:bg-[color-mix(in_srgb,var(--accent-color)_3%,transparent)]
+             font-['Poiret_One',cursive] text-[var(--foreground)]
+             resize-none border border-[var(--border)] focus:border-[var(--accent)]
+             focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
              transition-colors duration-200 focus-visible:outline-none
              placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
              placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
@@ -153,7 +153,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
   <!-- Bot hint -->
   <p class="text-center text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs
             tracking-[0.22em] leading-[2] opacity-25 m-0 uppercase">
-    Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent-color)]">↘</span>
+    Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent)]">↘</span>
   </p>
 
 </div>

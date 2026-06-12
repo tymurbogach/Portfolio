@@ -22,8 +22,8 @@ const { journey, education, hobbies } = about;
           <div class="flex flex-col items-center shrink-0 pt-[3px]">
             <div class={`w-[7px] h-[7px] rounded-full border-2 shrink-0 z-10
               ${active
-                ? "border-[var(--accent-color)] bg-[var(--accent-color)]"
-                : "border-[var(--border-color)] bg-[var(--page-background)]"}`}
+                ? "border-[var(--accent)] bg-[var(--accent)]"
+                : "border-[var(--border)] bg-[var(--background)]"}`}
             />
             {i < journey.length - 1 && (
               <div class="w-px flex-1 my-1" style="background: linear-gradient(to bottom, var(--accent-subtle), transparent);" />
@@ -33,10 +33,10 @@ const { journey, education, hobbies } = about;
           <!-- Content -->
           <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""} ${active ? "pl-2 border-l border-[var(--accent-subtle)]" : ""}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
-              <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--accent-secondary); opacity: 0.7;">
+              <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--primary); opacity: 0.7;">
                 {year}
               </span>
-              <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold ${active ? "text-[var(--accent-color)]" : ""}`}>
+              <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold ${active ? "text-[var(--accent)]" : ""}`}>
                 {event}
               </span>
             </div>
@@ -54,7 +54,7 @@ const { journey, education, hobbies } = about;
 
   <div class="flex flex-col gap-2">
     {education.map(({ years, title, sub }: { years: string; title: string; sub: string }) => (
-      <div class="flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--surface-raised)]" style="border-left: 2px solid var(--accent-secondary);">
+      <div class="flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]" style="border-left: 2px solid var(--primary);">
         <div>
           <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug">{title}</p>
           <p class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.1em] uppercase opacity-55 mt-0.5">{sub}</p>
@@ -80,7 +80,7 @@ const { journey, education, hobbies } = about;
           </div>
           {detail && (
             <span class="text-[0.48rem] laptop:text-[0.54rem] fhd:text-[0.6rem] qhd:text-xs uhd:text-sm
-                         tracking-[0.08em] shrink-0 text-right" style="color: var(--accent-tertiary); opacity: 0.55;">{detail}</span>
+                         tracking-[0.08em] shrink-0 text-right" style="color: var(--chart-2); opacity: 0.55;">{detail}</span>
           )}
         </div>
       ))}

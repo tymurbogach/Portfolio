@@ -26,7 +26,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
         data-active={currentPath === page.path ? "true" : "false"}
         class:list={[
           "nav-cell group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0",
-          "data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent-color)] data-[active=true]:border-t-2 data-[active=true]:border-[var(--accent-color)]",
+          "data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent)] data-[active=true]:border-t-2 data-[active=true]:border-[var(--accent)]",
           "",
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
           "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
@@ -35,8 +35,8 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
       >
         <span
           class="inline-block transition-all duration-200 can-hover:group-hover:scale-125
-                 bg-[var(--letter-color)] can-hover:group-hover:bg-[var(--hover-text)]
-                 group-data-[active=true]:bg-[var(--accent-color)]
+                 bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
+                 group-data-[active=true]:bg-[var(--accent)]
                  opacity-65 can-hover:group-hover:opacity-100 group-data-[active=true]:opacity-100"
           style={`width: var(--nav-icon-size); height: var(--nav-icon-size);
                   -webkit-mask-image:url('${page.icon}'); mask-image:url('${page.icon}');
@@ -52,7 +52,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
 
   <div
     id="nav-indicator"
-    style="position:absolute; bottom:0; height:2px; background:var(--accent-color);
+    style="position:absolute; bottom:0; height:2px; background:var(--accent);
            transition: left 0.25s ease, width 0.25s ease;
            pointer-events:none; left:0; width:0;"
     aria-hidden="true"
@@ -62,16 +62,16 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
 <style>
   .nav-link[data-active="true"] {
     background-color: var(--accent-subtle) !important;
-    color: var(--accent-color) !important;
+    color: var(--accent) !important;
   }
 
   @media (hover: hover) and (pointer: fine) {
     .nav-link[data-active="true"]:hover {
-      background-color: var(--hover-bg) !important;
-      color: var(--hover-text) !important;
+      background-color: var(--secondary) !important;
+      color: var(--secondary-foreground) !important;
     }
     .nav-link[data-active="true"]:hover > span:first-child {
-      background-color: var(--hover-text) !important;
+      background-color: var(--secondary-foreground) !important;
       opacity: 1 !important;
     }
   }
