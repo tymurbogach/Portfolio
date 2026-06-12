@@ -464,7 +464,7 @@ html, body {
 *::-webkit-scrollbar { display: none; }
 
 *:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
 
@@ -660,19 +660,19 @@ body::after {
   }
 }
 
-/* Solid accent fill on hover */
+/* Solid accent fill — primary CTA */
 @utility btn-primary {
   border: 1px solid var(--accent);
-  color: var(--accent);
-  background-color: transparent;
+  color: var(--accent-foreground);
+  background-color: var(--accent);
   &:active {
-    background-color: var(--accent);
-    color: var(--accent-foreground);
+    background-color: color-mix(in srgb, var(--accent) 75%, white);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
   }
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: var(--accent);
-      color: var(--accent-foreground);
+      background-color: color-mix(in srgb, var(--accent) 75%, white);
+      box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
     }
   }
 }
