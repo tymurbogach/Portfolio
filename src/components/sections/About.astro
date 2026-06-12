@@ -54,7 +54,10 @@ const { journey, education, hobbies } = about;
 
   <div class="flex flex-col gap-2">
     {education.map(({ years, title, sub }: { years: string; title: string; sub: string }) => (
-      <div class="flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]" style="border-left: 2px solid var(--primary);">
+      <div class="flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]
+                  transition-colors duration-200
+                  can-hover:hover:bg-[var(--surface-glow)] can-hover:hover:border-[var(--accent-subtle)]"
+           style="border-left: 2px solid var(--primary);">
         <div>
           <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug">{title}</p>
           <p class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.1em] uppercase opacity-55 mt-0.5">{sub}</p>
@@ -74,7 +77,8 @@ const { journey, education, hobbies } = about;
 
     <div class="grid grid-cols-1 laptop:grid-cols-2 gap-x-6 gap-y-0">
       {hobbies.map(({ icon, label, detail }: { icon: string; label: string; detail?: string }) => (
-        <div class="flex items-center justify-between gap-4 py-2.5 fhd:py-3">
+        <div class="flex items-center justify-between gap-4 py-2.5 fhd:py-3
+                    border-b border-[var(--border-subtle)] last:border-b-0">
           <div class="flex items-center">
             <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none">{label}</span>
           </div>

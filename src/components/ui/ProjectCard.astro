@@ -23,8 +23,10 @@ const {
 
 const isDemo   = type === "demo";
 const indexStr = String(index).padStart(2, "0");
-const hoverBorder = link ? "can-hover:hover:border-[var(--accent)]" : "";
-const cardClass = `group flex flex-col overflow-hidden border border-[var(--border)] ${hoverBorder} transition-all duration-300`;
+const hoverClass = link
+  ? "can-hover:hover:border-[var(--accent)] hover-glow"
+  : "";
+const cardClass = `relative group flex flex-col overflow-hidden border border-[var(--border)] ${hoverClass} transition-all duration-300`;
 
 const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "Angular":     { slug: "angular",      color: "#DD0031" },
@@ -54,7 +56,6 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   target="_blank"
   rel="noopener noreferrer"
   class={cardClass}
-  style="position: relative;"
 >
   <!-- Large muted index — background element -->
   <span
@@ -108,6 +109,12 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
         </span>
       </div>
     )}
+    <!-- Gradient overlay — fades image into card content -->
+    <div
+      class="absolute inset-x-0 bottom-0 h-8 pointer-events-none"
+      style="background: linear-gradient(to top, var(--card), transparent);"
+      aria-hidden="true"
+    />
   </div>
 
   <!-- Content — bottom -->
@@ -188,7 +195,6 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
 ) : (
 <div
   class={cardClass}
-  style="position: relative;"
 >
   <!-- Large muted index — background element -->
   <span
@@ -239,6 +245,12 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
         </span>
       </div>
     )}
+    <!-- Gradient overlay — fades image into card content -->
+    <div
+      class="absolute inset-x-0 bottom-0 h-8 pointer-events-none"
+      style="background: linear-gradient(to top, var(--card), transparent);"
+      aria-hidden="true"
+    />
   </div>
 
   <!-- Content — bottom -->
