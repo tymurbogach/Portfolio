@@ -53,13 +53,14 @@ const ogImageUrl = `${site.url}${ogImage}`;
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Anti-flash: aplica dark/light ANTES del primer paint -->
+    <!-- Anti-flash: aplica modo y tema ANTES del primer paint -->
     <script is:inline>
       history.scrollRestoration = "manual";
       (function () {
-        var saved = localStorage.getItem("theme");
-        var mode = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        var mode  = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        var theme = localStorage.getItem("color-theme");
         document.documentElement.classList.toggle("dark", mode === "dark");
+        if (theme === "retro") document.documentElement.setAttribute("data-theme", "retro");
       })();
     </script>
 

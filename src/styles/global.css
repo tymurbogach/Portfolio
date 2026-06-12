@@ -67,6 +67,35 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   RETRO ARCADE — LIGHT
+   ═══════════════════════════════════════════════════ */
+[data-theme="retro"] {
+  --background:           rgb(253, 246, 227);
+  --foreground:           rgb(7, 54, 66);
+  --card:                 rgb(238, 232, 213);
+  --primary:              rgb(211, 54, 130);
+  --secondary:            rgb(42, 161, 152);
+  --secondary-foreground: rgb(255, 255, 255);
+  --muted:                rgb(147, 161, 161);
+  --accent:               rgb(203, 75, 22);
+  --accent-foreground:    rgb(255, 255, 255);
+  --border:               rgb(131, 148, 150);
+  --chart-2:              rgb(38, 139, 210);
+}
+
+/* ═══════════════════════════════════════════════════
+   RETRO ARCADE — DARK (solarized dark)
+   ═══════════════════════════════════════════════════ */
+[data-theme="retro"].dark {
+  --background:           rgb(0, 43, 54);
+  --foreground:           rgb(147, 161, 161);
+  --card:                 rgb(7, 54, 66);
+  --muted:                rgb(88, 110, 117);
+  --border:               rgb(88, 110, 117);
+  --secondary:            rgb(42, 161, 152);
+}
+
+/* ═══════════════════════════════════════════════════
    LAYOUT — responsive spacing overrides
    ═══════════════════════════════════════════════════ */
 
