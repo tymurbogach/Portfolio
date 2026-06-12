@@ -37,6 +37,15 @@
   --chart-2:              rgb(144, 0, 255);   /* violet */
   --chart-3:              rgb(0, 229, 255);   /* electric cyan */
   --chart-4:              rgb(0, 255, 204);   /* = accent */
+  --chart-5:                  rgb(255, 230, 0);
+  --card-foreground:          rgb(12, 12, 29);
+  --popover:                  rgb(255, 255, 255);
+  --popover-foreground:       rgb(12, 12, 29);
+  --destructive:              rgb(255, 61, 0);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(223, 230, 233);
+  --ring:                     rgb(255, 0, 200);
+  --radius:                   0rem;
 
   /* Derived composites */
   --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
@@ -75,6 +84,15 @@
   --chart-2:              rgb(144, 0, 255);
   --chart-3:              rgb(0, 229, 255);
   --chart-4:              rgb(0, 255, 204);
+  --chart-5:                  rgb(255, 230, 0);
+  --card-foreground:          rgb(236, 239, 244);
+  --popover:                  rgb(30, 30, 63);
+  --popover-foreground:       rgb(236, 239, 244);
+  --destructive:              rgb(255, 61, 0);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(46, 46, 94);
+  --ring:                     rgb(255, 0, 200);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
@@ -82,6 +100,9 @@
   --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.75);
 }
+
+/* ═══════════════════════════════════════════════════
+   RETRO ARCADE — LIGHT
 
 /* ═══════════════════════════════════════════════════
    RETRO ARCADE — LIGHT
@@ -103,6 +124,15 @@
   --chart-2:              rgb(38, 139, 210);
   --chart-3:              rgb(133, 153, 0);
   --chart-4:              rgb(181, 137, 0);
+  --chart-5:                  rgb(108, 113, 196);
+  --card-foreground:          rgb(7, 54, 66);
+  --popover:                  rgb(238, 232, 213);
+  --popover-foreground:       rgb(7, 54, 66);
+  --destructive:              rgb(220, 50, 47);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(131, 148, 150);
+  --ring:                     rgb(211, 54, 130);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
@@ -131,6 +161,15 @@
   --chart-2:              rgb(38, 139, 210);
   --chart-3:              rgb(133, 153, 0);
   --chart-4:              rgb(181, 137, 0);
+  --chart-5:                  rgb(108, 113, 196);
+  --card-foreground:          rgb(147, 161, 161);
+  --popover:                  rgb(7, 54, 66);
+  --popover-foreground:       rgb(147, 161, 161);
+  --destructive:              rgb(220, 50, 47);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(88, 110, 117);
+  --ring:                     rgb(211, 54, 130);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
@@ -159,6 +198,15 @@
   --chart-2:              rgb(132, 210, 226);
   --chart-3:              rgb(251, 226, 167);
   --chart-4:              rgb(243, 160, 202);
+  --chart-5:                  rgb(147, 208, 143);
+  --card-foreground:          rgb(91, 91, 91);
+  --popover:                  rgb(253, 237, 201);
+  --popover-foreground:       rgb(91, 91, 91);
+  --destructive:              rgb(255, 100, 130);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(208, 79, 153);
+  --ring:                     rgb(208, 79, 153);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
@@ -187,6 +235,15 @@
   --chart-2:              rgb(228, 162, 177);
   --chart-3:              rgb(198, 123, 150);
   --chart-4:              rgb(23, 92, 108);
+  --chart-5:                  rgb(147, 208, 143);
+  --card-foreground:          rgb(243, 227, 234);
+  --popover:                  rgb(28, 46, 56);
+  --popover-foreground:       rgb(243, 227, 234);
+  --destructive:              rgb(255, 100, 130);
+  --destructive-foreground:   rgb(18, 36, 46);
+  --input:                    rgb(50, 72, 89);
+  --ring:                     rgb(251, 226, 167);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
@@ -215,6 +272,15 @@
   --chart-2:              rgb(85, 107, 47);
   --chart-3:              rgb(70, 130, 180);
   --chart-4:              rgb(255, 111, 0);
+  --chart-5:                  rgb(255, 214, 0);
+  --card-foreground:          rgb(31, 31, 31);
+  --popover:                  rgb(176, 176, 176);
+  --popover-foreground:       rgb(31, 31, 31);
+  --destructive:              rgb(183, 28, 28);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(80, 80, 80);
+  --ring:                     rgb(183, 28, 28);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
@@ -243,12 +309,57 @@
   --chart-2:              rgb(104, 159, 56);
   --chart-3:              rgb(100, 181, 246);
   --chart-4:              rgb(255, 160, 0);
+  --chart-5:                  rgb(255, 214, 0);
+  --card-foreground:          rgb(224, 224, 224);
+  --popover:                  rgb(42, 42, 42);
+  --popover-foreground:       rgb(224, 224, 224);
+  --destructive:              rgb(229, 57, 53);
+  --destructive-foreground:   rgb(255, 255, 255);
+  --input:                    rgb(74, 74, 74);
+  --ring:                     rgb(229, 57, 53);
+  --radius:                   0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
   --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.75);
+}
+
+/* ═══════════════════════════════════════════════════
+   TAILWIND SEMANTIC UTILITIES (@theme inline)
+   Maps CSS vars → Tailwind color utilities.
+   Enables: bg-background, text-foreground, border-border, etc.
+   ═══════════════════════════════════════════════════ */
+@theme inline {
+  --color-background:             var(--background);
+  --color-foreground:             var(--foreground);
+  --color-card:                   var(--card);
+  --color-card-foreground:        var(--card-foreground);
+  --color-popover:                var(--popover);
+  --color-popover-foreground:     var(--popover-foreground);
+  --color-primary:                var(--primary);
+  --color-primary-foreground:     var(--primary-foreground);
+  --color-secondary:              var(--secondary);
+  --color-secondary-foreground:   var(--secondary-foreground);
+  --color-muted:                  var(--muted);
+  --color-muted-foreground:       var(--muted-foreground);
+  --color-accent:                 var(--accent);
+  --color-accent-foreground:      var(--accent-foreground);
+  --color-destructive:            var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border:                 var(--border);
+  --color-input:                  var(--input);
+  --color-ring:                   var(--ring);
+  --color-chart-1:                var(--chart-1);
+  --color-chart-2:                var(--chart-2);
+  --color-chart-3:                var(--chart-3);
+  --color-chart-4:                var(--chart-4);
+  --color-chart-5:                var(--chart-5);
+  --radius-sm: calc(var(--radius) + 0.125rem);
+  --radius-md: calc(var(--radius) + 0.25rem);
+  --radius-lg: calc(var(--radius) + 0.5rem);
+  --radius-xl: calc(var(--radius) + 1rem);
 }
 
 /* ═══════════════════════════════════════════════════
