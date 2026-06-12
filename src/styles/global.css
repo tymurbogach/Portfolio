@@ -25,13 +25,18 @@
   --foreground:           rgb(12, 12, 29);
   --card:                 rgb(255, 255, 255);
   --primary:              rgb(255, 0, 200);
+  --primary-foreground:   rgb(255, 255, 255);
   --secondary:            rgb(240, 240, 255);
   --secondary-foreground: rgb(12, 12, 29);
   --muted:                rgb(240, 240, 255);
+  --muted-foreground:     rgb(128, 133, 166);
   --accent:               rgb(0, 255, 204);
   --accent-foreground:    rgb(12, 12, 29);
   --border:               rgb(223, 230, 233);
-  --chart-2:              rgb(144, 0, 255);   /* violet — tertiary accent */
+  --chart-1:              rgb(255, 0, 200);   /* = primary */
+  --chart-2:              rgb(144, 0, 255);   /* violet */
+  --chart-3:              rgb(0, 229, 255);   /* electric cyan */
+  --chart-4:              rgb(0, 255, 204);   /* = accent */
 
   /* Derived composites */
   --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
@@ -57,13 +62,18 @@
   --foreground:           rgb(236, 239, 244);
   --card:                 rgb(30, 30, 63);
   --primary:              rgb(255, 0, 200);
+  --primary-foreground:   rgb(255, 255, 255);
   --secondary:            rgb(52, 52, 100);
   --secondary-foreground: rgb(236, 239, 244);
   --muted:                rgb(21, 21, 48);
+  --muted-foreground:     rgb(128, 133, 166);
   --accent:               rgb(0, 255, 204);
   --accent-foreground:    rgb(12, 12, 29);
   --border:               rgb(46, 46, 94);
+  --chart-1:              rgb(255, 0, 200);
   --chart-2:              rgb(144, 0, 255);
+  --chart-3:              rgb(0, 229, 255);
+  --chart-4:              rgb(0, 255, 204);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -74,13 +84,18 @@
   --foreground:           rgb(7, 54, 66);
   --card:                 rgb(238, 232, 213);
   --primary:              rgb(211, 54, 130);
+  --primary-foreground:   rgb(255, 255, 255);
   --secondary:            rgb(42, 161, 152);
   --secondary-foreground: rgb(255, 255, 255);
   --muted:                rgb(147, 161, 161);
+  --muted-foreground:     rgb(101, 123, 131);
   --accent:               rgb(203, 75, 22);
   --accent-foreground:    rgb(255, 255, 255);
   --border:               rgb(131, 148, 150);
+  --chart-1:              rgb(211, 54, 130);
   --chart-2:              rgb(38, 139, 210);
+  --chart-3:              rgb(133, 153, 0);
+  --chart-4:              rgb(181, 137, 0);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -91,6 +106,7 @@
   --foreground:           rgb(147, 161, 161);
   --card:                 rgb(7, 54, 66);
   --muted:                rgb(88, 110, 117);
+  --muted-foreground:     rgb(88, 110, 117);
   --border:               rgb(88, 110, 117);
   --secondary:            rgb(42, 161, 152);
 }
@@ -103,13 +119,18 @@
   --foreground:           rgb(91, 91, 91);
   --card:                 rgb(253, 237, 201);
   --primary:              rgb(208, 79, 153);
+  --primary-foreground:   rgb(255, 255, 255);
   --secondary:            rgb(138, 207, 209);
   --secondary-foreground: rgb(51, 51, 51);
   --muted:                rgb(178, 225, 235);
+  --muted-foreground:     rgb(122, 122, 122);
   --accent:               rgb(251, 226, 167);
   --accent-foreground:    rgb(51, 51, 51);
   --border:               rgb(208, 79, 153);
+  --chart-1:              rgb(230, 112, 171);
   --chart-2:              rgb(132, 210, 226);
+  --chart-3:              rgb(251, 226, 167);
+  --chart-4:              rgb(243, 160, 202);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -120,13 +141,18 @@
   --foreground:           rgb(243, 227, 234);
   --card:                 rgb(28, 46, 56);
   --primary:              rgb(251, 226, 167);
+  --primary-foreground:   rgb(18, 36, 46);
   --secondary:            rgb(228, 162, 177);
   --secondary-foreground: rgb(18, 36, 46);
   --muted:                rgb(36, 39, 43);
+  --muted-foreground:     rgb(228, 162, 177);
   --accent:               rgb(198, 123, 150);
   --accent-foreground:    rgb(243, 227, 234);
   --border:               rgb(50, 72, 89);
+  --chart-1:              rgb(80, 175, 182);
   --chart-2:              rgb(228, 162, 177);
+  --chart-3:              rgb(198, 123, 150);
+  --chart-4:              rgb(23, 92, 108);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -137,13 +163,18 @@
   --foreground:           rgb(31, 31, 31);
   --card:                 rgb(176, 176, 176);
   --primary:              rgb(183, 28, 28);
+  --primary-foreground:   rgb(255, 255, 255);
   --secondary:            rgb(85, 107, 47);
   --secondary-foreground: rgb(255, 255, 255);
   --muted:                rgb(184, 184, 184);
+  --muted-foreground:     rgb(74, 74, 74);
   --accent:               rgb(70, 130, 180);
   --accent-foreground:    rgb(255, 255, 255);
   --border:               rgb(80, 80, 80);
+  --chart-1:              rgb(183, 28, 28);
   --chart-2:              rgb(85, 107, 47);
+  --chart-3:              rgb(70, 130, 180);
+  --chart-4:              rgb(255, 111, 0);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -154,13 +185,18 @@
   --foreground:           rgb(224, 224, 224);
   --card:                 rgb(42, 42, 42);
   --primary:              rgb(229, 57, 53);
+  --primary-foreground:   rgb(255, 255, 255);
   --secondary:            rgb(104, 159, 56);
   --secondary-foreground: rgb(0, 0, 0);
   --muted:                rgb(37, 37, 37);
+  --muted-foreground:     rgb(160, 160, 160);
   --accent:               rgb(100, 181, 246);
   --accent-foreground:    rgb(0, 0, 0);
   --border:               rgb(74, 74, 74);
+  --chart-1:              rgb(229, 57, 53);
   --chart-2:              rgb(104, 159, 56);
+  --chart-3:              rgb(100, 181, 246);
+  --chart-4:              rgb(255, 160, 0);
 }
 
 /* ═══════════════════════════════════════════════════

@@ -76,7 +76,9 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       class="absolute top-2 left-3 z-20
              text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
              border border-[var(--border-subtle)] bg-[var(--background)]"
-      style={`opacity: 0.85; color: ${isDemo ? "var(--accent)" : "var(--primary)"};`}
+      style={isDemo
+        ? "background: var(--accent); color: var(--accent-foreground); opacity: 0.9;"
+        : "border-color: var(--primary); color: var(--primary); opacity: 0.85;"}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
@@ -131,7 +133,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       </div>
       <p
         class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="opacity: 0.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
+        style="color: var(--muted-foreground); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       >
         {description}
       </p>
@@ -208,7 +210,9 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       class="absolute top-2 left-3 z-20
              text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
              border border-[var(--border-subtle)] bg-[var(--background)]"
-      style={`opacity: 0.85; color: ${isDemo ? "var(--accent)" : "var(--primary)"};`}
+      style={isDemo
+        ? "background: var(--accent); color: var(--accent-foreground); opacity: 0.9;"
+        : "border-color: var(--primary); color: var(--primary); opacity: 0.85;"}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
@@ -259,7 +263,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
       </div>
       <p
         class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="opacity: 0.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
+        style="color: var(--muted-foreground); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       >
         {description}
       </p>

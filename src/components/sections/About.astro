@@ -40,7 +40,7 @@ const { journey, education, hobbies } = about;
                 {event}
               </span>
             </div>
-            <p class="text-xs laptop:text-sm laptop-scaled:text-sm fhd:text-base qhd:text-lg uhd:text-xl opacity-70 leading-relaxed">{detail}</p>
+            <p class="text-xs laptop:text-sm laptop-scaled:text-sm fhd:text-base qhd:text-lg uhd:text-xl leading-relaxed" style="color: var(--muted-foreground);">{detail}</p>
           </div>
 
         </div>
@@ -60,7 +60,7 @@ const { journey, education, hobbies } = about;
           <p class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.1em] uppercase opacity-55 mt-0.5">{sub}</p>
         </div>
 
-        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.15em] uppercase opacity-40 font-bold whitespace-nowrap mt-0.5 shrink-0">
+        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0" style="color: var(--chart-4); opacity: 0.7;">
           {years}
         </span>
       </div>
@@ -80,7 +80,7 @@ const { journey, education, hobbies } = about;
           </div>
           {detail && (
             <span class="text-[0.48rem] laptop:text-[0.54rem] fhd:text-[0.6rem] qhd:text-xs uhd:text-sm
-                         tracking-[0.08em] shrink-0 text-right" style="color: var(--chart-2); opacity: 0.55;">{detail}</span>
+                         tracking-[0.08em] shrink-0 text-right" style="color: var(--chart-3); opacity: 0.65;">{detail}</span>
           )}
         </div>
       ))}
