@@ -1,21 +1,11 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════════════
-   VARIANTE — escalado OS alto
-   Activa layout escritorio cuando DPR ≥ 1.4 y viewport ≥ 60rem.
-   Cubre portátiles 1080p/1440p con escalado 150-200%.
-   ═══════════════════════════════════════════════════════ */
+/* ── Custom variants ─────────────────────────────── */
 @variant laptop-scaled (@media (min-resolution: 1.4dppx) and (min-width: 60rem));
-
-/* Hover only on true pointer devices — prevents :hover sticking on iOS/Android after tap */
 @variant can-hover (@media (hover: hover) and (pointer: fine));
-
-/* Dark mode variant — .dark class on <html> */
 @custom-variant dark (&:is(.dark *));
 
-/* ═══════════════════════════════════════════════════════
-   BREAKPOINTS
-   ═══════════════════════════════════════════════════════ */
+/* ── Breakpoints ─────────────────────────────────── */
 @theme {
   --breakpoint-mobile:  30rem;   /* ≈  480px */
   --breakpoint-tablet:  48rem;   /* ≈  768px */
@@ -26,51 +16,30 @@
   --breakpoint-uhd:     240rem;  /* ≈ 3840px */
 }
 
-/* ═══════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    TWEAKCN CYBERPUNK — LIGHT (default)
-   ═══════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 :root {
-  --background: rgb(248, 249, 250);
-  --foreground: rgb(12, 12, 29);
-  --card: rgb(255, 255, 255);
-  --card-foreground: rgb(12, 12, 29);
-  --popover: rgb(255, 255, 255);
-  --popover-foreground: rgb(12, 12, 29);
-  --primary: rgb(255, 0, 200);
-  --primary-foreground: rgb(255, 255, 255);
-  --secondary: rgb(240, 240, 255);
+  /* Core palette */
+  --background:           rgb(248, 249, 250);
+  --foreground:           rgb(12, 12, 29);
+  --card:                 rgb(255, 255, 255);
+  --primary:              rgb(255, 0, 200);
+  --secondary:            rgb(240, 240, 255);
   --secondary-foreground: rgb(12, 12, 29);
-  --muted: rgb(240, 240, 255);
-  --muted-foreground: rgb(128, 133, 166);
-  --accent: rgb(0, 255, 204);
-  --accent-foreground: rgb(12, 12, 29);
-  --destructive: rgb(255, 61, 0);
-  --destructive-foreground: rgb(255, 255, 255);
-  --border: rgb(223, 230, 233);
-  --input: rgb(223, 230, 233);
-  --ring: rgb(255, 0, 200);
-  --chart-1: rgb(255, 0, 200);
-  --chart-2: rgb(144, 0, 255);
-  --chart-3: rgb(0, 229, 255);
-  --chart-4: rgb(0, 255, 204);
-  --chart-5: rgb(255, 230, 0);
-  --sidebar: rgb(240, 240, 255);
-  --sidebar-foreground: rgb(12, 12, 29);
-  --sidebar-primary: rgb(255, 0, 200);
-  --sidebar-primary-foreground: rgb(255, 255, 255);
-  --sidebar-accent: rgb(0, 255, 204);
-  --sidebar-accent-foreground: rgb(12, 12, 29);
-  --sidebar-border: rgb(223, 230, 233);
-  --sidebar-ring: rgb(255, 0, 200);
-  --radius: 0.5rem;
+  --muted:                rgb(240, 240, 255);
+  --accent:               rgb(0, 255, 204);
+  --accent-foreground:    rgb(12, 12, 29);
+  --border:               rgb(223, 230, 233);
+  --chart-2:              rgb(144, 0, 255);   /* violet — tertiary accent */
 
-  /* === DERIVED — portfolio-specific composites === */
+  /* Derived composites */
   --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:    color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow:     color-mix(in srgb, var(--accent) 6%, transparent);
   --gradient-border:  linear-gradient(90deg, var(--accent), var(--primary));
 
-  /* === LAYOUT — non-theme spacing (mobile base) === */
+  /* Layout — non-theme, mobile base */
   --scroll-offset:  60px;
   --sidebar-width:  22rem;
   --main-padding:    6rem;
@@ -80,92 +49,28 @@
   --nav-icon-size:   1.25rem;
 }
 
-/* ═══════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    TWEAKCN CYBERPUNK — DARK
-   ═══════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 .dark {
-  --background: rgb(12, 12, 29);
-  --foreground: rgb(236, 239, 244);
-  --card: rgb(30, 30, 63);
-  --card-foreground: rgb(236, 239, 244);
-  --popover: rgb(30, 30, 63);
-  --popover-foreground: rgb(236, 239, 244);
-  --primary: rgb(255, 0, 200);
-  --primary-foreground: rgb(255, 255, 255);
-  --secondary: rgb(52, 52, 100);
+  --background:           rgb(12, 12, 29);
+  --foreground:           rgb(236, 239, 244);
+  --card:                 rgb(30, 30, 63);
+  --primary:              rgb(255, 0, 200);
+  --secondary:            rgb(52, 52, 100);
   --secondary-foreground: rgb(236, 239, 244);
-  --muted: rgb(21, 21, 48);
-  --muted-foreground: rgb(128, 133, 166);
-  --accent: rgb(0, 255, 204);
-  --accent-foreground: rgb(12, 12, 29);
-  --destructive: rgb(255, 61, 0);
-  --destructive-foreground: rgb(255, 255, 255);
-  --border: rgb(46, 46, 94);
-  --input: rgb(46, 46, 94);
-  --ring: rgb(255, 0, 200);
-  --chart-1: rgb(255, 0, 200);
-  --chart-2: rgb(144, 0, 255);
-  --chart-3: rgb(0, 229, 255);
-  --chart-4: rgb(0, 255, 204);
-  --chart-5: rgb(255, 230, 0);
-  --sidebar: rgb(12, 12, 29);
-  --sidebar-foreground: rgb(236, 239, 244);
-  --sidebar-primary: rgb(255, 0, 200);
-  --sidebar-primary-foreground: rgb(255, 255, 255);
-  --sidebar-accent: rgb(0, 255, 204);
-  --sidebar-accent-foreground: rgb(12, 12, 29);
-  --sidebar-border: rgb(46, 46, 94);
-  --sidebar-ring: rgb(255, 0, 200);
+  --muted:                rgb(21, 21, 48);
+  --accent:               rgb(0, 255, 204);
+  --accent-foreground:    rgb(12, 12, 29);
+  --border:               rgb(46, 46, 94);
+  --chart-2:              rgb(144, 0, 255);
 }
 
-/* ═══════════════════════════════════════════════════════
-   @theme inline — Tailwind token mapping
-   ═══════════════════════════════════════════════════════ */
-@theme inline {
-  --color-background:              var(--background);
-  --color-foreground:              var(--foreground);
-  --color-card:                    var(--card);
-  --color-card-foreground:         var(--card-foreground);
-  --color-popover:                 var(--popover);
-  --color-popover-foreground:      var(--popover-foreground);
-  --color-primary:                 var(--primary);
-  --color-primary-foreground:      var(--primary-foreground);
-  --color-secondary:               var(--secondary);
-  --color-secondary-foreground:    var(--secondary-foreground);
-  --color-muted:                   var(--muted);
-  --color-muted-foreground:        var(--muted-foreground);
-  --color-accent:                  var(--accent);
-  --color-accent-foreground:       var(--accent-foreground);
-  --color-destructive:             var(--destructive);
-  --color-destructive-foreground:  var(--destructive-foreground);
-  --color-border:                  var(--border);
-  --color-input:                   var(--input);
-  --color-ring:                    var(--ring);
-  --color-chart-1:                 var(--chart-1);
-  --color-chart-2:                 var(--chart-2);
-  --color-chart-3:                 var(--chart-3);
-  --color-chart-4:                 var(--chart-4);
-  --color-chart-5:                 var(--chart-5);
-  --color-sidebar:                 var(--sidebar);
-  --color-sidebar-foreground:      var(--sidebar-foreground);
-  --color-sidebar-primary:         var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent:          var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border:          var(--sidebar-border);
-  --color-sidebar-ring:            var(--sidebar-ring);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
-/* ═══════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    LAYOUT — responsive spacing overrides
-   ═══════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 
-/* ── Mobile ≥ 480px ──────────────────────────────────── */
+/* Mobile ≥ 480px */
 @media (min-width: 30rem) {
   :root {
     --nav-width:     20rem;
@@ -174,16 +79,12 @@
   }
 }
 
-/* ── Tablet ≥ 768px ──────────────────────────────────── */
+/* Tablet ≥ 768px */
 @media (min-width: 48rem) {
-  :root {
-    --nav-icon-size: 1.75rem;
-  }
+  :root { --nav-icon-size: 1.75rem; }
 }
 
-/* ── Laptop escalado (DPR ≥ 1.4, viewport 60–79rem) ─────
-   Portátiles 1080p/1440p con OS scaling 150-200%.
-   A ≥ 80rem, el breakpoint laptop estándar toma el control.  */
+/* Laptop escalado (DPR ≥ 1.4, viewport 60–79rem) */
 @media (min-resolution: 1.4dppx) and (min-width: 60rem) and (max-width: 79rem) {
   :root {
     --sidebar-width: 18rem;
@@ -195,7 +96,7 @@
   }
 }
 
-/* ── Laptop ≥ 1280px ─────────────────────────────────── */
+/* Laptop ≥ 1280px */
 @media (min-width: 80rem) {
   :root {
     --nav-width:     25rem;
@@ -206,7 +107,7 @@
   }
 }
 
-/* ── FHD ≥ 1920px ────────────────────────────────────── */
+/* FHD ≥ 1920px */
 @media (min-width: 120rem) {
   :root {
     --sidebar-width: 27rem;
@@ -217,7 +118,7 @@
   }
 }
 
-/* ── QHD ≥ 2560px ────────────────────────────────────── */
+/* QHD ≥ 2560px */
 @media (min-width: 160rem) {
   :root {
     --sidebar-width: 32rem;
@@ -228,7 +129,7 @@
   }
 }
 
-/* ── UHD 4K ≥ 3840px ─────────────────────────────────── */
+/* UHD 4K ≥ 3840px */
 @media (min-width: 240rem) {
   :root {
     --sidebar-width: 37rem;
@@ -239,9 +140,9 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════
-   TIPOGRAFÍA Y RESET
-   ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   TYPOGRAPHY & RESET
+   ═══════════════════════════════════════════════════ */
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -272,18 +173,15 @@ html, body {
 }
 
 textarea:focus-visible,
-input:focus-visible {
-  outline: none;
-}
+input:focus-visible { outline: none; }
 
-/* Remove native tap highlight, callout menu, and 300ms delay on interactive elements */
 a, button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
   touch-action: manipulation;
 }
 
-/* Grain texture — primer surface feel */
+/* Grain texture */
 body::after {
   content: "";
   position: fixed;
@@ -294,15 +192,14 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
-/* ── Padding del box principal — activo solo en layout desktop ── */
 @media (min-width: 80rem),
        (min-resolution: 1.4dppx) and (min-width: 60rem) and (max-width: 79rem) {
   .main-layout { padding: var(--main-padding); }
 }
 
-/* ═══════════════════════════════════════════════════════
-   UTILIDADES
-   ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════ */
 @utility text-gradient {
   background: var(--gradient-border);
   -webkit-background-clip: text;
@@ -313,7 +210,7 @@ body::after {
 @utility neon-border {
   border: 1px solid var(--accent);
   box-shadow:
-    0 0 6px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 6px  color-mix(in srgb, var(--accent) 35%, transparent),
     0 0 20px color-mix(in srgb, var(--accent) 35%, transparent),
     inset 0 0 6px color-mix(in srgb, var(--accent) 35%, transparent);
 }
@@ -326,7 +223,7 @@ body::after {
 
 @utility text-glow {
   text-shadow:
-    0 0 8px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 8px  color-mix(in srgb, var(--accent) 35%, transparent),
     0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
@@ -358,7 +255,6 @@ body::after {
 
 @utility hover-glow {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  /* Only activate on pointer devices — prevents sticky state on touch */
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       box-shadow: 0 0 15px color-mix(in srgb, var(--accent) 35%, transparent);
@@ -393,13 +289,13 @@ body::after {
   font-family: "Poiret One", cursive;
 }
 
-/* Contenedor panel compartido — NavBar, NameCard, SocialLinks, SocialBotPanel */
+/* Shared panel — NavBar, NameCard, SocialLinks, SocialBotPanel */
 @utility nav-panel {
   @apply bg-[var(--card)] border-y border-[var(--border)] rounded-none m-0 shadow-none;
   @apply mobile:shadow-md tablet:shadow-lg;
 }
 
-/* Etiqueta de categoría — tiny-caps tracking-wide, usada en Resume, About, SectionHeading */
+/* Category label — tiny-caps tracking-wide */
 @utility cat-label {
   font-size: 0.6rem;
   letter-spacing: 0.5em;
@@ -412,7 +308,6 @@ body::after {
   @media (min-width: 240rem) { font-size: 0.875rem; }
 }
 
-/* Texto de chip — etiqueta de skill o idioma dentro de skill-chip */
 @utility chip-label {
   font-size: 0.6rem;
   letter-spacing: 0.05em;
@@ -445,7 +340,7 @@ body::after {
   }
 }
 
-/* Celda interactiva — mismo hover/tap en todos los botones de nav */
+/* Interactive nav cell — hover + tap feedback */
 @utility nav-cell {
   background: transparent;
   border: none;
@@ -457,11 +352,7 @@ body::after {
   }
 }
 
-/* ── Botones de acción — sistema unificado ─────────────────────────────────
-   btn-base  : base compartida (display, cursor, transición solo en desktop)
-   btn-primary: borde acento → rellena acento en hover/active
-   btn-ghost  : borde sutil → rellena acento en hover/active
-   ─────────────────────────────────────────────────────────────────────────── */
+/* ── Buttons ─────────────────────────────────────── */
 @utility btn-base {
   display: inline-flex;
   align-items: center;
@@ -473,6 +364,7 @@ body::after {
   }
 }
 
+/* Solid accent fill on hover */
 @utility btn-primary {
   border: 1px solid var(--accent);
   color: var(--accent);
@@ -489,6 +381,7 @@ body::after {
   }
 }
 
+/* Subtle teal tint on hover */
 @utility btn-accent {
   border: 1px solid var(--accent);
   color: var(--accent);
@@ -503,6 +396,7 @@ body::after {
   }
 }
 
+/* Solid accent fill on hover, starting from muted border */
 @utility btn-ghost {
   border: 1px solid var(--border);
   color: var(--foreground);
@@ -523,41 +417,39 @@ body::after {
   }
 }
 
-/* ═══════════════════════════════════════════════════════
-   ANIMACIONES
-   ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
 @keyframes tap-pressed {
   0%, 40% { opacity: 0.4; }
-  100%    { opacity: 1;   }
+  100%    { opacity: 1; }
 }
-.tap-pressed {
-  animation: tap-pressed 1s ease-out !important;
-}
+.tap-pressed { animation: tap-pressed 1s ease-out !important; }
 
 @keyframes nav-tap {
   0%, 50% { background-color: var(--secondary); color: var(--secondary-foreground); }
   100%    { background-color: transparent;       color: var(--foreground); }
 }
-.nav-tap-pressed {
-  animation: nav-tap 1s ease-out !important;
-}
+.nav-tap-pressed { animation: nav-tap 1s ease-out !important; }
 
 @keyframes namecard-tap {
   0%   { background-color: var(--secondary); color: var(--secondary-foreground); }
   30%  { background-color: var(--secondary); color: var(--foreground); }
   100% { background-color: transparent;      color: var(--foreground); }
 }
-.namecard-tap-pressed {
-  animation: namecard-tap 0.5s ease-out !important;
-}
+.namecard-tap-pressed { animation: namecard-tap 0.5s ease-out !important; }
 
 @keyframes blink {
   0%, 100% { opacity: 0.6; }
-  50%       { opacity: 0; }
+  50%      { opacity: 0; }
 }
 .terminal-cursor { animation: blink 1s step-end infinite; }
 
-/* ── Contact form: spinner ──────────────────────────────── */
 @keyframes form-spin {
   to { transform: rotate(360deg); }
 }
@@ -566,13 +458,12 @@ body::after {
   flex-shrink: 0;
 }
 
-/* ── Contact form: status error variant ─────────────────── */
+/* ── Contact form states ─────────────────────────── */
 .form-status--error {
   color: var(--primary);
   border-color: var(--primary);
 }
 
-/* ── Contact form: success block ────────────────────────── */
 .form-success {
   display: flex;
   flex-direction: column;
