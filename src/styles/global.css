@@ -96,6 +96,74 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   BUBBLEGUM — LIGHT
+   ═══════════════════════════════════════════════════ */
+[data-theme="bubblegum"] {
+  --background:           rgb(246, 230, 238);
+  --foreground:           rgb(91, 91, 91);
+  --card:                 rgb(253, 237, 201);
+  --primary:              rgb(208, 79, 153);
+  --secondary:            rgb(138, 207, 209);
+  --secondary-foreground: rgb(51, 51, 51);
+  --muted:                rgb(178, 225, 235);
+  --accent:               rgb(251, 226, 167);
+  --accent-foreground:    rgb(51, 51, 51);
+  --border:               rgb(208, 79, 153);
+  --chart-2:              rgb(132, 210, 226);
+}
+
+/* ═══════════════════════════════════════════════════
+   BUBBLEGUM — DARK
+   ═══════════════════════════════════════════════════ */
+[data-theme="bubblegum"].dark {
+  --background:           rgb(18, 36, 46);
+  --foreground:           rgb(243, 227, 234);
+  --card:                 rgb(28, 46, 56);
+  --primary:              rgb(251, 226, 167);
+  --secondary:            rgb(228, 162, 177);
+  --secondary-foreground: rgb(18, 36, 46);
+  --muted:                rgb(36, 39, 43);
+  --accent:               rgb(198, 123, 150);
+  --accent-foreground:    rgb(243, 227, 234);
+  --border:               rgb(50, 72, 89);
+  --chart-2:              rgb(228, 162, 177);
+}
+
+/* ═══════════════════════════════════════════════════
+   DOOM 64 — LIGHT
+   ═══════════════════════════════════════════════════ */
+[data-theme="doom"] {
+  --background:           rgb(204, 204, 204);
+  --foreground:           rgb(31, 31, 31);
+  --card:                 rgb(176, 176, 176);
+  --primary:              rgb(183, 28, 28);
+  --secondary:            rgb(85, 107, 47);
+  --secondary-foreground: rgb(255, 255, 255);
+  --muted:                rgb(184, 184, 184);
+  --accent:               rgb(70, 130, 180);
+  --accent-foreground:    rgb(255, 255, 255);
+  --border:               rgb(80, 80, 80);
+  --chart-2:              rgb(85, 107, 47);
+}
+
+/* ═══════════════════════════════════════════════════
+   DOOM 64 — DARK
+   ═══════════════════════════════════════════════════ */
+[data-theme="doom"].dark {
+  --background:           rgb(26, 26, 26);
+  --foreground:           rgb(224, 224, 224);
+  --card:                 rgb(42, 42, 42);
+  --primary:              rgb(229, 57, 53);
+  --secondary:            rgb(104, 159, 56);
+  --secondary-foreground: rgb(0, 0, 0);
+  --muted:                rgb(37, 37, 37);
+  --accent:               rgb(100, 181, 246);
+  --accent-foreground:    rgb(0, 0, 0);
+  --border:               rgb(74, 74, 74);
+  --chart-2:              rgb(104, 159, 56);
+}
+
+/* ═══════════════════════════════════════════════════
    LAYOUT — responsive spacing overrides
    ═══════════════════════════════════════════════════ */
 

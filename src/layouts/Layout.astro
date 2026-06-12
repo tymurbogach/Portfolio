@@ -60,7 +60,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
         var mode  = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         var theme = localStorage.getItem("color-theme");
         document.documentElement.classList.toggle("dark", mode === "dark");
-        if (theme === "retro") document.documentElement.setAttribute("data-theme", "retro");
+        if (theme && theme !== "cyberpunk") document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
 
