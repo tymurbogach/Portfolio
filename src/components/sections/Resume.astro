@@ -58,10 +58,12 @@ const categories = [
       {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
         <span class="skill-chip">
           <span class="text-[0.9rem] laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none shrink-0" aria-hidden="true">{flag}</span>
-          <span class="chip-label">{lang}</span>
-          <span class="text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs
-                       tracking-[0.15em] uppercase leading-none font-bold"
-                style="color: var(--chart-2); opacity: 0.65;">{level}</span>
+          <span class="flex flex-col min-w-0">
+            <span class="chip-label">{lang}</span>
+            <span class="text-[0.42rem] laptop:text-[0.46rem] fhd:text-[0.52rem] qhd:text-[0.62rem]
+                         tracking-[0.12em] uppercase font-bold leading-tight"
+                  style="color: var(--chart-2); opacity: 0.65;">{level}</span>
+          </span>
         </span>
       ))}
     </div>
