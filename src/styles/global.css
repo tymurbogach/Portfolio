@@ -17,57 +17,10 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   TWEAKCN CYBERPUNK — LIGHT (default)
+   TWEAKCN CYBERPUNK — DARK (default / :root)
    ═══════════════════════════════════════════════════ */
 :root {
   /* Core palette */
-  --background:           rgb(248, 249, 250);
-  --foreground:           rgb(12, 12, 29);
-  --card:                 rgb(255, 255, 255);
-  --primary:              rgb(255, 0, 200);
-  --primary-foreground:   rgb(255, 255, 255);
-  --secondary:            rgb(240, 240, 255);
-  --secondary-foreground: rgb(12, 12, 29);
-  --muted:                rgb(240, 240, 255);
-  --muted-foreground:     rgb(128, 133, 166);
-  --accent:               rgb(0, 255, 204);
-  --accent-foreground:    rgb(12, 12, 29);
-  --border:               rgb(223, 230, 233);
-  --chart-1:              rgb(255, 0, 200);   /* = primary */
-  --chart-2:              rgb(144, 0, 255);   /* violet */
-  --chart-3:              rgb(0, 229, 255);   /* electric cyan */
-  --chart-4:              rgb(0, 255, 204);   /* = accent */
-  --chart-5:                  rgb(255, 230, 0);
-  --card-foreground:          rgb(12, 12, 29);
-  --popover:                  rgb(255, 255, 255);
-  --popover-foreground:       rgb(12, 12, 29);
-  --destructive:              rgb(255, 61, 0);
-  --destructive-foreground:   rgb(255, 255, 255);
-  --input:                    rgb(223, 230, 233);
-  --ring:                     rgb(255, 0, 200);
-  --radius:                   0rem;
-
-  /* Derived composites */
-  --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:    color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:     color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border:  linear-gradient(90deg, var(--accent), var(--primary));
-  --overlay:          rgba(0, 0, 0, 0.55);
-
-  /* Layout — non-theme, mobile base */
-  --scroll-offset:  60px;
-  --sidebar-width:  22rem;
-  --main-padding:    6rem;
-  --fixed-offset:    3rem;
-  --nav-width:       100%;
-  --nav-height:      3rem;
-  --nav-icon-size:   1.25rem;
-}
-
-/* ═══════════════════════════════════════════════════
-   TWEAKCN CYBERPUNK — DARK
-   ═══════════════════════════════════════════════════ */
-.dark {
   --background:           rgb(12, 12, 29);
   --foreground:           rgb(236, 239, 244);
   --card:                 rgb(30, 30, 63);
@@ -84,25 +37,69 @@
   --chart-2:              rgb(144, 0, 255);
   --chart-3:              rgb(0, 229, 255);
   --chart-4:              rgb(0, 255, 204);
-  --chart-5:                  rgb(255, 230, 0);
-  --card-foreground:          rgb(236, 239, 244);
-  --popover:                  rgb(30, 30, 63);
-  --popover-foreground:       rgb(236, 239, 244);
-  --destructive:              rgb(255, 61, 0);
-  --destructive-foreground:   rgb(255, 255, 255);
-  --input:                    rgb(46, 46, 94);
-  --ring:                     rgb(255, 0, 200);
-  --radius:                   0rem;
+  --chart-5:              rgb(255, 230, 0);
+  --card-foreground:      rgb(236, 239, 244);
+  --popover:              rgb(30, 30, 63);
+  --popover-foreground:   rgb(236, 239, 244);
+  --destructive:          rgb(255, 61, 0);
+  --destructive-foreground: rgb(255, 255, 255);
+  --input:                rgb(46, 46, 94);
+  --ring:                 rgb(255, 0, 200);
+  --radius:               0rem;
+
+  /* Derived composites */
+  --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:    color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:     color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border:  linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:          rgba(0, 0, 0, 0.75);
+
+  /* Layout — non-theme, mobile base */
+  --scroll-offset:  60px;
+  --sidebar-width:  22rem;
+  --main-padding:    6rem;
+  --fixed-offset:    3rem;
+  --nav-width:       100%;
+  --nav-height:      3rem;
+  --nav-icon-size:   1.25rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   TWEAKCN CYBERPUNK — LIGHT (.dark class = light for cyberpunk)
+   ═══════════════════════════════════════════════════ */
+.dark {
+  --background:           rgb(248, 249, 250);
+  --foreground:           rgb(12, 12, 29);
+  --card:                 rgb(255, 255, 255);
+  --primary:              rgb(255, 0, 200);
+  --primary-foreground:   rgb(255, 255, 255);
+  --secondary:            rgb(240, 240, 255);
+  --secondary-foreground: rgb(12, 12, 29);
+  --muted:                rgb(240, 240, 255);
+  --muted-foreground:     rgb(128, 133, 166);
+  --accent:               rgb(0, 255, 204);
+  --accent-foreground:    rgb(12, 12, 29);
+  --border:               rgb(223, 230, 233);
+  --chart-1:              rgb(255, 0, 200);
+  --chart-2:              rgb(144, 0, 255);
+  --chart-3:              rgb(0, 229, 255);
+  --chart-4:              rgb(0, 255, 204);
+  --chart-5:              rgb(255, 230, 0);
+  --card-foreground:      rgb(12, 12, 29);
+  --popover:              rgb(255, 255, 255);
+  --popover-foreground:   rgb(12, 12, 29);
+  --destructive:          rgb(255, 61, 0);
+  --destructive-foreground: rgb(255, 255, 255);
+  --input:                rgb(223, 230, 233);
+  --ring:                 rgb(255, 0, 200);
+  --radius:               0rem;
   /* Derived composites */
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
   --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
-  --overlay:         rgba(0, 0, 0, 0.75);
+  --overlay:         rgba(0, 0, 0, 0.55);
 }
-
-/* ═══════════════════════════════════════════════════
-   RETRO ARCADE — LIGHT
 
 /* ═══════════════════════════════════════════════════
    RETRO ARCADE — LIGHT

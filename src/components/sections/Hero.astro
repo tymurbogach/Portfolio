@@ -85,12 +85,11 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
         type="button"
         role="switch"
       >
-        <!-- Sun half — active in light mode -->
+        <!-- Sun half — JS controls active state via style -->
         <span
           id="toggle-light"
-          class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200
-                 bg-[var(--accent)] text-[var(--accent-foreground)] opacity-100
-                 dark:bg-transparent dark:opacity-40"
+          class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200"
+          style="background:transparent; opacity:0.4;"
         >
           <svg class="w-[0.65rem] h-[0.65rem] laptop:w-[0.75rem] laptop:h-[0.75rem] fhd:w-[0.85rem] fhd:h-[0.85rem]"
                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -99,12 +98,11 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
           </svg>
         </span>
-        <!-- Moon half — active in dark mode -->
+        <!-- Moon half — JS controls active state via style -->
         <span
           id="toggle-dark"
-          class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200
-                 bg-transparent opacity-40
-                 dark:bg-[var(--accent)] dark:text-[var(--accent-foreground)] dark:opacity-100"
+          class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200"
+          style="background:var(--accent); color:var(--accent-foreground); opacity:1;"
         >
           <svg class="w-[0.65rem] h-[0.65rem] laptop:w-[0.75rem] laptop:h-[0.75rem] fhd:w-[0.85rem] fhd:h-[0.85rem]"
                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"

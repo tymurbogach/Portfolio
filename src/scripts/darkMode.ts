@@ -13,8 +13,14 @@ function getSystemMode(): Mode {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function applyMode(mode: Mode): void {
-  document.documentElement.classList.toggle("dark", mode === "dark");
+/**
+ * Cyberpunk: :root = dark (default, no class needed).
+ *            .dark class = light mode override.
+ * Others:    .dark class = dark mode (normal convention).
+ */
+function applyMode(mode: Mode, theme: Theme): void {
+  const needsDark = theme === "cyberpunk" ? mode === "light" : mode === "dark";
+  document.documentElement.classList.toggle("dark", needsDark);
 }
 
 function applyTheme(theme: Theme): void {
@@ -27,6 +33,19 @@ function applyTheme(theme: Theme): void {
   if (labelEl) labelEl.textContent = THEME_LABELS[theme];
 }
 
+function updateTogglePill(mode: Mode): void {
+  const lightHalf = document.getElementById("toggle-light");
+  const darkHalf  = document.getElementById("toggle-dark");
+  if (!lightHalf || !darkHalf) return;
+  const isDark = mode === "dark";
+  lightHalf.style.background    = isDark ? "transparent"          : "var(--accent)";
+  lightHalf.style.color         = isDark ? ""                     : "var(--accent-foreground)";
+  lightHalf.style.opacity       = isDark ? "0.4"                  : "1";
+  darkHalf.style.background     = isDark ? "var(--accent)"        : "transparent";
+  darkHalf.style.color          = isDark ? "var(--accent-foreground)" : "";
+  darkHalf.style.opacity        = isDark ? "1"                    : "0.4";
+}
+
 function initThemeMode(): void {
   const modeBtn  = document.getElementById("theme-toggle");
   const themeBtn = document.getElementById("color-theme-btn");
@@ -34,19 +53,21 @@ function initThemeMode(): void {
 
   const savedMode  = localStorage.getItem("theme") as Mode | null;
   const savedTheme = localStorage.getItem("color-theme") as Theme | null;
-  let currentMode:  Mode  = savedMode ?? getSystemMode();
+  let currentMode:  Mode  = savedMode ?? "dark";
   let currentTheme: Theme = (THEMES as readonly string[]).includes(savedTheme ?? "")
     ? (savedTheme as Theme)
     : "cyberpunk";
 
-  applyMode(currentMode);
+  applyMode(currentMode, currentTheme);
   applyTheme(currentTheme);
+  updateTogglePill(currentMode);
 
   const newModeBtn = modeBtn.cloneNode(true) as HTMLElement;
   modeBtn.parentNode?.replaceChild(newModeBtn, modeBtn);
   newModeBtn.addEventListener("click", () => {
     currentMode = currentMode === "dark" ? "light" : "dark";
-    applyMode(currentMode);
+    applyMode(currentMode, currentTheme);
+    updateTogglePill(currentMode);
     localStorage.setItem("theme", currentMode);
   });
 
@@ -57,6 +78,7 @@ function initThemeMode(): void {
       const idx = (THEMES.indexOf(currentTheme) + 1) % THEMES.length;
       currentTheme = THEMES[idx];
       applyTheme(currentTheme);
+      applyMode(currentMode, currentTheme);
       localStorage.setItem("color-theme", currentTheme);
     });
   }
@@ -66,9 +88,10 @@ document.addEventListener("astro:page-load", initThemeMode);
 
 document.addEventListener("astro:before-swap", (e) => {
   const event = e as TransitionBeforeSwapEvent;
-  const mode  = localStorage.getItem("theme") ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  const theme = localStorage.getItem("color-theme");
-  event.newDocument.documentElement.classList.toggle("dark", mode === "dark");
+  const mode  = (localStorage.getItem("theme") as Mode | null) ?? "dark";
+  const theme = (localStorage.getItem("color-theme") as Theme | null) ?? "cyberpunk";
+  const needsDark = theme === "cyberpunk" ? mode === "light" : mode === "dark";
+  event.newDocument.documentElement.classList.toggle("dark", needsDark);
   if (theme && theme !== "cyberpunk") {
     event.newDocument.documentElement.setAttribute("data-theme", theme);
   } else {

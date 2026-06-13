@@ -49,17 +49,20 @@ const ogImageUrl = `${site.url}${ogImage}`;
 ---
 
 <!doctype html>
-<html lang={site.lang} class="dark">
+<html lang={site.lang}>
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Anti-flash: aplica modo y tema ANTES del primer paint -->
+    <!-- Anti-flash: aplica modo y tema ANTES del primer paint.
+         Cyberpunk: :root = dark (default). .dark class = light mode.
+         Otros temas: .dark class = dark mode (convención normal). -->
     <script is:inline>
       history.scrollRestoration = "manual";
       (function () {
-        var mode  = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        var theme = localStorage.getItem("color-theme");
-        document.documentElement.classList.toggle("dark", mode === "dark");
+        var mode  = localStorage.getItem("theme") || "dark";
+        var theme = localStorage.getItem("color-theme") || "cyberpunk";
+        var needsDark = (theme === "cyberpunk") ? (mode === "light") : (mode === "dark");
+        document.documentElement.classList.toggle("dark", needsDark);
         if (theme && theme !== "cyberpunk") document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
