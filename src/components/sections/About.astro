@@ -31,7 +31,7 @@ const { journey, education, hobbies } = about;
           </div>
 
           <!-- Content -->
-          <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""} ${active ? "pl-2 border-l border-[var(--accent-subtle)]" : ""}`}>
+          <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
               <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--primary); opacity: 0.7;">
                 {year}
@@ -63,7 +63,7 @@ const { journey, education, hobbies } = about;
           <p class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.1em] uppercase opacity-55 mt-0.5">{sub}</p>
         </div>
 
-        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0" style="color: var(--chart-4); opacity: 0.7;">
+        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0" style="color: var(--primary); opacity: 0.7;">
           {years}
         </span>
       </div>
@@ -84,7 +84,7 @@ const { journey, education, hobbies } = about;
           </div>
           {detail && (
             <span class="text-[0.48rem] laptop:text-[0.54rem] fhd:text-[0.6rem] qhd:text-xs uhd:text-sm
-                         tracking-[0.08em] shrink-0 text-right" style="color: var(--chart-3); opacity: 0.65;">{detail}</span>
+                         tracking-[0.08em] shrink-0 text-right" style="color: var(--chart-5); opacity: 0.65;">{detail}</span>
           )}
         </div>
       ))}

@@ -17,7 +17,7 @@ const { cv_url, statusStr, statusActive }  = contact;
               pt-[10%] laptop:pt-[15%] laptop-scaled:pt-[15%] fhd:pt-[18%] qhd:pt-[20%]">
 
     <!-- Photo -->
-    <div class="relative">
+    <div class="relative neon-glow">
       <div
         class="absolute pointer-events-none"
         style="inset: -4px; border: 1px solid var(--primary); opacity: 0.30;"
@@ -55,7 +55,7 @@ const { cv_url, statusStr, statusActive }  = contact;
     <!-- Stats (horizontal row) -->
     <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem] uhd:max-w-[28rem]">
       {stats.map(({ n, label }: { n: string; label: string }, i: number) => {
-      const sc = (["var(--accent)", "var(--primary)", "var(--chart-2)"] as const)[i % 3];
+      const sc = (["var(--accent)", "var(--chart-5)", "var(--primary)", "var(--chart-2)"] as const)[i % 4];
       return (
         <div
           class="flex flex-col items-center flex-1 px-1.5 py-2"

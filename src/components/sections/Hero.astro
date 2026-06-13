@@ -24,7 +24,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
   <div
     class="absolute -z-10 pointer-events-none opacity-[0.06]"
     style="right: -6rem; top: -10rem; width: 40rem; height: 40rem;
-           border: 3px solid var(--primary); transform: rotate(15deg);"
+           border: 3px solid var(--chart-2); transform: rotate(15deg);"
     aria-hidden="true"
   />
 
@@ -32,23 +32,6 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
   <div class="flex flex-col flex-1 min-h-0 justify-center gap-8
               laptop:flex-none laptop:shrink-0 laptop:justify-center laptop:gap-4
               laptop:my-auto">
-
-    <!-- Título -->
-    <h1
-      class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
-      style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
-    >
-      <span class="flex items-baseline justify-between w-full">
-        <span>{title1}</span>
-        <span id="stat-visitors"
-              class="opacity-0 transition-opacity duration-500 font-sans font-normal
-                     text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
-                     tracking-[0.25em] uppercase"
-              style="color: var(--accent);">
-        </span>
-      </span>
-      <span class="block text-right" style="color: var(--primary); opacity: 0.12;">{title2}</span>
-    </h1>
 
     <!-- Controls: theme selector + dark/light toggle -->
     <div class="flex justify-end items-center gap-2">
@@ -114,6 +97,23 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
 
     </div>
 
+    <!-- Título -->
+    <h1
+      class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
+      style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
+    >
+      <span class="flex items-baseline justify-between w-full">
+        <span>{title1}</span>
+        <span id="stat-visitors"
+              class="opacity-0 transition-opacity duration-500 font-sans font-normal
+                     text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
+                     tracking-[0.25em] uppercase"
+              style="color: var(--accent);">
+        </span>
+      </span>
+      <span class="block text-right" style="color: var(--primary); opacity: 0.12;">{title2}</span>
+    </h1>
+
     <!-- Bio + CTAs -->
     <div class="flex flex-col gap-5 laptop:gap-4">
       <p
@@ -153,13 +153,13 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
         <span id="matrix-text"></span><span
           id="matrix-cursor"
           style="display:inline-block; width:1px; height:0.85em; vertical-align:middle;
-                 background:var(--accent); margin-left:1px;"
+                 background:var(--chart-5); margin-left:1px;"
         ></span>
       </div>
       <div
         id="matrix-comment"
         class="not-italic font-bold opacity-0 transition-opacity duration-500"
-        style="margin-top:0.4em; color:var(--accent);"
+        style="margin-top:0.4em; color:var(--chart-5);"
       ></div>
     </div>
 

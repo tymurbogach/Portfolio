@@ -3,10 +3,13 @@ import { THEMES } from "../lib/themes";
 import type { Mode, Theme } from "../lib/themes";
 
 const THEME_LABELS: Record<Theme, string> = {
-  cyberpunk: "CYBER",
-  bubblegum: "GUM",
-  doom:      "DOOM",
-  retro:     "RETRO",
+  cyberpunk:  "CYBER",
+  bubblegum:  "GUM",
+  doom:       "DOOM",
+  retro:      "RETRO",
+  elegant:    "LUXE",
+  candyland:  "CANDY",
+  darkmatter: "MATTR",
 };
 
 function getSystemMode(): Mode {
