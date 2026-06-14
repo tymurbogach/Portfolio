@@ -1,5 +1,6 @@
 ---
 import Button from "../../components/ui/Button.astro";
+import DecryptedText from "../../components/ui/DecryptedText";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -139,33 +140,38 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
       import "../../scripts/visitCounter";
     </script>
 
-    <!-- Matrix typewriter -->
+    <!-- Matrix decrypt text -->
     <div
-      id="matrix-wrap"
       class="text-center text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs uhd:text-sm
              tracking-[0.2em] leading-[1.8] italic"
-      style="opacity:0.25; height:5.5em; overflow:hidden;"
-      data-quote={subtitle2}
-      data-comment={comment}
+      style="opacity:0.25;"
       aria-label={subtitle2}
     >
       <div>
-        <span id="matrix-text"></span><span
-          id="matrix-cursor"
-          style="display:inline-block; width:1px; height:0.85em; vertical-align:middle;
-                 background:var(--chart-5); margin-left:1px;"
-        ></span>
+        <DecryptedText
+          client:visible
+          text={subtitle2}
+          animateOn="view"
+          sequential={true}
+          revealDirection="start"
+          speed={30}
+          characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&"
+          encryptedClassName="decrypted-char"
+        />
       </div>
-      <div
-        id="matrix-comment"
-        class="not-italic font-bold opacity-0 transition-opacity duration-500"
-        style="margin-top:0.4em; color:var(--chart-5);"
-      ></div>
+      <div class="not-italic font-bold" style="margin-top:0.4em; color:var(--chart-5);">
+        <DecryptedText
+          client:visible
+          text={comment}
+          animateOn="view"
+          sequential={true}
+          revealDirection="start"
+          speed={35}
+          characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&"
+          encryptedClassName="decrypted-char"
+        />
+      </div>
     </div>
-
-    <script>
-      import "../../scripts/typewriter";
-    </script>
 
   </div>
 

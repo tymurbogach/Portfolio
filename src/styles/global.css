@@ -1081,6 +1081,10 @@ body::after {
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 55%);
 }
 
+@utility decrypted-char {
+  color: var(--accent);
+}
+
 @utility neon-left-border {
   border-left: 2px solid var(--accent);
   box-shadow: -3px 0 12px color-mix(in srgb, var(--accent) 35%, transparent);
