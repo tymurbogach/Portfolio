@@ -4,6 +4,7 @@ import type { Mode, Theme } from "../lib/themes";
 
 const THEME_LABELS: Record<Theme, string> = {
   cyberpunk:  "CYBER",
+  matrix:     "NEO",
   bubblegum:  "GUM",
   doom:       "DOOM",
   retro:      "RETRO",

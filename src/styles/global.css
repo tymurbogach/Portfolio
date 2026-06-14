@@ -149,6 +149,120 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   MATRIX — LIGHT (decoded / paper)
+   ═══════════════════════════════════════════════════ */
+[data-theme="matrix"] {
+  --background:           rgb(236, 255, 236);
+  --foreground:           rgb(0, 40, 0);
+  --card:                 rgb(218, 248, 218);
+  --card-foreground:      rgb(0, 40, 0);
+  --popover:              rgb(218, 248, 218);
+  --popover-foreground:   rgb(0, 40, 0);
+  --primary:              rgb(0, 140, 30);
+  --primary-foreground:   rgb(236, 255, 236);
+  --secondary:            rgb(0, 100, 20);
+  --secondary-foreground: rgb(236, 255, 236);
+  --muted:                rgb(196, 240, 196);
+  --muted-foreground:     rgb(0, 100, 20);
+  --accent:               rgb(0, 180, 50);
+  --accent-foreground:    rgb(0, 0, 0);
+  --destructive:          rgb(180, 0, 30);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border:               rgb(0, 120, 30);
+  --input:                rgb(0, 120, 30);
+  --ring:                 rgb(0, 180, 50);
+  --chart-1:              rgb(0, 180, 50);
+  --chart-2:              rgb(0, 140, 30);
+  --chart-3:              rgb(0, 100, 20);
+  --chart-4:              rgb(57, 200, 20);
+  --chart-5:              rgb(0, 220, 60);
+  --sidebar:                    rgb(236, 255, 236);
+  --sidebar-foreground:         rgb(0, 40, 0);
+  --sidebar-primary:            rgb(0, 140, 30);
+  --sidebar-primary-foreground: rgb(236, 255, 236);
+  --sidebar-accent:             rgb(0, 180, 50);
+  --sidebar-accent-foreground:  rgb(0, 0, 0);
+  --sidebar-border:             rgb(0, 120, 30);
+  --sidebar-ring:               rgb(0, 180, 50);
+  --font-sans:    "JetBrains Mono", monospace;
+  --font-serif:   "JetBrains Mono", monospace;
+  --font-mono:    "JetBrains Mono", monospace;
+  --font-display: "JetBrains Mono", monospace;
+  --radius: 0rem;
+  --shadow-color: hsl(120 100% 15%);
+  --shadow-2xs: 0 1px 3px 0px hsl(120 100% 15% / 0.08);
+  --shadow-xs:  0 1px 3px 0px hsl(120 100% 15% / 0.08);
+  --shadow-sm:  0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 1px 2px -1px hsl(120 100% 15% / 0.15);
+  --shadow:     0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 1px 2px -1px hsl(120 100% 15% / 0.15);
+  --shadow-md:  0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 2px 4px -1px hsl(120 100% 15% / 0.15);
+  --shadow-lg:  0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 4px 6px -1px hsl(120 100% 15% / 0.15);
+  --shadow-xl:  0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 8px 10px -1px hsl(120 100% 15% / 0.15);
+  --shadow-2xl: 0 1px 3px 0px hsl(120 100% 15% / 0.35);
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.55);
+}
+
+/* ═══════════════════════════════════════════════════
+   MATRIX — DARK (classic / rain)
+   ═══════════════════════════════════════════════════ */
+[data-theme="matrix"].dark {
+  --background:           rgb(1, 8, 1);
+  --foreground:           rgb(0, 255, 65);
+  --card:                 rgb(5, 20, 5);
+  --card-foreground:      rgb(0, 255, 65);
+  --popover:              rgb(5, 20, 5);
+  --popover-foreground:   rgb(0, 255, 65);
+  --primary:              rgb(0, 200, 50);
+  --primary-foreground:   rgb(0, 0, 0);
+  --secondary:            rgb(0, 255, 65);
+  --secondary-foreground: rgb(0, 0, 0);
+  --muted:                rgb(8, 28, 8);
+  --muted-foreground:     rgb(0, 150, 40);
+  --accent:               rgb(0, 255, 65);
+  --accent-foreground:    rgb(0, 0, 0);
+  --destructive:          rgb(255, 30, 60);
+  --destructive-foreground: rgb(0, 0, 0);
+  --border:               rgb(0, 80, 20);
+  --input:                rgb(0, 80, 20);
+  --ring:                 rgb(0, 255, 65);
+  --chart-1:              rgb(0, 255, 65);
+  --chart-2:              rgb(57, 255, 20);
+  --chart-3:              rgb(0, 180, 50);
+  --chart-4:              rgb(0, 120, 30);
+  --chart-5:              rgb(100, 255, 100);
+  --sidebar:                    rgb(1, 8, 1);
+  --sidebar-foreground:         rgb(0, 255, 65);
+  --sidebar-primary:            rgb(0, 200, 50);
+  --sidebar-primary-foreground: rgb(0, 0, 0);
+  --sidebar-accent:             rgb(0, 255, 65);
+  --sidebar-accent-foreground:  rgb(0, 0, 0);
+  --sidebar-border:             rgb(0, 80, 20);
+  --sidebar-ring:               rgb(0, 255, 65);
+  --font-sans:    "JetBrains Mono", monospace;
+  --font-serif:   "JetBrains Mono", monospace;
+  --font-mono:    "JetBrains Mono", monospace;
+  --font-display: "JetBrains Mono", monospace;
+  --radius: 0rem;
+  --shadow-color: hsl(120 100% 50%);
+  --shadow-2xs: 0 1px 6px 0px hsl(120 100% 50% / 0.08);
+  --shadow-xs:  0 1px 6px 0px hsl(120 100% 50% / 0.08);
+  --shadow-sm:  0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 1px 2px -1px hsl(120 100% 50% / 0.15);
+  --shadow:     0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 1px 2px -1px hsl(120 100% 50% / 0.15);
+  --shadow-md:  0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 2px 4px -1px hsl(120 100% 50% / 0.15);
+  --shadow-lg:  0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 4px 6px -1px hsl(120 100% 50% / 0.15);
+  --shadow-xl:  0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 8px 10px -1px hsl(120 100% 50% / 0.15);
+  --shadow-2xl: 0 1px 6px 0px hsl(120 100% 50% / 0.35);
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+  --overlay:         rgba(0, 0, 0, 0.80);
+}
+
+/* ═══════════════════════════════════════════════════
    RETRO ARCADE — LIGHT
    ═══════════════════════════════════════════════════ */
 [data-theme="retro"] {
@@ -1144,8 +1258,15 @@ body::after {
 
 /* Shared panel — NavBar, NameCard, SocialLinks, SocialBotPanel */
 @utility nav-panel {
-  @apply bg-[var(--background)] border-y border-[var(--border)] rounded-none m-0 shadow-none;
-  @apply mobile:shadow-md tablet:shadow-lg;
+  background: color-mix(in srgb, var(--card) 55%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: color-mix(in srgb, var(--border) 60%, transparent);
+  border-style: solid;
+  border-width: 1px 0;
+  border-radius: 0;
+  margin: 0;
+  @apply shadow-none mobile:shadow-md tablet:shadow-lg;
 }
 
 /* Category label — tiny-caps tracking-wide */
