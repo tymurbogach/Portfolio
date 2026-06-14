@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./themes-library.css";
 
 /* ── Custom variants ─────────────────────────────── */
 @variant laptop-scaled (@media (min-resolution: 1.4dppx) and (min-width: 60rem));
