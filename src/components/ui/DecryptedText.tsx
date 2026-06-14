@@ -13,6 +13,7 @@ const styles = {
 interface DecryptedTextProps {
   text: string;
   speed?: number;
+  delay?: number;
   maxIterations?: number;
   sequential?: boolean;
   revealDirection?: 'start' | 'end' | 'center';
@@ -39,6 +40,7 @@ export default function DecryptedText({
   encryptedClassName = '',
   animateOn = 'hover',
   clickMode = 'once',
+  delay = 0,
   ...props
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text);
@@ -232,13 +234,23 @@ export default function DecryptedText({
 
   useEffect(() => {
     if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
+    let delayTimer: ReturnType<typeof setTimeout>;
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting && !hasAnimated) { triggerDecrypt(); setHasAnimated(true); } });
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+          if (delay > 0) {
+            delayTimer = setTimeout(() => { triggerDecrypt(); setHasAnimated(true); }, delay);
+          } else {
+            triggerDecrypt();
+            setHasAnimated(true);
+          }
+        }
+      });
     }, { root: null, rootMargin: '0px', threshold: 0.1 });
     const currentRef = containerRef.current;
     if (currentRef) observer.observe(currentRef);
-    return () => { if (currentRef) observer.unobserve(currentRef); };
-  }, [animateOn, hasAnimated, triggerDecrypt]);
+    return () => { if (currentRef) observer.unobserve(currentRef); clearTimeout(delayTimer); };
+  }, [animateOn, hasAnimated, triggerDecrypt, delay]);
 
   useEffect(() => {
     if (animateOn === 'click') { encryptInstantly(); }

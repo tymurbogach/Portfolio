@@ -159,7 +159,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
           encryptedClassName="decrypted-char"
         />
       </div>
-      <div class="not-italic font-bold" style="margin-top:0.4em; color:var(--chart-5);">
+      <div class="not-italic font-bold" style="margin-top:0.4em;">
         <DecryptedText
           client:visible
           text={comment}
@@ -167,8 +167,10 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
           sequential={true}
           revealDirection="start"
           speed={35}
+          delay={3200}
           characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&"
-          encryptedClassName="decrypted-char"
+          className="matrix-green"
+          encryptedClassName="matrix-green-dim"
         />
       </div>
     </div>
