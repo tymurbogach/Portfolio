@@ -1,6 +1,6 @@
 ---
 import Button from "../../components/ui/Button.astro";
-import DecryptedText from "../../components/ui/DecryptedText";
+import MatrixSequence from "../../components/ui/MatrixSequence";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -147,32 +147,11 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
       style="opacity:0.25;"
       aria-label={subtitle2}
     >
-      <div>
-        <DecryptedText
-          client:visible
-          text={subtitle2}
-          animateOn="view"
-          sequential={true}
-          revealDirection="start"
-          speed={30}
-          characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&"
-          encryptedClassName="decrypted-char"
-        />
-      </div>
-      <div class="not-italic font-bold" style="margin-top:0.4em;">
-        <DecryptedText
-          client:visible
-          text={comment}
-          animateOn="view"
-          sequential={true}
-          revealDirection="start"
-          speed={35}
-          delay={3200}
-          characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&"
-          className="matrix-green"
-          encryptedClassName="matrix-green-dim"
-        />
-      </div>
+      <MatrixSequence
+        client:visible
+        quote={subtitle2}
+        comment={comment}
+      />
     </div>
 
   </div>

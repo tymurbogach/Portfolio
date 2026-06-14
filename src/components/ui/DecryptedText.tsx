@@ -24,6 +24,7 @@ interface DecryptedTextProps {
   encryptedClassName?: string;
   animateOn?: 'view' | 'hover' | 'inViewHover' | 'click';
   clickMode?: 'once' | 'toggle';
+  onComplete?: () => void;
   [key: string]: unknown;
 }
 
@@ -41,6 +42,7 @@ export default function DecryptedText({
   animateOn = 'hover',
   clickMode = 'once',
   delay = 0,
+  onComplete,
   ...props
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text);
@@ -158,6 +160,7 @@ export default function DecryptedText({
               clearInterval(intervalRef.current!);
               setIsAnimating(false);
               setIsDecrypted(true);
+              onComplete?.();
               return prevRevealed;
             }
           }
@@ -183,6 +186,7 @@ export default function DecryptedText({
               setIsAnimating(false);
               setDisplayText(text);
               setIsDecrypted(true);
+              onComplete?.();
             }
             return prevRevealed;
           }
