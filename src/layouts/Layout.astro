@@ -113,7 +113,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
   <!-- position:fixed en body evita el scroll nativo del documento;
        el scroll real ocurre solo dentro del panel de contenido -->
   <body
-    class="bg-[var(--background)] text-[var(--foreground)]"
+    class="bg-[var(--card)] text-[var(--foreground)]"
     style="position:fixed; inset:0;"
   >
     <!-- ═══════════════════════════════════
@@ -157,7 +157,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
              bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
              transition-all duration-200 can-hover:hover:opacity-100"
       style="
-        background: color-mix(in srgb, var(--card) 75%, transparent);
+        background: color-mix(in srgb, var(--background) 75%, transparent);
         border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -192,7 +192,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
     >
       <div
         class="w-full h-full
-               bg-[var(--background)]
+               bg-[var(--card)]
                border border-[var(--border)]
                flex items-center justify-center overflow-hidden"
         style="box-shadow: inset 0 0 120px color-mix(in srgb, var(--accent) 2.5%, transparent),

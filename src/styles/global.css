@@ -1144,7 +1144,7 @@ body::after {
 
 /* Shared panel — NavBar, NameCard, SocialLinks, SocialBotPanel */
 @utility nav-panel {
-  @apply bg-[var(--card)] border-y border-[var(--border)] rounded-none m-0 shadow-none;
+  @apply bg-[var(--background)] border-y border-[var(--border)] rounded-none m-0 shadow-none;
   @apply mobile:shadow-md tablet:shadow-lg;
 }
 
