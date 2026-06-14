@@ -30,7 +30,7 @@ export default function MatrixSequence({ quote, comment }: MatrixSequenceProps) 
         />
       </div>
       <div className="not-italic font-bold" style={{ marginTop: '0.4em', color: 'var(--chart-5)' }}>
-        {showComment && (
+        {showComment ? (
           <DecryptedText
             text={comment}
             animateOn="view"
@@ -40,6 +40,8 @@ export default function MatrixSequence({ quote, comment }: MatrixSequenceProps) 
             characters={MATRIX_CHARS}
             encryptedClassName="decrypted-char"
           />
+        ) : (
+          <span style={{ opacity: 0 }}>{comment}</span>
         )}
       </div>
     </>

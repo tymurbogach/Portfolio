@@ -34,7 +34,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
               laptop:flex-none laptop:shrink-0 laptop:justify-center laptop:gap-4
               laptop:my-auto">
 
-    <!-- Controls: theme selector + dark/light toggle -->
+    <!-- Controls: theme selector + dark/light toggle + visitors -->
     <div class="flex justify-end items-center gap-2">
 
       <!-- Theme button — cycles CYBER ↔ RETRO -->
@@ -96,6 +96,13 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
         </span>
       </button>
 
+      <span id="stat-visitors"
+            class="opacity-0 transition-opacity duration-500 font-sans font-normal
+                   text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
+                   tracking-[0.25em] uppercase"
+            style="color: var(--accent);">
+      </span>
+
     </div>
 
     <!-- Título -->
@@ -103,15 +110,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
       class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
       style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
     >
-      <span class="flex items-baseline justify-between w-full">
-        <span>{title1}</span>
-        <span id="stat-visitors"
-              class="opacity-0 transition-opacity duration-500 font-sans font-normal
-                     text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
-                     tracking-[0.25em] uppercase"
-              style="color: var(--accent);">
-        </span>
-      </span>
+      <span>{title1}</span>
       <span class="block text-right" style="color: var(--primary); opacity: 0.12;">{title2}</span>
     </h1>
 

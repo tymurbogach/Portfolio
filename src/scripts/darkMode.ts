@@ -11,6 +11,7 @@ const THEME_LABELS: Record<Theme, string> = {
   elegant:    "LUXE",
   candyland:  "CANDY",
   darkmatter: "MATTR",
+  claude:     "CLAUD",
 };
 
 function getSystemMode(): Mode {

@@ -172,7 +172,7 @@
   --input:                rgb(0, 120, 30);
   --ring:                 rgb(0, 180, 50);
   --chart-1:              rgb(0, 180, 50);
-  --chart-2:              rgb(0, 140, 30);
+  --chart-2:              rgb(0, 190, 170);
   --chart-3:              rgb(0, 100, 20);
   --chart-4:              rgb(57, 200, 20);
   --chart-5:              rgb(0, 220, 60);
@@ -521,10 +521,10 @@
   --accent-foreground:    rgb(255, 255, 255);
   --border:               rgb(80, 80, 80);
   --chart-1:              rgb(183, 28, 28);
-  --chart-2:              rgb(85, 107, 47);
+  --chart-2:              rgb(180, 90, 60);
   --chart-3:              rgb(70, 130, 180);
   --chart-4:              rgb(255, 111, 0);
-  --chart-5:                  rgb(141, 110, 99);
+  --chart-5:              rgb(220, 90, 40);
   --card-foreground:          rgb(31, 31, 31);
   --popover:                  rgb(176, 176, 176);
   --popover-foreground:       rgb(31, 31, 31);
@@ -650,7 +650,7 @@
   --input:                rgb(245, 232, 210);
   --ring:                 rgb(155, 44, 44);
   --chart-1:              rgb(185, 28, 28);
-  --chart-2:              rgb(155, 44, 44);
+  --chart-2:              rgb(180, 83, 9);
   --chart-3:              rgb(127, 29, 29);
   --chart-4:              rgb(180, 83, 9);
   --chart-5:              rgb(146, 64, 14);
@@ -878,10 +878,10 @@
   --input:                rgb(229, 231, 235);
   --ring:                 rgb(216, 121, 67);
   --chart-1:              rgb(95, 135, 135);
-  --chart-2:              rgb(231, 138, 83);
+  --chart-2:              rgb(82, 117, 117);
   --chart-3:              rgb(251, 203, 151);
   --chart-4:              rgb(136, 136, 136);
-  --chart-5:              rgb(153, 153, 153);
+  --chart-5:              rgb(120, 160, 160);
   --sidebar:                    rgb(243, 244, 246);
   --sidebar-foreground:         rgb(17, 24, 39);
   --sidebar-primary:            rgb(216, 121, 67);
@@ -935,10 +935,10 @@
   --input:                rgb(34, 34, 34);
   --ring:                 rgb(231, 138, 83);
   --chart-1:              rgb(95, 135, 135);
-  --chart-2:              rgb(231, 138, 83);
+  --chart-2:              rgb(95, 135, 135);
   --chart-3:              rgb(251, 203, 151);
   --chart-4:              rgb(136, 136, 136);
-  --chart-5:              rgb(153, 153, 153);
+  --chart-5:              rgb(130, 170, 170);
   --sidebar:                    rgb(18, 18, 18);
   --sidebar-foreground:         rgb(193, 193, 193);
   --sidebar-primary:            rgb(231, 138, 83);
@@ -966,6 +966,120 @@
   --surface-glow:    color-mix(in srgb, var(--primary) 6%, transparent);
   --gradient-border: linear-gradient(90deg, var(--primary), var(--secondary));
   --overlay:         rgba(0, 0, 0, 0.75);
+}
+
+/* ═══════════════════════════════════════════════════
+   CLAUDE — LIGHT
+   ═══════════════════════════════════════════════════ */
+[data-theme="claude"] {
+  --background:           rgb(250, 249, 245);
+  --foreground:           rgb(61, 57, 41);
+  --card:                 rgb(244, 243, 238);
+  --card-foreground:      rgb(20, 20, 19);
+  --popover:              rgb(255, 255, 255);
+  --popover-foreground:   rgb(40, 38, 27);
+  --primary:              rgb(201, 100, 66);
+  --primary-foreground:   rgb(255, 255, 255);
+  --secondary:            rgb(233, 230, 220);
+  --secondary-foreground: rgb(83, 81, 70);
+  --muted:                rgb(237, 233, 222);
+  --muted-foreground:     rgb(131, 130, 125);
+  --accent:               rgb(201, 100, 66);
+  --accent-foreground:    rgb(255, 255, 255);
+  --destructive:          rgb(153, 27, 27);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border:               rgb(218, 217, 212);
+  --input:                rgb(180, 178, 167);
+  --ring:                 rgb(201, 100, 66);
+  --chart-1:              rgb(176, 87, 48);
+  --chart-2:              rgb(156, 135, 245);
+  --chart-3:              rgb(222, 216, 196);
+  --chart-4:              rgb(219, 211, 240);
+  --chart-5:              rgb(180, 85, 45);
+  --sidebar:                    rgb(245, 244, 238);
+  --sidebar-foreground:         rgb(61, 61, 58);
+  --sidebar-primary:            rgb(201, 100, 66);
+  --sidebar-primary-foreground: rgb(251, 251, 251);
+  --sidebar-accent:             rgb(233, 230, 220);
+  --sidebar-accent-foreground:  rgb(52, 52, 52);
+  --sidebar-border:             rgb(218, 217, 212);
+  --sidebar-ring:               rgb(201, 100, 66);
+  --font-sans:    system-ui, -apple-system, sans-serif;
+  --font-serif:   ui-serif, Georgia, serif;
+  --font-mono:    ui-monospace, "JetBrains Mono", monospace;
+  --font-display: system-ui, -apple-system, sans-serif;
+  --radius: 0.5rem;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs:  0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm:  0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow:     0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md:  0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg:  0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl:  0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 12%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 50%, var(--foreground)));
+  --overlay:         rgba(0, 0, 0, 0.45);
+}
+
+/* ═══════════════════════════════════════════════════
+   CLAUDE — DARK
+   ═══════════════════════════════════════════════════ */
+[data-theme="claude"].dark {
+  --background:           rgb(30, 30, 28);
+  --foreground:           rgb(220, 218, 208);
+  --card:                 rgb(40, 40, 38);
+  --card-foreground:      rgb(250, 249, 245);
+  --popover:              rgb(48, 48, 46);
+  --popover-foreground:   rgb(229, 229, 226);
+  --primary:              rgb(217, 119, 87);
+  --primary-foreground:   rgb(255, 255, 255);
+  --secondary:            rgb(56, 56, 52);
+  --secondary-foreground: rgb(195, 192, 182);
+  --muted:                rgb(27, 27, 25);
+  --muted-foreground:     rgb(160, 158, 148);
+  --accent:               rgb(217, 119, 87);
+  --accent-foreground:    rgb(255, 255, 255);
+  --destructive:          rgb(239, 68, 68);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border:               rgb(58, 58, 54);
+  --input:                rgb(72, 71, 66);
+  --ring:                 rgb(217, 119, 87);
+  --chart-1:              rgb(217, 119, 87);
+  --chart-2:              rgb(156, 135, 245);
+  --chart-3:              rgb(58, 58, 54);
+  --chart-4:              rgb(47, 43, 72);
+  --chart-5:              rgb(200, 165, 105);
+  --sidebar:                    rgb(26, 26, 24);
+  --sidebar-foreground:         rgb(195, 192, 182);
+  --sidebar-primary:            rgb(217, 119, 87);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent:             rgb(40, 40, 38);
+  --sidebar-accent-foreground:  rgb(195, 192, 182);
+  --sidebar-border:             rgb(58, 58, 54);
+  --sidebar-ring:               rgb(217, 119, 87);
+  --font-sans:    system-ui, -apple-system, sans-serif;
+  --font-serif:   ui-serif, Georgia, serif;
+  --font-mono:    ui-monospace, "JetBrains Mono", monospace;
+  --font-display: system-ui, -apple-system, sans-serif;
+  --radius: 0.5rem;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
+  --shadow-xs:  0 1px 3px 0px hsl(0 0% 0% / 0.20);
+  --shadow-sm:  0 1px 3px 0px hsl(0 0% 0% / 0.25), 0 1px 2px -1px hsl(0 0% 0% / 0.25);
+  --shadow:     0 1px 3px 0px hsl(0 0% 0% / 0.25), 0 1px 2px -1px hsl(0 0% 0% / 0.25);
+  --shadow-md:  0 1px 3px 0px hsl(0 0% 0% / 0.30), 0 2px 4px -1px hsl(0 0% 0% / 0.30);
+  --shadow-lg:  0 1px 3px 0px hsl(0 0% 0% / 0.35), 0 4px 6px -1px hsl(0 0% 0% / 0.35);
+  --shadow-xl:  0 1px 3px 0px hsl(0 0% 0% / 0.35), 0 8px 10px -1px hsl(0 0% 0% / 0.35);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.50);
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 14%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 7%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 50%, var(--foreground)));
+  --overlay:         rgba(0, 0, 0, 0.70);
 }
 
 /* ═══════════════════════════════════════════════════
