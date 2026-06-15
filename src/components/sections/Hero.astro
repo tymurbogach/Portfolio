@@ -1,6 +1,7 @@
 ---
 import Button from "../../components/ui/Button.astro";
 import MatrixSequence from "../../components/ui/MatrixSequence";
+import TrueFocus from "../../components/ui/TrueFocus";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -10,8 +11,7 @@ interface Props {
 const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.props;
 ---
 
-<div class="flex flex-col w-full gap-5 relative
-            flex-1 laptop:gap-0 laptop-scaled:gap-0">
+<div class="flex flex-col w-full flex-1 min-h-0 justify-center gap-5 laptop:gap-4 fhd:gap-5 qhd:gap-6">
 
   <!-- Decoración: cuadrícula de puntos -->
   <div
@@ -21,7 +21,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
     aria-hidden="true"
   />
 
-  <!-- Decoración: slash diagonal de acento -->
+  <!-- Decoración: slash diagonal -->
   <div
     class="absolute -z-10 pointer-events-none opacity-[0.06]"
     style="right: -6rem; top: -10rem; width: 40rem; height: 40rem;
@@ -29,119 +29,108 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
     aria-hidden="true"
   />
 
-  <!-- BLOQUE PRINCIPAL -->
-  <div class="flex flex-col flex-1 min-h-0 justify-center gap-8
-              laptop:flex-none laptop:shrink-0 laptop:justify-center laptop:gap-4
-              laptop:my-auto">
+  <!-- Controls: theme selector + dark/light toggle + visitors -->
+  <div class="flex justify-end items-center gap-2 shrink-0 w-full">
 
-    <!-- Controls: theme selector + dark/light toggle + visitors -->
-    <div class="flex justify-end items-center gap-2">
-
-      <!-- Theme button — cycles CYBER ↔ RETRO -->
-      <button
-        id="color-theme-btn"
-        class="inline-flex items-center cursor-pointer
-               px-2.5 py-1.5 laptop:px-3 fhd:px-3.5
-               rounded-full border border-[var(--border)]
-               bg-[var(--card)] opacity-50 can-hover:hover:opacity-100 active:opacity-100
-               transition-all duration-200 select-none"
-        title="Switch color theme"
-        aria-label="Switch color theme"
-        type="button"
-      >
-        <span
-          id="theme-name-label"
-          class="text-[0.48rem] laptop:text-[0.52rem] fhd:text-[0.6rem]
-                 tracking-[0.3em] uppercase font-bold"
-          style="color: var(--accent);"
-        >CYBER</span>
-      </button>
-
-      <!-- Dark/Light toggle pill — active half gets accent background via dark: CSS -->
-      <button
-        id="theme-toggle"
-        class="inline-flex items-center cursor-pointer p-[3px]
-               rounded-full border border-[var(--border)]
-               bg-[var(--card)] opacity-50 can-hover:hover:opacity-100 active:opacity-100
-               transition-opacity duration-200 select-none"
-        title="Toggle dark/light mode"
-        aria-label="Toggle dark/light mode"
-        type="button"
-        role="switch"
-      >
-        <!-- Sun half — JS controls active state via style -->
-        <span
-          id="toggle-light"
-          class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200"
-          style="background:transparent; opacity:0.4;"
-        >
-          <svg class="w-[0.65rem] h-[0.65rem] laptop:w-[0.75rem] laptop:h-[0.75rem] fhd:w-[0.85rem] fhd:h-[0.85rem]"
-               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-          </svg>
-        </span>
-        <!-- Moon half — JS controls active state via style -->
-        <span
-          id="toggle-dark"
-          class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200"
-          style="background:var(--accent); color:var(--accent-foreground); opacity:1;"
-        >
-          <svg class="w-[0.65rem] h-[0.65rem] laptop:w-[0.75rem] laptop:h-[0.75rem] fhd:w-[0.85rem] fhd:h-[0.85rem]"
-               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </span>
-      </button>
-
-      <span id="stat-visitors"
-            class="opacity-0 transition-opacity duration-500 font-sans font-normal
-                   text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
-                   tracking-[0.25em] uppercase"
-            style="color: var(--accent);">
-      </span>
-
-    </div>
-
-    <!-- Título -->
-    <h1
-      class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
-      style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
+    <button
+      id="color-theme-btn"
+      class="inline-flex items-center cursor-pointer
+             px-2.5 py-1.5 laptop:px-3 fhd:px-3.5
+             rounded-full border border-[var(--border)]
+             bg-[var(--card)] opacity-50 can-hover:hover:opacity-100 active:opacity-100
+             transition-all duration-200 select-none"
+      title="Switch color theme"
+      aria-label="Switch color theme"
+      type="button"
     >
-      <span>{title1}</span>
-      <span class="block text-right" style="color: var(--primary); opacity: 0.12;">{title2}</span>
-    </h1>
+      <span
+        id="theme-name-label"
+        class="text-[0.48rem] laptop:text-[0.52rem] fhd:text-[0.6rem]
+               tracking-[0.3em] uppercase font-bold"
+        style="color: var(--accent);"
+      >CYBER</span>
+    </button>
 
-    <!-- Bio + CTAs -->
-    <div class="flex flex-col gap-5 laptop:gap-4">
-      <p
-        class="leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
-        style="opacity: 0.55;"
+    <button
+      id="theme-toggle"
+      class="inline-flex items-center cursor-pointer p-[3px]
+             rounded-full border border-[var(--border)]
+             bg-[var(--card)] opacity-50 can-hover:hover:opacity-100 active:opacity-100
+             transition-opacity duration-200 select-none"
+      title="Toggle dark/light mode"
+      aria-label="Toggle dark/light mode"
+      type="button"
+      role="switch"
+    >
+      <span
+        id="toggle-light"
+        class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200"
+        style="background:transparent; opacity:0.4;"
       >
-        {subtitle1}
-      </p>
+        <svg class="w-[0.65rem] h-[0.65rem] laptop:w-[0.75rem] laptop:h-[0.75rem] fhd:w-[0.85rem] fhd:h-[0.85rem]"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </span>
+      <span
+        id="toggle-dark"
+        class="flex items-center justify-center rounded-full p-[0.2rem] laptop:p-1 transition-all duration-200"
+        style="background:var(--accent); color:var(--accent-foreground); opacity:1;"
+      >
+        <svg class="w-[0.65rem] h-[0.65rem] laptop:w-[0.75rem] laptop:h-[0.75rem] fhd:w-[0.85rem] fhd:h-[0.85rem]"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </span>
+    </button>
 
-      {cta && (
-        <div class="flex flex-wrap gap-3">
-          <Button href={cta.primaryHref} variant="primary">
-            {cta.primary}
-          </Button>
-          <Button href={cta.secondaryHref} variant="accent">
-            {cta.secondary}
-          </Button>
-        </div>
-      )}
-    </div>
+    <span id="stat-visitors"
+          class="opacity-0 transition-opacity duration-500 font-sans font-normal
+                 text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
+                 tracking-[0.25em] uppercase"
+          style="color: var(--accent);">
+    </span>
 
-    <script>
-      import "../../scripts/visitCounter";
-    </script>
+  </div>
 
-    <!-- Matrix decrypt text -->
+  <!-- Título animado -->
+  <div class="shrink-0 w-full">
+    <TrueFocus
+      client:visible
+      sentence={`${title1} ${title2}`}
+      blurAmount={4}
+      animationDuration={0.6}
+      pauseBetweenAnimations={1.5}
+    />
+  </div>
+
+  <!-- Bio + CTAs + matrix -->
+  <div class="flex flex-col gap-3 laptop:gap-2.5 shrink-0">
+
+    <p
+      class="leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0"
+      style="opacity: 0.55;"
+    >
+      {subtitle1}
+    </p>
+
+    {cta && (
+      <div class="flex flex-wrap gap-3">
+        <Button href={cta.primaryHref} variant="primary">
+          {cta.primary}
+        </Button>
+        <Button href={cta.secondaryHref} variant="accent">
+          {cta.secondary}
+        </Button>
+      </div>
+    )}
+
     <div
-      class="text-center text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs uhd:text-sm
+      class="text-center
+             text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.7rem] qhd:text-xs uhd:text-sm
              tracking-[0.2em] leading-[1.8] italic"
       style="opacity:0.25;"
       aria-label={subtitle2}
@@ -155,5 +144,8 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
 
   </div>
 
+  <script>
+    import "../../scripts/visitCounter";
+  </script>
 
 </div>
