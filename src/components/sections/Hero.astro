@@ -1,7 +1,6 @@
 ---
 import Button from "../../components/ui/Button.astro";
 import MatrixSequence from "../../components/ui/MatrixSequence";
-import TrueFocus from "../../components/ui/TrueFocus";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -96,16 +95,14 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
 
   </div>
 
-  <!-- Título animado -->
-  <div class="shrink-0 w-full">
-    <TrueFocus
-      client:visible
-      sentence={`${title1} ${title2}`}
-      blurAmount={4}
-      animationDuration={0.6}
-      pauseBetweenAnimations={1.5}
-    />
-  </div>
+  <!-- Título -->
+  <h1
+    class="font-display m-0 w-full leading-[1.0] laptop:leading-[0.88]"
+    style="font-size: clamp(3.5rem, 9vw, 18rem); letter-spacing: -0.01em;"
+  >
+    <span>{title1}</span>
+    <span class="block text-right" style="color: var(--primary); opacity: 0.12;">{title2}</span>
+  </h1>
 
   <!-- Bio + CTAs + matrix -->
   <div class="flex flex-col gap-3 laptop:gap-2.5 shrink-0">
