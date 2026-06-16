@@ -1,12 +1,26 @@
-/* Column layout: FORGE line 1 left, DEPLOY line 2 right (same as original h1) */
 .focus-container {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding-block: 0.35em;
   width: 100%;
   outline: none;
   user-select: none;
+}
+
+@media (min-width: 80rem) {
+  .focus-container { gap: 4rem; }
+}
+
+@media (min-width: 120rem) {
+  .focus-container { gap: 5rem; }
+}
+
+@media (min-width: 160rem) {
+  .focus-container { gap: 7rem; }
 }
 
 .focus-word {
@@ -16,47 +30,33 @@
   letter-spacing: -0.01em;
   line-height: 1;
   cursor: default;
+  color: var(--foreground);
   outline: none;
   user-select: none;
-  font-size: clamp(3.5rem, 12vw, 6rem);
+  transform: scaleY(1.4);
+  transform-origin: center center;
+  font-size: clamp(2.5rem, 10vw, 5rem);
 }
 
-/* tablet ≥ 768px */
 @media (min-width: 48rem) {
-  .focus-word { font-size: clamp(4.5rem, 13vw, 7rem); }
+  .focus-word { font-size: clamp(4rem, 11vw, 7rem); }
 }
 
-/* laptop ≥ 1280px — match original h1 clamp */
 @media (min-width: 80rem) {
-  .focus-word {
-    font-size: clamp(3.5rem, 9vw, 18rem);
-    line-height: 0.88;
-  }
+  .focus-word { font-size: clamp(5rem, 6.5vw, 12rem); }
 }
 
-/* fhd ≥ 1920px */
 @media (min-width: 120rem) {
-  .focus-word { font-size: clamp(9rem, 8.5vw, 16rem); }
+  .focus-word { font-size: clamp(7rem, 7.5vw, 14rem); }
 }
 
-/* qhd ≥ 2560px */
 @media (min-width: 160rem) {
-  .focus-word { font-size: clamp(13rem, 9vw, 22rem); }
+  .focus-word { font-size: clamp(10rem, 8vw, 20rem); }
 }
 
-/* Word 1 (FORGE) — left-aligned, full foreground */
-.focus-word:first-child {
-  align-self: flex-start;
-  text-align: left;
-  color: var(--foreground);
-}
-
-/* Word 2 (DEPLOY) — right-aligned, ghost like original h1 */
-.focus-word:last-child {
-  align-self: flex-end;
-  text-align: right;
+.focus-word:nth-child(2) {
   color: var(--primary);
-  opacity: 0.12;
+  opacity: 0.15;
 }
 
 .focus-word.manual { cursor: pointer; }
@@ -83,3 +83,36 @@
 .top-right   { top: -12px;    right: -12px; border-left: none;   border-bottom: none; }
 .bottom-left { bottom: -12px; left: -12px;  border-right: none;  border-top: none;    }
 .bottom-right{ bottom: -12px; right: -12px; border-left: none;   border-top: none;    }
+
+/* Stacked layout — matches original h1 FORGE/DEPLOY structure */
+.focus-container.stacked {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding-block: 0;
+}
+
+.focus-container.stacked .focus-word {
+  font-size: clamp(3.5rem, 9vw, 18rem);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  transform: none;
+}
+
+@media (min-width: 80rem) {
+  .focus-container.stacked .focus-word { line-height: 0.88; }
+}
+
+.focus-container.stacked .focus-word:nth-child(1) {
+  text-align: left;
+  color: var(--foreground);
+  opacity: 1;
+}
+
+.focus-container.stacked .focus-word:nth-child(2) {
+  display: block;
+  text-align: right;
+  color: var(--primary);
+  opacity: 0.45;
+}
