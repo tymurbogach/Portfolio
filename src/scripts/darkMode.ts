@@ -41,16 +41,11 @@ function applyTheme(theme: Theme): void {
 }
 
 function updateTogglePill(mode: Mode): void {
-  const lightHalf = document.getElementById("toggle-light");
-  const darkHalf  = document.getElementById("toggle-dark");
-  if (!lightHalf || !darkHalf) return;
-  const isDark = mode === "dark";
-  lightHalf.style.background    = isDark ? "transparent"          : "var(--accent)";
-  lightHalf.style.color         = isDark ? ""                     : "var(--accent-foreground)";
-  lightHalf.style.opacity       = isDark ? "0.4"                  : "1";
-  darkHalf.style.background     = isDark ? "var(--accent)"        : "transparent";
-  darkHalf.style.color          = isDark ? "var(--accent-foreground)" : "";
-  darkHalf.style.opacity        = isDark ? "1"                    : "0.4";
+  const iconDark  = document.getElementById("icon-dark");
+  const iconLight = document.getElementById("icon-light");
+  if (!iconDark || !iconLight) return;
+  iconDark.style.display  = mode === "dark"  ? "block" : "none";
+  iconLight.style.display = mode === "light" ? "block" : "none";
 }
 
 function initThemeMode(): void {
