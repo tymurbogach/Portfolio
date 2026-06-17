@@ -1373,7 +1373,7 @@ body::after {
 
 /* Shared panel — NavBar, NameCard, SocialLinks, SocialBotPanel */
 @utility nav-panel {
-  background: color-mix(in srgb, var(--card) 55%, transparent);
+  background: var(--card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-color: color-mix(in srgb, var(--border) 60%, transparent);
