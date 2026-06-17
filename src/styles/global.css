@@ -1381,7 +1381,13 @@ body::after {
   border-width: 1px 0;
   border-radius: 0;
   margin: 0;
-  @apply shadow-none mobile:shadow-md tablet:shadow-lg;
+  box-shadow: none;
+  @media (min-width: 30rem) {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  @media (min-width: 48rem) {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
 }
 
 /* Category label — tiny-caps tracking-wide */
@@ -1433,10 +1439,15 @@ body::after {
 @utility nav-cell {
   background: transparent;
   border: none;
-  @apply text-[var(--foreground)] transition duration-200;
+  color: var(--foreground);
+  transition: all 200ms ease;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      @apply bg-[var(--secondary)] text-[var(--secondary-foreground)] scale-105 shadow-md z-10;
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+      transform: scale(1.05);
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      z-index: 10;
     }
   }
 }
