@@ -1198,6 +1198,120 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   BLADE RUNNER — LIGHT (Wallace Corp interior / hormigón)
+   ═══════════════════════════════════════════════════ */
+[data-theme="bladerunner"] {
+  --background:           rgb(236, 230, 218);
+  --foreground:           rgb(14,  10,  28);
+  --card:                 rgb(246, 241, 231);
+  --card-foreground:      rgb(14,  10,  28);
+  --popover:              rgb(246, 241, 231);
+  --popover-foreground:   rgb(14,  10,  28);
+  --primary:              rgb(195,  72,  10);
+  --primary-foreground:   rgb(246, 241, 231);
+  --secondary:            rgb(160, 110,  20);
+  --secondary-foreground: rgb(246, 241, 231);
+  --muted:                rgb(218, 212, 200);
+  --muted-foreground:     rgb(90,   75, 100);
+  --accent:               rgb(28,  138, 178);
+  --accent-foreground:    rgb(246, 241, 231);
+  --destructive:          rgb(185,  40,  30);
+  --destructive-foreground: rgb(246, 241, 231);
+  --border:               rgb(180, 170, 150);
+  --input:                rgb(180, 170, 150);
+  --ring:                 rgb(195,  72,  10);
+  --chart-1:              rgb(195,  72,  10);
+  --chart-2:              rgb(28,  138, 178);
+  --chart-3:              rgb(160, 110,  20);
+  --chart-4:              rgb(90,   75, 100);
+  --chart-5:              rgb(120,  90, 150);
+  --sidebar:                    rgb(224, 218, 206);
+  --sidebar-foreground:         rgb(14,  10,  28);
+  --sidebar-primary:            rgb(195,  72,  10);
+  --sidebar-primary-foreground: rgb(246, 241, 231);
+  --sidebar-accent:             rgb(246, 241, 231);
+  --sidebar-accent-foreground:  rgb(14,  10,  28);
+  --sidebar-border:             rgb(180, 170, 150);
+  --sidebar-ring:               rgb(195,  72,  10);
+  --font-sans:    "Rajdhani", system-ui, sans-serif;
+  --font-serif:   "Rajdhani", serif;
+  --font-mono:    "Share Tech Mono", "Fira Code", monospace;
+  --font-display: "Rajdhani", system-ui, sans-serif;
+  --radius: 0.25rem;
+  --shadow-color: hsl(30 20% 10%);
+  --shadow-2xs: 0px 1px 4px 0px hsl(30 20% 10% / 0.05);
+  --shadow-xs:  0px 1px 4px 0px hsl(30 20% 10% / 0.08);
+  --shadow-sm:  0px 1px 4px 0px hsl(30 20% 10% / 0.10), 0px 1px 2px -1px hsl(30 20% 10% / 0.10);
+  --shadow:     0px 1px 4px 0px hsl(30 20% 10% / 0.12), 0px 1px 2px -1px hsl(30 20% 10% / 0.12);
+  --shadow-md:  0px 1px 4px 0px hsl(30 20% 10% / 0.14), 0px 2px 4px -1px hsl(30 20% 10% / 0.14);
+  --shadow-lg:  0px 1px 4px 0px hsl(30 20% 10% / 0.16), 0px 4px 6px -1px hsl(30 20% 10% / 0.16);
+  --shadow-xl:  0px 1px 4px 0px hsl(30 20% 10% / 0.18), 0px 8px 10px -1px hsl(30 20% 10% / 0.18);
+  --shadow-2xl: 0px 1px 4px 0px hsl(30 20% 10% / 0.22);
+  --border-subtle:   color-mix(in srgb, var(--border) 60%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 12%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--primary) 8%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--primary), var(--accent));
+  --overlay:         rgba(14, 10, 28, 0.50);
+}
+
+/* ═══════════════════════════════════════════════════
+   BLADE RUNNER — DARK (Los Angeles 2049 / void Wallace)
+   ═══════════════════════════════════════════════════ */
+[data-theme="bladerunner"].dark {
+  --background:           rgb(7,   5,  16);
+  --foreground:           rgb(210, 200, 182);
+  --card:                 rgb(14,  11,  28);
+  --card-foreground:      rgb(210, 200, 182);
+  --popover:              rgb(10,   8,  22);
+  --popover-foreground:   rgb(210, 200, 182);
+  --primary:              rgb(255, 106,  26);
+  --primary-foreground:   rgb(7,   5,  16);
+  --secondary:            rgb(200, 146,  30);
+  --secondary-foreground: rgb(7,   5,  16);
+  --muted:                rgb(18,  14,  35);
+  --muted-foreground:     rgb(110,  98, 130);
+  --accent:               rgb(76,  187, 213);
+  --accent-foreground:    rgb(7,   5,  16);
+  --destructive:          rgb(220,  55,  45);
+  --destructive-foreground: rgb(210, 200, 182);
+  --border:               rgb(28,  22,  52);
+  --input:                rgb(28,  22,  52);
+  --ring:                 rgb(255, 106,  26);
+  --chart-1:              rgb(255, 106,  26);
+  --chart-2:              rgb(76,  187, 213);
+  --chart-3:              rgb(200, 146,  30);
+  --chart-4:              rgb(110,  98, 130);
+  --chart-5:              rgb(160,  80, 200);
+  --sidebar:                    rgb(10,   8,  22);
+  --sidebar-foreground:         rgb(180, 170, 155);
+  --sidebar-primary:            rgb(255, 106,  26);
+  --sidebar-primary-foreground: rgb(7,   5,  16);
+  --sidebar-accent:             rgb(18,  14,  35);
+  --sidebar-accent-foreground:  rgb(180, 170, 155);
+  --sidebar-border:             rgb(28,  22,  52);
+  --sidebar-ring:               rgb(255, 106,  26);
+  --font-sans:    "Rajdhani", system-ui, sans-serif;
+  --font-serif:   "Rajdhani", serif;
+  --font-mono:    "Share Tech Mono", "Fira Code", monospace;
+  --font-display: "Rajdhani", system-ui, sans-serif;
+  --radius: 0.25rem;
+  --shadow-color: hsl(260 60% 2%);
+  --shadow-2xs: 0px 1px 6px 0px hsl(260 60% 2% / 0.40);
+  --shadow-xs:  0px 1px 6px 0px hsl(260 60% 2% / 0.50);
+  --shadow-sm:  0px 1px 6px 0px hsl(260 60% 2% / 0.55), 0px 1px 2px -1px hsl(260 60% 2% / 0.55);
+  --shadow:     0px 1px 6px 0px hsl(260 60% 2% / 0.60), 0px 2px 4px -1px hsl(260 60% 2% / 0.60);
+  --shadow-md:  0px 1px 6px 0px hsl(260 60% 2% / 0.65), 0px 4px 6px -1px hsl(260 60% 2% / 0.65);
+  --shadow-lg:  0px 2px 8px 0px hsl(260 60% 2% / 0.70), 0px 6px 8px -1px hsl(260 60% 2% / 0.70);
+  --shadow-xl:  0px 2px 8px 0px hsl(260 60% 2% / 0.75), 0px 10px 14px -1px hsl(260 60% 2% / 0.75);
+  --shadow-2xl: 0px 4px 12px 0px hsl(260 60% 2% / 0.85);
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--primary) 7%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--primary), var(--accent));
+  --overlay:         rgba(0, 0, 0, 0.85);
+}
+
+/* ═══════════════════════════════════════════════════
    TAILWIND SEMANTIC UTILITIES (@theme inline)
    Maps CSS vars → Tailwind color utilities.
    Enables: bg-background, text-foreground, border-border, etc.
