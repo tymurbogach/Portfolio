@@ -1,5 +1,5 @@
 import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
-import { THEMES } from "../lib/themes";
+import { THEMES, DEFAULT_THEME } from "../lib/themes";
 import type { Mode, Theme } from "../lib/themes";
 
 const THEME_LABELS: Record<Theme, string> = {
@@ -59,7 +59,7 @@ function initThemeMode(): void {
   let currentMode:  Mode  = savedMode ?? "dark";
   let currentTheme: Theme = (THEMES as readonly string[]).includes(savedTheme ?? "")
     ? (savedTheme as Theme)
-    : "cyberpunk";
+    : DEFAULT_THEME;
 
   applyMode(currentMode, currentTheme);
   applyTheme(currentTheme);
