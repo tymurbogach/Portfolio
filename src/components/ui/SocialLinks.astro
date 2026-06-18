@@ -22,25 +22,19 @@ const socialLinks = await getSocialLinks();
           rel="noopener noreferrer"
           aria-label={name}
           class="group flex flex-col items-center justify-center h-full flex-1
-               text-[var(--foreground)] p-[0.75rem]
+               text-[var(--foreground)] px-[0.75rem]
                transition-all duration-250 ease-in-out
                can-hover:hover:bg-[var(--secondary)] can-hover:hover:text-[var(--secondary-foreground)]"
         >
           <!-- Máscara CSS igual que NavBar: el color lo da bg-, no el img src -->
         <span
-          class="inline-block
-                 w-[1.2rem] h-[1.2rem]
-                 mobile:w-[1.4rem]  mobile:h-[1.4rem]
-                 tablet:w-[1.6rem]  tablet:h-[1.6rem]
-                 laptop:w-[1.8rem]  laptop:h-[1.8rem]
-                 fhd:w-[2rem]       fhd:h-[2rem]
-                 qhd:w-[2.4rem]     qhd:h-[2.4rem]
-                 uhd:w-[2.8rem]     uhd:h-[2.8rem]
+          class="inline-block shrink-0
                  bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
                  opacity-70 can-hover:group-hover:opacity-100
                  transition-all duration-200
                  can-hover:group-hover:scale-125 can-hover:group-hover:drop-shadow-sm"
-          style={`-webkit-mask-image: url('${icon}'); mask-image: url('${icon}');
+          style={`width: var(--nav-icon-size); height: var(--nav-icon-size);
+                  -webkit-mask-image: url('${icon}'); mask-image: url('${icon}');
                   -webkit-mask-size: contain;     mask-size: contain;
                   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
                   -webkit-mask-position: center;  mask-position: center;`}

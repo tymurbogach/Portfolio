@@ -86,7 +86,7 @@
   --fixed-offset:    3rem;
   --nav-width:       100%;
   --nav-height:      3rem;
-  --nav-icon-size:   1.25rem;
+  --nav-icon-size:   1.45rem;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1372,7 +1372,7 @@
   :root {
     --nav-width:     20rem;
     --nav-height:    4.5rem;
-    --nav-icon-size: 1.5rem;
+    --nav-icon-size: 1.6rem;
   }
 }
 
@@ -1398,7 +1398,7 @@
   :root {
     --nav-width:     25rem;
     --nav-height:    5rem;
-    --nav-icon-size: 2rem;
+    --nav-icon-size: 2.2rem;
     --fixed-offset:  3rem;
     --main-padding:  6rem;
   }
@@ -1410,6 +1410,7 @@
     --sidebar-width: 27rem;
     --nav-width:     30rem;
     --nav-height:    5.5rem;
+    --nav-icon-size: 2.4rem;
     --fixed-offset:  3.5rem;
     --main-padding:  7rem;
   }
@@ -1435,6 +1436,12 @@
     --fixed-offset:  4.5rem;
     --main-padding:  9rem;
   }
+}
+
+/* Stacked nav-panel → remove duplicate borders */
+footer .nav-panel                            { border-top: none; }
+@media (max-width: 29.9375rem) {
+  header nav.nav-panel                       { border-top: none; }
 }
 
 /* ═══════════════════════════════════════════════════

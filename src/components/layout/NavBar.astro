@@ -25,27 +25,33 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
         href={page.path}
         data-active={currentPath === page.path ? "true" : "false"}
         class:list={[
-          "nav-cell group nav-link flex flex-col items-center justify-center text-center h-full flex-1 min-w-0",
+          "nav-cell group nav-link flex flex-col items-center h-full flex-1 min-w-0",
           "data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent)]",
-          "",
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
           "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
-          "gap-0.5 p-2 mobile:p-3 tablet:p-4",
         ]}
       >
-        <span
-          class="inline-block transition-all duration-200 can-hover:group-hover:scale-125
-                 bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
-                 group-data-[active=true]:bg-[var(--accent)]
-                 opacity-65 can-hover:group-hover:opacity-100 group-data-[active=true]:opacity-100"
-          style={`width: var(--nav-icon-size); height: var(--nav-icon-size);
-                  -webkit-mask-image:url('${page.icon}'); mask-image:url('${page.icon}');
-                  -webkit-mask-size:contain;     mask-size:contain;
-                  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
-                  -webkit-mask-position:center;  mask-position:center;`}
-          aria-hidden="true"
-        />
-        <span class="font-display text-[0.9em] laptop:text-[1em]">{page.label}</span>
+        <!-- Icon: floats centered in the upper space -->
+        <span class="flex-1 flex items-center justify-center w-full">
+          <span
+            class="nav-icon inline-block transition-all duration-200 can-hover:group-hover:scale-125
+                   bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
+                   group-data-[active=true]:bg-[var(--accent)]
+                   opacity-65 can-hover:group-hover:opacity-100 group-data-[active=true]:opacity-100"
+            style={`width: var(--nav-icon-size); height: var(--nav-icon-size);
+                    -webkit-mask-image:url('${page.icon}'); mask-image:url('${page.icon}');
+                    -webkit-mask-size:contain;     mask-size:contain;
+                    -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+                    -webkit-mask-position:center;  mask-position:center;`}
+            aria-hidden="true"
+          />
+        </span>
+        <!-- Label: pinned to bottom -->
+        <span class="font-display text-[0.85em] laptop:text-[0.95em]
+                     pb-1 mobile:pb-1.5 tablet:pb-2 laptop:pb-2.5 fhd:pb-3
+                     leading-none">
+          {page.label}
+        </span>
       </a>
     ))}
   </nav>
@@ -70,7 +76,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
       background-color: var(--secondary) !important;
       color: var(--secondary-foreground) !important;
     }
-    .nav-link[data-active="true"]:hover > span:first-child {
+    .nav-link[data-active="true"]:hover .nav-icon {
       background-color: var(--secondary-foreground) !important;
       opacity: 1 !important;
     }
