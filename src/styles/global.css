@@ -1255,60 +1255,60 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   BLADE RUNNER — DARK (Los Angeles 2049 / void Wallace)
+   BLADE RUNNER — DARK (smog / tierra quemada / Chinatown)
    ═══════════════════════════════════════════════════ */
 [data-theme="bladerunner"].dark {
-  --background:           rgb(7,   5,  16);
-  --foreground:           rgb(210, 200, 182);
-  --card:                 rgb(14,  11,  28);
-  --card-foreground:      rgb(210, 200, 182);
-  --popover:              rgb(10,   8,  22);
-  --popover-foreground:   rgb(210, 200, 182);
-  --primary:              rgb(255, 106,  26);
-  --primary-foreground:   rgb(7,   5,  16);
-  --secondary:            rgb(200, 146,  30);
-  --secondary-foreground: rgb(7,   5,  16);
-  --muted:                rgb(18,  14,  35);
-  --muted-foreground:     rgb(110,  98, 130);
-  --accent:               rgb(76,  187, 213);
-  --accent-foreground:    rgb(7,   5,  16);
+  --background:           rgb(18,  11,   6);
+  --foreground:           rgb(218, 206, 182);
+  --card:                 rgb(28,  18,  10);
+  --card-foreground:      rgb(218, 206, 182);
+  --popover:              rgb(24,  15,   8);
+  --popover-foreground:   rgb(218, 206, 182);
+  --primary:              rgb(208,  82,  14);
+  --primary-foreground:   rgb(218, 206, 182);
+  --secondary:            rgb(255, 195,  35);
+  --secondary-foreground: rgb(18,  11,   6);
+  --muted:                rgb(34,  22,  12);
+  --muted-foreground:     rgb(128, 118,  85);
+  --accent:               rgb(0,   215, 255);
+  --accent-foreground:    rgb(18,  11,   6);
   --destructive:          rgb(220,  55,  45);
-  --destructive-foreground: rgb(210, 200, 182);
-  --border:               rgb(28,  22,  52);
-  --input:                rgb(28,  22,  52);
-  --ring:                 rgb(255, 106,  26);
-  --chart-1:              rgb(255, 106,  26);
-  --chart-2:              rgb(76,  187, 213);
-  --chart-3:              rgb(200, 146,  30);
-  --chart-4:              rgb(110,  98, 130);
-  --chart-5:              rgb(160,  80, 200);
-  --sidebar:                    rgb(10,   8,  22);
-  --sidebar-foreground:         rgb(180, 170, 155);
-  --sidebar-primary:            rgb(255, 106,  26);
-  --sidebar-primary-foreground: rgb(7,   5,  16);
-  --sidebar-accent:             rgb(18,  14,  35);
-  --sidebar-accent-foreground:  rgb(180, 170, 155);
-  --sidebar-border:             rgb(28,  22,  52);
-  --sidebar-ring:               rgb(255, 106,  26);
+  --destructive-foreground: rgb(218, 206, 182);
+  --border:               rgb(46,  30,  16);
+  --input:                rgb(46,  30,  16);
+  --ring:                 rgb(208,  82,  14);
+  --chart-1:              rgb(208,  82,  14);
+  --chart-2:              rgb(0,   215, 255);
+  --chart-3:              rgb(255, 195,  35);
+  --chart-4:              rgb(128, 118,  85);
+  --chart-5:              rgb(220,  30, 100);
+  --sidebar:                    rgb(24,  15,   8);
+  --sidebar-foreground:         rgb(190, 178, 155);
+  --sidebar-primary:            rgb(208,  82,  14);
+  --sidebar-primary-foreground: rgb(218, 206, 182);
+  --sidebar-accent:             rgb(34,  22,  12);
+  --sidebar-accent-foreground:  rgb(190, 178, 155);
+  --sidebar-border:             rgb(46,  30,  16);
+  --sidebar-ring:               rgb(208,  82,  14);
   --font-sans:    "Rajdhani", system-ui, sans-serif;
   --font-serif:   "Rajdhani", serif;
   --font-mono:    "Share Tech Mono", "Fira Code", monospace;
   --font-display: "Rajdhani", system-ui, sans-serif;
   --radius: 0.25rem;
-  --shadow-color: hsl(260 60% 2%);
-  --shadow-2xs: 0px 1px 6px 0px hsl(260 60% 2% / 0.40);
-  --shadow-xs:  0px 1px 6px 0px hsl(260 60% 2% / 0.50);
-  --shadow-sm:  0px 1px 6px 0px hsl(260 60% 2% / 0.55), 0px 1px 2px -1px hsl(260 60% 2% / 0.55);
-  --shadow:     0px 1px 6px 0px hsl(260 60% 2% / 0.60), 0px 2px 4px -1px hsl(260 60% 2% / 0.60);
-  --shadow-md:  0px 1px 6px 0px hsl(260 60% 2% / 0.65), 0px 4px 6px -1px hsl(260 60% 2% / 0.65);
-  --shadow-lg:  0px 2px 8px 0px hsl(260 60% 2% / 0.70), 0px 6px 8px -1px hsl(260 60% 2% / 0.70);
-  --shadow-xl:  0px 2px 8px 0px hsl(260 60% 2% / 0.75), 0px 10px 14px -1px hsl(260 60% 2% / 0.75);
-  --shadow-2xl: 0px 4px 12px 0px hsl(260 60% 2% / 0.85);
+  --shadow-color: hsl(25 70% 2%);
+  --shadow-2xs: 0px 1px 6px 0px hsl(25 70% 2% / 0.50);
+  --shadow-xs:  0px 1px 6px 0px hsl(25 70% 2% / 0.60);
+  --shadow-sm:  0px 1px 6px 0px hsl(25 70% 2% / 0.65), 0px 1px 2px -1px hsl(25 70% 2% / 0.65);
+  --shadow:     0px 1px 6px 0px hsl(25 70% 2% / 0.70), 0px 2px 4px -1px hsl(25 70% 2% / 0.70);
+  --shadow-md:  0px 1px 6px 0px hsl(25 70% 2% / 0.75), 0px 4px 6px -1px hsl(25 70% 2% / 0.75);
+  --shadow-lg:  0px 2px 8px 0px hsl(25 70% 2% / 0.80), 0px 6px 8px -1px hsl(25 70% 2% / 0.80);
+  --shadow-xl:  0px 2px 8px 0px hsl(25 70% 2% / 0.85), 0px 10px 14px -1px hsl(25 70% 2% / 0.85);
+  --shadow-2xl: 0px 4px 12px 0px hsl(25 70% 2% / 0.90);
   --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--primary) 7%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--primary) 8%, transparent);
   --gradient-border: linear-gradient(90deg, var(--primary), var(--accent));
-  --overlay:         rgba(0, 0, 0, 0.85);
+  --overlay:         rgba(8, 4, 2, 0.88);
 }
 
 /* ═══════════════════════════════════════════════════
