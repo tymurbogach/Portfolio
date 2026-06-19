@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import GradualBlur    from "../components/ui/GradualBlur";
 import Header         from "../components/layout/Header.astro";
 import Footer         from "../components/layout/Footer.astro";
 import NameCard        from "../components/layout/NameCard.astro";
@@ -201,12 +202,9 @@ const ogImageUrl = `${site.url}${ogImage}`;
              flex items-center justify-center"
     >
       <div
-        class="w-full h-full
+        class="w-full h-full relative
                bg-[var(--background)]
-               border border-[var(--border)]
                flex items-center justify-center overflow-hidden"
-        style="box-shadow: inset 0 0 120px color-mix(in srgb, var(--accent) 2.5%, transparent),
-                           inset 0 0 40px color-mix(in srgb, var(--primary) 1%, transparent);"
       >
         {
           dual ? (

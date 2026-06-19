@@ -28,7 +28,9 @@ const { pageLabel = "", scrollable = true } = Astro.props;
   <!-- ═══════════════════════════════════
        PANEL DERECHO
        ═══════════════════════════════════ -->
-  <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
+  <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden"
+       style="mask-image: linear-gradient(to bottom, transparent, black 3rem, black calc(100% - 2rem), transparent);
+              -webkit-mask-image: linear-gradient(to bottom, transparent, black 3rem, black calc(100% - 2rem), transparent);">
 
     <!-- Título de sección (opcional) -->
     {pageLabel && (
