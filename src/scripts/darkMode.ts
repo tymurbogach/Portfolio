@@ -3,18 +3,13 @@ import { THEMES, DEFAULT_THEME } from "../lib/themes";
 import type { Mode, Theme } from "../lib/themes";
 
 const THEME_LABELS: Record<Theme, string> = {
-  void:       "VOID",
-  cyberpunk:  "CYBER",
-  matrix:     "NEO",
-  bubblegum:  "GUM",
-  doom:       "DOOM",
-  retro:      "RETRO",
-  elegant:    "LUXE",
-  candyland:  "CANDY",
-  darkmatter: "MATTR",
-  claude:     "CLAUD",
-  catppuccin:  "CAPP",
   bladerunner: "2049",
+  void:        "VOID",
+  cyberpunk:   "CYBER",
+  matrix:      "NEO",
+  bubblegum:   "GUM",
+  doom:        "DOOM",
+  claude:      "CLAUD",
 };
 
 function getSystemMode(): Mode {
