@@ -5,7 +5,8 @@ async function loadStats() {
   try {
     const res = await fetch("/api/stats");
     if (!res.ok) return;
-    const { visitors } = await res.json();
+    const { visitors } = (await res.json()) as { visitors?: number };
+    if (typeof visitors !== "number") return;
     el.textContent = `${visitors.toLocaleString()} visitors`;
     el.classList.remove("opacity-0");
   } catch {
@@ -13,5 +14,5 @@ async function loadStats() {
   }
 }
 
-loadStats();
+// astro:page-load also fires on the initial load, so a single listener suffices.
 document.addEventListener("astro:page-load", loadStats);

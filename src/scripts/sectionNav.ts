@@ -1,4 +1,14 @@
-import { positionIndicator } from "./navUtils";
+/*
+ * Fake-SPA navigation: the site is one page with all sections; this script keeps
+ * URL ↔ section in sync (scroll spy + smooth scroll + popstate) and owns the
+ * nav indicator bar under the active link.
+ */
+
+// Must match --breakpoint-laptop and the laptop-scaled @variant in global.css.
+const LAPTOP_MQ = "(min-width: 80rem)";
+const LAPTOP_SCALED_MQ = "(min-resolution: 1.4dppx) and (min-width: 60rem)";
+
+const INDICATOR_TRANSITION = "left 0.25s ease, width 0.25s ease";
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -9,11 +19,48 @@ function getScrollOffset(): number {
   return parseInt(raw, 10) || 60;
 }
 
-/** Sección cuyo top esté más abajo que el punto de referencia (scrollTop + scroll-offset). */
+/** Repositions the nav indicator bar under the active nav link. */
+function positionIndicator(instant = false): void {
+  const indicator = document.getElementById("nav-indicator");
+  if (!indicator) return;
+  const container = indicator.closest("div");
+  const nav = container?.querySelector("nav");
+  const active = nav?.querySelector<HTMLElement>('.nav-link[data-active="true"]');
+  if (!container || !nav || !active) return;
+
+  if (instant) indicator.style.transition = "none";
+
+  const cr = container.getBoundingClientRect();
+  const ar = active.getBoundingClientRect();
+  indicator.style.left  = `${ar.left - cr.left}px`;
+  indicator.style.width = `${ar.width}px`;
+
+  if (instant) {
+    requestAnimationFrame(() => {
+      indicator.style.transition = INDICATOR_TRANSITION;
+    });
+  }
+}
+
+/** Marks the nav link matching the section as active and repositions the indicator. */
+function setActiveNav(sectionId: string, instant = false): void {
+  const targetPath = sectionId === "home" ? "/" : `/${sectionId}`;
+  document.querySelectorAll<HTMLElement>(".nav-link[data-active]").forEach((link) => {
+    const href = (link.getAttribute("href") ?? "").replace(/\/$/, "") || "/";
+    link.dataset.active = String(href === targetPath);
+  });
+  positionIndicator(instant);
+}
+
+/** Section id derived from a pathname ("/" → "home", "/about" → "about"). */
+function sectionFromPath(pathname: string): string {
+  const path = pathname.replace(/\/$/, "") || "/";
+  return path === "/" ? "home" : path.replace(/^\//, "");
+}
+
+/** Section whose top sits above the reference point (scrollTop + scroll-offset). */
 function getActiveSection(scrollEl: HTMLElement): string {
-  const sections = Array.from(
-    scrollEl.querySelectorAll<HTMLElement>("section[id]")
-  );
+  const sections = Array.from(scrollEl.querySelectorAll<HTMLElement>("section[id]"));
   const ref = scrollEl.scrollTop + getScrollOffset();
   let active = sections[0]?.id ?? "home";
   for (const s of sections) {
@@ -22,7 +69,7 @@ function getActiveSection(scrollEl: HTMLElement): string {
   return active;
 }
 
-/** Scroll el contenedor hasta la sección, respetando prefers-reduced-motion. */
+/** Scrolls the container to the section, honoring prefers-reduced-motion. */
 function scrollToSection(
   scrollEl: HTMLElement,
   sectionId: string,
@@ -36,40 +83,32 @@ function scrollToSection(
   });
 }
 
-/** Marca el enlace de nav correspondiente como activo y reposiciona el indicator. */
-function setActiveNav(sectionId: string): void {
-  const targetPath = sectionId === "home" ? "/" : `/${sectionId}`;
-  document.querySelectorAll<HTMLElement>(".nav-link[data-active]").forEach((link) => {
-    link.dataset.active = String(link.getAttribute("href") === targetPath);
-  });
-  positionIndicator();
-}
-
 function initSectionNav(): void {
-  const scrollEl = document.getElementById("content-scroll") as HTMLElement | null;
-  if (!scrollEl) return; // página sin DualMain scrollable, no aplica
+  const initSection = sectionFromPath(window.location.pathname);
+  setActiveNav(initSection, true);
+
+  const scrollEl = document.getElementById("content-scroll");
+  if (!scrollEl) return; // page without a scrollable DualMain — active link is already set
 
   const ac = new AbortController();
 
-  // ── Scroll inicial a la sección correspondiente a la URL ─────────────────
-  const rawPath = window.location.pathname.replace(/\/$/, "") || "/";
-  const initSection = rawPath === "/" ? "home" : rawPath.replace(/^\//, "");
   scrollToSection(scrollEl, initSection, "instant");
-  setActiveNav(initSection);
 
   // ── Home section: fill viewport height (desktop only) ───────────────────
   const homeSection = document.getElementById("home");
   const isDesktop = () =>
-    window.matchMedia("(min-width: 80rem)").matches ||
-    window.matchMedia("(min-resolution: 1.4dppx) and (min-width: 60rem)").matches;
+    window.matchMedia(LAPTOP_MQ).matches || window.matchMedia(LAPTOP_SCALED_MQ).matches;
   const setHomeHeight = () => {
     if (!homeSection) return;
     homeSection.style.minHeight = isDesktop() ? `${scrollEl.clientHeight}px` : "";
   };
   setHomeHeight();
-  window.addEventListener("resize", setHomeHeight, { signal: ac.signal });
+  window.addEventListener("resize", () => {
+    setHomeHeight();
+    positionIndicator(true); // keep the indicator aligned after layout shifts
+  }, { signal: ac.signal });
 
-  // ── Sincronización URL ↔ sección al scrollear ────────────────────────────
+  // ── URL ↔ section sync while scrolling ───────────────────────────────────
   let currentSection = initSection;
   let lockedTarget: string | null = null; // set during smooth scroll to prevent revert
   let ticking = false;
@@ -98,7 +137,7 @@ function initSectionNav(): void {
     { signal: ac.signal }
   );
 
-  function navigateTo(targetId: string, href: string, push: boolean): void {
+  const navigateTo = (targetId: string, href: string, push: boolean): void => {
     if (!document.getElementById(targetId)) return;
     lockedTarget = targetId;
     currentSection = targetId;
@@ -106,9 +145,9 @@ function initSectionNav(): void {
     else history.replaceState(null, "", href);
     scrollToSection(scrollEl, targetId, "smooth");
     setActiveNav(targetId);
-  }
+  };
 
-  // ── Intercept de clicks en la nav para scroll suave ──────────────────────
+  // ── Intercept nav clicks for smooth in-page scroll ────────────────────────
   document.querySelectorAll<HTMLAnchorElement>(".nav-link[href]").forEach((link) => {
     link.addEventListener(
       "click",
@@ -122,7 +161,7 @@ function initSectionNav(): void {
     );
   });
 
-  // ── data-scroll-target: Hero CTAs and any element that should trigger section scroll ──
+  // ── data-scroll-target: Hero CTAs and any element that triggers section scroll ──
   document.querySelectorAll<HTMLElement>("[data-scroll-target]").forEach((el) => {
     el.addEventListener(
       "click",
@@ -136,12 +175,11 @@ function initSectionNav(): void {
     );
   });
 
-  // ── Soporte popstate (botón atrás/adelante del navegador) ────────────────
+  // ── popstate (browser back/forward) ───────────────────────────────────────
   window.addEventListener(
     "popstate",
     () => {
-      const path = window.location.pathname.replace(/\/$/, "") || "/";
-      const sId = path === "/" ? "home" : path.replace(/^\//, "");
+      const sId = sectionFromPath(window.location.pathname);
       if (document.getElementById(sId)) {
         currentSection = sId;
         scrollToSection(scrollEl, sId, "smooth");
@@ -151,7 +189,6 @@ function initSectionNav(): void {
     { signal: ac.signal }
   );
 
-  // ── Limpieza al navegar fuera (SPA) ──────────────────────────────────────
   document.addEventListener("astro:before-preparation", () => ac.abort(), { once: true });
 }
 

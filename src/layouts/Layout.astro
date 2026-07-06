@@ -1,34 +1,35 @@
 ---
 import "../styles/global.css";
-import GradualBlur    from "../components/ui/GradualBlur";
 import Header         from "../components/layout/Header.astro";
 import Footer         from "../components/layout/Footer.astro";
 import NameCard        from "../components/layout/NameCard.astro";
 import NavBar          from "../components/layout/NavBar.astro";
 import SocialLinks     from "../components/ui/SocialLinks.astro";
-import SocialBotPanel  from "../components/layout/SocialBotPanel.astro";
+import ChatToggle      from "../components/ui/ChatToggle.astro";
 import ChatWidget      from "../components/layout/ChatWidget.astro";
 import DualMain        from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
-import { getSite, getProfile, getContactData } from "../lib/content";
-// ==========================================
-// PROPS
-// ==========================================
+import { getImage } from "astro:assets";
+import { getSite, getProfile } from "../lib/content";
+import { THEMES, DEFAULT_THEME, DEFAULT_MODE, MODE_STORAGE_KEY, THEME_STORAGE_KEY } from "../lib/themes";
+import ogSource from "../assets/gopnik.png";
+
+/** Base HTML shell: SEO head, global scripts, fixed chrome (nav/social/chat) and main frame. */
 interface Props {
+  /** Page name for <title> / og tags */
   title: string;
+  /** true = two-column layout (ProfilePanel sidebar + content) via DualMain */
   dual?: boolean;
+  /** false = center content instead of scrolling it (passed to DualMain) */
   scrollable?: boolean;
+  /** Optional heading rendered above the content panel */
   pageLabel?: string;
+  /** Overrides the per-route description from site.pageDescriptions */
   description?: string;
-  ogImage?: string;
 }
 
-// ==========================================
-// DATOS
-// ==========================================
 const site    = await getSite();
 const profile = await getProfile();
-const contact = await getContactData();
 
 const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
   "home") as keyof typeof site.pageDescriptions;
@@ -41,11 +42,16 @@ const {
   scrollable = true,
   pageLabel = "",
   description = defaultDescription,
-  ogImage = site.ogImage,
 } = Astro.props;
 
 const pageTitle = `${title} — ${site.name}`;
-const ogImageUrl = `${site.url}${ogImage}`;
+// Optimized at build time — the 1 MB source PNG never ships.
+const ogImage = await getImage({ src: ogSource, width: 800, format: "webp" });
+const ogImageUrl = new URL(ogImage.src, site.url).href;
+const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
+
+// Default first-paint background: bladerunner theme, dark mode (see global.css)
+const THEME_COLOR = "rgb(18, 11, 6)";
 
 ---
 
@@ -54,17 +60,28 @@ const ogImageUrl = `${site.url}${ogImage}`;
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Anti-flash: aplica modo y tema ANTES del primer paint.
-         Cyberpunk: :root = dark (default). .dark class = light mode.
-         Otros temas: .dark class = dark mode (convención normal). -->
-    <script is:inline>
+    <!-- Anti-flash: applies mode + theme BEFORE first paint. Constants come from
+         src/lib/themes.ts via define:vars (is:inline scripts cannot import).
+         Cyberpunk owns :root (dark default); .dark is its LIGHT override.
+         Every other theme uses the normal convention (.dark = dark mode). -->
+    <script
+      is:inline
+      define:vars={{
+        themes: THEMES,
+        defaultTheme: DEFAULT_THEME,
+        defaultMode: DEFAULT_MODE,
+        modeKey: MODE_STORAGE_KEY,
+        themeKey: THEME_STORAGE_KEY,
+      }}
+    >
       history.scrollRestoration = "manual";
       (function () {
-        var mode  = localStorage.getItem("theme") || "dark";
-        var theme = localStorage.getItem("color-theme") || "bladerunner";
+        var mode  = localStorage.getItem(modeKey) || defaultMode;
+        var saved = localStorage.getItem(themeKey);
+        var theme = themes.indexOf(saved) !== -1 ? saved : defaultTheme;
         var needsDark = (theme === "cyberpunk") ? (mode === "light") : (mode === "dark");
         document.documentElement.classList.toggle("dark", needsDark);
-        if (theme && theme !== "cyberpunk") document.documentElement.setAttribute("data-theme", theme);
+        if (theme !== "cyberpunk") document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
 
@@ -76,16 +93,20 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <!-- SEO -->
     <meta name="description" content={description} />
     <meta name="author" content={site.name} />
+    <meta name="theme-color" content={THEME_COLOR} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph -->
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:url" content={site.url} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
@@ -97,7 +118,7 @@ const ogImageUrl = `${site.url}${ogImage}`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;700&family=Oxanium:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500;700&family=Roboto+Mono:wght@300;400;500;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;700&family=Oxanium:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
 
@@ -113,34 +134,25 @@ const ogImageUrl = `${site.url}${ogImage}`;
 
   <!-- position:fixed en body evita el scroll nativo del documento;
        el scroll real ocurre solo dentro del panel de contenido -->
-  <body
-    class="bg-[var(--background)] text-[var(--foreground)]"
-    style="position:fixed; inset:0;"
-  >
-    <!-- ═══════════════════════════════════
-         MÓVIL — HEADER / FOOTER FIJOS
-         ═══════════════════════════════════ -->
-    <header class="block laptop:hidden laptop-scaled:hidden fixed top-0 left-0 w-full z-30"
-            style="box-shadow: 0 2px 24px color-mix(in srgb, var(--accent) 8%, transparent);">
+  <body class="fixed inset-0 bg-[var(--background)] text-[var(--foreground)]">
+    <!-- MOBILE — fixed header/footer -->
+    <header
+      class="block laptop:hidden laptop-scaled:hidden fixed top-0 left-0 w-full z-30
+             shadow-[0_2px_24px_color-mix(in_srgb,var(--accent)_8%,transparent)]"
+    >
       <Header />
-      <div
-        aria-hidden="true"
-        style="width:100%; height:1px; background: var(--gradient-border); opacity:0.55; pointer-events:none;"
-      ></div>
+      <div class="gradient-line w-full opacity-55 pointer-events-none" aria-hidden="true"></div>
     </header>
 
-    <footer class="block laptop:hidden laptop-scaled:hidden fixed bottom-0 left-0 w-full z-30"
-            style="box-shadow: 0 -2px 24px color-mix(in srgb, var(--accent) 8%, transparent);">
-      <div
-        aria-hidden="true"
-        style="width:100%; height:1px; background: var(--gradient-border); opacity:0.55; pointer-events:none;"
-      ></div>
+    <footer
+      class="block laptop:hidden laptop-scaled:hidden fixed bottom-0 left-0 w-full z-30
+             shadow-[0_-2px_24px_color-mix(in_srgb,var(--accent)_8%,transparent)]"
+    >
+      <div class="gradient-line w-full opacity-55 pointer-events-none" aria-hidden="true"></div>
       <Footer />
     </footer>
 
-    <!-- ═══════════════════════════════════
-         DESKTOP — ELEMENTOS FIJOS
-         ═══════════════════════════════════ -->
+    <!-- DESKTOP — fixed corner elements -->
     <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
          style="top: var(--fixed-offset); left: var(--fixed-offset);">
       <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
@@ -158,42 +170,16 @@ const ogImageUrl = `${site.url}${ogImage}`;
 
     <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
          style="bottom: var(--fixed-offset); right: var(--fixed-offset);">
-      <SocialBotPanel />
+      <ChatToggle variant="panel" />
     </div>
 
     <!-- Mobile chat FAB — visible only below laptop breakpoint -->
-    <button
-      class="chat-toggle block laptop:hidden laptop-scaled:hidden fixed z-40 cursor-pointer
-             flex items-center gap-1.5 px-3 py-2
-             bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
-             transition-all duration-200 can-hover:hover:opacity-100"
-      style="
-        background: color-mix(in srgb, var(--background) 75%, transparent);
-        border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        opacity: 0.7;
-      "
-      aria-label="Open AI chat"
-    >
-      <span
-        style="display: inline-block; width: 1.1rem; height: 1.1rem; flex-shrink: 0;
-               background-color: var(--foreground);
-               -webkit-mask-image: url('/img/bot.png'); mask-image: url('/img/bot.png');
-               -webkit-mask-size: contain; mask-size: contain;
-               -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-               -webkit-mask-position: center; mask-position: center;"
-        aria-hidden="true"
-      ></span>
-      <span style="font-size: 0.42rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.6;">BOT</span>
-    </button>
+    <ChatToggle variant="fab" />
 
     <ChatWidget />
 
 
-    <!-- ═══════════════════════════════════
-         MAIN
-         ═══════════════════════════════════ -->
+    <!-- MAIN -->
     <main
       class="main-layout fixed inset-x-0 z-20
              top-[3rem] mobile:top-[4.5rem] tablet:top-[4.5rem]

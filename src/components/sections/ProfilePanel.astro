@@ -1,14 +1,17 @@
 ---
+import { Image } from "astro:assets";
 import { getProfile, getHomeData, getContactData } from "../../lib/content";
 import Modal from "../../components/ui/Modal.astro";
+import CvDownloadButton from "../../components/ui/CvDownloadButton.astro";
+import gopnik from "../../assets/gopnik.png";
 
 const profile = await getProfile();
 const home    = await getHomeData();
 const contact = await getContactData();
 
-const { nameDisplay, role, bio }           = profile;
-const { stats }                            = home;
-const { cv_url, statusStr, statusActive }  = contact;
+const { bio }                                        = profile;
+const { stats }                                      = home;
+const { cv_url, cv_url_es, statusStr, statusActive } = contact;
 ---
 
 <section class="flex flex-col w-full h-full min-h-0">
@@ -19,13 +22,14 @@ const { cv_url, statusStr, statusActive }  = contact;
     <!-- Photo -->
     <div class="relative neon-glow">
       <div
-        class="absolute pointer-events-none"
-        style="inset: -4px; border: 1px solid var(--primary); opacity: 0.30;"
+        class="absolute -inset-1 border border-[var(--primary)] opacity-30 pointer-events-none"
         aria-hidden="true"
       />
-      <img
-        src="/img/gopnik.png"
+      <Image
+        src={gopnik}
         alt="Tymur Bogach"
+        width={352}
+        densities={[1, 2]}
         class="w-full h-auto object-contain pointer-events-none
                max-w-[6rem] mobile:max-w-[7rem]
                laptop:max-w-[9rem] laptop-scaled:max-w-[9rem] fhd:max-w-[12rem] qhd:max-w-[16rem] uhd:max-w-[22rem]"
@@ -34,8 +38,8 @@ const { cv_url, statusStr, statusActive }  = contact;
 
     <!-- Bio -->
     <p
-      class="text-[0.62rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base leading-[1.6] m-0 text-center"
-      style="color: var(--muted-foreground); max-width: 15rem;"
+      class="text-[0.62rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
+             leading-[1.6] m-0 text-center text-[var(--muted-foreground)] max-w-[15rem]"
     >
       {bio}
     </p>
@@ -43,23 +47,25 @@ const { cv_url, statusStr, statusActive }  = contact;
     <!-- Status -->
     <div class="flex items-center gap-2">
       <span
-        class="rounded-full shrink-0"
-        style={`width: 6px; height: 6px; background: ${statusActive ? "var(--accent)" : "var(--border)"}; ${statusActive ? "animation: pulse 2s infinite;" : ""}`}
+        class:list={[
+          "rounded-full shrink-0 w-[6px] h-[6px]",
+          statusActive ? "bg-[var(--accent)] [animation:pulse_2s_infinite]" : "bg-[var(--border)]",
+        ]}
         aria-hidden="true"
       />
-      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold" style="opacity: 0.55;">
+      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-55">
         {statusStr}
       </span>
     </div>
 
     <!-- Stats (horizontal row) -->
     <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem] uhd:max-w-[28rem]">
-      {stats.map(({ n, label }: { n: string; label: string }, i: number) => {
+      {stats.map(({ n, label }, i) => {
       const sc = (["var(--accent)", "var(--chart-5)", "var(--primary)", "var(--chart-2)"] as const)[i % 4];
       return (
         <div
-          class="flex flex-col items-center flex-1 px-1.5 py-2"
-          style={`border-left: 2px solid ${sc}; background: var(--surface-glow);`}
+          class="flex flex-col items-center flex-1 px-1.5 py-2 bg-[var(--surface-glow)] border-l-2"
+          style={`border-left-color: ${sc};`}
         >
           <span
             class="font-display text-base laptop:text-xl laptop-scaled:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl leading-none"
@@ -68,8 +74,8 @@ const { cv_url, statusStr, statusActive }  = contact;
             {n}
           </span>
           <span
-            class="text-[0.42rem] laptop:text-[0.5rem] laptop-scaled:text-[0.5rem] fhd:text-[0.58rem] qhd:text-[0.68rem] uhd:text-xs tracking-[0.2em] uppercase mt-0.5 text-center"
-            style="opacity: 0.4;"
+            class="text-[0.42rem] laptop:text-[0.5rem] laptop-scaled:text-[0.5rem] fhd:text-[0.58rem] qhd:text-[0.68rem] uhd:text-xs
+                   tracking-[0.2em] uppercase mt-0.5 text-center opacity-40"
           >
             {label}
           </span>
@@ -81,27 +87,8 @@ const { cv_url, statusStr, statusActive }  = contact;
 
   <!-- CV buttons — anchored at bottom -->
   <div class="mt-auto flex w-full shrink-0">
-    <button
-      class="cv-modal-trigger btn-base btn-ghost flex-1 justify-center gap-1.5 px-3 py-2
-             text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold"
-      data-src={cv_url}
-    >
-      <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-        <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-      </svg>
-      <span>CV · EN</span>
-    </button>
-    <button
-      class="cv-modal-trigger btn-base btn-ghost flex-1 justify-center gap-1.5 px-3 py-2
-             text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold
-             border-l-0"
-      data-src="/TymurBogach_CV_ES.pdf"
-    >
-      <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-        <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-      </svg>
-      <span>CV · ES</span>
-    </button>
+    <CvDownloadButton mode="modal" label="CV · EN" href={cv_url} />
+    <CvDownloadButton mode="modal" label="CV · ES" href={cv_url_es} class="border-l-0" />
   </div>
 
 </section>

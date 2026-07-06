@@ -9,10 +9,6 @@ const { pages }     = Astro.props;
 const currentPath   = Astro.url.pathname.replace(/\/$/, "");
 ---
 
-<script>
-  import "../../scripts/navIndicator";
-</script>
-
 <div
   class="relative"
   style="width: var(--nav-width); height: var(--nav-height);"
@@ -20,29 +16,23 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
   <nav
     class="nav-panel relative flex flex-row items-center justify-center text-center w-full h-full overflow-visible"
   >
-    {pages.map((page: NavPage, i: number) => (
+    {pages.map((page: NavPage) => (
       <a
         href={page.path}
         data-active={currentPath === page.path ? "true" : "false"}
         class:list={[
           "nav-cell group nav-link flex flex-col items-center h-full flex-1 min-w-0",
-          "data-[active=true]:bg-[var(--accent-subtle)] data-[active=true]:text-[var(--accent)]",
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
           "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
         ]}
       >
         <!-- Icon: floats centered in the upper space -->
         <span class="flex-1 flex items-center justify-center w-full">
+          <!-- Active/hover colors come from the nav-cell utility (global.css) -->
           <span
-            class="nav-icon inline-block transition-all duration-200 can-hover:group-hover:scale-125
-                   bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
-                   group-data-[active=true]:bg-[var(--accent)]
-                   opacity-65 can-hover:group-hover:opacity-100 group-data-[active=true]:opacity-100"
-            style={`width: var(--nav-icon-size); height: var(--nav-icon-size);
-                    -webkit-mask-image:url('${page.icon}'); mask-image:url('${page.icon}');
-                    -webkit-mask-size:contain;     mask-size:contain;
-                    -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
-                    -webkit-mask-position:center;  mask-position:center;`}
+            class="nav-icon mask-icon inline-block transition-all duration-200 can-hover:group-hover:scale-125
+                   bg-[var(--foreground)] opacity-65"
+            style={`--icon-url: url('${page.icon}'); width: var(--nav-icon-size); height: var(--nav-icon-size);`}
             aria-hidden="true"
           />
         </span>
@@ -56,29 +46,12 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     ))}
   </nav>
 
+  <!-- Positioned by positionIndicator() in sectionNav.ts; the initial transition
+       must match INDICATOR_TRANSITION there. -->
   <div
     id="nav-indicator"
-    style="position:absolute; bottom:0; height:2px; background:var(--gradient-border);
-           transition: left 0.25s ease, width 0.25s ease;
-           pointer-events:none; left:0; width:0;"
+    class="absolute bottom-0 left-0 w-0 h-[2px] pointer-events-none
+           bg-[var(--gradient-border)] [transition:left_0.25s_ease,width_0.25s_ease]"
     aria-hidden="true"
   />
 </div>
-
-<style>
-  .nav-link[data-active="true"] {
-    background-color: var(--accent-subtle) !important;
-    color: var(--accent) !important;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .nav-link[data-active="true"]:hover {
-      background-color: var(--secondary) !important;
-      color: var(--secondary-foreground) !important;
-    }
-    .nav-link[data-active="true"]:hover .nav-icon {
-      background-color: var(--secondary-foreground) !important;
-      opacity: 1 !important;
-    }
-  }
-</style>

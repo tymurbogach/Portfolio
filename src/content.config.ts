@@ -1,8 +1,9 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { file, glob } from 'astro/loaders';
 
 // ═══════════════════════════════════════════════════════
-// SCHEMAS REUTILIZABLES
+// REUSABLE SCHEMAS
 // ═══════════════════════════════════════════════════════
 const techSkill = z.object({
   slug:  z.string(),
@@ -25,7 +26,7 @@ const cta = z.object({
 });
 
 // ═══════════════════════════════════════════════════════
-// COLECCIONES
+// COLLECTIONS
 // ═══════════════════════════════════════════════════════
 
 // getEntry("site", "site")
@@ -33,11 +34,9 @@ const site = defineCollection({
   loader: file('src/content/site/site.json'),
   schema: z.object({
     name:        z.string(),
-    title:       z.string(),
-    url:         z.string().url(),
+    url:         z.url(),
     lang:        z.string(),
     description: z.string(),
-    ogImage:     z.string(),
     pageDescriptions: z.object({
       home:     z.string(),
       about:    z.string(),
@@ -53,7 +52,6 @@ const site = defineCollection({
 const profile = defineCollection({
   loader: file('src/content/profile/profile.json'),
   schema: z.object({
-    name:        z.string(),
     nameDisplay: z.string(),
     role:        z.string(),
     bio:         z.string(),
@@ -61,7 +59,7 @@ const profile = defineCollection({
 });
 
 // getEntry("home", "data")
-// Contiene hero (título, subtítulo, CTAs) + stats del sidebar
+// Contains hero (title, subtitle, CTAs) + sidebar stats
 const home = defineCollection({
   loader: file('src/content/home/data.json'),
   schema: z.object({
@@ -81,8 +79,6 @@ const home = defineCollection({
 const about = defineCollection({
   loader: file('src/content/about/data.json'),
   schema: z.object({
-    location: z.object({ label: z.string() }).optional(),
-    quote:    z.object({ text: z.string(), author: z.string() }).optional(),
     journey:  z.array(z.object({
       year:   z.string(),
       event:  z.string(),
@@ -109,7 +105,6 @@ const resume = defineCollection({
     frontend:     z.array(techSkill),
     backend:      z.array(techSkill),
     homelab:      z.array(techSkill),
-    homelabExtra: z.number().optional(),
     ai:           z.array(techSkill).optional(),
     languages:    z.array(z.object({
       flag:  z.string(),
@@ -124,33 +119,35 @@ const contact = defineCollection({
   loader: file('src/content/contact/data.json'),
   schema: z.object({
     intro:        z.string().optional(),
-    email:        z.string().email(),
+    email:        z.email(),
     location:     z.string(),
     statusStr:    z.string(),
     statusActive: z.boolean(),
     cv_url:       z.string(),
+    cv_url_es:    z.string(),
     formSubject:  z.string(),
   }),
 });
 
-// getEntry("social", "data") → el valor ES el array directamente
+// getEntry("social", "data") → the value IS the array itself
 const social = defineCollection({
   loader: file('src/content/social/data.json'),
   schema: z.array(z.object({
     name: z.string(),
-    url:  z.string().url(),
+    url:  z.url(),
     icon: z.string(),
   })),
 });
 
-// getCollection("projects") → múltiples entradas via glob
+// getCollection("projects") → multiple entries via glob
+// image: local file (optimized at build via astro:assets) or remote URL (as-is)
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title:       z.string(),
     description: z.string(),
-    image:       z.string(),
-    link:        z.string().url().optional(),
+    image:       image().or(z.url()),
+    link:        z.url().optional(),
     type:        z.enum(["demo", "source"]).optional(),
     tags:        z.array(z.string()).optional(),
     order:       z.number().optional(),

@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "./themes-library.css";
 
 /* ── Custom variants ─────────────────────────────── */
 @variant laptop-scaled (@media (min-resolution: 1.4dppx) and (min-width: 60rem));
@@ -15,6 +14,20 @@
   --breakpoint-fhd:     120rem;  /* ≈ 1920px */
   --breakpoint-qhd:     160rem;  /* ≈ 2560px */
   --breakpoint-uhd:     240rem;  /* ≈ 3840px */
+}
+
+/* ═══════════════════════════════════════════════════
+   DERIVED THEME VARS — shared defaults
+   Computed from each theme's --accent/--primary/--border,
+   so they follow the active theme automatically. Theme
+   blocks below only re-declare them when they deviate.
+   (--overlay varies per theme and stays theme-local.)
+   ═══════════════════════════════════════════════════ */
+:root {
+  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
+  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
+  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
+  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
 }
 
 /* ═══════════════════════════════════════════════════
@@ -73,10 +86,6 @@
   --shadow-2xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.25);
 
   /* Derived composites */
-  --border-subtle:    color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:    color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:     color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border:  linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:          rgba(0, 0, 0, 0.75);
 
   /* Layout — non-theme, mobile base */
@@ -142,10 +151,6 @@
   --shadow-xl:  0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
   --shadow-2xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.25);
   /* Derived composites */
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.55);
 }
 
@@ -199,10 +204,7 @@
   --shadow-lg:  0px 1px 4px 0px hsl(220 60% 8% / 0.09), 0px 4px 6px -1px hsl(220 60% 8% / 0.09);
   --shadow-xl:  0px 1px 4px 0px hsl(220 60% 8% / 0.10), 0px 8px 10px -1px hsl(220 60% 8% / 0.10);
   --shadow-2xl: 0px 1px 4px 0px hsl(220 60% 8% / 0.15);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 12%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.45);
 }
 
@@ -256,10 +258,8 @@
   --shadow-lg:  0px 1px 4px 0px hsl(220 60% 2% / 0.35), 0px 4px 6px -1px hsl(220 60% 2% / 0.35);
   --shadow-xl:  0px 1px 4px 0px hsl(220 60% 2% / 0.40), 0px 8px 10px -1px hsl(220 60% 2% / 0.40);
   --shadow-2xl: 0px 1px 4px 0px hsl(220 60% 2% / 0.50);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 12%, transparent);
   --surface-glow:    color-mix(in srgb, var(--accent) 7%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.75);
 }
 
@@ -313,10 +313,6 @@
   --shadow-lg:  0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 4px 6px -1px hsl(120 100% 15% / 0.15);
   --shadow-xl:  0 1px 3px 0px hsl(120 100% 15% / 0.15), 0 8px 10px -1px hsl(120 100% 15% / 0.15);
   --shadow-2xl: 0 1px 3px 0px hsl(120 100% 15% / 0.35);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.55);
 }
 
@@ -370,10 +366,6 @@
   --shadow-lg:  0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 4px 6px -1px hsl(120 100% 50% / 0.15);
   --shadow-xl:  0 1px 6px 0px hsl(120 100% 50% / 0.15), 0 8px 10px -1px hsl(120 100% 50% / 0.15);
   --shadow-2xl: 0 1px 6px 0px hsl(120 100% 50% / 0.35);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.80);
 }
 
@@ -432,10 +424,6 @@
   --shadow-xl:  3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
   --shadow-2xl: 3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50);
   /* Derived composites */
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.55);
 }
 
@@ -493,10 +481,6 @@
   --shadow-xl:  3px 3px 0px 0px hsl(206.1538 28.0576% 27.2549% / 1.00), 3px 8px 10px -1px hsl(206.1538 28.0576% 27.2549% / 1.00);
   --shadow-2xl: 3px 3px 0px 0px hsl(206.1538 28.0576% 27.2549% / 2.50);
   /* Derived composites */
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.75);
 }
 
@@ -554,10 +538,6 @@
   --shadow-xl:  0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 8px 10px -1px hsl(0 0% 0% / 0.40);
   --shadow-2xl: 0px 2px 4px 0px hsl(0 0% 0% / 1.00);
   /* Derived composites */
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.55);
 }
 
@@ -615,10 +595,6 @@
   --shadow-xl:  0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 8px 10px -1px hsl(0 0% 0% / 0.60);
   --shadow-2xl: 0px 2px 5px 0px hsl(0 0% 0% / 1.50);
   /* Derived composites */
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
-  --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
   --overlay:         rgba(0, 0, 0, 0.75);
 }
 
@@ -675,9 +651,7 @@
   --shadow-lg:  0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
   --shadow-xl:  0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 12%, transparent);
-  --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
   --gradient-border: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 50%, var(--foreground)));
   --overlay:         rgba(0, 0, 0, 0.45);
 }
@@ -732,7 +706,6 @@
   --shadow-lg:  0 1px 3px 0px hsl(0 0% 0% / 0.35), 0 4px 6px -1px hsl(0 0% 0% / 0.35);
   --shadow-xl:  0 1px 3px 0px hsl(0 0% 0% / 0.35), 0 8px 10px -1px hsl(0 0% 0% / 0.35);
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.50);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle:   color-mix(in srgb, var(--accent) 14%, transparent);
   --surface-glow:    color-mix(in srgb, var(--accent) 7%, transparent);
   --gradient-border: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 50%, var(--foreground)));
@@ -846,8 +819,6 @@
   --shadow-lg:  0px 2px 8px 0px hsl(25 70% 2% / 0.80), 0px 6px 8px -1px hsl(25 70% 2% / 0.80);
   --shadow-xl:  0px 2px 8px 0px hsl(25 70% 2% / 0.85), 0px 10px 14px -1px hsl(25 70% 2% / 0.85);
   --shadow-2xl: 0px 4px 12px 0px hsl(25 70% 2% / 0.90);
-  --border-subtle:   color-mix(in srgb, var(--border) 75%, transparent);
-  --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow:    color-mix(in srgb, var(--primary) 8%, transparent);
   --gradient-border: linear-gradient(90deg, var(--primary), var(--accent));
   --overlay:         rgba(8, 4, 2, 0.88);
@@ -1046,19 +1017,25 @@ body::after {
 /* ═══════════════════════════════════════════════════
    UTILITIES
    ═══════════════════════════════════════════════════ */
+/* Monochrome icon from an image via CSS mask — the color comes from background-color,
+   so icons can be tinted with theme variables. Consumers set the source with
+   style="--icon-url: url('/img/x.png')" plus explicit width/height. */
+@utility mask-icon {
+  -webkit-mask-image: var(--icon-url);
+  mask-image: var(--icon-url);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
 @utility text-gradient {
   background: var(--gradient-border);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-@utility neon-border {
-  border: 1px solid var(--accent);
-  box-shadow:
-    0 0 6px  color-mix(in srgb, var(--accent) 35%, transparent),
-    0 0 20px color-mix(in srgb, var(--accent) 35%, transparent),
-    inset 0 0 6px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 @utility neon-glow {
@@ -1079,63 +1056,17 @@ body::after {
   opacity: 0.6;
 }
 
-@utility surface-accent {
-  background: var(--surface-glow);
-}
-
-@utility hero-gradient {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 55%);
-}
-
 @utility decrypted-char {
   color: var(--accent);
 }
 
-@utility matrix-green {
-  color: #00ff41;
-}
-
-@utility matrix-green-dim {
-  color: #00ff41;
-  opacity: 0.35;
-}
-
-@utility neon-left-border {
-  border-left: 2px solid var(--accent);
-  box-shadow: -3px 0 12px color-mix(in srgb, var(--accent) 35%, transparent);
-  padding-left: 1rem;
-}
-
-@utility tag-secondary {
-  background: color-mix(in srgb, var(--primary) 12%, transparent);
-  border: 1px solid var(--primary);
-  color: var(--primary);
-}
-
 @utility hover-glow {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  @media (hover: hover) and (pointer: fine) {
+  @variant can-hover {
     &:hover {
       box-shadow: 0 0 15px color-mix(in srgb, var(--accent) 35%, transparent);
       border-color: var(--accent);
     }
-  }
-}
-
-@utility scanlines {
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.03) 2px,
-      rgba(0, 0, 0, 0.03) 4px
-    );
-    pointer-events: none;
   }
 }
 
@@ -1148,7 +1079,7 @@ body::after {
   font-family: "Poiret One", cursive;
 }
 
-/* Shared panel — NavBar, NameCard, SocialLinks, SocialBotPanel */
+/* Shared panel — NavBar, NameCard, SocialLinks, ChatToggle */
 @utility nav-panel {
   background: var(--card);
   border-color: var(--border);
@@ -1201,7 +1132,7 @@ body::after {
   border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
   background: color-mix(in srgb, var(--accent) 4%, transparent);
   min-width: 0;
-  @media (hover: hover) and (pointer: fine) {
+  @variant can-hover {
     &:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
   }
   @media (min-width: 120rem) {
@@ -1216,13 +1147,27 @@ body::after {
   border: none;
   color: var(--foreground);
   transition: all 200ms ease;
-  @media (hover: hover) and (pointer: fine) {
+  /* Active state — declared before :hover so hover wins on active cells
+     without needing !important (same specificity, later in source). */
+  &[data-active="true"] {
+    background-color: var(--accent-subtle);
+    color: var(--accent);
+  }
+  &[data-active="true"] .nav-icon {
+    background-color: var(--accent);
+    opacity: 1;
+  }
+  @variant can-hover {
     &:hover {
       background-color: var(--secondary);
       color: var(--secondary-foreground);
       transform: scale(1.05);
       box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
       z-index: 10;
+    }
+    &:hover .nav-icon {
+      background-color: var(--secondary-foreground);
+      opacity: 1;
     }
   }
 }
@@ -1234,7 +1179,7 @@ body::after {
   text-decoration: none;
   cursor: pointer;
   border-radius: var(--radius);
-  @media (hover: hover) and (pointer: fine) {
+  @variant can-hover {
     transition: background-color 200ms ease, color 200ms ease,
                 border-color 200ms ease, opacity 200ms ease;
   }
@@ -1249,7 +1194,7 @@ body::after {
     background-color: color-mix(in srgb, var(--accent) 75%, white);
     box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
   }
-  @media (hover: hover) and (pointer: fine) {
+  @variant can-hover {
     &:hover {
       background-color: color-mix(in srgb, var(--accent) 75%, white);
       box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
@@ -1265,7 +1210,7 @@ body::after {
   &:active {
     background-color: color-mix(in srgb, var(--accent) 18%, transparent);
   }
-  @media (hover: hover) and (pointer: fine) {
+  @variant can-hover {
     &:hover {
       background-color: color-mix(in srgb, var(--accent) 18%, transparent);
     }
@@ -1283,7 +1228,7 @@ body::after {
     border-color: var(--accent);
     opacity: 1;
   }
-  @media (hover: hover) and (pointer: fine) {
+  @variant can-hover {
     &:hover {
       background-color: var(--accent);
       color: var(--accent-foreground);
@@ -1392,4 +1337,108 @@ body::after {
   opacity: 0.55;
   letter-spacing: 0.06em;
   font-size: clamp(0.75rem, 1.1vw, 0.85rem);
+}
+
+/* ═══════════════════════════════════════════════════
+   ACCESSIBILITY — reduced motion
+   Disables smooth scroll and non-essential animation
+   for users who request it. JS scroll already honors
+   this via prefersReducedMotion() in sectionNav.ts.
+   ═══════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   CHAT WIDGET (#chat-widget + classes created by chat.ts)
+   Plain CSS (not @utility): most of these classes are
+   generated from JS at runtime, and the open/close state
+   machine is driven by [data-open] on a singleton id.
+   ═══════════════════════════════════════════════════ */
+#chat-widget {
+  position: fixed;
+  z-index: 50;
+  bottom: calc(2.5rem + 0.75rem);
+  right: 0.75rem;
+  width: min(22rem, calc(100vw - 1.5rem));
+  max-height: min(28rem, calc(100vh - 8rem));
+  background: var(--background);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transform-origin: bottom right;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0;
+  transform: scale(0.95) translateY(8px);
+  pointer-events: none;
+}
+@media (min-width: 30rem) {
+  #chat-widget { bottom: calc(4.5rem + 0.75rem); }
+}
+@media (min-width: 80rem) {
+  #chat-widget {
+    bottom: calc(5rem + 1.5rem);
+    right: 3rem;
+    width: 25rem;
+    max-height: 30rem;
+  }
+}
+#chat-widget[data-open="true"] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Message bubbles */
+.chat-msg {
+  max-width: 85%;
+  padding: 0.5rem 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.chat-msg--user {
+  align-self: flex-end;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+}
+.chat-msg--bot {
+  align-self: flex-start;
+  border-left: 2px solid var(--accent);
+  background: var(--surface-glow);
+  color: var(--foreground);
+  padding-left: 0.75rem;
+}
+
+/* Typing indicator */
+.chat-typing {
+  align-self: flex-start;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--accent);
+  background: var(--surface-glow);
+}
+.chat-typing span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  animation: chat-dot 1.2s ease-in-out infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes chat-dot {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+  40%           { transform: scale(1);   opacity: 0.9; }
 }

@@ -34,7 +34,8 @@ const hasIcon   = !!icon;
   </svg>
 ) : (
   <span
-    aria-hidden="true"
+    role="img"
+    aria-label={label}
     class={extraClass}
     style={`display:inline-block; width:${size}px; height:${size}px; flex-shrink:0;
             background:${color ?? "currentColor"}; opacity:0.5;

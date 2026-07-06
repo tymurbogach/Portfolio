@@ -1,4 +1,7 @@
 ---
+import DownloadIcon from "./DownloadIcon.astro";
+
+/** CV modal: lazy-loads the PDF into an iframe on first open (cvModal.ts). */
 interface Props {
   id?:        string;
   titleLabel: string;
@@ -57,9 +60,7 @@ const { id = "cv-modal", titleLabel } = Astro.props;
                  text-[var(--accent)] opacity-70
                  can-hover:hover:opacity-100 active:opacity-100 transition-opacity duration-200"
         >
-          <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-          </svg>
+          <DownloadIcon />
           Download
         </a>
         <button

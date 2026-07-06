@@ -120,10 +120,15 @@ function initChat(): void {
 
   if (!widget || !toggles.length || !messages || !input || !sendBtn) return;
 
-  let isOpen = false;
+  const controller = new AbortController();
+  const { signal } = controller;
 
-  function open(): void {
+  let isOpen = false;
+  let lastToggle: HTMLElement | null = null;
+
+  function open(trigger?: HTMLElement): void {
     isOpen = true;
+    if (trigger) lastToggle = trigger;
     widget!.dataset.open = "true";
     widget!.removeAttribute("aria-hidden");
     input!.focus();
@@ -133,16 +138,17 @@ function initChat(): void {
     isOpen = false;
     widget!.dataset.open = "false";
     widget!.setAttribute("aria-hidden", "true");
+    lastToggle?.focus();
   }
 
   toggles.forEach((toggle) => {
     toggle.addEventListener("click", (e) => {
       e.stopPropagation();
-      isOpen ? close() : open();
-    });
+      isOpen ? close() : open(toggle);
+    }, { signal });
   });
 
-  closeBtn?.addEventListener("click", (e) => { e.stopPropagation(); close(); });
+  closeBtn?.addEventListener("click", (e) => { e.stopPropagation(); close(); }, { signal });
 
   // Close on outside click only when conversation hasn't started (input empty + no user messages)
   document.addEventListener("click", (e) => {
@@ -153,24 +159,30 @@ function initChat(): void {
       || (input?.value.trim().length ?? 0) > 0
       || input === document.activeElement;
     if (!hasConversation) close();
-  });
+  }, { signal });
 
-  sendBtn.addEventListener("click", () => sendMessage(input.value, messages, input, sendBtn));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) close();
+  }, { signal });
+
+  sendBtn.addEventListener("click", () => sendMessage(input.value, messages, input, sendBtn), { signal });
 
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage(input.value, messages, input, sendBtn);
     }
-  });
+  }, { signal });
 
   starters.forEach((s) => {
     s.addEventListener("click", () => {
       const q = s.dataset.q ?? s.textContent ?? "";
       sendMessage(q, messages, input, sendBtn);
       s.closest(".chat-starters")?.remove();
-    });
+    }, { signal });
   });
+
+  document.addEventListener("astro:before-preparation", () => controller.abort(), { once: true });
 }
 
 document.addEventListener("astro:page-load", initChat);

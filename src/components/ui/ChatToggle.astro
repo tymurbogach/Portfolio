@@ -1,0 +1,57 @@
+---
+/** Toggle button for the AI chat widget. chat.ts binds to every `.chat-toggle`. */
+interface Props {
+  /** `panel` = desktop nav-panel cell · `fab` = mobile floating button */
+  variant: "panel" | "fab";
+}
+const { variant } = Astro.props;
+const BOT_ICON = "/img/bot.png";
+---
+
+{
+  variant === "panel" ? (
+    <div style="width: var(--nav-height); height: var(--nav-height);">
+      <div class="nav-panel flex flex-row w-full h-full">
+        <button
+          id="chat-toggle-btn"
+          aria-label="Open AI chat"
+          class="nav-cell chat-toggle group flex flex-col items-center justify-center text-center h-full flex-1 min-w-0
+                 gap-0.5 p-2 tablet:p-3"
+        >
+          <span
+            class="mask-icon inline-block transition-all duration-200 can-hover:group-hover:scale-125
+                   bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
+                   opacity-65 can-hover:group-hover:opacity-100
+                   can-hover:group-hover:drop-shadow-sm"
+            style={`--icon-url: url('${BOT_ICON}'); width: calc(var(--nav-icon-size) * 1.4); height: calc(var(--nav-icon-size) * 1.4);`}
+            aria-hidden="true"
+          />
+          <span
+            class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.6rem]
+                   tracking-[0.3em] uppercase
+                   opacity-50 can-hover:group-hover:opacity-80
+                   transition-opacity duration-200"
+          >BOT</span>
+        </button>
+      </div>
+    </div>
+  ) : (
+    <button
+      class="chat-toggle laptop:hidden laptop-scaled:hidden fixed z-40 cursor-pointer
+             flex items-center gap-1.5 px-3 py-2
+             bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
+             bg-[color-mix(in_srgb,var(--background)_75%,transparent)]
+             border border-[color-mix(in_srgb,var(--border)_65%,transparent)]
+             backdrop-blur-[8px] opacity-70
+             transition-all duration-200 can-hover:hover:opacity-100"
+      aria-label="Open AI chat"
+    >
+      <span
+        class="mask-icon inline-block w-[1.1rem] h-[1.1rem] shrink-0 bg-[var(--foreground)]"
+        style={`--icon-url: url('${BOT_ICON}')`}
+        aria-hidden="true"
+      />
+      <span class="text-[0.42rem] tracking-[0.3em] uppercase opacity-60">BOT</span>
+    </button>
+  )
+}

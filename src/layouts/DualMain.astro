@@ -1,11 +1,11 @@
 ---
 import ProfilePanel from "../components/sections/ProfilePanel.astro";
 
-// ==========================================
-// PROPS
-// ==========================================
+/** Two-column layout: ProfilePanel sidebar (desktop only) + right content panel. */
 interface Props {
+  /** Optional heading above the content panel */
   pageLabel?:  string;
+  /** false = center the content instead of making it scrollable */
   scrollable?: boolean;
 }
 
@@ -14,9 +14,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 
 <div class="flex flex-col laptop:flex-row laptop-scaled:flex-row w-full h-full overflow-hidden">
 
-  <!-- ═══════════════════════════════════
-       SIDEBAR izquierda (solo desktop)
-       ═══════════════════════════════════ -->
+  <!-- Left sidebar (desktop only) -->
   <div
     class="hidden laptop:flex laptop-scaled:flex shrink-0 items-center justify-center
            laptop:p-[2.5rem] laptop-scaled:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
@@ -25,14 +23,12 @@ const { pageLabel = "", scrollable = true } = Astro.props;
     <ProfilePanel />
   </div>
 
-  <!-- ═══════════════════════════════════
-       PANEL DERECHO
-       ═══════════════════════════════════ -->
+  <!-- Right content panel -->
   <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden"
        style="mask-image: linear-gradient(to bottom, transparent, black 3rem, black calc(100% - 2rem), transparent);
               -webkit-mask-image: linear-gradient(to bottom, transparent, black 3rem, black calc(100% - 2rem), transparent);">
 
-    <!-- Título de sección (opcional) -->
+    <!-- Optional section heading -->
     {pageLabel && (
       <div
         class="shrink-0
@@ -41,18 +37,18 @@ const { pageLabel = "", scrollable = true } = Astro.props;
                pt-[1rem] laptop:pt-[1.5rem] laptop-scaled:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
                pb-4 laptop:pb-7 laptop-scaled:pb-7"
       >
-        <p
+        <h2
           class="text-xs laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl
-                 tracking-[0.45em] uppercase font-bold
+                 tracking-[0.45em] uppercase font-bold m-0
                  text-[var(--foreground)] text-glow"
         >
           {pageLabel}
-        </p>
+        </h2>
         <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4 laptop-scaled:mt-4" />
       </div>
     )}
 
-    <!-- Contenido scrollable o centrado -->
+    <!-- Scrollable or centered content -->
     {scrollable ? (
       <div
         id="content-scroll"

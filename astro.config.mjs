@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
+  site: 'https://nastymur.com',
   adapter: node({ mode: 'standalone' }),
 
   server: {
@@ -21,5 +23,5 @@ export default defineConfig({
     }
   },
 
-  integrations: [react()]
+  integrations: [react(), sitemap()]
 });

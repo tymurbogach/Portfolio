@@ -27,7 +27,7 @@ const categories = [
                   grid grid-cols-2 gap-1.5 overflow-hidden
                   laptop:grid-cols-3 fhd:gap-2.5
                   max-h-[8.5rem] laptop:max-h-[9rem] fhd:max-h-[11rem] qhd:max-h-[13rem]">
-        {skills.map(({ slug, color: c, label: l }: { slug: string; color: string; label: string }) => (
+        {skills.map(({ slug, color: c, label: l }) => (
           <span class="skill-chip">
             <Icon slug={slug} color={c} size={15} label={l}
                   class="shrink-0 fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6" />
@@ -55,7 +55,7 @@ const categories = [
     <span class="cat-label" style="color: var(--primary);">Languages</span>
 
     <div class="grid grid-cols-2 gap-1.5 overflow-hidden laptop:grid-cols-4 fhd:gap-2.5">
-      {languages.map(({ flag, lang, level }: { flag: string; lang: string; level: string }) => (
+      {languages.map(({ flag, lang, level }) => (
         <span class="skill-chip">
           <span class="text-[0.9rem] laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none shrink-0" aria-hidden="true">{flag}</span>
           <span class="flex flex-col min-w-0">

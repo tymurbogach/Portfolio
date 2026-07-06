@@ -9,7 +9,6 @@ astro.d.ts
 
 # dependencies
 node_modules/
-package-lock.json.log
 
 # logs
 npm-debug.log*
@@ -43,9 +42,9 @@ Thumbs.db
 *.local.json
 skills-lock.json
 scratch/
-CLAUDE.md
 
-# Playwright/Cypress (si los usas luego)
+# Playwright/Cypress
 test-results/
 playwright-report/
 blob-report/
+.playwright-mcp/

@@ -1,11 +1,15 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Icon from "./Icon.astro";
 
+/** Project card: renders as an external link when `link` is set, otherwise as a static card. */
 interface Props {
   title:       string;
   description: string;
   link?:       string;
-  image?:      string;
+  /** Local image (optimized via astro:assets) or remote URL (rendered as-is). */
+  image?:      ImageMetadata | string;
   type?:       "source" | "demo";
   tags?:       string[];
   index?:      number;
@@ -23,11 +27,13 @@ const {
 
 const isDemo   = type === "demo";
 const indexStr = String(index).padStart(2, "0");
-const hoverClass = link
-  ? "can-hover:hover:border-[var(--accent)] hover-glow"
-  : "";
-const cardClass = `relative group flex flex-col overflow-hidden border border-[var(--border)] ${hoverClass} transition-all duration-300`;
+const visibleTags = tags.filter((t) => t !== "Self-hosted");
 
+/* Linked cards get hover affordances; static cards stay inert. */
+const Tag = link ? "a" : "div";
+const linkAttrs = link ? { href: link, target: "_blank", rel: "noopener noreferrer" } : {};
+
+/** Maps project tags to simple-icons slugs; unmapped tags render as plain text badges. */
 const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "Angular":     { slug: "angular",      color: "#DD0031" },
   "Laravel":     { slug: "laravel" },
@@ -35,7 +41,7 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "JavaScript":  { slug: "javascript" },
   "Docker":      { slug: "docker" },
   "HTML":        { slug: "html5" },
-  "CSS":         { slug: "css"},
+  "CSS":         { slug: "css" },
   "PHP":         { slug: "php" },
   "MySQL":       { slug: "mysql" },
   "PostgreSQL":  { slug: "postgresql" },
@@ -46,116 +52,122 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "Astro":       { slug: "astro" },
   "Tailwind":    { slug: "tailwindcss" },
   "TailwindCSS": { slug: "tailwindcss" },
-  "API":         { slug: "postman"},
+  "API":         { slug: "postman" },
 };
 ---
 
-{link ? (
-<a
-  href={link}
-  target="_blank"
-  rel="noopener noreferrer"
-  class={cardClass}
+<Tag
+  {...linkAttrs}
+  class:list={[
+    "relative group flex flex-col overflow-hidden border border-[var(--border)] transition-all duration-300",
+    link && "can-hover:hover:border-[var(--accent)] hover-glow",
+  ]}
 >
   <!-- Large muted index — background element -->
   <span
-    class="font-display absolute pointer-events-none select-none"
-    style="right: 0.5rem; bottom: -0.25rem;
-           font-size: clamp(3rem, 5vw, 4rem);
-           line-height: 1;
-           color: var(--foreground);
-           opacity: 0.04;
-           z-index: 0;"
+    class="font-display absolute right-2 -bottom-1 z-0 pointer-events-none select-none
+           text-[clamp(3rem,5vw,4rem)] leading-none text-[var(--foreground)] opacity-[0.04]"
     aria-hidden="true"
   >{indexStr}</span>
 
   <!-- Image — top -->
-  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--card)]" style="aspect-ratio: 16/9;">
+  <div class="relative w-full aspect-video overflow-hidden shrink-0 bg-[var(--card)]">
 
     <!-- Badge -->
     <span
-      class="absolute top-2 left-3 z-20
-             text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
-             border border-[var(--border-subtle)] bg-[var(--background)]"
-      style={isDemo
-        ? "background: var(--chart-5); color: var(--background); opacity: 0.9;"
-        : "border-color: var(--primary); color: var(--primary); opacity: 0.85;"}
+      class:list={[
+        "absolute top-2 left-3 z-20",
+        "text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase",
+        "border border-[var(--border-subtle)] bg-[var(--background)]",
+        isDemo
+          ? "bg-[var(--chart-5)] text-[var(--background)] opacity-90"
+          : "border-[var(--primary)] text-[var(--primary)] opacity-85",
+      ]}
     >
       {isDemo ? "● live" : "⌥ src"}
     </span>
 
     {image ? (
-      <img
-        src={image}
-        alt={title}
-        loading="lazy"
-        class="w-full h-full object-cover
-               transition-opacity duration-300
-               can-hover:group-hover:opacity-80"
-      />
+      typeof image === "string" ? (
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          class:list={[
+            "w-full h-full object-cover",
+            link && "transition-opacity duration-300 can-hover:group-hover:opacity-80",
+          ]}
+        />
+      ) : (
+        <Image
+          src={image}
+          alt={title}
+          width={640}
+          loading="lazy"
+          class:list={[
+            "w-full h-full object-cover",
+            link && "transition-opacity duration-300 can-hover:group-hover:opacity-80",
+          ]}
+        />
+      )
     ) : (
       <div
-        class="w-full h-full flex flex-col items-center justify-center gap-2
-               bg-[var(--card)] can-hover:group-hover:bg-[var(--muted)]
-               transition-colors duration-300"
+        class:list={[
+          "w-full h-full flex flex-col items-center justify-center gap-2 bg-[var(--card)]",
+          link && "can-hover:group-hover:bg-[var(--muted)] transition-colors duration-300",
+        ]}
       >
-        <span
-          class="font-display text-4xl"
-          style="color: var(--accent); opacity: 0.25;"
-        >{indexStr}</span>
-        <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
-              style="opacity: 0.25;">
+        <span class="font-display text-4xl text-[var(--accent)] opacity-25">{indexStr}</span>
+        <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed opacity-25">
           {title}
         </span>
       </div>
     )}
     <!-- Gradient overlay — fades image into card content -->
     <div
-      class="absolute inset-x-0 bottom-0 h-8 pointer-events-none"
-      style="background: linear-gradient(to top, var(--card), transparent);"
+      class="absolute inset-x-0 bottom-0 h-8 pointer-events-none bg-[linear-gradient(to_top,var(--card),transparent)]"
       aria-hidden="true"
     />
   </div>
 
   <!-- Content — bottom -->
   <div
-    class="flex flex-col flex-1 px-3 py-3 gap-2
-           bg-[var(--background)] can-hover:group-hover:bg-[var(--muted)]
-           transition-colors duration-200 overflow-hidden"
-    style="position: relative; z-index: 1;"
+    class:list={[
+      "relative z-[1] flex flex-col flex-1 px-3 py-3 gap-2",
+      "bg-[var(--background)] transition-colors duration-200 overflow-hidden",
+      link && "can-hover:group-hover:bg-[var(--muted)]",
+    ]}
   >
     <!-- Title + description -->
     <div class="flex flex-col gap-1">
       <div class="flex items-center gap-2">
-        <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0
-                 transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">
+        <h3
+          class:list={[
+            "font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0",
+            link && "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
+          ]}
+        >
           {title}
         </h3>
         {tags.includes("Self-hosted") && (
           <span
-            class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0"
-            style="border: 1px solid var(--chart-2); color: var(--chart-2); opacity: 0.65;"
+            class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0
+                   border border-[var(--chart-2)] text-[var(--chart-2)] opacity-65"
           >self-hosted</span>
         )}
       </div>
-      <p
-        class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="color: var(--muted-foreground); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
-      >
+      <p class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed m-0 line-clamp-3 text-[var(--muted-foreground)]">
         {description}
       </p>
     </div>
 
-    <!-- Stack + link -->
+    <!-- Stack + link CTA -->
     <div class="flex items-end justify-between gap-2 mt-auto">
-      {tags.length > 0 && (
+      {visibleTags.length > 0 && (
         <div class="flex flex-col gap-1">
-          <span
-            class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
-            style="color: var(--primary); opacity: 0.6;"
-          >built with</span>
+          <span class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold text-[var(--primary)] opacity-60">built with</span>
           <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
-            {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
+            {visibleTags.map((tag) => {
               const entry = TAG_SLUGS[tag];
               return entry ? (
                 <div class="flex flex-col items-center gap-[2px]">
@@ -166,155 +178,28 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
                     label={tag}
                     class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6"
                   />
-                  <span
-                    class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none"
-                    style="opacity: 0.40;"
-                  >{tag}</span>
+                  <span class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none opacity-40">{tag}</span>
                 </div>
               ) : (
                 <span
-                  class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold self-end"
-                  style="border: 1px solid var(--chart-2); color: var(--chart-2); opacity: 0.55;"
+                  class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold self-end
+                         border border-[var(--chart-2)] text-[var(--chart-2)] opacity-55"
                 >{tag}</span>
               );
             })}
           </div>
         </div>
       )}
-      <span
-        class="flex items-center gap-1 text-[0.48rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
-               transition-all duration-300 ml-auto shrink-0 self-end pb-0.5 opacity-40 can-hover:group-hover:opacity-100"
-        style="color: var(--accent);"
-      >
-        {isDemo ? "demo" : "code"}
-        <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">→</span>
-      </span>
-    </div>
-  </div>
-</a>
-) : (
-<div
-  class={cardClass}
->
-  <!-- Large muted index — background element -->
-  <span
-    class="font-display absolute pointer-events-none select-none"
-    style="right: 0.5rem; bottom: -0.25rem;
-           font-size: clamp(3rem, 5vw, 4rem);
-           line-height: 1;
-           color: var(--foreground);
-           opacity: 0.04;
-           z-index: 0;"
-    aria-hidden="true"
-  >{indexStr}</span>
-
-  <!-- Image — top -->
-  <div class="relative w-full overflow-hidden shrink-0 bg-[var(--card)]" style="aspect-ratio: 16/9;">
-
-    <!-- Badge -->
-    <span
-      class="absolute top-2 left-3 z-20
-             text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase
-             border border-[var(--border-subtle)] bg-[var(--background)]"
-      style={isDemo
-        ? "background: var(--chart-5); color: var(--background); opacity: 0.9;"
-        : "border-color: var(--primary); color: var(--primary); opacity: 0.85;"}
-    >
-      {isDemo ? "● live" : "⌥ src"}
-    </span>
-
-    {image ? (
-      <img
-        src={image}
-        alt={title}
-        loading="lazy"
-        class="w-full h-full object-cover"
-      />
-    ) : (
-      <div
-        class="w-full h-full flex flex-col items-center justify-center gap-2
-               bg-[var(--card)]"
-      >
+      {link && (
         <span
-          class="font-display text-4xl"
-          style="color: var(--accent); opacity: 0.25;"
-        >{indexStr}</span>
-        <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed"
-              style="opacity: 0.25;">
-          {title}
+          class="flex items-center gap-1 text-[0.48rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
+                 transition-all duration-300 ml-auto shrink-0 self-end pb-0.5 opacity-40 can-hover:group-hover:opacity-100
+                 text-[var(--accent)]"
+        >
+          {isDemo ? "demo" : "code"}
+          <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">→</span>
         </span>
-      </div>
-    )}
-    <!-- Gradient overlay — fades image into card content -->
-    <div
-      class="absolute inset-x-0 bottom-0 h-8 pointer-events-none"
-      style="background: linear-gradient(to top, var(--card), transparent);"
-      aria-hidden="true"
-    />
-  </div>
-
-  <!-- Content — bottom -->
-  <div
-    class="flex flex-col flex-1 px-3 py-3 gap-2
-           bg-[var(--background)]
-           transition-colors duration-200 overflow-hidden"
-    style="position: relative; z-index: 1;"
-  >
-    <!-- Title + description -->
-    <div class="flex flex-col gap-1">
-      <div class="flex items-center gap-2">
-        <h3 class="font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0">
-          {title}
-        </h3>
-        {tags.includes("Self-hosted") && (
-          <span
-            class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0"
-            style="border: 1px solid var(--chart-2); color: var(--chart-2); opacity: 0.65;"
-          >self-hosted</span>
-        )}
-      </div>
-      <p
-        class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed overflow-hidden m-0"
-        style="color: var(--muted-foreground); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"
-      >
-        {description}
-      </p>
+      )}
     </div>
-
-    <!-- Stack -->
-    {tags.length > 0 && (
-      <div class="flex flex-col gap-1 mt-auto">
-        <span
-          class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold"
-          style="color: var(--primary); opacity: 0.6;"
-        >built with</span>
-        <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
-          {tags.filter((t: string) => t !== "Self-hosted").map((tag: string) => {
-            const entry = TAG_SLUGS[tag];
-            return entry ? (
-              <div class="flex flex-col items-center gap-[2px]">
-                <Icon
-                  slug={entry.slug}
-                  color={entry.color}
-                  size={12}
-                  label={tag}
-                  class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5"
-                />
-                <span
-                  class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none"
-                  style="opacity: 0.35;"
-                >{tag}</span>
-              </div>
-            ) : (
-              <span
-                class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold"
-                style="border: 1px solid var(--chart-2); color: var(--chart-2); opacity: 0.55;"
-              >{tag}</span>
-            );
-          })}
-        </div>
-      </div>
-    )}
   </div>
-</div>
-)}
+</Tag>

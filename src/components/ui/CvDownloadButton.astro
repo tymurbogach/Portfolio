@@ -1,0 +1,43 @@
+---
+import DownloadIcon from "./DownloadIcon.astro";
+
+/** CV button: `link` opens the PDF in a new tab, `modal` triggers the CV modal (cvModal.ts). */
+interface Props {
+  label: string;
+  href: string;
+  mode: "link" | "modal";
+  class?: string;
+}
+const { label, href, mode, class: extraClass = "" } = Astro.props;
+---
+
+{
+  mode === "link" ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={[
+        "btn-base btn-primary gap-2 px-4 py-2",
+        "text-[0.55rem] laptop:text-[0.62rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold",
+        extraClass,
+      ]}
+    >
+      <DownloadIcon size={10} />
+      {label}
+    </a>
+  ) : (
+    <button
+      class:list={[
+        "cv-modal-trigger btn-base btn-ghost flex-1 justify-center gap-1.5 px-3 py-2",
+        "text-[0.5rem] laptop:text-[0.6rem] laptop-scaled:text-[0.6rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.35em] uppercase font-bold",
+        extraClass,
+      ]}
+      data-src={href}
+      aria-haspopup="dialog"
+    >
+      <DownloadIcon />
+      <span>{label}</span>
+    </button>
+  )
+}

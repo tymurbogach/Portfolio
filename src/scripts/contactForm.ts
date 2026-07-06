@@ -74,10 +74,10 @@ export function initContactForm() {
     const ac = new AbortController();
     const originalBtnChildren = Array.from(submitBtn.childNodes).map(n => n.cloneNode(true));
 
-    function restoreBtn() {
+    const restoreBtn = () => {
         submitBtn.disabled = false;
         submitBtn.replaceChildren(...originalBtnChildren.map(n => n.cloneNode(true)));
-    }
+    };
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();

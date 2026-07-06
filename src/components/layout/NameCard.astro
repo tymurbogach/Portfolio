@@ -20,7 +20,7 @@ const { nameDisplay, role } = Astro.props;
     href="/"
     class="nav-cell nav-link group no-underline w-full h-full
            flex flex-col items-center justify-center text-center gap-1 mobile:gap-1.5"
-    aria-label="Inicio"
+    aria-label="Home"
   >
     <h1
       class="font-bold font-signature m-0
@@ -32,8 +32,7 @@ const { nameDisplay, role } = Astro.props;
     </h1>
     <div class="flex items-center w-full px-3 mobile:px-4 gap-2">
       <span
-        class="flex-1 h-px"
-        style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--accent) 55%, transparent));"
+        class="flex-1 h-px bg-[linear-gradient(to_right,transparent,color-mix(in_srgb,var(--accent)_55%,transparent))]"
         aria-hidden="true"
       ></span>
       <p
@@ -43,8 +42,7 @@ const { nameDisplay, role } = Astro.props;
         {role}
       </p>
       <span
-        class="flex-1 h-px"
-        style="background: linear-gradient(to left, transparent, color-mix(in srgb, var(--accent) 55%, transparent));"
+        class="flex-1 h-px bg-[linear-gradient(to_left,transparent,color-mix(in_srgb,var(--accent)_55%,transparent))]"
         aria-hidden="true"
       ></span>
     </div>

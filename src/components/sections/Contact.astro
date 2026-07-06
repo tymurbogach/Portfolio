@@ -1,5 +1,6 @@
 ---
 import Button from "../../components/ui/Button.astro";
+import CvDownloadButton from "../../components/ui/CvDownloadButton.astro";
 import type { ContactData, SocialLink } from "../../lib/content";
 
 interface Props {
@@ -7,9 +8,8 @@ interface Props {
   socialLinks: SocialLink[];
 }
 
-const { contact }                                                           = Astro.props;
-const { intro, email, location, statusStr, statusActive, formSubject, cv_url } = contact;
-
+const { contact } = Astro.props;
+const { intro, email, location, formSubject, cv_url, cv_url_es } = contact;
 ---
 
 <script>
@@ -45,7 +45,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
         <div class="flex flex-col gap-1">
           <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Location</span>
-          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold" style="color: var(--chart-2); opacity: 0.65;">{location}</span>
+          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold text-[var(--chart-2)] opacity-65">{location}</span>
         </div>
       </div>
 
@@ -53,30 +53,8 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
       <div class="flex flex-col gap-2">
         <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Curriculum</span>
         <div class="flex flex-row flex-wrap gap-2 mobile:flex-col mobile:items-start">
-          <a
-            href={cv_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-base btn-primary gap-2 px-4 py-2
-                   text-[0.55rem] laptop:text-[0.62rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold"
-          >
-            <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-              <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-            </svg>
-            CV · EN
-          </a>
-          <a
-            href="/TymurBogach_CV_ES.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-base btn-primary gap-2 px-4 py-2
-                   text-[0.55rem] laptop:text-[0.62rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold"
-          >
-            <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-              <path d="M8 1v8M5 6l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/>
-            </svg>
-            CV · ES
-          </a>
+          <CvDownloadButton mode="link" label="CV · EN" href={cv_url} />
+          <CvDownloadButton mode="link" label="CV · ES" href={cv_url_es} />
         </div>
       </div>
 
@@ -86,7 +64,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
 
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
-    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold m-0" style="color: var(--chart-2); opacity: 0.4;">// send a message</p>
+    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold m-0 text-[var(--chart-2)] opacity-40">// send a message</p>
     <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
     <input type="hidden" name="subject"    value={formSubject} />
 
@@ -137,7 +115,7 @@ const { intro, email, location, statusStr, statusActive, formSubject, cv_url } =
     />
 
     <div class="flex items-center justify-between gap-4">
-      <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.22em] uppercase font-bold" style="color: var(--chart-2); opacity: 0.4;">
+      <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.22em] uppercase font-bold text-[var(--chart-2)] opacity-40">
         // responds within 24h
       </span>
       <Button id="submit-btn" type="submit" variant="primary">
