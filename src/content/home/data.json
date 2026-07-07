@@ -12,12 +12,6 @@
         "secondary": "Let's work together",
         "secondaryHref": "/contact"
       }
-    },
-    "stats": [
-      { "n": "10+",  "label": "years precision" },
-      { "n": "4",    "label": "languages"        },
-      { "n": "15+",  "label": "projects shipped" },
-      { "n": "24/7", "label": "self-hosted"      }
-    ]
+    }
   }
 }

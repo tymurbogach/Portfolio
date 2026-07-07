@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { contact } = Astro.props;
-const { intro, email, location, formSubject, cv_url, cv_url_es } = contact;
+const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } = contact;
 ---
 
 <script>
@@ -65,7 +65,7 @@ const { intro, email, location, formSubject, cv_url, cv_url_es } = contact;
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
     <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold m-0 text-[var(--chart-2)] opacity-40">// send a message</p>
-    <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
+    <input type="hidden" name="access_key" value={web3formsKey} />
     <input type="hidden" name="subject"    value={formSubject} />
 
     <div

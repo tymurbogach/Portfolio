@@ -2,6 +2,7 @@
   "profile": {
     "nameDisplay": "TYMUR BOGACH",
     "role": "full stack developer",
-    "bio": "Craftsman turned developer. 10+ years of machining tolerances — now shipping production guarantees."
+    "focus": "Astro · Laravel · Homelab",
+    "timezone": "Europe/Madrid"
   }
 }

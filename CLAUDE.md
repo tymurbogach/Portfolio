@@ -42,11 +42,11 @@ Schemas en `src/content.config.ts` (zod desde `astro/zod`), helpers tipados en `
 | Colección | Archivo | Datos |
 |-----------|---------|-------|
 | `site` | `site/site.json` | name, url, lang, description, pageDescriptions, pages (nav) |
-| `profile` | `profile/profile.json` | nameDisplay, role, bio |
-| `home` | `home/data.json` | hero (title/subtitle/comment/cta) + stats |
+| `profile` | `profile/profile.json` | nameDisplay, role, focus, timezone |
+| `home` | `home/data.json` | hero (title/subtitle/comment/cta) |
 | `about` | `about/data.json` | journey, education, hobbies |
 | `resume` | `resume/data.json` | frontend/backend/homelab/ai (techSkill[]) + languages |
-| `contact` | `contact/data.json` | intro, email, location, status, cv_url, cv_url_es, formSubject |
+| `contact` | `contact/data.json` | intro, email, location, status, cv_url, cv_url_es, formSubject, web3formsKey (pública por diseño — se prerenderiza en el HTML; NO usar env vars para ella: `.dockerignore` excluye `.env*` del build de la Pi) |
 | `social` | `social/data.json` | array de links |
 | `projects` | `projects/*.md` | frontmatter con `image: image().or(z.url())` — local optimizada o URL remota |
 
@@ -64,6 +64,7 @@ Imágenes de proyectos en `src/content/projects/_images/` (rutas relativas `./_i
 | `resumeToggles.ts` | Show-more por categoría con ResizeObserver |
 | `tapFeedback.ts` | Feedback táctil (sustituye al tap-highlight nativo) |
 | `visitCounter.ts` | Pinta el contador desde `/api/stats` |
+| `localTime.ts` | Hora local en vivo del operator card (tick por minuto, tz de `profile.timezone`) |
 
 ## REGLAS DE ARQUITECTURA (contrato obligatorio)
 

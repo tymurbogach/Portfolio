@@ -45,7 +45,7 @@ src/
 
 ```bash
 npm install
-cp .env.example .env   # fill in PUBLIC_WEB3FORMS_KEY (contact form) and OLLAMA_URL (chat)
+cp .env.example .env   # fill in OLLAMA_URL (chat backend)
 npm run dev            # dev server on :4321
 npm run check          # astro check (types)
 npm run format         # prettier

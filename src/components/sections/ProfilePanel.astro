@@ -1,86 +1,101 @@
 ---
 import { Image } from "astro:assets";
-import { getProfile, getHomeData, getContactData } from "../../lib/content";
+import { getProfile, getContactData } from "../../lib/content";
 import Modal from "../../components/ui/Modal.astro";
 import CvDownloadButton from "../../components/ui/CvDownloadButton.astro";
 import gopnik from "../../assets/gopnik.png";
 
 const profile = await getProfile();
-const home    = await getHomeData();
 const contact = await getContactData();
 
-const { bio }                                        = profile;
-const { stats }                                      = home;
-const { cv_url, cv_url_es, statusStr, statusActive } = contact;
+const { focus, timezone }                                      = profile;
+const { cv_url, cv_url_es, statusStr, statusActive, location } = contact;
+
+/* Operator card rows: label + value, rendered as a <dl> spec sheet.
+   TIME gets its value injected live by localTime.ts. */
+const specRows = [
+  { label: "location", value: location },
+  { label: "time",     value: "" },
+  { label: "status",   value: statusStr },
+  { label: "focus",    value: focus },
+];
+
+/* Corner-bracket positions for the photo frame (signature element). */
+const corners = [
+  "top-0 left-0 border-t-2 border-l-2",
+  "top-0 right-0 border-t-2 border-r-2",
+  "bottom-0 left-0 border-b-2 border-l-2",
+  "bottom-0 right-0 border-b-2 border-r-2",
+];
 ---
+
+<script>
+  import "../../scripts/localTime";
+</script>
 
 <section class="flex flex-col w-full h-full min-h-0">
 
   <div class="flex flex-col items-center gap-4 laptop:gap-4 fhd:gap-6
               pt-[10%] laptop:pt-[15%] laptop-scaled:pt-[15%] fhd:pt-[18%] qhd:pt-[20%]">
 
-    <!-- Photo -->
-    <div class="relative neon-glow">
-      <div
-        class="absolute -inset-1 border border-[var(--primary)] opacity-30 pointer-events-none"
-        aria-hidden="true"
-      />
+    <!-- Photo with corner brackets -->
+    <div class="relative p-1.5 fhd:p-2">
+      {corners.map((pos) => (
+        <span
+          class:list={["absolute w-3 h-3 fhd:w-4 fhd:h-4 border-[var(--accent)] opacity-60 pointer-events-none", pos]}
+          aria-hidden="true"
+        />
+      ))}
       <Image
         src={gopnik}
         alt="Tymur Bogach"
-        width={352}
+        width={448}
         densities={[1, 2]}
         class="w-full h-auto object-contain pointer-events-none
-               max-w-[6rem] mobile:max-w-[7rem]
-               laptop:max-w-[9rem] laptop-scaled:max-w-[9rem] fhd:max-w-[12rem] qhd:max-w-[16rem] uhd:max-w-[22rem]"
+               max-w-[10rem] mobile:max-w-[11rem]
+               laptop:max-w-[14rem] laptop-scaled:max-w-[14rem] fhd:max-w-[18rem] qhd:max-w-[22rem] uhd:max-w-[28rem]"
       />
     </div>
 
-    <!-- Bio -->
-    <p
-      class="text-[0.62rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
-             leading-[1.6] m-0 text-center text-[var(--muted-foreground)] max-w-[15rem]"
-    >
-      {bio}
-    </p>
+    <!-- Operator spec sheet -->
+    <div class="w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem] uhd:max-w-[28rem]">
+      <p class="text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.58rem] qhd:text-xs
+                tracking-[0.3em] uppercase font-bold m-0 mb-1.5 opacity-40 [font-family:var(--font-mono)]">
+        // operator
+      </p>
 
-    <!-- Status -->
-    <div class="flex items-center gap-2">
-      <span
-        class:list={[
-          "rounded-full shrink-0 w-[6px] h-[6px]",
-          statusActive ? "bg-[var(--accent)] [animation:pulse_2s_infinite]" : "bg-[var(--border)]",
-        ]}
-        aria-hidden="true"
-      />
-      <span class="text-[0.48rem] laptop:text-[0.56rem] laptop-scaled:text-[0.56rem] fhd:text-[0.66rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-55">
-        {statusStr}
-      </span>
-    </div>
-
-    <!-- Stats (horizontal row) -->
-    <div class="flex gap-2 w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem] uhd:max-w-[28rem]">
-      {stats.map(({ n, label }, i) => {
-      const sc = (["var(--accent)", "var(--chart-5)", "var(--primary)", "var(--chart-2)"] as const)[i % 4];
-      return (
-        <div
-          class="flex flex-col items-center flex-1 px-1.5 py-2 bg-[var(--surface-glow)] border-l-2"
-          style={`border-left-color: ${sc};`}
-        >
-          <span
-            class="font-display text-base laptop:text-xl laptop-scaled:text-xl fhd:text-2xl qhd:text-3xl uhd:text-4xl leading-none"
-            style={`color: ${sc};`}
-          >
-            {n}
-          </span>
-          <span
-            class="text-[0.42rem] laptop:text-[0.5rem] laptop-scaled:text-[0.5rem] fhd:text-[0.58rem] qhd:text-[0.68rem] uhd:text-xs
-                   tracking-[0.2em] uppercase mt-0.5 text-center opacity-40"
-          >
-            {label}
-          </span>
-        </div>
-      ); })}
+      <dl class="m-0 border-y border-[var(--border-subtle)]">
+        {specRows.map(({ label, value }) => (
+          <div class="flex items-baseline gap-3 py-1.5 fhd:py-2
+                      border-b border-[var(--border-subtle)] last:border-b-0">
+            <dt class="w-[3.4rem] fhd:w-[4.2rem] shrink-0 [font-family:var(--font-mono)]
+                       text-[0.42rem] laptop:text-[0.48rem] fhd:text-[0.56rem] qhd:text-[0.66rem] uhd:text-xs
+                       tracking-[0.25em] uppercase opacity-40">
+              {label}
+            </dt>
+            <dd class="m-0 min-w-0 [font-family:var(--font-mono)]
+                       text-[0.55rem] laptop:text-[0.62rem] fhd:text-[0.72rem] qhd:text-sm uhd:text-base
+                       leading-[1.5]">
+              {label === "time" ? (
+                <span id="local-time" data-tz={timezone} class="text-[var(--accent)]" />
+              ) : label === "status" ? (
+                <span class="flex items-center gap-1.5">
+                  <span
+                    class:list={[
+                      "rounded-full shrink-0 w-[6px] h-[6px]",
+                      statusActive ? "bg-[var(--accent)] [animation:pulse_2s_infinite]" : "bg-[var(--border)]",
+                    ]}
+                    aria-hidden="true"
+                  />
+                  <span class="uppercase tracking-[0.12em] font-bold">{value}</span>
+                </span>
+              ) : (
+                value
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
 
   </div>

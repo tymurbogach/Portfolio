@@ -54,12 +54,13 @@ const profile = defineCollection({
   schema: z.object({
     nameDisplay: z.string(),
     role:        z.string(),
-    bio:         z.string(),
+    focus:       z.string(),
+    timezone:    z.string(),
   }),
 });
 
 // getEntry("home", "data")
-// Contains hero (title, subtitle, CTAs) + sidebar stats
+// Contains hero (title, subtitle, CTAs)
 const home = defineCollection({
   loader: file('src/content/home/data.json'),
   schema: z.object({
@@ -71,7 +72,6 @@ const home = defineCollection({
       comment:   z.string(),
       cta,
     }),
-    stats: z.array(z.object({ n: z.string(), label: z.string() })),
   }),
 });
 
@@ -126,6 +126,8 @@ const contact = defineCollection({
     cv_url:       z.string(),
     cv_url_es:    z.string(),
     formSubject:  z.string(),
+    // Web3Forms access key — public by design (it ships in the HTML anyway)
+    web3formsKey: z.string(),
   }),
 });
 
