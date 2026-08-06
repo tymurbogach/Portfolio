@@ -140,11 +140,34 @@ Valores usados por 2+ módulos viven en `src/lib/` con un único punto de verdad
 5. ¿`npm run check` = 0 errors/0 warnings y `npm run build` verde?
 6. ¿Docs actualizadas si cambió la arquitectura (este archivo / README.md)?
 
+## Codebase Memory (grafo del código)
+
+El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (raíz `/home/cyberdyne/dev/portfolio`).
+
+**Antes de explorar código, el grafo va primero:**
+
+| Necesito | Herramienta |
+|----------|-------------|
+| Encontrar función/clase/ruta API | `search_graph` (`name_pattern`, `label`, `qn_pattern`) |
+| Ver el fuente exacto de un símbolo | `get_code_snippet(qualified_name)` |
+| Quién llama a qué / cadena de llamadas | `trace_path(function, mode=calls\|data_flow)` |
+| Mapa general del proyecto | `get_architecture` |
+| Búsqueda de texto con contexto de grafo | `search_code` |
+
+**Grep/Glob/Read siguen siendo lo correcto para:** JSON de `src/content/`, `global.css`, `.md`, configs, `cv/*.json`, y **siempre** para leer un archivo antes de editarlo.
+
+**Frescura del índice:** `detect_changes` al empezar una sesión que vaya a tocar código. Si hay drift real (refactor grande, muchos archivos nuevos, merge), re-indexar con `index_repository(repo_path=".", mode="moderate")`. Cambios de una línea no justifican re-indexar.
+
+**Dónde aporta de verdad en este repo:** impacto de tocar `src/lib/themes.ts`, `src/lib/content.ts` o `src/lib/chatConfig.ts` (consumidos por varios módulos), y saber qué componentes importan cada script de `src/scripts/`.
+
+**Cuándo no usarlo:** editar un JSON de contenido, tocar CSS puro, o cambios de una sola línea ya localizados.
+
 ## Skills activas
 
 | Skill | Activación |
 |-------|-----------|
 | `caveman` | automática (hook de sesión) |
+| `codebase-memory` | automática (exploración de código) |
 | `context7` | automática (al mencionar librería/framework) |
 | `frontend-design` | manual `/frontend-design` o cuando Claude detecta tarea UI |
 | `code-review` | manual `/code-review` |
