@@ -2,7 +2,7 @@
   "data": [
     { "name": "Facebook",   "url": "https://www.facebook.com/Timurnator/",                 "icon": "/img/facebook.png"  },
     { "name": "Instagram",  "url": "https://www.instagram.com/timurnator_/",               "icon": "/img/instagram.png" },
-    { "name": "GitHub",     "url": "https://github.com/TimurTwerKing",                     "icon": "/img/github.png"    },
+    { "name": "GitHub",     "url": "https://github.com/tymurbogach",                     "icon": "/img/github.png"    },
     { "name": "LinkedIn",   "url": "https://www.linkedin.com/in/tymur-bogach/",             "icon": "/img/linkedin.png"  },
     { "name": "X / Twitter","url": "https://x.com/BogachTimur",                            "icon": "/img/twitter.png"   }
   ]
