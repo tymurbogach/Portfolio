@@ -8,38 +8,50 @@
 const LAPTOP_MQ = "(min-width: 80rem)";
 const LAPTOP_SCALED_MQ = "(min-resolution: 1.4dppx) and (min-width: 60rem)";
 
-const INDICATOR_TRANSITION = "left 0.25s ease, width 0.25s ease";
+/* transform y no left/width: left y width son propiedades de layout y animarlas
+   durante el smooth scroll repinta el viewport entero. Debe coincidir con la
+   clase inicial de .nav-indicator en NavBar.astro. */
+const INDICATOR_TRANSITION = "transform 0.25s ease";
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function getScrollOffset(): number {
+function readScrollOffset(): number {
   const raw = getComputedStyle(document.documentElement).getPropertyValue("--scroll-offset").trim();
   return parseInt(raw, 10) || 60;
 }
 
-/** Repositions the nav indicator bar under the active nav link. */
+/*
+ * Repositions the nav indicator bar under the active nav link.
+ *
+ * NavBar se renderiza dos veces (header móvil + esquina de escritorio), así que
+ * hay dos barras y solo una está visible en cada breakpoint: se recorren todas y
+ * se salta la que mide 0 (su NavBar está oculta).
+ */
 function positionIndicator(instant = false): void {
-  const indicator = document.getElementById("nav-indicator");
-  if (!indicator) return;
-  const container = indicator.closest("div");
-  const nav = container?.querySelector("nav");
-  const active = nav?.querySelector<HTMLElement>('.nav-link[data-active="true"]');
-  if (!container || !nav || !active) return;
+  document.querySelectorAll<HTMLElement>(".nav-indicator").forEach((indicator) => {
+    const container = indicator.parentElement;
+    const active = container?.querySelector<HTMLElement>('.nav-link[data-active="true"]');
+    if (!container || !active) return;
 
-  if (instant) indicator.style.transition = "none";
+    const cr = container.getBoundingClientRect();
+    if (cr.width === 0) return; // NavBar oculta en este breakpoint
 
-  const cr = container.getBoundingClientRect();
-  const ar = active.getBoundingClientRect();
-  indicator.style.left  = `${ar.left - cr.left}px`;
-  indicator.style.width = `${ar.width}px`;
+    if (instant) indicator.style.transition = "none";
 
-  if (instant) {
-    requestAnimationFrame(() => {
-      indicator.style.transition = INDICATOR_TRANSITION;
-    });
-  }
+    const ar = active.getBoundingClientRect();
+    // La barra mide el 100% del contenedor y se coloca con transform: el gradiente
+    // escalado uniformemente se ve igual que pintado sobre el ancho final.
+    indicator.style.transform =
+      `translate3d(${ar.left - cr.left}px, 0, 0) scaleX(${ar.width / cr.width})`;
+
+    if (instant) {
+      requestAnimationFrame(() => {
+        indicator.style.transition = INDICATOR_TRANSITION;
+      });
+    }
+  });
 }
 
 /** Marks the nav link matching the section as active and repositions the indicator. */
@@ -58,13 +70,21 @@ function sectionFromPath(pathname: string): string {
   return path === "/" ? "home" : path.replace(/^\//, "");
 }
 
+/*
+ * Posiciones de las secciones, medidas fuera del frame de scroll.
+ * Leer offsetTop (o getComputedStyle) dentro del listener obliga a un layout
+ * síncrono en CADA frame del scroll; con la caché el handler no toca layout.
+ * Se re-mide en resize y cuando cambia el alto de cualquier sección
+ * (fuentes, imágenes, los show-more de Resume).
+ */
+type SectionOffset = { id: string; top: number };
+
 /** Section whose top sits above the reference point (scrollTop + scroll-offset). */
-function getActiveSection(scrollEl: HTMLElement): string {
-  const sections = Array.from(scrollEl.querySelectorAll<HTMLElement>("section[id]"));
-  const ref = scrollEl.scrollTop + getScrollOffset();
-  let active = sections[0]?.id ?? "home";
-  for (const s of sections) {
-    if (s.offsetTop <= ref) active = s.id;
+function getActiveSection(scrollTop: number, offsets: SectionOffset[], scrollOffset: number): string {
+  const ref = scrollTop + scrollOffset;
+  let active = offsets[0]?.id ?? "home";
+  for (const s of offsets) {
+    if (s.top <= ref) active = s.id;
   }
   return active;
 }
@@ -103,8 +123,24 @@ function initSectionNav(): void {
     homeSection.style.minHeight = isDesktop() ? `${scrollEl.clientHeight}px` : "";
   };
   setHomeHeight();
+
+  // ── Medidas cacheadas: el handler de scroll no debe tocar layout ─────────
+  const sectionEls = Array.from(scrollEl.querySelectorAll<HTMLElement>("section[id]"));
+  let scrollOffset = readScrollOffset();
+  let offsets: SectionOffset[] = [];
+  const measure = () => {
+    offsets = sectionEls.map((s) => ({ id: s.id, top: s.offsetTop }));
+  };
+  measure();
+
+  // Re-medir cuando cambia el alto de una sección (fuentes, imágenes, show-more).
+  const ro = new ResizeObserver(measure);
+  sectionEls.forEach((s) => ro.observe(s));
+
   window.addEventListener("resize", () => {
     setHomeHeight();
+    scrollOffset = readScrollOffset();
+    measure();
     positionIndicator(true); // keep the indicator aligned after layout shifts
   }, { signal: ac.signal });
 
@@ -118,7 +154,7 @@ function initSectionNav(): void {
     () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          const active = getActiveSection(scrollEl);
+          const active = getActiveSection(scrollEl.scrollTop, offsets, scrollOffset);
           if (lockedTarget) {
             if (active === lockedTarget) lockedTarget = null; // arrived at target
             else { ticking = false; return; }                  // still scrolling, skip
@@ -189,7 +225,10 @@ function initSectionNav(): void {
     { signal: ac.signal }
   );
 
-  document.addEventListener("astro:before-preparation", () => ac.abort(), { once: true });
+  document.addEventListener("astro:before-preparation", () => {
+    ro.disconnect();
+    ac.abort();
+  }, { once: true });
 }
 
 document.addEventListener("astro:page-load", initSectionNav);

@@ -30,7 +30,8 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
         <span class="flex-1 flex items-center justify-center w-full">
           <!-- Active/hover colors come from the nav-cell utility (global.css) -->
           <span
-            class="nav-icon mask-icon inline-block transition-all duration-200 can-hover:group-hover:scale-125
+            class="nav-icon mask-icon inline-block duration-200 can-hover:group-hover:scale-125
+                   transition-[background-color,opacity,transform]
                    bg-[var(--foreground)] opacity-65"
             style={`--icon-url: url('${page.icon}'); width: var(--nav-icon-size); height: var(--nav-icon-size);`}
             aria-hidden="true"
@@ -46,12 +47,13 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
     ))}
   </nav>
 
-  <!-- Positioned by positionIndicator() in sectionNav.ts; the initial transition
-       must match INDICATOR_TRANSITION there. -->
+  <!-- Positioned by positionIndicator() in sectionNav.ts con transform (translate +
+       scaleX sobre el 100% del contenedor): animar left/width haría layout en cada
+       frame del smooth scroll. La transición debe coincidir con INDICATOR_TRANSITION. -->
   <div
-    id="nav-indicator"
-    class="absolute bottom-0 left-0 w-0 h-[2px] pointer-events-none
-           bg-[var(--gradient-border)] [transition:left_0.25s_ease,width_0.25s_ease]"
+    class="nav-indicator absolute bottom-0 left-0 w-full h-[2px] origin-left pointer-events-none
+           bg-[image:var(--gradient-border)] [transform:scaleX(0)]
+           [transition:transform_0.25s_ease] [will-change:transform]"
     aria-hidden="true"
   />
 </div>

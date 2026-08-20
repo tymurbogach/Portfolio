@@ -135,9 +135,16 @@ const THEME_COLOR = "rgb(18, 11, 6)";
   <!-- position:fixed en body evita el scroll nativo del documento;
        el scroll real ocurre solo dentro del panel de contenido -->
   <body class="fixed inset-0 bg-[var(--background)] text-[var(--foreground)]">
-    <!-- MOBILE — fixed header/footer -->
+    <!-- MOBILE — fixed header/footer.
+         El header es lo único del chrome que se anima durante el scroll (el nav
+         cambia de sección activa). Sin una capa propia y acotada, ese repintado
+         ensucia la capa raíz entera y hay que re-rasterizar el viewport completo
+         en cada frame: en móvil eso es lo que hacía que el scroll fuera a
+         trompicones. `overflow: clip` acota la capa y `overflow-clip-margin`
+         deja sitio para las sombras del nav-panel y el scale del hover. -->
     <header
       class="block laptop:hidden laptop-scaled:hidden fixed top-0 left-0 w-full z-30
+             [will-change:transform] [overflow:clip] [overflow-clip-margin:24px]
              shadow-[0_2px_24px_color-mix(in_srgb,var(--accent)_8%,transparent)]"
     >
       <Header />

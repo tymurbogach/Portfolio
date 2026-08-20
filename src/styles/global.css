@@ -1203,7 +1203,13 @@ body::after {
   background: transparent;
   border: none;
   color: var(--foreground);
-  transition: all 200ms ease;
+  /* Propiedades explícitas y no `all`: con `all`, el cambio de data-active en
+     mitad del smooth scroll pone en transición todo lo animable de la celda. */
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
   /* Active state — declared before :hover so hover wins on active cells
      without needing !important (same specificity, later in source). */
   &[data-active="true"] {
