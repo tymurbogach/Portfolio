@@ -24,9 +24,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
   </div>
 
   <!-- Right content panel -->
-  <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden"
-       style="mask-image: linear-gradient(to bottom, transparent, black 3rem, black calc(100% - 2rem), transparent);
-              -webkit-mask-image: linear-gradient(to bottom, transparent, black 3rem, black calc(100% - 2rem), transparent);">
+  <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
 
     <!-- Optional section heading -->
     {pageLabel && (
@@ -65,6 +63,25 @@ const { pageLabel = "", scrollable = true } = Astro.props;
         <slot />
       </div>
     )}
+
+    <!-- Bordes difuminados del panel (3rem arriba, 2rem abajo).
+         Antes era un `mask-image` en este mismo contenedor, pero enmascarar al
+         ancestro de un scroller obliga al navegador a rasterizar todo el contenido
+         en una superficie aparte y volver a aplicarle la máscara en cada frame:
+         medido en un móvil real, era la causa del scroll a trompicones. Dos
+         degradados estáticos por encima dan el mismo resultado a coste cero —
+         se pintan una vez y el scroll vuelve a ser puro compositor.
+         Van al final para que pinten sobre el contenido sin depender de z-index. -->
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-12
+             bg-linear-to-b from-[var(--background)] to-transparent"
+      aria-hidden="true"
+    />
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-8
+             bg-linear-to-t from-[var(--background)] to-transparent"
+      aria-hidden="true"
+    />
 
   </div>
 </div>
