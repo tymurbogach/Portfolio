@@ -148,10 +148,13 @@ const projects = defineCollection({
   schema: ({ image }) => z.object({
     title:       z.string(),
     description: z.string(),
-    image:       image().or(z.url()),
+    image:       image().or(z.url()).optional(),
     link:        z.url().optional(),
     type:        z.enum(["demo", "source"]).optional(),
     tags:        z.array(z.string()).optional(),
+    /** Contexto de la ficha: "2025" y "full stack" → "2025 · full stack" */
+    year:        z.string().optional(),
+    role:        z.string().optional(),
     order:       z.number().optional(),
   }),
 });

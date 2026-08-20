@@ -9,9 +9,9 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 laptop-scaled:grid-cols-3 laptop:grid-cols-3 fhd:grid-cols-4 qhd:grid-cols-5 uhd:grid-cols-6 gap-3 fhd:gap-4 qhd:gap-5 w-full">
+<div class="grid grid-cols-1 laptop-scaled:grid-cols-2 laptop:grid-cols-2 fhd:grid-cols-3 qhd:grid-cols-4 uhd:grid-cols-5 gap-4 fhd:gap-5 qhd:gap-6 w-full">
   {projects.map((entry: Project, i: number) => {
-    const { title, description, image, link, type, tags } = entry.data;
+    const { title, description, image, link, type, tags, year, role } = entry.data;
 
     return (
       <ProjectCard
@@ -21,6 +21,8 @@ const { projects } = Astro.props;
         link={link}
         type={type ?? "source"}
         tags={tags ?? []}
+        year={year}
+        role={role}
         index={i + 1}
       />
     );

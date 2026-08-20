@@ -12,6 +12,8 @@ interface Props {
   image?:      ImageMetadata | string;
   type?:       "source" | "demo";
   tags?:       string[];
+  year?:       string;
+  role?:       string;
   index?:      number;
 }
 
@@ -22,12 +24,19 @@ const {
   image,
   type = "source",
   tags = [],
+  year,
+  role,
   index = 0,
 } = Astro.props;
 
 const isDemo   = type === "demo";
 const indexStr = String(index).padStart(2, "0");
 const visibleTags = tags.filter((t) => t !== "Self-hosted");
+
+/* "2025 · full stack" — el contexto que la ficha no daba. */
+const context = [year, role].filter(Boolean).join(" · ");
+/* Dominio limpio como pie de la tarjeta: dice a dónde lleva antes de pulsar. */
+const host = link ? new URL(link).hostname.replace(/^www\./, "") : "";
 
 /* Linked cards get hover affordances; static cards stay inert. */
 const Tag = link ? "a" : "div";
@@ -54,152 +63,148 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "TailwindCSS": { slug: "tailwindcss" },
   "API":         { slug: "postman" },
 };
+
+const badgeBase =
+  "font-hud absolute z-20 text-[0.62rem] fhd:text-[0.7rem] qhd:text-[0.78rem] uhd:text-xs " +
+  "tracking-[0.18em] px-2.5 py-1 font-bold uppercase rounded-[var(--radius)]";
 ---
 
 <Tag
   {...linkAttrs}
   class:list={[
-    "relative group flex flex-col overflow-hidden border border-[var(--border)] transition-all duration-300",
+    "relative group flex flex-col overflow-hidden rounded-lg bg-[var(--card)]",
+    "border border-[var(--border)] transition-all duration-300",
     link && "can-hover:hover:border-[var(--accent)] hover-glow",
   ]}
 >
-  <!-- Large muted index — background element -->
-  <span
-    class="font-display absolute right-2 -bottom-1 z-0 pointer-events-none select-none
-           text-[clamp(3rem,5vw,4rem)] leading-none text-[var(--foreground)] opacity-[0.04]"
-    aria-hidden="true"
-  >{indexStr}</span>
-
   <!-- Image — top -->
-  <div class="relative w-full aspect-video overflow-hidden shrink-0 bg-[var(--card)]">
+  <div class="relative w-full aspect-video overflow-hidden shrink-0 bg-[var(--muted)]">
 
-    <!-- Badge -->
-    <span
-      class:list={[
-        "absolute top-2 left-3 z-20",
-        "text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] uhd:text-xs tracking-[0.2em] px-2 py-0.5 font-bold uppercase",
-        "border border-[var(--border-subtle)] bg-[var(--background)]",
-        isDemo
-          ? "bg-[var(--chart-5)] text-[var(--background)] opacity-90"
-          : "border-[var(--primary)] text-[var(--primary)] opacity-85",
-      ]}
-    >
+    <span class:list={[badgeBase, "top-3 left-3 bg-[var(--primary)] text-[var(--primary-foreground)]"]}>
       {isDemo ? "● live" : "⌥ src"}
     </span>
 
+    {tags.includes("Self-hosted") && (
+      <span
+        class:list={[
+          badgeBase,
+          "top-3 right-3 border border-[var(--accent)] text-[var(--accent)] bg-[var(--overlay)]",
+        ]}
+      >self-hosted</span>
+    )}
+
     {image ? (
-      typeof image === "string" ? (
-        <img
-          src={image}
-          alt={title}
-          loading="lazy"
+      <>
+        {typeof image === "string" ? (
+          <img
+            src={image}
+            alt={`${title} — interfaz`}
+            loading="lazy"
+            class:list={[
+              "w-full h-full object-cover object-top saturate-50 brightness-75",
+              "transition-[filter] duration-500",
+              link && "can-hover:group-hover:saturate-100 can-hover:group-hover:brightness-100",
+            ]}
+          />
+        ) : (
+          <Image
+            src={image}
+            alt={`${title} — interfaz`}
+            width={768}
+            loading="lazy"
+            class:list={[
+              "w-full h-full object-cover object-top saturate-50 brightness-75",
+              "transition-[filter] duration-500",
+              link && "can-hover:group-hover:saturate-100 can-hover:group-hover:brightness-100",
+            ]}
+          />
+        )}
+        <!-- Tinte del tema: se desvanece en hover para revelar el color real -->
+        <div
           class:list={[
-            "w-full h-full object-cover",
-            link && "transition-opacity duration-300 can-hover:group-hover:opacity-80",
+            "image-tint absolute inset-0 z-10 pointer-events-none transition-opacity duration-500",
+            link && "can-hover:group-hover:opacity-0",
           ]}
+          aria-hidden="true"
         />
-      ) : (
-        <Image
-          src={image}
-          alt={title}
-          width={640}
-          loading="lazy"
-          class:list={[
-            "w-full h-full object-cover",
-            link && "transition-opacity duration-300 can-hover:group-hover:opacity-80",
-          ]}
-        />
-      )
+      </>
     ) : (
       <div
         class:list={[
-          "w-full h-full flex flex-col items-center justify-center gap-2 bg-[var(--card)]",
-          link && "can-hover:group-hover:bg-[var(--muted)] transition-colors duration-300",
+          "image-tint w-full h-full flex flex-col items-center justify-center gap-2",
+          link && "transition-opacity duration-300 can-hover:group-hover:opacity-80",
         ]}
       >
-        <span class="font-display text-4xl text-[var(--accent)] opacity-25">{indexStr}</span>
-        <span class="text-[0.42rem] fhd:text-[0.55rem] qhd:text-[0.65rem] tracking-[0.15em] uppercase font-bold text-center px-3 leading-relaxed opacity-25">
+        <span class="font-display text-5xl fhd:text-6xl text-[var(--accent)] opacity-30 leading-none">{indexStr}</span>
+        <span class="font-hud text-[0.62rem] fhd:text-[0.7rem] tracking-[0.2em] uppercase font-bold text-center px-3 text-[var(--foreground-faint)]">
           {title}
         </span>
       </div>
     )}
-    <!-- Gradient overlay — fades image into card content -->
-    <div
-      class="absolute inset-x-0 bottom-0 h-8 pointer-events-none bg-[linear-gradient(to_top,var(--card),transparent)]"
-      aria-hidden="true"
-    />
   </div>
 
   <!-- Content — bottom -->
-  <div
-    class:list={[
-      "relative z-[1] flex flex-col flex-1 px-3 py-3 gap-2",
-      "bg-[var(--background)] transition-colors duration-200 overflow-hidden",
-      link && "can-hover:group-hover:bg-[var(--muted)]",
-    ]}
-  >
-    <!-- Title + description -->
-    <div class="flex flex-col gap-1">
-      <div class="flex items-center gap-2">
+  <div class="relative z-[1] flex flex-col flex-1 gap-3 p-4 fhd:p-5 bg-[var(--card)]">
+
+    <div class="flex flex-col gap-1.5">
+      <div class="flex items-baseline justify-between gap-3">
         <h3
           class:list={[
-            "font-display text-sm mobile:text-base laptop:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl tracking-[0.05em] leading-none m-0",
+            "font-display text-lg mobile:text-xl laptop:text-[1.35rem] fhd:text-2xl qhd:text-3xl uhd:text-4xl",
+            "tracking-[0.02em] leading-none m-0",
             link && "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
           ]}
         >
           {title}
         </h3>
-        {tags.includes("Self-hosted") && (
-          <span
-            class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.15em] px-1.5 py-0.5 uppercase font-bold shrink-0
-                   border border-[var(--chart-2)] text-[var(--chart-2)] opacity-65"
-          >self-hosted</span>
+        {context && (
+          <span class="font-hud text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+                       tracking-[0.16em] whitespace-nowrap shrink-0 text-[var(--foreground-faint)]">
+            {context}
+          </span>
         )}
       </div>
-      <p class="text-[0.65rem] fhd:text-xs qhd:text-sm uhd:text-base leading-relaxed m-0 line-clamp-3 text-[var(--muted-foreground)]">
+      <p class="text-[0.8rem] fhd:text-[0.9rem] qhd:text-base uhd:text-lg leading-relaxed m-0
+                line-clamp-3 text-[var(--muted-foreground)]">
         {description}
       </p>
     </div>
 
-    <!-- Stack + link CTA -->
-    <div class="flex items-end justify-between gap-2 mt-auto">
-      {visibleTags.length > 0 && (
-        <div class="flex flex-col gap-1">
-          <span class="text-[0.38rem] fhd:text-[0.45rem] tracking-[0.2em] uppercase font-bold text-[var(--primary)] opacity-60">built with</span>
-          <div class="flex flex-wrap gap-x-2 gap-y-1 items-end">
-            {visibleTags.map((tag) => {
-              const entry = TAG_SLUGS[tag];
-              return entry ? (
-                <div class="flex flex-col items-center gap-[2px]">
-                  <Icon
-                    slug={entry.slug}
-                    color={entry.color}
-                    size={12}
-                    label={tag}
-                    class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6"
-                  />
-                  <span class="text-[0.32rem] fhd:text-[0.38rem] tracking-[0.08em] uppercase font-bold leading-none opacity-40">{tag}</span>
-                </div>
-              ) : (
-                <span
-                  class="text-[0.38rem] fhd:text-[0.48rem] tracking-[0.1em] px-1.5 py-0.5 uppercase font-bold self-end
-                         border border-[var(--chart-2)] text-[var(--chart-2)] opacity-55"
-                >{tag}</span>
-              );
-            })}
-          </div>
+    {visibleTags.length > 0 && (
+      <div class="flex flex-col gap-2 pt-3 border-t border-[var(--border-subtle)]">
+        <span class="cat-label text-[var(--foreground-faint)]">Built with</span>
+        <div class="flex flex-wrap gap-1.5">
+          {visibleTags.map((tag) => {
+            const entry = TAG_SLUGS[tag];
+            return (
+              <span class="skill-chip">
+                {entry && (
+                  <Icon slug={entry.slug} color={entry.color} size={13} label={tag} tone="mono"
+                        class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5" />
+                )}
+                <span class="chip-label">{tag}</span>
+              </span>
+            );
+          })}
         </div>
-      )}
-      {link && (
+      </div>
+    )}
+
+    {link && (
+      <div class="flex items-center justify-between gap-3 mt-auto pt-1">
+        <span class="font-hud text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+                     tracking-[0.06em] truncate text-[var(--foreground-faint)]">
+          {host}
+        </span>
         <span
-          class="flex items-center gap-1 text-[0.48rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.25em] uppercase font-bold
-                 transition-all duration-300 ml-auto shrink-0 self-end pb-0.5 opacity-40 can-hover:group-hover:opacity-100
-                 text-[var(--accent)]"
+          class="font-hud flex items-center gap-1.5 shrink-0
+                 text-[0.68rem] fhd:text-[0.78rem] qhd:text-[0.85rem] uhd:text-base
+                 tracking-[0.2em] uppercase font-bold text-[var(--accent)]"
         >
           {isDemo ? "demo" : "code"}
           <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">→</span>
         </span>
-      )}
-    </div>
+      </div>
+    )}
   </div>
 </Tag>

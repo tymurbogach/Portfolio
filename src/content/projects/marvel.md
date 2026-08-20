@@ -1,9 +1,11 @@
 ---
 title: "Marvel Angular"
-description: "Angular web app consuming the Marvel API — characters, comics, and details."
-image: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
+description: "Angular 19 character browser: random dashboard, paginated catalogue, debounced search and detail view with powerstats."
+image: "./_images/marvel-app.png"
 link: "https://tymurbogach.github.io/Marvel_Angular/"
 type: "demo"
-tags: ["Angular", "API"]
+tags: ["Angular", "TypeScript"]
+year: "2024"
+role: "frontend"
 order: 3
 ---
