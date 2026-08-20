@@ -982,9 +982,23 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
-  /* El cuerpo usa la cara de texto del tema. El mono es la voz "instrumento"
-     y se pide explícitamente con la utility .font-hud — nunca por defecto. */
+}
+
+/* El cuerpo usa la cara de texto del tema. El mono es la voz "instrumento"
+   y se pide explícitamente con la utility .font-hud — nunca por defecto.
+   Va en body y NO en `*`: el selector universal le gana a la herencia, así que
+   un `.font-hud` en un contenedor no llegaba a sus hijos (los <span> por carácter
+   de DecryptedText volvían a sans y el ancho dejaba de ser fijo). */
+body {
   font-family: var(--font-sans), sans-serif;
+}
+
+/* Los controles de formulario no heredan la cara por defecto (UA stylesheet). */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
 }
 
 html, body {

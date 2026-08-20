@@ -108,7 +108,7 @@ Prohibido: listeners sin `signal`, hacks de `cloneNode/replaceChild`, llamadas t
 
 ### 3. Estilos
 
-- **Dos voces tipográficas.** El reset `*` usa `var(--font-sans)`: el cuerpo hereda la cara de texto del tema. El mono es la voz "instrumento" (etiquetas, spec sheet, chips, badges, botones, prompts de terminal) y se pide **explícitamente** con la utility `font-hud`. Nunca volver a forzar mono en el reset: mata `--font-sans`/`--font-display` de los 7 temas y deja la jerarquía sin más palanca que tamaño y opacidad.
+- **Dos voces tipográficas.** La cara base (`var(--font-sans)`) se declara en `body`, **nunca en `*`**: el selector universal le gana a la herencia, así que un `font-hud` en un contenedor no llegaba a sus hijos (los `<span>` por carácter de `DecryptedText` volvían a sans, el ancho dejaba de ser fijo y el hero saltaba en móvil mientras se escribía). Los controles de formulario llevan `font-family: inherit` porque el UA no la hereda. El mono es la voz "instrumento" (etiquetas, spec sheet, chips, badges, botones, prompts de terminal) y se pide **explícitamente** con la utility `font-hud`. Nunca volver a forzar mono en el reset: mata `--font-sans`/`--font-display` de los 7 temas y deja la jerarquía sin más palanca que tamaño y opacidad.
 - **Suelo de tamaño**: 11px (`0.65rem`) para metadatos, 13px para cualquier cosa que se lea como texto. Tracking máximo `0.25em` en frases; `0.35em+` solo en etiquetas de una palabra.
 - Utilities de atmósfera: `atmosphere` (luz + viñeta del marco, en `Layout.astro`) e `image-tint` (mete las capturas de proyecto en la paleta del tema). Ambas derivan de tokens, así que valen para los 7 temas sin tocarlos.
 - Tailwind inline en los elementos. **Prohibido `<style>` en componentes.**

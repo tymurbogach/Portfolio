@@ -15,7 +15,7 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
 
 
   <!-- Title -->
-  <div class="shrink-0 w-full mb-3 laptop:mb-5 fhd:mb-5 qhd:mb-6">
+  <div class="shrink-0 w-full mb-8 tablet:mb-6 laptop:mb-5 fhd:mb-5 qhd:mb-6">
     <TrueFocus
       client:visible
       sentence={`${title1} ${title2}`}
@@ -49,8 +49,9 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
 
     <div
       class="text-center font-hud
-             text-[0.68rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
-             tracking-[0.16em] leading-[1.8] italic text-[var(--foreground-faint)]"
+             text-[0.66rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
+             tracking-[0.1em] laptop:tracking-[0.16em]
+             leading-[1.8] italic text-[var(--foreground-faint)]"
       aria-label={subtitle2}
     >
       <MatrixSequence
