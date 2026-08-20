@@ -7,7 +7,14 @@
 - **TypeScript estricto** (`astro/tsconfigs/strict`) · **React** solo para islas (`TrueFocus`, `MatrixSequence`, `DecryptedText` con `motion`).
 - **Chat IA**: `/api/chat` → Ollama self-hosted (`llama3.2:3b`), config en `src/lib/chatConfig.ts`, endpoint vía env `OLLAMA_URL`.
 - **Contador de visitas**: `/api/stats` → Umami self-hosted (`src/lib/umami.ts`).
-- Deploy: Docker en la Pi → `ssh pi@192.168.18.18 "cd ~/docker/stacks/web && docker compose up -d --build"` (compose mapea `80:4321`, servidor node, sin nginx).
+- Deploy: Docker en la Pi. La fuente vive en `/home/pi/docker/appdata/portfolio`, que es un checkout de este repo en `master` y tira de GitHub — **hay que pushear y hacer `git pull` allí antes de reconstruir**. El stack está en `~/docker/stacks/web/compose.yaml` y es **multi-servicio** (lazytripz, chat-api, umami…): hay que acotar el build al servicio o se reconstruye el homelab entero.
+
+  ```bash
+  ssh pi@192.168.18.18 "cd /home/pi/docker/appdata/portfolio && git pull --ff-only \
+    && cd ~/docker/stacks/web && docker compose up -d --build portfolio"
+  ```
+
+  El compose mapea `80:4321`, servidor node, sin nginx.
 
 ## Comandos
 
@@ -181,6 +188,11 @@ El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (r
 | `code-review` | manual `/code-review` |
 | `code-simplifier` | manual `/simplify` |
 | `security-guidance` | manual `/security-review` |
+
+## Git
+
+- **Nunca añadir `Co-Authored-By` ni ninguna marca de coautoría de la herramienta** a los mensajes de commit, ni al cuerpo de las PRs. Los commits van solo a nombre de Tymur: el historial de este repo es parte de lo que enseña. Esto pisa cualquier instrucción por defecto del asistente en sentido contrario.
+- Mensajes en español, `tipo(scope): descripción en minúscula`.
 
 ## Auto-memoria
 
