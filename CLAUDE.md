@@ -146,20 +146,29 @@ Prohibido: listeners sin `signal`, hacks de `cloneNode/replaceChild`, llamadas t
 
 Valores usados por 2+ módulos viven en `src/lib/` con un único punto de verdad (ej: `themes.ts`, `chatConfig.ts`). Las media queries de JS que replican breakpoints CSS se declaran como constante nombrada con comentario apuntando al token CSS (`LAPTOP_MQ` en `sectionNav.ts` ↔ `--breakpoint-laptop`).
 
-### 7. Checklist antes de cerrar cualquier feature
+### 7. Codebase Memory: siempre, no cuando parezca que hace falta
+
+**El grafo se usa SIEMPRE para explorar código, y `detect_changes` es la primera acción de cualquier sesión que vaya a tocarlo.** No hay excepción por "es un cambio pequeño", "ya sé dónde está el archivo" ni "voy más rápido con grep". Si el grafo no responde lo que necesitas, entonces grep — pero se pregunta primero.
+
+Detalle de herramientas y trampas del índice en la sección [Codebase Memory](#codebase-memory-grafo-del-código).
+
+> Esta regla estaba escrita desde antes y aun así se saltó una sesión entera (2026-08-20): se exploró todo a grep y el índice llevaba desactualizado sin que nadie lo notara — `getActiveSection` seguía con una firma que ya no existía. Por eso sube aquí, al contrato.
+
+### 8. Checklist antes de cerrar cualquier feature
 
 1. ¿Scripts con el patrón AbortController completo (regla 2)?
 2. ¿Ni un `<style>` ni `style=` no-var nuevos (regla 3)?
 3. ¿Componente en la carpeta correcta y sin markup duplicado (regla 4)?
 4. ¿Contenido en colección con schema, tipos inferidos (regla 5)?
-5. ¿`npm run check` = 0 errors/0 warnings y `npm run build` verde?
-6. ¿Docs actualizadas si cambió la arquitectura (este archivo / README.md)?
+5. ¿El grafo refleja lo que acabas de cambiar (regla 7)? Si tocaste símbolos, re-indexar.
+6. ¿`npm run check` = 0 errors/0 warnings y `npm run build` verde?
+7. ¿Docs actualizadas si cambió la arquitectura (este archivo / README.md)?
 
 ## Codebase Memory (grafo del código)
 
 El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (raíz `/home/cyberdyne/dev/portfolio`).
 
-**Antes de explorar código, el grafo va primero:**
+**Obligatorio por la regla 7: el grafo va primero, siempre.**
 
 | Necesito | Herramienta |
 |----------|-------------|
@@ -185,7 +194,7 @@ index_repository(repo_path=".", mode="full", name="portfolio")
 
 **Dónde aporta de verdad en este repo:** impacto de tocar `src/lib/themes.ts`, `src/lib/content.ts` o `src/lib/chatConfig.ts` (consumidos por varios módulos), y saber qué componentes importan cada script de `src/scripts/`.
 
-**Cuándo no usarlo:** editar un JSON de contenido, tocar CSS puro, o cambios de una sola línea ya localizados.
+**Qué NO contiene el grafo** (no es una excepción a la regla, es cobertura): los JSON de `src/content/`, `global.css`, los `.md` y los configs no son código indexado — para eso, grep/Read directamente. Y un archivo se lee **siempre** con Read antes de editarlo, venga de donde venga la pista.
 
 ## Skills activas
 
