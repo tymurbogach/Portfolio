@@ -18,6 +18,13 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+
+    // Acceso al dev server por Tailscale: Vite rechaza con 403 cualquier
+    // Host header que no sea IP o localhost. Las IPs (LAN y 100.x) ya pasan.
+    server: {
+      allowedHosts: ['omarchy', 'omarchy.taildf8137.ts.net']
+    },
+
     resolve: {
       alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
     }
