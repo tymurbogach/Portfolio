@@ -14,7 +14,7 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
 <div
   id="chat-widget"
   data-open="false"
-  class="flex flex-col"
+  class="font-hud flex flex-col"
   aria-label="Chat with Tymur's AI"
   aria-hidden="true"
 >
@@ -35,7 +35,7 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
   <!-- Messages -->
   <div
     id="chat-messages"
-    class="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 min-h-0 text-[0.72rem] leading-[1.7]"
+    class="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 min-h-0 text-[0.78rem] leading-[1.7]"
   >
     <!-- Welcome message -->
     <div class="chat-msg chat-msg--bot">
@@ -46,7 +46,7 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
     <div class="chat-starters flex flex-wrap gap-1.5 mt-1">
       {starters.map(s => (
         <button
-          class="chat-starter text-[0.58rem] tracking-[0.12em] uppercase px-2.5 py-1
+          class="chat-starter text-[0.66rem] tracking-[0.12em] uppercase px-2.5 py-1
                  [font-family:inherit] bg-transparent text-inherit opacity-60
                  border border-[var(--border)] can-hover:hover:border-[var(--accent)]
                  can-hover:hover:text-[var(--accent)] transition-colors duration-150 cursor-pointer"
@@ -64,7 +64,7 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
       placeholder="> type your message..."
       autocomplete="off"
       class="flex-1 px-4 py-3 text-[0.7rem] bg-[var(--card)] border-none outline-none
-             text-[var(--foreground)] [font-family:'JetBrains_Mono',monospace]"
+             text-[var(--foreground)] [font-family:inherit]"
     />
     <button
       id="chat-send-btn"

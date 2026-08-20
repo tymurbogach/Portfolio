@@ -27,10 +27,10 @@ const BOT_ICON = "/img/bot.png";
             aria-hidden="true"
           />
           <span
-            class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.6rem]
-                   tracking-[0.3em] uppercase
-                   opacity-50 can-hover:group-hover:opacity-80
-                   transition-opacity duration-200"
+            class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
+                   tracking-[0.24em] uppercase
+                   text-[var(--foreground-faint)] can-hover:group-hover:text-[var(--foreground)]
+                   transition-colors duration-200"
           >BOT</span>
         </button>
       </div>
@@ -51,7 +51,7 @@ const BOT_ICON = "/img/bot.png";
         style={`--icon-url: url('${BOT_ICON}')`}
         aria-hidden="true"
       />
-      <span class="text-[0.42rem] tracking-[0.3em] uppercase opacity-60">BOT</span>
+      <span class="font-hud text-[0.62rem] tracking-[0.24em] uppercase text-[var(--foreground-faint)]">BOT</span>
     </button>
   )
 }

@@ -31,7 +31,8 @@ npm run cv:pdf    # regenerar los PDF del CV desde cv/cv.config.*.json
 
 - **Única fuente de verdad**: `src/lib/themes.ts` → `THEMES` (7: `bladerunner` default, `void`, `cyberpunk`, `matrix`, `bubblegum`, `doom`, `claude`), `THEME_LABELS`, claves de localStorage, `resolveThemeState()`, `applyThemeToRoot()`.
 - CSS por tema en `global.css` con `[data-theme="..."]`; **cyberpunk es especial**: ocupa `:root` a pelo y su `.dark` es el modo CLARO (convención invertida). El resto usa `.dark` = oscuro.
-- Variables derivadas (`--border-subtle`, `--accent-subtle`, `--surface-glow`, `--gradient-border`) tienen **defaults compartidos** en un bloque `:root` al principio de los temas; cada tema solo re-declara las que difieren. `--overlay` es siempre por tema.
+- Variables derivadas (`--border-subtle`, `--accent-subtle`, `--surface-glow`, `--gradient-border`, `--foreground-faint`, `--atmosphere-*`) tienen **defaults compartidos** en un bloque `:root` al principio de los temas; cada tema solo re-declara las que difieren. `--overlay` es siempre por tema.
+- **Texto tenue → color, no `opacity`**: `--foreground-faint` (mezcla del foreground hacia el fondo) para metadatos y `--muted-foreground` para cuerpo secundario. Apilar `opacity` sobre texto hace que el contraste dependa de lo que haya debajo y no se pueda medir.
 - Anti-flash: script `is:inline` en `Layout.astro` que recibe las constantes con `define:vars` (un `is:inline` no puede importar) — no hardcodear nombres de tema ahí.
 - **Añadir un tema**: bloque `[data-theme="x"]` + `[data-theme="x"].dark` en `global.css` con la paleta completa + añadir a `THEMES` y `THEME_LABELS` en `themes.ts`. Nada más: el inline script y darkMode.ts lo recogen solos.
 
@@ -48,7 +49,7 @@ Schemas en `src/content.config.ts` (zod desde `astro/zod`), helpers tipados en `
 | `resume` | `resume/data.json` | frontend/backend/homelab/ai (techSkill[]) + languages |
 | `contact` | `contact/data.json` | intro, email, location, status, cv_url, cv_url_es, formSubject, web3formsKey (pública por diseño — se prerenderiza en el HTML; NO usar env vars para ella: `.dockerignore` excluye `.env*` del build de la Pi) |
 | `social` | `social/data.json` | array de links |
-| `projects` | `projects/*.md` | frontmatter con `image: image().or(z.url())` — local optimizada o URL remota |
+| `projects` | `projects/*.md` | frontmatter con `image` opcional (local optimizada o URL remota) + `year` / `role` para la línea de contexto de la tarjeta |
 
 Imágenes de proyectos en `src/content/projects/_images/` (rutas relativas `./_images/x.png` en el frontmatter). Avatar en `src/assets/gopnik.png` (usado con `<Image>` y como og:image optimizada vía `getImage`).
 
@@ -107,6 +108,9 @@ Prohibido: listeners sin `signal`, hacks de `cloneNode/replaceChild`, llamadas t
 
 ### 3. Estilos
 
+- **Dos voces tipográficas.** El reset `*` usa `var(--font-sans)`: el cuerpo hereda la cara de texto del tema. El mono es la voz "instrumento" (etiquetas, spec sheet, chips, badges, botones, prompts de terminal) y se pide **explícitamente** con la utility `font-hud`. Nunca volver a forzar mono en el reset: mata `--font-sans`/`--font-display` de los 7 temas y deja la jerarquía sin más palanca que tamaño y opacidad.
+- **Suelo de tamaño**: 11px (`0.65rem`) para metadatos, 13px para cualquier cosa que se lea como texto. Tracking máximo `0.25em` en frases; `0.35em+` solo en etiquetas de una palabra.
+- Utilities de atmósfera: `atmosphere` (luz + viñeta del marco, en `Layout.astro`) e `image-tint` (mete las capturas de proyecto en la paleta del tema). Ambas derivan de tokens, así que valen para los 7 temas sin tocarlos.
 - Tailwind inline en los elementos. **Prohibido `<style>` en componentes.**
 - Lo que Tailwind no exprese (selectores `[data-attr]` con cascada deliberada, keyframes, clases creadas desde JS) va a `global.css`: como `@utility` si se usa como clase en markup, como CSS plano si lo genera JS (ej: sección CHAT WIDGET) o depende de un id.
 - `style="..."` solo para valores con `var(--*)` / custom props sin equivalente Tailwind (ej: `--icon-url`, colores dinámicos por variable). Nunca para layout, opacity, tamaños o posiciones fijas — eso son utilities.

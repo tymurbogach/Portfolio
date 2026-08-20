@@ -19,8 +19,8 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
 <div class="w-full flex flex-col gap-7 laptop:gap-9 fhd:gap-11">
 
   {intro && (
-    <p class="text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm uhd:text-base
-              leading-[1.8] opacity-60 tracking-[0.04em] m-0 pl-3
+    <p class="text-[0.8rem] laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
+              leading-[1.75] text-[var(--muted-foreground)] tracking-[0.01em] m-0 pl-4
               border-l-2 border-[var(--accent)]">
       {intro}
     </p>
@@ -33,25 +33,25 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
       <!-- Left: Email + Location -->
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Email</span>
+          <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Email</span>
           <a
             href={`mailto:${email}`}
-            class="text-[clamp(0.82rem,1.4vw,1.1rem)] fhd:text-[clamp(0.95rem,1.4vw,1.35rem)] font-bold text-[var(--accent)]
-                   opacity-70 can-hover:hover:opacity-100 active:opacity-100 transition-opacity break-all leading-snug self-start"
+            class="font-hud text-[clamp(0.85rem,1.4vw,1.15rem)] fhd:text-[clamp(1rem,1.4vw,1.4rem)] font-bold text-[var(--accent)]
+                   can-hover:hover:text-[var(--secondary)] active:text-[var(--secondary)] transition-colors break-all leading-snug self-start"
           >
             {email}
           </a>
         </div>
 
         <div class="flex flex-col gap-1">
-          <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Location</span>
-          <span class="text-[0.6rem] laptop:text-[0.65rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.18em] uppercase font-bold text-[var(--chart-2)] opacity-65">{location}</span>
+          <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Location</span>
+          <span class="font-hud text-[0.72rem] laptop:text-[0.76rem] fhd:text-[0.85rem] qhd:text-base uhd:text-lg tracking-[0.16em] uppercase font-bold text-[var(--foreground)]">{location}</span>
         </div>
       </div>
 
       <!-- Right: Curriculum -->
       <div class="flex flex-col gap-2">
-        <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs uhd:text-sm tracking-[0.3em] uppercase font-bold opacity-40">Curriculum</span>
+        <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Curriculum</span>
         <div class="flex flex-row flex-wrap gap-2 mobile:flex-col mobile:items-start">
           <CvDownloadButton mode="link" label="CV · EN" href={cv_url} />
           <CvDownloadButton mode="link" label="CV · ES" href={cv_url_es} />
@@ -64,14 +64,14 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
 
   <!-- Form -->
   <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
-    <p class="text-[0.55rem] laptop:text-[0.6rem] fhd:text-[0.68rem] tracking-[0.25em] font-bold m-0 text-[var(--chart-2)] opacity-40">// send a message</p>
+    <p class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] tracking-[0.2em] font-bold m-0 text-[var(--foreground-faint)]">// send a message</p>
     <input type="hidden" name="access_key" value={web3formsKey} />
     <input type="hidden" name="subject"    value={formSubject} />
 
     <div
       id="form-status"
       class="hidden py-2 px-3 border border-[var(--border-subtle)]
-             text-[0.65rem] laptop:text-[0.7rem] fhd:text-xs qhd:text-sm tracking-[0.2em] text-center text-[var(--foreground)]"
+             font-hud text-[0.7rem] laptop:text-[0.75rem] fhd:text-sm qhd:text-base tracking-[0.16em] text-center text-[var(--foreground)]"
     />
 
     <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-4">
@@ -80,24 +80,24 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
         placeholder="Name"
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
-               font-['Poiret_One',cursive] text-[var(--foreground)]
+               text-[var(--foreground)]
                border border-[var(--border)] focus:border-[var(--accent)]
                focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
-               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
-               placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
+               placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
+               placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[0.7rem] fhd:placeholder:text-xs"
       />
       <input
         id="f-email" name="email" type="email" required autocomplete="off"
         placeholder="Email"
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
-               font-['Poiret_One',cursive] text-[var(--foreground)]
+               text-[var(--foreground)]
                border border-[var(--border)] focus:border-[var(--accent)]
                focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
-               placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
-               placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
+               placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
+               placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[0.7rem] fhd:placeholder:text-xs"
       />
     </div>
 
@@ -106,16 +106,16 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
       placeholder="Message"
       class="bg-transparent w-full outline-none p-3
              text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
-             font-['Poiret_One',cursive] text-[var(--foreground)]
+             text-[var(--foreground)]
              resize-none border border-[var(--border)] focus:border-[var(--accent)]
              focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
              transition-colors duration-200 focus-visible:outline-none
-             placeholder:opacity-35 placeholder:tracking-[0.1em] placeholder:uppercase
-             placeholder:text-[0.6rem] laptop:placeholder:text-[0.65rem] fhd:placeholder:text-xs"
+             placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
+             placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[0.7rem] fhd:placeholder:text-xs"
     />
 
     <div class="flex items-center justify-between gap-4">
-      <span class="text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] tracking-[0.22em] uppercase font-bold text-[var(--chart-2)] opacity-40">
+      <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] tracking-[0.18em] uppercase font-bold text-[var(--foreground-faint)]">
         // responds within 24h
       </span>
       <Button id="submit-btn" type="submit" variant="primary">
@@ -129,8 +129,8 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
   </form>
 
   <!-- Bot hint -->
-  <p class="text-center text-[0.5rem] laptop:text-[0.55rem] fhd:text-[0.62rem] qhd:text-xs
-            tracking-[0.22em] leading-[2] opacity-25 m-0 uppercase">
+  <p class="text-center font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
+            tracking-[0.18em] leading-[2] text-[var(--foreground-faint)] m-0 uppercase">
     Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent)]">↘</span>
   </p>
 

@@ -7,10 +7,12 @@ interface Props { resume: ResumeData; }
 const { resume } = Astro.props;
 const { frontend, backend, homelab, ai, languages } = resume;
 
+/* Categorías con chips: el stack con el que se construye.
+   Homelab va aparte como inventario denso — son 38 servicios, y en chips
+   compite visualmente con el core stack sin aportar más señal. */
 const categories = [
   { label: "Frontend",   skills: frontend },
   { label: "Backend",    skills: backend  },
-  { label: "Homelab",    skills: homelab  },
   ...(ai?.length ? [{ label: "AI Tooling", skills: ai }] : []),
 ];
 ---
@@ -24,22 +26,24 @@ const categories = [
       <span class="cat-label" style="color: var(--primary);">{label}</span>
 
       <div class="resume-grid
-                  grid grid-cols-2 gap-1.5 overflow-hidden
-                  laptop:grid-cols-3 fhd:gap-2.5
-                  max-h-[8.5rem] laptop:max-h-[9rem] fhd:max-h-[11rem] qhd:max-h-[13rem]">
+                  grid grid-cols-[repeat(auto-fill,minmax(7.5rem,1fr))] gap-1.5 overflow-hidden
+                  fhd:gap-2.5
+                  max-h-[10rem] laptop:max-h-[11rem] fhd:max-h-[13rem] qhd:max-h-[15rem]">
         {skills.map(({ slug, color: c, label: l }) => (
           <span class="skill-chip">
-            <Icon slug={slug} color={c} size={15} label={l}
-                  class="shrink-0 fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6" />
+            <Icon slug={slug} color={c} size={15} label={l} tone="mono"
+                  class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6" />
             <span class="chip-label">{l}</span>
           </span>
         ))}
       </div>
 
       <button
-        class="resume-toggle hidden self-start items-center gap-1 mt-0.5 cursor-pointer
-               opacity-40 text-[0.5rem] laptop:text-[0.55rem] tracking-[0.15em] uppercase
-               transition-opacity duration-200 can-hover:hover:opacity-100 active:opacity-100"
+        class="resume-toggle font-hud hidden self-start items-center gap-1 mt-0.5 cursor-pointer
+               text-[0.62rem] laptop:text-[0.65rem] tracking-[0.15em] uppercase
+               text-[var(--foreground-faint)]
+               transition-colors duration-200
+               can-hover:hover:text-[var(--foreground)] active:text-[var(--foreground)]"
         aria-expanded="false"
       >
         <span class="resume-toggle-label font-bold" style="color: var(--accent);"></span>
@@ -49,20 +53,38 @@ const categories = [
     </div>
   ))}
 
+  <!-- Homelab — inventario, no habilidad: lista densa en vez de 38 logos -->
+  <div class="flex flex-col gap-2.5 laptop:col-span-2 laptop-scaled:col-span-2">
+
+    <div class="flex items-baseline justify-between gap-4">
+      <span class="cat-label" style="color: var(--primary);">Homelab</span>
+      <span class="font-hud text-[0.62rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
+                   tracking-[0.18em] uppercase text-[var(--foreground-faint)]">
+        {homelab.length} services in production
+      </span>
+    </div>
+
+    <p class="font-hud m-0 text-[0.68rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
+              leading-[1.95] tracking-[0.03em] text-[var(--muted-foreground)]">
+      {homelab.map(({ label }) => label).join(" · ")}
+    </p>
+
+  </div>
+
   <!-- Languages -->
   <div class="flex flex-col gap-2.5 laptop:col-span-2 laptop-scaled:col-span-2">
 
     <span class="cat-label" style="color: var(--primary);">Languages</span>
 
-    <div class="grid grid-cols-2 gap-1.5 overflow-hidden laptop:grid-cols-4 fhd:gap-2.5">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-1.5 overflow-hidden fhd:gap-2.5">
       {languages.map(({ flag, lang, level }) => (
         <span class="skill-chip">
           <span class="text-[0.9rem] laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none shrink-0" aria-hidden="true">{flag}</span>
           <span class="flex flex-col min-w-0">
             <span class="chip-label">{lang}</span>
-            <span class="text-[0.42rem] laptop:text-[0.46rem] fhd:text-[0.52rem] qhd:text-[0.62rem]
+            <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-[0.82rem]
                          tracking-[0.12em] uppercase font-bold leading-tight"
-                  style="color: var(--chart-2); opacity: 0.65;">{level}</span>
+                  style="color: var(--chart-2);">{level}</span>
           </span>
         </span>
       ))}

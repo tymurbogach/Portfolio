@@ -6,10 +6,13 @@ interface Props {
   color?: string;
   size?:  number;
   label:  string;
+  /** "mono" pinta el icono con --accent y guarda el color de marca en
+   *  --icon-brand, que .skill-chip revela en hover. */
+  tone?:  "brand" | "mono";
   class?: string;
 }
 
-const { slug, color, size = 20, label, class: extraClass = "" } = Astro.props;
+const { slug, color, size = 20, label, tone = "brand", class: extraClass = "" } = Astro.props;
 
 const key  = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
 const icon = (si as { [key: string]: { path: string; hex: string } })[key];
@@ -17,6 +20,10 @@ const icon = (si as { [key: string]: { path: string; hex: string } })[key];
 const fillColor = color ?? (icon ? `#${icon.hex}` : "currentColor");
 const path      = icon?.path ?? "";
 const hasIcon   = !!icon;
+
+const iconStyle = tone === "mono"
+  ? `--icon-brand: ${fillColor}; fill: var(--accent);`
+  : `fill: ${fillColor};`;
 ---
 
 {hasIcon ? (
@@ -27,8 +34,8 @@ const hasIcon   = !!icon;
     height={size}
     aria-label={label}
     xmlns="http://www.w3.org/2000/svg"
-    class={extraClass}
-    style={`fill: ${fillColor}; flex-shrink: 0; opacity: 0.85;`}
+    class:list={["shrink-0", extraClass]}
+    style={iconStyle}
   >
     <path d={path} />
   </svg>
@@ -38,7 +45,7 @@ const hasIcon   = !!icon;
     aria-label={label}
     class={extraClass}
     style={`display:inline-block; width:${size}px; height:${size}px; flex-shrink:0;
-            background:${color ?? "currentColor"}; opacity:0.5;
+            background:${tone === "mono" ? "var(--accent)" : (color ?? "currentColor")};
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);`}
   />
 )}

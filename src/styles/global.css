@@ -28,6 +28,16 @@
   --accent-subtle:   color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow:    color-mix(in srgb, var(--accent) 6%, transparent);
   --gradient-border: linear-gradient(90deg, var(--accent), var(--primary));
+
+  /* Texto tenue con contraste medible: se mezcla hacia el fondo en vez de
+     apilar opacity, así el ratio no depende de lo que haya debajo y cada
+     tema lo deriva solo de su propio --foreground/--background. */
+  --foreground-faint:      color-mix(in srgb, var(--foreground) 65%, var(--background));
+
+  /* Atmósfera — fuente de luz cálida y viñeta del marco (utility .atmosphere) */
+  --atmosphere-light:      color-mix(in srgb, var(--primary) 14%, transparent);
+  --atmosphere-rim:        color-mix(in srgb, var(--accent) 5%, transparent);
+  --atmosphere-vignette:   color-mix(in srgb, var(--background) 55%, black);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -784,7 +794,7 @@
   --secondary:            rgb(255, 195,  35);
   --secondary-foreground: rgb(18,  11,   6);
   --muted:                rgb(34,  22,  12);
-  --muted-foreground:     rgb(128, 118,  85);
+  --muted-foreground:     rgb(146, 136, 102);
   --accent:               rgb(0,   215, 255);
   --accent-foreground:    rgb(18,  11,   6);
   --destructive:          rgb(220,  55,  45);
@@ -972,7 +982,9 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: var(--font-mono), monospace;
+  /* El cuerpo usa la cara de texto del tema. El mono es la voz "instrumento"
+     y se pide explícitamente con la utility .font-hud — nunca por defecto. */
+  font-family: var(--font-sans), sans-serif;
 }
 
 html, body {
@@ -1005,8 +1017,8 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
 @media (min-width: 80rem),
@@ -1050,6 +1062,17 @@ body::after {
     0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
+/* Tinte de tema sobre las capturas de proyecto: las mete en la paleta sin
+   tocar el asset. La tarjeta lo desvanece en hover para enseñar el color real. */
+@utility image-tint {
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--primary) 26%, transparent),
+      color-mix(in srgb, var(--background) 62%, transparent) 72%
+    );
+}
+
 @utility gradient-line {
   height: 1px;
   background: var(--gradient-border);
@@ -1075,6 +1098,23 @@ body::after {
   letter-spacing: 0.03em;
 }
 
+/* Voz "instrumento": etiquetas, spec sheet, badges, prompts de terminal.
+   Es la excepción deliberada al reset, que ahora manda --font-sans. */
+@utility font-hud {
+  font-family: var(--font-mono);
+}
+
+/* Atmósfera del marco: luz cálida arriba a la derecha, rebote frío abajo a la
+   izquierda y viñeta. Va en el propio elemento (background-image + inset shadow)
+   en vez de pseudoelementos: así pinta sobre el fondo y siempre bajo el
+   contenido, sin tener que gestionar z-index en cada hijo. */
+@utility atmosphere {
+  background-image:
+    radial-gradient(90% 70% at 88% -12%, var(--atmosphere-light), transparent 60%),
+    radial-gradient(70% 55% at 6% 108%, var(--atmosphere-rim), transparent 62%);
+  box-shadow: inset 0 0 120px 30px var(--atmosphere-vignette);
+}
+
 @utility font-signature {
   font-family: "Poiret One", cursive;
 }
@@ -1098,27 +1138,27 @@ body::after {
 
 /* Category label — tiny-caps tracking-wide */
 @utility cat-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.5em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: bold;
-  opacity: 0.4;
-  @media (min-width: 80rem)  { font-size: 0.68rem; }
-  @media (min-width: 120rem) { font-size: 0.78rem; }
-  @media (min-width: 160rem) { font-size: 0.75rem; }
-  @media (min-width: 240rem) { font-size: 0.875rem; }
+  @media (min-width: 80rem)  { font-size: 0.72rem; }
+  @media (min-width: 120rem) { font-size: 0.8rem; }
+  @media (min-width: 160rem) { font-size: 0.85rem; }
+  @media (min-width: 240rem) { font-size: 0.95rem; }
 }
 
 @utility chip-label {
-  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   line-height: 1.25;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  opacity: 0.8;
-  @media (min-width: 80rem)  { font-size: 0.65rem; }
-  @media (min-width: 120rem) { font-size: 0.75rem; }
+  @media (min-width: 80rem)  { font-size: 0.7rem; }
+  @media (min-width: 120rem) { font-size: 0.78rem; }
   @media (min-width: 160rem) { font-size: 0.875rem; }
 }
 
@@ -1134,6 +1174,9 @@ body::after {
   min-width: 0;
   @variant can-hover {
     &:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+    /* El color de marca solo aparece al pasar por encima: en reposo la
+       rejilla se lee como un sistema, no como una sopa de logos. */
+    &:hover svg { fill: var(--icon-brand, var(--accent)); }
   }
   @media (min-width: 120rem) {
     padding: 0.4rem 0.75rem;

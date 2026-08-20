@@ -47,7 +47,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
     <div class="mb-3 laptop:mb-4 laptop-scaled:mb-4 shrink-0
                 laptop:pt-[2rem] laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]">
       <h2
-        class="text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.35em] uppercase font-bold m-0 text-glow"
+        class="font-hud text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
         style="color: var(--accent);"
       >
         &gt; PORTFOLIO.SYS
@@ -63,7 +63,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
         class="inline-flex items-center cursor-pointer
                px-2.5 py-1.5 laptop:px-3 fhd:px-3.5
                rounded-full border border-[var(--border)]
-               bg-[var(--card)] opacity-50 can-hover:hover:opacity-100 active:opacity-100
+               bg-[var(--card)] opacity-70 can-hover:hover:opacity-100 active:opacity-100
                transition-all duration-200 select-none"
         title="Switch color theme"
         aria-label="Switch color theme"
@@ -71,8 +71,8 @@ const sections: LabeledSection[] = getLabeledSections(site);
       >
         <span
           id="theme-name-label"
-          class="text-[0.48rem] laptop:text-[0.52rem] fhd:text-[0.6rem]
-                 tracking-[0.3em] uppercase font-bold"
+          class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
+                 tracking-[0.24em] uppercase font-bold"
           style="color: var(--accent);"
         >CYBER</span>
       </button>
@@ -82,7 +82,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
         class="inline-flex items-center justify-center cursor-pointer
                p-[0.35rem] laptop:p-[0.45rem] fhd:p-[0.5rem]
                rounded-full border border-[var(--border)]
-               bg-[var(--card)] opacity-50 can-hover:hover:opacity-100 active:opacity-100
+               bg-[var(--card)] opacity-70 can-hover:hover:opacity-100 active:opacity-100
                transition-opacity duration-200 select-none"
         title="Toggle dark/light mode"
         aria-label="Toggle dark/light mode"
@@ -106,9 +106,9 @@ const sections: LabeledSection[] = getLabeledSections(site);
       </button>
 
       <span id="stat-visitors"
-            class="opacity-0 transition-opacity duration-500 font-sans font-normal
-                   text-[0.45rem] laptop:text-[0.5rem] fhd:text-[0.55rem] qhd:text-xs uhd:text-sm
-                   tracking-[0.25em] uppercase"
+            class="opacity-0 transition-opacity duration-500 font-hud font-normal
+                   text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base
+                   tracking-[0.22em] uppercase"
             style="color: var(--accent);">
       </span>
 
@@ -130,7 +130,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
       <div class="mb-3 laptop:mb-5 laptop-scaled:mb-5">
         <h2
           id={`heading-${section.sectionId}`}
-          class="text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.35em] uppercase font-bold m-0 text-glow"
+          class="font-hud text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
           style="color: var(--accent);"
         >
           &gt; {section.sectionLabel.toUpperCase()}

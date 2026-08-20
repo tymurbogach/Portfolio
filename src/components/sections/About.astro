@@ -33,7 +33,7 @@ const { journey, education, hobbies } = about;
           <!-- Content -->
           <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
-              <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--primary); opacity: 0.7;">
+              <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--primary);">
                 {year}
               </span>
               <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold ${active ? "text-[var(--accent)]" : ""}`}>
@@ -60,10 +60,10 @@ const { journey, education, hobbies } = about;
            style="border-left: 2px solid var(--primary);">
         <div>
           <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug">{title}</p>
-          <p class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-xs qhd:text-sm uhd:text-base tracking-[0.1em] uppercase opacity-55 mt-0.5">{sub}</p>
+          <p class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.1em] uppercase text-[var(--foreground-faint)] mt-1">{sub}</p>
         </div>
 
-        <span class="text-[0.55rem] laptop:text-[0.63rem] laptop-scaled:text-[0.63rem] fhd:text-[0.72rem] qhd:text-xs uhd:text-sm tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0" style="color: var(--primary); opacity: 0.7;">
+        <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0" style="color: var(--primary);">
           {years}
         </span>
       </div>
@@ -83,8 +83,8 @@ const { journey, education, hobbies } = about;
             <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none">{label}</span>
           </div>
           {detail && (
-            <span class="text-[0.48rem] laptop:text-[0.54rem] fhd:text-[0.6rem] qhd:text-xs uhd:text-sm
-                         tracking-[0.08em] shrink-0 text-right" style="color: var(--chart-5); opacity: 0.65;">{detail}</span>
+            <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base
+                         tracking-[0.08em] shrink-0 text-right text-[var(--foreground-faint)]">{detail}</span>
           )}
         </div>
       ))}
