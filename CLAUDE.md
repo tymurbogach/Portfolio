@@ -171,7 +171,17 @@ El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (r
 
 **Grep/Glob/Read siguen siendo lo correcto para:** JSON de `src/content/`, `global.css`, `.md`, configs, `cv/*.json`, y **siempre** para leer un archivo antes de editarlo.
 
-**Frescura del índice:** `detect_changes` al empezar una sesión que vaya a tocar código. Si hay drift real (refactor grande, muchos archivos nuevos, merge), re-indexar con `index_repository(repo_path=".", mode="moderate")`. Cambios de una línea no justifican re-indexar.
+**Frescura del índice:** `detect_changes` al empezar una sesión que vaya a tocar código. Si hay drift real (refactor grande, muchos archivos nuevos, merge), re-indexar. Cambios de una línea no justifican re-indexar.
+
+Tres trampas comprobadas al re-indexar este repo:
+
+```bash
+index_repository(repo_path=".", mode="full", name="portfolio")
+```
+
+- **`mode="full"`, no `"moderate"`.** Moderate excluye `src/scripts`, `scripts`, `public`, `docs` y `src/assets` — o sea, deja fuera justo los scripts de cliente (593 nodos → 407). Full solo excluye `.git`, `node_modules`, `.astro` y `dist`.
+- **`name="portfolio"` es obligatorio.** Sin él crea un proyecto nuevo `home-cyberdyne-dev-portfolio` en paralelo y el `portfolio` viejo se queda obsoleto.
+- **`index_status` no prueba frescura**: su `head_sha` lee el git en vivo, así que coincide con HEAD aunque el grafo sea de hace semanas. Para comprobar de verdad, `get_code_snippet` de un símbolo que sepas que cambió y mirar la firma y los rangos de línea. Y `detect_changes(since=<sha>)` con un SHA que ya no existe devuelve 0 cambios **en silencio**, sin error.
 
 **Dónde aporta de verdad en este repo:** impacto de tocar `src/lib/themes.ts`, `src/lib/content.ts` o `src/lib/chatConfig.ts` (consumidos por varios módulos), y saber qué componentes importan cada script de `src/scripts/`.
 
