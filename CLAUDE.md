@@ -166,7 +166,7 @@ Detalle de herramientas y trampas del índice en la sección [Codebase Memory](#
 
 ## Codebase Memory (grafo del código)
 
-El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (raíz `/home/cyberdyne/Projects/portfolio`).
+El repo está indexado en `codebase-memory-mcp` como proyecto **`home-cyberdyne-Projects-portfolio`** (raíz `/home/cyberdyne/Projects/portfolio`).
 
 **Obligatorio por la regla 7: el grafo va primero, siempre.**
 
@@ -185,11 +185,11 @@ El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (r
 Tres trampas comprobadas al re-indexar este repo:
 
 ```bash
-index_repository(repo_path=".", mode="full", name="portfolio")
+index_repository(repo_path=".", mode="full")
 ```
 
 - **`mode="full"`, no `"moderate"`.** Moderate excluye `src/scripts`, `scripts`, `public`, `docs` y `src/assets` — o sea, deja fuera justo los scripts de cliente (593 nodos → 407). Full solo excluye `.git`, `node_modules`, `.astro` y `dist`.
-- **`name="portfolio"` es obligatorio.** Sin él crea un proyecto nuevo `home-cyberdyne-dev-portfolio` en paralelo y el `portfolio` viejo se queda obsoleto.
+- **El nombre lo deriva la herramienta de la ruta** (`home-cyberdyne-Projects-portfolio`). El servidor ignora cualquier nombre que se le pida, así que no intentes renombrarlo: reindexar crea el derivado y el viejo hay que borrarlo con `delete_project`.
 - **`index_status` no prueba frescura**: su `head_sha` lee el git en vivo, así que coincide con HEAD aunque el grafo sea de hace semanas. Para comprobar de verdad, `get_code_snippet` de un símbolo que sepas que cambió y mirar la firma y los rangos de línea. Y `detect_changes(since=<sha>)` con un SHA que ya no existe devuelve 0 cambios **en silencio**, sin error.
 
 **Dónde aporta de verdad en este repo:** impacto de tocar `src/lib/themes.ts`, `src/lib/content.ts` o `src/lib/chatConfig.ts` (consumidos por varios módulos), y saber qué componentes importan cada script de `src/scripts/`.
