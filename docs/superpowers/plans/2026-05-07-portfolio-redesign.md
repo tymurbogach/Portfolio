@@ -85,7 +85,7 @@ Add at the end of `src/styles/global.css`:
 - [ ] **Step 2: Verify build passes**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors. Output ends with `dist/` summary.
 
@@ -132,7 +132,7 @@ Replace with:
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors. (Site will look broken visually until PageContent is updated — that's expected.)
 
@@ -187,7 +187,7 @@ After the `.nav-link[href]` forEach block (after line 104), add:
 - [ ] **Step 3: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no TypeScript errors.
 
@@ -268,7 +268,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors. (Each section component still renders its old content but now inside a 100dvh container.)
 
@@ -341,7 +341,7 @@ Replace with:
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 
@@ -471,7 +471,7 @@ const indexStr = String(index).padStart(2, "0");
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 
@@ -634,14 +634,14 @@ const MARQUEE = "TypeScript · Laravel · Angular · Astro · Docker · Linux ·
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 
 - [ ] **Step 3: Visual check**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run dev
+cd /home/cyberdyne/Projects/portfolio && npm run dev
 ```
 Open `http://localhost:4321`. Verify:
 - Hero fills viewport, no vertical scroll
@@ -770,7 +770,7 @@ const recentJourney = [...journey].slice(-4).reverse();
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 
@@ -899,7 +899,7 @@ function levelWidth(level: string): number {
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 
@@ -961,7 +961,7 @@ const { projects } = Astro.props;
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 
@@ -1141,7 +1141,7 @@ const { email, location, statusStr, statusActive, cv_url, formSubject }  = conta
 - [ ] **Step 2: Verify build**
 
 ```bash
-cd /home/cyberdyne/dev/portfolio && npm run build
+cd /home/cyberdyne/Projects/portfolio && npm run build
 ```
 Expected: no errors.
 

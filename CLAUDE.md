@@ -166,7 +166,7 @@ Detalle de herramientas y trampas del índice en la sección [Codebase Memory](#
 
 ## Codebase Memory (grafo del código)
 
-El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (raíz `/home/cyberdyne/dev/portfolio`).
+El repo está indexado en `codebase-memory-mcp` como proyecto **`portfolio`** (raíz `/home/cyberdyne/Projects/portfolio`).
 
 **Obligatorio por la regla 7: el grafo va primero, siempre.**
 
