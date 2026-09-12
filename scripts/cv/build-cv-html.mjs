@@ -117,8 +117,14 @@ function renderReferences(items) {
   `).join('');
 }
 
+function renderAtsKeywords(keywords) {
+  const filtered = (keywords ?? []).filter(Boolean);
+  if (filtered.length === 0) return '';
+  return `<div class="ats-kw" aria-hidden="true">${escapeHtml(filtered.join(', '))}</div>`;
+}
+
 function render(config) {
-  const { profile, summary, experience, education, references, theme, layout, labels } = config;
+  const { profile, summary, experience, education, references, atsKeywords, theme, layout, labels } = config;
   const labelSummary    = labels?.summary    ?? 'Summary';
   const labelExperience = labels?.experience ?? 'Professional Experience';
   const labelEducation  = labels?.education  ?? 'Education';
@@ -189,12 +195,14 @@ function render(config) {
       .ref-contact { color: var(--c-muted); font-size: calc(var(--font-base) - 0.5px); line-height: 1.4; }
       .ref-label { font-weight: 500; color: var(--c-primary); }
       .overflow-banner { display: none; margin-top: 4px; padding: 6px; border: 1px solid #8b0000; background: #ffe5e5; color: #8b0000; font-size: 10px; font-weight: 700; }
+      .ats-kw { position: absolute; top: 0; left: 0; width: 190mm; font-size: 1px; line-height: 1px; color: #ffffff; pointer-events: none; user-select: none; }
       html[data-overflow="1"] .overflow-banner { display: block; }
       @media print { body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
     </style>
   </head>
   <body>
     <main class="page">
+      ${renderAtsKeywords(atsKeywords)}
       <div id="flow" class="page-flow">
         <section class="header">
           <div>

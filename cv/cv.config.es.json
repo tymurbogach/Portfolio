@@ -87,6 +87,31 @@
       ]
     }
   ],
+  "atsKeywords": [
+    "Desarrollador Full Stack", "Full Stack Developer", "Full-Stack Engineer",
+    "Desarrollador de Software", "Ingeniero de Software", "Software Engineer",
+    "Desarrollador Web", "Web Developer", "Desarrollador Frontend", "Frontend Developer",
+    "Desarrollador Backend", "Backend Developer", "Desarrollador Móvil", "Android Developer",
+    "Administrador de Sistemas", "System Administrator", "DevOps Engineer",
+    "HTML", "HTML5", "CSS", "CSS3", "JavaScript", "TypeScript", "Angular", "AngularJS",
+    "Astro", "Tailwind CSS", "Diseño Web Responsive", "UI/UX",
+    "PHP", "Laravel", "Java", "SQL", "MySQL", "REST API", "RESTful API",
+    "Integración de APIs", "Desarrollo de Aplicaciones Web", "Android Studio", "APK",
+    "Desarrollo de Apps Móviles",
+    "Git", "GitHub", "Control de Versiones", "Postman",
+    "Docker", "Docker Compose", "Contenedores", "Linux", "Redes", "VPN", "Tailscale",
+    "Cloudflare", "Nginx", "Proxy Inverso", "DevOps", "SysAdmin", "Administración de Sistemas",
+    "Gestión de Infraestructura", "Automatización", "Monitorización",
+    "TrueNAS", "ZFS", "NAS", "Raspberry Pi", "Infraestructura Self-Hosted",
+    "Administración de Servidores", "FTP", "SFTP",
+    "Inteligencia Artificial", "Herramientas de IA", "Integración de IA", "LLM",
+    "Modelos de Lenguaje", "LLM Local", "Ollama", "Prompt Engineering",
+    "Machine Learning", "Búsqueda Vectorial", "Base de Datos Vectorial",
+    "Desarrollo de Chatbots",
+    "Scrum", "Agile", "Toma de Requisitos", "Comunicación con Clientes", "Soporte Técnico",
+    "Resolución de Problemas", "Depuración", "Corrección de Bugs", "QA",
+    "Colaboración Multidisciplinar", "Atención al Detalle", "Capacidad Analítica"
+  ],
   "references": [
     {
       "name": "Sergio Murcia Mateo",

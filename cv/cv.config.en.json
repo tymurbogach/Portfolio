@@ -87,6 +87,27 @@
       ]
     }
   ],
+  "atsKeywords": [
+    "Full Stack Developer", "Full-Stack Engineer", "Software Developer", "Software Engineer",
+    "Junior Software Engineer", "Web Developer", "Frontend Developer", "Backend Developer",
+    "Mobile Developer", "Android Developer", "DevOps Engineer", "System Administrator",
+    "HTML", "HTML5", "CSS", "CSS3", "JavaScript", "TypeScript", "Angular", "AngularJS",
+    "Astro", "Tailwind CSS", "Responsive Web Design", "UI/UX",
+    "PHP", "Laravel", "Java", "SQL", "MySQL", "REST API", "RESTful API", "API Integration",
+    "Web Application Development", "Android Studio", "APK", "Mobile App Development",
+    "Git", "GitHub", "Version Control", "Postman", "API Testing",
+    "Docker", "Docker Compose", "Containers", "Containerization", "Linux", "Networking",
+    "VPN", "Tailscale", "Cloudflare", "Nginx", "Reverse Proxy", "DevOps", "SysAdmin",
+    "System Administration", "Infrastructure Management", "Automation", "Monitoring",
+    "TrueNAS", "ZFS", "NAS", "Raspberry Pi", "Self-Hosted Infrastructure",
+    "Server Administration", "FTP", "SFTP",
+    "Artificial Intelligence", "AI Tools", "AI Integration", "LLM", "Large Language Models",
+    "Local LLM", "Ollama", "Prompt Engineering", "Machine Learning", "Vector Search",
+    "Vector Database", "Chatbot Development",
+    "Scrum", "Agile", "Requirements Gathering", "Client Communication", "Technical Support",
+    "Problem Solving", "Debugging", "Bug Fixing", "QA", "Cross-functional Collaboration",
+    "Attention to Detail", "Analytical Skills"
+  ],
   "references": [
     {
       "name": "Sergio Murcia Mateo",
