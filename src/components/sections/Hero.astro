@@ -37,11 +37,11 @@ const { hero: { title1, title2, subtitle1, subtitle2, comment, cta } } = Astro.p
     </p>
 
     {cta && (
-      <div class="flex flex-wrap gap-3">
-        <Button href={cta.primaryHref} variant="primary">
+      <div class="grid w-full max-w-[34rem] grid-cols-1 gap-3 min-[34rem]:grid-cols-2">
+        <Button href={cta.primaryHref} variant="primary" class="w-full">
           {cta.primary}
         </Button>
-        <Button href={cta.secondaryHref} variant="accent">
+        <Button href={cta.secondaryHref} variant="accent" class="w-full">
           {cta.secondary}
         </Button>
       </div>

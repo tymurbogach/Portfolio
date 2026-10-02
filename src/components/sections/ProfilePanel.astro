@@ -1,15 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import { getProfile, getContactData } from "../../lib/content";
-import Modal from "../../components/ui/Modal.astro";
-import CvDownloadButton from "../../components/ui/CvDownloadButton.astro";
 import gopnik from "../../assets/gopnik.png";
 
 const profile = await getProfile();
 const contact = await getContactData();
 
 const { focus, timezone }                                      = profile;
-const { cv_url, cv_url_es, statusStr, statusActive, location } = contact;
+const { statusStr, statusActive, location } = contact;
 
 /* Operator card rows: label + value, rendered as a <dl> spec sheet.
    TIME gets its value injected live by localTime.ts. */
@@ -53,7 +51,7 @@ const corners = [
         densities={[1, 2]}
         class="w-full h-auto object-contain pointer-events-none
                max-w-[10rem] mobile:max-w-[11rem]
-               laptop:max-w-[14rem] laptop-scaled:max-w-[14rem] fhd:max-w-[18rem] qhd:max-w-[22rem] uhd:max-w-[28rem]"
+               laptop:max-w-[14rem] laptop-scaled:max-w-[12rem] fhd:max-w-[18rem] qhd:max-w-[22rem] uhd:max-w-[28rem]"
       />
     </div>
 
@@ -100,12 +98,4 @@ const corners = [
 
   </div>
 
-  <!-- CV buttons — anchored at bottom -->
-  <div class="mt-auto flex w-full shrink-0">
-    <CvDownloadButton mode="modal" label="CV · EN" href={cv_url} />
-    <CvDownloadButton mode="modal" label="CV · ES" href={cv_url_es} class="border-l-0" />
-  </div>
-
 </section>
-
-<Modal titleLabel="CURRICULUM.PDF" />

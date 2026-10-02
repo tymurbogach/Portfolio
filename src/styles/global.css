@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 /* ── Custom variants ─────────────────────────────── */
-@variant laptop-scaled (@media (min-resolution: 1.4dppx) and (min-width: 60rem));
+/* Compact desktop must depend on CSS width, not device DPR. Browser zoom changes
+   DPR, which otherwise made the same effective viewport change layout. */
+@variant laptop-scaled (@media (min-width: 60rem) and (max-width: 79.9375rem));
 @variant can-hover (@media (hover: hover) and (pointer: fine));
 @custom-variant dark (&:is(.dark *));
 
@@ -904,8 +906,8 @@
   :root { --nav-icon-size: 1.75rem; }
 }
 
-/* Laptop escalado (DPR ≥ 1.4, viewport 60–79rem) */
-@media (min-resolution: 1.4dppx) and (min-width: 60rem) and (max-width: 79rem) {
+/* Compact desktop, 960–1279px CSS viewport. */
+@media (min-width: 60rem) and (max-width: 79.9375rem) {
   :root {
     --sidebar-width: 18rem;
     --main-padding:  4.5rem;
@@ -1182,12 +1184,15 @@ body::after {
   gap: 0.375rem;
   padding: 0.35rem 0.5rem;
   border-radius: var(--radius);
-  transition: background 150ms;
+  transition: background-color 150ms ease, border-color 150ms ease;
   border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
   background: color-mix(in srgb, var(--accent) 4%, transparent);
   min-width: 0;
   @variant can-hover {
-    &:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+    &:hover {
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    }
     /* El color de marca solo aparece al pasar por encima: en reposo la
        rejilla se lee como un sistema, no como una sopa de logos. */
     &:hover svg { fill: var(--icon-brand, var(--accent)); }
@@ -1239,6 +1244,10 @@ body::after {
 @utility btn-base {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+  line-height: 1.1;
   text-decoration: none;
   cursor: pointer;
   border-radius: var(--radius);

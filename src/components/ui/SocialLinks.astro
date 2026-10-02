@@ -8,6 +8,7 @@ const socialLinks = await getSocialLinks();
   class="w-full h-[2.5rem]
   mobile:w-[20rem] mobile:h-[4.5rem]
   tablet:w-[20rem] tablet:h-[4.5rem]
+  laptop-scaled:w-[22rem] laptop-scaled:h-[4.75rem]
   laptop:w-[25rem] laptop:h-[5rem]
   fhd:w-[30rem] fhd:h-[5.5rem]
   qhd:w-[35rem] qhd:h-[6rem]
@@ -31,7 +32,7 @@ const socialLinks = await getSocialLinks();
           class="mask-icon inline-block shrink-0
                  bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
                  opacity-70 can-hover:group-hover:opacity-100
-                 transition-all duration-200
+                 transition duration-200
                  can-hover:group-hover:scale-125 can-hover:group-hover:drop-shadow-sm"
           style={`--icon-url: url('${icon}'); width: var(--nav-icon-size); height: var(--nav-icon-size);`}
           aria-hidden="true"

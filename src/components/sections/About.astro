@@ -16,7 +16,8 @@ const { journey, education, hobbies } = about;
     <h3 class="cat-label" style="color: var(--primary);">Journey</h3>
     <div class="flex flex-col">
       {journey.map(({ year, event, detail, active }, i) => (
-        <div class="flex gap-4 laptop:gap-6">
+        <div class="group flex gap-4 laptop:gap-6 -mx-3 px-3 py-2 rounded-[var(--radius)]
+                    transition-colors duration-200 can-hover:hover:bg-[var(--surface-glow)]">
 
           <!-- Timeline dot + line -->
           <div class="flex flex-col items-center shrink-0 pt-[3px]">
@@ -36,7 +37,7 @@ const { journey, education, hobbies } = about;
               <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--primary);">
                 {year}
               </span>
-              <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold ${active ? "text-[var(--accent)]" : ""}`}>
+              <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold transition-colors duration-200 can-hover:group-hover:text-[var(--accent)] ${active ? "text-[var(--accent)]" : ""}`}>
                 {event}
               </span>
             </div>
@@ -54,12 +55,12 @@ const { journey, education, hobbies } = about;
 
   <div class="flex flex-col gap-2">
     {education.map(({ years, title, sub }) => (
-      <div class="flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]
-                  transition-colors duration-200
-                  can-hover:hover:bg-[var(--surface-glow)] can-hover:hover:border-[var(--accent-subtle)]"
+        <div class="group flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]
+                    transition duration-200
+                    can-hover:hover:bg-[var(--surface-glow)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:-translate-y-px"
            style="border-left: 2px solid var(--primary);">
         <div>
-          <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug">{title}</p>
+          <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">{title}</p>
           <p class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.1em] uppercase text-[var(--foreground-faint)] mt-1">{sub}</p>
         </div>
 
@@ -77,10 +78,11 @@ const { journey, education, hobbies } = about;
 
     <div class="grid grid-cols-1 laptop:grid-cols-2 gap-x-6 gap-y-0">
       {hobbies.map(({ label, detail }) => (
-        <div class="flex items-center justify-between gap-4 py-2.5 fhd:py-3
-                    border-b border-[var(--border-subtle)] last:border-b-0">
+        <div class="group flex items-center justify-between gap-4 py-2.5 fhd:py-3 px-2 -mx-2
+                    border-b border-[var(--border-subtle)] last:border-b-0
+                    transition-colors duration-200 can-hover:hover:bg-[var(--surface-glow)]">
           <div class="flex items-center">
-            <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none">{label}</span>
+            <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">{label}</span>
           </div>
           {detail && (
             <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base

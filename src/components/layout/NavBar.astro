@@ -38,7 +38,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
           />
         </span>
         <!-- Label: pinned to bottom -->
-        <span class="font-display text-[0.85em] laptop:text-[0.95em]
+        <span class="font-display whitespace-nowrap text-[0.85em] laptop:text-[0.95em]
                      pb-1 mobile:pb-1.5 tablet:pb-2 laptop:pb-2.5 fhd:pb-3
                      leading-none">
           {page.label}
@@ -52,7 +52,7 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
        frame del smooth scroll. La transición debe coincidir con INDICATOR_TRANSITION. -->
   <div
     class="nav-indicator absolute bottom-0 left-0 w-full h-[2px] origin-left pointer-events-none
-           bg-[image:var(--gradient-border)] [transform:scaleX(0)]
+           bg-[var(--accent)] [transform:scaleX(0)]
            [transition:transform_0.25s_ease] [will-change:transform]"
     aria-hidden="true"
   />

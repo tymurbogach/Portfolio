@@ -58,6 +58,10 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
   "React":       { slug: "react" },
   "Node":        { slug: "nodedotjs" },
   "Python":      { slug: "python" },
+  "Bash":        { slug: "gnubash" },
+  "Qt/QML":      { slug: "qt" },
+  "SQLite":      { slug: "sqlite" },
+  "Hyprland":    { slug: "hyprland" },
   "Astro":       { slug: "astro" },
   "Tailwind":    { slug: "tailwindcss" },
   "TailwindCSS": { slug: "tailwindcss" },
@@ -73,8 +77,8 @@ const badgeBase =
   {...linkAttrs}
   class:list={[
     "relative group flex flex-col overflow-hidden rounded-lg bg-[var(--card)]",
-    "border border-[var(--border)] transition-all duration-300",
-    link && "can-hover:hover:border-[var(--accent)] hover-glow",
+    "border border-[var(--border)] transition-[border-color,box-shadow,transform] duration-300",
+    link && "can-hover:hover:border-[var(--accent)] can-hover:hover:-translate-y-1 hover-glow",
   ]}
 >
   <!-- Image — top -->

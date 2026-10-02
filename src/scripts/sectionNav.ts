@@ -6,7 +6,7 @@
 
 // Must match --breakpoint-laptop and the laptop-scaled @variant in global.css.
 const LAPTOP_MQ = "(min-width: 80rem)";
-const LAPTOP_SCALED_MQ = "(min-resolution: 1.4dppx) and (min-width: 60rem)";
+const LAPTOP_SCALED_MQ = "(min-width: 60rem) and (max-width: 79.9375rem)";
 
 /* transform y no left/width: left y width son propiedades de layout y animarlas
    durante el smooth scroll repinta el viewport entero. Debe coincidir con la

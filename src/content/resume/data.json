@@ -55,12 +55,12 @@
       { "slug": "scrutiny",      "color": "#ef4444", "label": "Scrutiny"      }
     ],
     "ai": [
-      { "slug": "claude",            "color": "#D97757", "label": "Claude Code"        },
-      { "slug": "anthropic",         "color": "#d4d4d4", "label": "MCP Protocol"       },
-      { "slug": "ollama",            "color": "#8b5cf6", "label": "Ollama"             },
-      { "slug": "chatbot",           "color": "#0066FF", "label": "AI Agents"          },
-      { "slug": "opencode",          "color": "#3b82f6", "label": "OpenCode"           },
-      { "slug": "promptengineering", "color": "#ec4899", "label": "Prompt Engineering" }
+      { "slug": "claude",   "color": "#D97757", "label": "Claude Code" },
+      { "slug": "codex",    "color": "#10a37f", "label": "Codex"       },
+      { "slug": "kimi",     "color": "#1783ff", "label": "Kimi"        },
+      { "slug": "opencode", "color": "#f1ecec", "label": "OpenCode"    },
+      { "slug": "ollama",   "color": "#8b5cf6", "label": "Ollama"      },
+      { "slug": "prompt",   "color": "#ec4899", "label": "Prompt Eng." }
     ],
     "languages": [
       { "flag": "🇷🇺", "lang": "Russian",   "level": "native" },

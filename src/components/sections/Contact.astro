@@ -37,7 +37,7 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
           <a
             href={`mailto:${email}`}
             class="font-hud text-[clamp(0.85rem,1.4vw,1.15rem)] fhd:text-[clamp(1rem,1.4vw,1.4rem)] font-bold text-[var(--accent)]
-                   can-hover:hover:text-[var(--secondary)] active:text-[var(--secondary)] transition-colors break-all leading-snug self-start"
+                   can-hover:hover:text-[var(--secondary)] can-hover:hover:underline can-hover:hover:underline-offset-4 active:text-[var(--secondary)] transition-colors break-all leading-snug self-start"
           >
             {email}
           </a>
@@ -53,8 +53,8 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
       <div class="flex flex-col gap-2">
         <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Curriculum</span>
         <div class="flex flex-row flex-wrap gap-2 mobile:flex-col mobile:items-start">
-          <CvDownloadButton mode="link" label="CV · EN" href={cv_url} />
-          <CvDownloadButton mode="link" label="CV · ES" href={cv_url_es} />
+            <CvDownloadButton label="CV · EN" href={cv_url} />
+            <CvDownloadButton label="CV · ES" href={cv_url_es} />
         </div>
       </div>
 
@@ -81,7 +81,7 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
                text-[var(--foreground)]
-               border border-[var(--border)] focus:border-[var(--accent)]
+               border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
                focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
                placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
@@ -93,7 +93,7 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
                text-[var(--foreground)]
-               border border-[var(--border)] focus:border-[var(--accent)]
+               border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
                focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
                placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
@@ -107,7 +107,7 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
       class="bg-transparent w-full outline-none p-3
              text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
              text-[var(--foreground)]
-             resize-none border border-[var(--border)] focus:border-[var(--accent)]
+             resize-none border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
              focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
              transition-colors duration-200 focus-visible:outline-none
              placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase

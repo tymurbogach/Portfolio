@@ -19,7 +19,7 @@ const BOT_ICON = "/img/bot.png";
                  gap-0.5 p-2 tablet:p-3"
         >
           <span
-            class="mask-icon inline-block transition-all duration-200 can-hover:group-hover:scale-125
+            class="mask-icon inline-block transition duration-200 can-hover:group-hover:scale-125
                    bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]
                    opacity-65 can-hover:group-hover:opacity-100
                    can-hover:group-hover:drop-shadow-sm"
@@ -29,7 +29,7 @@ const BOT_ICON = "/img/bot.png";
           <span
             class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
                    tracking-[0.24em] uppercase
-                   text-[var(--foreground-faint)] can-hover:group-hover:text-[var(--foreground)]
+                   text-[var(--foreground-faint)] can-hover:group-hover:text-[var(--secondary-foreground)]
                    transition-colors duration-200"
           >BOT</span>
         </button>
@@ -43,7 +43,7 @@ const BOT_ICON = "/img/bot.png";
              bg-[color-mix(in_srgb,var(--background)_75%,transparent)]
              border border-[color-mix(in_srgb,var(--border)_65%,transparent)]
              backdrop-blur-[8px] opacity-70
-             transition-all duration-200 can-hover:hover:opacity-100"
+             transition-opacity duration-200 can-hover:hover:opacity-100"
       aria-label="Open AI chat"
     >
       <span
