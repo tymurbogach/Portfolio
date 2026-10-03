@@ -150,6 +150,8 @@ const projects = defineCollection({
     description: z.string(),
     image:       image().or(z.url()).optional(),
     link:        z.url().optional(),
+    githubRepository: z.string().regex(/^[\w.-]+\/[\w.-]+$/, "Expected owner/repository").optional(),
+    githubStars: z.number().int().nonnegative().optional(),
     type:        z.enum(["demo", "source"]).optional(),
     tags:        z.array(z.string()).optional(),
     /** Contexto de la ficha: "2025" y "full stack" → "2025 · full stack" */

@@ -14,6 +14,7 @@ interface Props {
   tags?:       string[];
   year?:       string;
   role?:       string;
+  githubStars?: number;
   index?:      number;
 }
 
@@ -26,6 +27,7 @@ const {
   tags = [],
   year,
   role,
+  githubStars,
   index = 0,
 } = Astro.props;
 
@@ -88,7 +90,18 @@ const badgeBase =
       {isDemo ? "● live" : "⌥ src"}
     </span>
 
-    {tags.includes("Self-hosted") && (
+    {githubStars !== undefined ? (
+      <span
+        class:list={[
+          badgeBase,
+          "top-3 right-3 flex items-center gap-1.5 border border-[var(--border)] bg-[var(--overlay)] text-[var(--accent)]",
+        ]}
+        aria-label={`${githubStars} GitHub stars`}
+      >
+        <Icon slug="github" size={13} label="GitHub" tone="mono" />
+        {githubStars}
+      </span>
+    ) : tags.includes("Self-hosted") && (
       <span
         class:list={[
           badgeBase,
@@ -196,7 +209,7 @@ const badgeBase =
 
     {link && (
       <div class="flex items-center justify-between gap-3 mt-auto pt-1">
-        <span class="font-hud text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+        <span class="font-hud min-w-0 text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
                      tracking-[0.06em] truncate text-[var(--foreground-faint)]">
           {host}
         </span>

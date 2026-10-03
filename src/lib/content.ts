@@ -1,5 +1,6 @@
 import { getEntry, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { syncGitHubProject } from "./github";
 
 // ═══════════════════════════════════════════════════════
 // TYPES — derived from the Zod schemas in content.config.ts
@@ -56,7 +57,8 @@ export const getSocialLinks = (): Promise<SocialLink[]> => fetchEntry("social", 
 
 export async function getProjects(): Promise<Project[]> {
   const entries = await getCollection("projects");
-  return entries.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+  const projects = await Promise.all(entries.map(syncGitHubProject));
+  return projects.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 }
 
 // ═══════════════════════════════════════════════════════
