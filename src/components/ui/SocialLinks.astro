@@ -15,19 +15,18 @@ const socialLinks = await getSocialLinks();
   uhd:w-[40rem] uhd:h-[6.5rem]"
 >
   <div class="nav-panel flex flex-row items-center justify-center text-center w-full h-full">
-    {
-      socialLinks.map(({ url, icon, name }: SocialLink) => (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={name}
-          class="group flex flex-col items-center justify-center h-full flex-1
+    {socialLinks.map(({ url, icon, name }: SocialLink) => (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={name}
+        class="group flex flex-col items-center justify-center h-full flex-1
                text-[var(--foreground)] px-[0.75rem]
                transition-all duration-250 ease-in-out
                can-hover:hover:bg-[var(--secondary)] can-hover:hover:text-[var(--secondary-foreground)]"
-        >
-          <!-- CSS mask like NavBar: color comes from bg-, not the img src -->
+      >
+        <!-- CSS mask like NavBar: color comes from bg-, not the img src -->
         <span
           class="mask-icon inline-block shrink-0
                  bg-[var(--foreground)] can-hover:group-hover:bg-[var(--secondary-foreground)]

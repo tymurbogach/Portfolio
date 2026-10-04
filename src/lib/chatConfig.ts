@@ -26,9 +26,9 @@ export const MAX_HISTORY_MESSAGES = 20;
 
 // ── Starter questions shown in the chat widget before first message ────────────
 export const CHAT_STARTERS: { q: string; label: string }[] = [
-  { q: "What's your tech stack?",       label: "stack?"       },
-  { q: "Tell me about your background", label: "background?"  },
-  { q: "Are you available for work?",   label: "available?"   },
+  { q: "What's your tech stack?", label: "stack?" },
+  { q: "Tell me about your background", label: "background?" },
+  { q: "Are you available for work?", label: "available?" },
 ];
 
 // ── System prompt — defines TymurBot's identity and knowledge ─────────────────

@@ -29,7 +29,9 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
              border border-[var(--border)] can-hover:hover:border-[var(--accent)]
              can-hover:hover:text-[var(--accent)] transition-colors duration-150 cursor-pointer"
       aria-label="Close chat"
-    >×</button>
+    >
+      ×
+    </button>
   </div>
 
   <!-- Messages -->
@@ -39,19 +41,22 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
   >
     <!-- Welcome message -->
     <div class="chat-msg chat-msg--bot">
-      Hey — I'm TymurBot. Ask me anything about Tymur, his stack, or just say hi.
+      Hey — I'm TymurBot. Ask me anything about Tymur, his stack, or just say
+      hi.
     </div>
 
     <!-- Starter suggestions -->
     <div class="chat-starters flex flex-wrap gap-1.5 mt-1">
-      {starters.map(s => (
+      {starters.map((s) => (
         <button
           class="chat-starter text-[0.66rem] tracking-[0.12em] uppercase px-2.5 py-1
                  [font-family:inherit] bg-transparent text-inherit opacity-60
                  border border-[var(--border)] can-hover:hover:border-[var(--accent)]
                  can-hover:hover:text-[var(--accent)] transition-colors duration-150 cursor-pointer"
           data-q={s.q}
-        >[ {s.label} ]</button>
+        >
+          [ {s.label} ]
+        </button>
       ))}
     </div>
   </div>
@@ -71,6 +76,8 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
       class="px-4 py-3 text-[0.65rem] tracking-[0.2em] uppercase font-bold min-w-16
              bg-[var(--accent)] text-[var(--accent-foreground)] border-none [font-family:inherit]
              transition-colors duration-150 cursor-pointer disabled:opacity-30"
-    >→</button>
+    >
+      →
+    </button>
   </div>
 </div>

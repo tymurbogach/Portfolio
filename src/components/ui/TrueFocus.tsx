@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
-import './TrueFocus.css';
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import "./TrueFocus.css";
 
 interface TrueFocusProps {
   sentence?: string;
@@ -15,12 +15,12 @@ interface TrueFocusProps {
 }
 
 export default function TrueFocus({
-  sentence = 'True Focus',
-  separator = ' ',
+  sentence = "True Focus",
+  separator = " ",
   manualMode = false,
   blurAmount = 5,
-  borderColor = 'var(--accent)',
-  glowColor = 'color-mix(in srgb, var(--accent) 55%, transparent)',
+  borderColor = "var(--accent)",
+  glowColor = "color-mix(in srgb, var(--accent) 55%, transparent)",
   animationDuration = 0.5,
   pauseBetweenAnimations = 1.2,
   stacked = false,
@@ -30,13 +30,21 @@ export default function TrueFocus({
   const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const [focusRect, setFocusRect] = useState({ x: 0, y: 0, width: 0, height: 0 });
+  const [focusRect, setFocusRect] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
     if (!manualMode) {
-      const interval = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % words.length);
-      }, (animationDuration + pauseBetweenAnimations) * 1000);
+      const interval = setInterval(
+        () => {
+          setCurrentIndex((prev) => (prev + 1) % words.length);
+        },
+        (animationDuration + pauseBetweenAnimations) * 1000,
+      );
       return () => clearInterval(interval);
     }
   }, [manualMode, animationDuration, pauseBetweenAnimations, words.length]);
@@ -68,23 +76,28 @@ export default function TrueFocus({
   };
 
   return (
-    <div className={`focus-container${stacked ? ' stacked' : ''}`} ref={containerRef}>
+    <div
+      className={`focus-container${stacked ? "stacked" : ""}`}
+      ref={containerRef}
+    >
       {words.map((word, index) => {
         const isActive = index === currentIndex;
         return (
           <span
             key={index}
-            className={`focus-word${manualMode ? ' manual' : ''}${isActive && !manualMode ? ' active' : ''}`}
+            className={`focus-word${manualMode ? "manual" : ""}${isActive && !manualMode ? "active" : ""}`}
             style={{
-              filter: isActive ? 'blur(0px)' : `blur(${blurAmount}px)`,
+              filter: isActive ? "blur(0px)" : `blur(${blurAmount}px)`,
               transition: `filter ${animationDuration}s ease`,
             }}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >
             <span
-              ref={el => { wordRefs.current[index] = el; }}
-              style={{ display: 'inline-block' }}
+              ref={(el) => {
+                wordRefs.current[index] = el;
+              }}
+              style={{ display: "inline-block" }}
             >
               {word}
             </span>
@@ -102,10 +115,12 @@ export default function TrueFocus({
           opacity: currentIndex >= 0 ? 1 : 0,
         }}
         transition={{ duration: animationDuration }}
-        style={{
-          '--border-color': borderColor,
-          '--glow-color': glowColor,
-        } as React.CSSProperties}
+        style={
+          {
+            "--border-color": borderColor,
+            "--glow-color": glowColor,
+          } as React.CSSProperties
+        }
       >
         <span className="corner top-left" />
         <span className="corner top-right" />

@@ -18,21 +18,28 @@
 
 ## Tareas
 
-- [ ] T01. Actualizar Astro, integraciones y herramientas. Eliminar los hints,
-  normalizar el formato y dejar el audit sin vulnerabilidades altas o críticas.
+- [x] T01. Actualizar Astro, integraciones y herramientas. Eliminar los hints,
+      normalizar el formato y dejar el audit sin vulnerabilidades altas o críticas.
 - [ ] T02. Añadir Vitest, pruebas unitarias para temas, chat y Umami, y ampliar CI.
 - [ ] T03. Mover el texto visible a colecciones, incluida una colección `chat`.
 - [ ] T04. Convertir `SocialLinks` en componente presentacional y eliminar tipos
-  redundantes en callbacks de colecciones.
+      redundantes en callbacks de colecciones.
 - [ ] T05. Sustituir estilos inline no permitidos, eliminar `transition-all` y
-  mover los estilos de TrueFocus a `global.css`.
+      mover los estilos de TrueFocus a `global.css`.
 - [ ] T06. Rehacer TrueFocus sin animaciones de layout y respetar reduced motion.
 - [ ] T07. Normalizar AbortController, temporizadores y fetch en scripts cliente.
 - [ ] T08. Corregir accesibilidad del formulario y del diálogo de chat.
 - [ ] T09. Limitar el chat, validar entradas, cancelar upstreams y documentar la
-  regla de rate limit de Cloudflare.
+      regla de rate limit de Cloudflare.
 - [ ] T10. Validar Umami, cachear estadísticas, añadir salud, cabeceras y entorno.
 - [ ] T11. Actualizar README y validar el flujo de despliegue de la Pi.
+
+## Limitaciones conocidas
+
+- T01 deja 3 entradas altas con una sola causa: `http-cache-semantics`
+  (GHSA-ch52-4w7c-c8xp, `<=4.2.0`, sin versión corregida). La única
+  "corrección" que propone npm es bajar a `astro@2.10.9`, lo cual se
+  rechaza: ningún downgrade para silenciar un advisory.
 
 ## Interfaces previstas
 

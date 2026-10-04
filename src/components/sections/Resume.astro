@@ -2,7 +2,9 @@
 import Icon from "../../components/ui/Icon.astro";
 import type { ResumeData } from "../../lib/content";
 
-interface Props { resume: ResumeData; }
+interface Props {
+  resume: ResumeData;
+}
 
 const { resume } = Astro.props;
 const { frontend, backend, homelab, ai, languages } = resume;
@@ -11,28 +13,38 @@ const { frontend, backend, homelab, ai, languages } = resume;
    Homelab va aparte como inventario denso — son 38 servicios, y en chips
    compite visualmente con el core stack sin aportar más señal. */
 const categories = [
-  { label: "Frontend",   skills: frontend },
-  { label: "Backend",    skills: backend  },
+  { label: "Frontend", skills: frontend },
+  { label: "Backend", skills: backend },
   ...(ai?.length ? [{ label: "AI Tooling", skills: ai }] : []),
 ];
 ---
 
-<section class="grid grid-cols-1 laptop:grid-cols-2 laptop-scaled:grid-cols-2 w-full
-                gap-8 laptop:gap-x-10 laptop:gap-y-10 fhd:gap-x-14 fhd:gap-y-14">
-
+<section
+  class="grid grid-cols-1 laptop:grid-cols-2 laptop-scaled:grid-cols-2 w-full
+                gap-8 laptop:gap-x-10 laptop:gap-y-10 fhd:gap-x-14 fhd:gap-y-14"
+>
   {categories.map(({ label, skills }) => (
     <div class="resume-section flex flex-col gap-2.5">
+      <span class="cat-label" style="color: var(--primary);">
+        {label}
+      </span>
 
-      <span class="cat-label" style="color: var(--primary);">{label}</span>
-
-      <div class="resume-grid
+      <div
+        class="resume-grid
                   grid grid-cols-[repeat(auto-fill,minmax(7.5rem,1fr))] gap-1.5 overflow-hidden
                   fhd:gap-2.5
-                  max-h-[10rem] laptop:max-h-[11rem] fhd:max-h-[13rem] qhd:max-h-[15rem]">
+                  max-h-[10rem] laptop:max-h-[11rem] fhd:max-h-[13rem] qhd:max-h-[15rem]"
+      >
         {skills.map(({ slug, color: c, label: l }) => (
           <span class="skill-chip">
-            <Icon slug={slug} color={c} size={15} label={l} tone="mono"
-                  class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6" />
+            <Icon
+              slug={slug}
+              color={c}
+              size={15}
+              label={l}
+              tone="mono"
+              class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6"
+            />
             <span class="chip-label">{l}</span>
           </span>
         ))}
@@ -46,52 +58,66 @@ const categories = [
                can-hover:hover:text-[var(--foreground)] active:text-[var(--foreground)]"
         aria-expanded="false"
       >
-        <span class="resume-toggle-label font-bold" style="color: var(--accent);"></span>
+        <span
+          class="resume-toggle-label font-bold"
+          style="color: var(--accent);"
+        ></span>
         <span class="resume-toggle-word">more</span>
       </button>
-
     </div>
   ))}
 
   <!-- Homelab — inventario, no habilidad: lista densa en vez de 38 logos -->
   <div class="flex flex-col gap-2.5 laptop:col-span-2 laptop-scaled:col-span-2">
-
     <div class="flex items-baseline justify-between gap-4">
-      <span class="cat-label" style="color: var(--primary);">Homelab</span>
-      <span class="font-hud text-[0.62rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
-                   tracking-[0.18em] uppercase text-[var(--foreground-faint)]">
+      <span class="cat-label" style="color: var(--primary);">
+        Homelab
+      </span>
+      <span
+        class="font-hud text-[0.62rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
+                   tracking-[0.18em] uppercase text-[var(--foreground-faint)]"
+      >
         {homelab.length} services in production
       </span>
     </div>
 
-    <p class="font-hud m-0 text-[0.68rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
-              leading-[1.95] tracking-[0.03em] text-[var(--muted-foreground)]">
+    <p
+      class="font-hud m-0 text-[0.68rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
+              leading-[1.95] tracking-[0.03em] text-[var(--muted-foreground)]"
+    >
       {homelab.map(({ label }) => label).join(" · ")}
     </p>
-
   </div>
 
   <!-- Languages -->
   <div class="flex flex-col gap-2.5 laptop:col-span-2 laptop-scaled:col-span-2">
-
-    <span class="cat-label" style="color: var(--primary);">Languages</span>
+    <span class="cat-label" style="color: var(--primary);">
+      Languages
+    </span>
 
     <div class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-1.5 overflow-hidden fhd:gap-2.5">
       {languages.map(({ flag, lang, level }) => (
         <span class="skill-chip">
-          <span class="text-[0.9rem] laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none shrink-0" aria-hidden="true">{flag}</span>
+          <span
+            class="text-[0.9rem] laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none shrink-0"
+            aria-hidden="true"
+          >
+            {flag}
+          </span>
           <span class="flex flex-col min-w-0">
             <span class="chip-label">{lang}</span>
-            <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-[0.82rem]
+            <span
+              class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-[0.82rem]
                          tracking-[0.12em] uppercase font-bold leading-tight"
-                  style="color: var(--chart-2);">{level}</span>
+              style="color: var(--chart-2);"
+            >
+              {level}
+            </span>
           </span>
         </span>
       ))}
     </div>
-
   </div>
-
 </section>
 
 <script>

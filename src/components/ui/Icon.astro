@@ -11,29 +11,37 @@ const CUSTOM_PATHS: Record<string, string> = {
 };
 
 interface Props {
-  slug:   string;
+  slug: string;
   color?: string;
-  size?:  number;
-  label:  string;
+  size?: number;
+  label: string;
   /** "mono" pinta el icono con --accent y guarda el color de marca en
    *  --icon-brand, que .skill-chip revela en hover. */
-  tone?:  "brand" | "mono";
+  tone?: "brand" | "mono";
   class?: string;
 }
 
-const { slug, color, size = 20, label, tone = "brand", class: extraClass = "" } = Astro.props;
+const {
+  slug,
+  color,
+  size = 20,
+  label,
+  tone = "brand",
+  class: extraClass = "",
+} = Astro.props;
 
-const key  = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
+const key = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
 const icon = (si as { [key: string]: { path: string; hex: string } })[key];
 const customPath = CUSTOM_PATHS[slug];
 
 const fillColor = color ?? (icon ? `#${icon.hex}` : "currentColor");
-const path      = icon?.path ?? "";
-const hasIcon   = !!icon;
+const path = icon?.path ?? "";
+const hasIcon = !!icon;
 
-const iconStyle = tone === "mono"
-  ? `--icon-brand: ${fillColor}; fill: var(--accent);`
-  : `fill: ${fillColor};`;
+const iconStyle =
+  tone === "mono"
+    ? `--icon-brand: ${fillColor}; fill: var(--accent);`
+    : `fill: ${fillColor};`;
 ---
 
 {customPath ? (

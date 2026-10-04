@@ -55,10 +55,18 @@
       }
     ],
     "hobbies": [
-      { "icon": "🎵", "label": "Music",        "detail": "production & listening"      },
-      { "icon": "🖥", "label": "Self-hosting", "detail": "always something running"    },
-      { "icon": "🎸", "label": "Guitar",       "detail": "for over a decade"           },
-      { "icon": "🌙", "label": "Late nights",  "detail": "peak productivity hours"     }
+      { "icon": "🎵", "label": "Music", "detail": "production & listening" },
+      {
+        "icon": "🖥",
+        "label": "Self-hosting",
+        "detail": "always something running"
+      },
+      { "icon": "🎸", "label": "Guitar", "detail": "for over a decade" },
+      {
+        "icon": "🌙",
+        "label": "Late nights",
+        "detail": "peak productivity hours"
+      }
     ]
   }
 }

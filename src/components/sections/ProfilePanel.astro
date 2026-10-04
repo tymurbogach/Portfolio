@@ -6,16 +6,16 @@ import gopnik from "../../assets/gopnik.png";
 const profile = await getProfile();
 const contact = await getContactData();
 
-const { focus, timezone }                                      = profile;
+const { focus, timezone } = profile;
 const { statusStr, statusActive, location } = contact;
 
 /* Operator card rows: label + value, rendered as a <dl> spec sheet.
    TIME gets its value injected live by localTime.ts. */
 const specRows = [
   { label: "location", value: location },
-  { label: "time",     value: "" },
-  { label: "status",   value: statusStr },
-  { label: "focus",    value: focus },
+  { label: "time", value: "" },
+  { label: "status", value: statusStr },
+  { label: "focus", value: focus },
 ];
 
 /* Corner-bracket positions for the photo frame (signature element). */
@@ -32,15 +32,18 @@ const corners = [
 </script>
 
 <section class="flex flex-col w-full h-full min-h-0">
-
-  <div class="flex flex-col items-center gap-4 laptop:gap-4 fhd:gap-6
-              pt-[10%] laptop:pt-[15%] laptop-scaled:pt-[15%] fhd:pt-[18%] qhd:pt-[20%]">
-
+  <div
+    class="flex flex-col items-center gap-4 laptop:gap-4 fhd:gap-6
+              pt-[10%] laptop:pt-[15%] laptop-scaled:pt-[15%] fhd:pt-[18%] qhd:pt-[20%]"
+  >
     <!-- Photo with corner brackets -->
     <div class="relative p-1.5 fhd:p-2">
       {corners.map((pos) => (
         <span
-          class:list={["absolute w-3 h-3 fhd:w-4 fhd:h-4 border-[var(--accent)] opacity-60 pointer-events-none", pos]}
+          class:list={[
+            "absolute w-3 h-3 fhd:w-4 fhd:h-4 border-[var(--accent)] opacity-60 pointer-events-none",
+            pos,
+          ]}
           aria-hidden="true"
         />
       ))}
@@ -57,35 +60,51 @@ const corners = [
 
     <!-- Operator spec sheet -->
     <div class="w-full max-w-[16rem] laptop:max-w-[14rem] fhd:max-w-[18rem] uhd:max-w-[28rem]">
-      <p class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
-                tracking-[0.24em] uppercase font-bold m-0 mb-2 text-[var(--foreground-faint)]">
+      <p
+        class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
+                tracking-[0.24em] uppercase font-bold m-0 mb-2 text-[var(--foreground-faint)]"
+      >
         // operator
       </p>
 
       <dl class="m-0 border-y border-[var(--border-subtle)]">
         {specRows.map(({ label, value }) => (
-          <div class="flex items-baseline gap-3 py-1.5 fhd:py-2
-                      border-b border-[var(--border-subtle)] last:border-b-0">
-            <dt class="w-[4.2rem] fhd:w-[5rem] shrink-0 font-hud
+          <div
+            class="flex items-baseline gap-3 py-1.5 fhd:py-2
+                      border-b border-[var(--border-subtle)] last:border-b-0"
+          >
+            <dt
+              class="w-[4.2rem] fhd:w-[5rem] shrink-0 font-hud
                        text-[0.65rem] laptop:text-[0.66rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
-                       tracking-[0.18em] uppercase text-[var(--foreground-faint)]">
+                       tracking-[0.18em] uppercase text-[var(--foreground-faint)]"
+            >
               {label}
             </dt>
-            <dd class="m-0 min-w-0 font-hud
+            <dd
+              class="m-0 min-w-0 font-hud
                        text-[0.7rem] laptop:text-[0.74rem] fhd:text-[0.84rem] qhd:text-base uhd:text-lg
-                       leading-[1.5]">
+                       leading-[1.5]"
+            >
               {label === "time" ? (
-                <span id="local-time" data-tz={timezone} class="text-[var(--accent)]" />
+                <span
+                  id="local-time"
+                  data-tz={timezone}
+                  class="text-[var(--accent)]"
+                />
               ) : label === "status" ? (
                 <span class="flex items-center gap-1.5">
                   <span
                     class:list={[
                       "rounded-full shrink-0 w-[6px] h-[6px]",
-                      statusActive ? "bg-[var(--accent)] [animation:pulse_2s_infinite]" : "bg-[var(--border)]",
+                      statusActive
+                        ? "bg-[var(--accent)] [animation:pulse_2s_infinite]"
+                        : "bg-[var(--border)]",
                     ]}
                     aria-hidden="true"
                   />
-                  <span class="uppercase tracking-[0.12em] font-bold">{value}</span>
+                  <span class="uppercase tracking-[0.12em] font-bold">
+                    {value}
+                  </span>
                 </span>
               ) : (
                 value
@@ -95,7 +114,5 @@ const corners = [
         ))}
       </dl>
     </div>
-
   </div>
-
 </section>

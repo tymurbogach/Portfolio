@@ -5,17 +5,17 @@ import Icon from "./Icon.astro";
 
 /** Project card: renders as an external link when `link` is set, otherwise as a static card. */
 interface Props {
-  title:       string;
+  title: string;
   description: string;
-  link?:       string;
+  link?: string;
   /** Local image (optimized via astro:assets) or remote URL (rendered as-is). */
-  image?:      ImageMetadata | string;
-  type?:       "source" | "demo";
-  tags?:       string[];
-  year?:       string;
-  role?:       string;
+  image?: ImageMetadata | string;
+  type?: "source" | "demo";
+  tags?: string[];
+  year?: string;
+  role?: string;
   githubStars?: number;
-  index?:      number;
+  index?: number;
 }
 
 const {
@@ -31,7 +31,7 @@ const {
   index = 0,
 } = Astro.props;
 
-const isDemo   = type === "demo";
+const isDemo = type === "demo";
 const indexStr = String(index).padStart(2, "0");
 const visibleTags = tags.filter((t) => t !== "Self-hosted");
 
@@ -42,32 +42,34 @@ const host = link ? new URL(link).hostname.replace(/^www\./, "") : "";
 
 /* Linked cards get hover affordances; static cards stay inert. */
 const Tag = link ? "a" : "div";
-const linkAttrs = link ? { href: link, target: "_blank", rel: "noopener noreferrer" } : {};
+const linkAttrs = link
+  ? { href: link, target: "_blank", rel: "noopener noreferrer" }
+  : {};
 
 /** Maps project tags to simple-icons slugs; unmapped tags render as plain text badges. */
 const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
-  "Angular":     { slug: "angular",      color: "#DD0031" },
-  "Laravel":     { slug: "laravel" },
-  "TypeScript":  { slug: "typescript" },
-  "JavaScript":  { slug: "javascript" },
-  "Docker":      { slug: "docker" },
-  "HTML":        { slug: "html5" },
-  "CSS":         { slug: "css" },
-  "PHP":         { slug: "php" },
-  "MySQL":       { slug: "mysql" },
-  "PostgreSQL":  { slug: "postgresql" },
-  "Vue":         { slug: "vuedotjs" },
-  "React":       { slug: "react" },
-  "Node":        { slug: "nodedotjs" },
-  "Python":      { slug: "python" },
-  "Bash":        { slug: "gnubash" },
-  "Qt/QML":      { slug: "qt" },
-  "SQLite":      { slug: "sqlite" },
-  "Hyprland":    { slug: "hyprland" },
-  "Astro":       { slug: "astro" },
-  "Tailwind":    { slug: "tailwindcss" },
-  "TailwindCSS": { slug: "tailwindcss" },
-  "API":         { slug: "postman" },
+  Angular: { slug: "angular", color: "#DD0031" },
+  Laravel: { slug: "laravel" },
+  TypeScript: { slug: "typescript" },
+  JavaScript: { slug: "javascript" },
+  Docker: { slug: "docker" },
+  HTML: { slug: "html5" },
+  CSS: { slug: "css" },
+  PHP: { slug: "php" },
+  MySQL: { slug: "mysql" },
+  PostgreSQL: { slug: "postgresql" },
+  Vue: { slug: "vuedotjs" },
+  React: { slug: "react" },
+  Node: { slug: "nodedotjs" },
+  Python: { slug: "python" },
+  Bash: { slug: "gnubash" },
+  "Qt/QML": { slug: "qt" },
+  SQLite: { slug: "sqlite" },
+  Hyprland: { slug: "hyprland" },
+  Astro: { slug: "astro" },
+  Tailwind: { slug: "tailwindcss" },
+  TailwindCSS: { slug: "tailwindcss" },
+  API: { slug: "postman" },
 };
 
 const badgeBase =
@@ -80,13 +82,18 @@ const badgeBase =
   class:list={[
     "relative group flex flex-col overflow-hidden rounded-lg bg-[var(--card)]",
     "border border-[var(--border)] transition-[border-color,box-shadow,transform] duration-300",
-    link && "can-hover:hover:border-[var(--accent)] can-hover:hover:-translate-y-1 hover-glow",
+    link &&
+      "can-hover:hover:border-[var(--accent)] can-hover:hover:-translate-y-1 hover-glow",
   ]}
 >
   <!-- Image — top -->
   <div class="relative w-full aspect-video overflow-hidden shrink-0 bg-[var(--muted)]">
-
-    <span class:list={[badgeBase, "top-3 left-3 bg-[var(--primary)] text-[var(--primary-foreground)]"]}>
+    <span
+      class:list={[
+        badgeBase,
+        "top-3 left-3 bg-[var(--primary)] text-[var(--primary-foreground)]",
+      ]}
+    >
       {isDemo ? "● live" : "⌥ src"}
     </span>
 
@@ -101,13 +108,17 @@ const badgeBase =
         <Icon slug="github" size={13} label="GitHub" tone="mono" />
         {githubStars}
       </span>
-    ) : tags.includes("Self-hosted") && (
-      <span
-        class:list={[
-          badgeBase,
-          "top-3 right-3 border border-[var(--accent)] text-[var(--accent)] bg-[var(--overlay)]",
-        ]}
-      >self-hosted</span>
+    ) : (
+      tags.includes("Self-hosted") && (
+        <span
+          class:list={[
+            badgeBase,
+            "top-3 right-3 border border-[var(--accent)] text-[var(--accent)] bg-[var(--overlay)]",
+          ]}
+        >
+          self-hosted
+        </span>
+      )
     )}
 
     {image ? (
@@ -120,7 +131,8 @@ const badgeBase =
             class:list={[
               "w-full h-full object-cover object-top saturate-50 brightness-75",
               "transition-[filter] duration-500",
-              link && "can-hover:group-hover:saturate-100 can-hover:group-hover:brightness-100",
+              link &&
+                "can-hover:group-hover:saturate-100 can-hover:group-hover:brightness-100",
             ]}
           />
         ) : (
@@ -132,7 +144,8 @@ const badgeBase =
             class:list={[
               "w-full h-full object-cover object-top saturate-50 brightness-75",
               "transition-[filter] duration-500",
-              link && "can-hover:group-hover:saturate-100 can-hover:group-hover:brightness-100",
+              link &&
+                "can-hover:group-hover:saturate-100 can-hover:group-hover:brightness-100",
             ]}
           />
         )}
@@ -149,10 +162,13 @@ const badgeBase =
       <div
         class:list={[
           "image-tint w-full h-full flex flex-col items-center justify-center gap-2",
-          link && "transition-opacity duration-300 can-hover:group-hover:opacity-80",
+          link &&
+            "transition-opacity duration-300 can-hover:group-hover:opacity-80",
         ]}
       >
-        <span class="font-display text-5xl fhd:text-6xl text-[var(--accent)] opacity-30 leading-none">{indexStr}</span>
+        <span class="font-display text-5xl fhd:text-6xl text-[var(--accent)] opacity-30 leading-none">
+          {indexStr}
+        </span>
         <span class="font-hud text-[0.62rem] fhd:text-[0.7rem] tracking-[0.2em] uppercase font-bold text-center px-3 text-[var(--foreground-faint)]">
           {title}
         </span>
@@ -162,27 +178,31 @@ const badgeBase =
 
   <!-- Content — bottom -->
   <div class="relative z-[1] flex flex-col flex-1 gap-3 p-4 fhd:p-5 bg-[var(--card)]">
-
     <div class="flex flex-col gap-1.5">
       <div class="flex items-baseline justify-between gap-3">
         <h3
           class:list={[
             "font-display text-lg mobile:text-xl laptop:text-[1.35rem] fhd:text-2xl qhd:text-3xl uhd:text-4xl",
             "tracking-[0.02em] leading-none m-0",
-            link && "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
+            link &&
+              "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
           ]}
         >
           {title}
         </h3>
         {context && (
-          <span class="font-hud text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
-                       tracking-[0.16em] whitespace-nowrap shrink-0 text-[var(--foreground-faint)]">
+          <span
+            class="font-hud text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+                       tracking-[0.16em] whitespace-nowrap shrink-0 text-[var(--foreground-faint)]"
+          >
             {context}
           </span>
         )}
       </div>
-      <p class="text-[0.8rem] fhd:text-[0.9rem] qhd:text-base uhd:text-lg leading-relaxed m-0
-                line-clamp-3 text-[var(--muted-foreground)]">
+      <p
+        class="text-[0.8rem] fhd:text-[0.9rem] qhd:text-base uhd:text-lg leading-relaxed m-0
+                line-clamp-3 text-[var(--muted-foreground)]"
+      >
         {description}
       </p>
     </div>
@@ -196,8 +216,14 @@ const badgeBase =
             return (
               <span class="skill-chip">
                 {entry && (
-                  <Icon slug={entry.slug} color={entry.color} size={13} label={tag} tone="mono"
-                        class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5" />
+                  <Icon
+                    slug={entry.slug}
+                    color={entry.color}
+                    size={13}
+                    label={tag}
+                    tone="mono"
+                    class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5"
+                  />
                 )}
                 <span class="chip-label">{tag}</span>
               </span>
@@ -209,8 +235,10 @@ const badgeBase =
 
     {link && (
       <div class="flex items-center justify-between gap-3 mt-auto pt-1">
-        <span class="font-hud min-w-0 text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
-                     tracking-[0.06em] truncate text-[var(--foreground-faint)]">
+        <span
+          class="font-hud min-w-0 text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+                     tracking-[0.06em] truncate text-[var(--foreground-faint)]"
+        >
           {host}
         </span>
         <span
@@ -219,7 +247,9 @@ const badgeBase =
                  tracking-[0.2em] uppercase font-bold text-[var(--accent)]"
         >
           {isDemo ? "demo" : "code"}
-          <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">→</span>
+          <span class="transition-transform duration-300 can-hover:group-hover:translate-x-1">
+            →
+          </span>
         </span>
       </div>
     )}

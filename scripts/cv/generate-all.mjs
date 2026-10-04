@@ -1,20 +1,23 @@
 #!/usr/bin/env node
-import { spawnSync } from 'node:child_process';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { spawnSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const root = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../..",
+);
 
 function generate(configPath, outputPath) {
   console.log(`\n→ Generating ${outputPath}...`);
   const result = spawnSync(
-    'node',
+    "node",
     [
-      path.join(root, 'scripts/cv/export-cv-pdf.mjs'),
+      path.join(root, "scripts/cv/export-cv-pdf.mjs"),
       path.join(root, configPath),
       path.join(root, outputPath),
     ],
-    { stdio: 'inherit', env: process.env },
+    { stdio: "inherit", env: process.env },
   );
   if (result.status !== 0) {
     console.error(`✗ Failed: ${outputPath}`);
@@ -23,5 +26,5 @@ function generate(configPath, outputPath) {
   console.log(`✓ Done: ${outputPath}`);
 }
 
-generate('cv/cv.config.en.json', 'public/TymurBogach_CV_EN.pdf');
-generate('cv/cv.config.es.json', 'public/TymurBogach_CV_ES.pdf');
+generate("cv/cv.config.en.json", "public/TymurBogach_CV_EN.pdf");
+generate("cv/cv.config.es.json", "public/TymurBogach_CV_ES.pdf");

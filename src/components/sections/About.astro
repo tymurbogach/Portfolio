@@ -5,92 +5,129 @@ interface Props {
   about: AboutData;
 }
 
-const { about }                       = Astro.props;
+const { about } = Astro.props;
 const { journey, education, hobbies } = about;
 ---
 
 <section class="flex flex-col gap-6 laptop:gap-8 w-full">
-
   <!-- JOURNEY -->
   <div class="flex flex-col gap-5">
-    <h3 class="cat-label" style="color: var(--primary);">Journey</h3>
+    <h3 class="cat-label" style="color: var(--primary);">
+      Journey
+    </h3>
     <div class="flex flex-col">
       {journey.map(({ year, event, detail, active }, i) => (
-        <div class="group flex gap-4 laptop:gap-6 -mx-3 px-3 py-2 rounded-[var(--radius)]
-                    transition-colors duration-200 can-hover:hover:bg-[var(--surface-glow)]">
-
+        <div
+          class="group flex gap-4 laptop:gap-6 -mx-3 px-3 py-2 rounded-[var(--radius)]
+                    transition-colors duration-200 can-hover:hover:bg-[var(--surface-glow)]"
+        >
           <!-- Timeline dot + line -->
           <div class="flex flex-col items-center shrink-0 pt-[3px]">
-            <div class={`w-[7px] h-[7px] rounded-full border-2 shrink-0 z-10
-              ${active
-                ? "border-[var(--accent)] bg-[var(--accent)]"
-                : "border-[var(--border)] bg-[var(--background)]"}`}
+            <div
+              class={`w-[7px] h-[7px] rounded-full border-2 shrink-0 z-10
+              ${
+                active
+                  ? "border-[var(--accent)] bg-[var(--accent)]"
+                  : "border-[var(--border)] bg-[var(--background)]"
+              }`}
             />
             {i < journey.length - 1 && (
-              <div class="w-px flex-1 my-1" style="background: linear-gradient(to bottom, var(--accent-subtle), transparent);" />
+              <div
+                class="w-px flex-1 my-1"
+                style="background: linear-gradient(to bottom, var(--accent-subtle), transparent);"
+              />
             )}
           </div>
 
           <!-- Content -->
           <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
-              <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.2em] uppercase font-bold whitespace-nowrap" style="color: var(--primary);">
+              <span
+                class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.2em] uppercase font-bold whitespace-nowrap"
+                style="color: var(--primary);"
+              >
                 {year}
               </span>
-              <span class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold transition-colors duration-200 can-hover:group-hover:text-[var(--accent)] ${active ? "text-[var(--accent)]" : ""}`}>
+              <span
+                class={`text-sm laptop:text-base laptop-scaled:text-base fhd:text-xl qhd:text-2xl uhd:text-3xl font-bold transition-colors duration-200 can-hover:group-hover:text-[var(--accent)] ${active ? "text-[var(--accent)]" : ""}`}
+              >
                 {event}
               </span>
             </div>
-            <p class="text-xs laptop:text-sm laptop-scaled:text-sm fhd:text-base qhd:text-lg uhd:text-xl leading-relaxed" style="color: var(--muted-foreground);">{detail}</p>
+            <p
+              class="text-xs laptop:text-sm laptop-scaled:text-sm fhd:text-base qhd:text-lg uhd:text-xl leading-relaxed"
+              style="color: var(--muted-foreground);"
+            >
+              {detail}
+            </p>
           </div>
-
         </div>
       ))}
     </div>
   </div>
 
- <!-- EDUCATION -->
-<div class="flex flex-col gap-4">
-  <h3 class="cat-label" style="color: var(--primary);">Education</h3>
+  <!-- EDUCATION -->
+  <div class="flex flex-col gap-4">
+    <h3 class="cat-label" style="color: var(--primary);">
+      Education
+    </h3>
 
-  <div class="flex flex-col gap-2">
-    {education.map(({ years, title, sub }) => (
-        <div class="group flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]
+    <div class="flex flex-col gap-2">
+      {education.map(({ years, title, sub }) => (
+        <div
+          class="group flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]
                     transition duration-200
                     can-hover:hover:bg-[var(--surface-glow)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:-translate-y-px"
-           style="border-left: 2px solid var(--primary);">
-        <div>
-          <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">{title}</p>
-          <p class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.1em] uppercase text-[var(--foreground-faint)] mt-1">{sub}</p>
-        </div>
+          style="border-left: 2px solid var(--primary);"
+        >
+          <div>
+            <p class="text-sm laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl uhd:text-2xl font-bold leading-snug transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">
+              {title}
+            </p>
+            <p class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.1em] uppercase text-[var(--foreground-faint)] mt-1">
+              {sub}
+            </p>
+          </div>
 
-        <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0" style="color: var(--primary);">
-          {years}
-        </span>
-      </div>
-    ))}
+          <span
+            class="font-hud text-[0.65rem] laptop:text-[0.7rem] laptop-scaled:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0"
+            style="color: var(--primary);"
+          >
+            {years}
+          </span>
+        </div>
+      ))}
+    </div>
   </div>
-</div>
 
   <!-- HOBBIES -->
   <div class="flex flex-col gap-4">
-    <h3 class="cat-label" style="color: var(--primary);">When not coding</h3>
+    <h3 class="cat-label" style="color: var(--primary);">
+      When not coding
+    </h3>
 
     <div class="grid grid-cols-1 laptop:grid-cols-2 gap-x-6 gap-y-0">
       {hobbies.map(({ label, detail }) => (
-        <div class="group flex items-center justify-between gap-4 py-2.5 fhd:py-3 px-2 -mx-2
+        <div
+          class="group flex items-center justify-between gap-4 py-2.5 fhd:py-3 px-2 -mx-2
                     border-b border-[var(--border-subtle)] last:border-b-0
-                    transition-colors duration-200 can-hover:hover:bg-[var(--surface-glow)]">
+                    transition-colors duration-200 can-hover:hover:bg-[var(--surface-glow)]"
+        >
           <div class="flex items-center">
-            <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">{label}</span>
+            <span class="font-signature text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">
+              {label}
+            </span>
           </div>
           {detail && (
-            <span class="font-hud text-[0.65rem] laptop:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base
-                         tracking-[0.08em] shrink-0 text-right text-[var(--foreground-faint)]">{detail}</span>
+            <span
+              class="font-hud text-[0.65rem] laptop:text-[0.7rem] fhd:text-[0.78rem] qhd:text-sm uhd:text-base
+                         tracking-[0.08em] shrink-0 text-right text-[var(--foreground-faint)]"
+            >
+              {detail}
+            </span>
           )}
         </div>
       ))}
     </div>
   </div>
-
 </section>

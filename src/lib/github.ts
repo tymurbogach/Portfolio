@@ -18,23 +18,31 @@ function isGitHubRepository(value: unknown): value is GitHubRepository {
   if (!value || typeof value !== "object") return false;
 
   const repository = value as Record<string, unknown>;
-  const hasValidUrl = typeof repository.html_url === "string" && (() => {
-    try {
-      return new URL(repository.html_url).hostname === "github.com";
-    } catch {
-      return false;
-    }
-  })();
+  const hasValidUrl =
+    typeof repository.html_url === "string" &&
+    (() => {
+      try {
+        return new URL(repository.html_url).hostname === "github.com";
+      } catch {
+        return false;
+      }
+    })();
 
   return (
-    (typeof repository.description === "string" || repository.description === null) &&
+    (typeof repository.description === "string" ||
+      repository.description === null) &&
     hasValidUrl &&
-    typeof repository.full_name === "string" && /^[\w.-]+\/[\w.-]+$/.test(repository.full_name) &&
-    typeof repository.stargazers_count === "number" && Number.isSafeInteger(repository.stargazers_count) && repository.stargazers_count >= 0
+    typeof repository.full_name === "string" &&
+    /^[\w.-]+\/[\w.-]+$/.test(repository.full_name) &&
+    typeof repository.stargazers_count === "number" &&
+    Number.isSafeInteger(repository.stargazers_count) &&
+    repository.stargazers_count >= 0
   );
 }
 
-async function fetchGitHubRepository(repository: string): Promise<GitHubRepository | null> {
+async function fetchGitHubRepository(
+  repository: string,
+): Promise<GitHubRepository | null> {
   try {
     const response = await fetch(`${GITHUB_API_URL}/${repository}`, {
       headers: { Accept: "application/vnd.github+json" },
@@ -50,7 +58,9 @@ async function fetchGitHubRepository(repository: string): Promise<GitHubReposito
   }
 }
 
-function getGitHubRepository(repository: string): Promise<GitHubRepository | null> {
+function getGitHubRepository(
+  repository: string,
+): Promise<GitHubRepository | null> {
   const request = repositoryRequests.get(repository);
   if (request) return request;
 
@@ -61,9 +71,12 @@ function getGitHubRepository(repository: string): Promise<GitHubRepository | nul
 
 async function fetchGitHubReadme(repository: string): Promise<string | null> {
   try {
-    const response = await fetch(`${GITHUB_RAW_URL}/${repository}/HEAD/README.md`, {
-      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-    });
+    const response = await fetch(
+      `${GITHUB_RAW_URL}/${repository}/HEAD/README.md`,
+      {
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      },
+    );
 
     if (!response.ok) return null;
     return response.text();
@@ -82,8 +95,12 @@ function getGitHubReadme(repository: string): Promise<string | null> {
 }
 
 function getFirstReadmeImage(markdown: string): string | null {
-  const markdownImage = /!\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)]+))[^)]*\)/.exec(markdown);
-  const htmlImage = /<img\b[^>]*\bsrc\s*=\s*(?:"([^"]+)"|'([^']+)')/i.exec(markdown);
+  const markdownImage = /!\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)]+))[^)]*\)/.exec(
+    markdown,
+  );
+  const htmlImage = /<img\b[^>]*\bsrc\s*=\s*(?:"([^"]+)"|'([^']+)')/i.exec(
+    markdown,
+  );
   const matches = [markdownImage, htmlImage]
     .filter((match): match is RegExpExecArray => match !== null)
     .sort((a, b) => a.index - b.index);
@@ -92,7 +109,10 @@ function getFirstReadmeImage(markdown: string): string | null {
   return match?.[1] ?? match?.[2] ?? null;
 }
 
-function getReadmeImageUrl(repository: string, markdown: string): string | null {
+function getReadmeImageUrl(
+  repository: string,
+  markdown: string,
+): string | null {
   const image = getFirstReadmeImage(markdown);
   if (!image || image.startsWith("data:")) return null;
 
@@ -104,7 +124,10 @@ function getReadmeImageUrl(repository: string, markdown: string): string | null 
       ).toString();
     }
 
-    const readmeUrl = new URL("README.md", `${GITHUB_RAW_URL}/${repository}/HEAD/`);
+    const readmeUrl = new URL(
+      "README.md",
+      `${GITHUB_RAW_URL}/${repository}/HEAD/`,
+    );
     return new URL(image, readmeUrl).toString();
   } catch {
     return null;
@@ -126,11 +149,13 @@ export async function syncGitHubProject(project: Project): Promise<Project> {
     ...project,
     data: {
       ...project.data,
-      ...(repository ? {
-        description: repository.description ?? project.data.description,
-        link: repository.html_url,
-        githubStars: repository.stargazers_count,
-      } : {}),
+      ...(repository
+        ? {
+            description: repository.description ?? project.data.description,
+            link: repository.html_url,
+            githubStars: repository.stargazers_count,
+          }
+        : {}),
       ...(image ? { image } : {}),
     },
   };

@@ -47,32 +47,32 @@ npm run cv:pdf    # regenerar los PDF del CV desde cv/cv.config.*.json
 
 Schemas en `src/content.config.ts` (zod desde `astro/zod`), helpers tipados en `src/lib/content.ts` (tipos inferidos con `CollectionEntry`, sin casts).
 
-| Colección | Archivo | Datos |
-|-----------|---------|-------|
-| `site` | `site/site.json` | name, url, lang, description, pageDescriptions, pages (nav) |
-| `profile` | `profile/profile.json` | nameDisplay, role, focus, timezone |
-| `home` | `home/data.json` | hero (title/subtitle/comment/cta) |
-| `about` | `about/data.json` | journey, education, hobbies |
-| `resume` | `resume/data.json` | frontend/backend/homelab/ai (techSkill[]) + languages |
-| `contact` | `contact/data.json` | intro, email, location, status, cv_url, cv_url_es, formSubject, web3formsKey (pública por diseño — se prerenderiza en el HTML; NO usar env vars para ella: `.dockerignore` excluye `.env*` del build de la Pi) |
-| `social` | `social/data.json` | array de links |
-| `projects` | `projects/*.md` | frontmatter con `image` opcional (local optimizada o URL remota) + `year` / `role` para la línea de contexto de la tarjeta |
+| Colección  | Archivo                | Datos                                                                                                                                                                                                          |
+| ---------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `site`     | `site/site.json`       | name, url, lang, description, pageDescriptions, pages (nav)                                                                                                                                                    |
+| `profile`  | `profile/profile.json` | nameDisplay, role, focus, timezone                                                                                                                                                                             |
+| `home`     | `home/data.json`       | hero (title/subtitle/comment/cta)                                                                                                                                                                              |
+| `about`    | `about/data.json`      | journey, education, hobbies                                                                                                                                                                                    |
+| `resume`   | `resume/data.json`     | frontend/backend/homelab/ai (techSkill[]) + languages                                                                                                                                                          |
+| `contact`  | `contact/data.json`    | intro, email, location, status, cv_url, cv_url_es, formSubject, web3formsKey (pública por diseño — se prerenderiza en el HTML; NO usar env vars para ella: `.dockerignore` excluye `.env*` del build de la Pi) |
+| `social`   | `social/data.json`     | array de links                                                                                                                                                                                                 |
+| `projects` | `projects/*.md`        | frontmatter con `image` opcional (local optimizada o URL remota) + `year` / `role` para la línea de contexto de la tarjeta                                                                                     |
 
 Imágenes de proyectos en `src/content/projects/_images/` (rutas relativas `./_images/x.png` en el frontmatter). Avatar en `src/assets/gopnik.png` (usado con `<Image>` y como og:image optimizada vía `getImage`).
 
 ### Scripts cliente (`src/scripts/`)
 
-| Script | Qué hace |
-|--------|----------|
-| `sectionNav.ts` | Fake-SPA: scroll spy, smooth scroll, popstate, nav indicator (fusiona el antiguo navIndicator/navUtils) |
-| `darkMode.ts` | Toggle modo + ciclo de temas; re-aplica tema en `astro:before-swap` |
-| `chat.ts` | Widget de chat: open/close, Escape, streaming desde `/api/chat` |
-| `contactForm.ts` | Submit a Web3Forms con validación y estados |
-| `cvModal.ts` | Modal CV: iframe lazy, focus trap, Escape, retorno de foco |
-| `resumeToggles.ts` | Show-more por categoría con ResizeObserver |
-| `tapFeedback.ts` | Feedback táctil (sustituye al tap-highlight nativo) |
-| `visitCounter.ts` | Pinta el contador desde `/api/stats` |
-| `localTime.ts` | Hora local en vivo del operator card (tick por minuto, tz de `profile.timezone`) |
+| Script             | Qué hace                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `sectionNav.ts`    | Fake-SPA: scroll spy, smooth scroll, popstate, nav indicator (fusiona el antiguo navIndicator/navUtils) |
+| `darkMode.ts`      | Toggle modo + ciclo de temas; re-aplica tema en `astro:before-swap`                                     |
+| `chat.ts`          | Widget de chat: open/close, Escape, streaming desde `/api/chat`                                         |
+| `contactForm.ts`   | Submit a Web3Forms con validación y estados                                                             |
+| `cvModal.ts`       | Modal CV: iframe lazy, focus trap, Escape, retorno de foco                                              |
+| `resumeToggles.ts` | Show-more por categoría con ResizeObserver                                                              |
+| `tapFeedback.ts`   | Feedback táctil (sustituye al tap-highlight nativo)                                                     |
+| `visitCounter.ts`  | Pinta el contador desde `/api/stats`                                                                    |
+| `localTime.ts`     | Hora local en vivo del operator card (tick por minuto, tz de `profile.timezone`)                        |
 
 ## REGLAS DE ARQUITECTURA (contrato obligatorio)
 
@@ -102,10 +102,14 @@ function initFeature(): void {
   const controller = new AbortController();
   const { signal } = controller;
 
-  el.addEventListener("click", handler, { signal });          // TODOS con { signal }
-  document.addEventListener("keydown", handler, { signal });  // también los de document/window
+  el.addEventListener("click", handler, { signal }); // TODOS con { signal }
+  document.addEventListener("keydown", handler, { signal }); // también los de document/window
 
-  document.addEventListener("astro:before-preparation", () => controller.abort(), { once: true });
+  document.addEventListener(
+    "astro:before-preparation",
+    () => controller.abort(),
+    { once: true },
+  );
 }
 
 document.addEventListener("astro:page-load", initFeature);
@@ -170,13 +174,13 @@ El repo está indexado en `codebase-memory-mcp` como proyecto **`home-cyberdyne-
 
 **Obligatorio por la regla 7: el grafo va primero, siempre.**
 
-| Necesito | Herramienta |
-|----------|-------------|
-| Encontrar función/clase/ruta API | `search_graph` (`name_pattern`, `label`, `qn_pattern`) |
-| Ver el fuente exacto de un símbolo | `get_code_snippet(qualified_name)` |
-| Quién llama a qué / cadena de llamadas | `trace_path(function, mode=calls\|data_flow)` |
-| Mapa general del proyecto | `get_architecture` |
-| Búsqueda de texto con contexto de grafo | `search_code` |
+| Necesito                                | Herramienta                                            |
+| --------------------------------------- | ------------------------------------------------------ |
+| Encontrar función/clase/ruta API        | `search_graph` (`name_pattern`, `label`, `qn_pattern`) |
+| Ver el fuente exacto de un símbolo      | `get_code_snippet(qualified_name)`                     |
+| Quién llama a qué / cadena de llamadas  | `trace_path(function, mode=calls\|data_flow)`          |
+| Mapa general del proyecto               | `get_architecture`                                     |
+| Búsqueda de texto con contexto de grafo | `search_code`                                          |
 
 **Grep/Glob/Read siguen siendo lo correcto para:** JSON de `src/content/`, `global.css`, `.md`, configs, `cv/*.json`, y **siempre** para leer un archivo antes de editarlo.
 
@@ -198,15 +202,15 @@ index_repository(repo_path=".", mode="full")
 
 ## Skills activas
 
-| Skill | Activación |
-|-------|-----------|
-| `caveman` | automática (hook de sesión) |
-| `codebase-memory` | automática (exploración de código) |
-| `context7` | automática (al mencionar librería/framework) |
-| `frontend-design` | manual `/frontend-design` o cuando Claude detecta tarea UI |
-| `code-review` | manual `/code-review` |
-| `code-simplifier` | manual `/simplify` |
-| `security-guidance` | manual `/security-review` |
+| Skill               | Activación                                                 |
+| ------------------- | ---------------------------------------------------------- |
+| `caveman`           | automática (hook de sesión)                                |
+| `codebase-memory`   | automática (exploración de código)                         |
+| `context7`          | automática (al mencionar librería/framework)               |
+| `frontend-design`   | manual `/frontend-design` o cuando Claude detecta tarea UI |
+| `code-review`       | manual `/code-review`                                      |
+| `code-simplifier`   | manual `/simplify`                                         |
+| `security-guidance` | manual `/security-review`                                  |
 
 ## Git
 

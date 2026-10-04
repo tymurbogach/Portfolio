@@ -4,7 +4,7 @@ import ProfilePanel from "../components/sections/ProfilePanel.astro";
 /** Two-column layout: ProfilePanel sidebar (desktop only) + right content panel. */
 interface Props {
   /** Optional heading above the content panel */
-  pageLabel?:  string;
+  pageLabel?: string;
   /** false = center the content instead of making it scrollable */
   scrollable?: boolean;
 }
@@ -13,7 +13,6 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
 <div class="flex flex-col laptop:flex-row laptop-scaled:flex-row w-full h-full overflow-hidden">
-
   <!-- Left sidebar (desktop only) -->
   <div
     class="hidden laptop:flex laptop-scaled:flex shrink-0 items-center justify-center
@@ -25,7 +24,6 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 
   <!-- Right content panel -->
   <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
-
     <!-- Optional section heading -->
     {pageLabel && (
       <div
@@ -58,8 +56,10 @@ const { pageLabel = "", scrollable = true } = Astro.props;
         <slot />
       </div>
     ) : (
-      <div class="flex-1 flex items-center justify-center
-                  px-[1.25rem] laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem] uhd:px-[8rem]">
+      <div
+        class="flex-1 flex items-center justify-center
+                  px-[1.25rem] laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem] uhd:px-[8rem]"
+      >
         <slot />
       </div>
     )}
@@ -82,6 +82,5 @@ const { pageLabel = "", scrollable = true } = Astro.props;
              bg-linear-to-t from-[var(--background)] to-transparent"
       aria-hidden="true"
     />
-
   </div>
 </div>

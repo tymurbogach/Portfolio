@@ -4,15 +4,15 @@ Personal portfolio of **Tymur Bogach**, full stack developer. Live at [nastymur.
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | [Astro 6](https://astro.build) — prerendered pages + Node SSR adapter for API routes |
-| Styling | Tailwind CSS v4 (`@tailwindcss/vite`, config lives in CSS — no `tailwind.config.js`) |
-| Interactivity | Vanilla TS scripts + a few React islands (`motion`) |
-| Content | Astro Content Collections (JSON + Markdown, Zod-validated) |
-| AI chat | `/api/chat` → self-hosted [Ollama](https://ollama.com) (`llama3.2:3b`) |
-| Analytics | Self-hosted [Umami](https://umami.is); `/api/stats` exposes the visitor counter |
-| Deploy | Docker on a Raspberry Pi (`compose.yml`, Node standalone server on port 4321) |
+| Layer         | Technology                                                                           |
+| ------------- | ------------------------------------------------------------------------------------ |
+| Framework     | [Astro 6](https://astro.build) — prerendered pages + Node SSR adapter for API routes |
+| Styling       | Tailwind CSS v4 (`@tailwindcss/vite`, config lives in CSS — no `tailwind.config.js`) |
+| Interactivity | Vanilla TS scripts + a few React islands (`motion`)                                  |
+| Content       | Astro Content Collections (JSON + Markdown, Zod-validated)                           |
+| AI chat       | `/api/chat` → self-hosted [Ollama](https://ollama.com) (`llama3.2:3b`)               |
+| Analytics     | Self-hosted [Umami](https://umami.is); `/api/stats` exposes the visitor counter      |
+| Deploy        | Docker on a Raspberry Pi (`compose.yml`, Node standalone server on port 4321)        |
 
 ## Architecture
 

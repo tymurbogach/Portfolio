@@ -1,29 +1,16 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "types": ["node"],
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src",
-    ".astro/types.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "*.config.*"
-  ]
+  "include": ["src", ".astro/types.d.ts"],
+  "exclude": ["node_modules", "dist", "*.config.*"]
 }

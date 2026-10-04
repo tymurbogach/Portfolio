@@ -18,7 +18,9 @@ function prefersReducedMotion(): boolean {
 }
 
 function readScrollOffset(): number {
-  const raw = getComputedStyle(document.documentElement).getPropertyValue("--scroll-offset").trim();
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--scroll-offset")
+    .trim();
   return parseInt(raw, 10) || 60;
 }
 
@@ -30,37 +32,42 @@ function readScrollOffset(): number {
  * se salta la que mide 0 (su NavBar está oculta).
  */
 function positionIndicator(instant = false): void {
-  document.querySelectorAll<HTMLElement>(".nav-indicator").forEach((indicator) => {
-    const container = indicator.parentElement;
-    const active = container?.querySelector<HTMLElement>('.nav-link[data-active="true"]');
-    if (!container || !active) return;
+  document
+    .querySelectorAll<HTMLElement>(".nav-indicator")
+    .forEach((indicator) => {
+      const container = indicator.parentElement;
+      const active = container?.querySelector<HTMLElement>(
+        '.nav-link[data-active="true"]',
+      );
+      if (!container || !active) return;
 
-    const cr = container.getBoundingClientRect();
-    if (cr.width === 0) return; // NavBar oculta en este breakpoint
+      const cr = container.getBoundingClientRect();
+      if (cr.width === 0) return; // NavBar oculta en este breakpoint
 
-    if (instant) indicator.style.transition = "none";
+      if (instant) indicator.style.transition = "none";
 
-    const ar = active.getBoundingClientRect();
-    // La barra mide el 100% del contenedor y se coloca con transform: el gradiente
-    // escalado uniformemente se ve igual que pintado sobre el ancho final.
-    indicator.style.transform =
-      `translate3d(${ar.left - cr.left}px, 0, 0) scaleX(${ar.width / cr.width})`;
+      const ar = active.getBoundingClientRect();
+      // La barra mide el 100% del contenedor y se coloca con transform: el gradiente
+      // escalado uniformemente se ve igual que pintado sobre el ancho final.
+      indicator.style.transform = `translate3d(${ar.left - cr.left}px, 0, 0) scaleX(${ar.width / cr.width})`;
 
-    if (instant) {
-      requestAnimationFrame(() => {
-        indicator.style.transition = INDICATOR_TRANSITION;
-      });
-    }
-  });
+      if (instant) {
+        requestAnimationFrame(() => {
+          indicator.style.transition = INDICATOR_TRANSITION;
+        });
+      }
+    });
 }
 
 /** Marks the nav link matching the section as active and repositions the indicator. */
 function setActiveNav(sectionId: string, instant = false): void {
   const targetPath = sectionId === "home" ? "/" : `/${sectionId}`;
-  document.querySelectorAll<HTMLElement>(".nav-link[data-active]").forEach((link) => {
-    const href = (link.getAttribute("href") ?? "").replace(/\/$/, "") || "/";
-    link.dataset.active = String(href === targetPath);
-  });
+  document
+    .querySelectorAll<HTMLElement>(".nav-link[data-active]")
+    .forEach((link) => {
+      const href = (link.getAttribute("href") ?? "").replace(/\/$/, "") || "/";
+      link.dataset.active = String(href === targetPath);
+    });
   positionIndicator(instant);
 }
 
@@ -80,7 +87,11 @@ function sectionFromPath(pathname: string): string {
 type SectionOffset = { id: string; top: number };
 
 /** Section whose top sits above the reference point (scrollTop + scroll-offset). */
-function getActiveSection(scrollTop: number, offsets: SectionOffset[], scrollOffset: number): string {
+function getActiveSection(
+  scrollTop: number,
+  offsets: SectionOffset[],
+  scrollOffset: number,
+): string {
   const ref = scrollTop + scrollOffset;
   let active = offsets[0]?.id ?? "home";
   for (const s of offsets) {
@@ -93,7 +104,7 @@ function getActiveSection(scrollTop: number, offsets: SectionOffset[], scrollOff
 function scrollToSection(
   scrollEl: HTMLElement,
   sectionId: string,
-  behavior: ScrollBehavior = "smooth"
+  behavior: ScrollBehavior = "smooth",
 ): void {
   const section = document.getElementById(sectionId);
   if (!section) return;
@@ -117,15 +128,20 @@ function initSectionNav(): void {
   // ── Home section: fill viewport height (desktop only) ───────────────────
   const homeSection = document.getElementById("home");
   const isDesktop = () =>
-    window.matchMedia(LAPTOP_MQ).matches || window.matchMedia(LAPTOP_SCALED_MQ).matches;
+    window.matchMedia(LAPTOP_MQ).matches ||
+    window.matchMedia(LAPTOP_SCALED_MQ).matches;
   const setHomeHeight = () => {
     if (!homeSection) return;
-    homeSection.style.minHeight = isDesktop() ? `${scrollEl.clientHeight}px` : "";
+    homeSection.style.minHeight = isDesktop()
+      ? `${scrollEl.clientHeight}px`
+      : "";
   };
   setHomeHeight();
 
   // ── Medidas cacheadas: el handler de scroll no debe tocar layout ─────────
-  const sectionEls = Array.from(scrollEl.querySelectorAll<HTMLElement>("section[id]"));
+  const sectionEls = Array.from(
+    scrollEl.querySelectorAll<HTMLElement>("section[id]"),
+  );
   let scrollOffset = readScrollOffset();
   let offsets: SectionOffset[] = [];
   const measure = () => {
@@ -137,12 +153,16 @@ function initSectionNav(): void {
   const ro = new ResizeObserver(measure);
   sectionEls.forEach((s) => ro.observe(s));
 
-  window.addEventListener("resize", () => {
-    setHomeHeight();
-    scrollOffset = readScrollOffset();
-    measure();
-    positionIndicator(true); // keep the indicator aligned after layout shifts
-  }, { signal: ac.signal });
+  window.addEventListener(
+    "resize",
+    () => {
+      setHomeHeight();
+      scrollOffset = readScrollOffset();
+      measure();
+      positionIndicator(true); // keep the indicator aligned after layout shifts
+    },
+    { signal: ac.signal },
+  );
 
   // ── URL ↔ section sync while scrolling ───────────────────────────────────
   let currentSection = initSection;
@@ -154,10 +174,18 @@ function initSectionNav(): void {
     () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          const active = getActiveSection(scrollEl.scrollTop, offsets, scrollOffset);
+          const active = getActiveSection(
+            scrollEl.scrollTop,
+            offsets,
+            scrollOffset,
+          );
           if (lockedTarget) {
-            if (active === lockedTarget) lockedTarget = null; // arrived at target
-            else { ticking = false; return; }                  // still scrolling, skip
+            if (active === lockedTarget)
+              lockedTarget = null; // arrived at target
+            else {
+              ticking = false;
+              return;
+            } // still scrolling, skip
           }
           if (active !== currentSection) {
             currentSection = active;
@@ -170,7 +198,7 @@ function initSectionNav(): void {
         ticking = true;
       }
     },
-    { signal: ac.signal }
+    { signal: ac.signal },
   );
 
   const navigateTo = (targetId: string, href: string, push: boolean): void => {
@@ -184,32 +212,36 @@ function initSectionNav(): void {
   };
 
   // ── Intercept nav clicks for smooth in-page scroll ────────────────────────
-  document.querySelectorAll<HTMLAnchorElement>(".nav-link[href]").forEach((link) => {
-    link.addEventListener(
-      "click",
-      (e) => {
-        const href = link.getAttribute("href") ?? "";
-        const targetId = href.replace(/^\//, "") || "home";
-        e.preventDefault();
-        navigateTo(targetId, href, true);
-      },
-      { signal: ac.signal }
-    );
-  });
+  document
+    .querySelectorAll<HTMLAnchorElement>(".nav-link[href]")
+    .forEach((link) => {
+      link.addEventListener(
+        "click",
+        (e) => {
+          const href = link.getAttribute("href") ?? "";
+          const targetId = href.replace(/^\//, "") || "home";
+          e.preventDefault();
+          navigateTo(targetId, href, true);
+        },
+        { signal: ac.signal },
+      );
+    });
 
   // ── data-scroll-target: Hero CTAs and any element that triggers section scroll ──
-  document.querySelectorAll<HTMLElement>("[data-scroll-target]").forEach((el) => {
-    el.addEventListener(
-      "click",
-      () => {
-        const targetId = el.getAttribute("data-scroll-target") ?? "";
-        if (!targetId) return;
-        const href = targetId === "home" ? "/" : `/${targetId}`;
-        navigateTo(targetId, href, true);
-      },
-      { signal: ac.signal }
-    );
-  });
+  document
+    .querySelectorAll<HTMLElement>("[data-scroll-target]")
+    .forEach((el) => {
+      el.addEventListener(
+        "click",
+        () => {
+          const targetId = el.getAttribute("data-scroll-target") ?? "";
+          if (!targetId) return;
+          const href = targetId === "home" ? "/" : `/${targetId}`;
+          navigateTo(targetId, href, true);
+        },
+        { signal: ac.signal },
+      );
+    });
 
   // ── popstate (browser back/forward) ───────────────────────────────────────
   window.addEventListener(
@@ -222,13 +254,17 @@ function initSectionNav(): void {
         setActiveNav(sId);
       }
     },
-    { signal: ac.signal }
+    { signal: ac.signal },
   );
 
-  document.addEventListener("astro:before-preparation", () => {
-    ro.disconnect();
-    ac.abort();
-  }, { once: true });
+  document.addEventListener(
+    "astro:before-preparation",
+    () => {
+      ro.disconnect();
+      ac.abort();
+    },
+    { once: true },
+  );
 }
 
 document.addEventListener("astro:page-load", initSectionNav);

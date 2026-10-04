@@ -15,34 +15,30 @@
     "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/cv-es.pdf"
   },
   "dependencies": {
-    "@astrojs/node": "^10.1.4",
-    "@astrojs/react": "^5.0.7",
-    "@astrojs/sitemap": "^3.7.3",
-    "@tailwindcss/vite": "^4.1.10",
-    "astro": "^6.4.6",
+    "@astrojs/node": "^11.1.6",
+    "@astrojs/react": "^7.0.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
     "motion": "^12.40.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "simple-icons": "^16.17.0",
-    "tailwindcss": "^4.1.10"
-  },
-  "overrides": {
-    "vite": "^7.0.0",
-    "yaml": "^2.8.3"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.10",
     "@react-pdf/renderer": "^4.5.1",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "prettier": "^3.9.4",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^5.9.3"
   },
   "allowScripts": {
-    "esbuild@0.27.7": true,
-    "sharp@0.34.5": true
+    "esbuild@0.28.2": true,
+    "sharp@0.35.5": true
   }
 }

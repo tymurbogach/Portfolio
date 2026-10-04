@@ -1,14 +1,17 @@
-import { useState, useCallback } from 'react';
-import DecryptedText from './DecryptedText';
+import { useState, useCallback } from "react";
+import DecryptedText from "./DecryptedText";
 
 interface MatrixSequenceProps {
   quote: string;
   comment: string;
 }
 
-const MATRIX_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+const MATRIX_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
-export default function MatrixSequence({ quote, comment }: MatrixSequenceProps) {
+export default function MatrixSequence({
+  quote,
+  comment,
+}: MatrixSequenceProps) {
   const [showComment, setShowComment] = useState(false);
 
   const handleQuoteComplete = useCallback(() => {
@@ -29,7 +32,10 @@ export default function MatrixSequence({ quote, comment }: MatrixSequenceProps) 
           onComplete={handleQuoteComplete}
         />
       </div>
-      <div className="not-italic font-bold" style={{ marginTop: '0.4em', color: 'var(--chart-5)' }}>
+      <div
+        className="font-bold not-italic"
+        style={{ marginTop: "0.4em", color: "var(--chart-5)" }}
+      >
         {showComment ? (
           <DecryptedText
             text={comment}

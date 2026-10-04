@@ -5,17 +5,15 @@ interface Props {
   pages: NavPage[];
 }
 
-const { pages }     = Astro.props;
-const currentPath   = Astro.url.pathname.replace(/\/$/, "");
+const { pages } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <div
   class="relative"
   style="width: var(--nav-width); height: var(--nav-height);"
 >
-  <nav
-    class="nav-panel relative flex flex-row items-center justify-center text-center w-full h-full overflow-visible"
-  >
+  <nav class="nav-panel relative flex flex-row items-center justify-center text-center w-full h-full overflow-visible">
     {pages.map((page: NavPage) => (
       <a
         href={page.path}
@@ -38,9 +36,11 @@ const currentPath   = Astro.url.pathname.replace(/\/$/, "");
           />
         </span>
         <!-- Label: pinned to bottom -->
-        <span class="font-display whitespace-nowrap text-[0.85em] laptop:text-[0.95em]
+        <span
+          class="font-display whitespace-nowrap text-[0.85em] laptop:text-[0.95em]
                      pb-1 mobile:pb-1.5 tablet:pb-2 laptop:pb-2.5 fhd:pb-3
-                     leading-none">
+                     leading-none"
+        >
           {page.label}
         </span>
       </a>

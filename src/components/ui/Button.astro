@@ -3,10 +3,10 @@ export type Variant = "primary" | "ghost" | "accent";
 
 export interface Props {
   variant?: Variant;
-  href?:    string;
-  type?:    "submit" | "button";
-  id?:      string;
-  class?:   string;
+  href?: string;
+  type?: "submit" | "button";
+  id?: string;
+  class?: string;
 }
 
 const {
@@ -25,8 +25,8 @@ const baseClasses =
 
 const variantClasses: { [K in Variant]: string } = {
   primary: "btn-primary",
-  ghost:   "btn-ghost opacity-65",
-  accent:  "btn-accent",
+  ghost: "btn-ghost opacity-65",
+  accent: "btn-accent",
 };
 
 const resolvedVariant: Variant = variant ?? "primary";
@@ -34,6 +34,11 @@ const buttonClasses = `${baseClasses} ${variantClasses[resolvedVariant]} ${extra
 const Element = href ? "a" : "button";
 ---
 
-<Element href={href} type={href ? undefined : type} id={id} class={buttonClasses}>
+<Element
+  href={href}
+  type={href ? undefined : type}
+  id={id}
+  class={buttonClasses}
+>
   <slot />
 </Element>

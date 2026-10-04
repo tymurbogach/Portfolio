@@ -16,41 +16,54 @@ function applyTheme(theme: Theme, mode: Mode): void {
 }
 
 function updateTogglePill(mode: Mode): void {
-  const iconDark  = document.getElementById("icon-dark");
+  const iconDark = document.getElementById("icon-dark");
   const iconLight = document.getElementById("icon-light");
   if (!iconDark || !iconLight) return;
-  iconDark.style.display  = mode === "dark"  ? "block" : "none";
+  iconDark.style.display = mode === "dark" ? "block" : "none";
   iconLight.style.display = mode === "light" ? "block" : "none";
 }
 
 function initThemeMode(): void {
-  const modeBtn  = document.getElementById("theme-toggle");
+  const modeBtn = document.getElementById("theme-toggle");
   const themeBtn = document.getElementById("color-theme-btn");
   if (!modeBtn) return;
 
   const controller = new AbortController();
   const { signal } = controller;
 
-  let { mode: currentMode, theme: currentTheme } = resolveThemeState(localStorage);
+  let { mode: currentMode, theme: currentTheme } =
+    resolveThemeState(localStorage);
 
   applyTheme(currentTheme, currentMode);
   updateTogglePill(currentMode);
 
-  modeBtn.addEventListener("click", () => {
-    currentMode = currentMode === "dark" ? "light" : "dark";
-    applyTheme(currentTheme, currentMode);
-    updateTogglePill(currentMode);
-    localStorage.setItem(MODE_STORAGE_KEY, currentMode);
-  }, { signal });
+  modeBtn.addEventListener(
+    "click",
+    () => {
+      currentMode = currentMode === "dark" ? "light" : "dark";
+      applyTheme(currentTheme, currentMode);
+      updateTogglePill(currentMode);
+      localStorage.setItem(MODE_STORAGE_KEY, currentMode);
+    },
+    { signal },
+  );
 
-  themeBtn?.addEventListener("click", () => {
-    const idx = (THEMES.indexOf(currentTheme) + 1) % THEMES.length;
-    currentTheme = THEMES[idx];
-    applyTheme(currentTheme, currentMode);
-    localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
-  }, { signal });
+  themeBtn?.addEventListener(
+    "click",
+    () => {
+      const idx = (THEMES.indexOf(currentTheme) + 1) % THEMES.length;
+      currentTheme = THEMES[idx];
+      applyTheme(currentTheme, currentMode);
+      localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
+    },
+    { signal },
+  );
 
-  document.addEventListener("astro:before-preparation", () => controller.abort(), { once: true });
+  document.addEventListener(
+    "astro:before-preparation",
+    () => controller.abort(),
+    { once: true },
+  );
 }
 
 document.addEventListener("astro:page-load", initThemeMode);

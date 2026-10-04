@@ -6,10 +6,13 @@ interface UmamiStats {
 let cachedToken: string | null = null;
 let tokenExpiry = 0;
 
-const UMAMI_URL      = import.meta.env.UMAMI_URL      ?? process.env.UMAMI_URL;
-const UMAMI_USERNAME = import.meta.env.UMAMI_USERNAME ?? process.env.UMAMI_USERNAME;
-const UMAMI_PASSWORD = import.meta.env.UMAMI_PASSWORD ?? process.env.UMAMI_PASSWORD;
-const UMAMI_WEBSITE  = import.meta.env.UMAMI_WEBSITE_ID ?? process.env.UMAMI_WEBSITE_ID;
+const UMAMI_URL = import.meta.env.UMAMI_URL ?? process.env.UMAMI_URL;
+const UMAMI_USERNAME =
+  import.meta.env.UMAMI_USERNAME ?? process.env.UMAMI_USERNAME;
+const UMAMI_PASSWORD =
+  import.meta.env.UMAMI_PASSWORD ?? process.env.UMAMI_PASSWORD;
+const UMAMI_WEBSITE =
+  import.meta.env.UMAMI_WEBSITE_ID ?? process.env.UMAMI_WEBSITE_ID;
 
 async function getToken(): Promise<string | null> {
   if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
@@ -50,7 +53,7 @@ export async function getVisitorStats(): Promise<UmamiStats | null> {
       {
         headers: { Authorization: `Bearer ${token}` },
         signal: AbortSignal.timeout(2000),
-      }
+      },
     );
     if (!res.ok) return null;
     const data = await res.json();

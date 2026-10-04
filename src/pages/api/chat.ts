@@ -10,8 +10,8 @@ import {
 } from "../../lib/chatConfig";
 
 const MAX_MESSAGE_LENGTH = 1000;
-const MAX_SESSIONS       = 200;
-const SESSION_TTL_MS     = 60 * 60 * 1000; // 1 hour
+const MAX_SESSIONS = 200;
+const SESSION_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 type Session = { history: Message[]; lastAccess: number };
 const sessions = new Map<string, Session>();
@@ -22,15 +22,21 @@ function cleanSessions(): void {
     if (now - s.lastAccess > SESSION_TTL_MS) sessions.delete(id);
   }
   if (sessions.size > MAX_SESSIONS) {
-    const oldest = [...sessions.entries()].sort((a, b) => a[1].lastAccess - b[1].lastAccess);
-    for (let i = 0; i < sessions.size - MAX_SESSIONS; i++) sessions.delete(oldest[i][0]);
+    const oldest = [...sessions.entries()].sort(
+      (a, b) => a[1].lastAccess - b[1].lastAccess,
+    );
+    for (let i = 0; i < sessions.size - MAX_SESSIONS; i++)
+      sessions.delete(oldest[i][0]);
   }
 }
 
 function getHistory(sessionId: string): Message[] {
   cleanSessions();
   const existing = sessions.get(sessionId);
-  if (existing) { existing.lastAccess = Date.now(); return existing.history; }
+  if (existing) {
+    existing.lastAccess = Date.now();
+    return existing.history;
+  }
   const session: Session = { history: [], lastAccess: Date.now() };
   sessions.set(sessionId, session);
   return session.history;
@@ -91,13 +97,13 @@ export const POST: APIRoute = async ({ request }) => {
 
   const encoder = new TextEncoder();
   let assistantReply = "";
-  let replySaved     = false;
+  let replySaved = false;
 
   const stream = new ReadableStream({
     async start(controller) {
-      const reader  = ollamaRes.body!.getReader();
+      const reader = ollamaRes.body!.getReader();
       const decoder = new TextDecoder();
-      let   buffer  = "";
+      let buffer = "";
 
       try {
         while (true) {

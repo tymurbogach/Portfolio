@@ -12,20 +12,26 @@
 }
 
 @media (min-width: 80rem) {
-  .focus-container { gap: 4rem; }
+  .focus-container {
+    gap: 4rem;
+  }
 }
 
 @media (min-width: 120rem) {
-  .focus-container { gap: 5rem; }
+  .focus-container {
+    gap: 5rem;
+  }
 }
 
 @media (min-width: 160rem) {
-  .focus-container { gap: 7rem; }
+  .focus-container {
+    gap: 7rem;
+  }
 }
 
 .focus-word {
   position: relative;
-  font-family: 'Poiret One', sans-serif;
+  font-family: "Poiret One", sans-serif;
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1;
@@ -39,19 +45,27 @@
 }
 
 @media (min-width: 48rem) {
-  .focus-word { font-size: clamp(4rem, 11vw, 7rem); }
+  .focus-word {
+    font-size: clamp(4rem, 11vw, 7rem);
+  }
 }
 
 @media (min-width: 80rem) {
-  .focus-word { font-size: clamp(5rem, 6.5vw, 12rem); }
+  .focus-word {
+    font-size: clamp(5rem, 6.5vw, 12rem);
+  }
 }
 
 @media (min-width: 120rem) {
-  .focus-word { font-size: clamp(7rem, 7.5vw, 14rem); }
+  .focus-word {
+    font-size: clamp(7rem, 7.5vw, 14rem);
+  }
 }
 
 @media (min-width: 160rem) {
-  .focus-word { font-size: clamp(10rem, 8vw, 20rem); }
+  .focus-word {
+    font-size: clamp(10rem, 8vw, 20rem);
+  }
 }
 
 .focus-word:nth-child(2) {
@@ -59,8 +73,12 @@
   opacity: 0.15;
 }
 
-.focus-word.manual { cursor: pointer; }
-.focus-word.active { filter: blur(0); }
+.focus-word.manual {
+  cursor: pointer;
+}
+.focus-word.active {
+  filter: blur(0);
+}
 
 .focus-frame {
   position: absolute;
@@ -79,10 +97,30 @@
   border-radius: 2px;
 }
 
-.top-left    { top: -12px;    left: -12px;  border-right: none;  border-bottom: none; }
-.top-right   { top: -12px;    right: -12px; border-left: none;   border-bottom: none; }
-.bottom-left { bottom: -12px; left: -12px;  border-right: none;  border-top: none;    }
-.bottom-right{ bottom: -12px; right: -12px; border-left: none;   border-top: none;    }
+.top-left {
+  top: -12px;
+  left: -12px;
+  border-right: none;
+  border-bottom: none;
+}
+.top-right {
+  top: -12px;
+  right: -12px;
+  border-left: none;
+  border-bottom: none;
+}
+.bottom-left {
+  bottom: -12px;
+  left: -12px;
+  border-right: none;
+  border-top: none;
+}
+.bottom-right {
+  bottom: -12px;
+  right: -12px;
+  border-left: none;
+  border-top: none;
+}
 
 /* Stacked layout — matches original h1 FORGE/DEPLOY structure */
 .focus-container.stacked {
@@ -95,13 +133,15 @@
 
 .focus-container.stacked .focus-word {
   font-size: clamp(3.5rem, 9vw, 18rem);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.01em;
   transform: none;
 }
 
 @media (min-width: 80rem) {
-  .focus-container.stacked .focus-word { line-height: 0.88; }
+  .focus-container.stacked .focus-word {
+    line-height: 0.88;
+  }
 }
 
 .focus-container.stacked .focus-word:nth-child(1) {

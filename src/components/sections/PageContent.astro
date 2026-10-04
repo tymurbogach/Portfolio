@@ -1,9 +1,9 @@
 ---
-import Hero     from "./Hero.astro";
-import About    from "./About.astro";
-import Resume   from "./Resume.astro";
+import Hero from "./Hero.astro";
+import About from "./About.astro";
+import Resume from "./Resume.astro";
 import Projects from "./Projects.astro";
-import Contact  from "./Contact.astro";
+import Contact from "./Contact.astro";
 import {
   getSite,
   getHeroData,
@@ -16,11 +16,11 @@ import {
 } from "../../lib/content";
 import type { LabeledSection } from "../../lib/content";
 
-const site        = await getSite();
-const heroData    = await getHeroData();
-const aboutData   = await getAboutData();
-const resumeData  = await getResumeData();
-const projects    = await getProjects();
+const site = await getSite();
+const heroData = await getHeroData();
+const aboutData = await getAboutData();
+const resumeData = await getResumeData();
+const projects = await getProjects();
 const contactData = await getContactData();
 const socialLinks = await getSocialLinks();
 
@@ -28,7 +28,6 @@ const sections: LabeledSection[] = getLabeledSections(site);
 ---
 
 <div class="flex flex-col w-full">
-
   <!-- HOME -->
   <section
     id="home"
@@ -44,8 +43,10 @@ const sections: LabeledSection[] = getLabeledSections(site);
     aria-label="Home"
   >
     <!-- Label al top — igual que todas las secciones -->
-    <div class="mb-3 laptop:mb-4 laptop-scaled:hidden shrink-0
-                laptop:pt-[2rem] laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]">
+    <div
+      class="mb-3 laptop:mb-4 laptop-scaled:hidden shrink-0
+                laptop:pt-[2rem] laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]"
+    >
       <h2
         class="font-hud text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
         style="color: var(--accent);"
@@ -57,7 +58,6 @@ const sections: LabeledSection[] = getLabeledSections(site);
 
     <!-- Controls: theme selector + dark/light toggle + visitors -->
     <div class="flex justify-end items-center gap-2 shrink-0 w-full mb-3 laptop:mb-4 laptop-scaled:mb-4">
-
       <button
         id="color-theme-btn"
         class="inline-flex items-center cursor-pointer
@@ -74,7 +74,9 @@ const sections: LabeledSection[] = getLabeledSections(site);
           class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
                  tracking-[0.24em] uppercase font-bold"
           style="color: var(--accent);"
-        >CYBER</span>
+        >
+          CYBER
+        </span>
       </button>
 
       <button
@@ -88,30 +90,44 @@ const sections: LabeledSection[] = getLabeledSections(site);
         aria-label="Toggle dark/light mode"
         type="button"
       >
-        <svg id="icon-dark"
-             class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
-             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-             style="color: var(--accent);">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        <svg
+          id="icon-dark"
+          class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="color: var(--accent);"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
-        <svg id="icon-light"
-             class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
-             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-             style="display:none; color: var(--accent);">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        <svg
+          id="icon-light"
+          class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display:none; color: var(--accent);"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
         </svg>
       </button>
 
-      <span id="stat-visitors"
-            class="opacity-0 transition-opacity duration-500 font-hud font-normal
+      <span
+        id="stat-visitors"
+        class="opacity-0 transition-opacity duration-500 font-hud font-normal
                    text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base
                    tracking-[0.22em] uppercase"
-            style="color: var(--accent);">
-      </span>
-
+        style="color: var(--accent);"
+      ></span>
     </div>
 
     <!-- Hero fills all remaining space -->
@@ -139,12 +155,13 @@ const sections: LabeledSection[] = getLabeledSections(site);
       </div>
 
       <div class="pb-[3rem] laptop:pb-[4rem] laptop-scaled:pb-[4rem]">
-        {section.sectionId === "about"    && <About    about={aboutData} />}
-        {section.sectionId === "resume"   && <Resume   resume={resumeData} />}
+        {section.sectionId === "about" && <About about={aboutData} />}
+        {section.sectionId === "resume" && <Resume resume={resumeData} />}
         {section.sectionId === "projects" && <Projects projects={projects} />}
-        {section.sectionId === "contact"  && <Contact  contact={contactData} socialLinks={socialLinks} />}
+        {section.sectionId === "contact" && (
+          <Contact contact={contactData} socialLinks={socialLinks} />
+        )}
       </div>
     </section>
   ))}
-
 </div>

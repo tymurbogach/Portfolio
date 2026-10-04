@@ -4,12 +4,13 @@ import CvDownloadButton from "../../components/ui/CvDownloadButton.astro";
 import type { ContactData, SocialLink } from "../../lib/content";
 
 interface Props {
-  contact:     ContactData;
+  contact: ContactData;
   socialLinks: SocialLink[];
 }
 
 const { contact } = Astro.props;
-const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } = contact;
+const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
+  contact;
 ---
 
 <script>
@@ -17,11 +18,12 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
 </script>
 
 <div class="w-full flex flex-col gap-7 laptop:gap-9 fhd:gap-11">
-
   {intro && (
-    <p class="text-[0.8rem] laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
+    <p
+      class="text-[0.8rem] laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
               leading-[1.75] text-[var(--muted-foreground)] tracking-[0.01em] m-0 pl-4
-              border-l-2 border-[var(--accent)]">
+              border-l-2 border-[var(--accent)]"
+    >
       {intro}
     </p>
   )}
@@ -29,11 +31,12 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
   <!-- Info block -->
   <div>
     <div class="grid grid-cols-1 mobile:grid-cols-2 gap-5">
-
       <!-- Left: Email + Location -->
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Email</span>
+          <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">
+            Email
+          </span>
           <a
             href={`mailto:${email}`}
             class="font-hud text-[clamp(0.85rem,1.4vw,1.15rem)] fhd:text-[clamp(1rem,1.4vw,1.4rem)] font-bold text-[var(--accent)]
@@ -44,29 +47,40 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
         </div>
 
         <div class="flex flex-col gap-1">
-          <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Location</span>
-          <span class="font-hud text-[0.72rem] laptop:text-[0.76rem] fhd:text-[0.85rem] qhd:text-base uhd:text-lg tracking-[0.16em] uppercase font-bold text-[var(--foreground)]">{location}</span>
+          <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">
+            Location
+          </span>
+          <span class="font-hud text-[0.72rem] laptop:text-[0.76rem] fhd:text-[0.85rem] qhd:text-base uhd:text-lg tracking-[0.16em] uppercase font-bold text-[var(--foreground)]">
+            {location}
+          </span>
         </div>
       </div>
 
       <!-- Right: Curriculum -->
       <div class="flex flex-col gap-2">
-        <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">Curriculum</span>
+        <span class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base tracking-[0.24em] uppercase font-bold text-[var(--foreground-faint)]">
+          Curriculum
+        </span>
         <div class="flex flex-row flex-wrap gap-2 mobile:flex-col mobile:items-start">
-            <CvDownloadButton label="CV · EN" href={cv_url} />
-            <CvDownloadButton label="CV · ES" href={cv_url_es} />
+          <CvDownloadButton label="CV · EN" href={cv_url} />
+          <CvDownloadButton label="CV · ES" href={cv_url_es} />
         </div>
       </div>
-
     </div>
-
   </div>
 
   <!-- Form -->
-  <form id="contact-form" autocomplete="off" data-email={email} class="flex flex-col gap-4">
-    <p class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] tracking-[0.2em] font-bold m-0 text-[var(--foreground-faint)]">// send a message</p>
+  <form
+    id="contact-form"
+    autocomplete="off"
+    data-email={email}
+    class="flex flex-col gap-4"
+  >
+    <p class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] tracking-[0.2em] font-bold m-0 text-[var(--foreground-faint)]">
+      // send a message
+    </p>
     <input type="hidden" name="access_key" value={web3formsKey} />
-    <input type="hidden" name="subject"    value={formSubject} />
+    <input type="hidden" name="subject" value={formSubject} />
 
     <div
       id="form-status"
@@ -76,7 +90,11 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
 
     <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-4">
       <input
-        id="f-name" name="name" type="text" required autocomplete="off"
+        id="f-name"
+        name="name"
+        type="text"
+        required
+        autocomplete="off"
         placeholder="Name"
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
@@ -88,7 +106,11 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
                placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[0.7rem] fhd:placeholder:text-xs"
       />
       <input
-        id="f-email" name="email" type="email" required autocomplete="off"
+        id="f-email"
+        name="email"
+        type="email"
+        required
+        autocomplete="off"
         placeholder="Email"
         class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
@@ -102,7 +124,10 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
     </div>
 
     <textarea
-      id="f-message" name="message" rows="5" required
+      id="f-message"
+      name="message"
+      rows="5"
+      required
       placeholder="Message"
       class="bg-transparent w-full outline-none p-3
              text-xs laptop:text-sm fhd:text-base qhd:text-lg uhd:text-xl
@@ -120,8 +145,15 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
       </span>
       <Button id="submit-btn" type="submit" variant="primary">
         Send
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-             stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+        <svg
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-3.5 h-3.5"
+        >
           <path d="M4 10h12M12 5l5 5-5 5" />
         </svg>
       </Button>
@@ -129,9 +161,11 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
   </form>
 
   <!-- Bot hint -->
-  <p class="text-center font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
-            tracking-[0.18em] leading-[2] text-[var(--foreground-faint)] m-0 uppercase">
-    Or ask the bot running locally on my cluster &nbsp;<span class="font-mono text-[var(--accent)]">↘</span>
+  <p
+    class="text-center font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
+            tracking-[0.18em] leading-[2] text-[var(--foreground-faint)] m-0 uppercase"
+  >
+    Or ask the bot running locally on my cluster &nbsp;
+    <span class="font-mono text-[var(--accent)]">↘</span>
   </p>
-
 </div>

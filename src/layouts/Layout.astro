@@ -1,17 +1,23 @@
 ---
 import "../styles/global.css";
-import Header         from "../components/layout/Header.astro";
-import Footer         from "../components/layout/Footer.astro";
-import NameCard        from "../components/layout/NameCard.astro";
-import NavBar          from "../components/layout/NavBar.astro";
-import SocialLinks     from "../components/ui/SocialLinks.astro";
-import ChatToggle      from "../components/ui/ChatToggle.astro";
-import ChatWidget      from "../components/layout/ChatWidget.astro";
-import DualMain        from "../layouts/DualMain.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import NameCard from "../components/layout/NameCard.astro";
+import NavBar from "../components/layout/NavBar.astro";
+import SocialLinks from "../components/ui/SocialLinks.astro";
+import ChatToggle from "../components/ui/ChatToggle.astro";
+import ChatWidget from "../components/layout/ChatWidget.astro";
+import DualMain from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getImage } from "astro:assets";
 import { getSite, getProfile } from "../lib/content";
-import { THEMES, DEFAULT_THEME, DEFAULT_MODE, MODE_STORAGE_KEY, THEME_STORAGE_KEY } from "../lib/themes";
+import {
+  THEMES,
+  DEFAULT_THEME,
+  DEFAULT_MODE,
+  MODE_STORAGE_KEY,
+  THEME_STORAGE_KEY,
+} from "../lib/themes";
 import ogSource from "../assets/gopnik.png";
 
 /** Base HTML shell: SEO head, global scripts, fixed chrome (nav/social/chat) and main frame. */
@@ -28,7 +34,7 @@ interface Props {
   description?: string;
 }
 
-const site    = await getSite();
+const site = await getSite();
 const profile = await getProfile();
 
 const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
@@ -52,7 +58,6 @@ const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
 
 // Default first-paint background: bladerunner theme, dark mode (see global.css)
 const THEME_COLOR = "rgb(18, 11, 6)";
-
 ---
 
 <!doctype html>
@@ -74,17 +79,19 @@ const THEME_COLOR = "rgb(18, 11, 6)";
         themeKey: THEME_STORAGE_KEY,
       }}
     >
+      // @ts-nocheck: define:vars inyecta themes/defaultTheme/defaultMode/modeKey/themeKey en el build; el checker no las ve
       history.scrollRestoration = "manual";
       (function () {
-        var mode  = localStorage.getItem(modeKey) || defaultMode;
+        var mode = localStorage.getItem(modeKey) || defaultMode;
         var saved = localStorage.getItem(themeKey);
         var theme = themes.indexOf(saved) !== -1 ? saved : defaultTheme;
-        var needsDark = (theme === "cyberpunk") ? (mode === "light") : (mode === "dark");
+        var needsDark =
+          theme === "cyberpunk" ? mode === "light" : mode === "dark";
         document.documentElement.classList.toggle("dark", needsDark);
-        if (theme !== "cyberpunk") document.documentElement.setAttribute("data-theme", theme);
+        if (theme !== "cyberpunk")
+          document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
@@ -128,8 +135,12 @@ const THEME_COLOR = "rgb(18, 11, 6)";
       import "../scripts/sectionNav";
       import "../scripts/tapFeedback";
     </script>
-
-    <script defer src="https://analytics.nastymur.com/script.js" data-website-id="2e2eb1bc-fab1-4307-95c4-042ff442884c"></script>
+    <script
+      is:inline
+      defer
+      src="https://analytics.nastymur.com/script.js"
+      data-website-id="2e2eb1bc-fab1-4307-95c4-042ff442884c"
+    ></script>
   </head>
 
   <!-- position:fixed en body evita el scroll nativo del documento;
@@ -158,23 +169,31 @@ const THEME_COLOR = "rgb(18, 11, 6)";
     </footer>
 
     <!-- DESKTOP — fixed corner elements -->
-    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
-         style="top: var(--fixed-offset); left: var(--fixed-offset);">
+    <div
+      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+      style="top: var(--fixed-offset); left: var(--fixed-offset);"
+    >
       <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
     </div>
 
-    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
-         style="top: var(--fixed-offset); right: var(--fixed-offset);">
+    <div
+      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+      style="top: var(--fixed-offset); right: var(--fixed-offset);"
+    >
       <NavBar pages={site.pages} />
     </div>
 
-    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
-         style="bottom: var(--fixed-offset); left: var(--fixed-offset);">
+    <div
+      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+      style="bottom: var(--fixed-offset); left: var(--fixed-offset);"
+    >
       <SocialLinks />
     </div>
 
-    <div class="hidden laptop:flex laptop-scaled:flex fixed z-40"
-         style="bottom: var(--fixed-offset); right: var(--fixed-offset);">
+    <div
+      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+      style="bottom: var(--fixed-offset); right: var(--fixed-offset);"
+    >
       <ChatToggle variant="panel" />
     </div>
 
@@ -182,7 +201,6 @@ const THEME_COLOR = "rgb(18, 11, 6)";
     <ChatToggle variant="fab" />
 
     <ChatWidget />
-
 
     <!-- MAIN -->
     <main
@@ -198,21 +216,19 @@ const THEME_COLOR = "rgb(18, 11, 6)";
                border border-[var(--border)]
                flex items-center justify-center overflow-hidden"
       >
-        {
-          dual ? (
-            <DualMain pageLabel={pageLabel} scrollable={scrollable}>
-              <slot />
-            </DualMain>
-          ) : (
-            <div
-              class="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden
+        {dual ? (
+          <DualMain pageLabel={pageLabel} scrollable={scrollable}>
+            <slot />
+          </DualMain>
+        ) : (
+          <div
+            class="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden
                    p-[1.25rem] mobile:p-[1.5rem] tablet:p-[2rem]
                    laptop:p-[3.5rem] fhd:p-[5rem] qhd:p-[7rem] uhd:p-[9rem]"
-            >
-              <slot />
-            </div>
-          )
-        }
+          >
+            <slot />
+          </div>
+        )}
       </div>
     </main>
   </body>
