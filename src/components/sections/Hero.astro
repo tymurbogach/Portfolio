@@ -12,17 +12,71 @@ const {
 } = Astro.props;
 ---
 
-<div class="flex flex-col w-full flex-1 min-h-0 justify-center">
+<div class="flex flex-col w-full flex-1 min-h-0 justify-center gap-8 laptop:justify-evenly laptop:gap-0">
   <!-- Title -->
-  <div class="shrink-0 w-full mb-6 laptop:mb-8 fhd:mb-8">
+  <div class="shrink-0 w-full">
     <h1 class="hero-forge-lockup">
       <span class="hero-forge-word">{title1}</span>
       <span class="hero-deploy-word">{title2}</span>
+      <span class="hero-theme-controls">
+        <button
+          id="color-theme-btn"
+          class="hero-theme-button font-chrome inline-flex items-center border border-[var(--border)]
+                 bg-[var(--card)] px-2 py-1 text-[0.62rem] font-bold tracking-[0.18em]
+                 uppercase text-[var(--accent)] opacity-80 transition-[background-color,border-color,color,opacity]
+                 can-hover:hover:opacity-100 active:opacity-100"
+          title="Switch color theme"
+          aria-label="Switch color theme"
+          type="button"
+        >
+          <span id="theme-name-label">CYBER</span>
+        </button>
+        <button
+          id="theme-toggle"
+          class="hero-theme-button inline-flex items-center justify-center border border-[var(--border)]
+                 bg-[var(--card)] p-1 text-[var(--accent)] opacity-80 transition-[background-color,border-color,color,opacity]
+                 can-hover:hover:opacity-100 active:opacity-100"
+          title="Toggle dark/light mode"
+          aria-label="Toggle dark/light mode"
+          type="button"
+        >
+          <svg
+            id="icon-dark"
+            class="size-3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg
+            id="icon-light"
+            class="size-3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="display: none;"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
+      </span>
       <span class="hero-forge-scan" aria-hidden="true"></span>
     </h1>
   </div>
 
-  <!-- Bio + CTAs + matrix -->
+  <!-- Bio + CTAs -->
   <div class="flex flex-col shrink-0 w-full">
     <p
       class="m-0 mb-5 leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl
@@ -41,16 +95,16 @@ const {
         </Button>
       </div>
     )}
+  </div>
 
-    <div
-      class="w-full text-center font-hud
-             text-[0.66rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
-             tracking-[0.1em] laptop:tracking-[0.16em]
-             leading-[1.8] italic text-[var(--foreground-faint)]"
-      aria-label={subtitle2}
-    >
-      <MatrixSequence client:visible quote={subtitle2} comment={comment} />
-    </div>
+  <div
+    class="shrink-0 w-full text-center font-hud
+           text-[0.66rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
+           tracking-[0.1em] laptop:tracking-[0.16em]
+           leading-[1.8] italic text-[var(--foreground-faint)]"
+    aria-label={subtitle2}
+  >
+    <MatrixSequence client:load quote={subtitle2} comment={comment} />
   </div>
 
   <script>

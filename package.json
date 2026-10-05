@@ -9,6 +9,7 @@
     "check": "astro check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "themes:check": "node scripts/check-theme-contrast.mjs",
     "astro": "astro",
     "cv:pdf": "node scripts/cv/generate-all.mjs",
     "cv:pdf:en": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.en.json public/cv.pdf",

@@ -1,18 +1,30 @@
-async function loadStats() {
-  const el = document.getElementById("stat-visitors");
-  if (!el) return;
+async function loadStats(signal: AbortSignal): Promise<void> {
+  const valueEl = document.getElementById("stat-visitors");
+  const meterEl = document.getElementById("visitors-meter");
+  if (!valueEl || !meterEl) return;
 
   try {
-    const res = await fetch("/api/stats");
+    const res = await fetch("/api/stats", { signal });
     if (!res.ok) return;
     const { visitors } = (await res.json()) as { visitors?: number };
     if (typeof visitors !== "number") return;
-    el.textContent = `${visitors.toLocaleString()} visitors`;
-    el.classList.remove("opacity-0");
-  } catch {
+    valueEl.textContent = visitors.toLocaleString();
+    meterEl.classList.remove("opacity-0");
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") return;
     // Umami unavailable — stays hidden
   }
 }
 
-// astro:page-load also fires on the initial load, so a single listener suffices.
-document.addEventListener("astro:page-load", loadStats);
+function initVisitCounter(): void {
+  const controller = new AbortController();
+  void loadStats(controller.signal);
+
+  document.addEventListener(
+    "astro:before-preparation",
+    () => controller.abort(),
+    { once: true },
+  );
+}
+
+document.addEventListener("astro:page-load", initVisitCounter);

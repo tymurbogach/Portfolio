@@ -26,6 +26,7 @@
    (--overlay varies per theme and stays theme-local.)
    ═══════════════════════════════════════════════════ */
 :root {
+  --font-chrome: "JetBrains Mono", monospace;
   --border-subtle: color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle: color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow: color-mix(in srgb, var(--accent) 6%, transparent);
@@ -55,7 +56,7 @@
   --foreground: rgb(236, 239, 244);
   --card: rgb(30, 30, 63);
   --primary: rgb(255, 0, 200);
-  --primary-foreground: rgb(255, 255, 255);
+  --primary-foreground: rgb(12, 12, 29);
   --secondary: rgb(255, 230, 0);
   --secondary-foreground: rgb(12, 12, 29);
   --muted: rgb(21, 21, 48);
@@ -126,14 +127,14 @@
   --background: rgb(248, 249, 250);
   --foreground: rgb(12, 12, 29);
   --card: rgb(255, 255, 255);
-  --primary: rgb(255, 0, 200);
+  --primary: rgb(214, 0, 168);
   --primary-foreground: rgb(255, 255, 255);
   --secondary: rgb(240, 240, 255);
   --secondary-foreground: rgb(12, 12, 29);
   --muted: rgb(240, 240, 255);
   --muted-foreground: rgb(12, 12, 29);
-  --accent: rgb(0, 255, 204);
-  --accent-foreground: rgb(12, 12, 29);
+  --accent: rgb(0, 130, 104);
+  --accent-foreground: rgb(255, 255, 255);
   --border: rgb(223, 230, 233);
   --chart-1: rgb(255, 0, 200);
   --chart-2: rgb(144, 0, 255);
@@ -190,13 +191,13 @@
   --card-foreground: rgb(8, 12, 28);
   --popover: rgb(255, 255, 255);
   --popover-foreground: rgb(8, 12, 28);
-  --primary: rgb(215, 95, 10);
+  --primary: rgb(190, 84, 9);
   --primary-foreground: rgb(255, 255, 255);
   --secondary: rgb(0, 120, 100);
   --secondary-foreground: rgb(255, 255, 255);
   --muted: rgb(236, 240, 252);
   --muted-foreground: rgb(85, 95, 125);
-  --accent: rgb(0, 158, 132);
+  --accent: rgb(0, 131, 109);
   --accent-foreground: rgb(255, 255, 255);
   --destructive: rgb(220, 50, 50);
   --destructive-foreground: rgb(255, 255, 255);
@@ -319,13 +320,13 @@
   --card-foreground: rgb(0, 40, 0);
   --popover: rgb(218, 248, 218);
   --popover-foreground: rgb(0, 40, 0);
-  --primary: rgb(0, 140, 30);
+  --primary: rgb(0, 134, 29);
   --primary-foreground: rgb(236, 255, 236);
   --secondary: rgb(0, 100, 20);
   --secondary-foreground: rgb(236, 255, 236);
   --muted: rgb(196, 240, 196);
   --muted-foreground: rgb(0, 100, 20);
-  --accent: rgb(0, 180, 50);
+  --accent: rgb(0, 136, 37);
   --accent-foreground: rgb(0, 0, 0);
   --destructive: rgb(180, 0, 30);
   --destructive-foreground: rgb(255, 255, 255);
@@ -442,14 +443,14 @@
   --background: rgb(246, 230, 238);
   --foreground: rgb(28, 18, 24);
   --card: rgb(253, 237, 201);
-  --primary: rgb(208, 79, 153);
+  --primary: rgb(173, 66, 128);
   --primary-foreground: rgb(255, 255, 255);
   --secondary: rgb(138, 207, 209);
   --secondary-foreground: rgb(28, 18, 24);
   --muted: rgb(178, 225, 235);
   --muted-foreground: rgb(90, 60, 75);
-  --accent: rgb(251, 226, 167);
-  --accent-foreground: rgb(28, 18, 24);
+  --accent: rgb(116, 105, 77);
+  --accent-foreground: rgb(255, 255, 255);
   --border: rgb(208, 79, 153);
   --chart-1: rgb(230, 112, 171);
   --chart-2: rgb(132, 210, 226);
@@ -516,7 +517,7 @@
   --muted: rgb(36, 39, 43);
   --muted-foreground: rgb(155, 175, 185);
   --accent: rgb(198, 123, 150);
-  --accent-foreground: rgb(225, 230, 235);
+  --accent-foreground: rgb(0, 0, 0);
   --border: rgb(50, 72, 89);
   --chart-1: rgb(80, 175, 182);
   --chart-2: rgb(228, 162, 177);
@@ -576,13 +577,13 @@
   --background: rgb(204, 204, 204);
   --foreground: rgb(31, 31, 31);
   --card: rgb(176, 176, 176);
-  --primary: rgb(183, 28, 28);
+  --primary: rgb(171, 26, 26);
   --primary-foreground: rgb(255, 255, 255);
   --secondary: rgb(85, 107, 47);
   --secondary-foreground: rgb(255, 255, 255);
   --muted: rgb(184, 184, 184);
-  --muted-foreground: rgb(74, 74, 74);
-  --accent: rgb(70, 130, 180);
+  --muted-foreground: rgb(73, 73, 73);
+  --accent: rgb(49, 90, 125);
   --accent-foreground: rgb(255, 255, 255);
   --border: rgb(80, 80, 80);
   --chart-1: rgb(183, 28, 28);
@@ -638,8 +639,8 @@
   --background: rgb(26, 26, 26);
   --foreground: rgb(224, 224, 224);
   --card: rgb(42, 42, 42);
-  --primary: rgb(229, 57, 53);
-  --primary-foreground: rgb(255, 255, 255);
+  --primary: rgb(231, 73, 69);
+  --primary-foreground: rgb(0, 0, 0);
   --secondary: rgb(104, 159, 56);
   --secondary-foreground: rgb(0, 0, 0);
   --muted: rgb(37, 37, 37);
@@ -703,13 +704,13 @@
   --card-foreground: rgb(20, 20, 19);
   --popover: rgb(255, 255, 255);
   --popover-foreground: rgb(40, 38, 27);
-  --primary: rgb(201, 100, 66);
+  --primary: rgb(174, 86, 57);
   --primary-foreground: rgb(255, 255, 255);
   --secondary: rgb(233, 230, 220);
   --secondary-foreground: rgb(83, 81, 70);
   --muted: rgb(237, 233, 222);
-  --muted-foreground: rgb(131, 130, 125);
-  --accent: rgb(201, 100, 66);
+  --muted-foreground: rgb(106, 105, 101);
+  --accent: rgb(174, 86, 57);
   --accent-foreground: rgb(255, 255, 255);
   --destructive: rgb(153, 27, 27);
   --destructive-foreground: rgb(255, 255, 255);
@@ -767,13 +768,13 @@
   --popover: rgb(48, 48, 46);
   --popover-foreground: rgb(229, 229, 226);
   --primary: rgb(217, 119, 87);
-  --primary-foreground: rgb(255, 255, 255);
+  --primary-foreground: rgb(0, 0, 0);
   --secondary: rgb(56, 56, 52);
   --secondary-foreground: rgb(195, 192, 182);
   --muted: rgb(27, 27, 25);
   --muted-foreground: rgb(160, 158, 148);
   --accent: rgb(217, 119, 87);
-  --accent-foreground: rgb(255, 255, 255);
+  --accent-foreground: rgb(0, 0, 0);
   --destructive: rgb(239, 68, 68);
   --destructive-foreground: rgb(255, 255, 255);
   --border: rgb(58, 58, 54);
@@ -831,14 +832,14 @@
   --card-foreground: rgb(14, 10, 28);
   --popover: rgb(246, 241, 231);
   --popover-foreground: rgb(14, 10, 28);
-  --primary: rgb(195, 72, 10);
+  --primary: rgb(180, 67, 9);
   --primary-foreground: rgb(246, 241, 231);
   --secondary: rgb(160, 110, 20);
   --secondary-foreground: rgb(246, 241, 231);
   --muted: rgb(218, 212, 200);
   --muted-foreground: rgb(90, 75, 100);
-  --accent: rgb(28, 138, 178);
-  --accent-foreground: rgb(246, 241, 231);
+  --accent: rgb(23, 111, 144);
+  --accent-foreground: rgb(255, 255, 255);
   --destructive: rgb(185, 40, 30);
   --destructive-foreground: rgb(246, 241, 231);
   --border: rgb(180, 170, 150);
@@ -899,7 +900,7 @@
   --popover: rgb(24, 15, 8);
   --popover-foreground: rgb(218, 206, 182);
   --primary: rgb(208, 82, 14);
-  --primary-foreground: rgb(218, 206, 182);
+  --primary-foreground: rgb(0, 0, 0);
   --secondary: rgb(255, 195, 35);
   --secondary-foreground: rgb(18, 11, 6);
   --muted: rgb(34, 22, 12);
@@ -1264,6 +1265,10 @@ body::after {
   font-family: var(--font-mono);
 }
 
+@utility font-chrome {
+  font-family: var(--font-chrome);
+}
+
 /* Atmósfera del marco: luz cálida arriba a la derecha, rebote frío abajo a la
    izquierda y viñeta. Va en el propio elemento (background-image + inset shadow)
    en vez de pseudoelementos: así pinta sobre el fondo y siempre bajo el
@@ -1289,10 +1294,11 @@ body::after {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(0.5rem, 3vw, 2rem);
   align-items: end;
   width: 100%;
   margin: 0;
-  padding-block: 0.16em 0.28em;
+  padding-block: 0.16em 3.5rem;
   overflow: clip;
   font-family: "Poiret One", cursive;
   font-weight: 400;
@@ -1302,26 +1308,39 @@ body::after {
 
 .hero-forge-word {
   color: var(--foreground);
-  font-size: clamp(3.5rem, 9vw, 11rem);
+  font-size: clamp(3.5rem, 15vw, 7rem);
   letter-spacing: -0.025em;
   white-space: nowrap;
 }
 
+.hero-theme-controls {
+  position: absolute;
+  right: 0;
+  bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .hero-deploy-word {
-  margin-block-end: 0.12em;
   color: var(--primary);
   font-family: var(--font-mono);
-  font-size: clamp(0.72rem, 1.75vw, 1.85rem);
+  font-size: clamp(1rem, 4.5vw, 1.35rem);
   font-weight: 500;
   letter-spacing: 0.14em;
   line-height: 1;
   white-space: nowrap;
 }
 
+.hero-theme-button {
+  border-radius: var(--radius);
+}
+
 .hero-forge-scan {
   position: absolute;
   z-index: -1;
-  top: 68%;
+  top: auto;
+  bottom: 0.18em;
   left: 0;
   width: 28%;
   height: 1px;
@@ -1330,6 +1349,30 @@ body::after {
   opacity: 0;
   transform: translateX(-140%);
   animation: hero-forge-scan 4.5s ease-in-out infinite;
+}
+
+@media (min-width: 48rem) {
+  .hero-forge-lockup {
+    padding-block: 0.16em 0.28em;
+  }
+
+  .hero-forge-word {
+    font-size: clamp(4rem, 9vw, 11rem);
+  }
+
+  .hero-deploy-word {
+    font-size: clamp(0.9rem, 1.75vw, 1.85rem);
+  }
+
+  .hero-theme-controls {
+    top: calc(68% - 2.5rem);
+    bottom: auto;
+  }
+
+  .hero-forge-scan {
+    top: 68%;
+    bottom: auto;
+  }
 }
 
 @keyframes hero-forge-scan {
@@ -1628,7 +1671,10 @@ body::after {
   color: var(--nav-feedback-foreground, var(--secondary-foreground)) !important;
 }
 .nav-tap-pressed .nav-icon {
-  background-color: var(--nav-feedback-foreground, var(--secondary-foreground)) !important;
+  background-color: var(
+    --nav-feedback-foreground,
+    var(--secondary-foreground)
+  ) !important;
   opacity: 1 !important;
 }
 

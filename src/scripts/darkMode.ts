@@ -13,6 +13,13 @@ function applyTheme(theme: Theme, mode: Mode): void {
   applyThemeToRoot(document.documentElement, theme, mode);
   const labelEl = document.getElementById("theme-name-label");
   if (labelEl) labelEl.textContent = THEME_LABELS[theme];
+  const themeBtn = document.getElementById("color-theme-btn");
+  if (themeBtn) {
+    themeBtn.setAttribute(
+      "aria-label",
+      `Switch color theme. Current theme: ${THEME_LABELS[theme]}`,
+    );
+  }
 }
 
 function updateTogglePill(mode: Mode): void {

@@ -39,12 +39,22 @@ function positionIndicator(instant = false): void {
       const active = container?.querySelector<HTMLElement>(
         '.nav-link[data-active="true"]',
       );
-      if (!container || !active) return;
+      if (!container) return;
 
       const cr = container.getBoundingClientRect();
       if (cr.width === 0) return; // NavBar oculta en este breakpoint
 
       if (instant) indicator.style.transition = "none";
+
+      if (!active) {
+        indicator.style.transform = "scaleX(0)";
+        if (instant) {
+          requestAnimationFrame(() => {
+            indicator.style.transition = INDICATOR_TRANSITION;
+          });
+        }
+        return;
+      }
 
       const ar = active.getBoundingClientRect();
       // La barra mide el 100% del contenedor y se coloca con transform: el gradiente
@@ -61,12 +71,12 @@ function positionIndicator(instant = false): void {
 
 /** Marks the nav link matching the section as active and repositions the indicator. */
 function setActiveNav(sectionId: string, instant = false): void {
-  const targetPath = sectionId === "home" ? "/" : `/${sectionId}`;
+  const targetPath = sectionId === "home" ? null : `/${sectionId}`;
   document
     .querySelectorAll<HTMLElement>(".nav-link[data-active]")
     .forEach((link) => {
       const href = (link.getAttribute("href") ?? "").replace(/\/$/, "") || "/";
-      link.dataset.active = String(href === targetPath);
+      link.dataset.active = String(targetPath !== null && href === targetPath);
     });
   positionIndicator(instant);
 }
