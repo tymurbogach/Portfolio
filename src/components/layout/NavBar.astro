@@ -21,7 +21,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
         class:list={[
           "nav-cell group nav-link flex flex-col items-center h-full flex-1 min-w-0",
           "font-light tracking-wide laptop:tracking-widest laptop-scaled:tracking-widest",
-          "text-xs mobile:text-sm tablet:text-base laptop:text-lg laptop-scaled:text-lg fhd:text-xl qhd:text-2xl uhd:text-3xl",
+          "text-xs mobile:text-sm tablet:text-base laptop:text-[var(--type-heading)] laptop-scaled:text-[var(--type-heading)]",
         ]}
       >
         <!-- Icon: floats centered in the upper space -->
@@ -38,7 +38,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
         <!-- Label: pinned to bottom -->
         <span
           class="font-chrome whitespace-nowrap text-[0.85em] laptop:text-[0.95em]
-                     pb-1 mobile:pb-1.5 tablet:pb-2 laptop:pb-2.5 fhd:pb-3
+                     pb-1 mobile:pb-1.5 tablet:pb-2 laptop:pb-2.5
                      leading-none"
         >
           {page.label}

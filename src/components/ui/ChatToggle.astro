@@ -26,7 +26,7 @@ const BOT_ICON = "/img/bot.png";
           aria-hidden="true"
         />
         <span
-          class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
+          class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)]
                    tracking-[0.24em] uppercase
                    text-[var(--foreground-faint)] can-hover:group-hover:text-[var(--secondary-foreground)]
                    transition-colors duration-200"
@@ -39,7 +39,7 @@ const BOT_ICON = "/img/bot.png";
 ) : (
   <button
     class="chat-toggle laptop:hidden laptop-scaled:hidden fixed z-40 cursor-pointer
-             flex items-center gap-1.5 px-3 py-2
+             flex min-h-10 min-w-10 items-center gap-1.5 px-3 py-2
              bottom-[3.25rem] mobile:bottom-[5.25rem] right-[0.75rem]
              bg-[color-mix(in_srgb,var(--background)_75%,transparent)]
              border border-[color-mix(in_srgb,var(--border)_65%,transparent)]

@@ -4,16 +4,7 @@ import type { SocialLink } from "../../lib/content";
 const socialLinks = await getSocialLinks();
 ---
 
-<div
-  class="w-full h-[2.5rem]
-  mobile:w-[20rem] mobile:h-[4.5rem]
-  tablet:w-[20rem] tablet:h-[4.5rem]
-  laptop-scaled:w-[22rem] laptop-scaled:h-[4.75rem]
-  laptop:w-[25rem] laptop:h-[5rem]
-  fhd:w-[30rem] fhd:h-[5.5rem]
-  qhd:w-[35rem] qhd:h-[6rem]
-  uhd:w-[40rem] uhd:h-[6.5rem]"
->
+<div class="w-full" style="width: var(--nav-width); height: var(--nav-height);">
   <div class="nav-panel flex flex-row items-center justify-center text-center w-full h-full">
     {socialLinks.map(({ url, icon, name }: SocialLink) => (
       <a

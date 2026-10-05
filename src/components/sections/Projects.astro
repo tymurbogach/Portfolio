@@ -9,7 +9,7 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 laptop-scaled:grid-cols-2 laptop:grid-cols-2 fhd:grid-cols-3 qhd:grid-cols-4 uhd:grid-cols-5 gap-4 fhd:gap-5 qhd:gap-6 w-full">
+<div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-[clamp(1rem,1.5vw,1.5rem)] w-full">
   {projects.map((entry: Project, i: number) => {
     const {
       title,

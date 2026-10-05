@@ -21,7 +21,7 @@ const categories = [
 
 <section
   class="grid grid-cols-1 laptop:grid-cols-2 laptop-scaled:grid-cols-2 w-full
-                gap-8 laptop:gap-x-10 laptop:gap-y-10 fhd:gap-x-14 fhd:gap-y-14"
+                gap-8 laptop:gap-[var(--section-gap)]"
 >
   {categories.map(({ label, skills }) => (
     <div class="resume-section flex flex-col gap-2.5">
@@ -31,20 +31,12 @@ const categories = [
 
       <div
         class="resume-grid
-                  grid grid-cols-[repeat(auto-fill,minmax(7.5rem,1fr))] gap-1.5 overflow-hidden
-                  fhd:gap-2.5
-                  max-h-[10rem] laptop:max-h-[11rem] fhd:max-h-[13rem] qhd:max-h-[15rem]"
+                  grid grid-cols-[repeat(auto-fill,minmax(7.5rem,1fr))] gap-[clamp(0.375rem,0.75vw,0.625rem)] overflow-hidden
+                  max-h-[clamp(10rem,14vw,15rem)]"
       >
         {skills.map(({ slug, color: c, label: l }) => (
           <span class="skill-chip">
-            <Icon
-              slug={slug}
-              color={c}
-              size={15}
-              label={l}
-              tone="mono"
-              class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5 uhd:!w-6 uhd:!h-6"
-            />
+            <Icon slug={slug} color={c} size={15} label={l} tone="mono" />
             <span class="chip-label">{l}</span>
           </span>
         ))}
@@ -74,7 +66,7 @@ const categories = [
         Homelab
       </span>
       <span
-        class="font-hud text-[0.62rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm
+        class="font-hud text-[0.62rem] laptop:text-[var(--type-meta)]
                    tracking-[0.18em] uppercase text-[var(--foreground-faint)]"
       >
         {homelab.length} services in production
@@ -82,7 +74,7 @@ const categories = [
     </div>
 
     <p
-      class="font-hud m-0 text-[0.68rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
+      class="font-hud m-0 text-[0.68rem] laptop:text-[var(--type-meta)]
               leading-[1.95] tracking-[0.03em] text-[var(--muted-foreground)]"
     >
       {homelab.map(({ label }) => label).join(" · ")}
@@ -95,11 +87,11 @@ const categories = [
       Languages
     </span>
 
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-1.5 overflow-hidden fhd:gap-2.5">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-[clamp(0.375rem,0.75vw,0.625rem)] overflow-hidden">
       {languages.map(({ flag, lang, level }) => (
         <span class="skill-chip">
           <span
-            class="text-[0.9rem] laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl leading-none shrink-0"
+            class="text-[0.9rem] laptop:text-[var(--type-reading)] leading-none shrink-0"
             aria-hidden="true"
           >
             {flag}
@@ -107,7 +99,7 @@ const categories = [
           <span class="flex flex-col min-w-0">
             <span class="chip-label">{lang}</span>
             <span
-              class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-[0.82rem]
+              class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)]
                          tracking-[0.12em] uppercase font-bold leading-tight"
               style="color: var(--chart-2);"
             >

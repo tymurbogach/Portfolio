@@ -16,7 +16,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
   <!-- Left sidebar (desktop only) -->
   <div
     class="hidden laptop:flex laptop-scaled:flex shrink-0 items-center justify-center
-           laptop:p-[2.5rem] laptop-scaled:p-[2.5rem] fhd:p-[3.5rem] qhd:p-[4.5rem]"
+           laptop:p-[var(--frame-inset)] laptop-scaled:p-[var(--frame-inset)]"
     style="width: var(--sidebar-width);"
   >
     <ProfilePanel />
@@ -29,12 +29,12 @@ const { pageLabel = "", scrollable = true } = Astro.props;
       <div
         class="shrink-0
                px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-               laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem]
-               pt-[1rem] laptop:pt-[1.5rem] laptop-scaled:pt-[1.5rem] fhd:pt-[2.5rem] qhd:pt-[3.5rem]
+               laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
+               pt-[1rem] laptop:pt-[var(--section-gap)] laptop-scaled:pt-[var(--section-gap)]
                pb-4 laptop:pb-7 laptop-scaled:pb-7"
       >
         <h2
-          class="text-xs laptop:text-base laptop-scaled:text-base fhd:text-lg qhd:text-xl
+          class="text-xs laptop:text-[var(--type-reading)] laptop-scaled:text-[var(--type-reading)]
                  tracking-[0.45em] uppercase font-bold m-0
                  text-[var(--foreground)] text-glow"
         >
@@ -50,15 +50,15 @@ const { pageLabel = "", scrollable = true } = Astro.props;
         id="content-scroll"
         class="flex-1 overflow-y-auto overflow-x-hidden
                px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-               laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem] uhd:px-[8rem]
-               pb-[4rem] laptop:pb-[5rem] laptop-scaled:pb-[5rem] fhd:pb-[6rem] qhd:pb-[7rem]"
+               laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
+               pb-[4rem] laptop:pb-[var(--content-block-gap)] laptop-scaled:pb-[var(--content-block-gap)]"
       >
         <slot />
       </div>
     ) : (
       <div
         class="flex-1 flex items-center justify-center
-                  px-[1.25rem] laptop:px-[4.5rem] laptop-scaled:px-[4.5rem] fhd:px-[5.5rem] qhd:px-[6.5rem] uhd:px-[8rem]"
+                  px-[1.25rem] laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]"
       >
         <slot />
       </div>

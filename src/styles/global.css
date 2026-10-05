@@ -13,9 +13,6 @@
   --breakpoint-tablet: 48rem; /* ≈  768px */
   --breakpoint-laptop: 80rem; /* ≈ 1280px */
   --breakpoint-desktop: 100rem; /* ≈ 1600px */
-  --breakpoint-fhd: 120rem; /* ≈ 1920px */
-  --breakpoint-qhd: 160rem; /* ≈ 2560px */
-  --breakpoint-uhd: 240rem; /* ≈ 3840px */
 }
 
 /* ═══════════════════════════════════════════════════
@@ -27,6 +24,22 @@
    ═══════════════════════════════════════════════════ */
 :root {
   --font-chrome: "JetBrains Mono", monospace;
+  /* Los valores crecen de forma continua y se detienen antes de que una
+     pantalla grande convierta el chrome en el contenido principal. */
+  --frame-inset: clamp(1.25rem, 3vw, 4.5rem);
+  --content-inset: clamp(1.25rem, 5vw, 8rem);
+  --content-block-gap: clamp(3rem, 7vw, 6rem);
+  --section-gap: clamp(2.5rem, 5vw, 5rem);
+  --sidebar-width: clamp(18rem, 20vw, 28rem);
+  --fixed-offset: clamp(2.5rem, 3vw, 4.5rem);
+  --nav-width: clamp(20rem, 24vw, 30rem);
+  --nav-height: clamp(4.5rem, 4vw, 5.75rem);
+  --nav-icon-size: clamp(1.6rem, 1.5vw, 2.35rem);
+  --type-meta: clamp(0.68rem, 0.18vw + 0.62rem, 0.85rem);
+  --type-badge: clamp(0.52rem, 0.08vw + 0.48rem, 0.64rem);
+  --type-reading: clamp(0.88rem, 0.24vw + 0.8rem, 1.1rem);
+  --type-heading: clamp(1.35rem, 0.8vw + 1.1rem, 2.25rem);
+  --type-display: clamp(2.5rem, 7vw, 10rem);
   --border-subtle: color-mix(in srgb, var(--border) 75%, transparent);
   --accent-subtle: color-mix(in srgb, var(--accent) 10%, transparent);
   --surface-glow: color-mix(in srgb, var(--accent) 6%, transparent);
@@ -110,14 +123,9 @@
   /* Derived composites */
   --overlay: rgba(0, 0, 0, 0.75);
 
-  /* Layout — non-theme, mobile base */
+  /* Layout — mobile base */
   --scroll-offset: 60px;
-  --sidebar-width: 22rem;
-  --main-padding: 6rem;
-  --fixed-offset: 3rem;
-  --nav-width: 100%;
-  --nav-height: 3rem;
-  --nav-icon-size: 1.45rem;
+  --main-padding: var(--content-inset);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1004,80 +1012,10 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
-/* ═══════════════════════════════════════════════════
-   LAYOUT — responsive spacing overrides
-   ═══════════════════════════════════════════════════ */
-
-/* Mobile ≥ 480px */
-@media (min-width: 30rem) {
-  :root {
-    --nav-width: 20rem;
-    --nav-height: 4.5rem;
-    --nav-icon-size: 1.6rem;
-  }
-}
-
-/* Tablet ≥ 768px */
-@media (min-width: 48rem) {
-  :root {
-    --nav-icon-size: 1.75rem;
-  }
-}
-
-/* Compact desktop, 960–1279px CSS viewport. */
+/* Compact desktop changes the composition, not the scale. */
 @media (min-width: 60rem) and (max-width: 79.9375rem) {
   :root {
     --sidebar-width: 18rem;
-    --main-padding: 4.5rem;
-    --fixed-offset: 2.5rem;
-    --nav-width: 22rem;
-    --nav-height: 4.75rem;
-    --nav-icon-size: 1.75rem;
-  }
-}
-
-/* Laptop ≥ 1280px */
-@media (min-width: 80rem) {
-  :root {
-    --nav-width: 25rem;
-    --nav-height: 5rem;
-    --nav-icon-size: 2.2rem;
-    --fixed-offset: 3rem;
-    --main-padding: 6rem;
-  }
-}
-
-/* FHD ≥ 1920px */
-@media (min-width: 120rem) {
-  :root {
-    --sidebar-width: 27rem;
-    --nav-width: 30rem;
-    --nav-height: 5.5rem;
-    --nav-icon-size: 2.4rem;
-    --fixed-offset: 3.5rem;
-    --main-padding: 7rem;
-  }
-}
-
-/* QHD ≥ 2560px */
-@media (min-width: 160rem) {
-  :root {
-    --sidebar-width: 32rem;
-    --nav-width: 35rem;
-    --nav-height: 6rem;
-    --fixed-offset: 4rem;
-    --main-padding: 8rem;
-  }
-}
-
-/* UHD 4K ≥ 3840px */
-@media (min-width: 240rem) {
-  :root {
-    --sidebar-width: 37rem;
-    --nav-width: 40rem;
-    --nav-height: 6.5rem;
-    --fixed-offset: 4.5rem;
-    --main-padding: 9rem;
   }
 }
 
@@ -1095,23 +1033,8 @@ footer .nav-panel {
    TYPOGRAPHY & RESET
    ═══════════════════════════════════════════════════ */
 html {
-  font-size: 17px;
+  font-size: clamp(16px, 0.25vw + 13px, 20px);
   scroll-behavior: smooth;
-}
-@media (min-width: 120rem) {
-  html {
-    font-size: 18px;
-  }
-}
-@media (min-width: 160rem) {
-  html {
-    font-size: 20px;
-  }
-}
-@media (min-width: 240rem) {
-  html {
-    font-size: 23px;
-  }
 }
 
 *,
@@ -1179,8 +1102,7 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
-@media (min-width: 80rem),
-  (min-resolution: 1.4dppx) and (min-width: 60rem) and (max-width: 79rem) {
+@media (min-width: 80rem) {
   .main-layout {
     padding: var(--main-padding);
   }
@@ -1424,41 +1346,20 @@ body::after {
 /* Category label — tiny-caps tracking-wide */
 @utility cat-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--type-meta);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: bold;
-  @media (min-width: 80rem) {
-    font-size: 0.72rem;
-  }
-  @media (min-width: 120rem) {
-    font-size: 0.8rem;
-  }
-  @media (min-width: 160rem) {
-    font-size: 0.85rem;
-  }
-  @media (min-width: 240rem) {
-    font-size: 0.95rem;
-  }
 }
 
 @utility chip-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--type-meta);
   letter-spacing: 0.05em;
   line-height: 1.25;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  @media (min-width: 80rem) {
-    font-size: 0.7rem;
-  }
-  @media (min-width: 120rem) {
-    font-size: 0.78rem;
-  }
-  @media (min-width: 160rem) {
-    font-size: 0.875rem;
-  }
 }
 
 @utility skill-chip {
@@ -1483,10 +1384,6 @@ body::after {
     &:hover svg {
       fill: var(--icon-brand, var(--accent));
     }
-  }
-  @media (min-width: 120rem) {
-    padding: 0.4rem 0.75rem;
-    gap: 0.5rem;
   }
 }
 
@@ -1554,7 +1451,9 @@ body::after {
 /* Solid accent fill — primary CTA */
 @utility btn-primary {
   border: 1px solid var(--accent);
-  color: var(--accent-foreground);
+  /* El acento se usa como fondo. Un tono tinta fijo conserva contraste en
+     las paletas claras, donde --accent-foreground puede ser blanco. */
+  color: rgb(8 12 28) !important;
   background-color: var(--accent);
   &:active {
     background-color: color-mix(in srgb, var(--accent) 75%, white);

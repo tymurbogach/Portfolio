@@ -35,23 +35,19 @@ const sections: LabeledSection[] = getLabeledSections(site);
            pt-[4rem] laptop:pt-0 laptop-scaled:pt-0
            laptop:min-h-0 laptop-scaled:min-h-0
            flex flex-col
-           laptop:h-[calc(100vh-12rem)] laptop:max-h-[46rem]
-           laptop-scaled:h-[calc(100vh-9rem)] laptop-scaled:max-h-[44rem]
-           fhd:h-[calc(100vh-14rem)] fhd:max-h-[44rem]
-           qhd:h-[calc(100vh-16rem)] qhd:max-h-[48rem]
-           uhd:h-[calc(100vh-18rem)] uhd:max-h-[60rem]"
+           laptop:h-[min(calc(100vh-12rem),52rem)] laptop-scaled:h-[min(calc(100vh-9rem),52rem)]"
     aria-label="Home"
   >
     <div
       class="flex shrink-0 flex-col gap-3 laptop:flex-row laptop:items-center laptop:justify-between laptop:gap-6
              laptop:pt-[2rem] laptop-scaled:flex-row laptop-scaled:items-center laptop-scaled:justify-between
-             laptop-scaled:gap-6 laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]"
+             laptop-scaled:gap-6 laptop-scaled:pt-[var(--section-gap)]"
     >
       <!-- Label al top — igual que todas las secciones -->
       <div>
         <div class="flex items-center gap-3">
           <h2
-            class="font-chrome text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
+            class="font-chrome text-[var(--type-meta)] tracking-[0.22em] uppercase font-bold m-0 text-glow"
             style="color: var(--accent);"
           >
             &gt; PORTFOLIO.SYS
@@ -59,7 +55,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
           <span
             id="visitors-meter"
             class="flex items-center gap-1.5 opacity-0 transition-opacity duration-500 font-chrome
-                   text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base
+                   text-[0.65rem] laptop:text-[var(--type-meta)]
                    tracking-[0.12em] text-[var(--accent)]"
             aria-label="Unique visitors"
             aria-live="polite"
@@ -87,7 +83,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
     </div>
 
     <!-- Hero fills all remaining space -->
-    <div class="pb-10 laptop:pb-10 laptop-scaled:pb-10 fhd:pb-12 flex-1 min-h-0 flex flex-col">
+    <div class="pb-10 laptop:pb-[var(--section-gap)] laptop-scaled:pb-[var(--section-gap)] flex-1 min-h-0 flex flex-col">
       <Hero hero={heroData} />
     </div>
   </section>
@@ -102,7 +98,7 @@ const sections: LabeledSection[] = getLabeledSections(site);
       <div class="mb-3 laptop:mb-5 laptop-scaled:mb-5">
         <h2
           id={`heading-${section.sectionId}`}
-          class="font-hud text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
+          class="font-hud text-[var(--type-meta)] tracking-[0.22em] uppercase font-bold m-0 text-glow"
           style="color: var(--accent);"
         >
           &gt; {section.sectionLabel.toUpperCase()}

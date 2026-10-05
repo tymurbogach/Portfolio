@@ -79,7 +79,7 @@ const {
   <!-- Bio + CTAs -->
   <div class="flex flex-col shrink-0 w-full">
     <p
-      class="m-0 mb-5 leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl
+      class="m-0 mb-5 leading-[1.75] text-sm laptop:text-[var(--type-reading)]
              text-[var(--muted-foreground)]"
     >
       {subtitle1}
@@ -98,8 +98,9 @@ const {
   </div>
 
   <div
+    data-visual-matrix
     class="shrink-0 w-full text-center font-hud
-           text-[0.66rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
+           text-[0.66rem] laptop:text-[var(--type-meta)]
            tracking-[0.1em] laptop:tracking-[0.16em]
            leading-[1.8] italic text-[var(--foreground-faint)]"
     aria-label={subtitle2}

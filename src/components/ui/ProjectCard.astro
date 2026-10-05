@@ -73,8 +73,8 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
 };
 
 const badgeBase =
-  "font-hud absolute z-20 text-[0.62rem] fhd:text-[0.7rem] qhd:text-[0.78rem] uhd:text-xs " +
-  "tracking-[0.18em] px-2.5 py-1 font-bold uppercase rounded-[var(--radius)]";
+  "font-hud absolute z-20 text-[var(--type-badge)] " +
+  "tracking-[0.08em] px-1.5 py-0.5 font-bold uppercase rounded-[var(--radius)]";
 ---
 
 <Tag
@@ -91,17 +91,17 @@ const badgeBase =
     <span
       class:list={[
         badgeBase,
-        "top-3 left-3 bg-[var(--primary)] text-[var(--primary-foreground)]",
+        "top-2 left-2 bg-[var(--primary)] text-[var(--primary-foreground)]",
       ]}
     >
-      {isDemo ? "● live" : "⌥ src"}
+      {isDemo ? "live" : "src"}
     </span>
 
     {githubStars !== undefined ? (
       <span
         class:list={[
           badgeBase,
-          "top-3 right-3 flex items-center gap-1.5 border border-[var(--border)] bg-[var(--overlay)] text-[var(--accent)]",
+          "top-2 right-2 flex items-center gap-1 border border-[var(--border)] bg-[var(--overlay)] text-[var(--accent)]",
         ]}
         aria-label={`${githubStars} GitHub stars`}
       >
@@ -113,7 +113,7 @@ const badgeBase =
         <span
           class:list={[
             badgeBase,
-            "top-3 right-3 border border-[var(--accent)] text-[var(--accent)] bg-[var(--overlay)]",
+            "top-2 right-2 border border-[var(--accent)] text-[var(--accent)] bg-[var(--overlay)]",
           ]}
         >
           self-hosted
@@ -166,10 +166,10 @@ const badgeBase =
             "transition-opacity duration-300 can-hover:group-hover:opacity-80",
         ]}
       >
-        <span class="font-display text-5xl fhd:text-6xl text-[var(--accent)] opacity-30 leading-none">
+        <span class="font-display text-[clamp(3rem,4vw,4rem)] text-[var(--accent)] opacity-30 leading-none">
           {indexStr}
         </span>
-        <span class="font-hud text-[0.62rem] fhd:text-[0.7rem] tracking-[0.2em] uppercase font-bold text-center px-3 text-[var(--foreground-faint)]">
+        <span class="font-hud text-[var(--type-meta)] tracking-[0.2em] uppercase font-bold text-center px-3 text-[var(--foreground-faint)]">
           {title}
         </span>
       </div>
@@ -177,12 +177,12 @@ const badgeBase =
   </div>
 
   <!-- Content — bottom -->
-  <div class="relative z-[1] flex flex-col flex-1 gap-3 p-4 fhd:p-5 bg-[var(--card)]">
+  <div class="relative z-[1] flex flex-col flex-1 gap-3 p-[clamp(1rem,1.25vw,1.5rem)] bg-[var(--card)]">
     <div class="flex flex-col gap-1.5">
       <div class="flex items-baseline justify-between gap-3">
         <h3
           class:list={[
-            "font-display text-lg mobile:text-xl laptop:text-[1.35rem] fhd:text-2xl qhd:text-3xl uhd:text-4xl",
+            "font-display text-lg mobile:text-xl laptop:text-[var(--type-heading)]",
             "tracking-[0.02em] leading-none m-0",
             link &&
               "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
@@ -192,7 +192,7 @@ const badgeBase =
         </h3>
         {context && (
           <span
-            class="font-hud text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+            class="font-hud text-[var(--type-meta)]
                        tracking-[0.16em] whitespace-nowrap shrink-0 text-[var(--foreground-faint)]"
           >
             {context}
@@ -200,7 +200,7 @@ const badgeBase =
         )}
       </div>
       <p
-        class="text-[0.8rem] fhd:text-[0.9rem] qhd:text-base uhd:text-lg leading-relaxed m-0
+        class="text-[var(--type-reading)] leading-relaxed m-0
                 line-clamp-3 text-[var(--muted-foreground)]"
       >
         {description}
@@ -222,7 +222,6 @@ const badgeBase =
                     size={13}
                     label={tag}
                     tone="mono"
-                    class="fhd:!w-4 fhd:!h-4 qhd:!w-5 qhd:!h-5"
                   />
                 )}
                 <span class="chip-label">{tag}</span>
@@ -236,14 +235,14 @@ const badgeBase =
     {link && (
       <div class="flex items-center justify-between gap-3 mt-auto pt-1">
         <span
-          class="font-hud min-w-0 text-[0.65rem] fhd:text-[0.72rem] qhd:text-[0.8rem] uhd:text-sm
+          class="font-hud min-w-0 text-[var(--type-meta)]
                      tracking-[0.06em] truncate text-[var(--foreground-faint)]"
         >
           {host}
         </span>
         <span
           class="font-hud flex items-center gap-1.5 shrink-0
-                 text-[0.68rem] fhd:text-[0.78rem] qhd:text-[0.85rem] uhd:text-base
+                 text-[var(--type-meta)]
                  tracking-[0.2em] uppercase font-bold text-[var(--accent)]"
         >
           {isDemo ? "demo" : "code"}

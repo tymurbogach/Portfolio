@@ -7,6 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "themes:check": "node scripts/check-theme-contrast.mjs",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
     "@react-pdf/renderer": "^4.5.1",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",

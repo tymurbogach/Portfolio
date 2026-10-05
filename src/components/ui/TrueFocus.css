@@ -4,29 +4,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: clamp(3rem, 4vw, 7rem);
   padding-block: 0.35em;
   width: 100%;
   outline: none;
   user-select: none;
-}
-
-@media (min-width: 80rem) {
-  .focus-container {
-    gap: 4rem;
-  }
-}
-
-@media (min-width: 120rem) {
-  .focus-container {
-    gap: 5rem;
-  }
-}
-
-@media (min-width: 160rem) {
-  .focus-container {
-    gap: 7rem;
-  }
 }
 
 .focus-word {
@@ -53,18 +35,6 @@
 @media (min-width: 80rem) {
   .focus-word {
     font-size: clamp(5rem, 6.5vw, 12rem);
-  }
-}
-
-@media (min-width: 120rem) {
-  .focus-word {
-    font-size: clamp(7rem, 7.5vw, 14rem);
-  }
-}
-
-@media (min-width: 160rem) {
-  .focus-word {
-    font-size: clamp(10rem, 8vw, 20rem);
   }
 }
 

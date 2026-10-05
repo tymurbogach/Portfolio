@@ -8,14 +8,8 @@ const { nameDisplay, role } = Astro.props;
 ---
 
 <div
-  class="nav-panel w-full h-[3rem] cursor-pointer
-           mobile:w-[20rem] mobile:h-[4.5rem]
-           tablet:w-[20rem] tablet:h-[4.5rem]
-           laptop-scaled:w-[22rem] laptop-scaled:h-[4.75rem]
-           laptop:w-[25rem] laptop:h-[5rem]
-         fhd:w-[30rem] fhd:h-[5.5rem]
-         qhd:w-[35rem] qhd:h-[6rem]
-         uhd:w-[40rem] uhd:h-[6.5rem]"
+  class="nav-panel cursor-pointer"
+  style="width: var(--nav-width); height: var(--nav-height);"
 >
   <a
     href="/"
@@ -25,9 +19,9 @@ const { nameDisplay, role } = Astro.props;
   >
     <h1
       class="font-bold font-signature m-0 whitespace-nowrap
-               tracking-[0.9rem] laptop:tracking-[0.7rem] fhd:tracking-[0.8rem] qhd:tracking-[0.9rem] uhd:tracking-[1.1rem]
+               tracking-[0.6rem] laptop:tracking-[clamp(0.7rem,0.7vw,1rem)]
                text-xl mobile:text-xl tablet:text-2xl laptop-scaled:text-[1.65rem] laptop-scaled:tracking-[0.48rem] laptop:text-3xl
-             fhd:text-4xl qhd:text-5xl uhd:text-6xl"
+             laptop:text-[clamp(1.875rem,1.4vw,3rem)]"
     >
       {nameDisplay}
     </h1>
@@ -37,7 +31,7 @@ const { nameDisplay, role } = Astro.props;
         aria-hidden="true"
       ></span>
       <p
-        class="font-hud text-[0.62rem] mobile:text-[0.65rem] laptop:text-[0.7rem] fhd:text-sm
+        class="font-hud text-[0.62rem] mobile:text-[0.65rem] laptop:text-[var(--type-meta)]
                tracking-[0.22em] uppercase m-0 text-[var(--foreground-faint)] whitespace-nowrap flex-shrink-0"
       >
         {role}
