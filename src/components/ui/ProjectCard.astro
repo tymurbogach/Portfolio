@@ -175,24 +175,26 @@ const badgeBase =
 
   <!-- Content — bottom -->
   <div class="project-card__body relative z-[1] flex-1 bg-[var(--card)]">
-    <div class="project-card__title-slot">
-      <h3
-        class:list={[
-          "project-card__title font-display text-lg mobile:text-xl laptop:text-[var(--type-heading)]",
-          "tracking-[0.02em] leading-none m-0",
-          link &&
-            "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
-        ]}
-        title={title}
-      >
-        {title}
-      </h3>
-    </div>
+    <div class="project-card__header">
+      <div class="project-card__title-slot">
+        <h3
+          class:list={[
+            "project-card__title font-display font-semibold text-[1.35rem] mobile:text-[1.6rem] laptop:text-[calc(var(--type-heading)*1.05)]",
+            "tracking-[0.01em] leading-[1.05] text-balance m-0",
+            link &&
+              "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
+          ]}
+          title={title}
+        >
+          {title}
+        </h3>
+      </div>
 
-    <div class="project-card__meta" aria-label="Project metadata">
-      {year && <span>{year}</span>}
-      {year && role && <span aria-hidden="true">·</span>}
-      {role && <span>{role}</span>}
+      <div class="project-card__meta" aria-label="Project metadata">
+        {year && <span>{year}</span>}
+        {year && role && <span aria-hidden="true">·</span>}
+        {role && <span>{role}</span>}
+      </div>
     </div>
 
     <p class="project-card__description text-[var(--muted-foreground)]">
@@ -227,8 +229,8 @@ const badgeBase =
     {link && (
       <div class="project-card__footer">
         <span
-          class="font-hud min-w-0 text-[var(--type-meta)]
-                     tracking-[0.06em] truncate text-[var(--foreground-faint)]"
+          class="font-hud min-w-0 font-normal text-[var(--type-meta)]
+                     tracking-[0.06em] truncate text-[var(--muted-foreground)]"
         >
           {host}
         </span>

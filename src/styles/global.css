@@ -1799,14 +1799,21 @@ body::after {
 .project-card__body {
   display: grid;
   grid-template-rows:
-    calc(var(--type-heading) * 2)
-    calc(var(--type-meta) * 1.5)
+    calc(var(--type-heading) * 2.25 + var(--type-meta) * 1.5 + 0.3rem)
     calc(var(--type-reading) * 4.875)
     minmax(0, 1fr)
     calc(var(--type-meta) * 1.5);
   gap: clamp(0.5rem, 1.5cqi, 0.75rem);
   height: clamp(15rem, 57cqi, 21rem);
   padding: clamp(1rem, 4cqi, 1.5rem);
+}
+
+.project-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .project-card__title-slot,
