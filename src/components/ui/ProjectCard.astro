@@ -35,8 +35,6 @@ const isDemo = type === "demo";
 const indexStr = String(index).padStart(2, "0");
 const visibleTags = tags.filter((t) => t !== "Self-hosted");
 
-/* "2025 · full stack" — el contexto que la ficha no daba. */
-const context = [year, role].filter(Boolean).join(" · ");
 /* Dominio limpio como pie de la tarjeta: dice a dónde lleva antes de pulsar. */
 const host = link ? new URL(link).hostname.replace(/^www\./, "") : "";
 
@@ -73,14 +71,13 @@ const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
 };
 
 const badgeBase =
-  "font-hud absolute z-20 text-[var(--type-badge)] " +
-  "tracking-[0.08em] px-1.5 py-0.5 font-bold uppercase rounded-[var(--radius)]";
+  "project-badge font-hud absolute z-20 uppercase rounded-[var(--radius)]";
 ---
 
 <Tag
   {...linkAttrs}
   class:list={[
-    "relative group flex flex-col overflow-hidden rounded-lg bg-[var(--card)]",
+    "project-card relative group flex h-full flex-col overflow-hidden rounded-lg bg-[var(--card)]",
     "border border-[var(--border)] transition-[border-color,box-shadow,transform] duration-300",
     link &&
       "can-hover:hover:border-[var(--accent)] can-hover:hover:-translate-y-1 hover-glow",
@@ -91,7 +88,7 @@ const badgeBase =
     <span
       class:list={[
         badgeBase,
-        "top-2 left-2 bg-[var(--primary)] text-[var(--primary-foreground)]",
+        "top-1.5 left-1.5 border border-[color-mix(in_srgb,var(--primary)_65%,transparent)] bg-[color-mix(in_srgb,var(--background)_72%,transparent)] text-[var(--primary)]",
       ]}
     >
       {isDemo ? "live" : "src"}
@@ -101,7 +98,7 @@ const badgeBase =
       <span
         class:list={[
           badgeBase,
-          "top-2 right-2 flex items-center gap-1 border border-[var(--border)] bg-[var(--overlay)] text-[var(--accent)]",
+          "top-1.5 right-1.5 flex items-center gap-0.5 border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--background)_72%,transparent)] text-[var(--accent)]",
         ]}
         aria-label={`${githubStars} GitHub stars`}
       >
@@ -113,7 +110,7 @@ const badgeBase =
         <span
           class:list={[
             badgeBase,
-            "top-2 right-2 border border-[var(--accent)] text-[var(--accent)] bg-[var(--overlay)]",
+            "top-1.5 right-1.5 border border-[color-mix(in_srgb,var(--accent)_55%,transparent)] text-[var(--accent)] bg-[color-mix(in_srgb,var(--background)_72%,transparent)]",
           ]}
         >
           self-hosted
@@ -177,40 +174,35 @@ const badgeBase =
   </div>
 
   <!-- Content — bottom -->
-  <div class="relative z-[1] flex flex-col flex-1 gap-3 p-[clamp(1rem,1.25vw,1.5rem)] bg-[var(--card)]">
-    <div class="flex flex-col gap-1.5">
-      <div class="flex items-baseline justify-between gap-3">
-        <h3
-          class:list={[
-            "font-display text-lg mobile:text-xl laptop:text-[var(--type-heading)]",
-            "tracking-[0.02em] leading-none m-0",
-            link &&
-              "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
-          ]}
-        >
-          {title}
-        </h3>
-        {context && (
-          <span
-            class="font-hud text-[var(--type-meta)]
-                       tracking-[0.16em] whitespace-nowrap shrink-0 text-[var(--foreground-faint)]"
-          >
-            {context}
-          </span>
-        )}
-      </div>
-      <p
-        class="text-[var(--type-reading)] leading-relaxed m-0
-                line-clamp-3 text-[var(--muted-foreground)]"
+  <div class="project-card__body relative z-[1] flex-1 bg-[var(--card)]">
+    <div class="project-card__title-slot">
+      <h3
+        class:list={[
+          "project-card__title font-display text-lg mobile:text-xl laptop:text-[var(--type-heading)]",
+          "tracking-[0.02em] leading-none m-0",
+          link &&
+            "transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]",
+        ]}
+        title={title}
       >
-        {description}
-      </p>
+        {title}
+      </h3>
     </div>
 
+    <div class="project-card__meta" aria-label="Project metadata">
+      {year && <span>{year}</span>}
+      {year && role && <span aria-hidden="true">·</span>}
+      {role && <span>{role}</span>}
+    </div>
+
+    <p class="project-card__description text-[var(--muted-foreground)]">
+      {description}
+    </p>
+
     {visibleTags.length > 0 && (
-      <div class="flex flex-col gap-2 pt-3 border-t border-[var(--border-subtle)]">
+      <div class="project-card__tech">
         <span class="cat-label text-[var(--foreground-faint)]">Built with</span>
-        <div class="flex flex-wrap gap-1.5">
+        <div class="project-card__tags">
           {visibleTags.map((tag) => {
             const entry = TAG_SLUGS[tag];
             return (
@@ -233,7 +225,7 @@ const badgeBase =
     )}
 
     {link && (
-      <div class="flex items-center justify-between gap-3 mt-auto pt-1">
+      <div class="project-card__footer">
         <span
           class="font-hud min-w-0 text-[var(--type-meta)]
                      tracking-[0.06em] truncate text-[var(--foreground-faint)]"
