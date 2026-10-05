@@ -1,7 +1,6 @@
 ---
 import Button from "../../components/ui/Button.astro";
 import MatrixSequence from "../../components/ui/MatrixSequence";
-import TrueFocus from "../../components/ui/TrueFocus";
 import type { HeroData } from "../../lib/content";
 
 interface Props {
@@ -15,28 +14,25 @@ const {
 
 <div class="flex flex-col w-full flex-1 min-h-0 justify-center">
   <!-- Title -->
-  <div class="shrink-0 w-full mb-8 tablet:mb-6 laptop:mb-5 fhd:mb-5 qhd:mb-6">
-    <TrueFocus
-      client:visible
-      sentence={`${title1} ${title2}`}
-      stacked={true}
-      blurAmount={3}
-      animationDuration={0.6}
-      pauseBetweenAnimations={1.5}
-    />
+  <div class="shrink-0 w-full mb-6 laptop:mb-8 fhd:mb-8">
+    <h1 class="hero-forge-lockup">
+      <span class="hero-forge-word">{title1}</span>
+      <span class="hero-deploy-word">{title2}</span>
+      <span class="hero-forge-scan" aria-hidden="true"></span>
+    </h1>
   </div>
 
   <!-- Bio + CTAs + matrix -->
-  <div class="flex flex-col gap-3 laptop:gap-2.5 shrink-0 w-full">
+  <div class="flex flex-col shrink-0 w-full">
     <p
-      class="leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl m-0
+      class="m-0 mb-5 leading-[1.75] text-sm laptop:text-base fhd:text-lg qhd:text-xl uhd:text-2xl
              text-[var(--muted-foreground)]"
     >
       {subtitle1}
     </p>
 
     {cta && (
-      <div class="grid w-full max-w-[34rem] grid-cols-1 gap-3 min-[34rem]:grid-cols-2">
+      <div class="mb-7 grid w-full max-w-[34rem] grid-cols-1 gap-3 min-[34rem]:grid-cols-2">
         <Button href={cta.primaryHref} variant="primary" class="w-full">
           {cta.primary}
         </Button>
@@ -47,7 +43,7 @@ const {
     )}
 
     <div
-      class="text-center font-hud
+      class="w-full text-center font-hud
              text-[0.66rem] laptop:text-[0.72rem] fhd:text-[0.8rem] qhd:text-sm uhd:text-base
              tracking-[0.1em] laptop:tracking-[0.16em]
              leading-[1.8] italic text-[var(--foreground-faint)]"

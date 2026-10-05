@@ -1283,6 +1283,80 @@ body::after {
   font-family: "Poiret One", cursive;
 }
 
+/* Hero title: the production verb leads, while the deployment label anchors it.
+   The scan moves inside a fixed compositor layer, so it never changes layout. */
+.hero-forge-lockup {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  width: 100%;
+  margin: 0;
+  padding-block: 0.16em 0.28em;
+  overflow: clip;
+  font-family: "Poiret One", cursive;
+  font-weight: 400;
+  line-height: 0.8;
+  isolation: isolate;
+}
+
+.hero-forge-word {
+  color: var(--foreground);
+  font-size: clamp(3.5rem, 9vw, 11rem);
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.hero-deploy-word {
+  margin-block-end: 0.12em;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.75vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hero-forge-scan {
+  position: absolute;
+  z-index: -1;
+  top: 68%;
+  left: 0;
+  width: 28%;
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 0.75rem color-mix(in srgb, var(--accent) 65%, transparent);
+  opacity: 0;
+  transform: translateX(-140%);
+  animation: hero-forge-scan 4.5s ease-in-out infinite;
+}
+
+@keyframes hero-forge-scan {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateX(-140%);
+  }
+  32%,
+  68% {
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: translateX(460%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-forge-scan {
+    opacity: 0.35;
+    transform: translateX(130%);
+    animation: none;
+  }
+}
+
 /* Shared panel — NavBar, NameCard, SocialLinks, ChatToggle */
 @utility nav-panel {
   background: var(--card);

@@ -42,96 +42,99 @@ const sections: LabeledSection[] = getLabeledSections(site);
            uhd:h-[calc(100vh-18rem)] uhd:max-h-[60rem]"
     aria-label="Home"
   >
-    <!-- Label al top — igual que todas las secciones -->
     <div
-      class="mb-3 laptop:mb-4 laptop-scaled:hidden shrink-0
-                laptop:pt-[2rem] laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]"
+      class="flex shrink-0 flex-col gap-3 laptop:flex-row laptop:items-center laptop:justify-between laptop:gap-6
+             laptop:pt-[2rem] laptop-scaled:flex-row laptop-scaled:items-center laptop-scaled:justify-between
+             laptop-scaled:gap-6 laptop-scaled:pt-[2rem] fhd:pt-[2.5rem]"
     >
-      <h2
-        class="font-hud text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
-        style="color: var(--accent);"
-      >
-        &gt; PORTFOLIO.SYS
-      </h2>
-      <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3 laptop-scaled:mt-3" />
-    </div>
+      <!-- Label al top — igual que todas las secciones -->
+      <div>
+        <h2
+          class="font-hud text-[0.85rem] fhd:text-[0.95rem] qhd:text-base tracking-[0.22em] uppercase font-bold m-0 text-glow"
+          style="color: var(--accent);"
+        >
+          &gt; PORTFOLIO.SYS
+        </h2>
+        <div class="text-gradient text-glow gradient-line mt-2 laptop:mt-3 laptop-scaled:mt-3" />
+      </div>
 
-    <!-- Controls: theme selector + dark/light toggle + visitors -->
-    <div class="flex justify-end items-center gap-2 shrink-0 w-full mb-3 laptop:mb-4 laptop-scaled:mb-4">
-      <button
-        id="color-theme-btn"
-        class="inline-flex items-center cursor-pointer
+      <!-- Controls: theme selector + dark/light toggle + visitors -->
+      <div class="flex justify-end items-center gap-2 w-full laptop:w-auto laptop-scaled:w-auto">
+        <button
+          id="color-theme-btn"
+          class="inline-flex items-center cursor-pointer
                px-2.5 py-1.5 laptop:px-3 fhd:px-3.5
                rounded-full border border-[var(--border)]
                bg-[var(--card)] opacity-70 can-hover:hover:opacity-100 active:opacity-100
                transition-all duration-200 select-none"
-        title="Switch color theme"
-        aria-label="Switch color theme"
-        type="button"
-      >
-        <span
-          id="theme-name-label"
-          class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
-                 tracking-[0.24em] uppercase font-bold"
-          style="color: var(--accent);"
+          title="Switch color theme"
+          aria-label="Switch color theme"
+          type="button"
         >
-          CYBER
-        </span>
-      </button>
+          <span
+            id="theme-name-label"
+            class="font-hud text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem]
+                 tracking-[0.24em] uppercase font-bold"
+            style="color: var(--accent);"
+          >
+            CYBER
+          </span>
+        </button>
 
-      <button
-        id="theme-toggle"
-        class="inline-flex items-center justify-center cursor-pointer
+        <button
+          id="theme-toggle"
+          class="inline-flex items-center justify-center cursor-pointer
                p-[0.35rem] laptop:p-[0.45rem] fhd:p-[0.5rem]
                rounded-full border border-[var(--border)]
                bg-[var(--card)] opacity-70 can-hover:hover:opacity-100 active:opacity-100
                transition-opacity duration-200 select-none"
-        title="Toggle dark/light mode"
-        aria-label="Toggle dark/light mode"
-        type="button"
-      >
-        <svg
-          id="icon-dark"
-          class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          style="color: var(--accent);"
+          title="Toggle dark/light mode"
+          aria-label="Toggle dark/light mode"
+          type="button"
         >
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-        <svg
-          id="icon-light"
-          class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          style="display:none; color: var(--accent);"
-        >
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      </button>
+          <svg
+            id="icon-dark"
+            class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="color: var(--accent);"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg
+            id="icon-light"
+            class="w-[0.75rem] h-[0.75rem] laptop:w-[0.85rem] laptop:h-[0.85rem] fhd:w-[0.95rem] fhd:h-[0.95rem]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="display:none; color: var(--accent);"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
 
-      <span
-        id="stat-visitors"
-        class="opacity-0 transition-opacity duration-500 font-hud font-normal
+        <span
+          id="stat-visitors"
+          class="opacity-0 transition-opacity duration-500 font-hud font-normal
                    text-[0.65rem] laptop:text-[0.68rem] fhd:text-[0.75rem] qhd:text-sm uhd:text-base
                    tracking-[0.22em] uppercase"
-        style="color: var(--accent);"
-      ></span>
+          style="color: var(--accent);"
+        ></span>
+      </div>
     </div>
 
     <!-- Hero fills all remaining space -->
-    <div class="pb-[3rem] laptop:pb-[clamp(4rem,8vh,6rem)] laptop-scaled:pb-[clamp(4rem,8vh,6rem)] flex-1 min-h-0 flex flex-col">
+    <div class="pb-10 laptop:pb-10 laptop-scaled:pb-10 fhd:pb-12 flex-1 min-h-0 flex flex-col">
       <Hero hero={heroData} />
     </div>
   </section>
