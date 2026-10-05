@@ -1449,6 +1449,8 @@ body::after {
 
 /* Interactive nav cell — hover + tap feedback */
 @utility nav-cell {
+  --nav-feedback-background: var(--secondary);
+  --nav-feedback-foreground: var(--secondary-foreground);
   background: transparent;
   border: none;
   color: var(--foreground);
@@ -1471,8 +1473,8 @@ body::after {
   }
   @variant can-hover {
     &:hover {
-      background-color: var(--secondary);
-      color: var(--secondary-foreground);
+      background-color: var(--nav-feedback-background);
+      color: var(--nav-feedback-foreground);
       transform: scale(1.05);
       box-shadow:
         0 4px 6px -1px rgb(0 0 0 / 0.1),
@@ -1480,7 +1482,7 @@ body::after {
       z-index: 10;
     }
     &:hover .nav-icon {
-      background-color: var(--secondary-foreground);
+      background-color: var(--nav-feedback-foreground);
       opacity: 1;
     }
   }
@@ -1616,16 +1618,18 @@ body::after {
 @keyframes nav-tap {
   0%,
   50% {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-  }
-  100% {
-    background-color: transparent;
-    color: var(--foreground);
+    background-color: var(--nav-feedback-background, var(--secondary));
+    color: var(--nav-feedback-foreground, var(--secondary-foreground));
   }
 }
 .nav-tap-pressed {
   animation: nav-tap 1s ease-out !important;
+  background-color: var(--nav-feedback-background, var(--secondary)) !important;
+  color: var(--nav-feedback-foreground, var(--secondary-foreground)) !important;
+}
+.nav-tap-pressed .nav-icon {
+  background-color: var(--nav-feedback-foreground, var(--secondary-foreground)) !important;
+  opacity: 1 !important;
 }
 
 @keyframes namecard-tap {
