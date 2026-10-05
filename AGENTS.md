@@ -26,7 +26,7 @@ Cuando el usuario diga explícitamente `deploy` para este portfolio:
 1. Revisa los cambios y ejecuta `npm run check` y `npm run build`.
 2. Si hay cambios del trabajo pendientes, crea un commit convencional en español. No crees commits vacíos.
 3. Ejecuta `git push origin master`.
-4. Ejecuta `ssh pi@192.168.18.18 'deploy portfolio'`.
+4. Ejecuta `ssh pi@192.168.18.18 '/home/pi/docker/scripts/deploy portfolio'`.
 
 Detén el proceso e informa del error si falla una comprobación, el commit, el push o el comando remoto.
 
