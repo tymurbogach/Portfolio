@@ -18,7 +18,7 @@
       "location": "Murcia, España",
       "period": "2025",
       "bullets": [
-        "Desarrollo de aplicación móvil Android utilizando Android Studio y Java.",
+        "Desarrollo de una aplicación Android en producción utilizando Android Studio y Java.",
         "Diseño de flujos UI/UX e integración de APIs REST para la gestión de flotas.",
         "Diagnóstico y resolución de bugs en la pila Android/Java; gestión de infraestructura FTP/SFTP para la entrega segura de ficheros a clientes.",
         "Generación y firma de APKs para distribución interna.",
@@ -27,7 +27,7 @@
     },
     {
       "company": "Infraestructura Personal (Homelab)",
-      "role": "DevOps / SysAdmin",
+      "role": "Proyecto personal · DevOps / SysAdmin",
       "location": "Remoto",
       "period": "2022 — presente",
       "bullets": [
@@ -83,7 +83,7 @@
         "Ruso — Nativo",
         "Ucraniano — Nativo",
         "Español — Fluido",
-        "Inglés — Intermedio Técnico"
+        "Inglés — B2 oral autoevaluado; comprensión técnica superior"
       ]
     }
   ],
@@ -198,7 +198,7 @@
   ],
   "labels": {
     "summary": "Perfil Profesional",
-    "experience": "Experiencia Profesional",
+    "experience": "Experiencia y proyectos",
     "education": "Formación",
     "references": "Referencias"
   },

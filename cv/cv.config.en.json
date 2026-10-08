@@ -18,7 +18,7 @@
       "location": "Murcia, Spain",
       "period": "2025",
       "bullets": [
-        "Developed Android mobile application using Android Studio and Java.",
+        "Developed a production Android application using Android Studio and Java.",
         "Designed UI/UX flows and integrated REST APIs for fleet management features.",
         "Diagnosed and resolved bugs across the Android/Java stack; managed FTP/SFTP infrastructure for secure client file delivery.",
         "Built and signed APK releases for internal distribution.",
@@ -27,7 +27,7 @@
     },
     {
       "company": "Personal Infrastructure (Homelab)",
-      "role": "DevOps / SysAdmin",
+      "role": "Personal project · DevOps / SysAdmin",
       "location": "Remote",
       "period": "2022 — present",
       "bullets": [
@@ -83,7 +83,7 @@
         "Russian — Native",
         "Ukrainian — Native",
         "Spanish — Fluent",
-        "English — Intermediate (Technical)"
+        "English — self-assessed B2 speaking; stronger technical comprehension"
       ]
     }
   ],
@@ -193,6 +193,12 @@
       "email": "Tatiana.perez@tdi-data.com"
     }
   ],
+  "labels": {
+    "summary": "Summary",
+    "experience": "Experience & Projects",
+    "education": "Education",
+    "references": "References"
+  },
   "theme": {
     "primary": "#131310",
     "accent": "#00B89A",
