@@ -14,8 +14,8 @@
     "themes:check": "node scripts/check-theme-contrast.mjs",
     "astro": "astro",
     "cv:pdf": "node scripts/cv/generate-all.mjs",
-    "cv:pdf:en": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.en.json public/cv.pdf",
-    "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/cv-es.pdf"
+    "cv:pdf:en": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.en.json public/TymurBogach_CV_EN.pdf",
+    "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/TymurBogach_CV_ES.pdf"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.6",
