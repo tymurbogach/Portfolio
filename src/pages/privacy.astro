@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const contactEmail = "tymurbogach@gmail.com";
+const updatedAt = "October 12, 2026";
+---
+
+<Layout
+  title="Privacy Policy"
+  description="Privacy policy for LazyTripZ and JobPilot services operated by Tymur Bogach."
+>
+  <article class="mx-auto w-full max-w-4xl py-6 laptop:py-12 laptop-scaled:py-12">
+    <header class="mb-10 border-b border-[var(--border)] pb-8">
+      <p class="font-hud mb-3 text-xs font-bold tracking-[0.35em] text-[var(--foreground-faint)] uppercase">
+        Homelab services
+      </p>
+      <h1 class="mb-4 text-4xl leading-tight font-bold text-[var(--foreground)] mobile:text-5xl">
+        Privacy Policy
+      </h1>
+      <p class="m-0 text-sm text-[var(--foreground-faint)]">
+        Last updated: {updatedAt}
+      </p>
+    </header>
+
+    <div class="space-y-10 text-[0.95rem] leading-7 text-[var(--muted-foreground)] mobile:text-base">
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          Who operates these services
+        </h2>
+        <p>
+          Tymur Bogach operates LazyTripZ and JobPilot. These services use the
+          Homelab Google OAuth project. For privacy questions or data deletion
+          requests, email
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href={`mailto:${contactEmail}`}
+          >
+            {contactEmail}
+          </a>
+          .
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          Data used by LazyTripZ
+        </h2>
+        <p>
+          LazyTripZ uses Google Sign-In to authenticate users. It receives your
+          Google account identifier, name, email address, and profile picture.
+          It uses this data to create and secure your account. LazyTripZ also
+          stores travel information that you submit to the service.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          Data used by JobPilot
+        </h2>
+        <p>
+          JobPilot requests read-only access to Gmail after you connect an
+          account. It reads recent message metadata to identify job-related
+          messages. This data can include the sender, subject, date, message and
+          thread identifiers, and a short message snippet. JobPilot does not
+          send, edit, or delete your Gmail messages.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          How Google user data is handled
+        </h2>
+        <p>
+          Google account data is used only to provide the features described in
+          this policy. OAuth tokens are encrypted before storage. The services
+          do not sell Google user data, use it for advertising, or share it with
+          unrelated third parties.
+        </p>
+        <p class="mt-4">
+          The use and transfer of information received from Google APIs follows
+          the
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href="https://developers.google.com/terms/api-services-user-data-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google API Services User Data Policy
+          </a>
+          , including its Limited Use requirements.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          Storage and security
+        </h2>
+        <p>
+          The services run on private, self-hosted infrastructure. Access is
+          restricted to the service operator. Reasonable technical safeguards
+          protect stored data, but no internet service can guarantee absolute
+          security.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          Retention and deletion
+        </h2>
+        <p>
+          Data is kept only while it supports an active account or the service's
+          stated purpose. Disconnecting Gmail stops future access through
+          JobPilot. Previously imported message metadata can remain until it is
+          deleted. You can request deletion of your account, OAuth connection,
+          and stored service data by emailing
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href={`mailto:${contactEmail}`}
+          >
+            {contactEmail}
+          </a>
+          .
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          Policy changes
+        </h2>
+        <p>
+          This page will show material changes to this policy. The date at the
+          top shows the latest revision.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>
