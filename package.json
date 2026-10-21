@@ -15,7 +15,8 @@
     "astro": "astro",
     "cv:pdf": "node scripts/cv/generate-all.mjs",
     "cv:pdf:en": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.en.json public/TymurBogach_CV_EN.pdf",
-    "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/TymurBogach_CV_ES.pdf"
+    "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/TymurBogach_CV_ES.pdf",
+    "cv:jobpilot": "node scripts/cv/fetch-from-jobpilot.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.6",
