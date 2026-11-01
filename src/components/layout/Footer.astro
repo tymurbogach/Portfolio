@@ -2,6 +2,17 @@
 import SocialLinks from "../ui/SocialLinks.astro";
 ---
 
-<footer class="w-full h-auto flex flex-row items-center justify-center m-0">
-  <SocialLinks />
+<footer class="w-full h-auto flex flex-row items-center m-0">
+  <div class="min-w-0 flex-1">
+    <SocialLinks />
+  </div>
+  <a
+    href="/privacy"
+    class="font-hud flex h-[var(--nav-height)] w-18 shrink-0 items-center justify-center
+           border-l border-[var(--border)] text-[0.7rem] font-medium tracking-[0.08em]
+           text-[var(--foreground-faint)] uppercase transition-colors duration-200
+           can-hover:hover:text-[var(--foreground)]"
+  >
+    Privacy
+  </a>
 </footer>
