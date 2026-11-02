@@ -160,26 +160,23 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
     </div>
   </form>
 
-  <!-- Bot hint -->
-  <p
-    class="text-center font-hud text-[0.65rem] laptop:text-[var(--type-meta)]
-            tracking-[0.18em] leading-[2] text-[var(--foreground-faint)] m-0 uppercase"
-  >
-    Or ask the bot running locally on my cluster &nbsp;
-    <span class="font-mono text-[var(--accent)]">↘</span>
-  </p>
-
-  <div class="border-t border-[var(--border)] pt-5">
-    <p class="font-hud mb-2 text-[0.7rem] font-bold tracking-[0.2em] text-[var(--foreground-faint)] uppercase">
-      Legal
+  <div class="flex flex-col items-center gap-2 text-center">
+    <!-- Bot hint -->
+    <p
+      class="font-hud m-0 text-[0.65rem] leading-[2] tracking-[0.18em]
+             text-[var(--foreground-faint)] uppercase laptop:text-[var(--type-meta)]"
+    >
+      Or ask the bot running locally on my cluster &nbsp;
+      <span class="font-mono text-[var(--accent)]">↘</span>
     </p>
+
     <a
       href="/privacy"
-      class="inline-flex items-center gap-2 text-sm font-medium text-[var(--accent)]
-             underline underline-offset-4 transition-colors duration-200
-             can-hover:hover:text-[var(--secondary)]"
+      class="font-hud text-[0.7rem] tracking-[0.08em] text-[var(--foreground-faint)]
+             transition-colors duration-200 can-hover:hover:text-[var(--foreground)]
+             can-hover:hover:underline can-hover:hover:underline-offset-4"
     >
-      Privacy Policy <span aria-hidden="true">↗</span>
+      Privacy policy
     </a>
   </div>
 </div>
