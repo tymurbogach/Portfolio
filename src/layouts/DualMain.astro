@@ -73,7 +73,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
          se pintan una vez y el scroll vuelve a ser puro compositor.
          Van al final para que pinten sobre el contenido sin depender de z-index. -->
     <div
-      class="pointer-events-none absolute inset-x-0 top-0 h-12
+      class="pointer-events-none absolute inset-x-0 top-0 h-6 laptop:h-12 
              bg-linear-to-b from-[var(--background)] to-transparent"
       aria-hidden="true"
     />
