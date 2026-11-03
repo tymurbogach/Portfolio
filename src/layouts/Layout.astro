@@ -191,7 +191,7 @@ const THEME_COLOR = "rgb(18, 11, 6)";
     </div>
 
     <div
-      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+      class="hidden laptop:flex laptop-scaled:flex fixed z-40 items-center gap-4"
       style="bottom: var(--fixed-offset); right: var(--fixed-offset);"
     >
       <ChatToggle variant="panel" />
@@ -199,6 +199,22 @@ const THEME_COLOR = "rgb(18, 11, 6)";
 
     <!-- Mobile chat FAB — visible only below laptop breakpoint -->
     <ChatToggle variant="fab" />
+
+    <a
+      href="/privacy"
+      class="fixed z-40 left-1/2 -translate-x-1/2
+             bottom-[4rem] mobile:bottom-[6rem]
+             laptop:left-[calc(var(--sidebar-width)+(100vw-var(--sidebar-width))/2)]
+             laptop-scaled:left-[calc(var(--sidebar-width)+(100vw-var(--sidebar-width))/2)]
+             laptop:bottom-[calc(var(--fixed-offset)+var(--nav-height)/2)]
+             laptop-scaled:bottom-[calc(var(--fixed-offset)+var(--nav-height)/2)]
+             laptop:-translate-y-1/2 laptop-scaled:-translate-y-1/2
+             font-hud text-[0.7rem] tracking-[0.08em] text-[var(--foreground-faint)]
+             transition-colors duration-200 can-hover:hover:text-[var(--foreground)]
+             can-hover:hover:underline can-hover:hover:underline-offset-4"
+    >
+      Privacy policy
+    </a>
 
     <ChatWidget />
 
