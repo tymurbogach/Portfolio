@@ -2,17 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 
 const contactEmail = "tymurbogach@gmail.com";
-const updatedAt = "November 3, 2026";
+const updatedAt = "November 4, 2026";
 ---
 
 <Layout
   title="Privacy Policy"
-  description="Privacy policy for the portfolio site operated by Tymur Bogach."
+  description="Privacy policy for Nastymur services operated by Tymur Bogach."
 >
   <article class="mx-auto w-full max-w-4xl py-6 laptop:py-12 laptop-scaled:py-12">
     <header class="mb-10 border-b border-[var(--border)] pb-8">
       <p class="font-hud mb-3 text-xs font-bold tracking-[0.35em] text-[var(--foreground-faint)] uppercase">
-        Portfolio
+        Nastymur
       </p>
       <h1 class="mb-4 text-4xl leading-tight font-bold text-[var(--foreground)] mobile:text-5xl">
         Privacy Policy
@@ -25,11 +25,12 @@ const updatedAt = "November 3, 2026";
     <div class="space-y-10 text-[0.95rem] leading-7 text-[var(--muted-foreground)] mobile:text-base">
       <section>
         <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
-          Who operates this site
+          Who operates these services
         </h2>
         <p>
-          Tymur Bogach operates this portfolio site. For privacy questions or
-          data deletion requests, email
+          Tymur Bogach operates Nastymur services: this portfolio site,
+          JobPilot, and LazyTripZ. For privacy questions or data deletion
+          requests, email
           <a
             class="font-medium text-[var(--accent)] underline underline-offset-4"
             href={`mailto:${contactEmail}`}
@@ -42,43 +43,24 @@ const updatedAt = "November 3, 2026";
 
       <section>
         <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
-          Analytics
+          This portfolio site
         </h2>
         <p>
           This site uses self-hosted Umami analytics to count page views and
           visitors. It does not use advertising cookies or cross-site tracking.
-          Aggregated visit counts are shown on the home page. No Google user
-          data is collected here.
+          Aggregated visit counts are shown on the home page.
         </p>
-      </section>
-
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
-          Preferences stored on your device
-        </h2>
-        <p>
+        <p class="mt-4">
           The color theme and light/dark mode choice are stored in your
           browser's local storage. They never leave your device.
         </p>
-      </section>
-
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
-          Contact form
-        </h2>
-        <p>
+        <p class="mt-4">
           Messages sent through the contact form include your name, email
           address, and message. They are delivered through Web3Forms so your
           message reaches the site operator. Do not include sensitive personal
           data in the form.
         </p>
-      </section>
-
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
-          Chat
-        </h2>
-        <p>
+        <p class="mt-4">
           Messages sent to the on-site chat are processed in memory to generate
           a reply and are not stored permanently. Chat history expires
           automatically after a short period.
@@ -87,33 +69,79 @@ const updatedAt = "November 3, 2026";
 
       <section>
         <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
-          Other services
+          How Nastymur handles Google user data
         </h2>
         <p>
-          JobPilot and LazyTripZ are separate services with their own privacy
-          policies on their own domains. This page does not cover them.
+          Nastymur apps use Google Sign-In to authenticate you. They receive
+          your Google account identifier, name, email address, and profile
+          picture, and use this data to create and secure your account. OAuth
+          tokens are encrypted before storage. The services run on private,
+          self-hosted infrastructure and do not sell your data, use it for
+          advertising, or share it with unrelated third parties.
         </p>
-        <ul class="mt-4 list-disc space-y-2 pl-6">
-          <li>
-            <a
-              class="font-medium text-[var(--accent)] underline underline-offset-4"
-              href="https://jobpilot.nastymur.com/privacy"
-            >
-              JobPilot privacy policy
-            </a>
-          </li>
-          <li>
-            <a
-              class="font-medium text-[var(--accent)] underline underline-offset-4"
-              href="https://jobpilot.nastymur.com/terms"
-            >
-              JobPilot terms
-            </a>
-          </li>
-        </ul>
         <p class="mt-4">
-          A LazyTripZ policy link will be added here once it is published on
-          its own domain.
+          The use and transfer of information received from Google APIs follows
+          the
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href="https://developers.google.com/terms/api-services-user-data-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google API Services User Data Policy
+          </a>
+          , including its Limited Use requirements.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          JobPilot
+        </h2>
+        <p>
+          JobPilot can optionally connect your Gmail account with read-only
+          access to find job-related messages. It reads message metadata such
+          as sender, subject, date, and identifiers. JobPilot never sends,
+          edits, or deletes your emails. Disconnecting Gmail stops future
+          access; previously imported metadata remains until you delete it or
+          your account.
+        </p>
+        <p class="mt-4">
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href="https://jobpilot.nastymur.com/privacy"
+          >
+            Full JobPilot privacy policy
+          </a>
+          {" · "}
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href="https://jobpilot.nastymur.com/terms"
+          >
+            JobPilot terms
+          </a>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold text-[var(--foreground)]">
+          LazyTripZ
+        </h2>
+        <p>
+          LazyTripZ stores the trips you create: destinations and dates,
+          activities, pets, diary entries, weather forecasts, and generated
+          recommendations. Recommendations are generated with the Google Gemini
+          API, which receives the destination, dates, and trip details. City
+          names are sent to OpenWeatherMap and Nominatim/OpenStreetMap for
+          weather and search.
+        </p>
+        <p class="mt-4">
+          <a
+            class="font-medium text-[var(--accent)] underline underline-offset-4"
+            href="https://lazytripz.nastymur.com/privacy"
+          >
+            Full LazyTripZ privacy policy
+          </a>
         </p>
       </section>
 
@@ -122,9 +150,9 @@ const updatedAt = "November 3, 2026";
           Retention and deletion
         </h2>
         <p>
-          Analytics data is kept in aggregate form. Contact messages are kept
-          only to handle your request. You can request deletion of any message
-          you sent by emailing
+          Data is kept only while it supports an active account or the stated
+          purpose. You can request deletion of your account and stored service
+          data by emailing
           <a
             class="font-medium text-[var(--accent)] underline underline-offset-4"
             href={`mailto:${contactEmail}`}
