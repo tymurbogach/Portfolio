@@ -2,8 +2,7 @@
 import Sidebar from "../components/layout/Sidebar.astro";
 import ContentPanel from "../components/layout/ContentPanel.astro";
 
-/** Two-column grid: Sidebar cell (desktop only) + right content panel.
-    >=60rem → var(--sidebar-w) + 1fr; below → single column. */
+/** Two-column layout: Sidebar (desktop only) + right content panel. */
 interface Props {
   /** Optional heading above the content panel */
   pageLabel?: string;
@@ -14,11 +13,7 @@ interface Props {
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-1 w-full h-full overflow-hidden
-         laptop:grid-cols-[var(--sidebar-w)_minmax(0,1fr)]
-         laptop-scaled:grid-cols-[var(--sidebar-w)_minmax(0,1fr)]"
->
+<div class="flex flex-col laptop:flex-row laptop-scaled:flex-row w-full h-full overflow-hidden">
   <Sidebar />
   <ContentPanel pageLabel={pageLabel} scrollable={scrollable}>
     <slot />

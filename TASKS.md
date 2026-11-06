@@ -4,34 +4,28 @@
 
 ## 1. Objective
 
-- Refactorizar el layout dual del portfolio Astro en dos zonas independientes: `Sidebar` izquierda y `Content` derecha.
-- La línea divisoria vertical coincide siempre con el borde derecho de `NameCard` y `SocialLinks`, ambos sobresalen a la izquierda del marco principal, sin offsets arbitrarios.
-- Mantener estética, navegación y funcionalidades actuales. Responsive: sidebar solo en desktop.
+- Separar `DualMain` en dos componentes independientes (`Sidebar` izquierda y `ContentPanel` derecha) sin ningún cambio visual ni de comportamiento.
+- Todo sigue igual que antes: mismo markup renderizado, mismas clases, mismos tokens, mismo chrome fijo en `Layout`, mismos contratos `sectionNav`.
 
 ## 2. Current state
 
-- What works: `Layout.astro` + `DualMain.astro` renderizan sidebar (`ProfilePanel`) y contenido (`PageContent`) con scroll único en `#content-scroll`. Contratos `sectionNav.ts`: `id="content-scroll"`, jerarquía `scrollEl > section[id]`, selectores `.nav-link/.nav-indicator`, MQs duplicadas.
-- Broken or pending work: `NameCard`/`SocialLinks` usan `position:fixed` con `var(--fixed-offset)`. Sidebar usa `var(--sidebar-width)`. `nav-width` diverge de `sidebar-width`. La alineación no está coordinada por el layout.
-- Git branch: `master` (`60cdc34`), `git status --short --branch` limpio al iniciar el plan (solo cabecera `master...origin/master`).
-- Last review: crítica independiente `ses_e51ab7084ffegCH2zjSs4gbi7c` — veredicto no ejecutar sin corregir B1-B7. Incorporada abajo en F01/F02.
-- Existing local changes: solo `TASKS.md` sin commitear.
-- Required test capabilities and unavailable gates: `npm run check`, `npm run build`, `npm run format:check` disponibles. Verificación visual manual en `npm run dev` por el usuario. Sin Playwright obligatorio en esta fase.
+- What works: el split verbatim está implementado. `npm run check` 0 errores, `npm run build` Complete.
+- Historia: F01-grid (`6b6161d`) y el intento de voladizo F02 cambiaron la geometría (grid, tokens, overflow, centrado 68ch). El usuario lo rechazó con captura: no era lo pedido. Se revirtió `src/` al original y se rehízo como split verbatim.
+- Git branch: `master`, por delante de `origin/master` (commits locales sin push).
+- Last review: segunda revisión de F02 bloqueó por `overflow-x:visible + overflow-y:hidden` (computa a `auto`). F02 cancelado a petición del usuario: todo igual que antes.
+- Existing local changes: split verbatim sin commitear.
+- Required test capabilities: `npm run check`, `npm run build`, `npm run format:check`. Verificación visual del usuario en `npm run dev`.
 
 ## 3. Architecture and technology
 
 - Languages and frameworks: Astro 7, TypeScript estricto, Tailwind v4, `@astrojs/node` standalone.
-- Relevant structure:
-  - `src/layouts/Layout.astro`: chrome fijo, marco `.atmosphere` (`overflow-hidden` hoy), delega a `DualMain` cuando `dual=true`; rama `dual=false` sin cambios en este plan.
-  - `src/layouts/DualMain.astro`: flex `sidebar + content`, `pageLabel`, `#content-scroll`, fades de 3rem/2rem.
-  - `src/components/sections/ProfilePanel.astro`: foto + spec operador, `localTime.ts` con `AbortController`.
-  - `src/components/layout/NameCard.astro`, `NavBar.astro`, `src/components/ui/SocialLinks.astro`: usan `width:var(--nav-width)` hoy.
-  - `src/scripts/sectionNav.ts`: `LAPTOP_MQ`/`LAPTOP_SCALED_MQ`, `getElementById("content-scroll")`, `offsetTop`, `ResizeObserver`, `positionIndicator` sobre `.nav-indicator`.
-  - `src/styles/global.css`: `--sidebar-width: clamp(18rem,20vw,28rem)` forzado a `18rem` en 60-79.9rem; `--nav-width: 100%/20rem/clamp(25rem,24vw,30rem)`; `--fixed-offset`, `--main-padding` (solo `>=80rem`), `--content-inset`, `--frame-inset`.
-- Important dependencies: `sectionNav.ts` + `tapFeedback.ts` dependen del DOM `.nav-link[data-active]` y `.nav-panel`. `ClientRouter` exige limpieza con `AbortController`.
-- Decisiones duraderas tras crítica:
-  - Dos tokens separados: `--sidebar-w` (celda izquierda + `NameCard`/`SocialLinks` dentro de `Sidebar`) y `--nav-w` (solo `NavBar` fijo superior-derecha). No unificar.
-  - Contrato congelado: mismo `id="content-scroll"`, misma jerarquía `scrollEl > section[id]`, mismos selectores y MQs. Cualquier cambio obliga a actualizar `sectionNav.ts`.
-  - Divisoria = `border-right: 1px solid var(--border)` de la celda sidebar, `box-sizing:border-box`.
+- Relevant structure (sin cambios respecto al original):
+  - `src/layouts/Layout.astro`: chrome fijo (`NameCard`, `NavBar`, `SocialLinks`, chat), marco `.atmosphere`, delega a `DualMain` cuando `dual=true`.
+  - `src/layouts/DualMain.astro`: composición; el markup vive en `Sidebar` y `ContentPanel`.
+  - `src/components/layout/Sidebar.astro` (nuevo): celda izquierda original con `ProfilePanel`, clases y `width: var(--sidebar-width)` intactos.
+  - `src/components/layout/ContentPanel.astro` (nuevo): panel derecho original (`pageLabel`, `#content-scroll`, fades), `id`/clases/jerarquía intactos.
+  - `src/scripts/sectionNav.ts`: sin cambios; contrato preservado por construcción.
+- Important dependencies: ninguna nueva.
 
 ## 4. Required rules
 
@@ -49,85 +43,52 @@ npm run format:check # formato Prettier (puerta compartida)
 npx astro sync && npm run dev  # verificación manual del usuario
 ```
 
-- Shared phase gate: `npm run check` + `npm run build` + `npm run format:check`.
-- Focused phase checks: F01 añade aserciones `grep` (un solo `id="content-scroll"`, cero `fixed` izquierdos en `dual=true`, cero `width:var(--nav-width)` dentro de `Sidebar`). F02 añade protocolo visual.
-- Delivery gate: `npm run check` + `npm run build` + `npm run format:check` + protocolo visual F02.
+- Shared phase gate: `npm run check` + `npm run build` + `npm run format:check` en archivos tocados.
+- Delivery gate: lo mismo. Sin suite adicional.
 - Entorno esperado: Arch Linux, Node del repo, `~/Projects/portfolio`.
 
 ## 6. Phase plan
 
-| Phase | Title                                               | Status      |
-| ----- | --------------------------------------------------- | ----------- |
-| F01   | Grid DualLayout con Sidebar y Content sin voladizo  | In progress |
-| F02   | Voladizo izquierdo coordinado y verificación visual | Pending     |
+| Phase | Title                                 | Status     |
+| ----- | ------------------------------------- | ---------- |
+| F01   | Split verbatim Sidebar + ContentPanel | Completada |
+| F02   | Voladizo coordinado                   | Cancelada  |
 
-### F01: Grid DualLayout con Sidebar y Content sin voladizo
+### F01: Split verbatim Sidebar + ContentPanel
 
-- Objective: grid propietario con divisoria estructural y componentes independientes, sin voladizo real para aislar el riesgo `overflow:hidden`.
+- Objective: dos componentes independientes con HTML renderizado idéntico al original.
 - Tasks:
-  - [x] Inventario de tokens: tabla de usos de `--sidebar-width/--nav-width/--fixed-offset/--main-padding/--content-inset/--frame-inset` con archivo:línea.
-  - [x] Definir en `global.css`: `--sidebar-w: 18rem` en `laptop-scaled` (60-79.9rem), `clamp(25rem,24vw,30rem)` en `laptop >=80rem`; `--content-max: 68ch`; `--overhang: 0` en esta fase. Mantener `--nav-w` solo para `NavBar`.
-  - [x] Crear `src/components/layout/Sidebar.astro`: `NameCard` arriba, `ProfilePanel` centro, `SocialLinks` abajo. Quitar `width:var(--nav-width)` fijo de los tres cuando viven en `Sidebar`; ancho `100%` de la celda.
-  - [x] Crear `src/components/layout/ContentPanel.astro`: extraer header `pageLabel`, `#content-scroll`, fades desde `DualMain`. Preservar `id`, clases y jerarquía.
-  - [x] Refactorizar `src/layouts/DualMain.astro` a grid: `>=60rem` → `grid-template-columns: var(--sidebar-w) minmax(0,1fr)`; `<60rem` → `1fr`. Celda izquierda con `border-right`. `frame-inset` en celda, `content-inset` en contenido, `box-sizing:border-box`.
-  - [x] Aligerar `src/layouts/Layout.astro`: no renderizar fijos izquierdos cuando `dual=true`. Mantener `NavBar`, chat, header/footer móvil. Rama `dual=false` intacta.
-  - [x] Ejecutar puerta compartida + `grep`.
+  - [x] `Sidebar.astro`: celda izquierda original verbatim.
+  - [x] `ContentPanel.astro`: panel derecho original verbatim (`pageLabel`, `#content-scroll`, fades).
+  - [x] `DualMain.astro`: solo composición, flex original intacto.
+  - [x] `Layout.astro`, `NameCard`, `SocialLinks`, `global.css`: sin cambios.
+  - [x] Puerta compartida en verde.
 - Dependencies: ninguna.
 - Acceptance criteria:
-  - [ ] Divisoria es `border-right` de la celda sidebar.
-  - [ ] `NameCard` y `SocialLinks` miden igual que la celda sidebar ±1px a 1024 y 1440px, zoom 100%, sin scroll.
-  - [ ] Sin scroll horizontal en `body/.atmosphere/#content-scroll` a 360/960/1024/1280/1440.
-  - [ ] `npm run check`, `npm run build`, `npm run format:check` pasan.
-  - [ ] `grep`: un solo `id="content-scroll"`; cero `fixed` izquierdos en rama dual; cero `width:var(--nav-width)` dentro de `Sidebar`.
+  - [x] El HTML renderizado es el mismo que antes del split (solo cambian fronteras de componente).
+  - [x] `npm run check` 0 errores, `npm run build` Complete, `prettier --check` OK en los 3 archivos.
+  - [x] `grep id="content-scroll"`: un solo resultado.
 - Required tests:
   - `npm run check`
   - `npm run build`
-  - `npm run format:check`
-  - `grep -rn 'id="content-scroll"' src && grep -rn 'var(--nav-width)' src/components/layout/Sidebar.astro` (debe vaciar lo segundo)
-- Test evidence: lead `npm run check` 0 errors, `npm run build` Complete, `prettier --check` 7 archivos F01 OK, `grep id-content-scroll` 1 resultado, `grep nav-width en Sidebar` vacío. Revisión `revision` sin bloqueos; visual ±1px y viewports pasan a F02/usuario.
-- Files changed: `src/styles/global.css`, `src/components/layout/Sidebar.astro` (nuevo), `src/components/layout/ContentPanel.astro` (nuevo), `src/layouts/DualMain.astro`, `src/layouts/Layout.astro`, `src/components/layout/NameCard.astro`, `src/components/ui/SocialLinks.astro`. `sectionNav.ts`/`tapFeedback.ts` solo lectura salvo que el contrato cambie.
-- Risks:
-  - `.atmosphere` y raíz `DualMain` con `overflow-hidden` recortan cualquier voladizo. Por eso F01 fija `--overhang: 0`.
-  - `setHomeHeight` usa `scrollEl.clientHeight`; si `ContentPanel` añade padding/borde cambia `home`. Verificar sin scroll roto.
-  - Tab-order y `outline` al mover chrome fijo al flujo.
-- Status: Pending
+  - `npx prettier --check` en archivos tocados
+- Test evidence: lead `check` 49 archivos 0 errores, `build` Complete, `prettier` OK tras normalizar `ContentPanel`.
+- Files changed: `src/layouts/DualMain.astro`, `src/components/layout/Sidebar.astro` (nuevo), `src/components/layout/ContentPanel.astro` (nuevo).
+- Risks: ninguno; cambio solo organizativo.
+- Status: Completada
 
-### F02: Voladizo izquierdo coordinado y verificación visual
+### F02: Voladizo coordinado
 
-- Objective: activar el sobresaliente izquierdo con la misma variable del layout y verificar alineación, responsive y regresión.
-- Tasks:
-  - [ ] Definir `--chrome-overhang: calc(var(--main-padding) - var(--fixed-offset))` solo `>=80rem`; `0` en `laptop-scaled` si resulta <8px. Tabla viewport → `sidebar-w, overhang, padding, columnas` en TASKS antes de codificar.
-  - [ ] Aplicar en `Sidebar` top/bottom: `width: calc(100% + var(--chrome-overhang))`, `margin-left: calc(-1 * var(--chrome-overhang))`. Especificar ancestros: `.atmosphere` y raíz dual pasan a `overflow-x: visible` + `overflow-y: hidden/clip` según prototipo, preservando viñeta `atmosphere`, fades y borde. `z-index` para pintar sobre el borde.
-  - [ ] Verificar divisoria con divisoria `border-right` ±1px a 1024/1280/1440, color `var(--border)` en 3 temas (`bladerunner` oscuro, `cyberpunk`, `void`).
-  - [ ] Protocolo visual: rutas `/` + `/resume` (con `show-more`), `scrollTop` 0/medio/final, temas claro/oscuro, `prefers-reduced-motion`, navegación `ClientRouter` + recarga, atrás/adelante, spy e indicador. Viewports 360/959/960/1024/1280/1440.
-  - [ ] Ejecutar puerta compartida. Actualizar `AGENTS.md`/`README.md` solo si cambia arquitectura o despliegue.
-- Dependencies: F01.
-- Acceptance criteria:
-  - [ ] Borde derecho de `NameCard`/`SocialLinks` coincide con divisoria ±1px a 1024/1280/1440, zoom 100%.
-  - [ ] Ambos bloques sobresalen a la izquierda de `.atmosphere` exactamente `var(--chrome-overhang)`.
-  - [ ] Contenido centrado en su zona con `margin-inline:auto` y `max-width`.
-  - [ ] `<60rem` sin sidebar, contenido ocupa el espacio. Sin scroll horizontal en todos los viewports.
-  - [ ] Contenido no queda bajo fades en `scrollTop=0` ni al final. Spy, indicador y smooth scroll funcionan. Sin errores de consola.
-  - [ ] `npm run check`, `npm run build`, `npm run format:check` pasan.
-- Required tests:
-  - `npm run check`
-  - `npm run build`
-  - `npm run format:check`
-  - Protocolo visual manual del usuario en `npm run dev` (lead registra viewports y temas comprobados).
-- Test evidence: por registrar por el lead tras implementar.
-- Files changed: `src/styles/global.css`, `src/components/layout/Sidebar.astro`, `src/layouts/Layout.astro` (overflow), `src/layouts/DualMain.astro` (overflow), más ajustes menores de F01 si el prototipo lo exige.
-- Risks:
-  - Si `overflow-x:visible` rompe viñeta/fades o crea `scrollWidth > clientWidth`, volver a F01 sin voladizo y registrar BLOCKED con evidencia.
-  - `box-shadow:inset` sobre scroller puede pintar por frame en GPU móvil. Medir solo frames con `scrollTop` cambiante.
-- Status: Pending
+- Status: Cancelada a petición del usuario (todo sigue igual que antes). Historial del intento bloqueado en Git (`stash F02-bloqueado-revertir-a-F01`).
 
 ## 7. Completed phases
 
-| Phase | Outcome | Verification | Commit |
-| ----- | ------- | ------------ | ------ |
+| Phase | Outcome                              | Verification                                 | Commit        |
+| ----- | ------------------------------------ | -------------------------------------------- | ------------- |
+| F01   | Split verbatim, sin cambios visuales | check 0 errores, build Complete, prettier OK | por registrar |
 
 ## 8. Recommended next action
 
-- Next phase: F01 tras aprobación explícita de ejecución (`run F01`).
-- Resume command: `run F01`
-- Suggested effort: medium
+- Next phase: ninguna. Verificación visual del usuario en `dev`.
+- Resume command: none
+- Suggested effort: low

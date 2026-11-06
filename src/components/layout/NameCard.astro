@@ -2,20 +2,14 @@
 interface Props {
   nameDisplay: string;
   role: string;
-  /** true = fill the parent cell (Sidebar); false = fixed nav chrome width */
-  fluid?: boolean;
 }
 
-const { nameDisplay, role, fluid = false } = Astro.props;
+const { nameDisplay, role } = Astro.props;
 ---
 
 <div
   class="nav-panel cursor-pointer"
-  style={
-    fluid
-      ? "width: 100%; height: var(--nav-height);"
-      : "width: var(--nav-width); height: var(--nav-height);"
-  }
+  style="width: var(--nav-width); height: var(--nav-height);"
 >
   <a
     href="/"

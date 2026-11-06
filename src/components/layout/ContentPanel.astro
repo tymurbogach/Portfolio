@@ -1,7 +1,5 @@
 ---
-/** Right panel of DualMain: optional pageLabel header, the single
-    scroll container (#content-scroll, contract with sectionNav.ts),
-    and static top/bottom fades. */
+/** Right content panel of DualMain. Verbatim split: same markup as before. */
 interface Props {
   /** Optional heading above the content panel */
   pageLabel?: string;
@@ -12,20 +10,21 @@ interface Props {
 const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
+<!-- Right content panel -->
 <div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
   <!-- Optional section heading -->
   {pageLabel && (
     <div
       class="shrink-0
-               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-               laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
-               pt-[1rem] laptop:pt-[var(--section-gap)] laptop-scaled:pt-[var(--section-gap)]
-               pb-4 laptop:pb-7 laptop-scaled:pb-7"
+             px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
+             laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
+             pt-[1rem] laptop:pt-[var(--section-gap)] laptop-scaled:pt-[var(--section-gap)]
+             pb-4 laptop:pb-7 laptop-scaled:pb-7"
     >
       <h2
         class="text-xs laptop:text-[var(--type-reading)] laptop-scaled:text-[var(--type-reading)]
-                 tracking-[0.45em] uppercase font-bold m-0
-                 text-[var(--foreground)] text-glow"
+               tracking-[0.45em] uppercase font-bold m-0
+               text-[var(--foreground)] text-glow"
       >
         {pageLabel}
       </h2>
@@ -38,16 +37,16 @@ const { pageLabel = "", scrollable = true } = Astro.props;
     <div
       id="content-scroll"
       class="flex-1 overflow-y-auto overflow-x-hidden
-               px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-               laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
-               pb-[4rem] laptop:pb-[var(--content-block-gap)] laptop-scaled:pb-[var(--content-block-gap)]"
+             px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
+             laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
+             pb-[4rem] laptop:pb-[var(--content-block-gap)] laptop-scaled:pb-[var(--content-block-gap)]"
     >
       <slot />
     </div>
   ) : (
     <div
       class="flex-1 flex items-center justify-center
-                  px-[1.25rem] laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]"
+                px-[1.25rem] laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]"
     >
       <slot />
     </div>
@@ -63,12 +62,12 @@ const { pageLabel = "", scrollable = true } = Astro.props;
        Van al final para que pinten sobre el contenido sin depender de z-index. -->
   <div
     class="pointer-events-none absolute inset-x-0 top-0 h-6 laptop:h-12
-             bg-linear-to-b from-[var(--background)] to-transparent"
+           bg-linear-to-b from-[var(--background)] to-transparent"
     aria-hidden="true"
   />
   <div
     class="pointer-events-none absolute inset-x-0 bottom-0 h-8
-             bg-linear-to-t from-[var(--background)] to-transparent"
+           bg-linear-to-t from-[var(--background)] to-transparent"
     aria-hidden="true"
   />
 </div>

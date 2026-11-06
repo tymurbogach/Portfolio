@@ -2,23 +2,9 @@
 import { getSocialLinks } from "../../lib/content";
 import type { SocialLink } from "../../lib/content";
 const socialLinks = await getSocialLinks();
-
-/** true = fill the parent cell (Sidebar); false = fixed nav chrome width */
-interface Props {
-  fluid?: boolean;
-}
-
-const { fluid = false } = Astro.props;
 ---
 
-<div
-  class="w-full"
-  style={
-    fluid
-      ? "width: 100%; height: var(--nav-height);"
-      : "width: var(--nav-width); height: var(--nav-height);"
-  }
->
+<div class="w-full" style="width: var(--nav-width); height: var(--nav-height);">
   <div class="nav-panel flex flex-row items-center justify-center text-center w-full h-full">
     {socialLinks.map(({ url, icon, name }: SocialLink) => (
       <a
