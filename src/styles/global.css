@@ -28,9 +28,15 @@
      pantalla grande convierta el chrome en el contenido principal. */
   --frame-inset: clamp(1.25rem, 3vw, 4.5rem);
   --content-inset: clamp(1.25rem, 5vw, 8rem);
+  --main-frame-inset: 0px;
   --content-block-gap: clamp(3rem, 7vw, 6rem);
   --section-gap: clamp(2.5rem, 5vw, 5rem);
-  --sidebar-width: clamp(18rem, 20vw, 28rem);
+  /* Sidebar ends at the fixed NameCard/SocialLinks right edge. The -1px
+     accounts for the atmosphere's left border inside the padded main frame. */
+  --sidebar-width: calc(
+    var(--nav-width) + var(--fixed-offset) - var(--main-frame-inset) - 1px
+  );
+  --content-panel-max: 90rem;
   --fixed-offset: clamp(2.5rem, 3vw, 4.5rem);
   /* El chrome móvil ocupa el ancho disponible. A partir de 480 px retoma
      el panel flotante, para conservar la composición original del header. */
@@ -1014,13 +1020,6 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
-/* Compact desktop changes the composition, not the scale. */
-@media (min-width: 60rem) and (max-width: 79.9375rem) {
-  :root {
-    --sidebar-width: 18rem;
-  }
-}
-
 @media (min-width: 30rem) {
   :root {
     --nav-width: 20rem;
@@ -1031,6 +1030,7 @@
 
 @media (min-width: 80rem) {
   :root {
+    --main-frame-inset: var(--main-padding);
     --nav-width: clamp(25rem, 24vw, 30rem);
     --nav-height: clamp(5rem, 4vw, 5.75rem);
     --nav-icon-size: clamp(2rem, 1.5vw, 2.35rem);

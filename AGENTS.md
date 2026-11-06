@@ -35,7 +35,8 @@ El despliegue se ejecuta desde la Pi. El comando remoto debe actualizar, reconst
 ## Arquitectura
 
 - Las cinco rutas usan `PageContent.astro`. `sectionNav.ts` sincroniza cada sección con la URL.
-- El documento usa `body` fijo. El único contenedor con scroll es `#content-scroll` en `DualMain.astro`.
+- El documento usa `body` fijo. El único contenedor con scroll es `#content-scroll` en `ContentPanel.astro`.
+- `DualMain.astro` compone `Sidebar.astro` y `ContentPanel.astro`. En desktop, `--sidebar-width` deriva del borde derecho de `NameCard` y `SocialLinks`; no desacoples esos anchos. Ambos paneles centran su contenido dentro de su columna.
 - El chrome fijo vive fuera del contenedor de scroll en `Layout.astro`.
 - `ui/` contiene piezas presentacionales reutilizables. `sections/` compone secciones y obtiene contenido. `layout/` contiene chrome global.
 - Extrae un componente cuando una abstracción estable reduzca duplicación o aclare la intención.

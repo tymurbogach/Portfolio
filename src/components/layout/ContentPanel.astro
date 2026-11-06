@@ -11,11 +11,11 @@ const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
 <!-- Right content panel -->
-<div class="flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
+<div class="content-panel flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
   <!-- Optional section heading -->
   {pageLabel && (
     <div
-      class="shrink-0
+      class="mx-auto w-full max-w-[var(--content-panel-max)] shrink-0
              px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
              laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
              pt-[1rem] laptop:pt-[var(--section-gap)] laptop-scaled:pt-[var(--section-gap)]
@@ -36,7 +36,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
   {scrollable ? (
     <div
       id="content-scroll"
-      class="flex-1 overflow-y-auto overflow-x-hidden
+      class="mx-auto w-full max-w-[var(--content-panel-max)] flex-1 overflow-y-auto overflow-x-hidden
              px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
              laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
              pb-[4rem] laptop:pb-[var(--content-block-gap)] laptop-scaled:pb-[var(--content-block-gap)]"
@@ -45,7 +45,7 @@ const { pageLabel = "", scrollable = true } = Astro.props;
     </div>
   ) : (
     <div
-      class="flex-1 flex items-center justify-center
+      class="mx-auto w-full max-w-[var(--content-panel-max)] flex-1 flex items-center justify-center
                 px-[1.25rem] laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]"
     >
       <slot />

@@ -49,7 +49,7 @@ const corners = [
         alt="Tymur Bogach"
         width={448}
         densities={[1, 2]}
-        class="w-full h-auto object-contain pointer-events-none
+        class="profile-panel__photo w-full h-auto object-contain pointer-events-none
                max-w-[10rem] mobile:max-w-[11rem]
                laptop:max-w-[min(100%,22rem)] laptop-scaled:max-w-[12rem]"
       />
@@ -113,3 +113,11 @@ const corners = [
     </div>
   </div>
 </section>
+
+<style>
+  @media (min-width: 60rem) and (max-height: 64rem) {
+    .profile-panel__photo {
+      max-height: min(40vh, 24rem);
+    }
+  }
+</style>
