@@ -56,22 +56,22 @@ npx astro sync && npm run dev  # verificación manual del usuario
 
 ## 6. Phase plan
 
-| Phase | Title | Status |
-|-------|-------|--------|
-| F01 | Grid DualLayout con Sidebar y Content sin voladizo | Pending |
-| F02 | Voladizo izquierdo coordinado y verificación visual | Pending |
+| Phase | Title                                               | Status      |
+| ----- | --------------------------------------------------- | ----------- |
+| F01   | Grid DualLayout con Sidebar y Content sin voladizo  | In progress |
+| F02   | Voladizo izquierdo coordinado y verificación visual | Pending     |
 
 ### F01: Grid DualLayout con Sidebar y Content sin voladizo
 
 - Objective: grid propietario con divisoria estructural y componentes independientes, sin voladizo real para aislar el riesgo `overflow:hidden`.
 - Tasks:
-  - [ ] Inventario de tokens: tabla de usos de `--sidebar-width/--nav-width/--fixed-offset/--main-padding/--content-inset/--frame-inset` con archivo:línea.
-  - [ ] Definir en `global.css`: `--sidebar-w: 18rem` en `laptop-scaled` (60-79.9rem), `clamp(25rem,24vw,30rem)` en `laptop >=80rem`; `--content-max: 68ch`; `--overhang: 0` en esta fase. Mantener `--nav-w` solo para `NavBar`.
-  - [ ] Crear `src/components/layout/Sidebar.astro`: `NameCard` arriba, `ProfilePanel` centro, `SocialLinks` abajo. Quitar `width:var(--nav-width)` fijo de los tres cuando viven en `Sidebar`; ancho `100%` de la celda.
-  - [ ] Crear `src/components/layout/ContentPanel.astro`: extraer header `pageLabel`, `#content-scroll`, fades desde `DualMain`. Preservar `id`, clases y jerarquía.
-  - [ ] Refactorizar `src/layouts/DualMain.astro` a grid: `>=60rem` → `grid-template-columns: var(--sidebar-w) minmax(0,1fr)`; `<60rem` → `1fr`. Celda izquierda con `border-right`. `frame-inset` en celda, `content-inset` en contenido, `box-sizing:border-box`.
-  - [ ] Aligerar `src/layouts/Layout.astro`: no renderizar fijos izquierdos cuando `dual=true`. Mantener `NavBar`, chat, header/footer móvil. Rama `dual=false` intacta.
-  - [ ] Ejecutar puerta compartida + `grep`.
+  - [x] Inventario de tokens: tabla de usos de `--sidebar-width/--nav-width/--fixed-offset/--main-padding/--content-inset/--frame-inset` con archivo:línea.
+  - [x] Definir en `global.css`: `--sidebar-w: 18rem` en `laptop-scaled` (60-79.9rem), `clamp(25rem,24vw,30rem)` en `laptop >=80rem`; `--content-max: 68ch`; `--overhang: 0` en esta fase. Mantener `--nav-w` solo para `NavBar`.
+  - [x] Crear `src/components/layout/Sidebar.astro`: `NameCard` arriba, `ProfilePanel` centro, `SocialLinks` abajo. Quitar `width:var(--nav-width)` fijo de los tres cuando viven en `Sidebar`; ancho `100%` de la celda.
+  - [x] Crear `src/components/layout/ContentPanel.astro`: extraer header `pageLabel`, `#content-scroll`, fades desde `DualMain`. Preservar `id`, clases y jerarquía.
+  - [x] Refactorizar `src/layouts/DualMain.astro` a grid: `>=60rem` → `grid-template-columns: var(--sidebar-w) minmax(0,1fr)`; `<60rem` → `1fr`. Celda izquierda con `border-right`. `frame-inset` en celda, `content-inset` en contenido, `box-sizing:border-box`.
+  - [x] Aligerar `src/layouts/Layout.astro`: no renderizar fijos izquierdos cuando `dual=true`. Mantener `NavBar`, chat, header/footer móvil. Rama `dual=false` intacta.
+  - [x] Ejecutar puerta compartida + `grep`.
 - Dependencies: ninguna.
 - Acceptance criteria:
   - [ ] Divisoria es `border-right` de la celda sidebar.
@@ -84,8 +84,8 @@ npx astro sync && npm run dev  # verificación manual del usuario
   - `npm run build`
   - `npm run format:check`
   - `grep -rn 'id="content-scroll"' src && grep -rn 'var(--nav-width)' src/components/layout/Sidebar.astro` (debe vaciar lo segundo)
-- Test evidence: por registrar por el lead tras implementar.
-- Files changed: `src/styles/global.css`, `src/components/layout/Sidebar.astro` (nuevo), `src/components/layout/ContentPanel.astro` (nuevo), `src/layouts/DualMain.astro`, `src/layouts/Layout.astro`, `src/components/layout/NameCard.astro`, `src/components/layout/NavBar.astro` (solo si quita ancho fijo), `src/components/ui/SocialLinks.astro`, `src/components/sections/ProfilePanel.astro` (solo si quita ancho fijo). `sectionNav.ts`/`tapFeedback.ts` solo lectura salvo que el contrato cambie.
+- Test evidence: lead `npm run check` 0 errors, `npm run build` Complete, `prettier --check` 7 archivos F01 OK, `grep id-content-scroll` 1 resultado, `grep nav-width en Sidebar` vacío. Revisión `revision` sin bloqueos; visual ±1px y viewports pasan a F02/usuario.
+- Files changed: `src/styles/global.css`, `src/components/layout/Sidebar.astro` (nuevo), `src/components/layout/ContentPanel.astro` (nuevo), `src/layouts/DualMain.astro`, `src/layouts/Layout.astro`, `src/components/layout/NameCard.astro`, `src/components/ui/SocialLinks.astro`. `sectionNav.ts`/`tapFeedback.ts` solo lectura salvo que el contrato cambie.
 - Risks:
   - `.atmosphere` y raíz `DualMain` con `overflow-hidden` recortan cualquier voladizo. Por eso F01 fija `--overhang: 0`.
   - `setHomeHeight` usa `scrollEl.clientHeight`; si `ContentPanel` añade padding/borde cambia `home`. Verificar sin scroll roto.
@@ -124,7 +124,7 @@ npx astro sync && npm run dev  # verificación manual del usuario
 ## 7. Completed phases
 
 | Phase | Outcome | Verification | Commit |
-|-------|---------|--------------|--------|
+| ----- | ------- | ------------ | ------ |
 
 ## 8. Recommended next action
 

@@ -1,0 +1,23 @@
+---
+import NameCard from "./NameCard.astro";
+import ProfilePanel from "../sections/ProfilePanel.astro";
+import SocialLinks from "../ui/SocialLinks.astro";
+import { getProfile } from "../../lib/content";
+
+/** Left grid cell of DualMain (desktop only): NameCard top, ProfilePanel
+    center, SocialLinks bottom. Children fill 100% of the cell — no fixed
+    nav chrome width inside. The divider is the cell's own border-right. */
+const profile = await getProfile();
+---
+
+<aside
+  class="hidden min-h-0 min-w-0 laptop:flex laptop-scaled:flex flex-col
+         laptop:p-[var(--frame-inset)] laptop-scaled:p-[var(--frame-inset)]
+         border-r border-[var(--border)]"
+>
+  <NameCard fluid nameDisplay={profile.nameDisplay} role={profile.role} />
+  <div class="flex-1 min-h-0 min-w-0 w-full flex items-center justify-center">
+    <ProfilePanel />
+  </div>
+  <SocialLinks fluid />
+</aside>

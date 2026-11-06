@@ -28,6 +28,9 @@
      pantalla grande convierta el chrome en el contenido principal. */
   --frame-inset: clamp(1.25rem, 3vw, 4.5rem);
   --content-inset: clamp(1.25rem, 5vw, 8rem);
+  --sidebar-w: 18rem;
+  --content-max: 68ch;
+  --overhang: 0;
   --content-block-gap: clamp(3rem, 7vw, 6rem);
   --section-gap: clamp(2.5rem, 5vw, 5rem);
   --sidebar-width: clamp(18rem, 20vw, 28rem);
@@ -1018,6 +1021,7 @@
 @media (min-width: 60rem) and (max-width: 79.9375rem) {
   :root {
     --sidebar-width: 18rem;
+    --sidebar-w: 18rem;
   }
 }
 
@@ -1031,6 +1035,7 @@
 
 @media (min-width: 80rem) {
   :root {
+    --sidebar-w: clamp(25rem, 24vw, 30rem);
     --nav-width: clamp(25rem, 24vw, 30rem);
     --nav-height: clamp(5rem, 4vw, 5.75rem);
     --nav-icon-size: clamp(2rem, 1.5vw, 2.35rem);

@@ -168,13 +168,17 @@ const THEME_COLOR = "rgb(18, 11, 6)";
       <Footer />
     </footer>
 
-    <!-- DESKTOP — fixed corner elements -->
-    <div
-      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
-      style="top: var(--fixed-offset); left: var(--fixed-offset);"
-    >
-      <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
-    </div>
+    <!-- DESKTOP — fixed corner elements.
+         Left chrome (NameCard/SocialLinks) lives in Sidebar when dual=true,
+         so it is skipped here to avoid duplicates. NavBar stays fixed. -->
+    {!dual && (
+      <div
+        class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+        style="top: var(--fixed-offset); left: var(--fixed-offset);"
+      >
+        <NameCard nameDisplay={profile.nameDisplay} role={profile.role} />
+      </div>
+    )}
 
     <div
       class="hidden laptop:flex laptop-scaled:flex fixed z-40"
@@ -183,12 +187,14 @@ const THEME_COLOR = "rgb(18, 11, 6)";
       <NavBar pages={site.pages} />
     </div>
 
-    <div
-      class="hidden laptop:flex laptop-scaled:flex fixed z-40"
-      style="bottom: var(--fixed-offset); left: var(--fixed-offset);"
-    >
-      <SocialLinks />
-    </div>
+    {!dual && (
+      <div
+        class="hidden laptop:flex laptop-scaled:flex fixed z-40"
+        style="bottom: var(--fixed-offset); left: var(--fixed-offset);"
+      >
+        <SocialLinks />
+      </div>
+    )}
 
     <div
       class="hidden laptop:flex laptop-scaled:flex fixed z-40 items-center gap-4"
