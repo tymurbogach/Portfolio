@@ -11,6 +11,7 @@ import DualMain from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getImage } from "astro:assets";
 import { getSite, getProfile, getSocialLinks } from "../lib/content";
+import { CSP_META } from "../lib/security";
 import {
   THEMES,
   DEFAULT_THEME,
@@ -95,6 +96,10 @@ const THEME_COLOR = "rgb(18, 11, 6)";
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Static pages bypass the node middleware: carry the CSP inline.
+         frame-ancestors/HSTS are header-only; the edge proxy owns them. -->
+    <meta http-equiv="Content-Security-Policy" content={CSP_META} />
 
     <title>{pageTitle}</title>
 

@@ -31,7 +31,7 @@
 - [x] T08. Corregir accesibilidad del formulario y del diálogo de chat.
 - [x] T09. Limitar el chat, validar entradas, cancelar upstreams y documentar la
       regla de rate limit de Cloudflare.
-- [ ] T10. Validar Umami, cachear estadísticas, añadir salud, cabeceras y entorno.
+- [x] T10. Validar Umami, cachear estadísticas, añadir salud, cabeceras y entorno.
 - [ ] T11. Actualizar README y validar el flujo de despliegue de la Pi.
 
 ## Limitaciones conocidas

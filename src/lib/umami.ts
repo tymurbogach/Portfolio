@@ -7,6 +7,10 @@ let cachedToken: string | null = null;
 let tokenExpiry = 0;
 let warnedMissingConfig = false;
 
+// Short server-side cache: a burst of visitors is one Umami query, not N.
+const STATS_CACHE_MS = 60_000;
+let statsCache: { stats: UmamiStats; expiry: number } | null = null;
+
 const UMAMI_URL = import.meta.env.UMAMI_URL ?? process.env.UMAMI_URL;
 const UMAMI_USERNAME =
   import.meta.env.UMAMI_USERNAME ?? process.env.UMAMI_USERNAME;
@@ -61,6 +65,9 @@ export async function getVisitorStats(): Promise<UmamiStats | null> {
     return null;
   }
 
+  const cached = statsCache;
+  if (cached && Date.now() < cached.expiry) return cached.stats;
+
   const token = await getToken();
   if (!token) return null;
 
@@ -85,10 +92,12 @@ export async function getVisitorStats(): Promise<UmamiStats | null> {
       return null;
     }
     const data = await res.json();
-    return {
+    const stats: UmamiStats = {
       pageviews: data.pageviews ?? 0,
       visitors: data.visitors ?? 0,
     };
+    statsCache = { stats, expiry: Date.now() + STATS_CACHE_MS };
+    return stats;
   } catch {
     dropCachedToken();
     return null;
