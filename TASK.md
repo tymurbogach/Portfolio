@@ -33,15 +33,15 @@
 - [x] T09. Limitar el chat, validar entradas, cancelar upstreams y documentar la
       regla de rate limit de Cloudflare.
 - [x] T10. Validar Umami, cachear estadísticas, añadir salud, cabeceras y entorno.
-- [ ] T11. Actualizar README y validar el flujo de despliegue de la Pi.
+- [x] T11. Actualizar README y validar el flujo de despliegue de la Pi.
 
 ## Limitaciones conocidas
 
 - T01 dejó 3 entradas altas por `http-cache-semantics`; `npm audit fix` del
   22-11-2026 las eliminó (astro 7.4.13, vite 8.3.8, zod 4.6.7, undici y
   fast-uri corregidos, 0 vulnerabilidades). Sin downgrades.
-- T11 tiene el README y `AGENTS.md` actualizados; la validación del flujo de
-  la Pi queda pendiente de una petición explícita de despliegue.
+- T11 quedó cerrada el 22-11-2026: despliegue real ejecutado y verificado en
+  la Pi (health 200, stats 200, contenedor en loopback 127.0.0.1:80->4321).
 
 ## Interfaces previstas
 
