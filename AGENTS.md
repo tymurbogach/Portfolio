@@ -17,7 +17,7 @@ npm run build         # Genera dist/
 npm run cv:pdf        # Regenera ambos PDF del CV
 ```
 
-Después de cada cambio, ejecuta `npm run check` y `npm run build`. No cierres el trabajo si uno falla.
+Después de cada cambio, ejecuta `npm run format:check`, `npm run test`, `npm run check` y `npm run build`. No cierres el trabajo si uno falla.
 
 ## Despliegue
 
@@ -34,7 +34,8 @@ El despliegue se ejecuta desde la Pi. El comando remoto debe actualizar, reconst
 
 ## Arquitectura
 
-- Las cinco rutas usan `PageContent.astro`. `sectionNav.ts` sincroniza cada sección con la URL.
+- Las cinco rutas renderizan la misma página completa a propósito: `sectionNav.ts` ofrece enlaces profundos por sección y sincroniza la URL con el scroll. No las conviertas en páginas independientes sin una decisión explícita.
+- `src/middleware.ts` añade cabeceras de seguridad a las rutas SSR. El HTML prerenderizado las recibe vía `<meta>`; la política vive en `src/lib/security.ts`.
 - El documento usa `body` fijo. El único contenedor con scroll es `#content-scroll` en `ContentPanel.astro`.
 - `DualMain.astro` compone `Sidebar.astro` y `ContentPanel.astro`. En desktop, `--sidebar-width` deriva del borde derecho de `NameCard` y `SocialLinks`; no desacoples esos anchos. Ambos paneles centran su contenido dentro de su columna.
 - El chrome fijo vive fuera del contenedor de scroll en `Layout.astro`.

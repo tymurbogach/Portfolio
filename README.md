@@ -6,7 +6,7 @@ Personal portfolio of **Tymur Bogach**, full stack developer. Live at [nastymur.
 
 | Layer         | Technology                                                                           |
 | ------------- | ------------------------------------------------------------------------------------ |
-| Framework     | [Astro 6](https://astro.build) — prerendered pages + Node SSR adapter for API routes |
+| Framework     | [Astro 7](https://astro.build) — prerendered pages + Node SSR adapter for API routes |
 | Styling       | Tailwind CSS v4 (`@tailwindcss/vite`, config lives in CSS — no `tailwind.config.js`) |
 | Interactivity | Vanilla TS scripts + a few React islands (`motion`)                                  |
 | Content       | Astro Content Collections (JSON + Markdown, Zod-validated)                           |
@@ -31,8 +31,8 @@ src/
 │   └── ui/            # Reusable presentational components (props only)
 ├── content/           # Content collections (JSON singletons + projects/*.md)
 ├── layouts/           # Layout.astro (HTML shell) + DualMain.astro (2-column)
-├── lib/               # Shared constants & helpers (themes, content, chatConfig, umami)
-├── pages/             # One .astro per route + api/{chat,stats}.ts (SSR)
+├── lib/               # Shared contracts (themes, content, chat, security)
+├── pages/             # One .astro per route + api/{chat,stats,health}.ts (SSR)
 ├── scripts/           # All client-side logic (imported by components)
 └── styles/global.css  # Tailwind import, themes, tokens, utilities
 ```
@@ -45,13 +45,41 @@ src/
 
 ```bash
 npm install
-cp .env.example .env   # fill in OLLAMA_URL (chat backend)
+cp .env.example .env   # OLLAMA_URL (chat) + UMAMI_* (visitor counter)
 npm run dev            # dev server on :4321
+npm run test           # unit tests (Vitest): themes, chat API, Umami
+npm run test:visual    # Playwright snapshots + layout geometry
+npm run themes:check   # contrast audit for all theme variants
 npm run check          # astro check (types)
 npm run format         # prettier
 npm run build          # prerender + SSR bundle → dist/
 node dist/server/entry.mjs  # run the production server locally
 ```
+
+### Environment
+
+| Variable           | Used by      | Notes                                              |
+| ------------------ | ------------ | -------------------------------------------------- |
+| `OLLAMA_URL`       | `/api/chat`  | LLM backend endpoint                               |
+| `UMAMI_URL`        | `/api/stats` | Umami instance; without it the counter answers 503 |
+| `UMAMI_USERNAME`   | `/api/stats` | Umami login                                        |
+| `UMAMI_PASSWORD`   | `/api/stats` | Umami login                                        |
+| `UMAMI_WEBSITE_ID` | `/api/stats` | Website to query                                   |
+
+### Security
+
+`/api/chat` validates its input, caps reply size and rate limits per IP
+(20 req/min, `429` + `Retry-After`). Header IPs are spoofable without a
+trusted proxy, so treat the server limit as a fallback: the authoritative
+rule belongs at the edge (Cloudflare).
+
+`GET /api/health` reports liveness (used by the Dockerfile `HEALTHCHECK`).
+
+CSP and the basic security headers come from two channels
+(`src/lib/security.ts`): the middleware header for SSR routes, and a
+`<meta http-equiv>` for prerendered pages, which the node adapter serves as
+static files. `frame-ancestors` and HSTS are header-only by spec: set them at
+the reverse proxy for the static pages.
 
 ### CV PDFs
 
@@ -64,7 +92,9 @@ npm run cv:pdf        # both languages
 ## Deploy
 
 ```bash
-ssh pi@192.168.18.18 "cd ~/docker/stacks/web && docker compose up -d --build"
+ssh pi@192.168.18.18 '/home/pi/docker/scripts/deploy portfolio'
 ```
 
-`compose.yml` maps `80:4321` and injects `OLLAMA_URL` for the chat backend.
+`compose.yml` maps `80:4321` and passes `OLLAMA_URL` plus the `UMAMI_*`
+variables through from the host environment. The container runs as the
+unprivileged `node` user and self-checks via `/api/health`.

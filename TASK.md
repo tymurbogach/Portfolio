@@ -39,6 +39,8 @@
 - T01 dejó 3 entradas altas por `http-cache-semantics`; `npm audit fix` del
   22-11-2026 las eliminó (astro 7.4.13, vite 8.3.8, zod 4.6.7, undici y
   fast-uri corregidos, 0 vulnerabilidades). Sin downgrades.
+- T11 tiene el README y `AGENTS.md` actualizados; la validación del flujo de
+  la Pi queda pendiente de una petición explícita de despliegue.
 
 ## Interfaces previstas
 
