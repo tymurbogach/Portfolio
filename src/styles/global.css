@@ -1949,47 +1949,38 @@ body::after {
   filter: blur(0);
 }
 
-.focus-frame {
+/* Frame = four fixed-size brackets translated into place by TrueFocus.tsx.
+   Only transform/opacity ever animate; size never changes. */
+.focus-corner {
   position: absolute;
   top: 0;
   left: 0;
-  pointer-events: none;
-  box-sizing: content-box;
-}
-
-.corner {
-  position: absolute;
   width: 1.25rem;
   height: 1.25rem;
   border: 2px solid var(--border-color, currentColor);
   filter: drop-shadow(0 0 6px var(--glow-color, currentColor));
   border-radius: 2px;
+  pointer-events: none;
+  will-change: transform;
+  box-sizing: content-box;
 }
 
-.top-left {
-  top: -12px;
-  left: -12px;
+.focus-corner--tl {
   border-right: none;
   border-bottom: none;
 }
 
-.top-right {
-  top: -12px;
-  right: -12px;
+.focus-corner--tr {
   border-left: none;
   border-bottom: none;
 }
 
-.bottom-left {
-  bottom: -12px;
-  left: -12px;
+.focus-corner--bl {
   border-right: none;
   border-top: none;
 }
 
-.bottom-right {
-  bottom: -12px;
-  right: -12px;
+.focus-corner--br {
   border-left: none;
   border-top: none;
 }
