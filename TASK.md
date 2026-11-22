@@ -36,10 +36,9 @@
 
 ## Limitaciones conocidas
 
-- T01 deja 3 entradas altas con una sola causa: `http-cache-semantics`
-  (GHSA-ch52-4w7c-c8xp, `<=4.2.0`, sin versión corregida). La única
-  "corrección" que propone npm es bajar a `astro@2.10.9`, lo cual se
-  rechaza: ningún downgrade para silenciar un advisory.
+- T01 dejó 3 entradas altas por `http-cache-semantics`; `npm audit fix` del
+  22-11-2026 las eliminó (astro 7.4.13, vite 8.3.8, zod 4.6.7, undici y
+  fast-uri corregidos, 0 vulnerabilidades). Sin downgrades.
 
 ## Interfaces previstas
 
