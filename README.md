@@ -75,6 +75,10 @@ rule belongs at the edge (Cloudflare).
 
 `GET /api/health` reports liveness (used by the Dockerfile `HEALTHCHECK`).
 
+Fonts are self-hosted (`src/styles/fonts.css` + `public/fonts/`, OFL
+families): no third-party font CDN, and snapshot tests no longer depend on
+Google's rasterization of the day.
+
 CSP and the basic security headers come from two channels
 (`src/lib/security.ts`): the middleware header for SSR routes, and a
 `<meta http-equiv>` for prerendered pages, which the node adapter serves as
@@ -95,6 +99,7 @@ npm run cv:pdf        # both languages
 ssh pi@192.168.18.18 '/home/pi/docker/scripts/deploy portfolio'
 ```
 
-`compose.yml` maps `80:4321` and passes `OLLAMA_URL` plus the `UMAMI_*`
-variables through from the host environment. The container runs as the
-unprivileged `node` user and self-checks via `/api/health`.
+`compose.yml` maps `127.0.0.1:80:4321` (loopback only; the Cloudflare
+tunnel targets `localhost:80` on the Pi) and passes `OLLAMA_URL` plus the
+`UMAMI_*` variables through from the host environment. The container runs
+as the unprivileged `node` user and self-checks via `/api/health`.

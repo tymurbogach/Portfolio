@@ -10,9 +10,10 @@ export const CSP_DIRECTIVES = [
   "default-src 'self'",
   // 'unsafe-inline' for scripts: the anti-flash theme script (is:inline with
   // define:vars) changes on every build, so hashes are not stable.
+  // Fonts are self-hosted (src/styles/fonts.css), so no third-party origins.
   "script-src 'self' 'unsafe-inline' https://analytics.nastymur.com",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
   // img-src https: is broad on purpose: project cards embed README images
   // from arbitrary GitHub raw/camo hosts.
   "img-src 'self' data: https:",
