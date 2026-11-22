@@ -27,10 +27,6 @@ interface Props {
   title: string;
   /** true = two-column layout (ProfilePanel sidebar + content) via DualMain */
   dual?: boolean;
-  /** false = center content instead of scrolling it (passed to DualMain) */
-  scrollable?: boolean;
-  /** Optional heading rendered above the content panel */
-  pageLabel?: string;
   /** Overrides the per-route description from site.pageDescriptions */
   description?: string;
 }
@@ -44,13 +40,7 @@ const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
 
 const defaultDescription = site.pageDescriptions[pathKey] ?? site.description;
 
-const {
-  title,
-  dual = false,
-  scrollable = true,
-  pageLabel = "",
-  description = defaultDescription,
-} = Astro.props;
+const { title, dual = false, description = defaultDescription } = Astro.props;
 
 const pageTitle = `${title} — ${site.name}`;
 // Optimized at build time — the 1 MB source PNG never ships.
@@ -223,7 +213,7 @@ const THEME_COLOR = "rgb(18, 11, 6)";
                flex items-center justify-center overflow-hidden"
       >
         {dual ? (
-          <DualMain pageLabel={pageLabel} scrollable={scrollable}>
+          <DualMain>
             <slot />
           </DualMain>
         ) : (

@@ -1,21 +1,12 @@
 ---
 import Sidebar from "../components/layout/Sidebar.astro";
 import ContentPanel from "../components/layout/ContentPanel.astro";
-
-/** Two-column layout: Sidebar (desktop only) + right content panel. */
-interface Props {
-  /** Optional heading above the content panel */
-  pageLabel?: string;
-  /** false = center the content instead of making it scrollable */
-  scrollable?: boolean;
-}
-
-const { pageLabel = "", scrollable = true } = Astro.props;
 ---
 
+<!-- Two-column layout: Sidebar (desktop only) + right content panel. -->
 <div class="flex flex-col laptop:flex-row laptop-scaled:flex-row w-full h-full overflow-hidden">
   <Sidebar />
-  <ContentPanel pageLabel={pageLabel} scrollable={scrollable}>
+  <ContentPanel>
     <slot />
   </ContentPanel>
 </div>

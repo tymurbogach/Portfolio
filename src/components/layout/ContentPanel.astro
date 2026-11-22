@@ -1,56 +1,19 @@
 ---
-/** Right content panel of DualMain. Verbatim split: same markup as before. */
-interface Props {
-  /** Optional heading above the content panel */
-  pageLabel?: string;
-  /** false = center the content instead of making it scrollable */
-  scrollable?: boolean;
-}
-
-const { pageLabel = "", scrollable = true } = Astro.props;
+/** Right content panel of DualMain: the single scroll container of the page. */
 ---
 
 <!-- Right content panel -->
 <div class="content-panel flex-1 min-w-0 flex flex-col h-full relative overflow-hidden">
-  <!-- Optional section heading -->
-  {pageLabel && (
-    <div
-      class="mx-auto w-full max-w-[var(--content-panel-max)] shrink-0
-             px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-             laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
-             pt-[1rem] laptop:pt-[var(--section-gap)] laptop-scaled:pt-[var(--section-gap)]
-             pb-4 laptop:pb-7 laptop-scaled:pb-7"
-    >
-      <h2
-        class="text-xs laptop:text-[var(--type-reading)] laptop-scaled:text-[var(--type-reading)]
-               tracking-[0.45em] uppercase font-bold m-0
-               text-[var(--foreground)] text-glow"
-      >
-        {pageLabel}
-      </h2>
-      <div class="text-gradient text-glow gradient-line mt-3 laptop:mt-4 laptop-scaled:mt-4" />
-    </div>
-  )}
-
-  <!-- Scrollable or centered content -->
-  {scrollable ? (
-    <div
-      id="content-scroll"
-      class="mx-auto w-full max-w-[var(--content-panel-max)] flex-1 overflow-y-auto overflow-x-hidden
-             px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
-             laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
-             pb-[4rem] laptop:pb-[var(--content-block-gap)] laptop-scaled:pb-[var(--content-block-gap)]"
-    >
-      <slot />
-    </div>
-  ) : (
-    <div
-      class="mx-auto w-full max-w-[var(--content-panel-max)] flex-1 flex items-center justify-center
-                px-[1.25rem] laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]"
-    >
-      <slot />
-    </div>
-  )}
+  <!-- Scrollable content -->
+  <div
+    id="content-scroll"
+    class="mx-auto w-full max-w-[var(--content-panel-max)] flex-1 overflow-y-auto overflow-x-hidden
+           px-[1.25rem] mobile:px-[1.75rem] tablet:px-[2.5rem]
+           laptop:px-[var(--content-inset)] laptop-scaled:px-[var(--content-inset)]
+           pb-[4rem] laptop:pb-[var(--content-block-gap)] laptop-scaled:pb-[var(--content-block-gap)]"
+  >
+    <slot />
+  </div>
 
   <!-- Bordes difuminados del panel (3rem arriba, 2rem abajo).
        Antes era un `mask-image` en este mismo contenedor, pero enmascarar al
