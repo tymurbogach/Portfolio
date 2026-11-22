@@ -1,12 +1,16 @@
 ---
-import { getSocialLinks } from "../../lib/content";
 import type { SocialLink } from "../../lib/content";
-const socialLinks = await getSocialLinks();
+
+interface Props {
+  links: SocialLink[];
+}
+
+const { links } = Astro.props;
 ---
 
 <div class="w-full" style="width: var(--nav-width); height: var(--nav-height);">
   <div class="nav-panel flex flex-row items-center justify-center text-center w-full h-full">
-    {socialLinks.map(({ url, icon, name }: SocialLink) => (
+    {links.map(({ url, icon, name }) => (
       <a
         href={url}
         target="_blank"
@@ -14,7 +18,7 @@ const socialLinks = await getSocialLinks();
         aria-label={name}
         class="group flex flex-col items-center justify-center h-full flex-1
                text-[var(--foreground)] px-[0.75rem]
-               transition-all duration-250 ease-in-out
+               transition-colors duration-250 ease-in-out
                can-hover:hover:bg-[var(--secondary)] can-hover:hover:text-[var(--secondary-foreground)]"
       >
         <!-- CSS mask like NavBar: color comes from bg-, not the img src -->

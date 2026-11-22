@@ -1,11 +1,10 @@
 ---
 import Button from "../../components/ui/Button.astro";
 import CvDownloadButton from "../../components/ui/CvDownloadButton.astro";
-import type { ContactData, SocialLink } from "../../lib/content";
+import type { ContactData } from "../../lib/content";
 
 interface Props {
   contact: ContactData;
-  socialLinks: SocialLink[];
 }
 
 const { contact } = Astro.props;

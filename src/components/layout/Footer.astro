@@ -1,7 +1,14 @@
 ---
 import SocialLinks from "../ui/SocialLinks.astro";
+import type { SocialLink } from "../../lib/content";
+
+interface Props {
+  links: SocialLink[];
+}
+
+const { links } = Astro.props;
 ---
 
 <footer class="w-full h-auto flex flex-row items-center justify-center m-0">
-  <SocialLinks />
+  <SocialLinks links={links} />
 </footer>

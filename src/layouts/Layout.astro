@@ -10,7 +10,7 @@ import ChatWidget from "../components/layout/ChatWidget.astro";
 import DualMain from "../layouts/DualMain.astro";
 import { ClientRouter } from "astro:transitions";
 import { getImage } from "astro:assets";
-import { getSite, getProfile } from "../lib/content";
+import { getSite, getProfile, getSocialLinks } from "../lib/content";
 import {
   THEMES,
   DEFAULT_THEME,
@@ -36,6 +36,7 @@ interface Props {
 
 const site = await getSite();
 const profile = await getProfile();
+const socialLinks = await getSocialLinks();
 
 const pathKey = (Astro.url.pathname.replace(/^\/|\/$/g, "") ||
   "home") as keyof typeof site.pageDescriptions;
@@ -158,14 +159,14 @@ const THEME_COLOR = "rgb(18, 11, 6)";
              [will-change:transform] [overflow:clip] [overflow-clip-margin:24px]
              shadow-[0_2px_24px_color-mix(in_srgb,var(--accent)_8%,transparent)]"
     >
-      <Header />
+      <Header site={site} profile={profile} />
     </header>
 
     <footer
       class="block laptop:hidden laptop-scaled:hidden fixed bottom-0 left-0 w-full z-30
              shadow-[0_-2px_24px_color-mix(in_srgb,var(--accent)_8%,transparent)]"
     >
-      <Footer />
+      <Footer links={socialLinks} />
     </footer>
 
     <!-- DESKTOP — fixed corner elements -->
@@ -187,7 +188,7 @@ const THEME_COLOR = "rgb(18, 11, 6)";
       class="hidden laptop:flex laptop-scaled:flex fixed z-40"
       style="bottom: var(--fixed-offset); left: var(--fixed-offset);"
     >
-      <SocialLinks />
+      <SocialLinks links={socialLinks} />
     </div>
 
     <div

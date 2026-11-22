@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "");
   style="width: var(--nav-width); height: var(--nav-height);"
 >
   <nav class="nav-panel relative flex flex-row items-center justify-center text-center w-full h-full overflow-visible">
-    {pages.map((page: NavPage) => (
+    {pages.map((page) => (
       <a
         href={page.path}
         data-active={currentPath === page.path ? "true" : "false"}

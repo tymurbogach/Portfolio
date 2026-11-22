@@ -11,7 +11,6 @@ import {
   getResumeData,
   getProjects,
   getContactData,
-  getSocialLinks,
   getLabeledSections,
 } from "../../lib/content";
 import type { LabeledSection } from "../../lib/content";
@@ -22,7 +21,6 @@ const aboutData = await getAboutData();
 const resumeData = await getResumeData();
 const projects = await getProjects();
 const contactData = await getContactData();
-const socialLinks = await getSocialLinks();
 
 const sections: LabeledSection[] = getLabeledSections(site);
 
@@ -100,7 +98,7 @@ for (const section of sections) {
   </section>
 
   <!-- SECCIONES DINÁMICAS -->
-  {sections.map((section: LabeledSection) => (
+  {sections.map((section) => (
     <section
       id={section.sectionId}
       class="pt-[1rem] laptop:pt-[3rem] laptop-scaled:pt-[3rem]"
@@ -121,9 +119,7 @@ for (const section of sections) {
         {section.sectionId === "about" && <About about={aboutData} />}
         {section.sectionId === "resume" && <Resume resume={resumeData} />}
         {section.sectionId === "projects" && <Projects projects={projects} />}
-        {section.sectionId === "contact" && (
-          <Contact contact={contactData} socialLinks={socialLinks} />
-        )}
+        {section.sectionId === "contact" && <Contact contact={contactData} />}
       </div>
     </section>
   ))}
