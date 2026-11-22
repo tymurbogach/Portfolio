@@ -12,9 +12,7 @@ const { journey, education, hobbies } = about;
 <section class="flex flex-col gap-6 laptop:gap-8 w-full">
   <!-- JOURNEY -->
   <div class="flex flex-col gap-5">
-    <h3 class="cat-label" style="color: var(--primary);">
-      Journey
-    </h3>
+    <h3 class="cat-label text-[var(--primary)]">Journey</h3>
     <div class="flex flex-col">
       {journey.map(({ year, event, detail, active }, i) => (
         <div
@@ -33,8 +31,8 @@ const { journey, education, hobbies } = about;
             />
             {i < journey.length - 1 && (
               <div
-                class="w-px flex-1 my-1"
-                style="background: linear-gradient(to bottom, var(--accent-subtle), transparent);"
+                class="w-px flex-1 my-1
+                       bg-[linear-gradient(to_bottom,var(--accent-subtle),transparent)]"
               />
             )}
           </div>
@@ -42,10 +40,7 @@ const { journey, education, hobbies } = about;
           <!-- Content -->
           <div class={`pb-5 ${i === journey.length - 1 ? "pb-0" : ""}`}>
             <div class="flex items-baseline flex-wrap gap-x-3 mb-1">
-              <span
-                class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)] laptop-scaled:text-[var(--type-meta)] tracking-[0.2em] uppercase font-bold whitespace-nowrap"
-                style="color: var(--primary);"
-              >
+              <span class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)] laptop-scaled:text-[var(--type-meta)] tracking-[0.2em] uppercase font-bold whitespace-nowrap text-[var(--primary)]">
                 {year}
               </span>
               <span
@@ -54,10 +49,7 @@ const { journey, education, hobbies } = about;
                 {event}
               </span>
             </div>
-            <p
-              class="text-xs laptop:text-[var(--type-reading)] laptop-scaled:text-[var(--type-reading)] leading-relaxed"
-              style="color: var(--muted-foreground);"
-            >
+            <p class="text-xs laptop:text-[var(--type-reading)] laptop-scaled:text-[var(--type-reading)] leading-relaxed text-[var(--muted-foreground)]">
               {detail}
             </p>
           </div>
@@ -68,17 +60,15 @@ const { journey, education, hobbies } = about;
 
   <!-- EDUCATION -->
   <div class="flex flex-col gap-4">
-    <h3 class="cat-label" style="color: var(--primary);">
-      Education
-    </h3>
+    <h3 class="cat-label text-[var(--primary)]">Education</h3>
 
     <div class="flex flex-col gap-2">
       {education.map(({ years, title, sub }) => (
         <div
           class="group flex justify-between items-start px-4 py-3 border border-[var(--border-subtle)] bg-[var(--muted)]
+                    border-l-2 border-l-[var(--primary)]
                     transition duration-200
                     can-hover:hover:bg-[var(--surface-glow)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:-translate-y-px"
-          style="border-left: 2px solid var(--primary);"
         >
           <div>
             <p class="text-sm laptop:text-[var(--type-reading)] laptop-scaled:text-[var(--type-reading)] font-bold leading-snug transition-colors duration-200 can-hover:group-hover:text-[var(--accent)]">
@@ -89,10 +79,7 @@ const { journey, education, hobbies } = about;
             </p>
           </div>
 
-          <span
-            class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)] laptop-scaled:text-[var(--type-meta)] tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0"
-            style="color: var(--primary);"
-          >
+          <span class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)] laptop-scaled:text-[var(--type-meta)] tracking-[0.15em] uppercase font-bold whitespace-nowrap mt-0.5 shrink-0 text-[var(--primary)]">
             {years}
           </span>
         </div>
@@ -102,9 +89,7 @@ const { journey, education, hobbies } = about;
 
   <!-- HOBBIES -->
   <div class="flex flex-col gap-4">
-    <h3 class="cat-label" style="color: var(--primary);">
-      When not coding
-    </h3>
+    <h3 class="cat-label text-[var(--primary)]">When not coding</h3>
 
     <div class="grid grid-cols-1 laptop:grid-cols-2 gap-x-6 gap-y-0">
       {hobbies.map(({ label, detail }) => (

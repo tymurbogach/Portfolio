@@ -24,7 +24,7 @@
 - [x] T03. Mover el texto visible a colecciones, incluida una colección `chat`.
 - [x] T04. Convertir `SocialLinks` en componente presentacional y eliminar tipos
       redundantes en callbacks de colecciones.
-- [ ] T05. Sustituir estilos inline no permitidos, eliminar `transition-all` y
+- [x] T05. Sustituir estilos inline no permitidos, eliminar `transition-all` y
       mover los estilos de TrueFocus a `global.css`.
 - [ ] T06. Rehacer TrueFocus sin animaciones de layout y respetar reduced motion.
 - [ ] T07. Normalizar AbortController, temporizadores y fetch en scripts cliente.
