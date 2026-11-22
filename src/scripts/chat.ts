@@ -1,15 +1,35 @@
 const CHAT_API = "/api/chat";
 const SESSION_KEY = "chat_session_id";
 
+/*
+ * sessionStorage throws in some privacy modes; keep the chat alive with an
+ * in-memory fallback instead of crashing on the first read.
+ */
+const memorySession = new Map<string, string>();
+function safeSessionGet(key: string): string | null {
+  try {
+    return sessionStorage.getItem(key);
+  } catch {
+    return memorySession.get(key) ?? null;
+  }
+}
+function safeSessionSet(key: string, value: string): void {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch {
+    memorySession.set(key, value);
+  }
+}
+
 function getSessionId(): string {
-  let id = sessionStorage.getItem(SESSION_KEY);
+  let id = safeSessionGet(SESSION_KEY);
   if (!id) {
     // crypto.randomUUID() requires secure context; fallback for plain HTTP
     id =
       typeof crypto.randomUUID === "function"
         ? crypto.randomUUID()
         : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
-    sessionStorage.setItem(SESSION_KEY, id);
+    safeSessionSet(SESSION_KEY, id);
   }
   return id;
 }
@@ -31,13 +51,19 @@ function createTypingEl(): HTMLElement {
   return el;
 }
 
+// One send at a time: concurrent sends interleave bubbles and server history.
+let inFlight: AbortController | null = null;
+
 async function sendMessage(
   text: string,
   messagesEl: HTMLElement,
   inputEl: HTMLInputElement,
   sendBtn: HTMLElement,
 ): Promise<void> {
-  if (!text.trim()) return;
+  if (!text.trim() || inFlight) return;
+
+  const controller = new AbortController();
+  inFlight = controller;
 
   inputEl.value = "";
   inputEl.disabled = true;
@@ -60,6 +86,7 @@ async function sendMessage(
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: text, sessionId: getSessionId() }),
+      signal: controller.signal,
     });
 
     if (!res.ok || !res.body) {
@@ -109,7 +136,10 @@ async function sendMessage(
         }
       }
     }
-  } catch {
+  } catch (err) {
+    // Navigation aborts the in-flight request: the DOM is going away, so
+    // leave quietly instead of painting an error nobody will read.
+    if (err instanceof DOMException && err.name === "AbortError") return;
     typingEl.remove();
     if (!botInserted) {
       messagesEl.appendChild(botEl);
@@ -117,6 +147,7 @@ async function sendMessage(
     }
     botEl.textContent = "⚠ Could not connect to chat service";
   } finally {
+    inFlight = null;
     inputEl.disabled = false;
     sendBtn.removeAttribute("disabled");
     inputEl.focus();
@@ -233,7 +264,10 @@ function initChat(): void {
 
   document.addEventListener(
     "astro:before-preparation",
-    () => controller.abort(),
+    () => {
+      inFlight?.abort();
+      controller.abort();
+    },
     { once: true },
   );
 }

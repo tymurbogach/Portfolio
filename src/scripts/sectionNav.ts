@@ -221,6 +221,24 @@ function initSectionNav(): void {
     setActiveNav(targetId);
   };
 
+  // A manual wheel/touch during smooth scroll means the user took over:
+  // release the lock so the spy resumes from the real scroll position.
+  scrollEl.addEventListener(
+    "wheel",
+    () => {
+      lockedTarget = null;
+    },
+    { passive: true, signal: ac.signal },
+  );
+
+  scrollEl.addEventListener(
+    "touchmove",
+    () => {
+      lockedTarget = null;
+    },
+    { passive: true, signal: ac.signal },
+  );
+
   // ── Intercept nav clicks for smooth in-page scroll ────────────────────────
   document
     .querySelectorAll<HTMLAnchorElement>(".nav-link[href]")

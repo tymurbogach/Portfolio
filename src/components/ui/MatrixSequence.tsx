@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import DecryptedText from "./DecryptedText";
 
 interface MatrixSequenceProps {
@@ -13,10 +13,20 @@ export default function MatrixSequence({
   comment,
 }: MatrixSequenceProps) {
   const [showComment, setShowComment] = useState(false);
+  const commentTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleQuoteComplete = useCallback(() => {
-    setTimeout(() => setShowComment(true), 2000);
+    commentTimer.current = setTimeout(() => setShowComment(true), 2000);
   }, []);
+
+  // Fast navigation between the reveal and the timer leaves a setState
+  // aimed at a dead component: clear the timer on unmount.
+  useEffect(
+    () => () => {
+      if (commentTimer.current) clearTimeout(commentTimer.current);
+    },
+    [],
+  );
 
   return (
     <>

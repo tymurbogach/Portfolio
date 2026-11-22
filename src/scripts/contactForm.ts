@@ -115,9 +115,11 @@ export function initContactForm() {
       statusEl.classList.add("hidden");
 
       try {
+        // Aborts on navigation (ac.signal) and after 8 s of silence.
         const res = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           body: new FormData(form),
+          signal: AbortSignal.any([ac.signal, AbortSignal.timeout(8000)]),
         });
         const result = await res.json();
 
@@ -128,11 +130,15 @@ export function initContactForm() {
         }
       } catch (err) {
         const fallbackEmail = form.dataset.email;
-        const msg =
-          err instanceof Error ? err.message : "Something went wrong.";
+        const base =
+          err instanceof DOMException && err.name === "TimeoutError"
+            ? "The form service did not respond. Try again in a moment."
+            : err instanceof Error
+              ? err.message
+              : "Something went wrong.";
         setStatus(
           statusEl,
-          fallbackEmail ? `${msg} Email me directly: ${fallbackEmail}` : msg,
+          fallbackEmail ? `${base} Email me directly: ${fallbackEmail}` : base,
           true,
         );
         restoreBtn();

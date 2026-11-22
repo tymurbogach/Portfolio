@@ -27,7 +27,7 @@
 - [x] T05. Sustituir estilos inline no permitidos, eliminar `transition-all` y
       mover los estilos de TrueFocus a `global.css`.
 - [x] T06. Rehacer TrueFocus sin animaciones de layout y respetar reduced motion.
-- [ ] T07. Normalizar AbortController, temporizadores y fetch en scripts cliente.
+- [x] T07. Normalizar AbortController, temporizadores y fetch en scripts cliente.
 - [ ] T08. Corregir accesibilidad del formulario y del diálogo de chat.
 - [x] T09. Limitar el chat, validar entradas, cancelar upstreams y documentar la
       regla de rate limit de Cloudflare.

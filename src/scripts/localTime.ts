@@ -27,12 +27,17 @@ function initLocalTime(): void {
     try {
       el.textContent = formatTime(tz);
     } catch {
-      // Invalid timezone — leave the element empty rather than crash
+      // Invalid timezone: leave the field empty and stop ticking.
       clearInterval(intervalId);
     }
   };
 
-  render();
+  // First render validates the timezone: a bad one never schedules timers.
+  try {
+    render();
+  } catch {
+    return;
+  }
 
   // Align updates to the minute boundary, then tick every 60 s.
   const msToNextMinute = 60_000 - (Date.now() % 60_000);

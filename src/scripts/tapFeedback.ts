@@ -1,11 +1,21 @@
 /** Apply a CSS animation class, then remove it when done. */
-function animate(el: HTMLElement, cls: string): void {
+function animate(el: HTMLElement, cls: string, signal?: AbortSignal): void {
   el.classList.remove(cls);
   void el.offsetWidth;
   el.classList.add(cls);
   const cleanup = () => el.classList.remove(cls);
   el.addEventListener("animationend", cleanup, { once: true });
-  setTimeout(cleanup, 1100);
+  // Fallback for animations that never fire animationend; cleared on
+  // navigation so no timer survives a torn-down page.
+  const timer = setTimeout(cleanup, 1100);
+  signal?.addEventListener(
+    "abort",
+    () => {
+      clearTimeout(timer);
+      cleanup();
+    },
+    { once: true },
+  );
 }
 
 function setup(ac: AbortController): void {
@@ -43,15 +53,15 @@ function setup(ac: AbortController): void {
         // NavBar links have data-active; NameCard nav-link does not
         if (el.hasAttribute("data-active")) {
           if (el.dataset.active === "true") return;
-          animate(el, "nav-tap-pressed"); // immediate — nav is fixed, never scrolls
+          animate(el, "nav-tap-pressed", ac.signal); // immediate — nav is fixed, never scrolls
         } else {
           // NameCard: uses separate animation so text snaps to letter-color
           // before bg fades — avoids near-black text on dark bg ("fade to black")
-          animate(el, "namecard-tap-pressed");
+          animate(el, "namecard-tap-pressed", ac.signal);
         }
       } else if (inNavPanel) {
         // SocialLinks, bot button — inside nav-panel (fixed, not scrollable)
-        animate(el, "nav-tap-pressed"); // immediate
+        animate(el, "nav-tap-pressed", ac.signal); // immediate
       } else if (isActionBtn) {
         // btn-primary / btn-ghost: CSS :active handles visual feedback instantly
         return;
@@ -80,7 +90,7 @@ function setup(ac: AbortController): void {
   document.addEventListener(
     "touchend",
     () => {
-      if (pendingEl && pendingCls) animate(pendingEl, pendingCls);
+      if (pendingEl && pendingCls) animate(pendingEl, pendingCls, ac.signal);
       cancel();
     },
     { signal: ac.signal },

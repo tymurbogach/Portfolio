@@ -75,8 +75,9 @@ function initThemeMode(): void {
 
 document.addEventListener("astro:page-load", initThemeMode);
 
-// Re-apply the persisted theme to the incoming document before the view
-// transition swap, so client-side navigation never flashes the default theme.
+// Registered at module level ON PURPOSE: Astro evaluates bundled scripts a
+// single time per session, so this handler lives for the whole SPA while the
+// initThemeMode controller above is recreated (and aborted) per navigation.
 document.addEventListener("astro:before-swap", (e) => {
   const event = e as TransitionBeforeSwapEvent;
   const { mode, theme } = resolveThemeState(localStorage);
