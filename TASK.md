@@ -7,7 +7,8 @@
 - Antes de cada tarea, confirma que `git status --short` está vacío.
 - Después de T01, ejecuta `npm run format:check`, `npm run test`,
   `npm run check` y `npm run build` antes de cada commit.
-- No hagas push ni despliegue sin una petición explícita.
+- Push y despliegue al final: tras verificar todas las puertas, cuando el
+  usuario lo pida al cerrar la tanda. Ver `AGENTS.md`.
 
 ## Línea base
 

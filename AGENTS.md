@@ -21,12 +21,12 @@ Después de cada cambio, ejecuta `npm run format:check`, `npm run test`, `npm ru
 
 ## Despliegue
 
-Cuando el usuario diga explícitamente `deploy` para este portfolio:
+Despliega al final: cuando el usuario diga `deploy`, o cuando pida cerrar una tanda de trabajo completa.
 
-1. Revisa los cambios y ejecuta `npm run check` y `npm run build`.
-2. Si hay cambios del trabajo pendientes, crea un commit convencional en español. No crees commits vacíos.
+1. Verifica todas las puertas: `format:check`, `test`, `check`, `build`, `themes:check` y `test:visual`.
+2. Si quedan cambios sin commitear, crea commits convencionales en español. No crees commits vacíos.
 3. Ejecuta `git push origin master`.
-4. Ejecuta `ssh pi@192.168.18.18 '/home/pi/docker/scripts/deploy portfolio'`.
+4. Ejecuta `ssh pi@192.168.18.18 '/home/pi/docker/scripts/deploy portfolio'`. Fuera de casa, usa el alias `pi-ts`.
 
 Detén el proceso e informa del error si falla una comprobación, el commit, el push o el comando remoto.
 
