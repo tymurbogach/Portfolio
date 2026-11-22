@@ -16,8 +16,7 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command:
-      "trap 'npx astro dev stop' EXIT INT TERM; npm run dev -- --port 4321; while true; do sleep 60; done",
+    command: "npm run dev -- --port 4321",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

@@ -20,7 +20,7 @@
 
 - [x] T01. Actualizar Astro, integraciones y herramientas. Eliminar los hints,
       normalizar el formato y dejar el audit sin vulnerabilidades altas o críticas.
-- [ ] T02. Añadir Vitest, pruebas unitarias para temas, chat y Umami, y ampliar CI.
+- [x] T02. Añadir Vitest, pruebas unitarias para temas, chat y Umami, y ampliar CI.
 - [ ] T03. Mover el texto visible a colecciones, incluida una colección `chat`.
 - [ ] T04. Convertir `SocialLinks` en componente presentacional y eliminar tipos
       redundantes en callbacks de colecciones.
