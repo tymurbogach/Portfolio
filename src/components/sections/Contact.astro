@@ -83,19 +83,26 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
 
     <div
       id="form-status"
+      role="status"
+      aria-live="polite"
+      tabindex="-1"
       class="hidden py-2 px-3 border border-[var(--border-subtle)]
              font-hud text-[0.7rem] laptop:text-[var(--type-meta)] tracking-[0.16em] text-center text-[var(--foreground)]"
     />
 
     <div class="grid grid-cols-1 min-[30rem]:grid-cols-2 gap-4">
-      <input
-        id="f-name"
-        name="name"
-        type="text"
-        required
-        autocomplete="off"
-        placeholder="Name"
-        class="bg-transparent w-full outline-none px-3 py-2.5
+      <div>
+        <label class="sr-only" for="f-name">
+          Name
+        </label>
+        <input
+          id="f-name"
+          name="name"
+          type="text"
+          required
+          autocomplete="off"
+          placeholder="Name"
+          class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-[var(--type-reading)]
                text-[var(--foreground)]
                border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
@@ -103,40 +110,51 @@ const { intro, email, location, formSubject, cv_url, cv_url_es, web3formsKey } =
                transition-colors duration-200
                placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
                placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[var(--type-meta)]"
-      />
-      <input
-        id="f-email"
-        name="email"
-        type="email"
-        required
-        autocomplete="off"
-        placeholder="Email"
-        class="bg-transparent w-full outline-none px-3 py-2.5
+        />
+      </div>
+      <div>
+        <label class="sr-only" for="f-email">
+          Email
+        </label>
+        <input
+          id="f-email"
+          name="email"
+          type="email"
+          required
+          autocomplete="off"
+          placeholder="Email"
+          class="bg-transparent w-full outline-none px-3 py-2.5
                text-xs laptop:text-[var(--type-reading)]
                text-[var(--foreground)]
                border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
                focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
                transition-colors duration-200
+               placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
+               placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[var(--type-meta)]"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label class="sr-only" for="f-message">
+        Message
+      </label>
+      <textarea
+        id="f-message"
+        name="message"
+        rows="5"
+        required
+        placeholder="Message"
+        class="bg-transparent w-full outline-none p-3
+               text-xs laptop:text-[var(--type-reading)]
+               text-[var(--foreground)]
+               resize-none border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
+               focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
+               transition-colors duration-200 focus-visible:outline-none
                placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
                placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[var(--type-meta)]"
       />
     </div>
-
-    <textarea
-      id="f-message"
-      name="message"
-      rows="5"
-      required
-      placeholder="Message"
-      class="bg-transparent w-full outline-none p-3
-             text-xs laptop:text-[var(--type-reading)]
-             text-[var(--foreground)]
-             resize-none border border-[var(--border)] can-hover:hover:border-[var(--accent-subtle)] can-hover:hover:bg-[color-mix(in_srgb,var(--accent)_2%,transparent)] focus:border-[var(--accent)]
-             focus:bg-[color-mix(in_srgb,var(--accent)_3%,transparent)]
-             transition-colors duration-200 focus-visible:outline-none
-             placeholder:text-[var(--foreground-faint)] placeholder:tracking-[0.1em] placeholder:uppercase
-             placeholder:font-hud placeholder:text-[0.68rem] laptop:placeholder:text-[var(--type-meta)]"
-    />
 
     <div class="flex items-center justify-between gap-4">
       <span class="font-hud text-[0.65rem] laptop:text-[var(--type-meta)] tracking-[0.18em] uppercase font-bold text-[var(--foreground-faint)]">

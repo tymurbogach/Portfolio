@@ -17,6 +17,10 @@ const categories = [
   { label: "Backend", skills: backend },
   ...(ai?.length ? [{ label: "AI Tooling", skills: ai }] : []),
 ];
+
+/** Stable id for each collapsed grid, shared by aria-controls. */
+const gridId = (label: string) =>
+  `resume-grid-${label.toLowerCase().replace(/[^a-z]+/g, "-")}`;
 ---
 
 <section
@@ -28,6 +32,7 @@ const categories = [
       <span class="cat-label text-[var(--primary)]">{label}</span>
 
       <div
+        id={gridId(label)}
         class="resume-grid
                   grid grid-cols-[repeat(auto-fill,minmax(7.5rem,1fr))] gap-[clamp(0.375rem,0.75vw,0.625rem)] overflow-hidden
                   max-h-[clamp(10rem,14vw,15rem)]"
@@ -47,6 +52,7 @@ const categories = [
                transition-colors duration-200
                can-hover:hover:text-[var(--foreground)] active:text-[var(--foreground)]"
         aria-expanded="false"
+        aria-controls={gridId(label)}
       >
         <span class="resume-toggle-label font-bold text-[var(--accent)]"></span>
         <span class="resume-toggle-word">more</span>

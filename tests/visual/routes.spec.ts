@@ -40,7 +40,8 @@ for (const viewport of viewports) {
       });
       await page.locator("[data-visual-matrix]").evaluateAll((elements) => {
         for (const element of elements) {
-          element.textContent = element.getAttribute("aria-label") ?? "";
+          // data-quote mirrors the animated quote; screenshots need it static.
+          element.textContent = element.dataset.quote ?? "";
         }
       });
 

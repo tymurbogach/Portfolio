@@ -17,6 +17,7 @@ const { greeting, starters } = await getChatData();
   id="chat-widget"
   data-open="false"
   class="font-hud flex flex-col"
+  role="dialog"
   aria-label="Chat with Tymur's AI"
   aria-hidden="true"
 >
@@ -39,6 +40,8 @@ const { greeting, starters } = await getChatData();
   <!-- Messages -->
   <div
     id="chat-messages"
+    role="log"
+    aria-live="polite"
     class="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 min-h-0 text-[0.78rem] leading-[1.7]"
   >
     <!-- Welcome message -->
@@ -67,6 +70,7 @@ const { greeting, starters } = await getChatData();
       type="text"
       placeholder="> type your message..."
       autocomplete="off"
+      aria-label="Type your message"
       class="flex-1 px-4 py-3 text-[0.7rem] bg-[var(--card)] border-none outline-none
              text-[var(--foreground)] [font-family:inherit]"
     />
@@ -75,6 +79,7 @@ const { greeting, starters } = await getChatData();
       class="px-4 py-3 text-[0.65rem] tracking-[0.2em] uppercase font-bold min-w-16
              bg-[var(--accent)] text-[var(--accent-foreground)] border-none [font-family:inherit]
              transition-colors duration-150 cursor-pointer disabled:opacity-30"
+      aria-label="Send message"
     >
       →
     </button>

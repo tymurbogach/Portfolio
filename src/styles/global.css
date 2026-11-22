@@ -1100,6 +1100,9 @@ body {
 textarea:focus-visible,
 input:focus-visible {
   outline: none;
+  /* Fields drop the global outline; give keyboard users an equally strong
+     non-color ring that does not touch the resting appearance. */
+  box-shadow: 0 0 0 2px var(--ring);
 }
 
 a,

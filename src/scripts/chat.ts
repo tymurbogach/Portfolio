@@ -46,6 +46,7 @@ function createMsgEl(role: "user" | "bot", text = ""): HTMLElement {
 function createTypingEl(): HTMLElement {
   const el = document.createElement("div");
   el.className = "chat-typing";
+  el.setAttribute("role", "status");
   el.setAttribute("aria-label", "Typing…");
   for (let i = 0; i < 3; i++) el.appendChild(document.createElement("span"));
   return el;

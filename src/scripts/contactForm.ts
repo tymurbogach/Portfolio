@@ -35,6 +35,8 @@ function setStatus(el: HTMLElement, text: string, error = false) {
   el.textContent = text;
   el.classList.remove("hidden");
   el.classList.toggle("form-status--error", error);
+  // Move focus so keyboard and screen reader users learn what went wrong.
+  el.focus();
 }
 
 function showSuccess(form: HTMLFormElement) {
@@ -50,6 +52,8 @@ function showSuccess(form: HTMLFormElement) {
   const heading = document.createElement("p");
   heading.className = "form-success__heading";
   heading.textContent = "Message received";
+  // Focus target after the form is replaced (see showSuccess caller).
+  heading.tabIndex = -1;
 
   const body = document.createElement("p");
   body.className = "form-success__body";
@@ -65,6 +69,8 @@ function showSuccess(form: HTMLFormElement) {
   block.appendChild(line2);
 
   wrapper.replaceChild(block, form);
+  // The form held the focus; hand it to the confirmation so context is kept.
+  heading.focus();
 }
 
 export function initContactForm() {
