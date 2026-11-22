@@ -9,6 +9,12 @@ services:
     restart: unless-stopped
     environment:
       - OLLAMA_URL=${OLLAMA_URL:-http://host.docker.internal:11434}
+      # Umami for /api/stats: empty defaults keep compose quiet without a .env;
+      # an empty value disables stats (503) instead of fetching "undefined".
+      - UMAMI_URL=${UMAMI_URL:-}
+      - UMAMI_USERNAME=${UMAMI_USERNAME:-}
+      - UMAMI_PASSWORD=${UMAMI_PASSWORD:-}
+      - UMAMI_WEBSITE_ID=${UMAMI_WEBSITE_ID:-}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:

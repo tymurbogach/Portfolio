@@ -5,6 +5,7 @@ interface UmamiStats {
 
 let cachedToken: string | null = null;
 let tokenExpiry = 0;
+let warnedMissingConfig = false;
 
 const UMAMI_URL = import.meta.env.UMAMI_URL ?? process.env.UMAMI_URL;
 const UMAMI_USERNAME =
@@ -14,7 +15,19 @@ const UMAMI_PASSWORD =
 const UMAMI_WEBSITE =
   import.meta.env.UMAMI_WEBSITE_ID ?? process.env.UMAMI_WEBSITE_ID;
 
+function hasUmamiConfig(): boolean {
+  return Boolean(
+    UMAMI_URL && UMAMI_USERNAME && UMAMI_PASSWORD && UMAMI_WEBSITE,
+  );
+}
+
+function dropCachedToken(): void {
+  cachedToken = null;
+  tokenExpiry = 0;
+}
+
 async function getToken(): Promise<string | null> {
+  if (!hasUmamiConfig()) return null;
   if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
 
   try {
@@ -38,6 +51,16 @@ async function getToken(): Promise<string | null> {
 }
 
 export async function getVisitorStats(): Promise<UmamiStats | null> {
+  if (!hasUmamiConfig()) {
+    if (!warnedMissingConfig) {
+      warnedMissingConfig = true;
+      console.warn(
+        "[umami] missing UMAMI_URL/UMAMI_USERNAME/UMAMI_PASSWORD/UMAMI_WEBSITE_ID — /api/stats stays 503",
+      );
+    }
+    return null;
+  }
+
   const token = await getToken();
   if (!token) return null;
 
@@ -55,14 +78,19 @@ export async function getVisitorStats(): Promise<UmamiStats | null> {
         signal: AbortSignal.timeout(2000),
       },
     );
-    if (!res.ok) return null;
+    if (!res.ok) {
+      // Umami rejected the cached token (revoked server-side): drop it so the
+      // next request logs in again instead of answering 503 until expiry.
+      dropCachedToken();
+      return null;
+    }
     const data = await res.json();
     return {
       pageviews: data.pageviews ?? 0,
       visitors: data.visitors ?? 0,
     };
   } catch {
-    cachedToken = null;
+    dropCachedToken();
     return null;
   }
 }
