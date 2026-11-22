@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Icon from "./Icon.astro";
+import { TAG_SLUGS } from "../../lib/tagSlugs";
 
 /** Project card: renders as an external link when `link` is set, otherwise as a static card. */
 interface Props {
@@ -43,32 +44,6 @@ const Tag = link ? "a" : "div";
 const linkAttrs = link
   ? { href: link, target: "_blank", rel: "noopener noreferrer" }
   : {};
-
-/** Maps project tags to simple-icons slugs; unmapped tags render as plain text badges. */
-const TAG_SLUGS: Record<string, { slug: string; color?: string }> = {
-  Angular: { slug: "angular", color: "#DD0031" },
-  Laravel: { slug: "laravel" },
-  TypeScript: { slug: "typescript" },
-  JavaScript: { slug: "javascript" },
-  Docker: { slug: "docker" },
-  HTML: { slug: "html5" },
-  CSS: { slug: "css" },
-  PHP: { slug: "php" },
-  MySQL: { slug: "mysql" },
-  PostgreSQL: { slug: "postgresql" },
-  Vue: { slug: "vuedotjs" },
-  React: { slug: "react" },
-  Node: { slug: "nodedotjs" },
-  Python: { slug: "python" },
-  Bash: { slug: "gnubash" },
-  "Qt/QML": { slug: "qt" },
-  SQLite: { slug: "sqlite" },
-  Hyprland: { slug: "hyprland" },
-  Astro: { slug: "astro" },
-  Tailwind: { slug: "tailwindcss" },
-  TailwindCSS: { slug: "tailwindcss" },
-  API: { slug: "postman" },
-};
 
 const badgeBase =
   "project-badge font-hud absolute z-20 uppercase rounded-[var(--radius)]";
@@ -123,7 +98,7 @@ const badgeBase =
         {typeof image === "string" ? (
           <img
             src={image}
-            alt={`${title} — interfaz`}
+            alt={`${title} — interface`}
             loading="lazy"
             class:list={[
               "w-full h-full object-cover object-top saturate-50 brightness-75",
@@ -135,7 +110,7 @@ const badgeBase =
         ) : (
           <Image
             src={image}
-            alt={`${title} — interfaz`}
+            alt={`${title} — interface`}
             width={768}
             loading="lazy"
             class:list={[

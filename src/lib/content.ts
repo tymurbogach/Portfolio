@@ -11,6 +11,7 @@ export type HomeData = CollectionEntry<"home">["data"];
 export type AboutData = CollectionEntry<"about">["data"];
 export type ResumeData = CollectionEntry<"resume">["data"];
 export type ContactData = CollectionEntry<"contact">["data"];
+export type ChatData = CollectionEntry<"chat">["data"];
 export type SocialLink = CollectionEntry<"social">["data"][number];
 export type Project = CollectionEntry<"projects">;
 
@@ -29,7 +30,14 @@ export type LabeledSection = NavPage & { sectionId: string };
 // Single-entry collections (file() loader) — the return type is
 // inferred from the schema, no casts.
 type SingletonCollection =
-  "site" | "profile" | "home" | "about" | "resume" | "contact" | "social";
+  | "site"
+  | "profile"
+  | "home"
+  | "about"
+  | "resume"
+  | "contact"
+  | "social"
+  | "chat";
 
 async function fetchEntry<C extends SingletonCollection>(
   collection: C,
@@ -57,6 +65,8 @@ export const getHeroData = async (): Promise<HeroData> =>
 export const getSocialLinks = (): Promise<SocialLink[]> =>
   fetchEntry("social", "data");
 
+export const getChatData = () => fetchEntry("chat", "data");
+
 export async function getProjects(): Promise<Project[]> {
   const entries = await getCollection("projects");
   const projects = await Promise.all(entries.map(syncGitHubProject));
@@ -67,7 +77,7 @@ export async function getProjects(): Promise<Project[]> {
 // SECTION HELPERS
 // ═══════════════════════════════════════════════════════
 export function getSectionId(path: string): string {
-  return path.replace(/^\//, "");
+  return path.replace(/^\/|\/$/g, "");
 }
 
 export function getLabeledSections(site: SiteData): LabeledSection[] {

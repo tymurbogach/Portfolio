@@ -151,6 +151,22 @@ const social = defineCollection({
   ),
 });
 
+// getEntry("chat", "data")
+// Visible chat widget text. The system prompt derives the rest from
+// about/contact/resume/projects so facts stay in one place.
+const chat = defineCollection({
+  loader: file("src/content/chat/data.json"),
+  schema: z.object({
+    greeting: z.string(),
+    starters: z.array(
+      z.object({
+        q: z.string(),
+        label: z.string(),
+      }),
+    ),
+  }),
+});
+
 // getCollection("projects") → multiple entries via glob
 // image: local file (optimized at build via astro:assets) or remote URL (as-is)
 const projects = defineCollection({
@@ -183,5 +199,6 @@ export const collections = {
   resume,
   contact,
   social,
+  chat,
   projects,
 };

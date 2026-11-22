@@ -25,6 +25,17 @@ const contactData = await getContactData();
 const socialLinks = await getSocialLinks();
 
 const sections: LabeledSection[] = getLabeledSections(site);
+
+// Fail early at build: a page in site.json without a renderer below would
+// render an empty section with a heading and no error.
+const SECTION_RENDERERS = new Set(["about", "resume", "projects", "contact"]);
+for (const section of sections) {
+  if (!SECTION_RENDERERS.has(section.sectionId)) {
+    throw new Error(
+      `[PageContent] No renderer for section "${section.sectionId}" (check site.json pages)`,
+    );
+  }
+}
 ---
 
 <div class="flex flex-col w-full">

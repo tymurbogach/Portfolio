@@ -1,5 +1,7 @@
 ---
-import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
+import { getChatData } from "../../lib/content";
+
+const { greeting, starters } = await getChatData();
 ---
 
 <script>
@@ -40,10 +42,7 @@ import { CHAT_STARTERS as starters } from "../../lib/chatConfig";
     class="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 min-h-0 text-[0.78rem] leading-[1.7]"
   >
     <!-- Welcome message -->
-    <div class="chat-msg chat-msg--bot">
-      Hey — I'm TymurBot. Ask me anything about Tymur, his stack, or just say
-      hi.
-    </div>
+    <div class="chat-msg chat-msg--bot">{greeting}</div>
 
     <!-- Starter suggestions -->
     <div class="chat-starters flex flex-wrap gap-1.5 mt-1">

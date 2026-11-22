@@ -1,0 +1,10 @@
+{
+  "data": {
+    "greeting": "Hey — I'm TymurBot. Ask me anything about Tymur, his stack, or just say hi.",
+    "starters": [
+      { "q": "What's your tech stack?", "label": "stack?" },
+      { "q": "Tell me about your background", "label": "background?" },
+      { "q": "Are you available for work?", "label": "available?" }
+    ]
+  }
+}

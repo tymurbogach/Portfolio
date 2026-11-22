@@ -5,9 +5,28 @@ import {
   OLLAMA_CONFIG,
   OLLAMA_URL,
   MAX_HISTORY_MESSAGES,
-  SYSTEM_PROMPT,
   type Message,
 } from "../../lib/chatConfig";
+import { composeSystemPrompt } from "../../lib/chatPrompt";
+import {
+  getAboutData,
+  getContactData,
+  getProjects,
+  getResumeData,
+} from "../../lib/content";
+
+// Composed once per process: content is immutable for a running build.
+let cachedSystemPrompt: Promise<string> | null = null;
+function getSystemPrompt(): Promise<string> {
+  cachedSystemPrompt ??= (async () =>
+    composeSystemPrompt({
+      contact: await getContactData(),
+      resume: await getResumeData(),
+      about: await getAboutData(),
+      projects: await getProjects(),
+    }))();
+  return cachedSystemPrompt;
+}
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_BODY_BYTES = 8_192; // JSON body guard; the real text limit is above
@@ -139,6 +158,8 @@ export const POST: APIRoute = async ({ request }) => {
   const history = getHistory(sessionId);
   history.push({ role: "user", content: message.trim() });
   trimHistory(history);
+
+  const SYSTEM_PROMPT = await getSystemPrompt();
 
   // Cancel Ollama when the client disconnects and give up after the budget.
   const upstreamSignal = AbortSignal.any([

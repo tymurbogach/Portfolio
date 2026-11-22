@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getContactData } from "../lib/content";
 
-const contactEmail = "tymurbogach@gmail.com";
+const contactEmail = (await getContactData()).email;
 const updatedAt = "November 4, 2026";
 ---
 

@@ -1,4 +1,23 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+// The route composes its prompt from the content collections; in unit tests
+// there is no Astro content layer, so feed it minimal fixtures.
+vi.mock("../../src/lib/content", () => ({
+  getAboutData: async () => ({ journey: [], education: [], hobbies: [] }),
+  getContactData: async () => ({
+    email: "test@example.com",
+    location: "Test City",
+    statusStr: "Available",
+  }),
+  getProjects: async () => [],
+  getResumeData: async () => ({
+    frontend: [],
+    backend: [],
+    homelab: [],
+    languages: [],
+  }),
+}));
+
 import { POST } from "../../src/pages/api/chat";
 
 type Ctx = Parameters<typeof POST>[0];

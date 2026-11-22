@@ -127,10 +127,14 @@ export function initContactForm() {
           throw new Error(result.message || "Submission failed.");
         }
       } catch (err) {
-        const fallbackEmail = form.dataset.email ?? "contact@nastymur.com";
+        const fallbackEmail = form.dataset.email;
         const msg =
           err instanceof Error ? err.message : "Something went wrong.";
-        setStatus(statusEl, `${msg} Email me directly: ${fallbackEmail}`, true);
+        setStatus(
+          statusEl,
+          fallbackEmail ? `${msg} Email me directly: ${fallbackEmail}` : msg,
+          true,
+        );
         restoreBtn();
       }
     },
