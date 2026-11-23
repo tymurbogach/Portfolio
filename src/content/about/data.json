@@ -14,7 +14,7 @@
         "active": false
       },
       {
-        "year": "2023",
+        "year": "2022",
         "event": "Homelab phase begins",
         "detail": "Self-hosted everything: Docker stacks, TrueNAS, Nginx, Raspberry Pi, Tailscale VPN mesh.",
         "active": false
