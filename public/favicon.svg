@@ -1,4 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#015249"/>
-  <text x="34" y="47" font-family="Georgia, serif" font-size="44" font-weight="300" text-anchor="middle" fill="#45c4b0" letter-spacing="3">TB</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .glyph { fill: #fff; }
+    @media (prefers-color-scheme: light) {
+      .glyph { fill: #0a0a0a; }
+    }
+  </style>
+  <circle cx="50" cy="50" r="45.5" fill="none" stroke="#00e5a0" stroke-width="6"/>
+  <g class="glyph" transform="translate(50 50) scale(0.66) translate(-47 -52)">
+    <path d="M14 23.75H86L80 33.25H8Z"/>
+    <path d="M25.75 23.75H36.25V80.25H25.75Z"/>
+    <path d="M47.75 23.75H58.25V80.25H47.75Z"/>
+    <path fill-rule="evenodd" d="M53 45.75H65A17.25 17.25 0 0 1 65 80.25H53Z M58.25 55.25H65A7.75 7.75 0 0 1 65 70.75H58.25Z"/>
+  </g>
 </svg>
