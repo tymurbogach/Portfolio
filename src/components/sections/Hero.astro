@@ -78,12 +78,27 @@ const {
 
   <!-- Bio + CTAs -->
   <div class="flex flex-col shrink-0 w-full">
-    <p
-      class="m-0 mb-5 leading-[1.75] text-sm laptop:text-[var(--type-reading)]
-             text-[var(--muted-foreground)]"
-    >
-      {subtitle1}
-    </p>
+    <!--
+      Layout stability across themes: the lead wraps to a different number of
+      lines in each theme font. An invisible copy in the widest font shares the
+      grid cell, so the block always reserves the worst-case height and the
+      centred hero never shifts when the theme changes.
+    -->
+    <div class="mb-5 grid">
+      <p
+        class="m-0 col-start-1 row-start-1 leading-[1.75] text-sm laptop:text-[var(--type-reading)]
+               text-[var(--muted-foreground)]"
+      >
+        {subtitle1}
+      </p>
+      <p
+        class="reserve-wide m-0 col-start-1 row-start-1 invisible leading-[1.75] text-sm
+               laptop:text-[var(--type-reading)]"
+        aria-hidden="true"
+      >
+        {subtitle1}
+      </p>
+    </div>
 
     {cta && (
       <div class="mb-7 grid w-full max-w-[34rem] grid-cols-1 gap-3 min-[34rem]:grid-cols-2">
@@ -98,17 +113,44 @@ const {
   </div>
 
   <div
-    data-visual-matrix
-    data-quote={subtitle2}
-    class="shrink-0 w-full text-center font-hud
+    class="shrink-0 w-full grid text-center font-hud
            text-[0.66rem] laptop:text-[var(--type-meta)]
            tracking-[0.1em] laptop:tracking-[0.16em]
            leading-[1.8] italic text-[var(--foreground-faint)]"
   >
-    <MatrixSequence client:load quote={subtitle2} comment={comment} />
+    <div
+      data-visual-matrix
+      data-quote={subtitle2}
+      class="col-start-1 row-start-1"
+    >
+      <MatrixSequence client:load quote={subtitle2} comment={comment} />
+    </div>
+    <!-- Invisible worst-case copy (quote + comment, widest mono font). -->
+    <div
+      aria-hidden="true"
+      class="reserve-wide-mono col-start-1 row-start-1 invisible"
+    >
+      <div>{subtitle2}</div>
+      <div class="font-bold not-italic" style="margin-top: 0.4em">
+        {comment}
+      </div>
+    </div>
   </div>
 
   <script>
     import "../../scripts/visitCounter";
   </script>
 </div>
+
+<style>
+  /* Reference faces for the invisible worst-case copies. Compare widths
+     after size-adjust (src/styles/fonts.css): JetBrains Mono is the widest
+     sans, Source Code Pro (111%) the widest mono. */
+  .reserve-wide {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .reserve-wide-mono {
+    font-family: "Source Code Pro", monospace;
+  }
+</style>

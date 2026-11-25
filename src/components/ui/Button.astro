@@ -21,7 +21,7 @@ const {
 // btn-primary / btn-ghost: border, color, bg, :active fill, :hover fill
 // tapFeedback.ts detects these class names and skips JS animation for them
 const baseClasses =
-  "btn-base font-hud gap-1.5 px-6 py-2.5 text-[var(--type-meta)] tracking-[0.24em] uppercase font-bold";
+  "btn-base font-hud gap-1.5 px-4 py-2.5 text-[var(--type-meta)] tracking-[0.16em] uppercase font-bold max-[22rem]:px-3 max-[22rem]:tracking-[0.1em] min-[30rem]:px-6 min-[30rem]:tracking-[0.24em]";
 
 const variantClasses: { [K in Variant]: string } = {
   primary: "btn-primary",
