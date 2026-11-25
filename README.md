@@ -1,6 +1,6 @@
 # nastymur.com — Portfolio
 
-Personal portfolio of **Tymur Bogach**, full stack developer. Live at [nastymur.com](https://nastymur.com).
+Personal portfolio of **Tymur Bogach**, software engineer. Live at [nastymur.com](https://nastymur.com).
 
 ## Stack
 

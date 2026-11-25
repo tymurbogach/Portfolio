@@ -67,7 +67,7 @@ export function composeSystemPrompt(facts: PromptFacts): string {
   return `${PERSONA}
 
 ## Who is Tymur Bogach
-- Full-stack developer, ${contact.statusStr.toLowerCase()} for work
+- Software engineer, ${contact.statusStr.toLowerCase()} for work
 - Location: ${contact.location}
 - Email: ${contact.email}
 
