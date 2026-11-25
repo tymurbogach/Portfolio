@@ -3,12 +3,18 @@
  * so rendering matches the previous CDN link byte for byte.
  */
 
+/* size-adjust: every theme face is scaled so its x-height and cap-height match
+ * the reference faces (JetBrains Mono / Poppins: x 55, cap 73 per 100px).
+ * The same font-size then looks the same size in every theme.
+ */
+
 /* Bebas Neue — latin-ext */
 @font-face {
   font-family: "Bebas Neue";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 104%;
   src: url(/fonts/bebas-neue-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -22,6 +28,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 104%;
   src: url(/fonts/bebas-neue-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -35,6 +42,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-300-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -48,6 +56,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-300-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -61,6 +70,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -74,6 +84,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -87,6 +98,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-500-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -100,6 +112,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-500-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -113,6 +126,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-700-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -126,6 +140,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 105%;
   src: url(/fonts/fira-code-700-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -347,6 +362,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-300-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -360,6 +376,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-300-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -373,6 +390,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -386,6 +404,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -399,6 +418,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-500-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -412,6 +432,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-500-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -425,6 +446,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-600-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -438,6 +460,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-600-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -451,6 +474,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-700-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -464,6 +488,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/outfit-700-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -477,6 +502,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-300-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -490,6 +516,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-300-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -503,6 +530,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -516,6 +544,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -529,6 +558,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-500-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -542,6 +572,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-500-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -555,6 +586,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-600-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -568,6 +600,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-600-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -581,6 +614,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-700-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -594,6 +628,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 106%;
   src: url(/fonts/oxanium-700-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -633,6 +668,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-300-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -646,6 +682,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-300-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -659,6 +696,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -672,6 +710,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -685,6 +724,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-500-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -698,6 +738,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-500-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -711,6 +752,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-600-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -724,6 +766,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-600-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -737,6 +780,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-700-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -750,6 +794,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 102%;
   src: url(/fonts/poppins-700-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -763,6 +808,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -776,6 +822,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -789,6 +836,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-500-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -802,6 +850,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-500-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -815,6 +864,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-600-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -828,6 +878,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-600-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -841,6 +892,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-700-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -854,6 +906,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 110%;
   src: url(/fonts/rajdhani-700-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -867,6 +920,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 107%;
   src: url(/fonts/share-tech-mono-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -880,6 +934,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-300-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -893,6 +948,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-300-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -906,6 +962,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-400-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -919,6 +976,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-400-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -932,6 +990,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-500-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -945,6 +1004,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-500-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
@@ -958,6 +1018,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-700-latin-ext.woff2) format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
@@ -971,6 +1032,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+  size-adjust: 111%;
   src: url(/fonts/source-code-pro-700-latin.woff2) format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
