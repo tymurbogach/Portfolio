@@ -5,41 +5,166 @@ interface Props {
 }
 
 const { nameDisplay, role } = Astro.props;
+const [given, ...rest] = nameDisplay.trim().split(/\s+/);
+const family = rest.join(" ");
+// One span per character: name and role are spread edge to edge over a fixed
+// width, so the lockup measures the same in every theme font.
+const givenChars = [...given];
+const familyChars = [...family];
+const roleChars = [...role.trim().toUpperCase()];
 ---
 
 <div
-  class="nav-panel cursor-pointer"
+  class="nav-panel cursor-pointer name-card"
   style="width: var(--nav-width); height: var(--nav-height);"
 >
   <a
     href="/"
-    class="nav-cell nav-link group no-underline w-full h-full
-           flex flex-col items-center justify-center text-center gap-1 mobile:gap-1.5"
+    class="nav-cell nav-link group no-underline w-full h-full flex items-center justify-center"
     aria-label="Home"
   >
-    <h1
-      class="font-bold font-signature m-0 whitespace-nowrap
-               tracking-[0.6rem] laptop:tracking-[clamp(0.7rem,0.7vw,1rem)]
-               text-xl mobile:text-xl tablet:text-2xl laptop-scaled:text-[1.65rem] laptop-scaled:tracking-[0.48rem] laptop:text-3xl
-             laptop:text-[clamp(1.875rem,1.4vw,3rem)]"
-    >
-      {nameDisplay}
-    </h1>
-    <div class="flex items-center w-full px-3 mobile:px-4 gap-2">
-      <span
-        class="flex-1 h-px bg-[linear-gradient(to_right,transparent,color-mix(in_srgb,var(--accent)_55%,transparent))]"
-        aria-hidden="true"
-      ></span>
-      <p
-        class="font-hud text-[0.62rem] mobile:text-[0.65rem] laptop:text-[var(--type-meta)]
-               tracking-[0.22em] uppercase m-0 text-[var(--foreground-faint)] whitespace-nowrap flex-shrink-0"
-      >
-        {role}
-      </p>
-      <span
-        class="flex-1 h-px bg-[linear-gradient(to_left,transparent,color-mix(in_srgb,var(--accent)_55%,transparent))]"
-        aria-hidden="true"
-      ></span>
+    <!--
+      Brand lockup (Figma "Lockup"). 1em = name font size.
+      The text column is exactly as tall as the sello: the name cap-height
+      touches the top edge, the role baseline touches the bottom edge.
+      Fonts and colours come from the active theme variables.
+    -->
+    <div class="lockup">
+      <svg class="sello" viewBox="0 0 100 100" aria-hidden="true">
+        <circle
+          class="stroke-[var(--accent)] can-hover:group-hover:stroke-current"
+          cx="50"
+          cy="50"
+          r="45.5"
+          fill="none"
+          stroke-width="6"
+        ></circle>
+        <g
+          fill="currentColor"
+          transform="translate(50 50) scale(0.66) translate(-47 -52)"
+        >
+          <path d="M14 23.75H86L80 33.25H8Z"></path>
+          <path d="M25.75 23.75H36.25V80.25H25.75Z"></path>
+          <path d="M47.75 23.75H58.25V80.25H47.75Z"></path>
+          <path
+            fill-rule="evenodd"
+            d="M53 45.75H65A17.25 17.25 0 0 1 65 80.25H53Z M58.25 55.25H65A7.75 7.75 0 0 1 65 70.75H58.25Z"
+          ></path>
+        </g>
+      </svg>
+      <div class="text">
+        <h1 class="name" aria-label={nameDisplay}>
+          {givenChars.map((c) => (
+            <span class="given" aria-hidden="true">
+              {c}
+            </span>
+          ))}
+          <span class="gap" aria-hidden="true"></span>
+          {familyChars.map((c) => (
+            <span class="family" aria-hidden="true">
+              {c}
+            </span>
+          ))}
+        </h1>
+        <p
+          class="role text-[var(--accent)] can-hover:group-hover:text-current"
+          aria-label={role}
+        >
+          {roleChars.map((c) => (
+            <span aria-hidden="true">{c === " " ? " " : c}</span>
+          ))}
+        </p>
+      </div>
     </div>
   </a>
 </div>
+
+<style>
+  .name-card {
+    container-type: inline-size;
+  }
+
+  .lockup {
+    /* Width-limited on laptop, height-limited on mobile. */
+    font-size: min(calc(100cqw / 10.9), calc(var(--nav-height) * 0.62));
+    display: flex;
+    align-items: stretch;
+    gap: 0.4167em;
+    height: 1.1667em;
+    color: var(--foreground);
+  }
+
+  .sello {
+    flex: none;
+    width: 1.1667em;
+    height: 1.1667em;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    /* Fixed width: wider than the widest theme font, narrower fonts are tracked. */
+    width: 8.7em;
+  }
+
+  /* Trim the line boxes to cap-height / baseline so the edges are exact in
+     every theme font. */
+  .name,
+  .role {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    line-height: 1;
+    white-space: nowrap;
+    /* Fonts with a single weight must not fake bold. */
+    font-synthesis: none;
+  }
+
+  .name > span,
+  .role > span {
+    text-box: trim-both cap alphabetic;
+  }
+
+  .name {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+  }
+
+  .gap {
+    flex: none;
+    width: 0.3em;
+  }
+
+  .family {
+    font-weight: 800;
+  }
+
+  .role {
+    margin: 0;
+    line-height: 1;
+    text-box: trim-both cap alphabetic;
+    white-space: nowrap;
+  }
+
+  .name {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin-right: -0.02em;
+  }
+
+  .family {
+    font-weight: 800;
+  }
+
+  .role {
+    font-family: var(--font-mono), monospace;
+    /* 11px floor for metadata (AGENTS.md). */
+    font-size: max(11px, 0.2292em);
+    font-weight: 600;
+  }
+</style>
