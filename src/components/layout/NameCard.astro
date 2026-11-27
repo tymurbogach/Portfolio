@@ -125,6 +125,21 @@ const roleChars = [...role.trim().toUpperCase()];
     text-box: trim-both cap alphabetic;
   }
 
+  /* Sin text-box las cajas de línea miden 1em y desbordan la columna: el
+     rol cae por debajo del sello y el nombre deja de compartir su altura.
+     Se encogen las filas para que quepan; space-between mantiene los bordes
+     exteriores clavados arriba y abajo en cualquier navegador. El piso de
+     10px solo rige en este repliegue (el principal conserva los 11px). */
+  @supports not (text-box: trim-both) {
+    .name {
+      font-size: 0.68em;
+    }
+
+    .role {
+      font-size: max(10px, 0.1559em);
+    }
+  }
+
   .name {
     font-family: var(--font-display), sans-serif;
     font-size: 1em;
