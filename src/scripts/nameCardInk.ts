@@ -1,13 +1,22 @@
 /**
- * Aligns the INK of the name and the role in the header lockup.
+ * Aligns the INK of the name and the role in the header lockup, and guarantees
+ * the title is never cut on the right.
  *
  * Both rows are laid out with `justify-content: space-between`, which aligns
  * glyph boxes. Boxes include side bearings, and bearings differ per letter and
  * per theme font (H vs G). This script measures the real ink of the first and
  * last letter of each row and pulls the row out by that amount, so the ink
  * touches the same left and right edge in every theme.
+ *
+ * The pull-out (or an oversize font) can push row content past the card, and
+ * the fixed mobile header clips at its own bounds (`overflow: clip`). After
+ * aligning, the lockup font shrinks proportionally until every row's content
+ * fits inside its card, so the title is never cut on the right. When everything
+ * fits (the common case) the loop exits at once and nothing changes.
  */
-const ROWS = ".name-card .name, .name-card .role";
+const CARDS = ".name-card";
+const MAX_ITER = 10;
+const MIN_FONT_PX = 10;
 let frame = 0;
 let ctx: CanvasRenderingContext2D | null = null;
 
@@ -23,18 +32,63 @@ function ink(el: HTMLElement, char: string) {
   };
 }
 
+function alignInk(row: HTMLElement) {
+  const spans = row.querySelectorAll<HTMLElement>(":scope > span:not(.gap)");
+  const first = spans[0];
+  const last = spans[spans.length - 1];
+  if (!first || !last) return;
+  const a = ink(first, first.textContent?.trim() ?? "");
+  const b = ink(last, last.textContent?.trim() ?? "");
+  if (!a || !b) return;
+  row.style.marginLeft = `${(-a.left).toFixed(2)}px`;
+  row.style.marginRight = `${(-b.right).toFixed(2)}px`;
+}
+
+function fitCard(
+  card: HTMLElement,
+  lockup: HTMLElement,
+  rows: HTMLElement[],
+) {
+  let font = parseFloat(getComputedStyle(lockup).fontSize);
+  if (!Number.isFinite(font) || font <= 0) return;
+  for (let i = 0; i < MAX_ITER && font > MIN_FONT_PX; i++) {
+    const cardRect = card.getBoundingClientRect();
+    if (cardRect.width <= 0) return;
+    let need = 0;
+    for (const row of rows) {
+      const box = row.getBoundingClientRect();
+      // Content can extend past the row box (flex overflow); the visible
+      // right edge is whichever reaches further. On the left, the ink
+      // margins already widen the box itself, so the box covers it.
+      const extent = Math.max(box.right, box.left + row.scrollWidth);
+      need = Math.max(
+        need,
+        extent - cardRect.left,
+        cardRect.right - box.left,
+      );
+    }
+    if (need <= cardRect.width) return;
+    font = Math.max(MIN_FONT_PX, (font * cardRect.width) / need);
+    lockup.style.fontSize = `${font.toFixed(2)}px`;
+  }
+}
+
 function apply() {
   frame = 0;
-  for (const row of document.querySelectorAll<HTMLElement>(ROWS)) {
-    const spans = row.querySelectorAll<HTMLElement>(":scope > span:not(.gap)");
-    const first = spans[0];
-    const last = spans[spans.length - 1];
-    if (!first || !last) continue;
-    const a = ink(first, first.textContent?.trim() ?? "");
-    const b = ink(last, last.textContent?.trim() ?? "");
-    if (!a || !b) continue;
-    row.style.marginLeft = `${(-a.left).toFixed(2)}px`;
-    row.style.marginRight = `${(-b.right).toFixed(2)}px`;
+  for (const card of document.querySelectorAll<HTMLElement>(CARDS)) {
+    const lockup = card.querySelector<HTMLElement>(".lockup");
+    if (!lockup) continue;
+    const rows = [...lockup.querySelectorAll<HTMLElement>(".name, .role")];
+    if (rows.length === 0) continue;
+    // Reset: back to CSS sizing before measuring.
+    lockup.style.fontSize = "";
+    for (const row of rows) {
+      row.style.marginLeft = "";
+      row.style.marginRight = "";
+    }
+    if (card.clientWidth <= 0) continue; // hidden card (other breakpoint)
+    for (const row of rows) alignInk(row);
+    fitCard(card, lockup, rows);
   }
 }
 

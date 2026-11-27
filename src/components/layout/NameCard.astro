@@ -80,6 +80,10 @@ const roleChars = [...role.trim().toUpperCase()];
 <style>
   .name-card {
     container-type: inline-size;
+    /* Mobile browsers must not inflate the lockup type: the column is sized
+       to the em, so any inflation pushes the title past the card edge. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   .lockup {
