@@ -31,25 +31,23 @@ const roleChars = [...role.trim().toUpperCase()];
     -->
     <div class="lockup">
       <svg class="sello" viewBox="0 0 100 100" aria-hidden="true">
-        <circle
-          class="stroke-[var(--accent)] can-hover:group-hover:stroke-current"
-          cx="50"
-          cy="50"
-          r="45.5"
-          fill="none"
-          stroke-width="6"
-        ></circle>
+        <rect
+          class="fill-[var(--accent)] can-hover:group-hover:fill-[var(--accent-foreground)]"
+          width="100"
+          height="100"
+          rx="14"
+        ></rect>
         <g
-          fill="currentColor"
-          transform="translate(50 50) scale(0.66) translate(-47 -52)"
+          class="stroke-[var(--accent-foreground)] can-hover:group-hover:stroke-[var(--accent)]"
+          fill="none"
+          stroke-width="3.4"
+          stroke-linejoin="miter"
         >
-          <path d="M14 23.75H86L80 33.25H8Z"></path>
-          <path d="M25.75 23.75H36.25V80.25H25.75Z"></path>
-          <path d="M47.75 23.75H58.25V80.25H47.75Z"></path>
-          <path
-            fill-rule="evenodd"
-            d="M53 45.75H65A17.25 17.25 0 0 1 65 80.25H53Z M58.25 55.25H65A7.75 7.75 0 0 1 65 70.75H58.25Z"
-          ></path>
+          <path d="M30.48 25.7V74.3"></path>
+          <path d="M12.48 25.7H26.28"></path>
+          <path d="M34.68 25.7H48.48"></path>
+          <path d="M62.18 25.7H55.18V74.3H62.18"></path>
+          <path d="M67.18 25.7H73.18A11.66 11.66 0 0 1 73.18 49.03H67.18M67.18 49.03H73.18A12.64 12.64 0 0 1 73.18 74.3H67.18"></path>
         </g>
       </svg>
       <div class="text">
@@ -61,15 +59,15 @@ const roleChars = [...role.trim().toUpperCase()];
           ))}
           <span class="gap" aria-hidden="true"></span>
           {familyChars.map((c) => (
-            <span class="family" aria-hidden="true">
+            <span
+              class="family text-[var(--accent)] can-hover:group-hover:text-current"
+              aria-hidden="true"
+            >
               {c}
             </span>
           ))}
         </h1>
-        <p
-          class="role text-[var(--accent)] can-hover:group-hover:text-current"
-          aria-label={role}
-        >
+        <p class="role" aria-label={role}>
           {roleChars.map((c) => (
             <span aria-hidden="true">{c === " " ? " " : c}</span>
           ))}
@@ -138,33 +136,10 @@ const roleChars = [...role.trim().toUpperCase()];
     width: 0.3em;
   }
 
-  .family {
-    font-weight: 800;
-  }
-
-  .role {
-    margin: 0;
-    line-height: 1;
-    text-box: trim-both cap alphabetic;
-    white-space: nowrap;
-  }
-
-  .name {
-    font-family: var(--font-display), sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin-right: -0.02em;
-  }
-
-  .family {
-    font-weight: 800;
-  }
-
   .role {
     font-family: var(--font-mono), monospace;
     /* 11px floor for metadata (AGENTS.md). */
     font-size: max(11px, 0.2292em);
-    font-weight: 600;
+    font-weight: 300;
   }
 </style>

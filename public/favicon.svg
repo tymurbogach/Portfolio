@@ -1,15 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <style>
-    .glyph { fill: #fff; }
-    @media (prefers-color-scheme: light) {
-      .glyph { fill: #0a0a0a; }
-    }
-  </style>
-  <circle cx="50" cy="50" r="45.5" fill="none" stroke="#00e5a0" stroke-width="6"/>
-  <g class="glyph" transform="translate(50 50) scale(0.66) translate(-47 -52)">
-    <path d="M14 23.75H86L80 33.25H8Z"/>
-    <path d="M25.75 23.75H36.25V80.25H25.75Z"/>
-    <path d="M47.75 23.75H58.25V80.25H47.75Z"/>
-    <path fill-rule="evenodd" d="M53 45.75H65A17.25 17.25 0 0 1 65 80.25H53Z M58.25 55.25H65A7.75 7.75 0 0 1 65 70.75H58.25Z"/>
+  <rect width="100" height="100" rx="16" fill="#00e6a5"/>
+  <g fill="none" stroke="#0b1016" stroke-width="4.4" stroke-linejoin="miter">
+    <path d="M30.48 25.7V74.3"/>
+    <path d="M12.48 25.7H26.28"/>
+    <path d="M34.68 25.7H48.48"/>
+    <path d="M62.18 25.7H55.18V74.3H62.18"/>
+    <path d="M67.18 25.7H73.18A11.66 11.66 0 0 1 73.18 49.03H67.18M67.18 49.03H73.18A12.64 12.64 0 0 1 73.18 74.3H67.18"/>
   </g>
 </svg>
