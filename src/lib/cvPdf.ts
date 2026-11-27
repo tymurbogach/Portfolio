@@ -90,7 +90,11 @@ export async function cvPdfResponse(lang: CvLang): Promise<Response> {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `inline; filename="TymurBogach_CV_${lang}.pdf"`,
-      "Cache-Control": "public, max-age=300",
+      // Browsers always revalidate: Cloudflare stretches a short max-age to its
+      // Browser Cache TTL (4 h) but leaves no-cache alone. The edge keeps its
+      // own 5 minute copy through the CDN header.
+      "Cache-Control": "no-cache",
+      "Cloudflare-CDN-Cache-Control": "public, max-age=300",
     },
   });
 }

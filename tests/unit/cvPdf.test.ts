@@ -36,6 +36,10 @@ describe("cvPdfResponse", () => {
     expect(res.headers.get("Content-Disposition")).toContain(
       "TymurBogach_CV_EN.pdf",
     );
+    expect(res.headers.get("Cache-Control")).toBe("no-cache");
+    expect(res.headers.get("Cloudflare-CDN-Cache-Control")).toContain(
+      "max-age=300",
+    );
     expect(fetchMock.mock.calls[0][0]).toMatch(/\/TymurBogach_CV_EN\.pdf$/);
   });
 
