@@ -87,10 +87,13 @@ the reverse proxy for the static pages.
 
 ### CV PDFs
 
-`public/TymurBogach_CV_{EN,ES}.pdf` come from the
-[cv-maker](https://github.com/tymurbogach/cv-maker) repo, the single source
-of truth for the CV. Do not edit or regenerate them here. A push to cv-maker
-publishes both PDFs into `public/` (`npm run cv:sync`); then deploy this site.
+The PDFs are not in this repo. [cv-maker](https://github.com/tymurbogach/cv-maker)
+is the single source of the CV and publishes the PDFs to the public repo
+[tymurbogach/cv](https://github.com/tymurbogach/cv). The routes
+`/TymurBogach_CV_{EN,ES}.pdf` fetch them from there at request time
+(`src/lib/cvPdf.ts`), with an ETag revalidation every 5 minutes and a stale
+copy if GitHub is down. A new CV goes live in about 10 minutes, with no build
+and no deploy. Set `CV_PDF_BASE_URL` to read from another location.
 
 ## Deploy
 

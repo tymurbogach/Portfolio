@@ -20,8 +20,9 @@ Después de cada cambio, ejecuta `npm run format:check`, `npm run test`, `npm ru
 
 ## CV
 
-Los PDF de `public/TymurBogach_CV_{EN,ES}.pdf` vienen del repo `cv-maker`, la única fuente del CV.
-No los edites ni los regeneres aquí. Un push en `cv-maker` los publica en `public/`; después despliega.
+Los PDF no viven en este repo. `cv-maker` los publica en el repo público `tymurbogach/cv`.
+Las rutas `/TymurBogach_CV_{EN,ES}.pdf` (`src/pages/*.pdf.ts`, `src/lib/cvPdf.ts`) los descargan de ahí con caché de 5 minutos.
+Un CV nuevo se ve en unos 10 minutos. No hace falta compilar ni desplegar.
 
 ## Despliegue
 
