@@ -13,11 +13,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "themes:check": "node scripts/check-theme-contrast.mjs",
-    "astro": "astro",
-    "cv:pdf": "node scripts/cv/generate-all.mjs",
-    "cv:pdf:en": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.en.json public/TymurBogach_CV_EN.pdf",
-    "cv:pdf:es": "node scripts/cv/export-cv-pdf.mjs cv/cv.config.es.json public/TymurBogach_CV_ES.pdf",
-    "cv:jobpilot": "node scripts/cv/fetch-from-jobpilot.mjs"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.6",
@@ -34,7 +30,6 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@playwright/test": "^1.63.0",
-    "@react-pdf/renderer": "^4.5.1",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

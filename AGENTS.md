@@ -14,10 +14,14 @@ npm run dev           # Servidor de desarrollo en el puerto 4321
 npm run check         # Typecheck de Astro
 npm run format:check  # Comprueba el formato
 npm run build         # Genera dist/
-npm run cv:pdf        # Regenera ambos PDF del CV
 ```
 
 Después de cada cambio, ejecuta `npm run format:check`, `npm run test`, `npm run check` y `npm run build`. No cierres el trabajo si uno falla.
+
+## CV
+
+Los PDF de `public/TymurBogach_CV_{EN,ES}.pdf` vienen del repo `cv-maker`, la única fuente del CV.
+No los edites ni los regeneres aquí. Un push en `cv-maker` los publica en `public/`; después despliega.
 
 ## Despliegue
 

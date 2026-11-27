@@ -87,11 +87,10 @@ the reverse proxy for the static pages.
 
 ### CV PDFs
 
-`public/TymurBogach_CV_{EN,ES}.pdf` are generated from `cv/cv.config.*.json` with `@react-pdf/renderer`:
-
-```bash
-npm run cv:pdf        # both languages
-```
+`public/TymurBogach_CV_{EN,ES}.pdf` come from the
+[cv-maker](https://github.com/tymurbogach/cv-maker) repo, the single source
+of truth for the CV. Do not edit or regenerate them here. A push to cv-maker
+publishes both PDFs into `public/` (`npm run cv:sync`); then deploy this site.
 
 ## Deploy
 
