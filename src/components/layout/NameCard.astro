@@ -84,7 +84,7 @@ const roleChars = [...role.trim().toUpperCase()];
 
   .lockup {
     /* Width-limited on laptop, height-limited on mobile. */
-    font-size: min(calc(100cqw / 10.9), calc(var(--nav-height) * 0.62));
+    font-size: min(calc(100cqw / 10.9), calc(var(--nav-height) * 0.66));
     display: flex;
     align-items: stretch;
     gap: 0.4167em;
@@ -103,8 +103,8 @@ const roleChars = [...role.trim().toUpperCase()];
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    /* Fixed width: wider than the widest theme font, narrower fonts are tracked. */
-    width: 8.7em;
+    /* Fills the card (12px side padding): sello + gap + text. Narrower fonts are tracked. */
+    width: calc(100cqw - 24px - 1.5833em);
   }
 
   /* Trim the line boxes to cap-height / baseline so the edges are exact in
@@ -143,3 +143,7 @@ const roleChars = [...role.trim().toUpperCase()];
     font-weight: 300;
   }
 </style>
+
+<script>
+  import "../../scripts/nameCardInk";
+</script>
